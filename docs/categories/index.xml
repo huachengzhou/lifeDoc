@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 所悟所想</title>
-    <link>https://huachengzhou.github.io/lifeDoc/categories/</link>
+    <link>https://huachengzhou.github.io/life/categories/</link>
     <description>Recent content in Categories on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/lifeDoc/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>manage</title>
-      <link>https://huachengzhou.github.io/lifeDoc/categories/manage/</link>
+      <link>https://huachengzhou.github.io/life/categories/manage/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/categories/manage/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/manage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>uml</title>
-      <link>https://huachengzhou.github.io/lifeDoc/categories/uml/</link>
+      <link>https://huachengzhou.github.io/life/categories/uml/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/categories/uml/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/uml/</guid>
       <description></description>
     </item>
     

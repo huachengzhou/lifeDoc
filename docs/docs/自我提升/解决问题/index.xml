@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>解决问题 on 所悟所想</title>
-    <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
+    <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
     <description>Recent content in 解决问题 on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DNS 污染</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dnf%E6%B1%A1%E6%9F%93/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dnf%E6%B1%A1%E6%9F%93/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dnf%E6%B1%A1%E6%9F%93/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dnf%E6%B1%A1%E6%9F%93/</guid>
       <description>中国国内访问 GitHub 为什么很慢很卡甚至访问不了？如何加速访问 GitHub 网站？#个人总结：强扭的瓜不甜，修改 hosts 也就片刻好光景，要不了多久就变得比没改 hosts 之前更慢。所以还是顺其自然就好，不要白费力气去修改 hosts。#  摘要
   网站分发加速网络的域名遭到 DNS 污染，DNS 不能直接找到那个最快的 IP！ 通过修改系统 hosts 文件的办法，绕过国内 DNS 解析，直接访问 GitHub 的 CDN 节点，从而达到加速的目的！
   如何检验效果
@@ -22,10 +22,10 @@
     
     <item>
       <title>GitHubPages绑定来自阿里云的域名</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</guid>
       <description>原教程但是由于他使用的github的用户名做的域名映射器,这样不好的地方是有可能你使用自定义的方式建立github仓库名比如 English study,还有一个是他使用的阿里云的域名映射解析这些是老版本的
   GitHub Pages 绑定来自阿里云的域名==原博客教程
   我的使用#github url ==&amp;gt; https://github.com/noatnu/studyDoc , 买的域名 http://www.zhouchenghua.com/# 解析第一个设置   创建A记录，请将您的顶点域指向GitHub Pages的IP地址 https 解析ip,上面的192.30.252.153是http解析方式现在官方已经宣布过时了,选择下面任意一个都可以  185.199.108.153185.199.109.153185.199.110.153185.199.111.153 解析第二个设置    github 要做的事

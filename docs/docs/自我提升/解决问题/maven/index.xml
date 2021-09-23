@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>maven出现的问题 on 所悟所想</title>
-    <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/</link>
+    <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/</link>
     <description>Recent content in maven出现的问题 on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>idea 问题解决</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/</guid>
       <description>idea导入项目出现Unable to import maven project: See logs for details提示
  第一种解决办法#  删除项目根目录下.idea文件夹
   关闭idea工具，重新打开选择File-&amp;gt;New-&amp;gt;Project from the existing source ,选择刚才的项目根目，下一步：

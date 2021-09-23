@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>自我提升 on 所悟所想</title>
-    <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/</link>
+    <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/</link>
     <description>Recent content in 自我提升 on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>学习计划</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</guid>
       <description>  Java 消息中间件 RabbitMq 和 kafka (建议学习RabbitMq)
   web socket or spring socket
   springboot (spring cloud考虑)
@@ -24,10 +24,10 @@
     
     <item>
       <title>记忆方法</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/</guid>
       <description>记忆方法# 提高记忆的关键，在于想象和创意 编故事有助于提高记忆力  通过编故事，再加上逻辑或地点（后者更多一些）;编故事是加强了记忆桩之间的联系记忆和创造力# 记忆本身与创造力密不可分 ， 训练记忆力在很大程度上取决于你的创造力  要想记住毫不相关的信息和扑克牌，首先就要把它们变成图像。通过这种方式，那些零散的信息才可能会建立某种联系联想#利用事物间的联系通过联想进行记忆的方法。联想是由当前感知或思考的事物想起有关的另一事物，或者由头脑中想起的一件事物，又引起想到另一件事物。由于客观事物是相互联系的，各种知识也是相互联系的，因而在思维中，联想是一种基本的思维形式，是记忆的一种方法。联想，就是当人脑接受某一剌激时，浮现出与该刺激有关的事物形象的心理过程。一般来说，互相接近的事物、相反的事物、相似的事物之间容易产生联想。用联想来增强记忆是一种很常用的方法。记忆的一种主要机能就是在有关经验中建立联系，思维中的联想越活跃，经验的联系就越牢固。如能经常形成联想和运用联想，就可增强记忆的效果。联想是有规律可循的，联想的规律有接近律、类似律、对比律、因果律等，有接近联想、类似联想、对比联想、因果联想。  联想不仅快速，而且它还不是一个简单、一维的东西。首先，你在联想中会加入一些情感因素，甚至还没回想起一段经历，就已经产生了某种情绪。
   一旦学会动用感情和感官，还有逻辑和创造力，来与不同事物间建立联系，你的记忆能力就会大大提高。除此之外，你还会慢慢习惯放松大脑，以最快的速度在不同事物之间建立联系。瞬间联想之所以对提高记忆力如此重要，是因为一个人在瞬间建立的联系往往是最牢靠的
   如何在两个并无联系的单词之间建立联系&amp;ndash;记忆的关键，就在于将二者结合到一起。
@@ -37,19 +37,19 @@
     
     <item>
       <title>学习方法</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>冥想</title>
-      <link>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/</link>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/lifeDoc/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/</guid>
       <description>冥想#呼吸冥想法#  1:坐好，后背挺直，然后闭上眼睛
   2:关注你自己呼吸时的感觉,吸气，吸气，选择一个感受突出的地方，通常是你的鼻子或者耳朵、腹部然后集中注意力，关注你自己呼吸时的感觉。吸气，吸气，用嘴呼吸（最好关注腹部，因为我们大部分人都是腹部呼吸法）
   3:一旦你开始这样做了脑子会乱想,你需要关注你到什么时候走神的，那么走神后重新调整后重新开始集中注意力开始冥想。
