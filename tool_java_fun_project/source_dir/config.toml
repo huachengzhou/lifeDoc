@@ -1,0 +1,16 @@
+# hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
+
+# baseURL = "https://example.com"
+
+baseURL = "https://huachengzhou.github.io/life"
+#baseURL = "http://0.0.0.0:1313"
+title = '所悟所想'
+theme = 'hugo-book'
+
+
+[params]
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = "light"
+
+
