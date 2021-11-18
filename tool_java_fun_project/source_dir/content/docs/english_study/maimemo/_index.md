@@ -65,7 +65,7 @@ bookFlatSection: false
 
 ![a5](./img/v2-5cd83fac7cf177d5fb225f0629ed51c9_720w.jpg)
 
-![u1](./img/u1.jpg)
+![u1](./img/u1.png)
 
 ![u2](./img/u2.jpg)
 
