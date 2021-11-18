@@ -30,3 +30,5 @@ weight: 1
 + The early bird catches the worm
 
 + 早起的鸟儿有虫吃
+
+![语法](./img/english_grammar.svg)
