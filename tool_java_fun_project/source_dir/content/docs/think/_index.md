@@ -5,7 +5,7 @@ draft: false
 weight: 3
 ---
 
-[批判性思维](./criticalThinking)
+[批判性思维](./criticalthinking)
 
 
 [金字塔原理](./jinzita)
