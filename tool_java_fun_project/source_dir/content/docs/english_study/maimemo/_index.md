@@ -10,7 +10,7 @@ bookFlatSection: false
 
 ###  第一步：选择一本单词书，如下图，它有很多分类，我就拿考研的来举例了。
 
-![a1](./img/v2-bb9e1f612fba8fe3e6e5c5210756a301_720w.jpg)
+![a1](./img/v2-bb9e1f612fba8fe3e6e5c5210756a301_720w.png)
 
 
 ### 第二步：在第四个角标“设置”里头选择每日学习目标量
@@ -28,7 +28,7 @@ bookFlatSection: false
 比如我图上330个词其中276个是我之前学习过了的单词，而剩下的54个就是我今天需要新学的单词！）
 ```
 
-![a2](./img/v2-3c104f49875c4faf76879578c4aef347_720w.jpg)
+![a2](./img/v2-3c104f49875c4faf76879578c4aef347_720w.png)
 
 ### 第三部：回到第一个“复习”界面，开始背单词啦！
 
@@ -40,7 +40,7 @@ bookFlatSection: false
 每个单词会出现3次，3次也会慢慢有印象的，第三次还不会也没关系明天还会再让你学！✌️
 ```
 
-![a3](./img/v2-e4e5c9b9cb3536d4ebe61561c4eaf12c_720w.jpg)
+![a3](./img/v2-e4e5c9b9cb3536d4ebe61561c4eaf12c_720w.png)
 
 ```shell
 在背词的过程中可能会出现的情况
@@ -50,7 +50,7 @@ bookFlatSection: false
 4.例句不够典型，点击例句那一行的长短线段图标就可以看到更多的例句啦！把你不想要的☑️取消换成你喜欢的例句就OK！（只能有3个例子哦）
 ```
 
-![a4](./img/v2-3d8e6dd3329993731e0e9f8ab1ff5d0e_720w.jpg)
+![a4](./img/v2-3d8e6dd3329993731e0e9f8ab1ff5d0e_720w.png)
 
 
 ### 第四部：背完单词，签到签到签到！
@@ -63,13 +63,13 @@ bookFlatSection: false
 再在右上角中选择你喜欢的复习模式就ok啦！
 ```
 
-![a5](./img/v2-5cd83fac7cf177d5fb225f0629ed51c9_720w.jpg)
+![a5](./img/v2-5cd83fac7cf177d5fb225f0629ed51c9_720w.png)
 
 ![u1](./img/u1.png)
 
-![u2](./img/u2.jpg)
+![u2](./img/u2.png)
 
-![u3](./img/u3.jpg)
+![u3](./img/u3.png)
 
 
 
@@ -83,7 +83,7 @@ bookFlatSection: false
 3:然后......没有了！哈哈哈！
 ```
 
-![v1](./img/v1.jpg)
+![v1](./img/v1.png)
 
-![v2](./img/v2.jpg)
+![v2](./img/v2.png)
 

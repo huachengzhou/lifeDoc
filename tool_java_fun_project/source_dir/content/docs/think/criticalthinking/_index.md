@@ -9,6 +9,6 @@ weight: 5
 + 批判性思维
 
 
-![批判性思维](批判性思维RichardParker.svg)
+![批判性思维](批判性思维.png)
 
 
