@@ -78,32 +78,36 @@ public class RunDemo {
         {
             labelEntity = new LabelEntity();
             labelEntity.setEle("script");
-            labelEntity.getAttributeEntities().add(new AttributeEntity( "defer"));
+            labelEntity.getAttributeEntities().add(new AttributeEntity("defer"));
             labelEntities.add(labelEntity);
         }
         File file = new File(stringBuilder.toString());
         File file2 = new File(getDir() + File.separator + "docs");
-        FileUtils.replaceNewContent(file,labelEntities,"/life/",new StringBuilder());
+        FileUtils.replaceNewContent(file, labelEntities, "/life/", new StringBuilder());
 
         labelEntities.clear();
         {
             labelEntity = new LabelEntity();
             labelEntity.setEle("a");
-            labelEntity.getAttributeEntities().add(new AttributeEntity( "href"));
+            labelEntity.getAttributeEntities().add(new AttributeEntity("href"));
             labelEntities.add(labelEntity);
         }
         {
             labelEntity = new LabelEntity();
             labelEntity.setEle("link");
-            labelEntity.getAttributeEntities().add(new AttributeEntity( "rel","alternate"));
-            labelEntity.getAttributeEntities().add(new AttributeEntity( "type","application/rss+xml"));
+            labelEntity.getAttributeEntities().add(new AttributeEntity("rel", "alternate"));
+            labelEntity.getAttributeEntities().add(new AttributeEntity("type", "application/rss+xml"));
             labelEntities.add(labelEntity);
         }
-        FileUtils.replaceNewContent(file,labelEntities,"https://huachengzhou.github.io/life/",new StringBuilder());
+        FileUtils.replaceNewContent(file, labelEntities, "https://huachengzhou.github.io/life/", new StringBuilder());
 
-        FileUtils.replaceCustomContent(file,Pattern.compile("<a[\\s]*href=\"/life/posts"),"/life/",new StringBuilder());
-        FileUtils.replaceCustomContent(file,Pattern.compile("<a[\\s]*href=\"/life"),"/life",new StringBuilder());
-        FileUtils.replaceCustomContent(file,Pattern.compile("<img[\\s]*src=\"/life"),"/life/",new StringBuilder());
+        FileUtils.replaceCustomContent(file, Pattern.compile("<a[\\s]*href=\"/life/posts"), "/life/", new StringBuilder());
+        FileUtils.replaceCustomContent(file, Pattern.compile("<a[\\s]*href=\"/life"), "/life", new StringBuilder());
+        FileUtils.replaceCustomContent(file, Pattern.compile("<img[\\s]*src=\"/life"), "/life/", new StringBuilder());
+
+        //强行删除dns静态资源保护效果 ...sha256
+        FileUtils.replaceCustomContent(file, Pattern.compile("^<link[\\s\\S]+ integrity=\"[\\s\\S]+\""), Pattern.compile("integrity=\"[\\s\\S]+\""), " ");
+        FileUtils.replaceCustomContent(file, Pattern.compile("^<script[\\s\\S]+ integrity=\"[\\s\\S]+\""), Pattern.compile("integrity=\"[\\s\\S]+\""), " ");
 //        org.apache.commons.io.FileUtils.copyDirectory(file, file2);
 //        org.apache.commons.io.FileUtils.deleteDirectory(file);
     }

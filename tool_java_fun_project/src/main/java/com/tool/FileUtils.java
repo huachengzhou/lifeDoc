@@ -269,6 +269,41 @@ public class FileUtils {
         }
     }
 
+    public static void replaceCustomContent(File file, final Pattern compile, Pattern regex, final String replacement) {
+        if (file.isFile()) {
+            String[] customExtensions = getCustomExtensions();
+            String extension = FilenameUtils.getExtension(file.getName());
+            //遇到一下后缀自动跳过
+            boolean check = !ArrayUtils.contains(customExtensions, extension.toLowerCase());
+            try {
+                List<String> strings = org.apache.commons.io.FileUtils.readLines(file);
+                List<String> stringList = new ArrayList<>(strings.size());
+                if (CollectionUtils.isNotEmpty(strings)) {
+                    Iterator<String> iterator = strings.iterator();
+                    while (iterator.hasNext()) {
+                        String next = iterator.next();
+                        Matcher matcher = compile.matcher(next);
+                        //只进行一次匹配
+                        if (matcher.find()) {
+                            next = regex.matcher(next).replaceAll(replacement);
+                        }
+                        stringList.add(next);
+                    }
+                }
+                if (check) {
+                    org.apache.commons.io.FileUtils.writeLines(file, stringList);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                replaceCustomContent(f, compile, regex, replacement);
+            }
+        }
+    }
+
     /**
      * Demo3Table.class demo3table
      *
