@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class RunDemo {
 
@@ -99,6 +100,10 @@ public class RunDemo {
             labelEntities.add(labelEntity);
         }
         FileUtils.replaceNewContent(file,labelEntities,"https://huachengzhou.github.io/life/",new StringBuilder());
+
+        FileUtils.replaceCustomContent(file,Pattern.compile("<a[\\s]*href=\"/life/posts"),"/life/",new StringBuilder());
+        FileUtils.replaceCustomContent(file,Pattern.compile("<a[\\s]*href=\"/life"),"/life",new StringBuilder());
+        FileUtils.replaceCustomContent(file,Pattern.compile("<img[\\s]*src=\"/life"),"/life/",new StringBuilder());
 //        org.apache.commons.io.FileUtils.copyDirectory(file, file2);
 //        org.apache.commons.io.FileUtils.deleteDirectory(file);
     }

@@ -5,6 +5,7 @@ import com.tool.entity.LabelEntity;
 import org.apache.commons.collections.CollectionUtils;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import sun.misc.BASE64Decoder;
@@ -14,6 +15,8 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -86,12 +89,14 @@ public class FileUtils {
 
     @Test
     public void lastCompress() {
-        File file = new File("D:\\IdeaProjects\\cycle\\tool_java_fun_project\\source_dir");
-        try {
-            ZipCompressUtils.zipCompress(file, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        File file = new File("D:\\IdeaProjects\\cycle\\tool_java_fun_project\\source_dir");
+//        try {
+//            ZipCompressUtils.zipCompress(file, true);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        String[] customExtensions = FileUtils.getCustomExtensions();
+        System.out.println(Arrays.toString(customExtensions));
     }
 
     public static void replaceContent(File file, String oldText, String newText) {
@@ -135,34 +140,43 @@ public class FileUtils {
     }
 
 
+    private static String[] getCustomExtensions() {
+        int len = 1000, k = 0;
+        String[] strings = new String[len];
+        strings[k++] = "ts";
+        strings[k++] = "js";
+        strings[k++] = "jsx";
+        strings[k++] = "coffee";
+        strings[k++] = "css";
+        strings[k++] = "less";
+        strings[k++] = "scss";
+        strings[k++] = "sass";
+        strings[k++] = "json";
+        strings[k++] = "svg";
+        strings[k++] = "png";
+        strings[k++] = "jpg";
+        strings[k++] = "jpeg";
+        strings[k++] = "gif";
+        strings[k++] = "bmp";
+        strings[k++] = "xml";
+        strings[k++] = "ttf";
+        strings[k++] = "eot";
+        strings[k++] = "woff";
+        strings[k++] = "woff2";
+        String[] newArr = new String[k];
+        for (int j = 0; j < k; j++) {
+            newArr[j] = strings[j];
+        }
+        return newArr;
+    }
+
+
     public static void replaceNewContent(File file, List<LabelEntity> labelEntities, final String regex, StringBuilder stringBuilder) {
         if (file.isFile()) {
+            String[] customExtensions = getCustomExtensions();
             String extension = FilenameUtils.getExtension(file.getName());
-            boolean check = true;
-            if (extension.equalsIgnoreCase("js")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("css")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("json")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("svg")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("png")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("xml")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("ttf")) {
-                check = false;
-            }
-            if (extension.equalsIgnoreCase("woff2")) {
-                check = false;
-            }
+            //遇到一下后缀自动跳过
+            boolean check = !ArrayUtils.contains(customExtensions, extension.toLowerCase());
             try {
                 List<String> strings = org.apache.commons.io.FileUtils.readLines(file);
                 List<String> stringList = new ArrayList<>(strings.size());
@@ -200,7 +214,6 @@ public class FileUtils {
             }
         } else if (file.isDirectory()) {
             File[] files = file.listFiles();
-
             for (File f : files) {
                 StringBuilder builder = new StringBuilder();
                 builder.append(stringBuilder.toString());
@@ -210,6 +223,48 @@ public class FileUtils {
                     builder.append("../");
                 }
                 replaceNewContent(f, labelEntities, regex, builder);
+            }
+        }
+    }
+
+    public static void replaceCustomContent(File file, final Pattern compile, String regex, StringBuilder stringBuilder) {
+        if (file.isFile()) {
+            String[] customExtensions = getCustomExtensions();
+            String extension = FilenameUtils.getExtension(file.getName());
+            //遇到一下后缀自动跳过
+            boolean check = !ArrayUtils.contains(customExtensions, extension.toLowerCase());
+            try {
+                List<String> strings = org.apache.commons.io.FileUtils.readLines(file);
+                List<String> stringList = new ArrayList<>(strings.size());
+                if (CollectionUtils.isNotEmpty(strings)) {
+                    Iterator<String> iterator = strings.iterator();
+                    while (iterator.hasNext()) {
+                        String next = iterator.next();
+                        Matcher matcher = compile.matcher(next);
+                        //只进行一次匹配
+                        if (matcher.find()) {
+                            next = StringUtils.replace(next, regex, stringBuilder.toString());
+                        }
+                        stringList.add(next);
+                    }
+                }
+                if (check) {
+                    org.apache.commons.io.FileUtils.writeLines(file, stringList);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                StringBuilder builder = new StringBuilder();
+                builder.append(stringBuilder.toString());
+                if (StringUtils.isBlank(builder.toString())) {
+                    builder.append("./");
+                } else {
+                    builder.append("../");
+                }
+                replaceCustomContent(f, compile, regex, builder);
             }
         }
     }
