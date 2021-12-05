@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>uniApp 出现的问题 on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/uniapp/</link>
+    <description>Recent content in uniApp 出现的问题 on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/uniapp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>uniapp打包</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/uniapp/packing/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/uniapp/packing/</guid>
+      <description>android本地打包#参考1 参考2 参考3
+uniapp创建keystore jks 参考
+ 这里是因为创建密匙文件有多种方式  第一步 下载 Android Studio 配置必要的数据#   配置 android sdk 选用google 可以官网下载也可以使用工具下载    配置 jdk ( java jdk建议)    假如你没有手机或者手机不在打包环境那么你需要配置模拟android平台    第二部(重要)# 我也是在网上找了下，发现网上的有残缺吧
+  1:HBuilderX版本 必须和 sdk一致  uniapp本地打包下载地址
+  2: Android Studio导入HBuilder-Integrate-AS
+  3:删除 HBuilder-Integrate-AS_c\simpleDemo\src\main\assets\apps 下的 生成的包
+  4: 生成签名
+  C:\Windows\system32&amp;gt;c:C:\Windows\system32&amp;gt;cd C:\Program Files\Java\jdk1.</description>
+    </item>
+    
+  </channel>
+</rss>
