@@ -1,0 +1,4 @@
+postgresql
+启动 sudo /etc/init.d/postgresql start
+关闭 sudo /etc/init.d/postgresql stop
+

@@ -1,0 +1,3808 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MySQL应用优化
+#
+
+4.1-MySQL索引优化与设计
+#
+
+什么是索引
+#
+
+ 索引的意义 —— 快速定位要查找的数据  数据库索引查找
+#
+
+ 全表扫描 VS 索引查找  如何根据首字母找到所在行
+#
+
+ 二分查找 B&#43;tree  InnoDB表聚簇索引
+#
+
+索引中只放着排序字段和ID
+创建索引
+#
+
+ 单列索引  create index idx_test1 on tb_student (name);  联合索引  create index idx_test2 on tb_student (name, age);  索引中先根据name排序，name相同的情况下，根据age排序  索引维护
+#
+
+ 索引维护由数据库自动完成 插入/修改/删除每一个索引行都会变成一个内部封装的事务 索引越多，事务越长，代价越高 索引越多对表的插入和索引字段修改就越慢 控制表上索引的数量，切忌胡乱添加无用索引  如何使用索引
+#
+
+ 依据WHERE查询条件建立索引  select a, b from tab_a where c=?">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MySQL应用优化" />
+<meta property="og:description" content="MySQL应用优化
+#
+
+4.1-MySQL索引优化与设计
+#
+
+什么是索引
+#
+
+ 索引的意义 —— 快速定位要查找的数据  数据库索引查找
+#
+
+ 全表扫描 VS 索引查找  如何根据首字母找到所在行
+#
+
+ 二分查找 B&#43;tree  InnoDB表聚簇索引
+#
+
+索引中只放着排序字段和ID
+创建索引
+#
+
+ 单列索引  create index idx_test1 on tb_student (name);  联合索引  create index idx_test2 on tb_student (name, age);  索引中先根据name排序，name相同的情况下，根据age排序  索引维护
+#
+
+ 索引维护由数据库自动完成 插入/修改/删除每一个索引行都会变成一个内部封装的事务 索引越多，事务越长，代价越高 索引越多对表的插入和索引字段修改就越慢 控制表上索引的数量，切忌胡乱添加无用索引  如何使用索引
+#
+
+ 依据WHERE查询条件建立索引  select a, b from tab_a where c=?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<title>MySQL应用优化 | 所悟所想</title>
+<link rel="manifest" href="./../../../../manifest.json">
+<link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
+<script defer src="./../../../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/data_link_layer/" class="">数据链路层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_layer/" class="">网络层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/transport_layer/" class="">传输层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/application_layer/" class="">应用层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle" checked />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class=" active">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle"  />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目一</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>MySQL应用优化</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#41-mysql索引优化与设计">4.1-MySQL索引优化与设计</a>
+      <ul>
+        <li><a href="#什么是索引">什么是索引</a></li>
+        <li><a href="#数据库索引查找">数据库索引查找</a></li>
+        <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
+        <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
+        <li><a href="#创建索引">创建索引</a></li>
+        <li><a href="#索引维护">索引维护</a></li>
+        <li><a href="#如何使用索引">如何使用索引</a></li>
+        <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
+        <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
+        <li><a href="#长字段上的索引">长字段上的索引</a></li>
+        <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
+        <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
+        <li><a href="#利用索引排序">利用索引排序</a></li>
+        <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#42-mysql数据库设计">4.2-MySQL数据库设计</a>
+      <ul>
+        <li><a href="#什么是schema设计">什么是Schema设计</a></li>
+        <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
+        <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
+        <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
+        <li><a href="#拆分大字段">拆分大字段</a></li>
+        <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
+        <li><a href="#分页查询">分页查询</a></li>
+        <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
+        <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
+        <li><a href="#准实时统计">准实时统计</a></li>
+        <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
+        <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
+        <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
+        <li><a href="#课拓展性设计">课拓展性设计</a></li>
+        <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
+        <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
+        <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
+        <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
+        <li><a href="#满足周边需求">满足周边需求</a></li>
+        <li><a href="#统计和后台需求">统计和后台需求</a></li>
+        <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
+        <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
+      </ul>
+    </li>
+    <li><a href="#43-mysql容量评估">4.3-MySQL容量评估</a>
+      <ul>
+        <li><a href="#性能容量评估">性能容量评估</a></li>
+        <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
+        <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
+        <li><a href="#oltpolap">OLTP/OLAP</a></li>
+        <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
+        <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
+        <li><a href="#数据量---总量">数据量 - 总量</a></li>
+        <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
+        <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
+        <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
+        <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
+        <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-mysql性能测试">4.4-MySQL性能测试</a>
+      <ul>
+        <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
+        <li><a href="#性能测试的分类">性能测试的分类</a></li>
+        <li><a href="#设备层的测试">设备层的测试</a></li>
+        <li><a href="#业务层测试">业务层测试</a></li>
+        <li><a href="#数据库层测试">数据库层测试</a></li>
+        <li><a href="#mysql测试分类">MySQL测试分类</a></li>
+        <li><a href="#常用的测试工具">常用的测试工具</a></li>
+        <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
+        <li><a href="#sysbench">Sysbench</a></li>
+        <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
+        <li><a href="#sysbench流程">Sysbench流程</a></li>
+        <li><a href="#prepare语法">Prepare语法</a></li>
+        <li><a href="#sysbench表结构">Sysbench表结构</a></li>
+        <li><a href="#run语法">Run语法</a></li>
+        <li><a href="#特殊情况">特殊情况</a></li>
+        <li><a href="#cleanup">cleanup</a></li>
+        <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
+        <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
+        <li><a href="#创建表结构">创建表结构</a></li>
+        <li><a href="#tpcc-load">Tpcc-load</a></li>
+        <li><a href="#tpcc-start">Tpcc-start</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="mysql应用优化">
+  MySQL应用优化
+  <a class="anchor" href="#mysql%e5%ba%94%e7%94%a8%e4%bc%98%e5%8c%96">#</a>
+</h1>
+<h2 id="41-mysql索引优化与设计">
+  4.1-MySQL索引优化与设计
+  <a class="anchor" href="#41-mysql%e7%b4%a2%e5%bc%95%e4%bc%98%e5%8c%96%e4%b8%8e%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<h3 id="什么是索引">
+  什么是索引
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>索引的意义 —— 快速定位要查找的数据</li>
+</ul>
+<h3 id="数据库索引查找">
+  数据库索引查找
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e7%b4%a2%e5%bc%95%e6%9f%a5%e6%89%be">#</a>
+</h3>
+<ul>
+<li>全表扫描 VS 索引查找</li>
+</ul>
+<h3 id="如何根据首字母找到所在行">
+  如何根据首字母找到所在行
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e6%a0%b9%e6%8d%ae%e9%a6%96%e5%ad%97%e6%af%8d%e6%89%be%e5%88%b0%e6%89%80%e5%9c%a8%e8%a1%8c">#</a>
+</h3>
+<ul>
+<li>二分查找</li>
+<li>B+tree</li>
+</ul>
+<h3 id="innodb表聚簇索引">
+  InnoDB表聚簇索引
+  <a class="anchor" href="#innodb%e8%a1%a8%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<p>索引中只放着排序字段和ID</p>
+<h3 id="创建索引">
+  创建索引
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>单列索引</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> idx_test1 <span style="color:#66d9ef">on</span> tb_student (name);
+</code></pre></div><ul>
+<li>联合索引</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">index</span> idx_test2 <span style="color:#66d9ef">on</span> tb_student (name, age);
+</code></pre></div><ul>
+<li>索引中先根据name排序，name相同的情况下，根据age排序</li>
+</ul>
+<h3 id="索引维护">
+  索引维护
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e7%bb%b4%e6%8a%a4">#</a>
+</h3>
+<ul>
+<li>索引维护由数据库自动完成</li>
+<li>插入/修改/删除每一个索引行都会变成一个内部封装的事务</li>
+<li>索引越多，事务越长，代价越高</li>
+<li>索引越多对表的插入和索引字段修改就越慢</li>
+<li>控制表上索引的数量，切忌胡乱添加无用索引</li>
+</ul>
+<h3 id="如何使用索引">
+  如何使用索引
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>依据WHERE查询条件建立索引</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> a, b <span style="color:#66d9ef">from</span> tab_a <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">c</span><span style="color:#f92672">=?</span> ;
+idx_c (<span style="color:#66d9ef">c</span>)
+<span style="color:#66d9ef">select</span> a, b <span style="color:#66d9ef">from</span> tab_a <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">c</span><span style="color:#f92672">=?</span> <span style="color:#66d9ef">and</span> d<span style="color:#f92672">=?</span>;
+idx_cd (<span style="color:#66d9ef">c</span>, d)
+</code></pre></div><ul>
+<li>排序order by, group by, distinct字段添加索引</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> tb_a <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a;
+<span style="color:#66d9ef">select</span> a, <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">from</span> tb_a <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> a;
+idx_a (a)
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> tb_a <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a, b;
+idx_a_b (a, b)
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> tb_a <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">c</span><span style="color:#f92672">=?</span> <span style="color:#66d9ef">by</span> a;
+idx_c_a (<span style="color:#66d9ef">c</span>, a)
+</code></pre></div><h3 id="索引与字段选择性">
+  索引与字段选择性
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e4%b8%8e%e5%ad%97%e6%ae%b5%e9%80%89%e6%8b%a9%e6%80%a7">#</a>
+</h3>
+<ul>
+<li>
+<p>某个字段其值的重复程度</p>
+</li>
+<li>
+<p>选择性很差的字段通常不适合创建单列索引</p>
+<ul>
+<li>男女比例相仿的列表中性别不适合创建单列索引</li>
+<li>如果男女比例极不平衡，要查询的又是少数方(理工院校查女生)可以考虑使用索引</li>
+</ul>
+</li>
+<li>
+<p>联合索引中选择性好的字段应该排在前面</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> tab_a <span style="color:#66d9ef">where</span> gender<span style="color:#f92672">=?</span> <span style="color:#66d9ef">and</span> name<span style="color:#f92672">=?</span>;
+idx_a1 (name, gender)
+</code></pre></div><h3 id="联合索引与前缀查询">
+  联合索引与前缀查询
+  <a class="anchor" href="#%e8%81%94%e5%90%88%e7%b4%a2%e5%bc%95%e4%b8%8e%e5%89%8d%e7%bc%80%e6%9f%a5%e8%af%a2">#</a>
+</h3>
+<ul>
+<li>联合索引能为前缀单列，复列查询提供帮助</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">idx_smp (a, b, <span style="color:#66d9ef">c</span>)
+<span style="color:#66d9ef">where</span> a<span style="color:#f92672">=?</span> ;
+<span style="color:#66d9ef">where</span> a<span style="color:#f92672">=?</span> <span style="color:#66d9ef">and</span> b<span style="color:#f92672">=?</span> ;
+<span style="color:#66d9ef">where</span> a<span style="color:#f92672">=?</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">c</span><span style="color:#f92672">=?</span> ;(<span style="color:#960050;background-color:#1e0010">部分</span>ok)
+</code></pre></div><ul>
+<li>合理创建联合索引，避免冗余
+(a) , (a, b) , (a, b, c) X
+(a, b, c) ok</li>
+</ul>
+<h3 id="长字段上的索引">
+  长字段上的索引
+  <a class="anchor" href="#%e9%95%bf%e5%ad%97%e6%ae%b5%e4%b8%8a%e7%9a%84%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>在非常长的字段上建立索引影响性能</li>
+<li>InnoDB索引单字段(utf8)只能取前767 bytes</li>
+<li>对长字段处理的方法
+<ul>
+<li>Email类，建立前缀索引</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">Mail_addr varchar(<span style="color:#ae81ff">2048</span>)
+idx_mailadd (Mail_addr(<span style="color:#ae81ff">30</span>)) ok
+</code></pre></div><ul>
+<li>住址类，拆分字段</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">Home_address varchar(<span style="color:#ae81ff">2048</span>)
+idx_mailadd (Mail_addr(<span style="color:#ae81ff">30</span>)) <span style="color:#f92672">?</span> <span style="color:#75715e">-- 很可能前半段都是相同的省市区街道名称
+</span><span style="color:#75715e"></span>Province varchar(<span style="color:#ae81ff">1024</span>), City varchar(<span style="color:#ae81ff">1024</span>), District varchar(<span style="color:#ae81ff">1024</span>), Local_address varchar(<span style="color:#ae81ff">1024</span>) ... <span style="color:#75715e">-- 建立联合索引或单列索引
+</span></code></pre></div></li>
+</ul>
+<h3 id="索引覆盖扫">
+  索引覆盖扫
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e8%a6%86%e7%9b%96%e6%89%ab">#</a>
+</h3>
+<ul>
+<li>最核心SQL考虑索引覆盖
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> Name <span style="color:#66d9ef">from</span> tb_user <span style="color:#66d9ef">where</span> UserID<span style="color:#f92672">=?</span>
+<span style="color:#66d9ef">Key</span> idx_uid_name(UserID, Name)
+</code></pre></div></li>
+<li>不需要回表获取name字段，IO最小，效率最高</li>
+</ul>
+<h3 id="无法使用索引的情况">
+  无法使用索引的情况
+  <a class="anchor" href="#%e6%97%a0%e6%b3%95%e4%bd%bf%e7%94%a8%e7%b4%a2%e5%bc%95%e7%9a%84%e6%83%85%e5%86%b5">#</a>
+</h3>
+<ul>
+<li>索引列进行数学运算或函数运算
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">where</span> id<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>; X
+<span style="color:#66d9ef">where</span> id <span style="color:#f92672">=</span> (<span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>); ok
+<span style="color:#66d9ef">year</span>(col) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2007</span>; X
+col <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;2007-01-01&#39;</span>; ok
+</code></pre></div></li>
+<li>未含符合索引的前缀字段
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">Idx_abc (a, b, <span style="color:#66d9ef">c</span>):
+<span style="color:#66d9ef">where</span> b<span style="color:#f92672">=?</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">c</span><span style="color:#f92672">=?</span>; X
+(b, <span style="color:#66d9ef">c</span>) ok
+</code></pre></div></li>
+<li>前缀通配,'_&lsquo;和&rsquo;%&lsquo;通配符
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">Like</span> <span style="color:#e6db74">&#39;%xxx%&#39;</span>; X
+<span style="color:#66d9ef">Like</span> <span style="color:#e6db74">&#39;xxx%&#39;</span>; ok
+</code></pre></div></li>
+<li>where 条件使用NOT, &lt;&gt;, !=</li>
+<li>字段类型匹配
+<ul>
+<li>并不绝对，但是无法预测地会造成问题，不要使用</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">a int(<span style="color:#ae81ff">11</span>), idx_a (a)
+<span style="color:#66d9ef">where</span> a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;123&#39;</span>; X
+<span style="color:#66d9ef">where</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">123</span> ; ok
+</code></pre></div></li>
+</ul>
+<h3 id="利用索引排序">
+  利用索引排序
+  <a class="anchor" href="#%e5%88%a9%e7%94%a8%e7%b4%a2%e5%bc%95%e6%8e%92%e5%ba%8f">#</a>
+</h3>
+<p>idx_a_b (a, b)</p>
+<ul>
+<li>能够使用索引帮助排序的查询：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a
+a <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> b
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a, b
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a <span style="color:#66d9ef">desc</span>, b <span style="color:#66d9ef">desc</span>
+a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a
+</code></pre></div><ul>
+<li>不能使用索引帮助排序的查询：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> b
+a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> b
+a <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> b
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> a <span style="color:#66d9ef">asc</span>, b <span style="color:#66d9ef">desc</span>
+</code></pre></div><h3 id="如何确定一个查询走没走索引走了哪个索引">
+  如何确定一个查询走没走索引，走了哪个索引
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e7%a1%ae%e5%ae%9a%e4%b8%80%e4%b8%aa%e6%9f%a5%e8%af%a2%e8%b5%b0%e6%b2%a1%e8%b5%b0%e7%b4%a2%e5%bc%95%e8%b5%b0%e4%ba%86%e5%93%aa%e4%b8%aa%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>explain是确定一个查询如何走索引最简便有效的方法
+<code>explain select * from tb_test ;</code></li>
+<li>关注的项目
+<ul>
+<li>type:查询access的方式</li>
+<li>key:本次查询最终选择使用哪个索引，NULL为未使用索引</li>
+<li>key_len:选择的索引使用的前缀长度或者整个长度</li>
+<li>rows:可以理解为查询逻辑读，需要扫描过的记录行数</li>
+<li>extra:额外信息，主要指的fetch data的具体方式</li>
+</ul>
+</li>
+</ul>
+<h2 id="42-mysql数据库设计">
+  4.2-MySQL数据库设计
+  <a class="anchor" href="#42-mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<h3 id="什么是schema设计">
+  什么是Schema设计
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%afschema%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>设计数据库的表，索引，以及表和表的关系
+<ul>
+<li>在数据模型的基础上将关系模型转化为数据库表</li>
+<li>满足业务模型需要基础上根据数据库和应用特点优化表结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么schema需要设计">
+  为什么Schema需要设计
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88schema%e9%9c%80%e8%a6%81%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>Schema关系到应用程序功能与性能
+<ul>
+<li>满足业务功能需要</li>
+<li>同性能密切相关</li>
+<li>数据库扩展性</li>
+<li>满足周边需求(统计，迁移等)</li>
+</ul>
+</li>
+<li>关系型数据库修改Schema经常是高危操作
+<ul>
+<li>Schema设计要体现一定的前瞻性</li>
+</ul>
+</li>
+</ul>
+<h3 id="完全由开发者主导的schema设计">
+  完全由开发者主导的Schema设计
+  <a class="anchor" href="#%e5%ae%8c%e5%85%a8%e7%94%b1%e5%bc%80%e5%8f%91%e8%80%85%e4%b8%bb%e5%af%bc%e7%9a%84schema%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>着眼于实现当前功能</li>
+<li>完全基于功能的设计可能存在一些隐患
+<ul>
+<li>不合理的表结构或索引设计造成性能问题</li>
+<li>没有合理评估到数据量的增长造成空间紧张而且难以维护</li>
+<li>需求频繁修改造成表结构经常变更</li>
+<li>业务重大调整导致数据经常需要重构订正</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于性能的表设计">
+  基于性能的表设计
+  <a class="anchor" href="#%e5%9f%ba%e4%ba%8e%e6%80%a7%e8%83%bd%e7%9a%84%e8%a1%a8%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>根据查询需要设计好索引</li>
+<li>根据核心查询需求，适当调整表结构</li>
+<li>基于一些特殊业务需求，调整实现方式</li>
+</ul>
+<h3 id="索引">
+  索引
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>正确使用索引</li>
+<li>更新尽可能使用主键或唯一索引</li>
+<li>主键尽可能使用自增ID字段</li>
+<li>核心查询覆盖扫描
+<ul>
+<li>用户登录需要根据用户名返回密码用于验证<code>create index idx_uname_passwd on tb_user (username, password);</code></li>
+<li>建立联合索引避免回表取数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="反范式冗余必要字段">
+  反范式，冗余必要字段
+  <a class="anchor" href="#%e5%8f%8d%e8%8c%83%e5%bc%8f%e5%86%97%e4%bd%99%e5%bf%85%e8%a6%81%e5%ad%97%e6%ae%b5">#</a>
+</h3>
+<ul>
+<li>针对核心SQL保留查询结果所必须的冗余字段，避免频繁join
+<ul>
+<li>例：消息表中冗余了每次读消息必须返回的nickname字段，避免每次读消息都变成join操作。代价是用户修改nickname成本变高。</li>
+</ul>
+</li>
+</ul>
+<h3 id="拆分大字段">
+  拆分大字段
+  <a class="anchor" href="#%e6%8b%86%e5%88%86%e5%a4%a7%e5%ad%97%e6%ae%b5">#</a>
+</h3>
+<ul>
+<li>拆分大字段到单独表中，避免范围扫描代价大
+<ul>
+<li>例：博文表拆分两份，标题表只保留标题和内容缩略部分，用于快速批量返回标题列表，正文表保存大段博文内容，用于点开文章单个读取</li>
+</ul>
+</li>
+</ul>
+<h3 id="避免过多字段或过长行">
+  避免过多字段或过长行
+  <a class="anchor" href="#%e9%81%bf%e5%85%8d%e8%bf%87%e5%a4%9a%e5%ad%97%e6%ae%b5%e6%88%96%e8%bf%87%e9%95%bf%e8%a1%8c">#</a>
+</h3>
+<ul>
+<li>根据SQL必要返回设计字段，有必要就拆表，避免过多字段</li>
+<li>一次没有必要获取那么多列数据</li>
+<li>行过长导致表数据页记录变少，范围扫描性能降低</li>
+<li>更新数据也代价增加</li>
+<li>16K也最少放2行，可能出现行迁移</li>
+</ul>
+<h3 id="分页查询">
+  分页查询
+  <a class="anchor" href="#%e5%88%86%e9%a1%b5%e6%9f%a5%e8%af%a2">#</a>
+</h3>
+<ul>
+<li>避免limit + offset过大</li>
+<li>应该使用自增主键ID模拟分页
+<ul>
+<li>第一页，直接查</li>
+<li>得到第一页的max(id)=123(一般是最后一条记录)</li>
+<li>第二页，带上id&gt;123查询：where id&gt;123 limit 100</li>
+<li>这样每次只需要扫描100条数据</li>
+</ul>
+</li>
+<li>要求业务上禁止查询XX页之后的数据</li>
+</ul>
+<h3 id="热点读数据特殊处理">
+  热点读数据特殊处理
+  <a class="anchor" href="#%e7%83%ad%e7%82%b9%e8%af%bb%e6%95%b0%e6%8d%ae%e7%89%b9%e6%ae%8a%e5%a4%84%e7%90%86">#</a>
+</h3>
+<ul>
+<li>根据数据获取的频率或数量不同对热点数据做特殊处理
+<ul>
+<li>例1：论坛系统中置顶帖、公告贴，可以单独拆分存储，由于每次访问都要全部读出来，单独放在一起，避免每次都到普通表中随机找出来</li>
+</ul>
+</li>
+</ul>
+<h3 id="热点写数据特殊处理">
+  热点写数据特殊处理
+  <a class="anchor" href="#%e7%83%ad%e7%82%b9%e5%86%99%e6%95%b0%e6%8d%ae%e7%89%b9%e6%ae%8a%e5%a4%84%e7%90%86">#</a>
+</h3>
+<ul>
+<li>根据数据获取的频率或数量不同对热点数据做特殊处理
+<ul>
+<li>例2：微博系统中对于大量关注的热点账号消息从&quot;推&quot;改为&quot;拉&quot;，避免过量insert操作。</li>
+</ul>
+</li>
+</ul>
+<h3 id="准实时统计">
+  准实时统计
+  <a class="anchor" href="#%e5%87%86%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>对不需要精确结果的计数等统计要求，建立定期更新结果表
+<ul>
+<li>例：首页要求展示动态成交总金额，维护一个计数表，每分钟根据原表注册时间获取增量sum值更新计数表，避免每次用户刷新都要扫描交易全记录表</li>
+</ul>
+</li>
+</ul>
+<h3 id="实时统计改进1---触发器实时统计">
+  实时统计改进1 - 触发器实时统计
+  <a class="anchor" href="#%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1%e6%94%b9%e8%bf%9b1---%e8%a7%a6%e5%8f%91%e5%99%a8%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>对需要精确统计的计数利用数据库触发器维护计数表
+<ul>
+<li>例：用户量冲亿活动要求实时统计，用户表上加触发器，每次有新用户插入就同时在计数表+1</li>
+</ul>
+</li>
+</ul>
+<h3 id="实时统计改进2---缓存实时统计">
+  实时统计改进2 - 缓存实时统计
+  <a class="anchor" href="#%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1%e6%94%b9%e8%bf%9b2---%e7%bc%93%e5%ad%98%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>对需要精确统计的计数利用前端缓存实时维护计数
+<ul>
+<li>例：用户量冲亿活动要求实时统计，注册数量在缓存中实时维护，每注册一个就+1，完全避免数据库读写操作。缓存万一故障失效，可从数据库整体count重新获取。</li>
+</ul>
+</li>
+</ul>
+<h3 id="实时统计改进2---最大自增id获取总数">
+  实时统计改进2 - 最大自增ID获取总数
+  <a class="anchor" href="#%e5%ae%9e%e6%97%b6%e7%bb%9f%e8%ae%a1%e6%94%b9%e8%bf%9b2---%e6%9c%80%e5%a4%a7%e8%87%aa%e5%a2%9eid%e8%8e%b7%e5%8f%96%e6%80%bb%e6%95%b0">#</a>
+</h3>
+<ul>
+<li>很多逻辑可以利用自增ID主键最大值直接作为总数
+<ul>
+<li>例：用户量冲亿活动要求实时统计，用户表加上自增ID作为主键，只要取当时max(ID)就可以得到用户总数</li>
+</ul>
+</li>
+</ul>
+<h3 id="课拓展性设计">
+  课拓展性设计
+  <a class="anchor" href="#%e8%af%be%e6%8b%93%e5%b1%95%e6%80%a7%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<ul>
+<li>可拓展性
+<ul>
+<li>硬件资源增长有极限的情况下处理尽可能久的线上业务</li>
+</ul>
+</li>
+<li>数据分级，冷数据归档与淘汰
+<ul>
+<li>可以不断释放空间供新数据使用</li>
+</ul>
+</li>
+<li>为数据分布式做准备
+<ul>
+<li>分库分表</li>
+<li>水平拆分</li>
+<li>牺牲一定的关系模型支持</li>
+</ul>
+</li>
+</ul>
+<h3 id="分区表与数据淘汰">
+  分区表与数据淘汰
+  <a class="anchor" href="#%e5%88%86%e5%8c%ba%e8%a1%a8%e4%b8%8e%e6%95%b0%e6%8d%ae%e6%b7%98%e6%b1%b0">#</a>
+</h3>
+<ul>
+<li>range分区</li>
+<li>适合数据需要定期过期的大表</li>
+<li>单个分区扫描迁移数据到历史库避免全表扫描IO开销</li>
+<li>删除单个分区非常高效</li>
+</ul>
+<h3 id="分区表与垂直分区">
+  分区表与垂直分区
+  <a class="anchor" href="#%e5%88%86%e5%8c%ba%e8%a1%a8%e4%b8%8e%e5%9e%82%e7%9b%b4%e5%88%86%e5%8c%ba">#</a>
+</h3>
+<ul>
+<li>list分区</li>
+<li>适合将来可能要基于地区，类目等方式垂直拆分数据的方式</li>
+<li>清理节点上不要的数据非常高效</li>
+</ul>
+<h3 id="分区表与水平分区">
+  分区表与水平分区
+  <a class="anchor" href="#%e5%88%86%e5%8c%ba%e8%a1%a8%e4%b8%8e%e6%b0%b4%e5%b9%b3%e5%88%86%e5%8c%ba">#</a>
+</h3>
+<ul>
+<li>hash分区</li>
+<li>适合将来需要做水平拆分的表</li>
+<li>清理节点上不要的数据非常高效</li>
+</ul>
+<h3 id="mysql分区表的局限">
+  MySQL分区表的局限
+  <a class="anchor" href="#mysql%e5%88%86%e5%8c%ba%e8%a1%a8%e7%9a%84%e5%b1%80%e9%99%90">#</a>
+</h3>
+<ul>
+<li>主键或唯一键必须包含在分区字段内</li>
+<li>分区字段必须是整数类型，或者加上返回整数的函数</li>
+</ul>
+<h3 id="满足周边需求">
+  满足周边需求
+  <a class="anchor" href="#%e6%bb%a1%e8%b6%b3%e5%91%a8%e8%be%b9%e9%9c%80%e6%b1%82">#</a>
+</h3>
+<ul>
+<li>为周边需求额外增加表设计
+<ul>
+<li>为后台统计任务增加特殊索引</li>
+<li>为数据迁移或统计需求增加时间戳</li>
+</ul>
+</li>
+</ul>
+<h3 id="统计和后台需求">
+  统计和后台需求
+  <a class="anchor" href="#%e7%bb%9f%e8%ae%a1%e5%92%8c%e5%90%8e%e5%8f%b0%e9%9c%80%e6%b1%82">#</a>
+</h3>
+<ul>
+<li>统计运行SQL往往和线上有很大不同
+<ul>
+<li>利用MySQL——主多从，主从可以建不同索引的特性将统计分流到特定从库</li>
+<li>包括一些特殊用户批量查询等，所有对线上有IO压力的查询都要读写分离</li>
+</ul>
+</li>
+</ul>
+<h3 id="自动更新时间戳">
+  自动更新时间戳
+  <a class="anchor" href="#%e8%87%aa%e5%8a%a8%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4%e6%88%b3">#</a>
+</h3>
+<ul>
+<li>统计需求经常要求从线上读走增量数据</li>
+<li>表的第一个timestamp类型字段再写入时如果不填值，会自动写入系统时间戳</li>
+<li>表的第一个timestamp类型字段每次记录发生更新后都会自动更新</li>
+<li>在update_time字段上建索引用于定时导出增量数据</li>
+</ul>
+<h3 id="schema设计与前瞻性">
+  Schema设计与前瞻性
+  <a class="anchor" href="#schema%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%89%8d%e7%9e%bb%e6%80%a7">#</a>
+</h3>
+<ul>
+<li>基于历史经验教训，预防和解决同类问题</li>
+<li>把折腾DBA够呛的所有Schema改造的原因记录并分析总结
+例：</li>
+<li>业务为例用户信息加密做了大改造
+<ul>
+<li>数据库结果大量改动，增加了加密字段，验证策略表，所有表重新订正数据等等</li>
+<li>是否所有用到用户信息管理的应用都要去上线就用密文？</li>
+</ul>
+</li>
+<li>程序bug误删数据，线上风险大
+<ul>
+<li>改造业务流程，不再删除数据，加入is_deleted标记位，经常给各种表加</li>
+<li>今后的类似表是否一上线就都用标记位的方式，并加上修改原因字段？</li>
+</ul>
+</li>
+<li>支付类应用后期做了风控改造
+<ul>
+<li>对线上订单大表改造，加了限额，终端类型等字段</li>
+<li>遇到支付类应用，是否一上线就提示业务是否需要考虑风控并留好相关字段？</li>
+</ul>
+</li>
+</ul>
+<h2 id="43-mysql容量评估">
+  4.3-MySQL容量评估
+  <a class="anchor" href="#43-mysql%e5%ae%b9%e9%87%8f%e8%af%84%e4%bc%b0">#</a>
+</h2>
+<h3 id="性能容量评估">
+  性能容量评估
+  <a class="anchor" href="#%e6%80%a7%e8%83%bd%e5%ae%b9%e9%87%8f%e8%af%84%e4%bc%b0">#</a>
+</h3>
+<ul>
+<li>分析线上业务场景</li>
+<li>评估数据库服务器所需性能指标</li>
+<li>预估可能成为瓶颈的服务器资源</li>
+<li>帮助数据库性能调优</li>
+</ul>
+<h3 id="数据库服务器硬件性能指标">
+  数据库服务器硬件性能指标
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%a1%ac%e4%bb%b6%e6%80%a7%e8%83%bd%e6%8c%87%e6%a0%87">#</a>
+</h3>
+<ul>
+<li>磁盘IO性能</li>
+<li>内存容量</li>
+<li>CPU</li>
+<li>网络吞吐量</li>
+<li>磁盘容量</li>
+</ul>
+<h3 id="数据库业务特点关键词">
+  数据库业务特点关键词
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%9a%e5%8a%a1%e7%89%b9%e7%82%b9%e5%85%b3%e9%94%ae%e8%af%8d">#</a>
+</h3>
+<ul>
+<li>OLTP/OLAP类型</li>
+<li>并发请求</li>
+<li>读写比例</li>
+<li>数据量</li>
+<li>冷热数据比</li>
+<li>数据分级存储</li>
+</ul>
+<h3 id="oltpolap">
+  OLTP/OLAP
+  <a class="anchor" href="#oltpolap">#</a>
+</h3>
+<ul>
+<li>T = Transaction</li>
+<li>面向广大用户，高并发，较短事务操作</li>
+<li>互联网应用绝大部分属于OLTP</li>
+<li>OLTP看重服务器CPU，内存，写事务较多或内存不够则依赖磁盘IO</li>
+<li>A = Analytical</li>
+<li>通常面向内部人员，大规模复查询</li>
+<li>OLAP看重磁盘扫描的IO能力，部分依赖内存排序</li>
+</ul>
+<h3 id="并发请求---衡量线上业务繁忙程度">
+  并发请求 - 衡量线上业务繁忙程度
+  <a class="anchor" href="#%e5%b9%b6%e5%8f%91%e8%af%b7%e6%b1%82---%e8%a1%a1%e9%87%8f%e7%ba%bf%e4%b8%8a%e4%b8%9a%e5%8a%a1%e7%b9%81%e5%bf%99%e7%a8%8b%e5%ba%a6">#</a>
+</h3>
+<ul>
+<li>业务高峰时数据库的每秒并发访问量是多少</li>
+<li>通过应用服务器数量，连接池配置判断</li>
+<li>通过产品估算初上线用户规模和用户增长速度判断</li>
+<li>通过实际业务业务类型判断</li>
+<li>并发量相关资源：CPU</li>
+</ul>
+<h3 id="读写比例---描述应用程序如何使用数据库">
+  读写比例 - 描述应用程序如何使用数据库
+  <a class="anchor" href="#%e8%af%bb%e5%86%99%e6%af%94%e4%be%8b---%e6%8f%8f%e8%bf%b0%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h3>
+<ul>
+<li>线上业务select只读与update/delete/insert写操作比例</li>
+<li>delete/update通常都是先读再写</li>
+<li>insert需要区分数据写入时持续insert还是大量导入数据</li>
+<li>根据业务实际场景分析</li>
+<li>多读场景相关资源：内存</li>
+<li>多写场景相关资源：磁盘IO</li>
+</ul>
+<h3 id="数据量---总量">
+  数据量 - 总量
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e9%87%8f---%e6%80%bb%e9%87%8f">#</a>
+</h3>
+<ul>
+<li>数据库服务器存储设备可扩容能力的上限</li>
+<li>根据估算的业务量，写入模式，分析数据增长量</li>
+<li>预估一个硬件升级周期内数据库可存放数据的总量，上线时要留好余量</li>
+<li>数据总量相关资源：磁盘容量</li>
+</ul>
+<h3 id="冷数据与热数据---有用数据的实时集合">
+  冷数据与热数据 - 有用数据的实时集合
+  <a class="anchor" href="#%e5%86%b7%e6%95%b0%e6%8d%ae%e4%b8%8e%e7%83%ad%e6%95%b0%e6%8d%ae---%e6%9c%89%e7%94%a8%e6%95%b0%e6%8d%ae%e7%9a%84%e5%ae%9e%e6%97%b6%e9%9b%86%e5%90%88">#</a>
+</h3>
+<ul>
+<li>热数据，线上最新一定周期内将被反复访问的数据</li>
+<li>冷数据，线上保存着的，最近不会被在线用户用到的数据</li>
+<li>估算活跃用户量，数据增长量等预估热数据量</li>
+<li>内存大小尽可能足够存放线上实时热数据</li>
+<li>热数据相关资源：内存</li>
+</ul>
+<h3 id="线上数据分层存储---缓解线上磁盘空间压力">
+  线上数据分层存储 - 缓解线上磁盘空间压力
+  <a class="anchor" href="#%e7%ba%bf%e4%b8%8a%e6%95%b0%e6%8d%ae%e5%88%86%e5%b1%82%e5%ad%98%e5%82%a8---%e7%bc%93%e8%a7%a3%e7%ba%bf%e4%b8%8a%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4%e5%8e%8b%e5%8a%9b">#</a>
+</h3>
+<ul>
+<li>最新热数据确保放在内存中</li>
+<li>还可能访问到的较早数据存放在线上库磁盘中</li>
+<li>更早的不会常规访问的数据定期迁移至历史库中</li>
+<li>区分哪些数据时效性强可以迁移</li>
+</ul>
+<h3 id="服务器资源选型---将可选方案列出来">
+  服务器资源选型 - 将可选方案列出来
+  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%b5%84%e6%ba%90%e9%80%89%e5%9e%8b---%e5%b0%86%e5%8f%af%e9%80%89%e6%96%b9%e6%a1%88%e5%88%97%e5%87%ba%e6%9d%a5">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">资源指标</th>
+<th style="text-align:left">可选方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">磁盘IO性能</td>
+<td style="text-align:left">单盘 -&gt; 盘阵; SATA -&gt; SAS; HDD -&gt; SSD</td>
+</tr>
+<tr>
+<td style="text-align:left">内存容量</td>
+<td style="text-align:left">较小内存 -&gt; 较大内存</td>
+</tr>
+<tr>
+<td style="text-align:left">CPU</td>
+<td style="text-align:left">普通 -&gt; 多核，超线程</td>
+</tr>
+<tr>
+<td style="text-align:left">网络吞吐量</td>
+<td style="text-align:left">千兆 -&gt; 万兆; 单网卡 -&gt; 多路;</td>
+</tr>
+<tr>
+<td style="text-align:left">磁盘容量</td>
+<td style="text-align:left">单盘 -&gt; 盘阵; 单盘 -&gt; LVM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="案例一网易云音乐曲库数据库服务器评估">
+  案例一，网易云音乐曲库数据库服务器评估
+  <a class="anchor" href="#%e6%a1%88%e4%be%8b%e4%b8%80%e7%bd%91%e6%98%93%e4%ba%91%e9%9f%b3%e4%b9%90%e6%9b%b2%e5%ba%93%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%af%84%e4%bc%b0">#</a>
+</h3>
+<ul>
+<li>用于存放线上数千万歌曲信息</li>
+<li>确定属于OLTP线上类型数据库</li>
+<li>并发请求量
+<ul>
+<li>50台应用服务器，每台最大连接数100</li>
+<li>可能峰值5000qps，并发请求量较大</li>
+</ul>
+</li>
+<li>CPU需求高</li>
+<li>读写比例
+<ul>
+<li>访问模式以用户列出歌单和播放歌曲时查询歌曲信息为主，用户只有只读查询</li>
+<li>写数据发生在录入新歌或修改歌曲信息时后台操作，写比例小，且为批量导入</li>
+<li>读写比100:1</li>
+</ul>
+</li>
+<li>数据总量
+<ul>
+<li>估算每首歌信息8K，总计5000万，总量400G</li>
+<li>数据总量增长相对缓慢</li>
+</ul>
+</li>
+<li>冷热数据
+<ul>
+<li>5000万歌曲中大约40%可能被访问，10%属于热点歌曲</li>
+<li>热数据大约&lt;=40G</li>
+</ul>
+</li>
+<li>数据分级存储需求
+<ul>
+<li>由于没有用户产生的数据，歌曲信息无法分级存储</li>
+</ul>
+</li>
+<li>内存需求一般，&gt;=40G</li>
+<li>磁盘IO能力需求一般</li>
+<li>网络流量要求，8k*2500/1024 ≈ 20MB/S，一般</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">资源指标</th>
+<th style="text-align:left">可选方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">磁盘IO性能</td>
+<td style="text-align:left">两块SAS做RAID1</td>
+</tr>
+<tr>
+<td style="text-align:left">内存容量</td>
+<td style="text-align:left">96G内存</td>
+</tr>
+<tr>
+<td style="text-align:left">CPU</td>
+<td style="text-align:left">2c8core超线程 相当于32核</td>
+</tr>
+<tr>
+<td style="text-align:left">网络吞吐量</td>
+<td style="text-align:left">千兆双网卡bunding</td>
+</tr>
+<tr>
+<td style="text-align:left">磁盘容量</td>
+<td style="text-align:left">900G</td>
+</tr>
+</tbody>
+</table>
+<h3 id="案例二网易理财销售数据库服务器评估">
+  案例二，网易理财销售数据库服务器评估
+  <a class="anchor" href="#%e6%a1%88%e4%be%8b%e4%ba%8c%e7%bd%91%e6%98%93%e7%90%86%e8%b4%a2%e9%94%80%e5%94%ae%e6%95%b0%e6%8d%ae%e5%ba%93%e6%9c%8d%e5%8a%a1%e5%99%a8%e8%af%84%e4%bc%b0">#</a>
+</h3>
+<ul>
+<li>用于存放理财用户线上订单</li>
+<li>确定属于OLTP线上类型数据库</li>
+<li>业务场景有明显特征
+<ul>
+<li>特定高息产品秒杀销售时间窗有大量并发订单写入</li>
+<li>平时只有少量订单查询和请求，和较低的常规产品购买请求</li>
+</ul>
+</li>
+<li>评估应以满足最关键的业务高峰为基准</li>
+<li>并发请求量
+<ul>
+<li>秒杀期间持续时间短，但是并发量预估30台应用服务器约2000tps</li>
+</ul>
+</li>
+<li>读写比例
+<ul>
+<li>高峰时写订单是主要开销操作</li>
+</ul>
+</li>
+<li>CPU要求高</li>
+<li>磁盘IO要求很高</li>
+<li>数据总量
+<ul>
+<li>根据业务分析，订单属于写入瞬时量大，总量较小，单笔金额较高</li>
+<li>总量预估一年成交百万级别，增长较稳定</li>
+<li>判断数据存储需求小于200G</li>
+</ul>
+</li>
+<li>冷热数据
+<ul>
+<li>峰值写入为主，内存要求存放热点期间产生的脏数据即可</li>
+</ul>
+</li>
+<li>数据分级存储需求
+<ul>
+<li>用户订单业务约定页面展示最近半年订单，半年前的需要到历史查询页面专门查询</li>
+<li>因此可以做分级存储，迁移所有半年前的订单至历史库</li>
+</ul>
+</li>
+<li>内存需求一般， &gt;= 30G</li>
+<li>磁盘空间需求一般， &gt;=200G</li>
+<li>磁盘IO能力需求很高</li>
+<li>网络要求较高
+<ul>
+<li>并发流量较高</li>
+<li>响应速度要求高</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">资源指标</th>
+<th style="text-align:left">可选方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">磁盘IO性能</td>
+<td style="text-align:left">两块SSD做RAID1</td>
+</tr>
+<tr>
+<td style="text-align:left">内存容量</td>
+<td style="text-align:left">64G内存</td>
+</tr>
+<tr>
+<td style="text-align:left">CPU</td>
+<td style="text-align:left">2c8core超线程 相当于32核</td>
+</tr>
+<tr>
+<td style="text-align:left">网络吞吐量</td>
+<td style="text-align:left">万兆双网卡bunding</td>
+</tr>
+<tr>
+<td style="text-align:left">磁盘容量</td>
+<td style="text-align:left">600G</td>
+</tr>
+</tbody>
+</table>
+<h2 id="44-mysql性能测试">
+  4.4-MySQL性能测试
+  <a class="anchor" href="#44-mysql%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95">#</a>
+</h2>
+<h3 id="为什么需要性能测试">
+  为什么需要性能测试
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<ul>
+<li>对线上产品缺乏心理预估</li>
+<li>重现线上异常</li>
+<li>规划未来的业务增长</li>
+<li>测试不同硬件软件配置</li>
+</ul>
+<h3 id="性能测试的分类">
+  性能测试的分类
+  <a class="anchor" href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e7%9a%84%e5%88%86%e7%b1%bb">#</a>
+</h3>
+<ul>
+<li>设备层的测试</li>
+<li>业务层的测试</li>
+<li>数据库层的测试</li>
+</ul>
+<h3 id="设备层的测试">
+  设备层的测试
+  <a class="anchor" href="#%e8%ae%be%e5%a4%87%e5%b1%82%e7%9a%84%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<ul>
+<li>关注的指标
+<ul>
+<li>服务器、磁盘性能</li>
+<li>磁盘坏块率</li>
+<li>服务器寿命</li>
+</ul>
+</li>
+</ul>
+<h3 id="业务层测试">
+  业务层测试
+  <a class="anchor" href="#%e4%b8%9a%e5%8a%a1%e5%b1%82%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<ul>
+<li>针对业务进行测试</li>
+</ul>
+<h3 id="数据库层测试">
+  数据库层测试
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e5%b1%82%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<ul>
+<li>什么情况下要做MySQL的测试
+<ul>
+<li>测试不同的MySQL分支版本</li>
+<li>测试不同的MySQL版本</li>
+<li>测试不同的MySQL参数搭配</li>
+</ul>
+</li>
+</ul>
+<h3 id="mysql测试分类">
+  MySQL测试分类
+  <a class="anchor" href="#mysql%e6%b5%8b%e8%af%95%e5%88%86%e7%b1%bb">#</a>
+</h3>
+<ul>
+<li>CPU Bound</li>
+<li>IO Bound</li>
+</ul>
+<p>写入测试
+更新测试
+纯读测试
+混合模式</p>
+<h3 id="常用的测试工具">
+  常用的测试工具
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e7%9a%84%e6%b5%8b%e8%af%95%e5%b7%a5%e5%85%b7">#</a>
+</h3>
+<ul>
+<li>开源的MySQL性能测试工具
+<ul>
+<li>sysbench</li>
+<li>tpcc-mysql</li>
+<li>mysqlslap</li>
+</ul>
+</li>
+<li>针对业务编写性能测试工具
+<ul>
+<li>blogbench</li>
+</ul>
+</li>
+</ul>
+<h3 id="性能测试衡量指标">
+  性能测试衡量指标
+  <a class="anchor" href="#%e6%80%a7%e8%83%bd%e6%b5%8b%e8%af%95%e8%a1%a1%e9%87%8f%e6%8c%87%e6%a0%87">#</a>
+</h3>
+<ul>
+<li>服务吞吐量(TPS, QPS)</li>
+<li>服务响应时间</li>
+<li>服务并发性</li>
+</ul>
+<h3 id="sysbench">
+  Sysbench
+  <a class="anchor" href="#sysbench">#</a>
+</h3>
+<ul>
+<li>业界较为出名的性能测试工具</li>
+<li>可以测试磁盘、CPU、数据库</li>
+<li>支持多种数据库：Oracle, DB2, MySQL</li>
+<li>需要自己下载编译安装</li>
+<li>建议版本：sysbench0.5</li>
+</ul>
+<h3 id="编译安装sysbench">
+  编译安装Sysbench
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e5%ae%89%e8%a3%85sysbench">#</a>
+</h3>
+<ul>
+<li>下载sysbench
+<ul>
+<li><code>git clone https://github.com/akopytov/sysbench.git</code></li>
+</ul>
+</li>
+<li>编译&amp;安装
+<ul>
+<li><code>./autogen.sh</code></li>
+<li><code>./configure</code></li>
+<li><code>make &amp;&amp; make install</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="sysbench流程">
+  Sysbench流程
+  <a class="anchor" href="#sysbench%e6%b5%81%e7%a8%8b">#</a>
+</h3>
+<ul>
+<li>常见的做法</li>
+</ul>
+<p>初始化数据 -&gt; 运行测试 -&gt; 清理数据</p>
+<h3 id="prepare语法">
+  Prepare语法
+  <a class="anchor" href="#prepare%e8%af%ad%e6%b3%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysbench --test<span style="color:#f92672">=</span>parallel_prepare.lua --oltp_tables_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --rand-init<span style="color:#f92672">=</span>on --oltp-table-size<span style="color:#f92672">=</span><span style="color:#ae81ff">500000000</span> --mysql-host<span style="color:#f92672">=</span>127.0.0.1 --mysql-port<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span> --mysql-user<span style="color:#f92672">=</span>sys --mysql-password<span style="color:#f92672">=</span>netease --mysql-db<span style="color:#f92672">=</span>sbtest --max-requests<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> prepare
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&ndash;test=parallel_prepare.lua</td>
+<td style="text-align:left">运行导数据的脚本</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;oltp_tables_count</td>
+<td style="text-align:left">测试需要几张表</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;oltp-table-size</td>
+<td style="text-align:left">每张表的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;mysql-host</td>
+<td style="text-align:left">MySQL Host</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;mysql-port</td>
+<td style="text-align:left">MySQL Port</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;mysql-db</td>
+<td style="text-align:left">MySQL DB</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;mysql-user</td>
+<td style="text-align:left">MySQL User</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;mysql-password</td>
+<td style="text-align:left">MySQL Password</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;rand-init</td>
+<td style="text-align:left">是否随机初始化数据</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;max-requests</td>
+<td style="text-align:left">执行多少个请求之后停止</td>
+</tr>
+<tr>
+<td style="text-align:left">prepare</td>
+<td style="text-align:left">执行导数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sysbench表结构">
+  Sysbench表结构
+  <a class="anchor" href="#sysbench%e8%a1%a8%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#e6db74">&#39;sbtest1&#39;</span>(
+  <span style="color:#e6db74">&#39;id&#39;</span> int(<span style="color:#ae81ff">10</span>) unsigned <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> AUTO_INCREMENT,
+  <span style="color:#e6db74">&#39;k&#39;</span> int(<span style="color:#ae81ff">10</span>) unsigned <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;0&#39;</span>,
+  <span style="color:#e6db74">&#39;c&#39;</span> char(<span style="color:#ae81ff">120</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#e6db74">&#39;pad&#39;</span> char(<span style="color:#ae81ff">60</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#e6db74">&#39;id&#39;</span>),
+  <span style="color:#66d9ef">KEY</span> <span style="color:#e6db74">&#39;k_1&#39;</span> (<span style="color:#e6db74">&#39;k&#39;</span>)
+) ENGINE<span style="color:#f92672">=</span>InnoDB AUTO_INCREMENT<span style="color:#f92672">=</span><span style="color:#ae81ff">3000000001</span> <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8 MAX_ROWS<span style="color:#f92672">=</span><span style="color:#ae81ff">1000000</span>
+</code></pre></div><h3 id="run语法">
+  Run语法
+  <a class="anchor" href="#run%e8%af%ad%e6%b3%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysbench --test<span style="color:#f92672">=</span>oltp.lua --oltp_tables_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --num-threads<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> --oltp-table-size<span style="color:#f92672">=</span><span style="color:#ae81ff">500000000</span> --oltp-read-only<span style="color:#f92672">=</span>off --report-interval<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> --rand-type<span style="color:#f92672">=</span>uniform --mysql-host<span style="color:#f92672">=</span>127.0.0.1 --mysql-port<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span> --mysql-user<span style="color:#f92672">=</span>sys --mysql-password<span style="color:#f92672">=</span>netease --mysql-db<span style="color:#f92672">=</span>sbtest --max-time<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span> --max-requests<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> run
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&ndash;test=oltp.lua</td>
+<td style="text-align:left">需要运行的lua脚本</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;oltp_tables_count</td>
+<td style="text-align:left">测试需要几张表</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;oltp-table-size</td>
+<td style="text-align:left">每张表的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;num-threads</td>
+<td style="text-align:left">测试并发线程数</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;oltp-read-only</td>
+<td style="text-align:left">是否为只读测试</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;report-interval</td>
+<td style="text-align:left">结果输出间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;rand-type</td>
+<td style="text-align:left">数据分布模式，热点数据或者随机数据</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;max-time</td>
+<td style="text-align:left">最大运行时间</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;max-requests</td>
+<td style="text-align:left">执行多少个请求之后停止</td>
+</tr>
+<tr>
+<td style="text-align:left">prepare</td>
+<td style="text-align:left">开始测试</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊情况">
+  特殊情况
+  <a class="anchor" href="#%e7%89%b9%e6%ae%8a%e6%83%85%e5%86%b5">#</a>
+</h3>
+<ul>
+<li>写入测试</li>
+</ul>
+<p>写入数据进行测试 -&gt; 清理数据</p>
+<h3 id="cleanup">
+  cleanup
+  <a class="anchor" href="#cleanup">#</a>
+</h3>
+<ul>
+<li>手动drop掉表和database</li>
+<li>使用sysbench提供的cleanup命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysbench --test<span style="color:#f92672">=</span>parallel_prepare.lua --oltp_tables_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --rand-init<span style="color:#f92672">=</span>on --oltp-table-size<span style="color:#f92672">=</span><span style="color:#ae81ff">500000000</span> --mysql-host<span style="color:#f92672">=</span>127.0.0.1 --mysql-port<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span> --mysql-user<span style="color:#f92672">=</span>sys --mysql-password<span style="color:#f92672">=</span>netease --mysql-db<span style="color:#f92672">=</span>sbtest --max-requests<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> cleanup
+</code></pre></div><h3 id="tpcc-mysql">
+  Tpcc-mysql
+  <a class="anchor" href="#tpcc-mysql">#</a>
+</h3>
+<ul>
+<li>
+<p>TPC-C是专门针对联机交易处理系统(OLTP系统)的规范</p>
+</li>
+<li>
+<p>Tpcc-mysql由percona根据规范实现</p>
+</li>
+<li>
+<p>下载Tpcc-mysql</p>
+<ul>
+<li><code>bzr branch lp:~percona-dev/perconatools/tpcc-mysql</code></li>
+</ul>
+</li>
+<li>
+<p>编译安装</p>
+</li>
+</ul>
+<h3 id="使用tpcc-mysql的步骤">
+  使用Tpcc-mysql的步骤
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8tpcc-mysql%e7%9a%84%e6%ad%a5%e9%aa%a4">#</a>
+</h3>
+<p>创建表结构和索引 -&gt; 导数据 -&gt; 运行测试 -&gt; 数据清理</p>
+<h3 id="创建表结构">
+  创建表结构
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba%e8%a1%a8%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<ul>
+<li>create_table.sql</li>
+<li>add_fkey_idx.sql</li>
+</ul>
+<h3 id="tpcc-load">
+  Tpcc-load
+  <a class="anchor" href="#tpcc-load">#</a>
+</h3>
+<p><code>tpcc_load [server] [DB] [user] [pass] [warehouse]</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">server</td>
+<td style="text-align:left">数据库IP</td>
+</tr>
+<tr>
+<td style="text-align:left">DB</td>
+<td style="text-align:left">DB名称</td>
+</tr>
+<tr>
+<td style="text-align:left">user</td>
+<td style="text-align:left">用户名</td>
+</tr>
+<tr>
+<td style="text-align:left">pass</td>
+<td style="text-align:left">密码</td>
+</tr>
+<tr>
+<td style="text-align:left">warehouse</td>
+<td style="text-align:left">仓库数量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tpcc-start">
+  Tpcc-start
+  <a class="anchor" href="#tpcc-start">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tpcc_start -h server_host -P port -d database_name -u mysql_user -p mysql_password -w warehouse -c connections -r warmup_time -I running_time -i report-interval -f report-file
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">warehouse</td>
+<td style="text-align:left">仓库数量</td>
+</tr>
+<tr>
+<td style="text-align:left">connections</td>
+<td style="text-align:left">并发线程数</td>
+</tr>
+<tr>
+<td style="text-align:left">warmup_time</td>
+<td style="text-align:left">预热时间</td>
+</tr>
+<tr>
+<td style="text-align:left">running_time</td>
+<td style="text-align:left">运行时间</td>
+</tr>
+<tr>
+<td style="text-align:left">report_interval</td>
+<td style="text-align:left">输出时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">report_file</td>
+<td style="text-align:left">输出文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h3>
+<ul>
+<li>IO Bound测试数据量要远大于内存、CPU Bound测试数据量要小于内存</li>
+<li>测试时间建议大于60分钟，减小误差</li>
+<li>Sysbench更倾向于测试MySQL性能、TPCC更接近于业务</li>
+<li>运行测试程序需要同时监控机器负载，MySQL各项监控指标</li>
+</ul>
+<h2 id="回到上一级">
+  <a href="../">回到上一级</a>
+  <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#41-mysql索引优化与设计">4.1-MySQL索引优化与设计</a>
+      <ul>
+        <li><a href="#什么是索引">什么是索引</a></li>
+        <li><a href="#数据库索引查找">数据库索引查找</a></li>
+        <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
+        <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
+        <li><a href="#创建索引">创建索引</a></li>
+        <li><a href="#索引维护">索引维护</a></li>
+        <li><a href="#如何使用索引">如何使用索引</a></li>
+        <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
+        <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
+        <li><a href="#长字段上的索引">长字段上的索引</a></li>
+        <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
+        <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
+        <li><a href="#利用索引排序">利用索引排序</a></li>
+        <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#42-mysql数据库设计">4.2-MySQL数据库设计</a>
+      <ul>
+        <li><a href="#什么是schema设计">什么是Schema设计</a></li>
+        <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
+        <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
+        <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
+        <li><a href="#拆分大字段">拆分大字段</a></li>
+        <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
+        <li><a href="#分页查询">分页查询</a></li>
+        <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
+        <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
+        <li><a href="#准实时统计">准实时统计</a></li>
+        <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
+        <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
+        <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
+        <li><a href="#课拓展性设计">课拓展性设计</a></li>
+        <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
+        <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
+        <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
+        <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
+        <li><a href="#满足周边需求">满足周边需求</a></li>
+        <li><a href="#统计和后台需求">统计和后台需求</a></li>
+        <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
+        <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
+      </ul>
+    </li>
+    <li><a href="#43-mysql容量评估">4.3-MySQL容量评估</a>
+      <ul>
+        <li><a href="#性能容量评估">性能容量评估</a></li>
+        <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
+        <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
+        <li><a href="#oltpolap">OLTP/OLAP</a></li>
+        <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
+        <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
+        <li><a href="#数据量---总量">数据量 - 总量</a></li>
+        <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
+        <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
+        <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
+        <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
+        <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-mysql性能测试">4.4-MySQL性能测试</a>
+      <ul>
+        <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
+        <li><a href="#性能测试的分类">性能测试的分类</a></li>
+        <li><a href="#设备层的测试">设备层的测试</a></li>
+        <li><a href="#业务层测试">业务层测试</a></li>
+        <li><a href="#数据库层测试">数据库层测试</a></li>
+        <li><a href="#mysql测试分类">MySQL测试分类</a></li>
+        <li><a href="#常用的测试工具">常用的测试工具</a></li>
+        <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
+        <li><a href="#sysbench">Sysbench</a></li>
+        <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
+        <li><a href="#sysbench流程">Sysbench流程</a></li>
+        <li><a href="#prepare语法">Prepare语法</a></li>
+        <li><a href="#sysbench表结构">Sysbench表结构</a></li>
+        <li><a href="#run语法">Run语法</a></li>
+        <li><a href="#特殊情况">特殊情况</a></li>
+        <li><a href="#cleanup">cleanup</a></li>
+        <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
+        <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
+        <li><a href="#创建表结构">创建表结构</a></li>
+        <li><a href="#tpcc-load">Tpcc-load</a></li>
+        <li><a href="#tpcc-start">Tpcc-start</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

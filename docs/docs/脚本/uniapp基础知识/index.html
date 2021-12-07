@@ -1,0 +1,4083 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="uni-app的基本使用
+#
+
+课程介绍：
+基础部分：
+ 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：黑马商城项目
+uni-app介绍 官方网页
+#
+
+uni-app view uni-app view
+#
+
+uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
+即使不跨端，uni-app同时也是更好的小程序开发框架。
+具有vue和微信小程序的开发经验，可快速上手uni-app
+为什么要去学习uni-app？
+相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。
+环境搭建
+#
+
+安装编辑器HbuilderX 下载地址
+HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
+下载App开发版，可开箱即用
+安装微信开发者工具 下载地址
+利用HbuilderX初始化项目
+#
+
+  点击HbuilderX菜单栏文件&gt;项目&gt;新建
+  选择uni-app,填写项目名称，项目创建的目录
+  运行项目
+#
+
+在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
+在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app
+在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到手机或模拟器 -&gt; 选择调式的手机">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="uniapp基础知识 " />
+<meta property="og:description" content="uni-app的基本使用
+#
+
+课程介绍：
+基础部分：
+ 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：黑马商城项目
+uni-app介绍 官方网页
+#
+
+uni-app view uni-app view
+#
+
+uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
+即使不跨端，uni-app同时也是更好的小程序开发框架。
+具有vue和微信小程序的开发经验，可快速上手uni-app
+为什么要去学习uni-app？
+相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。
+环境搭建
+#
+
+安装编辑器HbuilderX 下载地址
+HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
+下载App开发版，可开箱即用
+安装微信开发者工具 下载地址
+利用HbuilderX初始化项目
+#
+
+  点击HbuilderX菜单栏文件&gt;项目&gt;新建
+  选择uni-app,填写项目名称，项目创建的目录
+  运行项目
+#
+
+在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
+在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app
+在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到手机或模拟器 -&gt; 选择调式的手机" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
+<title>uniapp基础知识  | 所悟所想</title>
+<link rel="manifest" href="./../../../manifest.json">
+<link rel="icon" href="./../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
+<script defer src="./../../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/data_link_layer/" class="">数据链路层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_layer/" class="">网络层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/transport_layer/" class="">传输层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/application_layer/" class="">应用层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle"  />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle"  />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle" checked />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class=" active">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目一</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>uniapp基础知识 </strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h4 id="uni-app的基本使用">
+  uni-app的基本使用
+  <a class="anchor" href="#uni-app%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">#</a>
+</h4>
+<p>课程介绍：</p>
+<p>基础部分：</p>
+<ul>
+<li>环境搭建</li>
+<li>页面外观配置</li>
+<li>数据绑定</li>
+<li>uni-app的生命周期</li>
+<li>组件的使用</li>
+<li>uni-app中样式学习</li>
+<li>在uni-app中使用字体图标和开启scss</li>
+<li>条件注释跨端兼容</li>
+<li>uni中的事件</li>
+<li>导航跳转</li>
+<li>组件创建和通讯，及组件的生命周期</li>
+<li>uni-app中使用uni-ui库</li>
+</ul>
+<p>项目：黑马商城项目</p>
+uni-app介绍 <h5 id="uni-app介绍-官方网页httpsuniappdcloudioresource">
+  <a href="https://uniapp.dcloud.io/resource">官方网页</a>
+  <a class="anchor" href="#uni-app%e4%bb%8b%e7%bb%8d-%e5%ae%98%e6%96%b9%e7%bd%91%e9%a1%b5httpsuniappdcloudioresource">#</a>
+</h5>
+uni-app view <h5 id="uni-app-view-uni-app-viewhttpshellouniappdcloudnetcnpagescomponentviewview">
+  <a href="https://hellouniapp.dcloud.net.cn/pages/component/view/view">uni-app view</a>
+  <a class="anchor" href="#uni-app-view-uni-app-viewhttpshellouniappdcloudnetcnpagescomponentviewview">#</a>
+</h5>
+<p><code>uni-app</code> 是一个使用 <a href="https://vuejs.org/">Vue.js</a> 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。</p>
+<p>即使不跨端，<code>uni-app</code>同时也是更好的小程序开发框架。</p>
+<p>具有vue和微信小程序的开发经验，可快速上手uni-app</p>
+<p>为什么要去学习uni-app？</p>
+<p>相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。</p>
+<h5 id="环境搭建">
+  环境搭建
+  <a class="anchor" href="#%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba">#</a>
+</h5>
+<p>安装编辑器HbuilderX  <a href="https://www.dcloud.io/hbuilderx.html">下载地址</a></p>
+<p>HBuilderX是通用的前端开发工具，但为<code>uni-app</code>做了特别强化。</p>
+<p>下载App开发版，可开箱即用</p>
+<p>安装微信开发者工具 <a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">下载地址</a></p>
+<h5 id="利用hbuilderx初始化项目">
+  利用HbuilderX初始化项目
+  <a class="anchor" href="#%e5%88%a9%e7%94%a8hbuilderx%e5%88%9d%e5%a7%8b%e5%8c%96%e9%a1%b9%e7%9b%ae">#</a>
+</h5>
+<ul>
+<li>
+<p>点击HbuilderX菜单栏文件&gt;项目&gt;新建</p>
+</li>
+<li>
+<p>选择uni-app,填写项目名称，项目创建的目录</p>
+</li>
+</ul>
+<p><img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAygAAAJ4CAYAAACODceyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAFu1SURBVHhe7d3bry1Hfhhm/0PzZDi2YdkZirbsYPxgy5Ip3/gwDsdRAiJAAuSCYTIvEelB6AECRD7AAJmHICZtBoGRgwn04IeM7EMM88ARAwQJQMiiyBNxcmOcSBEzsiKvdFV1r66qru7Va&#43;29z&#43;nu832DAvfqa3Vdun&#43;/dTnzhz799NOToiiKoiiKoijKFkpMUAAAALZAggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAADgoo8&#43;&#43;uj0O7/zO/2rZWG7sP0tJCgAAMBFv/3bv336J//kn1xMUsL6sF3Y/hYSFAAAYJVLScpdk5NAggIAAKw2l6TcR3ISSFAAAICr1EnKfSUngQQFAAC42pCkfP755/eWnAQSFAAA4CYhOfmVX/mV&#43;N/7IkEBAACuNnyta/gEpf5Nyq0kKAAAwFXq35zUv0m5CwkKAACw2twP4u8rSZGgAAAAq8wlJ4P7SFIkKAAAwEVDcnIp&#43;bhrkiJBAQAALvq1X/u11UlHSFLC9reQoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABsxmETlCePXj699Oj9/hUAALAHh01QPn38jdNLr37j9M7n/YILwvZffbVLal596/SkX7ZWOtf1&#43;wEAAKUDf8Xr/dObXcLx2uPP&#43;teDz07vvPFyTEbyMm732enTlUnN4M4JyodvTeqzVMprStfZ2m6pXJO8AQDAs3KgBOVyoJ6SiJSgvPTGu6elKx8&#43;UanLmx/Or6tLnkjM7dNOFNK1rPuK2jXbJimhkqAAALA9B/sEJSQfjcD7w7eyhGRdglLq95n5lGT6CcrcpzdBf6ylhOLzd0&#43;vze5fk6AAAHAch0tQnjxqJwsvvdEtiwH5tQlKmZys/fQkL2XysCJBCQnV6gRCggIAwHEc8DcoKQFInz60kpHrEpT4r4FdCObv/glKWtZKbuoyPWY6V2vbpSJBAQBgiw6ToIREohWI1&#43;W1x&#43;&#43;vTlDWJCfBfSUoy5&#43;CzB3TJygAABzHAT9BueTypxUpeWl/MnHrj&#43;RH6xKU9UmPBAUAgOM4boLS/9A8JBSlPhnIPkGZJgMNs8e7JpkIJCgAADDnxU1QFpOBTvyherZs4YfrqxKcMwkKAADMOU6CsuL/7DAF/CsTlD7wHxKccZu0f&#43;v4dWknLRIUAACY4xOUTjtB6X8kH78K1koqRnP7tz1MgtJKkJaKBAUAgC06VoISk5I&#43;8D4nKCH4z4PxaaA/m2AMx3g8l&#43;wkNyco/ac&#43;539Z7JygtJIYn6AAAHB8h0pQin8WuEhQuuXDj&#43;IbvyVZSjCGf7542D9sm38ScankP8YfEo/puioh6ete1lOCAgDA8R0nQTknJK3XKYgPf49f2xotJShDQrIU0C/tPxgSnblPYUZDQvXW6c0&#43;mVlOPiQoAAAcx2ESlBh050F6lbCk9V3Q3y2rP4WYTTD6Y4TthwQjlOmnGPfk/MlJVpfzsrmEQoICAMBxHPdH8v3vO/JPLFqfngTtBGUm8F/xr4XV5XLyMH71ay75CXVsHyvVMz/fmiJBAQBgiw6WoJTBepGMxE8i2kF5K0GJy674VOJWwyczqz6VyT7RGfkEBQCA4zjuJygAAMDuSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKC&#43;UH5/e&#43;&#43;jrp9ef/njm9en0wcfl62fheZzzobWv6f7bP2z/tY9/1L&#43;6JJ3v7S/6l9GPTm//sF72vKV6fu2j75&#43;e9kvuZu3xntd5N&#43;yL756&#43;9sPvnj7oX75Inj791nV9F9uq6&#43;/7aq9wvD2PnS&#43;/f3p9ri1iW33r9N6X/es1&#43;va9y7Mi9um1570vof6r79UbFfvghvEdx0KYG9eWC311D2OC7ZKg7MXNEzy7mUxuLnVw&#43;uPT0y/TsvsPSsJxW8ecW37/YjBftM2KMjxQZtp/LrBvJhr33f7xeFc&#43;bPvrGOtW12Gd9KB/qAfDi5CgDP2cl4W&#43;7B/EY6nGx433h4tjdDJmL3vYsfHsrEpQin7J2ulSf6wKVNMYeeh2TP0118eNOqy6F/Zjv3mdS&#43;tm9O18p7bI67147r5&#43;w7ary8I86c/9dlf/&#43;7m3XJCPyzCGb7w/lON/pt&#43;Wjr3iXhrH3zVjYXDFmMif/Xu/L71IJCg7NfdO&#43;9JDdfJue7yxtIKidCO614n8ZXfMcP6qbkMwM1&#43;uC46WzLXZnOLGGdsqr8tyYN86113a/3I7LZTJzT/Uvb&#43;W/uFyXYKSPcBXPICu1x//QY695Nmcd&#43;jLenwsL6/GSei3yVhqzJXZMdaSrr8YC1cnKA89Np6d2O5rr6Fup7n&#43;6MTjTvqub7NrymRe3yaNr7k&#43;nktQlsfUMJZb5fWP5tc1rykPthfK8j0sXUc6/vK9e8mk71ZptGEQruue&#43;nDi6nmbycbj9F6Qt3l5/EnbhO2L&#43;dP3weqyUP&#43;bxkS6N036gc2SoOzU9QnKtTeHrNzjTTQG6ef6hTrNP&#43;jKbe9urs3mFDfcScDRP&#43;Serggu4jXcc/vf5QGUWxFsTPQPhxRoXLnvKgdOUIa2mxuH/frxwZrGzcVxm4/PLMBYKvUxl4LKdmmMvwcfGw&#43;nvncWry/Nk3o&#43;Tu4Xo&#43;K&#43;Eixs&#43;yykfp87f2P8xWu91Bb9PuHvYj71980wvldc93LdOvm5ZjXm9aVriPtM10/6LgjXMXvPWJq/fb3u8fl6Fq/v2jHV16er7&#43;QeGPtqvC&#43;1nqXxeZ1fy1LfZ5ptulD/28dEur7lscKWSFB2ai7YjpN39maZe16Tdbzxlze0&#43;ubVvpndxdBm8bzdsZdK2K64cU4epsv1m&#43;uf0V3avz53OtZiW/UPmNa1LpfpgyC2XxxjqR6ta0htHPZN25yP13oY9w&#43;Uobz9RbqefByfzzls23jwlcfoV0XT40Urzns39fHWHL/epr&#43;2Vrvl8vE5Gau1dI6i3&#43;I&#43;jYBtIVBoWT02wjb1mKyuce129yPVNx835b203XdpnNela6&#43;6znXJryHrrxR8NbavyuJcv9JywNfoxzgm5oL71E5F/cL2/fWG9pocq9mf/bg/j6W6fv36i2MzP05l8To6jfXFMyHo&#43;zl8mjk5/rCuMQdG/bhqtsEdxLpfaptRPu5aY6s9zkMZ2ie182T&#43;FNc13SaYbtdp1j/vy/D3tWOicd9j0yQoOzW50ffiZG/djCfCZF64OT&#43;4&#43;vzp5jLcvM7BSXp5L&#43;babE5x45wJOEJ9WzfYy&#43;e6vf1j2xTnawQFay09pBceEsO1xbo0HghpebUuHq9ql8ay875Z/8dlXWI7eady1TEbweXK895Nfd6y7ebE8XRut/4Y3X6L/ZsFuXNjtS5jPRbqFdtp2r9tdxgbQ52zcb12u3vRuM7JvbQ/d6sfJtea90dlcr9Y2DY3tMel8XOtcrzVpmNjeftgHLNXlXObpP3b51w5H4K5MdW4D8weK64f749F3/XHn583rXXzbXOv/XrNvO3reum&#43;F6491jFcd9w2XEtqm9iusV3SeEnXVD9X8nVrSl7/&#43;xgT02OwbRKUnQo3hNZEi5P2wo0mSJO7viFUZcVxbvHBx40b59LN/p7Mtdmc6cMor3e62cYbYlxX3owvnevm9h8eJqvKTOKRWRovzXX1g6/vt/rBEB9Yk/P3D5LzMfvXWQCR9A&#43;y7NyLx5vsP2w/1PP2895Ndd6ZtqqlsZFfa/Zgn6tbPj4nY7WW6jWMz2Kc164OdG4dG8N1j/uv3e7uyvYYtMZ/rNOkD/p&#43;vrVOjf5K157fX1rnvR&#43;pPdP55kreNq3tL43pQbiua&#43;7Bo3EOrDnXUMfm2Ju0Y3/smTkQj9WvG/9Ofd6sy9BfzTIdz0mqw21t03CXeTsjXHusX7i&#43;2IahDb51evvjsX2WpWus2yxv37NVdbpuTMzNc7ZLgrILwwPwxjK5efQTtUsUih/aZuKN/LzujufPHwgzQUu8SbXeIb9HxcMx3gAbde3KULfixjkJIsqbbf3gXX4QX9v&#43;vezBVx47Ha9s01C/uYfhoK9Hd6zzwyeT&#43;iTvj34cVPVq1TUuazxg4vLhmP31TNupP0927ubxZvfvxP4drr863hXnvZv2eS89TGO7N/outUFfmmOjb5/876ZUr2a71VYHOv21rh0brTYu&#43;mz9dncW22t6vOn477T6sF8W6vT6R6mtir6aKedjzPZX36b3ea0NabzN9fHlwDntv248hXZZNe6i4fpDyeo33Ltn5unsuOksrVtuhyRuU8&#43;9&#43;xKua6ZuV1s9bzsrtx36uSz92Mzm0Hwf30eCctuYSK6477EJEpSdmrsJxMl&#43;6SaXTf4PPm48/GYe2PehXe9040i/AXi4h3Fx7tAGk3Ya6pFeFTfOSRBR3Wyr9fM36c5N7T8GCtNjl/VOViQosR7DNtOHx2QsxXoND4e6lOcKdWw9YOLy4Zj98eoH1vkhlJ272G8wu3&#43;nf2ClddXxrjjv3dTHG/twSQoEpm03SG1b1TNeU7/PYj&#43;NpTWGWtvNlWL/xXM2xkarjYs&#43;W7/dXcXzNILO9r20PTaHfxTg9eb4SfvM1rfvu/div3f7ryyXxtFay&#43;NtzZjN2yRt36rvqhKO0fdvPW4uj9H5OTOYHVOZ1B71sVeWh0perhXb8HJ7RCu3De0Sx0EYr7ENQ3&#43;kPort2mqProzj/tqxkdXpXsZE2va&#43;5g0PT4KyU/Gh2Jho7Ydqrpqk55vNoJ/wD3Gj7R/EkxthuPkMdcj/vmdFmzXPk659uKHGtlyboMR9x5vnXP/c2v7xAdAvmx67rHcS6lffzHON88RrHI&#43;TnzOYH1vTICbu2&#43;jruHw4RnW&#43;UV&#43;37FzFfoN&#43;/2Y7xwfacP3V8a44793Ux1tz/H6bqv9rKYjK&#43;jcfz/H6Lo3VufFZie3YmLOVq8dGa9uiz9ZvdyeTthrNXlM8/9Ce/Tx7OrRTaNu6bqm9p&#43;Ott1CH5jyO29/T9XfSWFo6/&#43;WxMjffFy1edynVcaYN43HWjefZMbVSrMeFuTkY6ryqrDzmaivnbXTFHI9tHNo7tmE/1r8ox2No47m&#43;aK1rbr&#43;iTtePiSvue2yCBGWX5h94cdIu3IDTpC4nflzW3yBb6&#43;/HTJ0nD9uHu4kUN8JwA5y0U1nHvF2mD9M66CvN3aTvo/2nx261bSOwycUHQGN9WB7rko45Pjjr16VQp7w94&#43;vGdZTbpTacHLN/uEyON9NfrTqV5&#43;&#43;3u&#43;G8d1OftxPbfX7czPZLrdquGKtBMV6zsRr2u&#43;b64nmWx&#43;NtY2N6jbdudxeh3ebuNbFNm&#43;cZr/fc7nU7xdeh/jMlP&#43;5in0zn8X1ef7B8z0ljZ/l&#43;3Bjna0zuqVNpDPTnD&#43;1UjbFU94X5VLlr2537e4W1215zzNVWzdveym2HvihLe37Oj5fqXhHHwPQYS24fE&#43;ncy2OZLZGg7NHCDSVOzrkbcB&#43;AtW7mw6ReFRzdItS5rtdsfbKAqiHeoG64oRc3ztiG6UZXl&#43;G8xYOjr&#43;vctrXmTfqe2n967HTjLY67dOPv67F8o65u5n17zV1vWj&#43;eLz1EpmM0Ls/GwfRh0j/AQltk29X7nfX1Kq5lUtf&#43;mDeed/aaL5qeNxjOXbd/e3mYC3U71sdNr8d6DkFlF0DH/ijn01zfNMW2vLDtTWOjapfGMa7ZbvbcdxD7o&#43;q72vkf/Fhsp7p/SvE8s/ez0Hf5PJ7eG&#43;96/WnczdV9GEvjmKy/ljr007kOfR/dUupjlHMhtWNcNtyPL/RPLdb1yn1yy31VWrttc7vseXNT3y6Ox8rKbc/jLNQttmHoj24sxE8Pxz6clEZ7D2MmlPo&#43;OOvOYyLbll2QoOzO9IGRize75gSd2y9N2jjxw4&#43;2VwTIt6gfoukGtXSuVN/pDX76gF4rnPN8/eFmd&#43;FBVTw44s0vv4kv1aN1I7y/9i&#43;uI0rHOP//eIR2C2VhHFx8cPYPg&#43;H6Un8tPMSGh0N/3Lnt4/KqXrGdhzrH6&#43;&#43;vI9uutd9Z9jAfj9Gvi6bHCy6fN/zjAWU7XKd93qTvh6LMte9026L/8wCjb4vp2CvbJF375bG2Jni5aWyENunH2FDqNl633V37aN7imKsttlMaB&#43;36La0Lpn1Xuvv1p7GwPPZa95uxTxbqF/t&#43;Zn1ctzy2Js5zfcXYbbiqTxuKZ8IFa7edbpeNiVvaKFgxbwcX52&#43;UjcNQp9iGoZ7TfgjHmz7nMtV8HsriPktWj4nUrjefh2dOgrIn/cRemmDxZte4AcebUHETzIKexs0xLL/vB37SH3/VTb6x7a037M7FG2dl2mYLzjfJoZR1fNj2T/tc3H54MDSuKQUpfX364kbei&#43;12W0D0LISxlfq&#43;HAdFny7cE1p9v7rcEOzF867Yb&#43;120b300Tj3hrJ6Dsbz93N&#43;mGeXSri2fL&#43;mSwlKb6tjtEv6Z/9PO9fey/P2vGG85a4aUw3TZGLeVfOq8QyIY&#43;/W593SuGqMz1XPjkm7hXpOx1xo47qvY7sP55tpv9n2am1/05hI7eq5th8SlL2IE/LyAyhO8sUJOwbGl25K55vKyhvys3DNA6LWunGW6gDlIR74D9H&#43;2QNtTn9Dv/ggouku445SHNcrgoq12w2eax/F&#43;XV9INm&#43;J1X3oZVtsP0xWt9fu9Ksb7XdPV7TtWOqdk0br922uV0WgF97zz63m7JY2D4JCgDPzEMlKEDvpk8YjiveS/r28AnKfkhQAHhmJCgAXCJBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoBzEP/2n//T0d/7O3zn9pb/0l05//I//8Vh&#43;7ud&#43;Li4L63i&#43;9M&#43;26I9903/Ph3Z/frQ9LxoJys7983/&#43;z0/f/va3T3/kj/yR09/7e3/v9Mknn5x&#43;7/d&#43;L5bf&#43;I3fiMvCul/6pV86/eQnP&#43;n34lnRP9uiP/ZN/z0f2v350fa8qCQoOxZuXL/4i794evvtt09/8Ad/0C&#43;dCuu&#43;853vxG3DPjwb&#43;mdb9Me&#43;6b/nQ7s/P9tv&#43;/dPb7761ulJ/wrukwRlx/723/7b8ca1Vtg2vBNzjSePXj699Ma7p3yUxGWP3u9fDfIb1Wend954&#43;fTVV9ulPt4oHKO9TyivPf5s1XahvLSBm2bdP7/6q796&#43;lt/62&#43;d/uSf/JOxhL//8T/&#43;x/3a2/qH9Z7FfOHh6L/n49m2e3p2vPlh/3JWegbEZ8mHb7WfAbPPmWAfgfXDtn27DcLz/XL7jz59/I1GPJCZ6Z&#43;6bOGZzbZIUHYqfOc0fKy79K5KLWwb9rn4fdWVN5ShnG9m3X7FQ&#43;Hzd09vnpOKPrHJbkLhdX6c4iZXH6vQ3VhvePjEG2m33z9sJlhJSr7&#43;6/iQHBOi69X988u//MunP/yH/3CzhHXB6v65q65fXnv1G6d3Pu9fPydDf3zaByWt9l6zzRoPOV/imKnHY2zj6YM&#43;ja&#43;Fh/la/fHPc2duPvRz&#43;ZqA4xpj/zTm83mM3a3vgofsv6hxz7tLfZ9lu581z7ndedO2nKCE6w7XOI6tTnfd0&#43;u79Izo2/DCXGyN79k&#43;7edkqssOxvwNCcrQ/mvK&#43;dq7/inbObRN/fyZ1mU6xlOb5udorb9Lm7MtEpSdCj&#43;MC989vVbYJ&#43;x7UX5TyR4A4aYx3oCnQW5xc/s8PCTGm0n7pjefTMzfaC49fBrHjA&#43;Pflm4tsY5035DPcPftwfxef&#43;ET0laiUlewqcrwer&#43;uYstJCh5fyw8WMqH1O198qDzpTWeumXxATp5MN/HAzQcJz9fOm4r2Arz8bVunl4KxG5S9GF/ruzaYt&#43;d19/ffLrG6vkU&#43;nDxnnKdZ9nug/lzbnTeNKWxPJsERGGb7Hqy59Oou&#43;asP8NYHJ5Dl8q5/Vrje6FPh/VjXTY85sN4f/RWV78&#43;yO/vV62S98Xyc3lGPFfeZlX/RaGtsjFdj/H4enqPS/eY/Fh3a3O2RYKyU&#43;Ff8gg/lrtW2Cfsu8b5ZpQ9AIZl4Wa89BAJ61s3u1DKYC6/MaWH07p92tsNpQ4Yyxtr2n9S/3Ajzfa76Wbcy/snfJWrlZTkJWwTXNM/e1a2ber3VluH7fLA8dY&#43;edD50j888/F0DmbyoDdu90APz2rsRsNDvn7Y35O6L&#43;I1F31TzrP7mk/XWDuf4jibCTxrF6/jGbd7dOGct7b9Q7d7FMbueZ5kCcrkWqbPhzjmu/3zZed1d7xv1Puk8f1uOwDu6/pmNQdubffgIds&#43;1StcSz9msrH/5NF4fWG7/L7Wup46FpjcB2b6py7zz97U70uJ4X08I9geCcpO/bE/9sdu&#43;jFc2CfsuyRM&#43;NYNZK6EG8ewz3CjKG5a4QF0vrnkCUlQJyitAK6xTx74TdTbT48bb2rVDW&#43;yLNy4F88zL&#43;&#43;f8HuTVlKSl7BNsKZ/0vWVD4UyQB0e8uMDvXiXKT5MW&#43;1ciduN/Tyebzh/&#43;u/16&#43;v&#43;SPVsPVTCw2YS5N/QJw85X6b179u/CwCKdi4Csc7N7Ts1aadOXBbHc1&#43;fYv9L57i0vu7DNH/KPhyO0b&#43;8p/l0jXX9l7fVZZcCoGfd7sHyOTubnDdJ8ayo6t&#43;6T6c2WnH/ygx9Fv47tGmrjOeaH9/TcT4ef7Juo2M&#43;1DeNsfw5maxJUPI&#43;C8vKdqvGX/H8D1pjOK9LtT7eJxf6u15/hzZnWyQoO3Xrzet3f/d3z8HwvctuDOEG1noAhFK&#43;0zt3Ywp/D8vrG2n3evEG1Ni&#43;eN2Z3PTCNvVNsLVsnbx/rklQ1vVPqFfjIVC0Y5mUhP44B7CXbvi9J12AfW7j4vjp/EU/xvXDMdesz/sj1bd&#43;6Afx4Vf09W198tDzpahnbN9wfem65oKt29u3lrYv2688d7sd77MP0/Xldbivvgseuv/q&#43;9U0KB6F62qN1eTZt/vlcwa3tf2DP2cmwWR5Lc17Vd8er8XnQ9o&#43;77u85G2S99mTR3kbpmOUfT5t5/P4Ps/vwdi29Ry4td2Dh2v7cL2hTnNjaaxvaLdzX3SGdoxjbGiv0B9DH07aphPWX5WgVPWK/V3XMxe2z8bMHdqcbZGg7NStH/&#43;GH8/9/M//fP9qyfKNP5TJTSN72IQb9fmGUdyg6pti/jq/cYW/h&#43;Wtfdp1GkpRt9ZNs7&#43;&#43;88Mkv8metW6k6&#43;T9c81XvNb1T7r&#43;/MFR3sSrawvyNoh/X3ldxT6N8/fnTMsurJ/0R6O&#43;vWmwdVufPPh8yds/G&#43;9hHqS/8/ZpuKp9M925wniftF3dxpM&#43;v&#43;8&#43;TNdazMEHmk/XWH&#43;/y6VrL4KqeL3l9Q2laKPn0O6Xzxnc1vYP3e7FcyLK2yIpguFOeIf/tW6b6e9B5q9xCKyTLsCOwXl/jElbdRrtPCYfqY7D8fL6jdsMbmv34OHHfGiDcI2pLVpjeyjD9Z3bMbRPKynJ7n1n/T3qUjnfP&#43;u2z&#43;&#43;tTaH&#43;eRvf3uZsiwRlp279Ad0777yz8p8tDJP80k2hWp/dtOpgJS/lzSY/Tn5jyc9fn6t7PQl&#43;ctX2jYdNkAe/0wdLcPuNLu&#43;f8AP4VlKSl&#43;FH8uv6J1xf9WAvbuKh3tX6vA3i38N1pWNN&#43;yYdo&#43;y3cp9WYJHa8ML6Rn&#43;027/so&#43;S2Pnn4&#43;TJec3EtoV9C/SfXfJf2TcJ5msFVZ27&#43;jfs/uz4c3dZ3wcP3X2UhKCqD3dLzavflcwa3tf2Dtnu4lsl9PF1ref1Zm4R9Hr17vpb860hL1xj6LH3lst1WeVlq53ObDvO6qu90DtzW7sGzuWdVYzxed3dfqZOMXmzHeK35dYXjDP1R911rvrTaJKtL3fbx9UIbTvrq9jZnWyQoO/Xrv/7rN/8ThGHfy9KNt3UDH8rkAR5uFFnAf75RhZv5&#43;YZX3xTTwycer0tI3hxuLNmxmvtMHmy51jmqugbnG19Y37qhzS2/rO6fa/6Z4cv9E&#43;pVPQhuTlBm1AFasU/j/MWyNevL/gjjpfVQnD7ww77X98nDz5ehrvWPaPv6Ph4Cmt6d2rdvr9k50Nq/cw6qgkvnWLN&#43;2odlX9XCPtf3XfAs&#43;q9QtFVpPkFptVnnQdu9tX1nUv&#43;w3bbmTZlcDBr3rk5o83B/CGMs/bZu3Dcsq59N8XmStVPar3&#43;RKZfn567buR7ffbs/Ktu53Ca4rd2Dhx/z02tMY/v9on1zeZ&#43;NbTe02/R4wZjUDMr&#43;S/J96&#43;Ok48/dW0I9ymfH7W3OtkhQduyW/xOnsM864aYwvdmMGjej7KFY3PjD8viuV//g6G8mYZv89SjdkOK6ZpDQnbu5fNC6wbVuWP2Nr1vXPE8IGhfPs6zun&#43;H/qPGnfuqnYgl/D5&#43;cBOv7J9V7bLf&#43;9fma0&#43;vioXDHBCU&#43;BM77hPYt&#43;yYGEOftL61v9EesU1XnWIfGdjf2ycPOl04c/90DPmu3fIwVD9i7tO&#43;l/quOPUrHTW18/30YrmEuiIju0HfBw/XfZ6cnXdA7Stc&#43;dy2hHZrrnke7rzpnZ8vzptC4d2XS77Ya949oaXmrjdKYHc4V27m4py6P77B9eEblyyZzYLNjPghjJGuXeP/q6xrvMXWblduX7dUJ&#43;zef5XWftJblx26sj/WZzsl036zqecc2ZzskKDsWfkD3i7/4i/GmtPQuS1j3ne98J267/kd34SYxvhvVKsWNIT4ouwd3CJQnN6kr9Dei8zG644ZzlTem9PCt65OX&#43;qYVbqb1zS3qj996IE5uwFd60P7p2ylda3czD&#43;/QFzf46pryB078u35A1Mr&#43;L/9Fqj74yb4yUbb3pfUz/ZFdU9pnWse79MnDzpdOPXZ7oc6xDYsxdof2rdopL&#43;Ec8aE900bjuvvvw0lwVtnyfBr6aChL1zHnebT7unPere0ffN4UwvWvuTe1tplZ3gyck9BGrXt/cHl8h7qWfVNvs&#43;Uxn9c/1rO6luGZPrTnpWtptmW4V02ShVY/lW1Zt31S3jOHkifzwV3bnO2QoOxcuBl9&#43;9vfjh/rhu&#43;e/uZv/ubp93//909ffvll/LFcWBbW/dIv/dLpJz/5Sb/XGuFmUN2wCuUNpf7ot76J1GV6A0k3n/pmMyhv/N25F98hmT44UlC3dD21cIzWQ/A6D9c/z1Nom/kH&#43;&#43;X1nav7I7h7n&#43;yjP1a035096z68e98F&#43;59Pz7rdg7u3/UO3e/7MmHsGjLIAt3&#43;Daa6EY/3DyVfJUhvH9UvteNM9Krf1MR/q99bpnRDQz7V5bIMwHsc2DwlA3c6tEp7xYdvpWG4fq4gJVrd9ihvi/vEa7qfN2QYJykGEG1V4l&#43;Vnf/ZnT3/0j/7R&#43;BWi8C95hGU3fQf7gOI7K91NbLghLpVw05u&#43;g3O7Y/VPesDfKcjqXNMfodxnn2y7P9a139082z40nwbPfu68OPPm/l17j8qLMX83t7T9fbc5z5cEBbjS/QRZzHkW7acPnw/tDrCGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCmeffO&#43;V01e&#43;8pXTN3/QL7gPP/jm9JitZTswtM8r3/ukXwIAwH2ToHAmQVkmQQEAeHgSFM4kKAAAPG8SFM4kKAAAPG8SFM7yBOUH3/xK/Hsoc8lEvd3k609XJij18b7ylW&#43;ers1j0jFeOU2&#43;ifXJ906vdMfM63jVNUusAAAenASFsyFYD2UM4j85fe&#43;VVsD&#43;g9M3w7avfK/botcH8F/JN1ydoPTHKxKS4dyNZGPBLQlKWZ&#43;Z80pQAAAenASFs3OwXkfgfWCfL09JwPTTjUlysDJBmU0qWonQBTclKCuuuXktAADcKwkKZ/nXnUp1ktC/bkTqk2OsSlDmjxfMJy9ttyQo01M36iRBAQB4cBIUzlYnKMOnCwvlfIw1CUojccilej2nBKXxFbbptgAA3BcJCmdXJyhrInUJCgAAV5CgcLY&#43;WG8E73PWJCjD8WYi/5RwrP/XvCQoAAD7JUHh7JpgfTYJqK1KUJaOt5y8tMxdx7BcggIAsF0SFM6uCtaHr3nVn2yEID4/wMoE5XyO5j8zvP7Tk2ioW7O&#43;EhQAgC2ToHB2VbAeDUlFVuqdVycowfj/uXIuk3OulCUk5&#43;P4ihcAwOZJUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBIUdafwovyhX/mtfAABsjgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBGWnvvbDryuKoiiKoih94TgkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCjv0yel7r3zl9JWvdOWbP&#43;iXbdne6gsA8PxIUBh98r3TKyGIbpVXvteF2WsNAfk3TzEc/8E3q8D8B6dvts7RKOfdwjFay4NqXau88r2l2u&#43;tvsH6OhXHWnHuuhR1b6ra74F88r1XYn0ut80G9O28i7oCwMZIUBj1Ccqdg6rqOJ988oMqgE3BdR74xuCzSIKm2ySN5TEYnAuOU/C8eE0bru8QlNdlcj3xGl45LV1mFM&#43;9Yrugb5fpNVXua9xcIEEp/eCb&#43;RgFgOOQoDC6p0AzBU7TIDgsT8d&#43;fgF/yy7qeyEBmdZnxgMkKHPtx0N6Np9aAcDzIEFhdC8JSgrIl39r0W&#43;zogyHSUFwo4Sg/E4Jyk7q20hQZs&#43;Rlclx7j1BWdN&#43;3D8JCgDHJUFhtCpBGYL1dmA0fA1nTVCbb7P6E4kYYFfL&#43;2VLZe6adlPfuQRltuIzic6Kc9dlqW1a7Tf7iUpjfOX71wnX5Lyttryk3yeec3LtjTF8PseQAHSl&#43;mRqmhguHad/nan3vzQ2z6U/2GR5X&#43;aOAwB7I0FhdOcEpQ/qsoAuD8bG494e8LcC4hQMzr2TPBOoRzuq74oEpXw9c5x47vv6BGXafkFqw&#43;sSlLKN&#43;uPWx1gI&#43;mf1&#43;8TS6K&#43;5c7zyyiuNMTPsk/fdNXXt98/rMdSv2HD&#43;mNM2mhtHALBfEhRGfQB5DuiyMg3WGobgbrJtCqbG5UOgd7mUAd4QlF0ZpM7ZU323mKDMtN9NCUp9kmEs5sv7883Wp6Xfp06iooVztLafva6FxKM8dNh/mlDUx20mtRPD2JKgAHA8EhRGjQDyGnMB2BBM1QF/HoCt&#43;kRiCCgvBm/r7Kq&#43;8VjbSlDm2i8tvy5BmZ6jD/rzFXdIUNpjug/yG4nFdPtGfTKTa57UdX7/sg0adWrqt5OgAPfsgy9&#43;1P/V&#43;&#43;K7p6/98LunD/qXpR&#43;d3v7ht07vfRn&#43;/vHpvY&#43;&#43;fnr7i7ji9PTpt05f&#43;3g4VrkOLpGgMGoEkKsNwXgzgJsJljPTgL&#43;hD/piAHn&#43;Ck4f&#43;F0sVcC8y/qWy55rgrLQfveaoDSSh2Z95lzYJ9U1C/Lntm/UPZeuI7vm&#43;jhDey2UuO1Cu5YkKMAD&#43;PL7p9d/&#43;PUuIRmSjiQkG68//XH/qktiPh6SjZUJSkxywnGnJT8uDCQojC4EYUsmAVohD5aHwGp9SbFav18I9Ltlr3zzm7N1rQP3lr3VN/VNWd/lhKR&#43;3esD52tKq2pL7befBGXo22eYoFyq/NrtWnUHuDc/7hKMmaSiSzquS1B8esL1JCiMLgRh8xrBZKEMlj/5pNqqC&#43;bCJwwxmJ8LzPq6ffMH6Vxxs7hsGqBdDvj3Vt9O3HcpQcnOEy0lKO3EYuJ8Df3rs&#43;X222KC0h7T15yj33bm5OmalxKd5TYbrd1OggI8Y/HTlfRVr2sSlPjfj75/ejp8ihL&#43;TpvALAkKo0YAucrFwDELlsO22YYxQO1ex/&#43;GoCysbwRnMQCMy1MAl59rCHIXS37MvdU36PvmvL47YJGg9Nc01vUBE5QL7TdcX71&#43;WJ7XaW7b7iTTQP3CeZuGdmn00bCuaKOFc8wmXkNd850ax5nfv7RuOwkKcP9C4jF&#43;vSskHNlXvUKC0ScX6xOU75fHCM5fI/OpCvMkKIxWJSh9MHYOjNYESn2w3H/NKQVtZVB3DviHv6sA7ZPvfbN/PQ34a0XgPrGv&#43;qZgtS&#43;zB0nneOV730t1XApuY&#43;B8OUiOmgnKivYbkqk8KcgSrOeSoISS79iqY7B4jr5OxbXPtEfrOOc2aGxbbDicp&#43;qnbrvyEubaDuB2MbHok47xa1rl3&#43;0EBe6PBIVRH0BdlaCs2mcI4lLAdQ66s8gqD/ijLLAsA7B0/qWgbDFB2Vt9LxmC3rpu3bLmNcZ63iFBWdV&#43;naFeQwlt1dj3WSUo4ZxFshdK60AXzzGMjazUSU4we5xh/mRl5mSX61vW5WKfAFwtJCAhGSk/HZlPUNJ2xW9WZopPT1giQeFOUhC18G56EAPTPiieCdwmAX/UB2DFxmXAPwnilkp3/L&#43;/s/ouhZzDseq6RUOCUK/sr&#43;eakh9iVX9vSX&#43;9zzx4n01QAHbm/C9wjf/U8KUEZTn5WLMNLzoJCrebC4Jv0A74Wy5/IjFrb/WdszroTglTsV3c98ZPUO6x/Z6Z55SgpE&#43;GdpTIAZzNfCrSf70ruCpBmfz/qEhQuEyCAhzX80hQ&#43;kTumX9qA3Afsh/DR&#43;cftd/2Ccr5X/HqXxfbhHNliQ8MJCjAcT3DBCX/&#43;p7kBNir/Mfw46cn4V/jGv9PFVf/SP789bDyE5hBeS4YSVCAHWr82Lwovl4FcL3yE5CYQAyfnEy&#43;qhW0E5S0X0pMwrHmEpGQ6Ph/kqdFggIAQGdMOFKSMf36VplQ1NunpGSSdGT/3ydF8X/ayAwJCgAA2acky1/dypMRSQYPQYICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKDsV&#43;k1RFEVRFEVJheOQoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFA4&#43;7t/9&#43;/2f81bs82cet9Lr3N3OS8AAPshQXnBLCUFa5KAevu50lIvv/Q6t7QuCOuHAgDAfklQXkB5ED/395x6m0uvc/W5lkotX1Zvm68DAGDfJCgvoDygrwP9vOSW1g9/58ty&#43;T75NvX29esg329Y39oOAIBjkKC8wOpAf03gP7fNtfuGv&#43;dKS758bhsAAPZPgsLZmsC/tc2wLPx36Rj5urnt1iwPf88VAAD2TYLyAqkD&#43;fz1XKnly5a2qZcPy4bl&#43;eu61Op19X8H9WsAAPZHgrJTv/7rv75YlrQC&#43;bmgvxbWL&#43;0/J99v7hhBa/ncvvW29etcq40URVEURTlO4TgkKDt1l4nYCuTngv5BWD6UXL68tT4YluXr8u3rkhte58tby4L6NQDwYpCgHIsEZafuM0FpBf9z5tavSQ7ua9/W32uOAQAckwTlWCQoO3VfCUod2C&#43;tC&#43;YSgbnluWGb8N9LpZYva/3d2gcAeDFIUI5FgrJT95GgzAX1YflQavm&#43;l0ptaVlrXW5pu0v7AgDHJkE5FgnKTt06EdcmBHPm9ltzvHqbS69zw7q5fZb2BQCOTYJyLBKUnbplIraC&#43;0tl0FqWm1ueG7a5dJzWunp5a7vWMgDg&#43;CQoxyJB2SkTEQAgERcdiwRlp0xEAIBEXHQsEpSdMhEBABJx0bFIUHbKRAQASMRFxyJB2SkTEQAgERcdiwRlp0xEAIBEXHQsEpSdMhEBABJx0bFIUHbKRAQASMRFxyJB2SkTEQAgERcdiwRlp0xEAIBEXHQsEpSdMhEBABJx0bFIUHbKRAQASMRFxyJB2SkTEQAgERcdiwRlp0xEAGDPfuu3fmuxXENcdCwSlJ0yEQGAPWslJXm5hrjoWCQoO2UiAgB71kpK8nINcdGxSFB2ykQEAPaslZTk5RriomORoOyUiQgA7FkrKcnLNcRFxyJB2SkTEQDYs1ZSkpdriIuORYKyUyYiALBnraQkL9cQFx2LBGWnTEQAYM9aSUleriEuOhYJyk6ZiADAnrWSkrxcQ1x0LBKUnTIRAYA9ayUlebmGuOhYJCg7ZSICAHvWSkrycg1x0bFIUHbKRAQA9qyVlOTlGuKiY5Gg7JSJCADsWSspycs1xEXHIkHZqa1PxH/0mz88/Scf/hf9qwfy5fdPr//w66evVeX1pz8e13/0/dN7H3/99PYXaVHwQfX67Ivvnr728Y/6F7Ufnd7&#43;4XdPH/SvgqdPv3U&#43;Tvj7fN6zH5/e&#43;&#43;hbp/e&#43;7F/O&#43;tHpg1Z9uDtjBGCzWklJXq4hQTkWCcpObXkivv8//9rpT/&#43;Df/X0n/8Pj/slDyQElzFYDEFeHxh2AWQdfD6NgWMeBIbtGwHoyuAzBJp1wFuU8zHK4DMEvc3tQ5k9L3dijABsVispycs1JCjHIkHZqa1OxB/9L//j6c/9l//a6Zd/7e/3Sx5QDD6/e3q7CzxDeS&#43;8W929ngafLV0wWa&#43;7t3fHU3BbBJeNd&#43;l5BowRgM1qJSV5uYYE5VgkKDu1xYn4P33xG6c//1/9G6dv/3f/2elfdP97cDH4DMFienf8vS&#43;74C&#43;8Ox4C0DzwG8qld6Bngs/Ju9oh4M1f56UIaEPAWr47Lvh8xowRgM1qJSV5uYYE5VgkKDv1PCfiB5//96f/&#43;Xf&#43;1/5V8pv/92&#43;d/uI//DdP/8GT//T0B//iD/qlDywEn40AcP7d8exd6/qd8U78Ws5cgBoC0/O749N3ypPqHfe4z5qv77SOxb0wRgA2q5WU5OUaEpRjkaDs1POciP/ur37n9Jcf/9un/&#43;13/8/4&#43;sf/z/8eX/9b/&#43;1/fPr9P/j9uOzZSu&#43;OTwK4ImDMTILSJAWH7UAwrftWt19YH4LPPHjMSnbcPNgM74qH128/rc89F8hyv4wRgK1pJSV5uYYE5VgkKDv1PCfi7/7&#43;/3v61//Rf3T6G//Nv3/65P/6rdNf//6/F1//5P/7vX6LZyQGl1ng15fh3fH4nf/4tZ74ctQMPkMAm36fMNk&#43;vuvdHSu80/1F2Df83QoYw3bDcUNQGc4f3h1PAebbIfj8ogqUwzVc&#43;loRtzNGADarlZTk5RoSlGORoOzU856I/&#43;wnv336m7/yH55&#43;&#43;h/8zfjf3/693&#43;3XPA&#43;td8dTMPne0&#43;wH0YMs&#43;HzarY/B5rCsEQymHzd/P3sXOwST06A3lvNxwz4/SnXog9kPPk5/p3WhTn0dJ8Eu988YAdiaVlKSl2tIUI5FgrJTW5iI4Ste/84PvnP6P778Z/2SZysEcbMB4DnATO9MF4Fpvy78i0kp0AxBYPqKTSsg/KALPJvHCcKxGu9uf/Bx2DY/Vv53OFZ4J37h9wzcC2MEYLtaSUleriFBORYJyk6ZiG0xIO0Cuvhd/v5fQxrfje6FgDEEqX3gF/eJgWovvEOev46G4DMFqs2gdyjngDILOM/BcJIC50Ywy4MzRgC2oZWU5OUa4qJjkaDslIkYdAFhF9C9F96JjgFlCuYmwWT/bvT5He/sKzpzQWD88fI5iAyG4DMTz9kd9&#43;n0Kz/JEHymgDUFw&#43;E4/bH7IHjy9SLukTECsFWtpCQv1xAXHYsEZadMxBQghsAtBJApgOv&#43;7n9sXAeTzXe8s4C1pQxAh&#43;P2wWMo&#43;fHC8Yfl53364HMITuM2awJd7osxArBdraQkL9cQFx2LBGWnTEQAYM9aSUleriEuOhYJyk6ZiADAnrWSkrxcQ1x0LBKUnTIRAYA9ayUlebmGuOhYJCg7ZSICAHvWSkrycg1x0bFIUHbKRAQA9qyVlOTlGuKiY5Gg7JSJCADsWSspycs1xEXHIkHZKRMRANizVlKSl2uIi45FgrJTJiIAsGetpCQv1xAXHYsEZadMRABgz1pJSV6uIS46FgnKTpmIAMCetZKSvFxDXHQsEpSdMhEBgD1rJSV5uYa46FgkKDtlIgIAe9ZKSvJyDXHRsUhQdspEBAD2rJWU5OUa4qJjkaDslIkIAOxZKynJyzXERcciQdkpExEA2LNWUpKXa4iLjkWCslMmIgCwZ62kJC/XEBcdiwRlp0xEAGDPWklJXq4hLjoWCcpOmYgAwJ61kpK8XENcdCwSlJ0yEQGAPWslJXm5hrjoWCQoO2UiAgB71kpK8nINcdGxSFB2ykQEAPaslZTk5RriomORoOyUiQgA7FkrKcnLNcRFxyJB2SkTEQDYs1ZSkpdriIuORYKyUyYiALBnraQkL9cQFx2LBGWnTEQAYM9aSUleriEuOhYJyk6ZiLDC5&#43;&#43;eXnv1G6d3Pu9fn71/evPVl0&#43;vPf6sf1168ujl01e79ZfKS4/e7/c4gs9O77zx1ulJ/Du1T&#43;uaQ8nb7dPH3zi9&#43;WH/ole330uvDsdNwvpJ24e&#43;euPd09wTqbnPJTPHDMeq63y7rq1a9V64ntBmefvMlbvXMfRj2fZ5f4W/p20axkFrztTePz25tzbkRdVKSvJyDXHRsUhQdspEDMKDtB20hAfvuuAxPMCHh3H&#43;9zM2G0hzd2mcvPnorWYQmJf7C1qvtIn&#43;rxOUMrCd&#43;HDani/111AmAPWx2sdeThq6ffJgv3HueP5qzhcBeLfPsP6ZJCjDuGucJ08S5qzZ5rKxrcPxWm02lLHtygQltFVr&#43;1COlaDzPLSSkrxcQ1x0LBKUnTIRAwkKV&#43;gC1KV34O83aL3Sc&#43;7/Ogh9qUvmYmA7kwjk7TS22xjYlm05BsmtxCL1SdimXD4kO8Gnj9/q/&#43;6PlSUbZ5Nl00B7qNP99nVXpyFBmWmvoQzj73kkKIP8uOHvcU6k&#43;2le35e663rnXtsKSq2kJC/XEBcdiwRlp0zE4EAJCg8iBKLlOAh9XAZhMRDT7508mK0D2/r1IF&#43;&#43;LkEp&#43;qN7HeZvGSgHWXIRkrd&#43;n/Nx1yQo4XVxPdN&#43;H0rrHrJGqM/kOKG&#43;1ScqYbv8HGuSjzXbLKnrlpLOctl5XVHf0FbjfCj7Eu5XKynJyzXERcciQdkpEzG4JkEpA5QyeBoexuWDuX5Hsf4efSkdv3iQFwFSOtabH47HLILite&#43;gx&#43;3mriO8XrrOpfXHFcdC4ys406A4KPt8TUnHPkD/x/p2bRLrGbbLx3v9OhiuqX&#43;ZbTMJjod9G0nEa13gPP2tRjh2ao/QT&#43;fjDPt2&#43;&#43;XHn6zv6zact74f3G/Q3V13Xf9wXf3Yao2zsOzS&#43;ddsc1Hs06HfWn0YVPWP&#43;4xjse7Lc1s3jwXXaSUlebmGuOhYJCg7ZSIGY7DXKnWwcg4SimAwPLRbf/cBThbUxCBn9qEc9m0FfMP2Q8BUPvjPgfPKAPXJ4zqQyIOPKmgoAo1L618Mc8FWKHlftywHtfvv/yePQnISXufbpr&#43;LduqPkbfH0K5DG5ZtFY7RnzecM2/n7nWal9k2UWivvD2614&#43;qa6/7K1uWEpL&#43;a2rxWPmx6/rdVVf32I&#43;pj/O2qsvQ388qQYljrOvj1&#43;L1T/uyrtewz7A8nD&#43;2VTfuyiSy7i&#43;4TSspycs1xEXHIkHZKRMxSAHB9F3wIUDpA5gYiNXBz7BfeNDmQVz/92SfID3g20FDY11xjEZdY1Dar18ZoBYmiVZdt3TOtOzS&#43;hdDHpiGMXLuj1bAG9q3CtzSvqHd6r7ae/9367sEYP5H8vXrORe269okD4xDObdJcT1lG4fk6Z3Had/YT63&#43;ypY96ZKTFJC365KPg7sL5wmJQN1e8&#43;d4NglKV4euDWObfhjGcvi71R5hu2Gch3rniWqX5MW2Cv2R7dtqf7hBKynJyzXERcciQdkpEzFoBH29PEEJf9dBUShpv/RAHoO89Hfcv3jHMJg/X9q3CkgaAWqxfjZATcca6lkfI7&#43;G&#43;h3yMqDJ63tp/YGFtu37Mn93uC51wBWD4j5ADoqgNjtmsu/&#43;T8FweD2cK2w//B3Ur5fbslVi&#43;9aBbfe6GH/nds3qEtum6p9uv9lznA11Ttfe2n4o07m&#43;xtgfaf8V5&#43;nrtyb5WLPNkrD/a4/fzfptvn75JzuvPX6/u65x7A/zIK0LfRWuu5wbsAXiomORoOyUiRiMAVYtPEzPwUoIimYDkPDQzoO8/u8iuBykB3w7aGisK46R6lqsnw1QZ9R1agS1Zd3yZZfWH1hot34s5EnGGHB1sm2i&#43;nWnfte92H/n/Z&#43;&#43;OhbqOBw/rHvr9E53ja2AtjXnUpulr1W9WSV3Z412bh6rqEtDfZxgsixdQ&#43;sYdV/eTXee/P6yoh5h7Fw6/5ptlqQ&#43;nWmDMHbq9uukT55C2w/9l/8djtXVqevbSdvDBoiLjkWCslMmYpCCvosJSnywltulB3GQHrr5AzgP&#43;PIHcTzmbKKT6jJu378&#43;BwfpdRFw3DFADUHW5DcGWf1ifc/bX1p/XHkwGv5uBdyhlONl2i7ToDYP3o7Q/6GO&#43;fb5unnhOGP7DfsN119dUx28d6/bCcr0/EPfxWuYJAGdybL5a5j25V105zm3a7ruWM947aEO03OFNrt0/jXbXFb2xzDWW6Ucu32/hXH5At4z2Cdx0bFIUHbKRAzSQ/dygtKJAeD4MB4f/OEBngd5eUCVgovzAzx7UDdl54jByeM8oEx1LQKOawPUKsiIP1wt6j4sG&#43;qQBxKX1h9VuO7qOmOg37db32dl8lr1U6&#43;5POw/jLPd9384/rCs0W6VIWEo51&#43;931jnOB&#43;7tg9/56WZoORt0&#43;9TtN2DJCiXr7mt269xbxjaJ5S6rkNSd6mMdbxD3er9hrEWxmfdhlHoszCu8jEbjtNfRz/O24klPD/iomORoOyUiUgpBRDToGtwaf1B5UFrH&#43;i2grL0znAjQej3ifvdFCA&#43;K/fR/3WCMg2YhzKfrIf9FtqpTiK610OgWwft7QB4THjmyli3&#43;brMJaGxfhcTxdGQhOSB&#43;1CP4vj9OMqv9dJcnGxzZd2SoQ3G/iz6rq9XXH7ulz5BGRKYeN5pO4Zrb80leF7ERcciQdkpE5FSCkDmg55L69k3/X9vQkB&#43;6dPS52XLdYPnTFx0LBKUnTIRKQlQX2z6H3ixiYuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJ2Pn83dNrr758&#43;mpWXnrj3dOnH751eunR&#43;9k2b52epFdJtz7fp1XicfrNk/dPb1bH&#43;fTxN05vfjj&#43;/drjz9KLs89O77zxjdM7n/cvZ71/etIfBwrGOMAq4qJjkaDslIk49eTRy30AlYKm197ogrA6cFsjBHwLwVsI1FoB31DOgWMVvIX6tbYPZdyHTYnB/5oA/NkwxgHaxEXHIkHZKROxE95F7oPHEBgV7wiHdcPrSZAZArF2EDWUu727HIK26fHe6eo4bM9OPO8ExRgHWEVcdCwSlJ0yEQcpEAtBXHg3OQ&#43;YzoFTDLo&#43;O326Nsis3l2u3xV&#43;6dFbs8FfGfSFuo1BYziO4I3rGeMAl4iLjkWCslMmYpDexZ2&#43;EzwK7/rmX4GpA7FL5Xzs&#43;E72cJzpO81JtzyvS/budzB37pu&#43;osNKKbgvguaiL9MYevPD8ROBvM9Wf4IStxv7dDzfcP703&#43;vXG&#43;MAa4iLjkWCslMmYgrcXnv8/jmwnCvDu8HzQd5cMDYKgVd6BztsVwaTxbmyc&#43;TBWgg4w&#43;s3H5fvXK85N3eR&#43;upSglIH2ed&#43;XJmgPOn69dynk0A/HD/r4yKoX1pvjAOsJS46FgnKTpmIgxDELQSQIdirfpwb33EulqVgLA9iy&#43;/bd&#43;vDD5JD0PhhCL7C362AK2w3BGbhmCHYC3VLAdqbIXiL79RXwagfDz&#43;gad&#43;WCcSQBAx93YlJSb9&#43;7ScouWKfxvn7c6Zll9YHxjjAJeKiY5Gg7JSJOLg&#43;eAuKd8n74G14PXxlJryDHaRA7t0YgKWgK22fv6s8lPwY6Z3vsW5PHqW/x8DwQt25B6mvigSgkaAU62cTlLLf62MU42BFgpLGwKX1w&#43;uFcWKMA4iLDkaCslMm4mAaHNZl7t3bEES9&#43;SgEd&#43;HrMV2w1r2O25&#43;DuiR9fScEbEPwlgkBbDM4DNvmwVn&#43;dzhWOHf9Ljf3r5EA3JygzCiO12kkNWUCki&#43;7tD4wxgEuERcdiwRlp0zEUvzuexHkpeBsPjhKQWAK1IbALAWC4zvXuXKbOkDMy3jOLGALQV4WFMa6tYJB7lnqr7JPutfntk&#43;vi7FzxwQlfnJRJSh5QlD2/aX1I2McYJ646FgkKDtlItZSMDYEcDE4yoKl0RCg5kHnEJglKcCsA6tym2gIXh&#43;Hd6hbQeIQvKVzprqlesbt4/5zwSL3pm/nGFgP/XXuy7xvenH7fv3Qx0sJShXQxx&#43;JVwlKWjbUIR9Hl9bn&#43;m2NcYAJcdGxSFB2ykRMQdYQFK4pIWAK&#43;5yDpQ/fKtaVsiDr/DoEb2l53CcPDpvH6oO3IbirvwrUi8Hi5PwcQxovRQJUWF5vjAOsIy46FgnKTpmIsAd3S1AAWEdcdCwSlJ0yEWEPJCgAz4K46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYjBZ6d33nj59NVXL5eXHr2fdvn83dNrjfWt8tKrb52epL2ekfdPb1bn/PTxN05vfjj&#43;/drjz9KLs9AG3zi983n/ctb7pyf9cV5IH741joFBa9mgW9caE3V59mPkgay83lBeejUbb0UbhrE4tEeam3Pt&#43;&#43;TRy9OxHObmG&#43;&#43;eJk&#43;kO8zZu82Zh2Kew0MQFx2LBGWnTMQZIZiZCzqDKggKwcBLraCoCLYyfSA3BBP3awxcQr3q4CsvZVA4Bi4h8GttH8psMP4CCO3y5qPLQfh5LEySl1aAOA00bxaD8OcZNI9aAXI7aO7b9TwXGu0R2nHSRu12K4&#43;VucOcbdd7RbBvnsPuiIuORYKyUyZiEB7a7Yd0Xc4BTRbszAUHKaCaBjtBCAxe6wKFhwkCpoFbqGP7ndXptYdrfGcuyHuhzSQSkyQkI0HpXyWtZZPrD9dwaV70gX9e0nHDscrl509q7jBn2/Vu9WXJPIf9ERcdiwRlp0zEhqWAc9AHO&#43;EBnwKbPFBJQVJ68E&#43;DnRREdsuG//aL70P9juhLj96aBGzndX2wloQ6j9cw&#43;y70i&#43;w8LqbBXl6Kd/obgXSrTD8d2L9WUN8M9OM8aLdLq8RxW8/R7nU47vT4WRJxhznbrHd&#43;7BbzHHZJXHQsEpSdMhFT8NF6sM&#43;V&#43;MDvg51x1I9BaxlstoOdPNAtA4QhUEr/Hc45bnNpfScEb&#43;c6hO1awVG3PK9/3KcMXIZj5&#43;WIgfQ6qa/GfssC0yJYrvq7DqTrfaO8j4b&#43;jS&#43;Soj&#43;HMZP&#43;m/okO14MhuvjN8Ttxn5dP74urR&#43;1gvp2oF968mhF/et27V6/1gXp5ZwMsva&#43;45wdrnWp5HUyz2GfxEXHIkHZKRMxNw1MRlmgE8Rg563u4T880POgagwqXnr0bnXMMliJQUwRNKV9iwChCCourU9BR3gd6vckq0td8vPmgUqoW3xn9XEd0IVjzbXPscXAuuv/MeDM&#43;jsEx&#43;eguxpDoW8eIEGZ9PfQTysTlCdd3577tTj&#43;pfG1tD7VLR9jl0o59oN0/Na2oZzbpW7X7nXqg7wtg6y9b56z6xKrUmoL8xz2R1x0LBKUnTIRe93DP3&#43;ot0oR0NTvxvb7TwOuEKhkD/sYQNavp4FSEaAWwc6K9V1AFo/5Yahj&#43;LsVbITthrqGY6YA/J3Pw99dEBcCl/gufbZvCJCKYPvF8eRR1w7n60/tXY&#43;PodRBZWubuoz7NPo3nPe8Pp27CJbzMTUZTysU&#43;zTOf9X4G7WC&#43;kuBflgfAuY3623qedNo1/Nxi&#43;sJdev/DstvmbOdqxOUur5FnYK7tnO33jyHByEuOhYJyk6ZiP07kfGBnB7a04d8kAU6QR3sDPqgZwxmyod//g5mXsbtQx3agUnaZnl9CqS6AO98HWn71jmHwCzt835xfcPXbMbArLr&#43;F1ERuHVtPbRFtTzv72lg22rHfNw1&#43;jcc/7w&#43;9XWxPg&#43;Gi0C47Pv6GMVYqPa5dfzlwrWX210K9Md2iAlhWhiFeVPsVwfR3eti/Xl&#43;hrplbXPDnA1CvfP2yksrmDfPYb/ERcciQdkpEzE3/5APZe4TlDwYWX43thV0dEKwdd6vtU2&#43;bHl9&#43;upOeF0GWFGoczOYCtvmgUn&#43;dzhWF2h2gUwrEHuh5EFxTARSmy8F3WFd2VetADDvr0b/hvNWyUWxPtalXx//vhBgFsfrFPs0zl8su7R&#43;0LrOy201rgvHTHUMyyfzKu&#43;LoHvdPm6oR9Y2V8/ZJGxfXl&#43;vrkfUao9O2NY8h80TFx2LBGWnTMTczAM/qgKuLNjJhWBqCHxScJEFO3VgeJYHI&#43;nvPGiKAdp5v0vrg&#43;E6wrnHQKxVxmAku77q2qbHf0FNgtG&#43;L2bbphozUWvZ0F9B6rOyX/JzpNdF4BoTjH59/Ls&#43;fqUahyH4rj9Budv46xTB&#43;Chs20wkmvNpeq6zui&#43;61&#43;0EJWvbW&#43;ZssNSmkzHRqdp3lK7HPIdtExcdiwRlp0zEXAoKWg/4UCafoDS2aZXhoR8DwTqY6Y3r&#43;iDm8Xj8aVCytD4YApfMEGQ9bgRU0RC45AFwOlfcvr/euXe/XwhVMDoE9q/1weEkkK4CwCQLEM&#43;q/srGVhxzoc/O6/P&#43;6cXt&#43;/VDP7eC6bN0jHD8UNJYGva5h/EXA/R2HdoJSjhmtn1//cMxUuBcHa87x1D/ocwmPkXblPvMlfyaluZtK0Exz2HfxEXHIkHZKRMx13jgn1WBZXiQT4LPlrDf3DFb&#43;sAkD0ALl9YHw3WkbWNwk9c1C&#43;7GIKa/viGwiUHmtN6LwdrR9cFoaIPQdpM&#43;qNo1BNbTfhrHUVg/7Yfn7W7jLyYTC/OilaCE9gzHG9qjvX8KqM9tVScG3evhuHm7hnI&#43;3y1z9tI&#43;dT1Wu1s7J2Eb8xzum7joWCQoO2Uibs19BC5wK&#43;Pv2dDOsFXiomORoOyUibg1AheeJ&#43;Pv2dDOsFXiomORoOyUiQgAkIiLjkWCslMmIgBAIi46FgnKTpmIAACJuOhYJCg7ZSICACTiomORoOyUiQgAkIiLjkWCslMmIgBAIi46FgnKTpmIAACJuOhYJCg7ZSICACTiomORoOyUiQgAkIiLjkWCslMmIgBAIi46FgnKToWJqCiKoiiKoqTCcUhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAnKTn3th19XFEVRFEVR&#43;sJxSFB2ykQEAEjERcciQdkpExEAIBEXHYsEZadMRACARFx0LBKUnTIRAQAScdGxSFB2ykQEAEjERcciQdkpExEAIBEXHYsEZadMRACARFx0LBKUnTIRAQAScdGxSFB2ykQEAEjERcciQdkpExEAIBEXHYsEZadMRACARFx0LBKUnTIRAQAScdGxSFB2ykQEAEjERcciQdkpExEAIBEXHYsEZadMRACARFx0LBKUnTIRAQAScdGxSFB2ykQEAEjERcciQdkpExEAIBEXHYsEZadMRACARFx0LBKUnTIRgUVffv/0enef&#43;NrHP&#43;oXtH3w8eVtCl98t7v/fPf0Qf8SYAvERcciQdkpExFYEhOPj751MUl52ATlR6e38/PHfbvXP/zW6b0v06KJfpu3v0gvY/2WtgfoiIuORYKyUyYiMOfp029194ghieiThI&#43;&#43;f3p6fj0G/HmCkvYLCcFYQqKQkoSFcj527sen9z7q1uXJzzlBmdunUyUoQUq2ZrYH6IT7BschQdkpExFoagT452QhBvnzCUquTHIy8fjZ8vC6lTzE7apPPvq6vf5RSoTKOvZa9e&#43;/rtbcHqAjLjoWCcpOmYjAxJAAPP1xvyCXkpS3v1iRoGTJRetTldlyPk7j05PgnHz062cToGky4lMUYEm4b3AcEpSdMhGB3JBItJOT3IUEpf&#43;0YvY4MYG48AnK3CceefIx9yP&#43;mQQlLa8&#43;kQHoiYuORYKyUyYikIsJysffTb83aZb8NylzCcrMJx&#43;5NQlKvc2gSj6GpKpIRqptRqHereUA4qKjkaDslIkITM0E8UXCsJCgDJ9qZCUcK25TLS9KlaDExGP2dyl5/fLfxvRmE5S07eVPiIAXUbhvcBwSlJ0yEYGphQTlnAQsfYKSW5PstMVjrkpQOvVXyi4kKIuf7gAvLHHRsUhQdspEBKbaSUWZMMwnKMUnHzFxCNsNP2hfKuPxgqsSlE7cfjiGBAW4QbhvcBwSlJ0yEYGpMUFJQf9Q8gRi6ROUcd3y17SWP0FZ/xWvQap33OdCguIrXkCLuOhYJCg7ZSICU2OCMm8pQRmSi/T/QB&#43;Sgfi6&#43;/tyGZOWtM/lH8kXhnUfLycxy9cGvKjCfYPjkKDslIkITC0E8fErW9OkoU5Qzl&#43;lmvuUZMUnKMPvSib1WEpQOvmnPu1980&#43;CAEbiomORoOyUiQhMLSQoIcBvfO1qkqDU/5JXvc&#43;aBGXu9yIXEpSh/q1tYj1bXxsD6IiLjkWCslMmIjCVEoNWAjAmImMSkEr9&#43;5T8dx71thdKnpCsSmTWWki8ADrhHsRxSFB2ykQEWuZ/M3I5WQhJzP39CL38FKVdp8sl8OkJcMlwv&#43;AYJCg7ZSICmzd8Xaz&#43;qtcVYnLityfABeKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyUyYiAEAiLjoWCcpOmYgAAIm46FgkKDtlIgIAJOKiY5Gg7JSJCACQiIuORYKyU2EiKoqiKIqiKKlwHBIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQowLZ8&#43;NbppVe/cXrn8/5159PH3zh99dWXi/LSG&#43;&#43;eZu9en797eu3Vt05P&#43;pdLwrHf/LB/Eb1/ejPuG/77crkuHresR7s&#43;n53eeWN6Da89/qx/lY49OcZQ564N6nVLJa/jk0cvZ&#43;fphXovtdc17tAGhS&#43;/f3r9o&#43;&#43;fnvYva0&#43;ffuv0tR9&#43;PZa3v&#43;gXBjP7ffBxtd2MsN3XPv5R/2rOj05v//C7pw/Cn&#43;F8fT3q8vrTH8etp8K1t9uoLi89ev8O&#43;9Tmj7E4XwA2RoICbFAKtIZAuwzuOxcC7rD9fBBXmiYo4dxDclPW42wmARrrGfa7kKBM6j8kRlNFHbvkZVKfs/YxQtJSXuMoHPscxFaJ4aIb2qCQJxpffHd18B8Sl/O6sF&#43;fbKxNUFLycWnbLEGZSPtfTnIqob1WjsmzS/tkiWxKbvOxm42FC/MFYGskKMDmlcF9pwq48iB7TQnJSwja6&#43;UpiM&#43;DvLYx4C&#43;D8FZw3qrbmx9e&#43;AQl7j9d3yrnd8Ybn7qkukzPNSYi3bosAA51Heuw7Jo2qMVPMbJkpEwWugRg9pOVH5/e&#43;&#43;hbp/e&#43;TK/ypKSVoNTnuVjOSUc7QUnHm0tccjf03419nhLxIRkJxxj6T4IC7JcEBdiUEPiWn340At2FgCsG2UvvOlfC9uWnC8P5ysB&#43;SJAmx8/qMh&#43;cj8FnCi67Y0/qnwWU1f5FHfNPUPJ2OAervX67sU6DRnsOwvFWJCi3tUEl&#43;wTlYiJRfNIyJAj9JxkzZf7rV0ufjkzrEo/Tf8Kz7hOahrpv1lizz3kbCQpwLBIUYHNiAJwFvOO7zIM64O/FAHtMKurS&#43;gpTOH4M/qt92193Gs9blzIZKIPzTx&#43;/dXrzUVqXtnm3SH6GUn6Cku9/Y4LyqCvNtmsnDu22rt3WBhOzv0GZ&#43;wQlfHoSkoaUXMTfqGRfs2p9gtK2nKAk&#43;TbLiVDrnKENWu0zV0Kbf3DDPp9KUICDkqAA2xWThiHguiQEZF3gNvuucztgLoL/3pMumRi3ywK9BZ9&#43;PhOch2vo6jSuC7pjTgLG/DzzSUBdzglFK0GJ56vrP98Oa7/eNWe2DVr6BOW9j791ersrY8CfEpT3sk8yQhKQEpLv9olDSFbKJGMuQcl/bL9Uyk9cpknM&#43;NuX8Wtml5Oi0AZzbTrXPlfs00xQLowTgB2QoADbkyUmIeBtBVyhFAF/&#43;MTj8fK/fjX3CcqwfkhUwrL0dzjuuLzQeFe6FZw/eTReR1nfVv3agWn42tu474wuWK2Pd94ntudw7dPAONTtpgB2ZRu0DF&#43;lGpKPIUF42iUu&#43;ScoQxLwQZecfLDw6cdSglIubxzji&#43;&#43;2E5SQRMVPafLfvgz7l7&#43;HmWj0R10m4/HafZoJSmMMNfoJYMskKMD2nAOvYAi&#43;cn1C0gdq5088iv1qZcCc/0h&#43;koB0x4lfj6oDyBjolwHjUMJ5l4LzSYIyCRjzILN9jrlSft2nF64hT2rOQeo0iF2VAA3u0AZJ&#43;qrW20/Hr3jln3K83i1vfYKSDMlB&#43;O&#43;4vlmyY9&#43;WoIzHiL9Byf&#43;eJC2l8XdUrbE7mI7Ha/eRoABHJUEBNicEa0XSEAKxc4AVgrGZTzW67VqB81AWf4OSCcuKTzNaAV5jWTs4H/8&#43;ry&#43;uJ2nVIyUD04Az1q&#43;uzzlY7XWv20nHTBB7i9Vt0JD9BiX/BCUmB0My0Ck/GWkkF737&#43;wQlJSfj6z6hisfIk5ILn6BEaay2xmIo7d85XbFPNt7TeL3HvgV4jiQowMbMvIOcBWPN5CSog/RCO2AuEoOYEKR3soskqXXcVtJylp0rbNfvOwbvfZIRl&#43;fvfpf1exJ&#43;XJ99mvLa4/e7bbr6tc5b17F73U5Q6vYN503XfLW1bdCy0QTlg4/zpCMlJ8O6cKzxh/lhXbsuo5mxHM21zxX7nPs8H0Mz&#43;2bjEGDrJCjAtrSSgW7ZEKSHMvtj7ta&#43;Z&#43;2AcEhQ4lds8uPGZCVtnycWZ3F9VqciUB/Plf/gfvY4w76zQWQIQMdzxfNdaKNQmglKrHfefqGud0hQsvPNtUFTlaA0v6bVl4dJUFLyMT3HKE9IUh3zc8/XZTTtt7zc&#43;ROUiYU2X5wbANsiQQE2JSQKKbBOgXMMyiaB1RjEFesaQVhICs7BXR5A9wH9YsDXB&#43;DnbbIkoLlfFrA3P&#43;WoAvqhTD4RqpKNZkI21H84T33t3eshQcnbIJRm4rLWXdugE5KJkBTkn0yMn6CU7voJytSaxKISkqlhn/AblD6pmavzaPhko2Uumbhln1Hd13mZ/eQRYGMkKAA8U0OAf5QCwP2SoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGRIUAABgMyQoAADAZkhQAACAzZCgAAAAmyFBAQAANkOCAgAAbIYEBQAA2AwJCgAAsBkSFAAAYDMkKAAAwGZIUAAAgM2QoAAAAJshQQEAADZDggIAAGyGBAUAANgMCQoAALAZEhQAAGAzJCgAAMBmSFAAAIDNkKAAAACbIUEBAAA2Q4ICAABshgQFAADYDAkKAACwGTFBURRFURRFURRF2UL5Q3/uX/nTp7/wF/786ed&#43;/i&#43;efuEXfu70V/7qXz79tb/2C6e/9td/4fTX/8ZfudfyN179q4qiKIqiKIqi7Ly0Yv1bSsg5Qu4RcpCQi/z8X/7Z0x/6Ez/1L53&#43;5a/&#43;idNPv/ynTn/6z3z19Gd&#43;5qXTz/zMT59&#43;5s&#43;&#43;3JXw358&#43;/dk/97KiKIqiKIqiKMq9lCHPiDlHl3uEHCTkIj/98p86/f9xg10D0waAvAAAAABJRU5ErkJggg==" alt="create" /></p>
+<h5 id="运行项目">
+  运行项目
+  <a class="anchor" href="#%e8%bf%90%e8%a1%8c%e9%a1%b9%e7%9b%ae">#</a>
+</h5>
+<p>在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行</p>
+<p>在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app</p>
+<p>在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到手机或模拟器 -&gt; 选择调式的手机</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果是第一次使用，需要先配置小程序ide的相关路径，才能运行成功</li>
+<li>微信开发者工具在设置中安全设置，服务端口开启</li>
+</ul>
+<h5 id="介绍项目目录和文件作用">
+  介绍项目目录和文件作用
+  <a class="anchor" href="#%e4%bb%8b%e7%bb%8d%e9%a1%b9%e7%9b%ae%e7%9b%ae%e5%bd%95%e5%92%8c%e6%96%87%e4%bb%b6%e4%bd%9c%e7%94%a8">#</a>
+</h5>
+<p><code>pages.json</code> 文件用来对 uni-app 进行全局配置，决定页面文件的路径、窗口样式、原生的导航栏、底部的原生tabbar 等</p>
+<p><code>manifest.json</code> 文件是应用的配置文件，用于指定应用的名称、图标、权限等。</p>
+<p><code>App.vue</code>是我们的跟组件，所有页面都是在<code>App.vue</code>下进行切换的，是页面入口文件，可以调用应用的生命周期函数。</p>
+<p><code>main.js</code>是我们的项目入口文件，主要作用是初始化<code>vue</code>实例并使用需要的插件。</p>
+<p><code>uni.scss</code>文件的用途是为了方便整体控制应用的风格。比如按钮颜色、边框风格，<code>uni.scss</code>文件里预置了一批scss变量预置。</p>
+<p><code>unpackage</code> 就是打包目录，在这里有各个平台的打包文件</p>
+<p><code>pages</code> 所有的页面存放目录</p>
+<p><code>static</code> 静态资源目录，例如图片等</p>
+<p><code>components</code> 组件存放目录</p>
+<p>为了实现多端兼容，综合考虑编译速度、运行性能等因素，<code>uni-app</code> 约定了如下开发规范：</p>
+<ul>
+<li>页面文件遵循 <a href="https://vue-loader.vuejs.org/zh/spec.html">Vue 单文件组件 (SFC) 规范</a></li>
+<li>组件标签靠近小程序规范，详见<a href="https://uniapp.dcloud.io/component/README">uni-app 组件规范</a></li>
+<li>接口能力（JS API）靠近微信小程序规范，但需将前缀 <code>wx</code> 替换为 <code>uni</code>，详见<a href="https://uniapp.dcloud.io/api/README">uni-app接口规范</a></li>
+<li>数据绑定及事件处理同 <code>Vue.js</code> 规范，同时补充了App及页面的生命周期</li>
+<li>为兼容多端运行，建议使用flex布局进行开发</li>
+</ul>
+<h4 id="全局配置和页面配置">
+  全局配置和页面配置
+  <a class="anchor" href="#%e5%85%a8%e5%b1%80%e9%85%8d%e7%bd%ae%e5%92%8c%e9%a1%b5%e9%9d%a2%e9%85%8d%e7%bd%ae">#</a>
+</h4>
+<h5 id="通过globalstyle进行全局配置">
+  通过globalStyle进行全局配置
+  <a class="anchor" href="#%e9%80%9a%e8%bf%87globalstyle%e8%bf%9b%e8%a1%8c%e5%85%a8%e5%b1%80%e9%85%8d%e7%bd%ae">#</a>
+</h5>
+<p>用于设置应用的状态栏、导航条、标题、窗口背景色等。<a href="https://uniapp.dcloud.io/collocation/pages?id=globalstyle">详细文档</a></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>navigationBarBackgroundColor</td>
+<td>HexColor</td>
+<td>#F7F7F7</td>
+<td>导航栏背景颜色（同状态栏背景色）</td>
+</tr>
+<tr>
+<td>navigationBarTextStyle</td>
+<td>String</td>
+<td>white</td>
+<td>导航栏标题颜色及状态栏前景颜色，仅支持 black/white</td>
+</tr>
+<tr>
+<td>navigationBarTitleText</td>
+<td>String</td>
+<td></td>
+<td>导航栏标题文字内容</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>HexColor</td>
+<td>#ffffff</td>
+<td>窗口的背景色</td>
+</tr>
+<tr>
+<td>backgroundTextStyle</td>
+<td>String</td>
+<td>dark</td>
+<td>下拉 loading 的样式，仅支持 dark / light</td>
+</tr>
+<tr>
+<td>enablePullDownRefresh</td>
+<td>Boolean</td>
+<td>false</td>
+<td>是否开启下拉刷新，详见<a href="https://uniapp.dcloud.io/use?id=%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">页面生命周期</a>。</td>
+</tr>
+<tr>
+<td>onReachBottomDistance</td>
+<td>Number</td>
+<td>50</td>
+<td>页面上拉触底事件触发时距页面底部距离，单位只支持px，详见<a href="https://uniapp.dcloud.io/use?id=%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">页面生命周期</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="创建新的message页面">
+  创建新的message页面
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e7%9a%84message%e9%a1%b5%e9%9d%a2">#</a>
+</h5>
+<p>右键pages新建message目录，在message目录下右键新建.vue文件,并选择基本模板</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		这是信息页面
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+&lt;/<span style="color:#f92672">style</span>&gt;
+</code></pre></div><h5 id="通过pages来配置页面">
+  通过pages来配置页面
+  <a class="anchor" href="#%e9%80%9a%e8%bf%87pages%e6%9d%a5%e9%85%8d%e7%bd%ae%e9%a1%b5%e9%9d%a2">#</a>
+</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>String</td>
+<td></td>
+<td>配置页面路径</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Object</td>
+<td></td>
+<td>配置页面窗口表现，配置项参考 <a href="https://uniapp.dcloud.io/collocation/pages?id=style">pageStyle</a></td>
+</tr>
+</tbody>
+</table>
+<p>pages数组数组中第一项表示应用启动页</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&#34;pages&#34;: [ 、
+		{
+			&#34;path&#34;:&#34;pages/message/message&#34;
+		},
+		{
+			&#34;path&#34;: &#34;pages/index/index&#34;,
+			&#34;style&#34;: {
+				&#34;navigationBarTitleText&#34;: &#34;uni-app&#34;
+			}
+		}
+	]
+</code></pre></div><p>通过style修改页面的标题和导航栏背景色，并且设置h5下拉刷新的特有样式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#34;pages&#34;</span><span style="color:#f92672">:</span> [ <span style="color:#75715e">//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+</span><span style="color:#75715e"></span>		{
+			<span style="color:#e6db74">&#34;path&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pages/message/message&#34;</span>,
+			<span style="color:#e6db74">&#34;style&#34;</span><span style="color:#f92672">:</span> {
+				<span style="color:#e6db74">&#34;navigationBarBackgroundColor&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;#007AFF&#34;</span>,
+				<span style="color:#e6db74">&#34;navigationBarTextStyle&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;white&#34;</span>,
+				<span style="color:#e6db74">&#34;enablePullDownRefresh&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+				<span style="color:#e6db74">&#34;disableScroll&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+				<span style="color:#e6db74">&#34;h5&#34;</span><span style="color:#f92672">:</span> {
+					<span style="color:#e6db74">&#34;pullToRefresh&#34;</span><span style="color:#f92672">:</span> {
+						<span style="color:#e6db74">&#34;color&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;#007AFF&#34;</span>
+					}
+				}
+			}
+		}
+	]
+</code></pre></div><h5 id="配置tabbar">
+  配置tabbar
+  <a class="anchor" href="#%e9%85%8d%e7%bd%aetabbar">#</a>
+</h5>
+<p>如果应用是一个多 tab 应用，可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页。</p>
+<p><strong>Tips</strong></p>
+<ul>
+<li>当设置 position 为 top 时，将不会显示 icon</li>
+<li>tabBar 中的 list 是一个数组，只能配置最少2个、最多5个 tab，tab 按数组的顺序排序。</li>
+</ul>
+<p><strong>属性说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>描述</th>
+<th>平台差异说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 上的文字默认颜色</td>
+<td></td>
+</tr>
+<tr>
+<td>selectedColor</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 上的文字选中时的颜色</td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>HexColor</td>
+<td>是</td>
+<td></td>
+<td>tab 的背景色</td>
+<td></td>
+</tr>
+<tr>
+<td>borderStyle</td>
+<td>String</td>
+<td>否</td>
+<td>black</td>
+<td>tabbar 上边框的颜色，仅支持 black/white</td>
+<td>App 2.3.4+ 支持其他颜色值</td>
+</tr>
+<tr>
+<td>list</td>
+<td>Array</td>
+<td>是</td>
+<td></td>
+<td>tab 的列表，详见 list 属性说明，最少2个、最多5个 tab</td>
+<td></td>
+</tr>
+<tr>
+<td>position</td>
+<td>String</td>
+<td>否</td>
+<td>bottom</td>
+<td>可选值 bottom、top</td>
+<td>top 值仅微信小程序支持</td>
+</tr>
+</tbody>
+</table>
+<p>其中 list 接收一个数组，数组中的每个项都是一个对象，其属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pagePath</td>
+<td>String</td>
+<td>是</td>
+<td>页面路径，必须在 pages 中先定义</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>是</td>
+<td>tab 上按钮文字，在 5+APP 和 H5 平台为非必填。例如中间可放一个没有文字的+号图标</td>
+</tr>
+<tr>
+<td>iconPath</td>
+<td>String</td>
+<td>否</td>
+<td>图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效，不支持网络图片，不支持字体图标</td>
+</tr>
+<tr>
+<td>selectedIconPath</td>
+<td>String</td>
+<td>否</td>
+<td>选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效</td>
+</tr>
+</tbody>
+</table>
+<p>案例代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#34;tabBar&#34;</span><span style="color:#f92672">:</span> {
+		<span style="color:#e6db74">&#34;list&#34;</span><span style="color:#f92672">:</span> [
+			{
+				<span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;首页&#34;</span>,
+				<span style="color:#e6db74">&#34;pagePath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pages/index/index&#34;</span>,
+				<span style="color:#e6db74">&#34;iconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/home.png&#34;</span>,
+				<span style="color:#e6db74">&#34;selectedIconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/home-active.png&#34;</span>
+			},
+			{
+				<span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;信息&#34;</span>,
+				<span style="color:#e6db74">&#34;pagePath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pages/message/message&#34;</span>,
+				<span style="color:#e6db74">&#34;iconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/message.png&#34;</span>,
+				<span style="color:#e6db74">&#34;selectedIconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/message-active.png&#34;</span>
+			},
+			{
+				<span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;我们&#34;</span>,
+				<span style="color:#e6db74">&#34;pagePath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pages/contact/contact&#34;</span>,
+				<span style="color:#e6db74">&#34;iconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/contact.png&#34;</span>,
+				<span style="color:#e6db74">&#34;selectedIconPath&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;static/tabs/contact-active.png&#34;</span>
+			}
+		]
+	}
+</code></pre></div><h5 id="condition启动模式配置">
+  condition启动模式配置
+  <a class="anchor" href="#condition%e5%90%af%e5%8a%a8%e6%a8%a1%e5%bc%8f%e9%85%8d%e7%bd%ae">#</a>
+</h5>
+<p>启动模式配置，仅开发期间生效，用于模拟直达页面的场景，如：小程序转发后，用户点击所打开的页面。</p>
+<p><strong>属性说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>current</td>
+<td>Number</td>
+<td>是</td>
+<td>当前激活的模式，list节点的索引值</td>
+</tr>
+<tr>
+<td>list</td>
+<td>Array</td>
+<td>是</td>
+<td>启动模式列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>list说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>是</td>
+<td>启动模式名称</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>是</td>
+<td>启动页面路径</td>
+</tr>
+<tr>
+<td>query</td>
+<td>String</td>
+<td>否</td>
+<td>启动参数，可在页面的 <a href="https://uniapp.dcloud.io/use?id=%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">onLoad</a> 函数里获得</td>
+</tr>
+</tbody>
+</table>
+<h4 id="组件的基本使用">
+  组件的基本使用
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">#</a>
+</h4>
+<p>uni-app提供了丰富的基础组件给开发者，开发者可以像搭积木一样，组合各种组件拼接称自己的应用</p>
+<p>uni-app中的组件，就像 <code>HTML</code> 中的 <code>div</code> 、<code>p</code>、<code>span</code> 等标签的作用一样，用于搭建页面的基础结构</p>
+<h5 id="text文本组件的用法">
+  text文本组件的用法
+  <a class="anchor" href="#text%e6%96%87%e6%9c%ac%e7%bb%84%e4%bb%b6%e7%9a%84%e7%94%a8%e6%b3%95">#</a>
+</h5>
+<h6 id="001---text-组件的属性">
+  001 - text 组件的属性
+  <a class="anchor" href="#001---text-%e7%bb%84%e4%bb%b6%e7%9a%84%e5%b1%9e%e6%80%a7">#</a>
+</h6>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:center">必填</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">selectable</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">文本是否可选</td>
+</tr>
+<tr>
+<td style="text-align:center">space</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">显示连续空格，可选参数：<code>ensp</code>、<code>emsp</code>、<code>nbsp</code></td>
+</tr>
+<tr>
+<td style="text-align:center">decode</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">是否解码</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>text</code> 组件相当于行内标签、在同一行显示</li>
+<li>除了文本节点以外的其他节点都无法长按选中</li>
+</ul>
+<h6 id="002---代码案例">
+  002 - 代码案例
+  <a class="anchor" href="#002---%e4%bb%a3%e7%a0%81%e6%a1%88%e4%be%8b">#</a>
+</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span>&gt;
+  <span style="color:#75715e">&lt;!-- 长按文本是否可选 --&gt;</span>
+  &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">selectable</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>&gt;来了老弟&lt;/<span style="color:#f92672">text</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+
+&lt;<span style="color:#f92672">view</span>&gt;
+  <span style="color:#75715e">&lt;!-- 显示连续空格的方式 --&gt;</span>
+  &lt;<span style="color:#f92672">view</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">space</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ensp&#39;</span>&gt;来了  老弟&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">view</span>&gt;
+  &lt;<span style="color:#f92672">view</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">space</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;emsp&#39;</span>&gt;来了  老弟&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">view</span>&gt;
+  &lt;<span style="color:#f92672">view</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">space</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;nbsp&#39;</span>&gt;来了  老弟&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+
+&lt;<span style="color:#f92672">view</span>&gt;
+  &lt;<span style="color:#f92672">text</span>&gt;skyblue&lt;/<span style="color:#f92672">text</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+
+&lt;<span style="color:#f92672">view</span>&gt;
+  <span style="color:#75715e">&lt;!-- 是否解码 --&gt;</span>
+  &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">decode</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>&gt;&amp;nbsp; &amp;lt; &amp;gt; &amp;amp; &amp;apos; &amp;ensp; &amp;emsp;&lt;/<span style="color:#f92672">text</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div><h5 id="view视图容器组件的用法">
+  view视图容器组件的用法
+  <a class="anchor" href="#view%e8%a7%86%e5%9b%be%e5%ae%b9%e5%99%a8%e7%bb%84%e4%bb%b6%e7%9a%84%e7%94%a8%e6%b3%95">#</a>
+</h5>
+<blockquote>
+<p>View 视图容器， 类似于 HTML 中的 div</p>
+</blockquote>
+<h6 id="001---组件的属性">
+  001 - 组件的属性
+  <a class="anchor" href="#001---%e7%bb%84%e4%bb%b6%e7%9a%84%e5%b1%9e%e6%80%a7">#</a>
+</h6>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7MAAAGACAYAAAB/bzVFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAFsBSURBVHhe7d3Li17XveD991/xzOCBIQhBBvbIGgkyEGRwDAciMBy9pI8KAgcTOigNQX7h4HSho3MGUWcQkeYgTLspQUAN5lUgL8rAdLkRaBDkgZExwUIEamCoTpt4vXvd9l6X37rs51bPrvoOPki1L2uv&#43;16/Z&#43;966v/67rvvFAAAAAAAS0IwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALABfVt8I2AACAhdhuMPuX5&#43;rJH56s5viFOh3Teqke/Og19dprr6nrH72Mr&#43;F9etvsf&#43;212&#43;pY2g8s2ZeP1YM/hH2/MCa&#43;PVFPfnVPPTnxx&#43;ltp&#43;rkLycNp9Pxzov/8aH68JeD//Ei27co30jlDZz6Y4/VbTOHvKZufzr8/Jdn6tmXft/g25fq8S&#43;uqw8/zevKOlb3fnBVXR28/7vCPOUcf3BZXfn7A1O30zzn9v3KpnH1V8fR9o375lh9ePVNdfUXj9XL7qA2qaNsf8dcvQpT99fUjY/ivnjy7Ejd/vtrQ17iNjl5eKAuv3d7GDPP1Ulv2U6FvhH6RjgHAACcqe0Gs2OAuYIfPVAvx7SkBdILdXTTLvruHYfXIpjFOfPykTp4Q/ft19XVnx6pF2ZxLoyJb56r&#43;z9&#43;046Dd4Zx4Bfff36grpuxUTMcf3Ks7uvg9bfH6mQ47/gDt&#43;&#43;DLQdVWzaWo2CaU6ZA7da/3FVX9P/fuaueufp&#43;dPN1d86VLHhKz68Gct8&#43;U3ffcsf95ok6Tj7Iu/dju&#43;&#43;1H9&#43;Ltht/OpHTnO1UvfjohnrT5ff1Hw7lDIO1b56ouz8Zrv9lWs4kmO3qWxM5AG57/uurLo031Y2PfUB7qp784m27/a3b6onPf1C/&#43;j5ix4s2fdgQe189evmdevnRdXeNgoWPAwAAzqMdBbM31L10UVZw9Au3aCkEs2//7JF6oZ&#43;kfPvELaquqwd/Dq9FMIvz5&#43;T4rrpmAtoh8Lh2Tz07TYLZk2E8XHXB1hvX1N3jIOgZguH3h0X7le&#43;587/vFvHfd8d/78rw8z117AMTN/bOVTD7g9vq6PePx0Dx6i&#43;O1OOPb6urw/&#43;lYPb2pyfqyB077n/5WN16x26TA9rOYPbpXfW2OW6Yuz6dFwxuui1e/n6oA9evXnvnlno8BHV6&#43;7N/u&#43;Ku&#43;a56ED6dToNZ/wHI6Ja67gLJt9&#43;7FWy3Hn0RpjXDty/Ug/eEDxO&#43;GfLj2uTNnz02H8JMQelQv4W8x&#43;w9hGAWAIDl2VEw&#43;6a6En0SXuEX2GZBfaKOf3eknvzp2bhw9&#43;nd/vVdsxB97bVr6kAvlH5yze1zP3tLf0USF1vwiuzL43vq&#43;uUr6tYnL4afn6n7f2fHw7u/eTb8/FId/2oYA5cP1IM/vRzPOQ1esfTBqQ&#43;0xsW7X6Sf52D2e2&#43;qN6/dV/d9Hfzmvrrlgjg5mB1&#43;HoLOK9&#43;/ru7&#43;MQhMvxzqSJ&#43;XfmCgvTwaA9NaMHv8gZvjfnykTk5fnMmT2fEV8t8eqxdDOc0HJbpMT4cgUZfRlePKvz2bzjN9cQjo3b5bnww/n5yq0y&#43;Pgzweqds/sPv1BwZh3o&#43;zp7wzffNE3R4CZf0U&#43;Xi47otjm&#43;6jf76mLr93Vx39Xv/8QN1ywfTln9xXj/W1xzrz7fuuuv9syPuz&#43;&#43;pd83MSzP7dffXMjR/t2W/etdsJZgEA2Dv7F8x6P300LKjd06cPHkxPZq9eVW&#43;&#43;dVs9&#43;ujApd3AAgQLNgaUKwpf67zQweyPbqlb1/TcYsv09ltvq9evXXNPZl&#43;oUxO4&#43;EDtirr7qf75pXr5cvh3CJzC9E6fHqnH0RM/J3jlthjMnj4Zg&#43;hbv9fpTkGZVwxmo&#43;8RWIHwwcb4BswXQ/r6qal&#43;Auo/OHznQ3U8/j5xoS8O5x&#43;3nmg6tQC/1&#43;kXz93v905vJjSN/dcHs&#43;5tnrG9kmDW14mTjRMAALA3dhTMDsHn59Oi7Oi3wZNTyS8O7O/BfjcsrP5uWHj&#43;26Nx4WIWRN&#43;eqMc/sz&#43;Pr0y&#43;435XMA2ct/0lKsAWiQHEDDqY9V8oVH/N&#43;Kq69/A8B7ND0PXpkbrrXzP&#43;2V31&#43;BNb3usfPSi8fur86L&#43;q/5UEnM//IlwrCGbfDp9oBk4e3hjTtR80zAjKkiBrFvNrGXpufF89GgK3LJh1nv/Gv&#43;GSv0bdDGaTJ5re45/bY1cOZpMvErRPeLcYzL51Xd0K7ke33nO/l0swCwDA3tlZMPv497fc/wdu8ZwupkP220Dt4uP6R8dxMDs&#43;3Xh9evLE78ziAnj56X31vv/d2NAbl9X1Dx6oJ5/nr6H2BsS3h6Du3AazQ/3oeSUK6K9eVq8P/28Hs/9F/ZckcAqfeI&#43;OPzTpmWN&#43;9lh4ivpC3b&#43;WpjEFZfZ18TwYPPnEzZ3rBLNfPnCv1B6oRydyMHs6zKHmS68GV355PFz7uXr80H4ZmEmj8Jrxi20/mR3n9jCdIJgt9M&#43;8//pg9m11/edDoPrz69PvLofBbAnBLAAAe2dnwezxdyfqefDpujZ&#43;2ZPwu2HmycfJI3Uw7L/9x&#43;nVN7OQ&#43;eJI3TCB8C312L8GRzCL8&#43;jbU/Xy82N19KsDdc1/&#43;DN488e31S3/yuwPr6trLkjTXv/&#43;dXXrt4&#43;np4c6CPnUfTvvsHC//ycbJI2/C/jzx&#43;bn01P3J3zca7VPfuHSXHow6//UTRrMRh&#43;cDceOAV/6ZPWlevRTfeyV8dt/pWD2NPzA7q276lm6/w&#43;3pmB3TGMKysI8RfxbJ2sEs2PefnBfPR9&#43;zoJZ/7vAOh/vPVAvvvB18faQz/AJrQ8IpzoYg0D9JVvJPK7516b3J5hN8WQWAICl2mEwW1pIyMxCSX9T5s9uqHvH08JlXBCdvlBPPjlWL9KnFzrA9ds0/jYgluzz&#43;&#43;paMC5e&#43;9676vbD5&#43;o0WMybMTEEvS/&#43;cE8dXPOv2w/eeN88hdO/l/n4Zy4Q1l865NKWfhfwRH&#43;7rQ6g3FNLvf/df1/yl6jFH6KF32Y8Blz&#43;d1HDoOnmo&#43;mJ5CgP5ELPf&#43;P/fIx2Vd3/PDkmCcp2Gcwe/9K1/y&#43;e2J&#43;DYPZFEMhOf9Ip6DPRdSvBrHv6nfIfIKwczBrpPSAIZq8djIFn6MA/Bc&#43;C2caT2aSepXECAAD2w26CWfOUwi8kpj/Tkz&#43;Znb4JM14sCsFssjAsYgGCRTsdAo8r6vIPD9S9T56rk/FLfF6oR27Rfv/T&#43;NXik88fq7vvDYGFf7qo/06tCSiuqLvPpuPGRbp5zd/&#43;rc3vnvk/G2O9fvXD6e/VLlLHh2gueHnx7&#43;5JtfbGENQFX5iUppUHs0Fw5Vz7bfIhgP6247euq&#43;vRHDedt73XjJ&#43;r&#43;&#43;6aB7&#43;zfWUMZt8aAk7/VP&#43;NIagLv9hq/BNC4dPZSjCbPNFMg8qtBbMtWTBrg9fi78z&#43;wwP1PKh/vs0YAID9tdVgNv6ku2NRGSCYBaaANXcwPrG99hNp/&#43;CfB/5PU50cq6NPhCes4zhyC/xv3avGRvwFQEtlv6nY8l9GFAWO5rVq/STS7tPfdKwDuLtP07TiQO70T/fVhx&#43;7&#43;eiL6Qn6jR&#43;7L3nSH&#43;JFAbH&#43;EzbPx7ksDWabVg1mx6Btelo8BrNeGsgawe/4jk/09yWYPVHH7osExyew5vrCuBj/PFs9mI2frAu4lwAAsHe2GsyOTzreu6&#43;Ok28DlZ/Mhp4Hr/kJwWy06B7wmjHOnXkfAIn8Arz3w5&#43;MW/hneVuILx65oOq2Ovj75Hdmx99Bvq2Oxy&#43;Ve1fd&#43;7WdS17/&#43;ZPkS5ym9nj/gw/VVX38tfvqxRBYPbrp0nrjlnry5ZG64Y67nr2iPc1laTCb/l3W0a9dcLxiMHv6pyN16x&#43;uqDf97/F&#43;O&#43;T3n&#43;w1je/dUEdhIHvyXB27LxLTv&#43;d7&#43;Vr4VsBUBzc&#43;uK9u/&#43;S&#43;OvLB7M5eM36hTo4fqSf6TYJh3xiYmy/dyoPtid8n/53ZLMBPEcwCALB3thrMTl8gM/2d2H7hFzkJwWxqXKyH5wFLVngy&#43;8/vq3cvh2NlcFX&#43;vcHxqdRFDWaDL3WK&#43;G9Qf2f49x8eqGP/J3P0FyT9xQejQ9mjp5X5hwtXPniing3BnP/94ivm1e4wuE3TKAezb793S27Dn7g/l7Pya8aODkb//ER9&#43;EMfxA/euqUeu6Bw5PvKUEf2T6Rpp&#43;rFHx&#43;oez97d/wSLOuGuu0/lGx8AZQJ1v&#43;Uf9t2n6Ce9N8af&#43;119aHJ27TdBptJMHv6Qj03f8pHH5u3n6X7uP0zcPpn/yq2Nz55JpgFAGDvbDGYfabuvmUXB9c/nv60jvlzDu6pafhtqi&#43;fHakP/&#43;m&#43;Oh7/9APBLJA5eaYe/NMV19eHRfgQYNgv73ldXfvlE/Uy&#43;z3PhnHcLDxoLRmCmeOHR&#43;rx5y/VycuX6sWfT9Tpl4/V/V8&#43;Ui/Ml2tdUbc/eaRuu7nK/p7riTpyAZj5Zt&#43;xTuNgSAeyz39/a/xzNvqp7GP/Jsgz/&#43;3Rg3feV4/GgLYczDatE8x&#43;&#43;1I9&#43;Zc0EJXTPPndgdsf9gkdoCfnvnFZXfa/b9tr5YAwrafXh6BzuBfoL69y266bV76TYNZ9mPHmOx&#43;qJ6d&#43;3&#43;vq8hAQT0&#43;Ph/b5o39NPP/irmf/xrcZAwCwr7YXzI5fHqIXB8EC7nfH6t5P3rWLCP&#43;a3xuvuycb76oHX/oFRyWY1d9yXHp68do1dZDse/RFkC9ggU6/OFYPPriuLvtvnX3tTXXjY/vUNfz7oK9975q69dshyHo5/b7r6cn0AVJmfD3fvXopHaP5P4G1QCYYeeuuOvr36/b3WM3vt76ubv1hCPB&#43;4QIV7Y0D9cj9OaPwz&#43;hcGYIY87px8HuxV37&#43;WB1/fCMIDt9Wt/8Y/o6x/eKuKe2r6u6x3l8OZpsf1K38O7P&#43;C8CcIS9X3/H/v67ufhI8Sf3kvnrf7/OvJTu6Hl//vp5f9d8zfqlOhyD/5E/2vMef6Ke219Tlywfq/u/dtt8eDD8P/fFXD9Qjf41Vn8x&#43;O304avr&#43;Ry&#43;GMXE05fW1G&#43;rItN0UzN54eKJOP3nf7jdl8fvSD25Op37gyjz&#43;nvUXj9Utfw2CWQAA9s7Wgtnnv3avnpnFQbCA&#43;&#43;MTu6Bwr/m9&#43;5PbJuC899u76uAHN9SDT/0rfpVgdvzijj520QgszOkzde9H0982HX3vXXXvOA4KTo7vqXfTp2RvXFbXf/P/qf/qxs46ioHWvnNB0Nv/8sx9U7P&#43;cM09ef3xkXryG/8h2OtDGcPfb32pjt6zH7a9/t6RCSJfPrxhAtzxaW3wVHAMeEPfPlf3/Su9b91WT8xT2zCYnQKvfqs8QfevPb&#43;urv70gXp28p168Vtf7rLs25izp/76S5huq4MfTn/GSbvxUPcVHcwHfyZqCECv/MMtdT/pt91Oj9WHJqi8MtxDXqrjX10Lrhm23XDc&#43;IFPwPw&#43;bZKmE35wYcs8fftzaLFjAACAc2x7T2b1InJYfOhPx/OnEYLkT4LYL1bx&#43;5NgVnoyW8GTWSxV&#43;NT1zeiLeAT6VdJfHahrPqg1fzP0pXr00/CVytW8r1/plK65504//VBd9q&#43;Onj5Rt6&#43;&#43;qz7844k6efpYHevfpfz2hXowBK3x68SO/iKn7w3B4/iK8BCg/epe9KeKng/BsBjIet8MAes74VPbswhmB18&#43;UY&#43;fBYHkUO5H&#43;kmqEPjpL8e68cHjvD4yOmB1TzS/d2U454Gt0&#43;CYk8&#43;fqAcf3HBfAhX/aajZnt1X9/yfCPrLI3Wg8/7G0DcfxkH3i&#43;B3mI03rmWvDke&#43;GYJX/cHF&#43;IGD/jIo9yGE8bq6fPOooz4AAMCubfULoL57&#43;dL9Dt&#43;peuG&#43;zfi5e40vo3&#43;3Tb&#43;GZjxLfvdvOj9dLAHn29D3nz5XL&#43;d8K/e3p&#43;rl58eMFe&#43;0UQ/fDMFtKVBpBTA9AU5hLivOhUvy52fjK8fifm/oky8&#43;f1EO&#43;ldw&#43;sVz9aL0&#43;rtuU/eqcDNv2hDcP/tT0E9O3fkLfr0eAICLYLvBLAAAAAAAW0AwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcbYWzL722msAAAAAgAtIihE3jSezAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAALMjf/vY39de//h/1v//3X4Gd0P1N9zupP&#43;Ji&#43;&#43;abb8Ttu0IwCwAAsCAEsjgLut9J/REXG8EsAAAAukmBBrALUn/ExUYwCwAAgG5SkAHsgtQfcbERzAIA0PRUHV66pA4/m7Y9vXNJXbrzNDhmRV8fqYNLh&#43;qptE&#43;U5yUyO73Ne/XwQF26dKCOvpb3516po5tDfd48Uq&#43;E/aauO8oktslnh&#43;rg4at426pM3fq61&#43;0wp4yuXgpl3LmhXnrqVCIFGcAuSP1xNXbO2djcENJja1vj3IzbefNOiZ2n171X2PvR2vfCNe5bBLMAADTND2btQqESdHouQOpfVDSC2cbiwgaG62mVaXYwW12g2fL0LDqlNnmlg1kpz7re5y44w2D261cmbV0fed7sQjm9ZimYNdvXXQyW6DxKaZu8S31O13e9L0pBBrALUn9czfaC2VdfP7UfzmXzjpubC1rz6vih34bmir0KZovzURvBLAAATfaGHS428sApXaiEN&#43;b6IqZJuE5t4bPqIsWUaQNPFLqD2TGQz/lFpk1LPibNa&#43;kDhrw&#43;bB0eDMeuHMxG25K61ovZOz7f0z6TjzDPY/mHuvpsCI799g16NVzD9L20XsTFo1ssp2VMSEEGsAtSf9RKH9KV&#43;/EWn8w6pXknz1O&#43;vTrvdaqNYa3rGsJ8GnP3tuZxdXld9SOYBQCgKV9s5IsnIXgbA4bSIqatFDSPaVUCwlRr4TYvmJ0Cn9l8eUze03oLF5nlepPymteVN6Rzc2gHcx2bplSnYl5nyPNp040C8zHPm33KUuX6SNT&#43;QjBr&#43;3R7QSkFGcAuSP1Ra86Tme0Hs7lSnlp51eK5ZBPmBJDrBNe&#43;XHZ&#43;WV2p7ASzAACUlALFYdFUDpwmU/DSs1iRjdcR86Kf6EkBYapv4Wau1R3MltmFTytPg0YwGwd/sTGvpTYa9h11Lp7622W9BWWtPFtngtegrEkwaxeaHW02kIIMYBek/qjl87Gfc&#43;2/6ZjP9QV167DzonSd9v1hU3NzqJyfOVz9Nu6FVe4&#43;cLDihwsEswAANOWLjXZgsq1P/pO8RAGhe9qX5WuJwax9Pba0wMvz6speW1SJr9bOYeu&#43;XI9uYbeGzfeXydM7w4LxoaufqC50vvsCWU0KMqxj9eFQhg8/lfadH3/&#43;&#43;B&#43;DNvul&#43;p/CMWfuy4/VPw75&#43;8eP/xz/Xzr2rHz6S1OHpr&#43;E/5eOdaT&#43;qJWD2fi4yY7mZy/9MClh8j/st5I5yp3bRxrHq8xLvfOBS3vlYDaet/N2bCOYBQCgSVqgdCwQXLBlgzthf7dwYVFYLGmNBVOLDRCHgEdfc42gdjPBrFtkDmWSFpzZosc/oa0thKIAbhUdAbPE5O1QHTU/ANmhNepCCjKsixHMjkwAtt/BrGmL8P/SsWfF1N8/qv/2ZfJ/6VhH6o/a3gSznz2141zPRdH83xscJvy81jNWxflUa9VFopiOxN0H586Jhjyfzq0vglkAAJpmLgZmMjfv7iCnnBcbjK4eLJnzzaLJLTKG66yy2NtkMFv6NuJ08WqvqbcdDvVTWPjVArhx0Vhi85kvmit8muGi1n9YMNhWfxo1y1RRKaMUZFgEs/sjbIs9bRcTZLsANvy/dKwj9UfNzl05O8b0nFmfZzbPztNrpe/G78EwZ5xdMDvdC9aR1YOZi/V29wV1Wfmm67byTTALAECTXwzYG&#43;w6QYgUcK4UzA5Bmz7nqQ/iejSukeXNLTiyhcY6QdJoSLOSTrj4sYFqnIc4qNTtYn/nakxD7xvzXyMvEktBq9R&#43;KXOMkPZYDrHc0iL0bJTK7klBhuWDJvuvLVcaoPxZ/bf/4Pel&#43;&#43;156euw9rXeIGh0Txp9GvHxOg2dZniddpCUSa4hBq21YNbsC87/z8fx/lb6Pddfg6nTIU/RK9NJHuPXqZN61uX7Dx&#43;rP4fl1D8H52dtne2fT&#43;qPWt5ngwDu62F&#43;yMatncu3F8zGxg/bqoI5wM0RJn9d85i36WC2xaZdmy8ivizJHCrN8d44nxauQTALAEDV9AlxuFDoWpxkQY9LK7kpm7QaAZLlFg5alIacrtYKTELm2FKeh2v2LIbswqNzISQumqRFZl6&#43;qFw6nSHfZsGqt7kFU5Zfs11eMKVK9VZbdJUWaj1svcnX3LVS2T0pyLB8EDsFj//zPw8/j0GMC27CoMkEQ9PxJoCKgh57zhhIuSBvesqYBsBTIO235Wk2ZNcoKAazQx7CMhbyXE6/sT8LdL3&#43;oH0MVH0&#43;kzza/WHZknr2QexYr8l&#43;oa3jvrAaqT9qeZ9NAzj78zSvSPPMJtn0wzmoNq7s&#43;PfzSpK33nmrGITuQTBr0uw4bgUEswAAlJhFhL6p54uBVgAq708XVMGx&#43;kYvcouYcUEjLEzGfAbbjHmLGLOgKpWpeI2AOSYpn17ElBYw4qKpsMhMrh8uDPX/9fHhNl2nchodi8JBmFakpx4KWn1mXxTL7khBhiUEYWHAZwKmNOCSgtXgGPPzFFSZIEt6glgMqgbFoFNmgq7kGqLudJMyujyWr9Hav748wA/zmOZXOEcoe1RvSbtN2/oDbonUH7W8zxbmyXH8bTmYdcFbNhemedLcvFmcp3vnLXE&#43;1WxdxPeVliSdUt592sJ8Ydqka77TachzqjiPJwhmAQBoyhdGrcBE3F9YtMwLctK82EWZtNgx6XYGb1r/4kNSWNRIi7poX7qIKS8ydf7s9uAYk4YtYysI614UDoppFRd1mquDddTyvwJTDuk6LZV8SEGG1QhmC8FfGjzqn30glQav5tg0r1oSzJafeg5MUBWeHwZYciAnqgSzUj7jNF3AKu5r7M/y7818MlsMZgt12GjLqB3N/jR/2hkGs5HtBrMmP8JcaufkKV/pz6INBbPVa4SkdIrzXmHeH0h1MN2Twjn8lfluBF0PaXv470yotRPBLAAATfliwC9CqpIb&#43;RhYSDf47iCysDBxiw2dvtlXDbpkpQVYmwuoS&#43;eW8iItmroWmXEwe&#43;iOjRa0bnHUJ18oRmlFXFmjfR15DtqnXrazVy67JQUZViOYFZ/MCcGjPscEWnpffHwa3OY6gtmGNLguEgI6zeQx2t4IkF1wWsxza/8K6sGsnN/onFYwa/Kc1826pP6o5X32LINZe&#43;1S2vG9Q34iGZk1l3Wkt4ri/WROMBvWi1D/5hpuLg4DeHftUn0SzAIA0JQvjFoBaL7fp5Hf/DcSzI5csJVco0e&#43;&#43;Ohjzms9OTCLE&#43;nT/jWD2WB7KwjrfsIxGNMKglB/rl2MhvnubBNdt2KZBeF1V2iTdbTqUQoyrEYw64KkMFDMAz9/3BDEfjoERFHANWgGdusHszbPHWkUglkT1AX5tmWsBLPNPG&#43;gTIl6MCu0S1rvrWBWaOtNkPqjZueg3KrBbD7GZ5Dmumx/Tx6d3nmrNLfo88c5xM5VU7nd3BSOd5NOcj03H&#43;V5ze9nnmmTYO6yderT7aj/cN6r1AHBLAAATXmw0gpA0/3xz24B4BYerbRilcBpDICGdD/z/&#43;9YBDnp4qOHybuwgLLb9fUTYfri4qu&#43;yLHkOmgFYT2LwizfYn249vP7SotIxy60g/0mH&#43;Xj4zroqY/NatWjFGRYrWB2Omaq4zwY1HwAKAZwLrCa0ggDxQ0Ffi6gnfh8uiAt2qeFT5CTMg4BnQ70xjxW89&#43;xfwNawaxmgtMgD/V2lZ5oC3WVfjgxk9QftbzPVubJYH9pXK0yF1ouOBTOtfOAls4FdntxjHfMW4Y4D7lyDnXj82PnuCC9bD4SyrBuMOvOn8rorlGYZ1pzUIhgFgCApnxhVAzWQsmNPFsIBAuZlvFcacESpFO8RsfCYO4Cblqc5eSFWbKAcfXSf76TLb6s5gLInCctCl2&#43;WtcNjXXu/ySQlK5b6Al5rbeLzY/NS/j/9Li6Wvs0VepRCjKAXZD6Y59pjI&#43;Kc10yT82RBm3BHFcfw2H&#43;krmkOG8lsnnRpZmWM7sfCYF9ekxlrq6q3U/GOVQizJkF5zqY9QuN7MZ&#43;QVz08mNfucXdjAUzlm2tBfXgTOew6AYeLybMHFvpx9P&#43;1YORSJgXd90xoO5YdDUDvYE5Zttj05TD1aX5f7poSesrXORNpPpcPZhdUbAYi/ITLtKqdR6ULa13ob3jc7enVY9SkAHsgtQfN86Nvb1ZPxfnLWFuDMetOL9q7rzgWGnMm/tLdf6q28n9ZEAwe45d9PJjR8wk2/8JGsEsIm7Rv3agBwx2HsymgiB27r13/GBim/nbECnIAHZB6o8bt&#43;15AhtFMHuOEcxiF8zicVYwCzh&#43;4b/GJ78Adk8KMoBdkPojLjaC2XOMYBa7QDCLVUxPodyTqH17rQtAkRRkALsg9UdcbBcmmLUL7knplbb0uPQ1g9rCXdqXpSe9jz5sP/ys8nszNeHv1BhTfkvBbLyI1KTy&#43;C&#43;tcLI8pe/p8zrG&#43;VXoC8HrdCE/tqbxEJxv&#43;r/wmrHvx3p/mq741C7/PZGDh0/dtj3ri7PL1jlGV0i3NR/txtR2pq&#43;YvLs282XiFXRgr0lBBrALUn/ExXYhgtlx0eS2&#43;wVdHOTJv8eXHesWjXkwnJ7vF2zBwjpcfLptYR7nPpHw58Z5GfLh0vf7w3T1tvj4cj6j44Zt/o/Sj2WNFsLTdXGONPtCGLS6/dF2aZ8w1vzYSLf7IC3ta&#43;bYMGgNg9s9DWa7yiaMx4E41tdN15&#43;/y3Hr8xbmw2zrKC&#43;AvSEFGcAuSP0RF9vFCGbTxVq2iJMXkPI&#43;YSGuuUWaX3zZa&#43;cLfJ8nH2AW89jSsRBNr1Xk8u6PKwUnXne6WLxWX9BawWwekNSC2XQM5mOznCcpyN0DGymbsG9Gur3z0fb4thH6gxDMWnvangDUX//6f8RAA9gm3e&#43;k/oiL7YL&#43;zmyymG4Ehmk60oLTHuMXXS59KT0x6J2/mLTnyYteryttl58wTz4IKZ3n082DFJw3rb6glQKw0vZs/GmVMRinI5w7qn0odYY2UrZBMnfMTrdjPtqK1jXM/nKbmbKU6gTAmfjb3/5GQIud0v1N9zupP&#43;JiI5jVP3cttoJ03CJyOt4tov1i0S8yK/y55Tz6hXnMHte3aBfTruRtLI8rryVcI0pDClZwbrT6wqAUtJa2rxXMVo5bfDBbLdu0fxync9OtKM59AAAAKFpmMOsXzf58t1gc97cWpYFyHmtWDWZduY3g3HSRHJw7Sa4VBTmaFLTgPGj1BYLZho2Ubdq/cjBbSndnwvmn05nnGQAAoGxBrxnHi/Jwm/l/uDCXFusF5TzWlQOFSZZ2KWhPF8kBn4YhlafjyR3Oh1JfKPXFch9dI5itjq2FB7OteSP9UG1T6e6MzUfvXGfKQDALAAD22H4Es9VFcPIU1hsDQPvnQNJAsLyQj60azBYD00ApmE2v5Y8rp9VaDO9pEIEtyPuC7T95Xy&#43;PAaE/dQdmlXR9GosNZuvzht0XlG1D6e4OwSwAADhf9iSYHfiFYRKwNReXNw&#43;G84T9pYW13p4FAisEswObtzQIHcrmFoB52kK5gyerPp2nd5LyuLL4/TrdOL8uXRae506rLxiFD1bKY6cy/joCs/HYaKy6NI3lBrNTOeIyiPPEKnXWmI&#43;2y5atd64zZWBOAQAAe2x/glnDP2EM1BZ6PhAsHtNOb51g1giCUWtarFYXwJ7Oj9s2BSNhYGDF&#43;cvLlQYyOC9afcGywVPcF/JAzRPG35zATEv7sdm/p28IzC3buD0klGl2ujPnt407D8GsrcPifGfm4z3rfwAAYGu2GswCuEhcsLbTAA398g9GmvbxyawJWKUPadwHiPQ/AAAuDIJZAJuRvWGA/XIensxqr9QrIZDVdJ7r/U94Ot6BPg0AwH4imAUwi3n6lQY5/pVbnoph07JX2gWmP1aePI/9svSa8tztAABgHxDMApgv&#43;11xFvw4W/Y7CuLfl82fLhPMAgBwnhDMAgD2n3lCOwWr8Td926Az/V3a/LVjf9w8BLMAAOwnglkAwJ5zrxDfOXK/L/tKvXo4fXOxffX9MPmdYBu4St8Ez5NZAADOB4JZAMAec09ThS&#43;jMq8R3xyC2Jv6iWwSeJonufKfRyKYBQDgfCCYBQDsL/372cUvFtPB5hSwRr8jK/7NWRucSq8S1xDMAgCwnwhmAQB7L/sbslKQGwSw&#43;Zc/aTyZBQDgPCGYBQAsgP/TO/pJrP3/wRCsxk9s/fZD8&#43;d8ev&#43;mLkErAADLRDALAFiI4DXhwqvH5omssN/&#43;6R63b0X9wTEAANgFglkAwGKEQakYXPq/gVz8PduYfX1Zf4mUe6LbeR4AADh7BLMAgGVwgerhZ9MT2iigNd9gPASlN23A23pt2H4bsg5eg9eMxS&#43;OAgAA&#43;4hgFgCw/3ygGgSo0Zc8uf3&#43;Z/8EV3x6m6WV/M6s289rxQAA7DeCWQDAXqsGpsH&#43;9Elsdp4PeAt/sic&#43;v/D0FwAA7A2CWQDA/jKv/U5/S1beXwk4zf7/W/2nGzowLaUjBbPxPilYBgAAZ4tgFgBwwdWCWQAAsK8IZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFicrQWzX331FQAAAADgApJixE3jySwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFicrQazrx4eqEuXLqnDz&#43;T9AAAAAACsgmB2mz47HMp/oI6&#43;FvYBAAAAAFZGMLtFT&#43;9cIpgFAAAAgC0gmN0iglkAAAAA2I6dBbM2sJscPHwlnpMed&#43;nSoXqa7ZcDRGlflt6dp9E5Ux5fqaOb7pibR&#43;pVcEzZU3UYpu3PM68XB9udtMz&#43;2pO8XGEdZscnZQEAAACAi2InwawWBnI&#43;wIyf2LrAMAkks2NdoJgHw&#43;n5PjgNguGvj9SBPiYIAsM8znqC7NKK8jFsO8zKKQXeQt4GPi9hmlEAGwavPmAmoAUAAABwAe0mmE0DriyolIM7eZ8c9KZBrr12/Uln&#43;PPcoLAcqE5Kx9TOTfeN&#43;ROeFqdlAQAAAICL4ox&#43;ZzYJSIUnpqE0HSkYtMckAa&#43;Unhj0zg8IbR7q58lBayEY9&#43;bkT3o6DAAAAAAXwH4Es8VXhx23f0wnC&#43;Lc01sfvPrguKIdLPonwrHxOJcnS3qiXAhmG4F7WraeYHZMK8qTUwqaAQAAAGDBlhnM&#43;kAzebI77m8FjIFqsNjgz53EQe3Og1kAAAAAuCAW9Jqx9Fqx3Wb&#43;Hz2BbLzKG6gGi518GkZwzXVeM/b5qeav9SEAAAAAAJxT&#43;xHM9nwBVBr8jU8wn5r9aUAnB5K5TQSzVh6k2rTzPNTyZvdN9TAGykKg31tGAAAAADhv9iSYHfins0nQ2gz8bh4M5wn7fXppgKy3ZwHn/GD26Z3kmmNwHQTVxSenrvxJ3qS8jMFsko7fzlNZAAAAABfR/gSzhvClS9kxARcslo9pp7dqMDsFpBMpDRuMW/LT41D&#43;ZHrKX16W&#43;XkGgKWyc24475k5dBPfGWA&#43;jJTeDMJ4H12nns29epX6zdvcsnla5cNce0&#43;dkxdX/sI6w97HG&#43;mtXH6BSSv8MH3NupDKtWZ7rfshu22j/XjrbH5/kbj14rpzFfMUINpqMIv1TcGsvB/nnH/DYBML9jXYBdt&#43;LC5W5uvS6F8QnIcxmH9wNs9&#43;lH1&#43;MNvddmPf6O8Xc&#43;s0ykPUF1fgAhBfvoipD7d4ruhv0wsezGbBY6gveHs1tHcezLTaSL6m6XdRALrcYLbUFna7UP6kLYpj8M5ho261vvLN7i8i19br3sdXbhfgfCOY3XN2Ip2z8MC5QjC7GWvU47kfg2aBtP7TlO3LA5s8mE0DhHDh1woeGpK&#43;k1&#43;7JM93nQseOxatpm&#43;OwUh4ndo1V8zPOnNQ1yLcl3s9zcDSjecqXdbKBw7&#43;GtW00iDRpJf3R7EdzLHSfGvPicvYGcy6cb6eVhva/MnnelO5bP3ladrt7WA23t5Zt1pXf7S6&#43;4tw7sTVyzpjaFCqL&#43;CiI5jdc34i7V944FwhmN2IdcbRuR6DfoF7xv2rT75AzZ/M1Ba6jQVuhRS45teu67uuD&#43;j6xprpmz5oihbotbKW95kyZU/qeoJZt1hfh5h&#43;Ka&#43;dAZygOyAQA8rwunPrMVVpo0Iw6&#43;eiecp9Keo/oRnBXsyWqbddSm1ht5fGcml7mE5St2l9zihfd38ZrNY&#43;ls/r3HkltcqYAJaOYHbP&#43;clRvOHh/COY3Yh1xtF5HYPxwmtYrLm&#43;tnfl9GMgNYwJ0y8bY8OU0yzYK8FDg3Sdnmtbvde1x/ny6UWpuUYlKJrKluands3yPvl6PcFsRdh&#43;s9Mo5fXsg9mw7qPzBmM9mqDJlT1g811pI/Ha9vi8zGvWhVQGgtlRd3&#43;psvlZeQxprgwHK7Y1cJ4RzAL7zC8E9U3Q/39UusG6G2eoeBPtO9YszoqLiPB8KU/ta9gFg1182GtNxMVer6zOnPH68/ImbffyfLogIDhmPxYhU75MfsKFna&#43;vwiL9bNm2CuvZtEE1r6sv9Fvi4LEmz3dmHEe6HeI8&#43;/EgnT&#43;VP71G7ZrlfWMQFm3P&#43;3GkWgf23MM7to8dpn8FoKmU1552teeKeS4K8ueChzi//rr2d2Dl&#43;i3V48C0s0&#43;zlb/42uW&#43;3lMXsmKaHcFeOv91EefW/Dp2u9BXovpLt4fpJP0mbUuxfGv2lyqXdtd8IXFj0J3fP/cAFwPBLLDPomAsv1lnN2Rzk04XNusfaxfUwuJqOHZa0LkbbpbP9nXDhVG4vbaQnyPPqzYvb&#43;G5Nl9pHaXlHo4JF4pife&#43;Yy0OUd7MtLosv85nmNWPrNG9D20eKXBuEfWw1cf/3fbOX3If9mAnrWgpOfDmFdtLl020YBSXtepHyY8qUBTfxQnoWny/fx/R8lqW/LVJ/qUgDnmow69pmKJc0Rkw9ZvVl8zMdX8lfdm193TQv4b7dj9Wx7wn7JFKd2DEZ9&#43;lpu1Be049K28N0krpN6zM7Xluzv1TZtFcLQOXxV6wj4AIimAX2mblhDjcy6abl9/mbXPrzpo4d2IV7kAd3TLaAqqU7cjfnYCFkb8zCeV3ptfn02wuVct7ihVE9T7a&#43;8kVaVo874xZTg6zNxIWd5s&#43;R9p2FmYvNmUw7r7k4l8n5Hvt8Vr/l4MSf4/eNec4W&#43;bW6Ku8zZcrqQF5MN5lx4vIU9DF9jXLg5fvcCrL8zewvYX6ln424bXS967kgvUbeN6Q6rORPvHZJub&#43;kpj43V56XTYyX1fIz5cWkKRxz&#43;FlSt2l9bjyYde0b5GEVWRuafOrt7tuwC3OFPqY738A5RDAL7DNzwxxuVuJC0t3I3ILCLwzkm5q/6dmb4Zxj9Ta7aEgXEemNVXOL0eIiJ7zpT&#43;eX89NKr0&#43;9vF5n3nyblPLk9kuLy758bNi4ICosdsWF3cS09Zr1vxl&#43;sWnbaZ06lMpk2mYn5czHl7S/2F6uf&#43;nyh3mOy1RbmJf3yW3t8ivOQSX2GmMZoj6m9&#43;XBUVGjf5brq1YHgig48T/rdsqF17JjOs6fqcegvszPw3nmdetxeyV/SV78vLEOuR4afU0r1P/c8ZLWSY0tr9BHTF5K28M8JnWbnieWac3&#43;UmXT7h5DJn/D8Un9Sn3N831s3jgFzgeCWWCf&#43;QWVeIOKF8X2Zla&#43;udr984&#43;dfvbH&#43;&#43;tWBDdhe65kSt8v1vKFhFsEzFg0SUrpr5a3uPzZQtAvRCq6F0xwwjqf&#43;q1vm6rO4Myk1exnrj&#43;uY82&#43;HIryHC2uawvz8j4zHjrrq8wdH6aTBg9iMFHQPNZebzvBbDpHStfK68fUo/nZ18WBmcf9BzF2XyV/HYHSdI36trpS3QUK9d83XiZz8mbHdb38kSyPcd3a9Fr9b83&#43;UmXTbpbfpDm3DQEQzAL7rHpzcwsjd1M2i4XKzdXun3/s9LM/Pr5uem7ILiL0sfGCKU3fH5cvJNwiYM0AQEp/vby5fAXGNMxCqbFAPBN5npv2YVFl6lP3vXyxadqm0jfk/TadtH3C/pBr93Urz2NN/ZqSeMzG5Quv3W5rKY&#43;m72f1FQZg4XZZOn4MIXiQryUQA49Qqc7bdZAL6rc7mB2MfdT&#43;bMqm60tvN/UW5lGnMfVnOR9aeu2QnI/xusG2ukJ5AqUxNr/vDqK82fJL17ZpS&#43;Uv9MWsj8R9IutrYp9as79o7n5d7ItC23SPA5OG3Cd0fdXaEDjvCGaBfVYNZt0N0t0I/eJCWqSOi4AVjtXbzA03XaxVF1uaS0dYiNrzp&#43;3l/MRljPf1y9PfRN60eAFkjtnbT9dtXuVy5Ew97FUZ8vybtqn0DXG/Wcjm9dBKK2f7ULyInFfHs64pBFfx&#43;WF&#43;avko7zNtnuXHjZWOvpCOnZEYPLh0W&#43;UXzw2VyjOvLbL6FepbbnNLl91u7&#43;0XlfyJ1w7J584fs&#43;XyeKU&#43;One85HmzZZCubdIWy1/oi9Vg1v7fztHumEowu3J/GbdJabg8CG0jjTlbfp2/oH2&#43;fjX&#43;qae0zvzvbtfaETjPCGaBfeZujuJiLr2x&#43;WOlxYzbt9KxA7tIDW7chZtqzC08sgWPX1xMZbI378oiYMaiSZKnv4m8TeJjXNpSm52peYu1&#43;Qvjbcvz7&#43;u9Kmlj25fz7SatOf3MjIF0we37T0FSn7OuacZlfL34/LB&#43;am1d3ictrIsBRMT3eSkAGZi6ksZDx1gpnusI9bIRYro2vz3zXnyMVOeVNmqUqdRv5DFba792ebY3D9jyS9e241oqf6EsYx&#43;xaYb7/Xj3fx5qq3Oyu3fmbZrny8vHXFgvQvuYa7hyhGPDXbvWlsB5RTAL7DN3gzIL4fCG57cnCxq7CEhvaO5GusaxdkEQLi7comI4Nr5x6&#43;3Tcf4a0zHTeeHCIj/Ok/Mzl5T&#43;ynnTdZ8sSmz9BAsls8gQ8q23b2Vh2MPWZV7Hsu0tYleV59&#43;0TaVv5Pt9Gq5fBeVrpRWb&#43;oo0fnrreNY1zZiPF/i&#43;b47G8tTyUd6XL6w1V9ZaX0jyZsdDix8vLv1SPTSCWVsHwn593pimLfPUVkKZTBmCdIT69ufVAwbpGKnOK20kXtuy5ZX3yWO21n6t8qT15tnzfN6zNjBtFudR502qE&#43;na5TIKZTF1NWwzknP8PKyPz/pRXIa1&#43;8u4TWpTm57UBumYi&#43;uy3j7m2HDcZGUELgaCWWCf&#43;Rv1cBO0N7nh/55wY4zOCZRuhr3H2sVpvrjI8iQcky5s9Y3ebptuuj6d4iKgtNDtVEp/1bxl5Rbz5/IeKrXZTtj85HUsM/VwpvlN5fk37VDpG&#43;n&#43;&#43;GffPrbPttIK2fYf&#43;ohfLI/5mlfHc65px2o8vsrn1/JR3mfaPEtPWMjPtc4iOzk3HbNy0GPLqD908mUZ28wfY9INz3Xl9OUX6rsVXFhS/fZuc6Rrj3N1uR7FMevOk/OclGe8RkBod1&#43;XR1/7NF19j9cQ&#43;owbK1N503MmNn2pXcN03f/F43waw37fnlkfDOvf5WWd/qK5&#43;svb1KYv1WU05rK2EuoxsH9zNHA2CGb3jb&#43;ZMEEB2Ci3oJpjr&#43;ahcPFpjQvWmmShmC003SK7hz5XWmh35WM0LZDnnacJ1w0X0zPKYh2q/54Fhyto9ZMskJhh9rlCkKFl7e8CmDCYCo/x92KBFICNsqBHm/puHoy3fKD&#43;tRK0RYp5LtWfratqeVKuj6XjKArKBrZvx9eNj1lhPvKq/c0HuUm50n5k6krX6Yb6S/Bzlt&#43;W9NohV9&#43;yjj4BXAAEs2em8ImbnwwJZgFsVB4M1uzNp/7RAjFeHGfBXGLav8KiXTI7sKpr5T9i6qERzO6rdept7rlCPVn5PVfq46ZO9TYxnbQfuTTH/mnl/Wze2Nud&#43;eOiOC&#43;YdgrqS6w/XQ9S2/TK2zDi5wpxTAhtVWzn4PjgWtX&#43;EmybIw7wAayCYPas&#43;El3jUkQAIC9t&#43;EPAQAA8AhmzwrBLAAAAACsbKvBrHn9YgjY9Ks1/v/R6x3h8UFwNx0bv/phXscI0xA&#43;6Z11TUP4vY3O48ZvxExfETGfQqfH&#43;v3ya0ljWSpBblYe4dWYsPxpfe3fK04AAAAAsJqdBLNGGJz5YC/c5oO4dLshB40&#43;WAuDtFnXNOkmAbE7Tvol//j6QXAbbtfnJ/m3&#43;UwCz1LQKm73AXCcV1/WMK9h&#43;cPtUl0BAAAAwFLtJpgVfrnd7xuDqzGYTZ&#43;2yoFcad&#43;sa4pcmuP5leuLQa7AHScGyB3BrBgMF/aN5e8KkgEAAABgmXb2mnG2Pw3wZgR3ofQas66Z8YGr5oLX6vULrxmH/PlpGt3lbVwjeZJcLn9HXgEAAABgIc48mB2DtlJwJ732K&#43;yfE8yG1/Cv3&#43;ZcMFu9vhQgBq8fp8Ky9QazpeM8t59gFgAAAMBFcqGDWX9smr4NcFcJZsMnu&#43;Frwe64sGyl8vbWi&#43;f2E8wCAAAAuEjOLphNg8Te4C5hr5H/zmj7muXfhY2C2er1kwCxeOwawWwrCO0O5glmAQAAAJwfu/kCKCEQzL7UqBgIVr6Aye8LArT&#43;a&#43;bnWi7oG69Xub4LJNNgNnuK64&#43;L8iQEuJpQD1ldBaLAe0AwCwAAAOAi2E0wOwgDPL89CvqKwWywLwnEpCBvzjXzwM8HrloQvErBqM&#43;TNuZLCHzD46KyFYJksR7SANvK8y9vswhmAQAAAJwfO3rNOAwSrSzYqgWzRp6GFJjNuubABsTxMenTTsMHtCO9XwoQfeApHJeWLQx0/fUq9ZDmNcvjgGAWAAAAwEVwdr8zuyW7vWYhSAUAAAAAbBXB7DqSL18CAAAAAOwGwWwH/Xpv35c6AQAAAAB2gWC2k083xBNZAAAAADgbWw1mAQAAAADYBoJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcbYWzH711VcAAAAAgAtIihE3jSezAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFgcglkAAAAAwOIQzAIAAAAAFodgFgAAAACwOASzAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAArOfrI3Vw6ZI6/EzYBwBbQjALAFiAp&#43;qwtlA2C&#43;lD9VTaJ3h655K6dOepuH0Ti/FXDw/UpSG/oYOHr8RjQyZftXJW2TrquU4fm55UT7u3mbLZdjlQR1/L&#43;3vpdtpcPc&#43;h66Hez3UZ63l7pY5uDu1680i9Svd9dihv72T678zzp7EitIsZ1&#43;u3F4Dza6vBrJ&#43;g&#43;JRu/9kFFDcMdHKfwO/HIrdNCiwsYVHoy1Y7ZmF8gLSq/ZjDG8HsrMCrlNaroa8Mi/nGXFjuTwFhQf/qs6eVRb4LMNaZh3UgstL5pUCxVKcur357Nma8A3V4p11XfUFhKY/z2LZb915ny382wawfz4V5yfSBVt5K/X9IezjftHkhIO3q&#43;w2Hwzgw1/BqwS/BLIAGgtltWnlh0WHVtAvnEcxilkUGsx39O1sI&#43;gBj&#43;QFtUVbmfVVegHu2nTvaSpe5soA282Glb5vrzHz6VJcs7muK1608bWsqBYouX61gNtkeplOvqzlBYU8dtcd491xQVaqvXXF1kdarG8vNNZc5rjJO3Py&#43;i/I1xxLBLIAGgtkt2maAuGraBK3YiIUFs7bft4KcQjCww4XdzrnF7zLa0S7gx/uJ74Md4raz7WzSmZGG5q&#43;90WC2KwDxgVxl7vZtWVTr/6XgzF13g8Fs/EHB/GB2zrFyPTT4vM7sG7lNfwC2YplqbdTsM4moz8/MT2GOEceSq/tpjLp&#43;3wrCAVxIBLNbRDCLc8sv9AoLlH3TFcy6MuWLZbdw31Twsif8/GwNdRMuIIXjz4zva5FhDvssWORK5xlCsGQWxLXz7CK9Vg&#43;bCWZdv2qVwQcc1bHm0iocY/p/Nb&#43;lQNEFLIWAqLQ9TOdsgtky2&#43;/Xuwfa&#43;jwY&#43;t8uA6tSvyzXYVzXzsbGeXuceGI&#43;HHEshUGrya9vr1J/BHCR7SyYNZOZnoSc0g0pPS5dgNr98o1I2pell0yCUx7dzVkf071IcROr588rfNoZlVk4Jr4puLR1msGxhx91pC1p5Cmvu&#43;D66WLS12Fpe6LVBqjwdazrLG3DpB6LYyNMIzs26PeGH2&#43;l7UKaaT8oLfCy45K8Bmn6cSmWZwW2vIV8ObVFbrFuF2lqWzP&#43;Tb9ydePboHsO3KVk8Wzy6tvElSnLt90ezo/ttkyuI5j65wpMHt38GoxJk2Y0pt0xHf2u1nfHdKK0U/aY/D5SOtfVd2F7mI7JW9Aupv7H8/Ljx3NM2Weolm9Sr6sOZry486M&#43;uG22LfJ&#43;KdehFte15etWHkcS1weyseW29wrzUViPaDpfUb7T/IX179MDcKHtJJjV8sVEOinLE2Z2rJsEizfd8Xx3sw0XsH6hFkyqYR7zm0SFSyvKx7DtMCunMOnqMiQ3mPzY4EaR3UQqaTeUzuu9frzICOrW35yicvW1ASp8fWlhPxDqu9gnhDq3xybHh9caTOPB9wWhHdPt0rGaMG6z/IZpbrR/uH4ojKNQsf4Gay&#43;A94XvN9nYjdvLj3NpgXx2bN8S52lXruYcPpa/1paV6zimfhr9aa5XXz918&#43;Wk657kxk2xrUyZW33Xlrl4X83GoxtThe1hOmldmXE2npcfL53TEqdZt9ZYFuuyVEeb5q4zV5SvKY2pb8ltMOodWytx&#43;Yna2m4b82P6d1jnpb4H4KLaTTCbTjp&#43;0Tpud5NTugAW90mT38BNuH4CLN2wfJ78xFzMY0Nt4ev1HDPKFiT&#43;piOfPyvtQOm8fHvp&#43;n57enPL27C3DVAxBnjp2Mjru9gnsvHmj80XMH57Oh6yNhvz1XM912eyMZaM5WJZ1&#43;XrKpHkx5ZdvnapLy/HNG6zRauZO6Vy&#43;3M23R6rsvmR5g3Tds3gx/UD83porS3L1/FMf5gRbHVx9zCtf25MxlDGl7mV16l/zOLH0Dh2E8N1nyZ1ZdpqHHs2f2mfnFu/UZpBPa4u7fPTfHvk5kJ5HA3HzMj3PKV&#43;KdehFtf1NI9rYTq1&#43;rbnBPVRaute4XWkOjPbgvFprpeMV33M1uoZwNKc0e/MJjfgbPEbS9Oxi854cosnXJe&#43;lJ6bPP3EX85jnc1D/Twpn6Lw5jDmub5I6U47UTov3166/nRTTxe4No35bYCKythI26zYJ4Q0SscWx4Nrs3F7dczGC2ibppCvtC815oGNcuUJ&#43;3fcf2PlMixAa7yZ/XK5NVMvhXlot&#43;yccnhnyO&#43;QHxMk6TbsMRz/3Bw/lNP0s3TcdAjqwPSHTdSJ7/NJ&#43;vG&#43;ctu02i4bt7OV5nE3dgvbw74W11V6Xn58fk6bacPOeWPeWPZzVFqHtl7EMTW226bnC9f/s7aU61CL6sXl6&#43;DhUZ5OMiYmaXsNise2pe1q28LWr&#43;/H2XyzxvUAXAz7Ecx2LbaCdMZJ2R&#43;fTLhu/zRJ5vy55TxON7HQeJzLkyUvJuwiSZqEXfkl400jqaOEnHYjz8XzpO2l6/tr5GW2abjtM9oAFb4ehYVa2maltpXSKB1bHA&#43;FMSjlK&#43;0j9lo1SZ8R09w8X1bfD4v1Nx4r78MuBHNm1D&#43;SuT9g2nPcro9z7Wf6Wa0t7bXye8LE9Ifk/tXDp&#43;n7XuneMe0vKNwXYlOdrT7XujS6x6Rtj/B6UV259Kb9&#43;fH5OW1xW9fZum2P5dp8cDaCMTCHrxfd783/pf6dtovj5uTo2Ob48fN/TKcRt6sdk&#43;bvEA/b7IdTwnjIrqfzKo8bABfTMoNZP1n689MJ1/3cc3Mr57HNnzuJJ1j5ZhhO9OkEPWwb85zUUWLVG23pvHx76fo&#43;//nNxKbhts9oA1RU6jFts2KfENIoHVscD2sHs0K&#43;UrvuM8n1bNnlfEZ9e7HcmJ5jV21RY/qernub/6hvmn1SmwnHeqbda/2xcq5j&#43;oqvmzF/&#43;XGTdpqWPa50L&#43;y/X01j0L4WW8&#43;fTVc6xuZH7Adi3dvrhvk3aZfu1cLx4zn6unMkeTRjVrh/2rSF9s/yVmbSEMeGrq9tzROlPiTXoWbqIMunnI5UX&#43;V&#43;MfDzp0Ssm4TuP8P1wtfQdR6yciTj1eZzyFNx/AK4aBb0mnF88wm3mf9Hk3CSfkU5j/18GkZwTTPppjfNYlldnsft9TKIaXconZdvL10/DlSm7T4Nv72/DVBRGRtpmxX7hJBG6djieDAL12B7dczGbd89xhrzwMal10vLOHJ9fvF92bZL71xn&#43;siu2qJLmv/yXGT7XG0RLoyTUbueorrZUDBrx2Q5nTn3qnh822uXAmStXF/2XLEfrBDM&#43;jJo9hg5EAvPCbeXSH3VbBPSsHkoz5Nx/QZ1F7Tz9GVdSZ3pb4dvtOPmyXVYVuiLWT9242vGHBC2by6uc90&#43;Os9z2rrYdgAutP0IZiuLknFfOtm5G8/BQ3tTSSfy&#43;GZeVs7jXGmZChPvmO/kxuMW0tONI08vtOqkXjovr6/S9cttZdOYtve2ASrSgCuQ1m&#43;pL/vtYRqltiml4fvnuN3nSxqz7tixj1fKEOk9bkPysro&#43;n16/NGYXx5avd64zfWRHbdGnkP&#43;xL7p97udiOc3&#43;2rzUqqckeMiCAEk5TTsWp3365/S49JgacWyn4zdhx4JUhsKY0EyaaT1OdWPTDPb7drp5qA6Fe/ammXoQ7p9Zvjyh30T1IrSzvoYtR9wnbBu0&#43;kQvf89dz1Tfpb6YbK&#43;OI9cvJIU1S8SkbevH1HHHOcV2A3Dh7UkwOxhvdPGkJt6Yw32lb6b06aU3FL09uEY5j3VP7yTXdNeLbtDpot4QgsExr4Nx0SDUUUhMu0PhvLyeS9cX8u9kN/DONkCFr0NhMVlss2bfks61iuPB9Zt0oWPSDdvSb0/a115P7ndZmpsOoEy6SR905cmulY0P19/PRX&#43;1/aN3rjNttum2WEsr/8Giv5Zv0x&#43;Ee8aocZ30fNNn8vkwJqQpzsU6CNTbffrCmC7y5ZfLVgsG7D7pGu76Un2a/Mfp&#43;XGet0GYN/v/qNw6rXGM2f2&#43;rrK8Fa4r3tOEcVusBzf/TG1kyz6mW23ntH2FMtbqci3StWrSvHqujVz&#43;yn2izJ6j27lO/718n19zTmN&#43;tf1K7rsAsD/BrOEm02DSq05ybjFQPqadXjmPLa4MASmN8OY&#43;3WzSc/UNI73RlepoIqfdJp2X3yxabZTf5Gwa6faZbYpYJcDL22zgjx8N7SGkIZ47KI4HN9bG7UGa2QJGyKvhx2sguk6lrGvJ6kS4dijN56bzc2bsmC6WO2H6yF6VvZL/sY2HPv2Z/39hIW6OrS2M6/WULb6rQY63Qt2bMnTO7c17oVUa33a7VAZ3H5D6gbmmq0d/fbG/uDTG69p7QliusE59XnTQG54/He/uKeG13PXDcpk6FOrDpi&#43;0v&#43;tDPg3bBkGdhOX127xmnxok6W9OXp91PX1RqGPH96Gycj3oD2rSfWHbh9uNar8CAGurwSwAYF9MQUW3fVpESgGDX&#43;wOssV5aSEcpBMGjV1u/qv6f4Z/o2sFeWhpBzLBh39ddZ8Gim1jMBKk3w5QShoB3Fg3YaCcB1/jByfu&#43;LQsaWBq8xsH3&#43;kxs9vWKddj0DaSVnuZsjXqayWrB7Pz66invcsf7IztHGyTgtmpP5bTAgCPYBYALoSeJzITaeF5JtwTLbO4dYteKSArycrR8xStRC/W02s2FvBWre7jIKm3fXzgt1ob&#43;SB4jWChEZz5QEksj8/7yKZT7HPptcQ21GVasV0118&#43;6638mU7bSE8i1rB7MyvvX4ftVSd4&#43;UzA7jYP&#43;sgAAwSwAADsWLvrXCMCwEHMDTgBAL4JZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFgcglkAAAAAwOIQzAIAAAAAFodgFgAAAACwOASzAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsztaC2a&#43;&#43;&#43;goAAAAAcAFJMeKm8WQWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFgcglkAAAAAwOIQzAIAAAAAFodgFgAAAACwOASzAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAACA8&#43;PrI3Vw6ZI6/EzYB&#43;BcIZgFAJwPnx2qS8MCNpQuZl89PFCXbh6pV36bWfQeqKOv4&#43;POE1PmpF4OHr4Sj409VYfdx5bZ669fx0/vzM3LZvJvvVJHN139hf1n4&#43;x1pDzr8u9XcKbr91A9FfdZuu3r9e/qVapTPZ7XqGtdX3PPn8aK0F8vwFwBLNFWg1k/KfDJ2P6hbbAW96n3pTtP5f17blywSPn3ZRuVFmvB4tbZ1/FkFnVBPuc683IJQaqooz&#43;atp8VzNqAKF0UZ&#43;mMwgDK/j&#43;rv6yPzRRcd&#43;zLNUI&#43;X332VMh7ajPBoM3jukFAOcgrCtu2sw&#43;F6WfjJuxfjfRWr7NSOV8N9eiu6fOxwXGxKltHhTnS5a9eF4UxMng6nC&#43;NPa&#43;r7zccDuPAXMMrXMtozhUAzgLB7DaZifyMJz63aErb4MK3DdbjF&#43;NbXCRtTRhIpPnPFl8&#43;YE0Xa24BJAQVixtTXQvOPTZznjXtFC5YhQVqukiW6iZLxzP5mfqLWey3xkltkZyklyrmYyOShb6oXfe2Pte9F84PrKO6adSjFESmbff0Tl6GvP7jdEofJJXniVbQruuhvy67&#43;t9a8rnQcPNKcz5stYubr&#43;e0&#43;6qaY6k2TgGcGYLZLbI3sbOd&#43;C56G2BLfEC4wGA2WlxG&#43;XeBa7qYERZTdlylY7tw/j5zC84ltuPIlKF/ns0WrL4vh7L6yAOM0sI3Cx568ldbJDcW&#43;6V8bMacALIn8C3w&#43;ZfaYpawnpI2awVNQhvHbflq&#43;Dmv6zxYjNPJ99t6mhfMts4py6&#43;/CSu2dZaPoKx&#43;LuoVtcPM/BTqQxxLrk&#43;aug/HabM/AdgVgtktMjeRGYusbbjobYAt8YvOjS&#43;StswtmA4fCvl3ZYoXkZpdcE2LnPTniR1vZzvme/m5wRoWZeGiTTh&#43;b5k2bde5nY9Tw3mfBQtU4TzLBRP/r&#43;s3GXd&#43;uNgdz3X9pTZWxPOcxqJZXIBvjC13Pibm2cS4MO1382Cop84AwtRpcGwz&#43;MiDyCwQdPPHdIwUZMbb8mDS77f/5n0ppfMsXadPfv1NKOUnr0NPzMfG5pz&#43;&#43;qnVhziWwn4TjVPXfhuvWwBz7SyYNROIHvhO6eaYHpfefOx&#43;&#43;aYo7cvSSyaeKY9uwaGP6V4YJDcjf5674aWiMgvHjBOxm&#43;DlSdJds5VHn0bKpRm2jT0nSDc91&#43;ejtD3RqnPMEPaFtM8k9VocG0J/mo4N&#43;r3hx1tpu5Bm2i/SY9NzRklegzR9/yyN9dUEiw&#43;hTuw15etFdevOFeewbLG7j6a2NfnMFmvDvu45cFeSuXaGtC1MO0fls2lXF8JhHTmmTyT1JG0zXL8oXsPUe6GvC9cOTWNlBUFeV0onGD81tbHVxdRBOP7aadkxG9Rbox7rwWwwZu4cDte36cjtHfenKQ15fy7PR35OYzwE18uvvwmlMkh5t6R8&#43;D43ptNsW1fuQp1n9VAS5sONTYnOV5TvNH9hv/TpAdi5nQSzWnaDcBPFdLw8SWXHuoknnyzT8/3NJ7h5&#43;YVaMJGFecwn5gqXVpSPYdthVk5hotNlSCb1&#43;Fgh754rf29es5tFcXtwMygucNKFwbAtKkdfnWMGX39aODaE&#43;i/2N6EN/LiKjg&#43;vNcj7htCu6XbpWE0Yt1l&#43;wzS30F/s9Vy&#43;inUi1N/AjgO3TyjLyKUr7tsHvt&#43;E7WO2xe3lx/3eliNk8i&#43;3m8SULbnPxPOcLJ5DhfuVaftyPqL&#43;l6qdK7RPSCrPKuamY8rTOU5t/fa3UURsX1f/peuPc0naz/W2uqnPB/dEw6fl73OaUKYkv3k92XTL93ApIEzPKaeRXm9OO/VL66aTUA96&#43;1QOqewB14bluluHy080Buy2MT/ZOHV9YeP1C2CO3QSz6UD3N5pxuxAEjdJ90oQzcJOcn3RKN0&#43;fJz8ZFvPYYBcmwo0s0HPMyNXJOGkm5fFsmuWFTSotb3m7v7Gk&#43;ZVuOFreZr11jhmkRZmR13&#43;xv2XjzR9b6l/xsVrWhmO&#43;eq7n&#43;lA2xpKxXCzrBqSLoGKdyNeO&#43;nZtQeXSTev17E3jOMubKY9Ubn/OFtpjk0z&#43;hX5YYNpyzeDPjwfDpJUuat3PwsJYvLbpN4UyFNvH2kR5tLnpmPHiy&#43;vGxHrSMk5z3JGrb7nvDsck&#43;R7nsTDNrB5te0zj2F5vuoa/vjSe9blBeyXlD4&#43;f8hKz103SMdJ8&#43;OPCvKY/T6J2EX7ejNL1pbxbaT7CMRSmU&#43;uH9pygDcd7xorC60h9yWwL2kcap/qYGeMGwOad0e/M2olwnACEhWUoTcfeHOIJJZ7kXPpSem7C8pNtOY91/gZVO0/KpyickMc8J3UUbJNuFCWl8uXbpetp04IiXmj48s2vc8xQGRtp/yr2NyGN0rHF8eDacNxeHbOuz7i&#43;ZNOUxkHStxrzwMqkdIt1kvdzLSpDWhchl&#43;5e9fXW&#43;DP75XJrpl72ebFm8i/1L5lpS10efd5K5fL9NnDnaNgW1KHrB1kf0dtv/kf1H8NzVxTdwzbQPnPTMf2ic6yW5wDJVL9x/VXuf34862s80/8f2qLRr3164jjeoLyeguvqX/PIxpctf1zONK/ufluSzmud7dSvVHdS3q0oH&#43;M8eZSnY/ZV7hdhWYrHtqX93fZRV3&#43;u32Rz3xrXA7A9&#43;xHMdi22gnTGidAfn0xybv80MeX8ueU8ujST88bjXJ4s&#43;YZpJkJx4qvciNKbUHi&#43;uWaYXiOPg1L58u1Jm4z8NfIy2vy57TPqHDP4ehUWI2n/KPY3IY3SscXxUBiDUr7SPmOvVZP0ITHNVRX69Yw60Wy9uH21&#43;cqlS1/foWxerAjn7bHtK/NxwPd93xcO/TfbpmNjPEa&#43;L4hMvykcb9Ivp2WuldxLe6RjPEqngxkvnWM1Gj/Cfq82BrsNdWDK1qg33&#43;5pPcTke2xTOq9E9ZRe1/6crmfiOUQ&#43;R8p7er057dTPXl8se43Ph&#43;7v5v9SOdL6cNzcGh1rttX6S3mNFPd3fdw0pp&#43;Wxm92PZ3XGeMcwFYsM5j1E5Q/P53k3M89E3g5j23&#43;3Ek8qck35nByTSfFYVuYZ1cOXy8mvRmLDa1Uvnx70iYjn998wrblc9tn1DlmqNRr2r/k/jYQ0igdWxwP6RistnfcZ4r5Sm2hD&#43;VjtGC4pj1WzqfU18X5Kpur9okb43NssC1W5up0PR&#43;of9V90rdzNM/Zeim3Wbh/mqfDdPT/p/5g&#43;3/xfiYxZczn2Oa&#43;gcmHb6fGsZZcXtv/wzrrkPQPM06Ee5RNuzw39YyXqJwRXR6hzGNdhPfcXj69UluW29jUQZDP9Gex/nVex3qT0k7PkdtQa19/E0rX768XS07HHJv0I9uHCn3b3zskPWV39W&#43;CWHddnYesHOY6Uz&#43;2&#43;Rzy1Lq3AdiqBb1mHN8Iw23m/9HEl6RfUc5jP5&#43;GEVzTTHTpDbxYVpfnaLu7Ces0Z9z0Q6Xy5dtLdebyINxEbPn89v46xwyVsZH2L7G/aUIapWOL48EsDIPt1TEb94XuMVZNc8Oka6VlHAXj0PwsjVXLllVog71g891sB8f0kV20xbpMu/XXuWmjaJ5q1UuwP7hWno5j&#43;lYwX3bkr5iWZs4vLOIHUTs1jrXk8lbzIJD6h9kmpFEcF24cxnmx&#43;TOBRFCeV18/le9F/lXddHutLvS&#43;O4f2OvqJXLHtS8FZaXteL3k9tfqblHZ6TjmN9vW3qVwvskI5sraz6c4ph&#43;1zwzmiuC/qOtJ5njMGin0awM7tRzDrJyrxxuP2pROMuwkePLQ3uHTyNBN4x0RTzuNcaZkKk92Y72SyN5P3cH4yWfs0zOsvpRtzjUs3LV9e7jz/VrltbB1P23vrHDNIQZeT1nepL/vt2QJHaKtSGlk/8vmS&#43;qQ7duzjlTJEeo/bBPFabgyk13fHhmM27ftWYa7aG4WFY4Ep4y7aYl2mv/XPO6aPR23k2r3B1ttwv3H9IE/H0vUWz&#43;&#43;FfhWo1rUpX2nut31uvF71WG9eP5jDlEOoEzuvCG3kxlaYF3usK4NQnql&#43;47Kba4fHlupCbzd59PWg0yn1H3//myloy7xtW/WftKmRnuP6VEn1&#43;utYsT4SU9lKdZFsF/pJeqx0na652KRt&#43;0lpTKeK/RnAmdiTYHbgF5fJRGJvUPKkYfaZP6JevklmNzO9PbhGOY91T4fgMrqmu150AzI30/Sm5G8GQb7GvA6ym840UcfpdPJpJ&#43;nm5RbaxBDy62SLh846xwyF9tPyseH7SrtvlcZVcTy4vjxuD9PtHsd5H9bbszQ3tvCqKF0rG7Ou/2f9Nx8v&#43;7/AsXnunetMm&#43;2iLdZl2qy/3k07Re3Zqhd5f57OwPSrfK6s9g3XF4vXN&#43;XL0zTMuUG6tWNHUnlsP/fbbH6DdIQ61v1DGs/5WKmUPyu7zduYbrU8aTlsGWrnxuUKz9f/l9onSbO5PR835ufhOqm4/kNS2mlZ05/L5HFsz9/8&#43;C7Xi6xUDpuOz1/WHzvYc6b6Ljn86HDMrzlH6L8h256FsQzgTOxPMGu4CSyYaKoTi7lZ1Y5pp1fOY4srQ0BKI7yRTRN8eq6epMs3l3Unz2hSj24OYZ5bbZLfSGy&#43;0u0z2xB1paBrIPYLf/xoaB8hjVKfKo4HN9bG7UGaUf9y26JzPT9eA9F1KmXduNq10nwW8yONY&#43;m4fWHzK81TEtNHdtEWa7L9r39&#43;NMdHc1KrXuT9eTq2zsR0Sv2tp88LQZmX5aFy7CQvj63Dw6EO43vUdM&#43;KgwsjnRMGps8I832xjVz5fRp2Xgryb65RaFtzbqXdo7qw5am3uzsmagtb7jw4K23Px00&#43;jvL6j6V1P20rn1OWX3&#43;Q1PvmlOtF1lMuoe85tl8N&#43;4rK/ePVQ93f0235mB65/i7lA8DZ2mowi00oT&#43;QA0M8t1ufYx3nHLyoD/YtnacHaVy/pgjtLR8hXLlhc9y6Oo6AsJAQCXXmwxvPcOWn50sDUBg5xPtJjzM/JdXqUgxl3/xPOMWp15&#43;vNBW55H5EDqbicjeuXzBo3wjWygKon6JOJwaypm8oHASuzZVklmJ3fdxr5L44bS6oXKZi1/UFfr5wWgLNFMLvvCgsNAJhn3oJYXAQvWLhYnvfUqxL0jAvfMCApLLKDp2F2gdwZTJQW5Xq7GKS0Ft1xeYrtbNIK8ig&#43;CdVpdZZDsrUnhINmXfSMh7nB2bbGTU9erSn48vI6MHnMAuZNWD2Ylfevw6Yd10Uo77fTmJ7G85y2B3A2CGb3mptQz9GCEgAAnJX5AToA7DOC2b0UfKJIIAsAAAAAGYJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxSGYBQAAAAAsDsEsAAAAAGBxCGYBAAAAAItDMAsAAAAAWByCWQAAAADA4hDMAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFgcglkAAAAAwOIQzAIAAAAAFodgFgAAAACwOASzAAAAAIDFIZgFAAAAACwOwSwAAAAAYHEIZgEAAAAAi0MwCwAAAABYHIJZAAAAAMDiEMwCAAAAABaHYBYAAAAAsDgEswAAAACAxdlaMPvVV18BAAAAAC4gKUbcNJ7MAgAAAAAWh2AWAAAAALA4BLMAAAAAgMUhmAUAAAAALA7BLAAAAABgcQhmAQAAAACLQzALAAAAAFgcglkAAAAAwOIQzAIAAAAAFodgFgAAAACwMN&#43;p/x9ruxg36RMOAgAAAABJRU5ErkJggg==" alt="" /></p>
+<h6 id="002---代码案例-1">
+  002 - 代码案例
+  <a class="anchor" href="#002---%e4%bb%a3%e7%a0%81%e6%a1%88%e4%be%8b-1">#</a>
+</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;box2&#34;</span> <span style="color:#a6e22e">hover-class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;box2_active&#34;</span>&gt;
+  &lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;box1&#39;</span> <span style="color:#a6e22e">hover-class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;active&#39;</span> <span style="color:#a6e22e">hover-stop-propagation</span> <span style="color:#a6e22e">:hover-start-time</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2000&#34;</span> <span style="color:#a6e22e">:hover-stay-time</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2000&#39;</span>&gt;
+
+  &lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div><h5 id="button按钮组件的用法">
+  button按钮组件的用法
+  <a class="anchor" href="#button%e6%8c%89%e9%92%ae%e7%bb%84%e4%bb%b6%e7%9a%84%e7%94%a8%e6%b3%95">#</a>
+</h5>
+<h6 id="001---组件的属性-1">
+  001 - 组件的属性
+  <a class="anchor" href="#001---%e7%bb%84%e4%bb%b6%e7%9a%84%e5%b1%9e%e6%80%a7-1">#</a>
+</h6>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">size</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">按钮的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">按钮的样式类型</td>
+</tr>
+<tr>
+<td style="text-align:center">plain</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">按钮是否镂空，背景色透明</td>
+</tr>
+<tr>
+<td style="text-align:center">disabled</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">是否按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">loading</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">名称是否带 loading t图标</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>button</code> 组件默认独占一行，设置 <code>size</code> 为 <code>mini</code> 时可以在一行显示多个</li>
+</ul>
+<h6 id="002---案例代码">
+  002 - 案例代码
+  <a class="anchor" href="#002---%e6%a1%88%e4%be%8b%e4%bb%a3%e7%a0%81">#</a>
+</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mini&#39;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;primary&#39;</span>&gt;前端&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mini&#39;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;default&#39;</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>&gt;前端&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mini&#39;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;warn&#39;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;true&#39;</span>&gt;前端&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></div><h5 id="image组件的使用">
+  image组件的使用
+  <a class="anchor" href="#image%e7%bb%84%e4%bb%b6%e7%9a%84%e4%bd%bf%e7%94%a8">#</a>
+</h5>
+<h6 id="imagehttpsuniappdcloudiocomponentimageidimage">
+  <a href="https://uniapp.dcloud.io/component/image?id=image">image</a>
+  <a class="anchor" href="#imagehttpsuniappdcloudiocomponentimageidimage">#</a>
+</h6>
+<p>图片。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>平台差异说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>String</td>
+<td></td>
+<td>图片资源地址</td>
+<td></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>String</td>
+<td>&lsquo;scaleToFill&rsquo;</td>
+<td>图片裁剪、缩放的模式</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tips</strong></p>
+<ul>
+<li><code>&lt;image&gt;</code> 组件默认宽度 300px、高度 225px；</li>
+<li><code>src</code> 仅支持相对路径、绝对路径，支持 base64 码；</li>
+<li>页面结构复杂，css样式太多的情况，使用 image 可能导致样式生效较慢，出现 “闪一下” 的情况，此时设置 <code>image{will-change: transform}</code> ,可优化此问题。</li>
+</ul>
+<h4 id="uni-app中的样式">
+  uni-app中的样式
+  <a class="anchor" href="#uni-app%e4%b8%ad%e7%9a%84%e6%a0%b7%e5%bc%8f">#</a>
+</h4>
+<ul>
+<li>
+<p>rpx 即响应式px，一种根据屏幕宽度自适应的动态单位。以750宽的屏幕为基准，750rpx恰好为屏幕宽度。屏幕变宽，rpx 实际显示效果会等比放大。</p>
+</li>
+<li>
+<p>使用<code>@import</code>语句可以导入外联样式表，<code>@import</code>后跟需要导入的外联样式表的相对路径，用<code>;</code>表示语句结束</p>
+</li>
+<li>
+<p>支持基本常用的选择器class、id、element等</p>
+</li>
+<li>
+<p>在 <code>uni-app</code> 中不能使用 <code>*</code> 选择器。</p>
+</li>
+<li>
+<p><code>page</code> 相当于 <code>body</code> 节点</p>
+</li>
+<li>
+<p>定义在 App.vue 中的样式为全局样式，作用于每一个页面。在 pages 目录下 的 vue 文件中定义的样式为局部样式，只作用在对应的页面，并会覆盖 App.vue 中相同的选择器。</p>
+</li>
+<li>
+<p><code>uni-app</code> 支持使用字体图标，使用方式与普通 <code>web</code> 项目相同，需要注意以下几点：</p>
+<ul>
+<li>
+<p>字体文件小于 40kb，<code>uni-app</code> 会自动将其转化为 base64 格式；</p>
+</li>
+<li>
+<p>字体文件大于等于 40kb， 需开发者自己转换，否则使用将不生效；</p>
+</li>
+<li>
+<p>字体文件的引用路径推荐使用以 ~@ 开头的绝对路径。</p>
+<pre><code> @font-face {
+     font-family: test1-icon;
+     src: url('~@/static/iconfont.ttf');
+ }
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>如何使用scss或者less</p>
+</li>
+</ul>
+<h4 id="uni-app中的数据绑定">
+  uni-app中的数据绑定
+  <a class="anchor" href="#uni-app%e4%b8%ad%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%91%e5%ae%9a">#</a>
+</h4>
+<p>在页面中需要定义数据，和我们之前的vue一摸一样，直接在data中定义数据即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">msg</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello-uni&#39;</span>
+    }
+  }
+}
+</code></pre></div><h5 id="插值表达式的使用">
+  插值表达式的使用
+  <a class="anchor" href="#%e6%8f%92%e5%80%bc%e8%a1%a8%e8%be%be%e5%bc%8f%e7%9a%84%e4%bd%bf%e7%94%a8">#</a>
+</h5>
+<ul>
+<li>
+<p>利用插值表达式渲染基本数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span>&gt;{{msg}}&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div></li>
+<li>
+<p>在插值表达式中使用三元运算</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span>&gt;{{ flag ? &#39;我是真的&#39;:&#39;我是假的&#39; }}&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div></li>
+<li>
+<p>基本运算</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span>&gt;{{1+1}}&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div></li>
+</ul>
+<h5 id="v-bind动态绑定属性">
+  v-bind动态绑定属性
+  <a class="anchor" href="#v-bind%e5%8a%a8%e6%80%81%e7%bb%91%e5%ae%9a%e5%b1%9e%e6%80%a7">#</a>
+</h5>
+<p>在data中定义了一张图片，我们希望把这张图片渲染到页面上</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">img</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://destiny001.gitee.io/image/monkey_02.jpg&#39;</span>
+    }
+  }
+}
+</code></pre></div><p>利用v-bind进行渲染</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">image</span> <span style="color:#a6e22e">v-bind:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;img&#34;</span>&gt;&lt;/<span style="color:#f92672">image</span>&gt;
+</code></pre></div><p>还可以缩写成:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">image</span> <span style="color:#a6e22e">:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;img&#34;</span>&gt;&lt;/<span style="color:#f92672">image</span>&gt;
+</code></pre></div><h5 id="v-for的使用">
+  v-for的使用
+  <a class="anchor" href="#v-for%e7%9a%84%e4%bd%bf%e7%94%a8">#</a>
+</h5>
+<p>data中定以一个数组，最终将数组渲染到页面上</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">data</span> () {
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [
+      { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;刘能&#39;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">29</span> },
+      { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;赵四&#39;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">39</span> },
+      { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;宋小宝&#39;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">49</span> },
+      { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;小沈阳&#39;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">59</span> }
+    ]
+  }
+}
+</code></pre></div><p>利用v-for进行循环</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span> <span style="color:#a6e22e">v</span><span style="color:#f92672">-</span><span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(item,i) in arr&#34;</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;i&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">名字</span><span style="color:#960050;background-color:#1e0010">：</span>{{<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">name</span>}}<span style="color:#f92672">---</span><span style="color:#a6e22e">年龄</span><span style="color:#960050;background-color:#1e0010">：</span>{{<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">age</span>}}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+</code></pre></div><h4 id="uni中的事件">
+  uni中的事件
+  <a class="anchor" href="#uni%e4%b8%ad%e7%9a%84%e4%ba%8b%e4%bb%b6">#</a>
+</h4>
+<h5 id="事件绑定">
+  事件绑定
+  <a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e7%bb%91%e5%ae%9a">#</a>
+</h5>
+<p>在uni中事件绑定和vue中是一样的，通过v-on进行事件的绑定，也可以简写为@</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tapHandle&#34;</span>&gt;点我啊&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></div><p>事件函数定义在methods中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+  <span style="color:#a6e22e">tapHandle</span> () {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;真的点我了&#39;</span>)
+  }
+}
+</code></pre></div><h5 id="事件传参">
+  事件传参
+  <a class="anchor" href="#%e4%ba%8b%e4%bb%b6%e4%bc%a0%e5%8f%82">#</a>
+</h5>
+<ul>
+<li>
+<p>默认如果没有传递参数，事件函数第一个形参为事件对象</p>
+<pre><code>// template
+&lt;button @click=&quot;tapHandle&quot;&gt;点我啊&lt;/button&gt;
+// script
+methods: {
+  tapHandle (e) {
+    console.log(e)
+  }
+}
+</code></pre></li>
+<li>
+<p>如果给事件函数传递参数了，则对应的事件函数形参接收的则是传递过来的数据</p>
+<pre><code>// template
+&lt;button @click=&quot;tapHandle(1)&quot;&gt;点我啊&lt;/button&gt;
+// script
+methods: {
+  tapHandle (num) {
+    console.log(num)
+  }
+}
+</code></pre></li>
+<li>
+<p>如果获取事件对象也想传递参数</p>
+<pre><code>// template
+&lt;button @click=&quot;tapHandle(1,$event)&quot;&gt;点我啊&lt;/button&gt;
+// script
+methods: {
+  tapHandle (num,e) {
+    console.log(num,e)
+  }
+}
+</code></pre></li>
+</ul>
+<h4 id="uni的生命周期">
+  uni的生命周期
+  <a class="anchor" href="#uni%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
+</h4>
+<h5 id="应用的生命周期">
+  应用的生命周期
+  <a class="anchor" href="#%e5%ba%94%e7%94%a8%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
+</h5>
+<p>生命周期的概念：一个对象从创建、运行、销毁的整个过程被成为生命周期。</p>
+<p>生命周期函数：在生命周期中每个阶段会伴随着每一个函数的触发，这些函数被称为生命周期函数</p>
+<p><code>uni-app</code> 支持如下应用生命周期函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onLaunch</td>
+<td>当<code>uni-app</code> 初始化完成时触发（全局只触发一次）</td>
+</tr>
+<tr>
+<td>onShow</td>
+<td>当 <code>uni-app</code> 启动，或从后台进入前台显示</td>
+</tr>
+<tr>
+<td>onHide</td>
+<td>当 <code>uni-app</code> 从前台进入后台</td>
+</tr>
+<tr>
+<td>onError</td>
+<td>当 <code>uni-app</code> 报错时触发</td>
+</tr>
+</tbody>
+</table>
+<h5 id="页面的生命周期">
+  页面的生命周期
+  <a class="anchor" href="#%e9%a1%b5%e9%9d%a2%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
+</h5>
+<p><code>uni-app</code> 支持如下页面生命周期函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+<th>平台差异说明</th>
+<th>最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onLoad</td>
+<td>监听页面加载，其参数为上个页面传递的数据，参数类型为Object（用于页面传参），参考<a href="https://uniapp.dcloud.io/api/router?id=navigateto">示例</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onShow</td>
+<td>监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onReady</td>
+<td>监听页面初次渲染完成。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onHide</td>
+<td>监听页面隐藏</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onUnload</td>
+<td>监听页面卸载</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="下拉刷新">
+  下拉刷新
+  <a class="anchor" href="#%e4%b8%8b%e6%8b%89%e5%88%b7%e6%96%b0">#</a>
+</h4>
+<h5 id="开启下拉刷新">
+  开启下拉刷新
+  <a class="anchor" href="#%e5%bc%80%e5%90%af%e4%b8%8b%e6%8b%89%e5%88%b7%e6%96%b0">#</a>
+</h5>
+<p>在uni-app中有两种方式开启下拉刷新</p>
+<ul>
+<li>需要在 <code>pages.json</code> 里，找到的当前页面的pages节点，并在 <code>style</code> 选项中开启 <code>enablePullDownRefresh</code></li>
+<li>通过调用uni.startPullDownRefresh方法来开启下拉刷新</li>
+</ul>
+<h6 id="通过配置文件开启">
+  通过配置文件开启
+  <a class="anchor" href="#%e9%80%9a%e8%bf%87%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%bc%80%e5%90%af">#</a>
+</h6>
+<p>创建list页面进行演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		杭州学科
+		&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(item,index) in arr&#34;</span> <span style="color:#a6e22e">:key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>&gt;
+			{{item}}
+		&lt;/<span style="color:#f92672">view</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>]
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+&lt;/<span style="color:#f92672">style</span>&gt;
+</code></pre></div><p>通过pages.json文件中找到当前页面的pages节点，并在 <code>style</code> 选项中开启 <code>enablePullDownRefresh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#e6db74">&#34;path&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pages/list/list&#34;</span>,
+    <span style="color:#e6db74">&#34;style&#34;</span><span style="color:#f92672">:</span>{
+      <span style="color:#e6db74">&#34;enablePullDownRefresh&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+    }
+}
+</code></pre></div><h6 id="通过api开启">
+  通过API开启
+  <a class="anchor" href="#%e9%80%9a%e8%bf%87api%e5%bc%80%e5%90%af">#</a>
+</h6>
+<p><a href="https://uniapp.dcloud.io/api/ui/pulldown">api文档</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">uni.startPullDownRefresh()
+</code></pre></div><h5 id="监听下拉刷新">
+  监听下拉刷新
+  <a class="anchor" href="#%e7%9b%91%e5%90%ac%e4%b8%8b%e6%8b%89%e5%88%b7%e6%96%b0">#</a>
+</h5>
+<p>通过onPullDownRefresh可以监听到下拉刷新的动作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>]
+    }
+  },
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">startPull</span> () {
+      <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">startPullDownRefresh</span>()
+    }
+  },
+  <span style="color:#a6e22e">onPullDownRefresh</span> () {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;触发下拉刷新了&#39;</span>)
+  }
+}
+</code></pre></div><h5 id="关闭下拉刷新">
+  关闭下拉刷新
+  <a class="anchor" href="#%e5%85%b3%e9%97%ad%e4%b8%8b%e6%8b%89%e5%88%b7%e6%96%b0">#</a>
+</h5>
+<p>uni.stopPullDownRefresh()</p>
+<p>停止当前页面下拉刷新。</p>
+<p>案例演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;startPull&#34;</span>&gt;开启下拉刷新&lt;/<span style="color:#f92672">button</span>&gt;
+		杭州学科
+		&lt;<span style="color:#f92672">view</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(item,index) in arr&#34;</span> <span style="color:#a6e22e">:key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>&gt;
+			{{item}}
+		&lt;/<span style="color:#f92672">view</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>]
+			}
+		},
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">startPull</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">startPullDownRefresh</span>()
+			}
+		},
+		
+		<span style="color:#a6e22e">onPullDownRefresh</span> () {
+			<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> []
+			<span style="color:#a6e22e">setTimeout</span>(()=&gt; {
+				<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>]
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">stopPullDownRefresh</span>()
+			}, <span style="color:#ae81ff">1000</span>);
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h4 id="上拉加载">
+  上拉加载
+  <a class="anchor" href="#%e4%b8%8a%e6%8b%89%e5%8a%a0%e8%bd%bd">#</a>
+</h4>
+<p>通过在pages.json文件中找到当前页面的pages节点下style中配置onReachBottomDistance可以设置距离底部开启加载的距离，默认为50px</p>
+<p>通过onReachBottom监听到触底的行为</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;startPull&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">开启下拉刷新</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
+		<span style="color:#a6e22e">杭州学科</span>
+		<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span> <span style="color:#a6e22e">v</span><span style="color:#f92672">-</span><span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(item,index) in arr&#34;</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">&gt;</span>
+			{{<span style="color:#a6e22e">item</span>}}
+		<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>,<span style="color:#e6db74">&#39;前端&#39;</span>,<span style="color:#e6db74">&#39;java&#39;</span>,<span style="color:#e6db74">&#39;ui&#39;</span>,<span style="color:#e6db74">&#39;大数据&#39;</span>]
+			}
+		},
+		<span style="color:#a6e22e">onReachBottom</span> () {
+			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;触底了&#39;</span>)
+		}
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#a6e22e">view</span>{
+		<span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span><span style="color:#a6e22e">px</span>;
+		<span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span><span style="color:#a6e22e">px</span>;
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><h4 id="网络请求">
+  网络请求
+  <a class="anchor" href="#%e7%bd%91%e7%bb%9c%e8%af%b7%e6%b1%82">#</a>
+</h4>
+<p>在uni中可以调用uni.request方法进行请求网络请求</p>
+<p>需要注意的是：在小程序中网络相关的 API 在使用前需要配置域名白名单。</p>
+<p><strong>发送get请求</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sendGet&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">发送请求</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">sendGet</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">request</span>({
+					<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://localhost:8082/api/getlunbo&#39;</span>,
+					<span style="color:#a6e22e">success</span>(<span style="color:#a6e22e">res</span>) {
+						<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>)
+					}
+				})
+			}
+		}
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p><strong>发送post请求</strong></p>
+<h4 id="数据缓存">
+  数据缓存
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%bc%93%e5%ad%98">#</a>
+</h4>
+<h5 id="unisetstorage">
+  <strong>uni.setStorage</strong>
+  <a class="anchor" href="#unisetstorage">#</a>
+</h5>
+<p><a href="https://uniapp.dcloud.io/api/storage/storage?id=setstorage">官方文档</a></p>
+<p>将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个异步接口。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;setStor&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">存储数据</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">setStor</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">setStorage</span>({
+				 	<span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;id&#39;</span>,
+				 	<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+				 	<span style="color:#a6e22e">success</span> () {
+				 		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;存储成功&#39;</span>)
+				 	}
+				 })
+			}
+		}
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><h5 id="unisetstoragesync">
+  uni.setStorageSync
+  <a class="anchor" href="#unisetstoragesync">#</a>
+</h5>
+<p>将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">view</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;setStor&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">存储数据</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
+	<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/view&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">setStor</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">setStorageSync</span>(<span style="color:#e6db74">&#39;id&#39;</span>,<span style="color:#ae81ff">100</span>)
+			}
+		}
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><h5 id="unigetstorage">
+  uni.getStorage
+  <a class="anchor" href="#unigetstorage">#</a>
+</h5>
+<p>从本地缓存中异步获取指定 key 对应的内容。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;getStorage&#34;</span>&gt;获取数据&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+			}
+		},
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">getStorage</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">getStorage</span>({
+					<span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;id&#39;</span>,
+					<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span>  <span style="color:#a6e22e">res</span>=&gt;{
+						<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">data</span>
+					}
+				})
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h5 id="unigetstoragesync">
+  uni.getStorageSync
+  <a class="anchor" href="#unigetstoragesync">#</a>
+</h5>
+<p>从本地缓存中同步获取指定 key 对应的内容。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;getStorage&#34;</span>&gt;获取数据&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">getStorage</span> () {
+				<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">getStorageSync</span>(<span style="color:#e6db74">&#39;id&#39;</span>)
+				<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">id</span>)
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h5 id="uniremovestorage">
+  uni.removeStorage
+  <a class="anchor" href="#uniremovestorage">#</a>
+</h5>
+<p>从本地缓存中异步移除指定 key。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;removeStorage&#34;</span>&gt;删除数据&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">removeStorage</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">removeStorage</span>({
+					<span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;id&#39;</span>,
+					<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+						<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;删除成功&#39;</span>)
+					}
+				})
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h5 id="uniremovestoragesync">
+  uni.removeStorageSync
+  <a class="anchor" href="#uniremovestoragesync">#</a>
+</h5>
+<p>从本地缓存中同步移除指定 key。</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;removeStorage&#34;</span>&gt;删除数据&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">removeStorage</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">removeStorageSync</span>(<span style="color:#e6db74">&#39;id&#39;</span>)
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h4 id="上传图片预览图片">
+  上传图片、预览图片
+  <a class="anchor" href="#%e4%b8%8a%e4%bc%a0%e5%9b%be%e7%89%87%e9%a2%84%e8%a7%88%e5%9b%be%e7%89%87">#</a>
+</h4>
+<h5 id="上传图片">
+  上传图片
+  <a class="anchor" href="#%e4%b8%8a%e4%bc%a0%e5%9b%be%e7%89%87">#</a>
+</h5>
+<p>uni.chooseImage方法从本地相册选择图片或使用相机拍照。</p>
+<p>案例代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">button</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chooseImg&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span>&gt;上传图片&lt;/<span style="color:#f92672">button</span>&gt;
+		&lt;<span style="color:#f92672">view</span>&gt;
+			&lt;<span style="color:#f92672">image</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item in imgArr&#34;</span> <span style="color:#a6e22e">:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span> <span style="color:#a6e22e">:key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>&gt;&lt;/<span style="color:#f92672">image</span>&gt;
+		&lt;/<span style="color:#f92672">view</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">imgArr</span><span style="color:#f92672">:</span> []
+			}
+		},
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">chooseImg</span> () {
+				<span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">chooseImage</span>({
+					<span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">9</span>,
+					<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">res</span>=&gt;{
+						<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">imgArr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">tempFilePaths</span>
+					}
+				})
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h5 id="预览图片">
+  预览图片
+  <a class="anchor" href="#%e9%a2%84%e8%a7%88%e5%9b%be%e7%89%87">#</a>
+</h5>
+<p>结构</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">view</span>&gt;
+	&lt;<span style="color:#f92672">image</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item in imgArr&#34;</span> <span style="color:#a6e22e">:src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;previewImg(item)&#34;</span> <span style="color:#a6e22e">:key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">image</span>&gt;
+&lt;/<span style="color:#f92672">view</span>&gt;
+</code></pre></div><p>预览图片的方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">previewImg</span> (<span style="color:#a6e22e">current</span>) {
+  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">previewImage</span>({
+    <span style="color:#a6e22e">urls</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">imgArr</span>,
+    <span style="color:#a6e22e">current</span>
+  })
+}
+</code></pre></div><h4 id="条件注释实现跨段兼容">
+  条件注释实现跨段兼容
+  <a class="anchor" href="#%e6%9d%a1%e4%bb%b6%e6%b3%a8%e9%87%8a%e5%ae%9e%e7%8e%b0%e8%b7%a8%e6%ae%b5%e5%85%bc%e5%ae%b9">#</a>
+</h4>
+<p>条件编译是用特殊的注释作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。</p>
+<p>**写法：**以 #ifdef 加平台标识 开头，以 #endif 结尾。</p>
+<p>平台标识</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>平台</th>
+<th>参考文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP-PLUS</td>
+<td>5+App</td>
+<td><a href="http://www.html5plus.org/doc/">HTML5+ 规范</a></td>
+</tr>
+<tr>
+<td>H5</td>
+<td>H5</td>
+<td></td>
+</tr>
+<tr>
+<td>MP-WEIXIN</td>
+<td>微信小程序</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/api/">微信小程序</a></td>
+</tr>
+<tr>
+<td>MP-ALIPAY</td>
+<td>支付宝小程序</td>
+<td><a href="https://docs.alipay.com/mini/developer/getting-started">支付宝小程序</a></td>
+</tr>
+<tr>
+<td>MP-BAIDU</td>
+<td>百度小程序</td>
+<td><a href="https://smartprogram.baidu.com/docs/develop/tutorial/codedir/">百度小程序</a></td>
+</tr>
+<tr>
+<td>MP-TOUTIAO</td>
+<td>头条小程序</td>
+<td><a href="https://developer.toutiao.com/dev/cn/mini-app/develop/framework/basic-reference/introduction">头条小程序</a></td>
+</tr>
+<tr>
+<td>MP-QQ</td>
+<td>QQ小程序</td>
+<td>（目前仅cli版支持）</td>
+</tr>
+<tr>
+<td>MP</td>
+<td>微信小程序/支付宝小程序/百度小程序/头条小程序/QQ小程序</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="组件的条件注释">
+  组件的条件注释
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e7%9a%84%e6%9d%a1%e4%bb%b6%e6%b3%a8%e9%87%8a">#</a>
+</h5>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- #ifdef H5 --&gt;</span>
+&lt;<span style="color:#f92672">view</span>&gt;
+  h5页面会显示
+&lt;/<span style="color:#f92672">view</span>&gt;
+<span style="color:#75715e">&lt;!-- #endif --&gt;</span>
+<span style="color:#75715e">&lt;!-- #ifdef MP-WEIXIN --&gt;</span>
+&lt;<span style="color:#f92672">view</span>&gt;
+  微信小程序会显示
+&lt;/<span style="color:#f92672">view</span>&gt;
+<span style="color:#75715e">&lt;!-- #endif --&gt;</span>
+<span style="color:#75715e">&lt;!-- #ifdef APP-PLUS --&gt;</span>
+&lt;<span style="color:#f92672">view</span>&gt;
+  app会显示
+&lt;/<span style="color:#f92672">view</span>&gt;
+<span style="color:#75715e">&lt;!-- #endif --&gt;</span>
+</code></pre></div><h5 id="api的条件注释">
+  api的条件注释
+  <a class="anchor" href="#api%e7%9a%84%e6%9d%a1%e4%bb%b6%e6%b3%a8%e9%87%8a">#</a>
+</h5>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">onLoad</span> () {
+  <span style="color:#75715e">//#ifdef MP-WEIXIN
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;微信小程序&#39;</span>)
+  <span style="color:#75715e">//#endif
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//#ifdef H5
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;h5页面&#39;</span>)
+  <span style="color:#75715e">//#endif
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>样式的条件注释</p>
+<p>代码演示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#75715e">/* #ifdef H5 */</span>
+<span style="color:#f92672">view</span>{
+  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">red</span>;
+}
+<span style="color:#75715e">/* #endif */</span>
+<span style="color:#75715e">/* #ifdef MP-WEIXIN */</span>
+<span style="color:#f92672">view</span>{
+  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">green</span>;
+}
+<span style="color:#75715e">/* #endif */</span>
+</code></pre></div><h4 id="uni中的导航跳转">
+  uni中的导航跳转
+  <a class="anchor" href="#uni%e4%b8%ad%e7%9a%84%e5%af%bc%e8%88%aa%e8%b7%b3%e8%bd%ac">#</a>
+</h4>
+<h5 id="利用navigator进行跳转">
+  利用navigator进行跳转
+  <a class="anchor" href="#%e5%88%a9%e7%94%a8navigator%e8%bf%9b%e8%a1%8c%e8%b7%b3%e8%bd%ac">#</a>
+</h5>
+<p>navigator详细文档：<a href="https://uniapp.dcloud.io/component/navigator">文档地址</a></p>
+<p>跳转到普通页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">navigator</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/pages/about/about&#34;</span> <span style="color:#a6e22e">hover-class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navigator-hover&#34;</span>&gt;
+  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default&#34;</span>&gt;跳转到关于页面&lt;/<span style="color:#f92672">button</span>&gt;
+&lt;/<span style="color:#f92672">navigator</span>&gt;
+</code></pre></div><p>跳转到tabbar页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">navigator</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/pages/message/message&#34;</span> <span style="color:#a6e22e">open-type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;switchTab&#34;</span>&gt;
+  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default&#34;</span>&gt;跳转到message页面&lt;/<span style="color:#f92672">button</span>&gt;
+&lt;/<span style="color:#f92672">navigator</span>&gt;
+</code></pre></div><h5 id="利用编程式导航进行跳转">
+  利用编程式导航进行跳转
+  <a class="anchor" href="#%e5%88%a9%e7%94%a8%e7%bc%96%e7%a8%8b%e5%bc%8f%e5%af%bc%e8%88%aa%e8%bf%9b%e8%a1%8c%e8%b7%b3%e8%bd%ac">#</a>
+</h5>
+<p><a href="[uni.navigateTo]%28https://uniapp.dcloud.io/api/router?id=navigateto%29">导航跳转文档</a></p>
+<p><strong>利用navigateTo进行导航跳转</strong></p>
+<p>保留当前页面，跳转到应用内的某个页面，使用<code>uni.navigateBack</code>可以返回到原页面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;goAbout&#34;</span>&gt;跳转到关于页面&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></div><p>通过navigateTo方法进行跳转到普通页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">goAbout</span> () {
+  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">navigateTo</span>({
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/pages/about/about&#39;</span>,
+  })
+}
+</code></pre></div><p><strong>通过switchTab跳转到tabbar页面</strong></p>
+<p>跳转到tabbar页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;goMessage&#34;</span>&gt;跳转到message页面&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></div><p>通过switchTab方法进行跳转</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">goMessage</span> () {
+  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">switchTab</span>({
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/pages/message/message&#39;</span>
+  })
+}
+</code></pre></div><p><strong>redirectTo进行跳转</strong></p>
+<p>关闭当前页面，跳转到应用内的某个页面。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- template --&gt;</span>
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;goMessage&#34;</span>&gt;跳转到message页面&lt;/<span style="color:#f92672">button</span>&gt;
+<span style="color:#75715e">&lt;!-- js --&gt;</span>
+goMessage () {
+  uni.switchTab({
+    url: &#39;/pages/message/message&#39;
+  })
+}
+</code></pre></div><p>通过onUnload测试当前组件确实卸载</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">onUnload</span> () {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;组件卸载了&#39;</span>)
+}
+</code></pre></div><h5 id="导航跳转传递参数">
+  导航跳转传递参数
+  <a class="anchor" href="#%e5%af%bc%e8%88%aa%e8%b7%b3%e8%bd%ac%e4%bc%a0%e9%80%92%e5%8f%82%e6%95%b0">#</a>
+</h5>
+<p>在导航进行跳转到下一个页面的同时，可以给下一个页面传递相应的参数，接收参数的页面可以通过onLoad生命周期进行接收</p>
+<p>传递参数的页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">goAbout</span> () {
+  <span style="color:#a6e22e">uni</span>.<span style="color:#a6e22e">navigateTo</span>({
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/pages/about/about?id=80&#39;</span>,
+  });
+}
+</code></pre></div><p>接收参数的页面</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">onLoad</span> (<span style="color:#a6e22e">options</span>) {
+			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">options</span>)
+		}
+	}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><h4 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h4>
+<h4 id="uni-app中组件的创建">
+  uni-app中组件的创建
+  <a class="anchor" href="#uni-app%e4%b8%ad%e7%bb%84%e4%bb%b6%e7%9a%84%e5%88%9b%e5%bb%ba">#</a>
+</h4>
+<p>在uni-app中，可以通过创建一个后缀名为vue的文件，即创建一个组件成功，其他组件可以将该组件通过impot的方式导入，在通过components进行注册即可</p>
+<ul>
+<li>
+<p>创建login组件，在component中创建login目录，然后新建login.vue文件</p>
+<pre><code>&lt;template&gt;
+  &lt;view&gt;
+      这是一个自定义组件
+  &lt;/view&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre></li>
+<li>
+<p>在其他组件中导入该组件并注册</p>
+<pre><code>import login from &quot;@/components/test/test.vue&quot;
+</code></pre></li>
+<li>
+<p>注册组件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">test</span>}
+</code></pre></div></li>
+<li>
+<p>使用组件</p>
+<pre><code>&lt;test&gt;&lt;/test&gt;
+</code></pre></li>
+</ul>
+<h5 id="组件的生命周期函数">
+  组件的生命周期函数
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e5%87%bd%e6%95%b0">#</a>
+</h5>
+<table>
+<thead>
+<tr>
+<th>beforeCreate</th>
+<th>在实例初始化之后被调用。<a href="https://cn.vuejs.org/v2/api/#beforeCreate">详见</a></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>created</td>
+<td>在实例创建完成后被立即调用。<a href="https://cn.vuejs.org/v2/api/#created">详见</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用。<a href="https://cn.vuejs.org/v2/api/#beforeMount">详见</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>挂载到实例上去之后调用。<a href="https://cn.vuejs.org/v2/api/#mounted">详见</a> 注意：此处并不能确定子组件被全部挂载，如果需要子组件完全挂载之后在执行操作可以使用<code>$nextTick</code><a href="https://cn.vuejs.org/v2/api/#Vue-nextTick">Vue官方文档</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>数据更新时调用，发生在虚拟 DOM 打补丁之前。<a href="https://cn.vuejs.org/v2/api/#beforeUpdate">详见</a></td>
+<td>仅H5平台支持</td>
+<td></td>
+</tr>
+<tr>
+<td>updated</td>
+<td>由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。<a href="https://cn.vuejs.org/v2/api/#updated">详见</a></td>
+<td>仅H5平台支持</td>
+<td></td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>实例销毁之前调用。在这一步，实例仍然完全可用。<a href="https://cn.vuejs.org/v2/api/#beforeDestroy">详见</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。<a href="https://cn.vuejs.org/v2/api/#destroyed">详见</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="组件的通讯">
+  组件的通讯
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e7%9a%84%e9%80%9a%e8%ae%af">#</a>
+</h4>
+<h5 id="父组件给子组件传值">
+  父组件给子组件传值
+  <a class="anchor" href="#%e7%88%b6%e7%bb%84%e4%bb%b6%e7%bb%99%e5%ad%90%e7%bb%84%e4%bb%b6%e4%bc%a0%e5%80%bc">#</a>
+</h5>
+<p>通过props来接受外界传递到组件内部的值</p>
+<pre><code>&lt;template&gt;
+	&lt;view&gt;
+		这是一个自定义组件 {{msg}}
+	&lt;/view&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+	export default {
+		props: ['msg']
+	}
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre><p>其他组件在使用login组件的时候传递值</p>
+<pre><code>&lt;template&gt;
+	&lt;view&gt;
+		&lt;test :msg=&quot;msg&quot;&gt;&lt;/test&gt;
+	&lt;/view&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+	import test from &quot;@/components/test/test.vue&quot;
+	export default {
+		data () {
+			return {
+				msg: 'hello'
+			}
+		},
+		
+		components: {test}
+	}
+&lt;/script&gt;
+</code></pre><h5 id="子组件给父组件传值">
+  子组件给父组件传值
+  <a class="anchor" href="#%e5%ad%90%e7%bb%84%e4%bb%b6%e7%bb%99%e7%88%b6%e7%bb%84%e4%bb%b6%e4%bc%a0%e5%80%bc">#</a>
+</h5>
+<p>通过$emit触发事件进行传递参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		这是一个自定义组件 {{msg}}
+		&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primary&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sendMsg&#34;</span>&gt;给父组件传值&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;打篮球&#39;</span>
+			}
+		},
+		<span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">msg</span><span style="color:#f92672">:</span> {
+				<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> String,
+				<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+			}
+		},
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">sendMsg</span> () {
+				<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$emit</span>(<span style="color:#e6db74">&#39;myEvent&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span>)
+			}
+		}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p>父组件定义自定义事件并接收参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+	&lt;<span style="color:#f92672">view</span>&gt;
+		&lt;<span style="color:#f92672">test</span> <span style="color:#a6e22e">:msg</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msg&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">myEvent</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;getMsg&#34;</span>&gt;&lt;/<span style="color:#f92672">test</span>&gt;
+	&lt;/<span style="color:#f92672">view</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">test</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@/components/test/test.vue&#34;</span>
+	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+		<span style="color:#a6e22e">data</span> () {
+			<span style="color:#66d9ef">return</span> {
+				<span style="color:#a6e22e">msg</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello&#39;</span>
+			}
+		},
+		<span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+			<span style="color:#a6e22e">getMsg</span> (<span style="color:#a6e22e">res</span>) {
+				<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>)
+			}
+		},
+		
+		<span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">test</span>}
+	}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h5 id="兄弟组件通讯">
+  兄弟组件通讯
+  <a class="anchor" href="#%e5%85%84%e5%bc%9f%e7%bb%84%e4%bb%b6%e9%80%9a%e8%ae%af">#</a>
+</h5>
+<h4 id="uni-ui的使用">
+  uni-ui的使用
+  <a class="anchor" href="#uni-ui%e7%9a%84%e4%bd%bf%e7%94%a8">#</a>
+</h4>
+<p><a href="https://uniapp.dcloud.io/component/README?id=uniui">uni-ui文档</a></p>
+<p>1、进入Grid宫格组件</p>
+<p>2、使用HBuilderX导入该组件</p>
+<p>3、导入该组件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">import uniGrid from &#34;@/components/uni-grid/uni-grid.vue&#34;
+import uniGridItem from &#34;@/components/uni-grid-item/uni-grid-item.vue&#34;
+</code></pre></div><p>4、注册组件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">components: {uniGrid,uniGridItem}
+</code></pre></div><p>5、使用组件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">uni-grid</span> <span style="color:#a6e22e">:column</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;3&#34;</span>&gt;
+  &lt;<span style="color:#f92672">uni-grid-item</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>&gt;文本&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">uni-grid-item</span>&gt;
+  &lt;<span style="color:#f92672">uni-grid-item</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>&gt;文本&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">uni-grid-item</span>&gt;
+  &lt;<span style="color:#f92672">uni-grid-item</span>&gt;
+    &lt;<span style="color:#f92672">text</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span>&gt;文本&lt;/<span style="color:#f92672">text</span>&gt;
+  &lt;/<span style="color:#f92672">uni-grid-item</span>&gt;
+&lt;/<span style="color:#f92672">uni-grid</span>&gt;
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

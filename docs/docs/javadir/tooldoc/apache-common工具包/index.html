@@ -1,0 +1,2799 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Apache Commons 工具类介绍及简单使用
+#
+
+   组件 功能介绍     BeanUtils Commons-BeanUtils 提供对 Java 反射和自省API的包装, 提供了对于JavaBean进行各种操作，克隆对象,属性等等.   Betwixt XML与Java对象之间相互转换.   Codec 处理常用的编码方法的工具类包 例如DES、SHA1、MD5、Base64等.   Collections java集合框架操作.   Compress java提供文件打包 压缩类库.   Configuration Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助,java应用程序的配置管理类库.   DBCP 提供数据库连接池服务.   DbUtils DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码,提供对jdbc 的操作封装来简化数据查询和记录读取操作   Email java发送邮件 对javamail的封装.   FileUpload 提供文件上传功能.   HttpClient 提供HTTP客户端与服务器的各种通讯操作. 现在已改成HttpComponents   Lang Java基本对象方法的工具类包 如：StringUtils,ArrayUtils等等.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Apache Commons 工具类介绍及简单使用" />
+<meta property="og:description" content="Apache Commons 工具类介绍及简单使用
+#
+
+   组件 功能介绍     BeanUtils Commons-BeanUtils 提供对 Java 反射和自省API的包装, 提供了对于JavaBean进行各种操作，克隆对象,属性等等.   Betwixt XML与Java对象之间相互转换.   Codec 处理常用的编码方法的工具类包 例如DES、SHA1、MD5、Base64等.   Collections java集合框架操作.   Compress java提供文件打包 压缩类库.   Configuration Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助,java应用程序的配置管理类库.   DBCP 提供数据库连接池服务.   DbUtils DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码,提供对jdbc 的操作封装来简化数据查询和记录读取操作   Email java发送邮件 对javamail的封装.   FileUpload 提供文件上传功能.   HttpClient 提供HTTP客户端与服务器的各种通讯操作. 现在已改成HttpComponents   Lang Java基本对象方法的工具类包 如：StringUtils,ArrayUtils等等." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<title>Apache Commons 工具类介绍及简单使用 | 所悟所想</title>
+<link rel="manifest" href="./../../../../manifest.json">
+<link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
+<script defer src="./../../../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/data_link_layer/" class="">数据链路层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_layer/" class="">网络层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/transport_layer/" class="">传输层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/application_layer/" class="">应用层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle"  />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle" checked />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class=" active">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目一</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Apache Commons 工具类介绍及简单使用</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#apache-commons-工具类介绍及简单使用">Apache Commons 工具类介绍及简单使用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#三commons-collections">三:Commons Collections</a></li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="apache-commons-工具类介绍及简单使用">
+  Apache Commons 工具类介绍及简单使用
+  <a class="anchor" href="#apache-commons-%e5%b7%a5%e5%85%b7%e7%b1%bb%e4%bb%8b%e7%bb%8d%e5%8f%8a%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">组件</th>
+<th style="text-align:center">功能介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">BeanUtils</td>
+<td style="text-align:center">Commons-BeanUtils 提供对 Java 反射和自省API的包装, 提供了对于JavaBean进行各种操作，克隆对象,属性等等.</td>
+</tr>
+<tr>
+<td style="text-align:center">Betwixt</td>
+<td style="text-align:center">XML与Java对象之间相互转换.</td>
+</tr>
+<tr>
+<td style="text-align:center">Codec</td>
+<td style="text-align:center">处理常用的编码方法的工具类包 例如DES、SHA1、MD5、Base64等.</td>
+</tr>
+<tr>
+<td style="text-align:center">Collections</td>
+<td style="text-align:center">java集合框架操作.</td>
+</tr>
+<tr>
+<td style="text-align:center">Compress</td>
+<td style="text-align:center">java提供文件打包 压缩类库.</td>
+</tr>
+<tr>
+<td style="text-align:center">Configuration</td>
+<td style="text-align:center">Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助,java应用程序的配置管理类库.</td>
+</tr>
+<tr>
+<td style="text-align:center">DBCP</td>
+<td style="text-align:center">提供数据库连接池服务.</td>
+</tr>
+<tr>
+<td style="text-align:center">DbUtils</td>
+<td style="text-align:center">DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码,提供对jdbc 的操作封装来简化数据查询和记录读取操作</td>
+</tr>
+<tr>
+<td style="text-align:center">Email</td>
+<td style="text-align:center">java发送邮件 对javamail的封装.</td>
+</tr>
+<tr>
+<td style="text-align:center">FileUpload</td>
+<td style="text-align:center">提供文件上传功能.</td>
+</tr>
+<tr>
+<td style="text-align:center">HttpClient</td>
+<td style="text-align:center">提供HTTP客户端与服务器的各种通讯操作. 现在已改成HttpComponents</td>
+</tr>
+<tr>
+<td style="text-align:center">Lang</td>
+<td style="text-align:center">Java基本对象方法的工具类包 如：StringUtils,ArrayUtils等等.</td>
+</tr>
+<tr>
+<td style="text-align:center">Logging</td>
+<td style="text-align:center">提供的是一个Java 的日志接口.</td>
+</tr>
+<tr>
+<td style="text-align:center">Validator</td>
+<td style="text-align:center">提供了客户端和服务器端的数据验证框架.</td>
+</tr>
+<tr>
+<td style="text-align:center">Primitives</td>
+<td style="text-align:center">Commons-Primitives提供了一个更小，更快和更易使用的对Java基本类型的支持。当前主要是针对基本类型的 collection。</td>
+</tr>
+<tr>
+<td style="text-align:center">Math</td>
+<td style="text-align:center">Math 是一个轻量的，自包含的数学和统计组件，解决了许多非常通用但没有及时出现在Java标准语言中的实践问题</td>
+</tr>
+<tr>
+<td style="text-align:center">EL</td>
+<td style="text-align:center">Commons-EL 提供在JSP2.0规范中定义的EL表达式的解释器.</td>
+</tr>
+<tr>
+<td style="text-align:center">Discovery</td>
+<td style="text-align:center">Commons-Discovery 提供工具来定位资源 (包括类) ，通过使用各种模式来映射服务/引用名称和资源名称。</td>
+</tr>
+<tr>
+<td style="text-align:center">Digester</td>
+<td style="text-align:center">Commons-Digester 是一个 XML-Java对象的映射工具，用于解析 XML配置文件.</td>
+</tr>
+<tr>
+<td style="text-align:center">Chain</td>
+<td style="text-align:center">Chain 提供实现组织复杂的处理流程的“责任链模式”</td>
+</tr>
+<tr>
+<td style="text-align:center">Modeler</td>
+<td style="text-align:center">Commons-Modeler 提供了建模兼容JMX规范的Mbean的机制.</td>
+</tr>
+<tr>
+<td style="text-align:center">Net</td>
+<td style="text-align:center">Net 是一个网络工具集，基于 NetComponents 代码，包括 FTP 客户端等等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="一orgapachecommonslang">
+  一:org.apache.commons.lang
+  <a class="anchor" href="#%e4%b8%80orgapachecommonslang">#</a>
+</h1>
+<ul>
+<li>ArrayUtils – 用于对数组的操作，如添加、查找、删除、子数组、倒序、元素类型转换等；</li>
+</ul>
+<pre><code>ArrayUtils类
+ArrayUtils.toString(array)  将数组转为为字符串，格式如：{2,4,8,16}
+ArrayUtils.contains(array,8)  判断数组中是否包含数字8，（一维数组）
+ArrayUtils.indexOf(array,8)  判断数组中第一个8的位置（一维数组）
+ArrayUtils.lastIndexOf(array,8) 判断数组中最后一个8的位置。（一维数组）
+ArrayUtils.clone(array) 给一个一维数组来个拷贝
+ArrayUtils.reverse(array);  翻转该一维数组
+ArrayUtils.toMap(array); 将一个二维数组转换为map，二维数组中至少与两列，第一列为key第二列为value == &gt;注意的是传入toMap()中的二维数组必须是对象如Integer
+</code></pre><ul>
+<li>
+<p>BitField – 用于操作位元，提供了一些方便而安全的方法；</p>
+</li>
+<li>
+<p>BooleanUtils – 用于操作和转换 boolean 或者 Boolean 及相应的数组；</p>
+</li>
+</ul>
+<pre><code> boolean[] booleans = new boolean[]{true, false, true};
+//和，并且
+System.out.println(BooleanUtils.and(booleans));//false
+//或者
+System.out.println(BooleanUtils.or(booleans));//true
+ProjectInfo projectInfo = null;
+if (projectInfo != null &amp;&amp; projectInfo.getId() != 0);
+//可以用上面的改为
+BooleanUtils.and(new boolean[]{projectInfo != null,projectInfo.getId() != 0});
+Integer integer = 0;
+System.out.println(BooleanUtils.toBooleanObject(integer));//false
+</code></pre><ul>
+<li>CharEncoding – 包含了 Java 环境支持的字符编码，提供是否支持某种编码的判断；</li>
+</ul>
+<pre><code>System.out.println(CharEncoding.ISO_8859_1);
+System.out.println(CharEncoding.US_ASCII);
+System.out.println(CharEncoding.UTF_8);
+System.out.println(CharEncoding.UTF_16);
+System.out.println(CharEncoding.UTF_16BE);
+System.out.println(CharEncoding.UTF_16LE);
+</code></pre><ul>
+<li>CharRange – 用于设定字符范围并做相应检查；</li>
+</ul>
+<pre><code>System.out.println(CharUtils.toChar(&quot;hello&quot;,'o'));
+int assii = CharUtils.toIntValue('2');//检查字符是否在0-9
+System.out.println(assii);
+</code></pre><ul>
+<li>CharSet – 用于设定一组字符作为范围并做相应检查；(我的理解是可以用作正则表达式的判断)</li>
+</ul>
+<pre><code>System.out.println(CharSet.ASCII_ALPHA.toString());//[a-z, A-Z]
+System.out.println(CharSet.ASCII_ALPHA.contains('B'));//判断char是否在这个范围内
+System.out.println(CharSet.ASCII_ALPHA_LOWER.contains('l'));//判断char是否在这个范围内
+System.out.println(CharSet.ASCII_NUMERIC.contains('8'));//判断char是否在这个范围内
+System.out.println(CharSet.getInstance(&quot;s&quot;));//[s]
+</code></pre><ul>
+<li>CharSetUtils – 用于操作 CharSet ；</li>
+</ul>
+<pre><code> /*这里面所以的输入字符串都会被拆成char[]来判定*/
+//删除指定的字符(假如删除的这个会重复那么也会被删除掉)
+System.out.println(CharSetUtils.delete(&quot;hello World !&quot;,&quot; o&quot;));//helloWorld! , hellWrld! ==&gt; input [ o]和[o] 结果都不同
+//是否包含任意一个字符
+System.out.println(CharSetUtils.containsAny(&quot;xudaollong&quot;,&quot;k&quot;,&quot;o&quot;));
+//当有重复的时候只删除第一次的
+System.out.println(CharSetUtils.squeeze(&quot;china dong kk a&quot;,&quot;k&quot;));
+//保留指定的char 要注意的是指定的char,这虽然输入的是字符串dong,但是在判定的时候实际上是把这个字符串拆成char[]
+System.out.println(CharSetUtils.keep(&quot;china g dong&quot;,&quot;dong&quot;));
+//统计char出现的次数
+System.out.println(CharSetUtils.count(&quot;hello world&quot;, &quot;o&quot;));
+</code></pre><ul>
+<li>CharUtils – 用于操作 char 值和 Character 对象；</li>
+</ul>
+<pre><code>System.out.println(CharUtils.toChar(&quot;hello&quot;,'o'));
+int num = CharUtils.toIntValue('2');//获取int类型的char但是char必须在Ascii码中
+System.out.println(num);
+System.out.println(CharUtils.isAsciiNumeric('u'));//false
+System.out.println(CharUtils.isAsciiNumeric('7'));//true
+System.out.println(CharUtils.isAscii('h'));//判断是否在Ascii 128 范围类,是否属于Ascii
+</code></pre><ul>
+<li>ClassUtils – 用于对 Java 类的操作，不使用反射；</li>
+</ul>
+<pre><code>System.out.println(ClassUtils.getShortClassName(UserDO.class));//返回 UserDO
+System.out.println(ClassUtils.getName(UserDO.class));//返回 包名.UserDO
+System.out.println(ClassUtils.getPackageName(UserDO.class));//返回 包名
+System.out.println(ClassUtils.getShortCanonicalName(UserDO.class));//返回 UserDO
+System.out.println(ClassUtils.getSimpleName(UserDO.class));//返回 UserDO
+System.out.println(ClassUtils.getAbbreviatedName(UserDO.class,2));
+ClassUtils.getAllSuperclasses(UserDO.class).stream().forEachOrdered(System.out::println);//获取父类
+ClassUtils.getAllInterfaces(UserDO.class).stream().forEachOrdered(System.out::println);//获取接口
+</code></pre><ul>
+<li>ObjectUtils – 用于操作 Java 对象，提供 null 安全的访问和其他一些功能；</li>
+</ul>
+<pre><code>UserDO userDO = new UserDO(Zhou_Word.getEnglishName());
+UserDO userDO1 = ObjectUtils.clone(userDO);
+userDO1 = null;
+userDO = Preconditions.checkNotNull(userDO, &quot;不能为null&quot;);//不会抛出NullPointerException
+/**如果一个类没有重写toString方法本身，将会通过Object类的toString方法获取对象的字符串对象，*/
+System.out.println(ObjectUtils.identityToString(null));//null
+System.out.println(ObjectUtils.identityToString(&quot;&quot;));//java.lang.String@12843fce
+System.out.println(ObjectUtils.identityToString(Boolean.TRUE));//java.lang.Boolean@3dd3bcd
+
+/**
+ * 累加对象产生的toString
+ * 两个参数任意一个为null都会抛出空指针异常
+ * buffer-要追加的缓冲区
+ * object-要创建对象的toString
+ */
+StringBuffer buffer = new StringBuffer();
+ObjectUtils.identityToString(buffer, &quot;&quot;);
+ObjectUtils.identityToString(buffer, Boolean.TRUE);
+ObjectUtils.identityToString(buffer, 12);
+System.out.println(buffer.toString());//java.lang.String@12843fcejava.lang.Boolean@3dd3bcdjava.lang.Integer@97e1986 调用了Object类的toString方法
+
+//封装类型的数字比较
+Integer a = 10, b = null, c = 15;
+//比较两个封装类型的数字,默认null为小
+ObjectUtils.compare(a, b);
+//比较两个封装类型的数字,设置null为大
+ObjectUtils.compare(a, b, true);
+//获取最大的值,默认null为最小
+ObjectUtils.max(a, b);
+</code></pre><ul>
+<li>RandomStringUtils – 用于生成随机的字符串；</li>
+</ul>
+<pre><code>System.out.println(RandomStringUtils.random(4).length());
+System.out.println(RandomStringUtils.random(23));//生成指定长度任意的随机字符
+System.out.println(RandomStringUtils.randomNumeric(22));//生成数字组成的随机字符
+System.out.println(RandomStringUtils.randomAscii(22));//生成ascii 128内的随机字符
+System.out.println(RandomStringUtils.randomAlphabetic(21));//生成大写或者小写或者都有组成的随机字符
+</code></pre><ul>
+<li>
+<p>SerializationUtils – 用于处理对象序列化，提供比一般 Java 序列化更高级的处理能力；</p>
+</li>
+<li>
+<p>StringEscapeUtils – 用于正确处理转义字符，产生正确的 Java 、 JavaScript 、 HTML 、 XML 和 SQL 代码；</p>
+</li>
+</ul>
+<pre><code>String str = &quot;thi is a test 这是一个测试&quot;;
+String xml = &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&quot; +
+        &quot;&lt;persons&gt;\n&quot; +
+        &quot;   &lt;person id=\&quot;23\&quot;&gt;\n&quot; +
+        &quot;         &lt;name&gt;张   三&lt;/name&gt;\n&quot; +
+        &quot;         &lt;age&gt;26&lt;/age&gt;\n&quot; +
+        &quot;  &lt;/person&gt;\n&quot; +
+        &quot;  &lt;person id=\&quot;22\&quot;&gt;\n&quot; +
+        &quot;        &lt;name&gt;李四&lt;/name&gt;\n&quot; +
+        &quot;        &lt;age&gt;25&lt;/age&gt;\n&quot; +
+        &quot; &lt;/person&gt;\n&quot; +
+        &quot;&lt;/persons&gt;&quot;;
+System.out.println(&quot;用escapeJava方法转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.escapeJava(str));
+System.out.println(&quot;用unescapeJava方法反转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.unescapeJava(org.apache.commons.lang.StringEscapeUtils.escapeJava(str)));
+System.out.println(&quot;用escapeHtml方法转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.escapeHtml(str));
+System.out.println(&quot;用unescapeHtml方法反转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.unescapeHtml(org.apache.commons.lang.StringEscapeUtils.escapeHtml(str)));
+System.out.println(&quot;用escapeXml方法转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.escapeXml(xml));
+System.out.println(&quot;用unescapeXml方法反转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.unescapeXml(org.apache.commons.lang.StringEscapeUtils.escapeXml(xml)));
+System.out.println(&quot;用escapeJavaScript方法转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.escapeJavaScript(str));
+System.out.println(&quot;用unescapeJavaScript方法反转义之后的字符串为:&quot; + org.apache.commons.lang.StringEscapeUtils.unescapeJavaScript(org.apache.commons.lang.StringEscapeUtils.unescapeJavaScript(str)));
+</code></pre><ul>
+<li>StringUtils – 处理 String 的核心类，提供了相当多的功能；</li>
+</ul>
+<pre><code>System.out.println(StringUtils.isNotEmpty(&quot; &quot;)); //true
+System.out.println(StringUtils.isNotBlank(&quot; &quot;));//这个方法里面字符串空白会删除空白 false
+
+System.out.println( StringUtils.repeat( &quot;China &quot;, 5));//将目标字符串累加5次
+System.out.println( StringUtils.center( &quot;China&quot;, 10,&quot;*&quot;));//**China*** size=10指的是得到的长度为10 将china用*前后包围然后目标长度截取为10
+System.out.println(StringUtils.countMatches( &quot;Chinese People&quot;, &quot;e&quot;));//取得某字符串在另一字符串中出现的次数
+
+String formatted = &quot; 25 * (30,40) [50,60] | 30&quot;;
+System.out.print(&quot;N0: &quot; + StringUtils.substringBeforeLast( formatted, &quot;*&quot; ) );//取得最后一个指定字符串之前的字符串
+System.out.print(&quot;, N1: &quot; + StringUtils.substringBetween( formatted, &quot;(&quot;, &quot;,&quot; ) );//取得两字符之间的字符串
+System.out.print(&quot;, N2: &quot; + StringUtils.substringBetween( formatted, &quot;,&quot;, &quot;)&quot; ) );
+System.out.print(&quot;, N3: &quot; + StringUtils.substringBetween( formatted, &quot;[&quot;, &quot;,&quot; ) );
+System.out.print(&quot;, N4: &quot; + StringUtils.substringBetween( formatted, &quot;,&quot;, &quot;]&quot; ) );
+System.out.print(&quot;, N5: &quot; + StringUtils.substringAfterLast( formatted, &quot;|&quot; ) );//取得最后一个指定字符串之后的字符串
+
+System.out.println( StringUtils.reverse(&quot;ABCDE&quot;));//颠倒字符串 EDCBA
+根据指定分隔符进行反转，分隔符之间的字符不进行反转
+StringUtils.reverseDelimited(&quot;china&quot;, ',')); // china
+StringUtils.reverseDelimited(&quot;cxhinxa&quot;, 'x')); // axhinxz
+StringUtils.reverseDelimited(&quot;c.hin.a&quot;, '.')); // a.hin.c
+StringUtils.reverseDelimited(&quot;c.hina&quot;, '.')); // hina.c
+System.out.println(StringUtils.capitalize(&quot;hello&quot;));//首字母大写
+System.out.println(StringUtils.uncapitalize(this.getClass().getSimpleName()));//首字母小写
+
+System.out.println(StringUtils.isAllUpperCase(this.getClass().getSimpleName()));//是否全是大写 false
+System.out.println(StringUtils.isAllLowerCase(this.getClass().getSimpleName()));//是否全是小写 false
+System.out.println(StringUtils.swapCase(&quot;I am a-A*a&quot;));//大小写转换，空格不动 i AM A-a*A
+System.out.println(StringUtils.join(new String[] {&quot;a&quot;,&quot;b&quot; ,&quot;c&quot;},&quot;,&quot;));//分割字符串 a,b,c
+
+判断字符串中是否包含指定的字符或字符序列
+1:区分大小写
+StringUtils.contains(null, 'a'); // false 
+StringUtils.contains(&quot;china&quot;, 'a');// true
+2:不区分大小写
+StringUtils.containsIgnoreCase(&quot;china&quot;, 'a');// true
+StringUtils.containsIgnoreCase(&quot;china&quot;, 'A');// true
+3:只需要包含任意一个字符即可 判断字符串中是否包含指定字符集合中或指定字符串中任一字符，区分大小写
+StringUtils.containsAny(&quot;abc&quot;, &quot;ab&quot;);// true
+StringUtils.containsAny(&quot;abc&quot;, &quot;ax&quot;);// true
+StringUtils.containsAny(&quot;abc&quot;, &quot;xy&quot;);// false
+4:判断字符串中是否不包含指定的字符或指定的字符串中的字符，区分大小写
+StringUtils.containsNone(null, 'a'); // true
+StringUtils.containsNone(&quot;&quot;, 'a'); // true 注意这里，空串总是返回true
+StringUtils.containsNone(&quot;china&quot;, ' '); // true 注意包含空白符为true
+
+从字符串中移除匹配的字符或字符序列，如果要移除的字符或字符序列在字符串中不存在，即无匹配，则不进行移除
+1:移除单个字符
+StringUtils.remove(null, 'a')); // null (注意此处及下一行为null)
+StringUtils.remove('china', null) // china 
+StringUtils.remove(&quot;china&quot;, 'i')); // chna
+StringUtils.remove(&quot;china&quot;, 'b')); // china (如果要移除的字符不存在，则返回原字符串)
+2:移除指定字符序列
+StringUtils.remove(&quot;china&quot;, &quot;in&quot;)); // cha
+StringUtils.remove(&quot;china&quot;, &quot;nin&quot;)); // china
+3:移除开头匹配的字符序列
+StringUtils.removeStart(&quot;china&quot;, &quot;ch&quot;)); // ina
+StringUtils.removeStartIgnoreCase(&quot;china&quot;, &quot;CHI&quot;)); // na (忽略大小写)
+4:移除结尾匹配的字符序列
+StringUtils.removeEnd(&quot;china&quot;, &quot;na&quot;)); // chi
+StringUtils.removeEndIgnoreCase(&quot;china&quot;, &quot;NA&quot;)); // chi (忽略大小写)
+5:移除空白字符
+StringUtils.deleteWhitespace(null)); //null
+StringUtils.deleteWhitespace(&quot; c h  i\tn\ra&quot;)); // china
+</code></pre><ul>
+<li>SystemUtils – 在 java.lang.System 基础上提供更方便的访问，如用户路径、 Java 版本、时区、操作系统等判断；</li>
+</ul>
+<pre><code>System.out.println(SystemUtils.getHostName());//DESKTOP-AS9FA6P
+System.out.println(SystemUtils.getUserDir().getPath());//E:\IdeaProjects\z-utils
+System.out.println(SystemUtils.getUserHome().getPath());//C:\Users\noatn
+System.out.println(SystemUtils.getJavaHome().getPath());//C:\Program Files\Java\jdk1.8.0_181\jre
+System.out.println(SystemUtils.getJavaIoTmpDir().getPath());//C:\Users\noatn\AppData\Local\Temp
+System.out.println(SystemUtils.IS_JAVA_1_8);//true
+System.out.println(SystemUtils.IS_OS_WINDOWS);//true
+System.out.println(SystemUtils.IS_OS_WINDOWS_10);//true
+System.out.println(SystemUtils.USER_NAME);//noatn
+System.out.println(SystemUtils.USER_DIR);//E:\IdeaProjects\z-utils
+System.out.println(SystemUtils.USER_HOME);//C:\Users\noatn
+</code></pre><ul>
+<li>
+<p>Validate – 提供验证的操作，有点类似 assert 断言；</p>
+</li>
+<li>
+<p>WordUtils – 用于处理单词大小写、换行等。</p>
+</li>
+</ul>
+<h1 id="二orgapachecommonslangmath">
+  二:org.apache.commons.lang.math
+  <a class="anchor" href="#%e4%ba%8corgapachecommonslangmath">#</a>
+</h1>
+<ul>
+<li>处理分数的Fraction类；</li>
+</ul>
+<pre><code>{
+    Fraction fraction = Fraction.getFraction(1,2);// first prams 分子 ,second params 分母
+    System.out.println(fraction.doubleValue());//输出具体值 0.5
+    System.out.println(fraction.toString());//输出具字符串值 1/2
+    System.out.println(fraction.toProperString());//输出具字符串值 1/2
+}
+{
+    //当第一个参数大于0的情况 (2*3+1) / 3
+    Fraction fraction = Fraction.getFraction(2,1,3);
+    System.out.println(fraction.doubleValue());//输出具体值 2.3333333333333335
+    //当第一个参数大于0的情况 (-2*3-1) / 3
+    fraction = Fraction.getFraction(-2,1,3);
+    System.out.println(fraction.doubleValue());
+
+    fraction = Fraction.getFraction(&quot;1/2&quot;);//可以自动解析为分子1分母2
+    System.out.println(fraction.doubleValue());
+}
+{
+    //获取绝对值 即|-1| == 1
+    System.out.println(Fraction.getFraction(-1, 2).abs());
+    //两个分数相加
+    System.out.println(Fraction.getFraction(1, 2).add(Fraction.getFraction(&quot;1/2&quot;)));
+    //两个分数相减
+    System.out.println(Fraction.getFraction(1, 2).subtract(
+            Fraction.getFraction(1, 2)));
+    //两个分数相乘
+    System.out.println(Fraction.getFraction(1, 2).multiplyBy(
+            Fraction.getFraction(1, 2)));
+    //两个分数相除
+    System.out.println(Fraction.getFraction(1, 2).divideBy(
+            Fraction.getFraction(1, 2)));
+    //约数
+    System.out.println(Fraction.getFraction(1, 2).pow(2));
+}
+</code></pre><ul>
+<li>处理数值的NumberUtils和IEEE754rUtils类，这里IEEE745r代表的是IEEE 754的标准，是一种浮点数的处理标准。</li>
+<li>处理随机数的JVMRandom和RandomUtils类。</li>
+</ul>
+<pre><code>// JVMRandom继承了java.util.Random类，其功能和Random差不多，只不过封装了返回不同数据类型的方法而已。而RandomUtils则把JVMRandom的方法静态化了。
+for (int i = 0; i &lt; 5; i++) {
+    System.out.println(RandomUtils.nextInt(100));
+}
+</code></pre><ul>
+<li>处理数值范围的Range, DoubleRange, FloatRange, IntRange, LangRange, NumberRange类</li>
+</ul>
+<pre><code> Range normalScoreRange = new DoubleRange(90, 120);
+double score1 = 102.5;
+double score2 = 79.9;
+System.out.println(&quot;Normal score range is: &quot; + normalScoreRange);//[90.0,120.0] 打印一个范围
+System.out.println(&quot;Is &quot; + score1 + &quot; a normal score? &quot; + normalScoreRange.containsDouble(score1));//是否在这个范围 true
+System.out.println(&quot;Is &quot; + score2 + &quot; a normal score? &quot; + normalScoreRange.containsDouble(score2));//是否在这个范围 false
+System.out.println(normalScoreRange.overlapsRange(new IntRange(92,119)));//此范围是否在我们预定的范围中 true
+</code></pre><h2 id="三commons-collections">
+  三:Commons Collections
+  <a class="anchor" href="#%e4%b8%89commons-collections">#</a>
+</h2>
+<ul>
+<li>CollectionUtils</li>
+</ul>
+<pre><code>org.apache.commons.collections4.CollectionUtils.isEqualCollection(java.util.Collection&lt;?&gt;, java.util.Collection&lt;?&gt;) 集合是否相等
+org.apache.commons.collections4.CollectionUtils.union(Collection&lt;?&gt; a,Collection&lt;?&gt; b) 合集
+org.apache.commons.collections4.CollectionUtils.subtract(java.lang.Iterable&lt;? extends O&gt;, java.lang.Iterable&lt;? extends O&gt;) 差集
+org.apache.commons.collections4.CollectionUtils.intersection (Collection&lt;?&gt; a,Collection&lt;?&gt; b) 交集
+org.apache.commons.collections4.CollectionUtils.isSubCollection(Collection&lt;?&gt; a,Collection&lt;?&gt; b) 集合包含
+org.apache.commons.collections4.CollectionUtils.collate(java.lang.Iterable&lt;? extends O&gt;, java.lang.Iterable&lt;? extends O&gt;) 合并
+org.apache.commons.collections4.CollectionUtils.isNotEmpty(Collection&lt;?&gt; a) 判断是否为null并且是否包含元素
+org.apache.commons.collections4.CollectionUtils.addIgnoreNull(Collection&lt;T&gt; collection, final T object)添加非空的对象到集合中
+</code></pre><h2 id="回到上一级">
+  <a href="../">回到上一级</a>
+  <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#apache-commons-工具类介绍及简单使用">Apache Commons 工具类介绍及简单使用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#三commons-collections">三:Commons Collections</a></li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

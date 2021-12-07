@@ -2,7 +2,8 @@
 title: "生活就是生活"
 date: 2021-01-17T15:26:15Z
 draft: false
-weight: 7
+weight: 104
+bookCollapseSection: true
 ---
 
 > 生活就是生活

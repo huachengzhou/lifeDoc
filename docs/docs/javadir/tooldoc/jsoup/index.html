@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="jsoup学习文档
+#
+
+简介
+#
+
+ Jsoup是用于解析HTML，就类似XML解析器用于解析XML。 Jsoup它解析HTML成为真实世界的HTML。 它与jquery选择器的语法非常相似，并且非常灵活容易使用以获得所需的结果
+ &#43;jsoup api 6个包提供用于开发jsoup应用程序的类和接口。
+org.jsoup
+org.jsoup.examples
+org.jsoup.helper
+org.jsoup.nodes
+org.jsoup.parser
+org.jsoup.safety
+org.jsoup.salect
+引入
+#
+
+//大多数情况使用jsoup
+org.jsoup.nodes.Document document = Jsoup.parse(html);
+Document doc = Jsoup.parse(new URL(&quot;http://www.funi.com/&quot;),7000);
+//少数情况使用httpUnit
+WebClient webClient = new WebClient() ;
+HtmlPage htmlPage = webClient.getPage(&quot;http://www.89ip.cn/&quot;);
+htmlPage.asXml()//html
+使用(maven)
+#
+
+&lt;dependency&gt;
+&lt;!-- jsoup HTML parser library @ http://jsoup.org/ --&gt;
+&lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+&lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+&lt;version&gt;1.10.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- httpclient --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+&lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+&lt;version&gt;4.5.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;net.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="jsoup学习文档" />
+<meta property="og:description" content="jsoup学习文档
+#
+
+简介
+#
+
+ Jsoup是用于解析HTML，就类似XML解析器用于解析XML。 Jsoup它解析HTML成为真实世界的HTML。 它与jquery选择器的语法非常相似，并且非常灵活容易使用以获得所需的结果
+ &#43;jsoup api 6个包提供用于开发jsoup应用程序的类和接口。
+org.jsoup
+org.jsoup.examples
+org.jsoup.helper
+org.jsoup.nodes
+org.jsoup.parser
+org.jsoup.safety
+org.jsoup.salect
+引入
+#
+
+//大多数情况使用jsoup
+org.jsoup.nodes.Document document = Jsoup.parse(html);
+Document doc = Jsoup.parse(new URL(&quot;http://www.funi.com/&quot;),7000);
+//少数情况使用httpUnit
+WebClient webClient = new WebClient() ;
+HtmlPage htmlPage = webClient.getPage(&quot;http://www.89ip.cn/&quot;);
+htmlPage.asXml()//html
+使用(maven)
+#
+
+&lt;dependency&gt;
+&lt;!-- jsoup HTML parser library @ http://jsoup.org/ --&gt;
+&lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+&lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+&lt;version&gt;1.10.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- httpclient --&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+&lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+&lt;version&gt;4.5.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;net." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/jsoup/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<title>jsoup学习文档 | 所悟所想</title>
+<link rel="manifest" href="./../../../../manifest.json">
+<link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
+<script defer src="./../../../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/data_link_layer/" class="">数据链路层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_layer/" class="">网络层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/transport_layer/" class="">传输层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/application_layer/" class="">应用层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle"  />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle" checked />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/jsoup/" class=" active">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目一</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>jsoup学习文档</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#使用maven">使用(maven)</a>
+      <ul>
+        <li><a href="#解析一个body片断">解析一个body片断</a></li>
+        <li><a href="#从一个url加载一个document">从一个URL加载一个Document</a></li>
+        <li><a href="#从一个文件加载一个文档">从一个文件加载一个文档</a></li>
+        <li><a href="#使用dom方法来遍历一个文档">使用DOM方法来遍历一个文档</a></li>
+        <li><a href="#使用选择器语法来查找元素">使用选择器语法来查找元素</a></li>
+        <li><a href="#选择器语法来查找元素">选择器语法来查找元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="jsoup学习文档">
+  jsoup学习文档
+  <a class="anchor" href="#jsoup%e5%ad%a6%e4%b9%a0%e6%96%87%e6%a1%a3">#</a>
+</h1>
+<h2 id="简介">
+  简介
+  <a class="anchor" href="#%e7%ae%80%e4%bb%8b">#</a>
+</h2>
+<blockquote>
+<p>Jsoup是用于解析HTML，就类似XML解析器用于解析XML。 Jsoup它解析HTML成为真实世界的HTML。 它与jquery选择器的语法非常相似，并且非常灵活容易使用以获得所需的结果</p>
+</blockquote>
+<p>+jsoup api 6个包提供用于开发jsoup应用程序的类和接口。</p>
+<pre><code>org.jsoup
+org.jsoup.examples
+org.jsoup.helper
+org.jsoup.nodes
+org.jsoup.parser
+org.jsoup.safety
+org.jsoup.salect
+</code></pre><h2 id="引入">
+  引入
+  <a class="anchor" href="#%e5%bc%95%e5%85%a5">#</a>
+</h2>
+<pre><code>//大多数情况使用jsoup
+org.jsoup.nodes.Document document = Jsoup.parse(html);
+Document doc = Jsoup.parse(new URL(&quot;http://www.funi.com/&quot;),7000);
+
+//少数情况使用httpUnit
+WebClient webClient = new WebClient() ;
+HtmlPage htmlPage = webClient.getPage(&quot;http://www.89ip.cn/&quot;);
+htmlPage.asXml()//html
+</code></pre><h2 id="使用maven">
+  使用(maven)
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8maven">#</a>
+</h2>
+<pre><code>&lt;dependency&gt;
+    &lt;!-- jsoup HTML parser library @ http://jsoup.org/ --&gt;
+    &lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+    &lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+    &lt;version&gt;1.10.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- httpclient --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+    &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+    &lt;version&gt;4.5.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.sourceforge.htmlunit&lt;/groupId&gt;
+    &lt;artifactId&gt;htmlunit&lt;/artifactId&gt;
+    &lt;version&gt;2.26&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="解析一个body片断">
+  解析一个body片断
+  <a class="anchor" href="#%e8%a7%a3%e6%9e%90%e4%b8%80%e4%b8%aabody%e7%89%87%e6%96%ad">#</a>
+</h3>
+<blockquote>
+<p>假如你有一个HTML片断 (比如. 一个 div 包含一对 p 标签; 一个不完整的HTML文档) 想对它进行解析。这个HTML片断可以是用户提交的一条评论或在一个CMS页面中编辑body部分。</p>
+</blockquote>
+<p>办法:使用<a href="https://jsoup.org/apidocs/org/jsoup/Jsoup.html/" title="方法">Jsoup.parseBodyFragment(String html)</a> ,<a href="#" title="方法">Document.body()</a> 方法能够取得文档body元素的所有子元素，与 doc.getElementsByTag(&ldquo;body&rdquo;)相同</p>
+<pre><code>String html = &quot;&lt;div&gt;&lt;p&gt;Lorem ipsum.&lt;/p&gt;&quot;;
+Document doc = Jsoup.parseBodyFragment(html);
+System.out.println(doc.html());//可以看到我们的html片段被包裹了一个body
+
+Element body = doc.body();
+System.out.println(body.html());
+/*
+&lt;html&gt;
+ &lt;head&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;div&gt;
+   &lt;p&gt;Lorem ipsum.&lt;/p&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+*/
+
+/**
+&lt;div&gt;
+ &lt;p&gt;Lorem ipsum.&lt;/p&gt;
+&lt;/div&gt;
+*/
+</code></pre><h3 id="从一个url加载一个document">
+  从一个URL加载一个Document
+  <a class="anchor" href="#%e4%bb%8e%e4%b8%80%e4%b8%aaurl%e5%8a%a0%e8%bd%bd%e4%b8%80%e4%b8%aadocument">#</a>
+</h3>
+<blockquote>
+<p>你需要从一个网站获取和解析一个HTML文档，并查找其中的相关数据。你可以使用下面解决方法</p>
+</blockquote>
+<p>办法:使用 <a href="#" title="method">Jsoup.connect(String url)</a>方法</p>
+<pre><code>Document doc = Jsoup.parse(new URL(&quot;http://www.funi.com/&quot;),6000) ;
+
+ Document doc2 = Jsoup.connect(&quot;http://www.funi.com/&quot;)
+//                .data(&quot;query&quot;, &quot;Java&quot;)
+                .userAgent(&quot;Mozilla&quot;)
+                .cookie(&quot;auth&quot;, &quot;token&quot;)
+                .timeout(3000)
+                .get();
+</code></pre><h3 id="从一个文件加载一个文档">
+  从一个文件加载一个文档
+  <a class="anchor" href="#%e4%bb%8e%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%8a%a0%e8%bd%bd%e4%b8%80%e4%b8%aa%e6%96%87%e6%a1%a3">#</a>
+</h3>
+<blockquote>
+<p>在本机硬盘上有一个HTML文件，需要对它进行解析从中抽取数据或进行修改</p>
+</blockquote>
+<p>办法:可以使用静态 <a href="#" title="method"> Jsoup.parse(File in, String charsetName, String baseUri)</a>方法</p>
+<pre><code>File input = new File(&quot;/tmp/input.html&quot;);
+Document doc = Jsoup.parse(input, &quot;UTF-8&quot;, &quot;http://example.com/&quot;);
+</code></pre><p><strong>下面例子都使用成都市房产透明网的网站和国家统计局</strong></p>
+<h3 id="使用dom方法来遍历一个文档">
+  使用DOM方法来遍历一个文档
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8dom%e6%96%b9%e6%b3%95%e6%9d%a5%e9%81%8d%e5%8e%86%e4%b8%80%e4%b8%aa%e6%96%87%e6%a1%a3">#</a>
+</h3>
+<blockquote>
+<p>你有一个HTML文档要从中提取数据，并了解这个HTML文档的结构。</p>
+</blockquote>
+<pre><code>Document doc = null;
+CloseableHttpClient httpClient = HttpClients.createDefault();
+HttpGet httpGet = new HttpGet(&quot;http://www.funi.com/&quot;);
+//使用chrome 头伪装
+httpGet.setHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36&quot;);
+//设置基本的配置
+RequestConfig config = RequestConfig.custom()
+        .setConnectTimeout(5000) // 设置连接超时时间 5秒钟
+        .setSocketTimeout(4000) // 设置读取超时时间4秒钟
+        .build();
+httpGet.setConfig(config);
+
+CloseableHttpResponse httpResponse = null;
+try {
+    httpResponse = httpClient.execute(httpGet);
+    HttpEntity httpEntity = httpResponse.getEntity();
+    if (httpEntity == null){
+        return;
+    }
+    String html = EntityUtils.toString(httpEntity, &quot;utf-8&quot;);
+    if (StringUtils.isNotEmpty(html)) {
+        doc = Jsoup.parse(html);
+    }
+} catch (Exception e) {
+    logger.error(&quot;获取html失败!&quot;, e);
+} finally {
+    //关闭处理
+    httpResponse.close();
+    httpClient.close();
+}
+Element body = doc.body();
+Elements foot = body.getElementsByClass(&quot;foot&quot;).first().getElementsByClass(&quot;footer clearfix&quot;).first().getElementsByTag(&quot;dl&quot;);
+for (Element ele : foot) {
+    System.out.println(ele.html());
+    for (int i = 0; i &lt; 20; i++) {
+        System.out.print('.');
+    }
+}
+</code></pre><h3 id="使用选择器语法来查找元素">
+  使用选择器语法来查找元素
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e9%80%89%e6%8b%a9%e5%99%a8%e8%af%ad%e6%b3%95%e6%9d%a5%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0">#</a>
+</h3>
+<blockquote>
+<p>你想使用类似于CSS或jQuery的语法来查找和操作元素</p>
+</blockquote>
+<h4 id="element">
+  Element
+  <a class="anchor" href="#element">#</a>
+</h4>
+<p><strong>查看元素</strong></p>
+<ul>
+<li>getElementById(String id) return Element</li>
+<li>getElementsByTag(String tag) return Elements</li>
+<li>getElementsByClass(String className) return Elements</li>
+<li>getElementsByAttribute(String key) return Elements 查找具有命名属性集的元素。不区分大小写</li>
+<li>siblingElements() return Elements 获取同级元素。如果元素没有同级元素，则返回空列表。元素不是同级元素本身，所以不会包含在返回的列表中(列表)</li>
+<li>firstElementSibling() return Element 获取此元素的第一个同级元素</li>
+<li>lastElementSibling() return Element 获取此元素的最后一个同级元素</li>
+<li>previousElementSibling() return Element 获取此元素的上一个同级元素</li>
+<li>nextElementSibling() return Element 获取此元素的下一个同级元素</li>
+<li>parents() return Elements 获取此元素的父级和父级，直到文档根</li>
+<li>parent() return Element 获取此元素的父级</li>
+<li>children() return Elements 获取此元素的子元素</li>
+<li>child(int index) return Element 获取此元素的子元素，方法是使用其基于0的索引号</li>
+<li>attributes() 获取元素的所有属性 return Attributes</li>
+</ul>
+<p><strong>元素数据</strong></p>
+<ul>
+<li>attr(String key)获取属性attr(String key, String value)设置属性</li>
+<li>attributes()获取所有属性</li>
+<li>id(), className() and classNames()</li>
+<li>text()获取文本内容text(String value) 设置文本内容</li>
+<li>html()获取元素内HTMLhtml(String value)设置元素内的HTML内容</li>
+<li>outerHtml()获取元素外HTML内容</li>
+<li>data()获取数据内容（例如：script和style标签)</li>
+<li>tag() and tagName()</li>
+</ul>
+<p><strong>操作HTML和文本</strong></p>
+<ul>
+<li>append(String html), prepend(String html)</li>
+<li>appendText(String text), prependText(String text)</li>
+<li>appendElement(String tagName), prependElement(String tagName)</li>
+<li>html(String value)</li>
+</ul>
+<h3 id="选择器语法来查找元素">
+  选择器语法来查找元素
+  <a class="anchor" href="#%e9%80%89%e6%8b%a9%e5%99%a8%e8%af%ad%e6%b3%95%e6%9d%a5%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0">#</a>
+</h3>
+<ul>
+<li>tagname: 通过标签查找元素，比如：a</li>
+<li>#id: 通过ID查找元素，比如：#logo</li>
+<li>.class: 通过class名称查找元素，比如：.masthead</li>
+</ul>
+<pre><code class="language-抓取国家统计局" data-lang="抓取国家统计局">Document doc = null;
+CloseableHttpClient httpClient = HttpClients.createDefault();
+HttpGet httpGet = new HttpGet(&quot;http://www.stats.gov.cn/&quot;);
+//使用chrome 头伪装
+httpGet.setHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36&quot;);
+//设置基本的配置
+RequestConfig config = RequestConfig.custom()
+        .setConnectTimeout(5000) // 设置连接超时时间 5秒钟
+        .setSocketTimeout(4000) // 设置读取超时时间4秒钟
+        .build();
+httpGet.setConfig(config);
+CloseableHttpResponse httpResponse = null;
+try {
+    httpResponse = httpClient.execute(httpGet);
+    HttpEntity httpEntity = httpResponse.getEntity();
+
+    String html = EntityUtils.toString(httpEntity, &quot;utf-8&quot;);
+    if (StringUtils.isNotEmpty(html)) {
+        doc = Jsoup.parse(html);
+    }
+} catch (Exception e) {
+    logger.error(&quot;获取html失败!&quot;, e);
+} finally {
+    // 关闭处理
+    httpResponse.close();
+    httpClient.close();
+}
+Element body = doc.body();
+//        Elements selects = body.select(&quot;.top .top03 #nav ul li&quot;);//和下面的一样
+Elements selects = body.getElementsByClass(&quot;top&quot;).first().getElementsByClass(&quot;top03&quot;).first().getElementById(&quot;nav&quot;).getElementsByTag(&quot;ul&quot;).first().getElementsByTag(&quot;li&quot;);
+for (Element ele : selects) {
+    System.out.println(ele);
+}
+主要运用了上面三种选择方式
+</code></pre><ul>
+<li>【attribute】: 利用属性查找元素，比如：【href】</li>
+<li>【^attr】: 利用属性名前缀来查找元素，比如：可以用【^data-】 来查找带有HTML5 Dataset属性的元素</li>
+<li>【attr=value】: 利用属性值来查找元素，比如：【width=500】</li>
+<li>【attr^=value】, 【attr$=value】, 【attr*=value】: 利用匹配属性值开头、结尾或包含属性值来查找元素，比如：【href*=/path/】</li>
+<li>【attr~=regex】: 利用属性值匹配正则表达式来查找元素，比如： img【src~=(?i).(png|jpe?g)】</li>
+<li>*: 这个符号将匹配所有元素</li>
+</ul>
+<pre><code>Element body = doc.body();
+
+Elements selects = body.select(&quot;.top a[href]&quot;);//获取拥有href属性的所有元素
+
+&lt;a href=&quot;/was5/web/search?channelid=288041&amp;amp;andsen=%E6%80%BB%E4%BA%BA%E5%8F%A3&quot; target=&quot;_blank&quot;&gt;总人口&lt;/a&gt;
+&lt;a href=&quot;/was5/web/search?channelid=288041&amp;amp;andsen=%E7%A4%BE%E4%BC%9A%E6%B6%88%E8%B4%B9%E5%93%81%E9%9B%B6%E5%94%AE%E6%80%BB%E9%A2%9D&quot; target=&quot;_blank&quot;&gt;社会消费品零售总额&lt;/a&gt;
+&lt;a href=&quot;./zjtj/&quot; target=&quot;_top&quot;&gt;&lt;img src=&quot;./images/top03_1.png&quot;&gt;&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./zjtj/gjtjj/&quot; target=&quot;_top&quot;&gt;国家统计局&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;http://jcj.ndrc.gov.cn/&quot; target=&quot;_top&quot;&gt;派驻纪检组&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./zjtj/jgzn/&quot; target=&quot;_top&quot;&gt;机构职能&lt;/a&gt;
+
+Elements selects = body.select(&quot;.top a[name=PL_MENU_NAME]&quot;);//获取name=PL_MENU_NAME的所有这类元素
+
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./zjtj/gjtjj/&quot; target=&quot;_top&quot;&gt;国家统计局&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;http://jcj.ndrc.gov.cn/&quot; target=&quot;_top&quot;&gt;派驻纪检组&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./zjtj/jgzn/&quot; target=&quot;_top&quot;&gt;机构职能&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./tjsj/zxfb/&quot; target=&quot;_top&quot;&gt;最新发布&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;http://data.stats.gov.cn/&quot; target=&quot;_blank&quot;&gt;数据查询&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./tjsj/sjjd/&quot; target=&quot;_top&quot;&gt;数据解读&lt;/a&gt;
+&lt;a name=&quot;PL_MENU_NAME&quot; href=&quot;./tjgz/tjdt/&quot; target=&quot;_top&quot;&gt;统计动态&lt;/a&gt;
+
+Elements selects = body.select(&quot;.top a[name^=PL]&quot;);//以PL开头
+
+Elements selects = body.select(&quot;.top div[^cl]&quot;); //获取div 为tag class等属性的元素
+</code></pre><ul>
+<li>伪选择器selectors</li>
+<li>:lt(n): 查找哪些元素的同级索引值（它的位置在DOM树中是相对于它的父节点）小于n，比如：td:lt(3) 表示小于三列的元素</li>
+<li>:gt(n):查找哪些元素的同级索引值大于n，比如： div p:gt(2)表示哪些div中有包含2个以上的p元素</li>
+<li>:eq(n): 查找哪些元素的同级索引值与n相等，比如：form input:eq(1)表示包含一个input标签的Form元素</li>
+<li>:has(seletor): 查找匹配选择器包含元素的元素，比如：div:has(p)表示哪些div包含了p元素</li>
+</ul>
+<pre><code>Elements selects = body.select(&quot;.center div:eq(0) ul li:lt(3)&quot;); //eq(0)选取第一个,lt(3)表示小于三列的元素
+</code></pre><ul>
+<li>
+<p>Selector选择器组合使用</p>
+</li>
+<li>
+<p>el#id: 元素+ID，比如： div#logo</p>
+</li>
+<li>
+<p>el.class: 元素+class，比如： div.masthead</p>
+</li>
+<li>
+<p>el[attr]: 元素+class，比如： a[href]</p>
+</li>
+<li>
+<p>任意组合，比如：a[href].highlight</p>
+</li>
+<li>
+<p>ancestor child: 查找某个元素下子元素，比如：可以用.body p 查找在&quot;body&quot;元素下的所有 p元素</p>
+</li>
+<li>
+<p>parent &gt; child: 查找某个父元素下的直接子元素，比如：可以用div.content &gt; p 查找 p 元素，也可以用body &gt; * 查找body标签下所有直接子元素</p>
+</li>
+<li>
+<p>siblingA + siblingB: 查找在A元素之前第一个同级元素B，比如：div.head + div</p>
+</li>
+<li>
+<p>siblingA ~ siblingX: 查找A元素之前的同级X元素，比如：h1 ~ p</p>
+</li>
+<li>
+<p>el, el, el:多个选择器组合，查找匹配任一选择器的唯一元素，例如：div.masthead, div.logo</p>
+</li>
+<li>
+<p>伪选择器selectors</p>
+</li>
+<li>
+<p>:lt(n): 查找哪些元素的同级索引值（它的位置在DOM树中是相对于它的父节点）小于n，比如：td:lt(3) 表示小于三列的元素</p>
+</li>
+<li>
+<p>:gt(n):查找哪些元素的同级索引值大于n，比如： div p:gt(2)表示哪些div中有包含2个以上的p元素</p>
+</li>
+<li>
+<p>:eq(n): 查找哪些元素的同级索引值与n相等，比如：form input:eq(1)表示包含一个input标签的Form元素</p>
+</li>
+<li>
+<p>:has(seletor): 查找匹配选择器包含元素的元素，比如：div:has(p)表示哪些div包含了p元素</p>
+</li>
+<li>
+<p>:not(selector): 查找与选择器不匹配的元素，比如： div:not(.logo) 表示不包含 class=&ldquo;logo&rdquo; 元素的所有 div 列表</p>
+</li>
+<li>
+<p>:contains(text): 查找包含给定文本的元素，搜索不区分大不写，比如： p:contains(jsoup)</p>
+</li>
+<li>
+<p>:containsOwn(text): 查找直接包含给定文本的元素</p>
+</li>
+<li>
+<p>:matches(regex): 查找哪些元素的文本匹配指定的正则表达式，比如：div:matches((?i)login)</p>
+</li>
+<li>
+<p>:matchesOwn(regex): 查找自身包含文本匹配指定正则表达式的元素</p>
+</li>
+<li>
+<p>注意：上述伪选择器索引是从0开始的，也就是说第一个元素索引值为0，第二个元素index为1等</p>
+</li>
+</ul>
+<h2 id="回到上一级">
+  <a href="../">回到上一级</a>
+  <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#引入">引入</a></li>
+    <li><a href="#使用maven">使用(maven)</a>
+      <ul>
+        <li><a href="#解析一个body片断">解析一个body片断</a></li>
+        <li><a href="#从一个url加载一个document">从一个URL加载一个Document</a></li>
+        <li><a href="#从一个文件加载一个文档">从一个文件加载一个文档</a></li>
+        <li><a href="#使用dom方法来遍历一个文档">使用DOM方法来遍历一个文档</a></li>
+        <li><a href="#使用选择器语法来查找元素">使用选择器语法来查找元素</a></li>
+        <li><a href="#选择器语法来查找元素">选择器语法来查找元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

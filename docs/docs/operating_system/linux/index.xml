@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux学习与使用  on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/operating_system/linux/</link>
+    <description>Recent content in linux学习与使用  on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/operating_system/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git学习</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/git_introduction/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/git_introduction/</guid>
+      <description>git学习#git 区域概念# git分为工作区(我们自己的file)和版本库这其中版本库又包含暂存区(Stage)和分支区(master)    git add ********** 把文件添加到仓库
+  git reset README.md 取消提交到暂存区域
+  git commmit -m &amp;lsquo;xxxx&amp;rsquo; 提交到仓库
+  git diff 查看提交到仓库文件之后文件又被修改的变化
+  git status 查看状态
+  git rm -f gitS.md 强制删除
+  git log 显示从最近到最远的提交日志
+  git log &amp;ndash;pretty=oneline 只显示版本号
+  关于版本回退问题#  git reset &amp;ndash;hard HEAD^ 版本重置为上一个版本
+  git 关于版本处理进行了设置</description>
+    </item>
+    
+    <item>
+      <title>git配置</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/gitub_config/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/gitub_config/</guid>
+      <description>zhou@zhou-Lenovo-Z480:~$ git versiongit version 2.7.4zhou@zhou-Lenovo-Z480:~$ ssh -T git@github.comWarning: Permanently added the RSA host key for IP address &#39;192.30.255.112&#39; to the list of known hosts.Permission denied (publickey).zhou@zhou-Lenovo-Z480:~$ git config --global user.name &amp;quot;zhouchenhua&amp;quot;zhou@zhou-Lenovo-Z480:~$ git config --global user.email &amp;quot;noatnu@163.com&amp;quot;zhou@zhou-Lenovo-Z480:~$ git config --listuser.name=zhouchenhuauser.email=noatnu@163.comzhou@zhou-Lenovo-Z480:~$ ssh-keygen -C ‘noatnu@163.com’ -t rsaGenerating public/private rsa key pair.Enter file in which to save the key (/home/zhou/.ssh/id_rsa): america347191Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in america347191.</description>
+    </item>
+    
+    <item>
+      <title>host映射</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/host%E6%98%A0%E5%B0%84/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/host%E6%98%A0%E5%B0%84/</guid>
+      <description>sudo vi hosts
+127.0.0.1	localhost 127.0.1.1	zhou-Lenovo-Z480
+The following lines are desirable for IPv6 capable hosts#::1 ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters
+#pmcc dev 127.0.0.1 dev.pmcc.com
+回到上一级#</description>
+    </item>
+    
+    <item>
+      <title>Linux下设置和查看环境变量</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+      <description>Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，变量永久生效。 2 临时的：使用export命令声明即可，变量在关闭shell时失效。
+设置变量的三种方法 1 在/etc/profile文件中添加变量【对所有用户生效(永久的)】 用VI在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。 例如：编辑/etc/profile文件，添加CLASSPATH变量
+vi /etc/profile#export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
+2 在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】 用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。 例如：编辑guok用户目录(/home/guok)下的.bash_profile $ vi /home/guok/.bash.profile 添加如下内容： export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib 注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
+3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，
+该变量只在当前的shell(BASH)或其子shell(BASH)下是有效的，
+shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。
+环境变量的查看 1 使用echo命令查看单个环境变量。例如： echo $PATH 2 使用env查看所有环境变量。例如： env 3 使用set查看所有本地定义的环境变量。
+使用unset删除指定的环境变量 set可以设置某个环境变量的值。清除环境变量的值用unset命令。如果未指定值，则该变量值将被设为NULL。示例如下： $ export TEST=&amp;ldquo;Test&amp;hellip;&amp;rdquo; #增加一个环境变量TEST $ env|grep TEST #此命令有输入，证明环境变量TEST已经存在了 TEST=Test&amp;hellip; unset TEST #删除环境变量TEST $ env|grep TEST #此命令没有输出，证明环境变量TEST已经删除
+常用的环境变量 PATH 决定了shell将到哪些目录中寻找命令或程序 HOME 当前用户主目录 HISTSIZE　历史记录数 LOGNAME 当前用户的登录名 HOSTNAME　指主机的名称 SHELL 当前用户Shell类型 LANGUGE 语言相关的环境变量，多语言可以修改此环境变量 MAIL　当前用户的邮件存放目录 PS1　基本提示符，对于root用户是#，对于普通用户是$</description>
+    </item>
+    
+    <item>
+      <title>linux命令</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/</guid>
+      <description>linux命令#文件管理#文件基本操作#  less命令 (Q退出less命令)([pagedown]： 向下翻动一页)([pageup]： 向上翻动一页) less ss.md
+  cat命令 (cat -n ss.md &amp;gt; sdfsd.txt)把 ss.md 的文档内容加上行号后输入 sdfsd.txt 这个文档里, 这要注意假如sdfsd.txt先有文档会被清空,另外(cat ss.md)可以把消息打印到输出流中,cat 软盘功能暂时不予以考虑
+  ls命令 (ls -a)显示所有文件及目录包括隐藏文件,相当于la命令,ll显示具体信息
+  touch命令 主要用作创建文件如touch ss.md,(touch -m miss,touch -a miss)可以改变文件的读取时间,另外touch miss也可以改变文件的读取时间, 当且仅当miss不存在的时候会创建miss空文件
+  mkdir命令 主要用作创建文件目录;(mkdir dd)创建一个dd目录,(mkdir -p dd/ffg)在当前目录下建立一个dd目录并且在dd下创建一个ffg目录,假如dd不存在会自动创建的
+  mv命令 (mv missA miss.txt)把missA修改为miss.txt (mv sskg /home/zhou/fontconfig/dgsd/sdfg)把sskg移到sdfg目录 (mv ss.md ~)
+  file命令 (file -c ss.</description>
+    </item>
+    
+    <item>
+      <title>nginx学习</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/nginx/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/nginx/</guid>
+      <description>nginx学习#基础操作# start ./sbin/nginx stop ./sbin/nginx -s stop quite ./sbin/nginx -s quit   启动成功标志
+ Welcome to nginx! 默认监听的端口是80 也就是说访问此端口就可以得到启动成功的标识符号
+  简单的负载均衡配置    http 模块中配置  #配置开始 author zhouupstream myproject{server 127.0.0.1:8000 weight=3;server 127.0.0.1:8080 weight=10;server 127.0.0.1:8090;}#配置结束 author zhou location模块配置  proxy_pass http://myproject;注意:这的myproject要和上面的name一致测试结果 (这的测试用到了session的唯一性)
+ http://localhost/nginx_test/ sessionId=8D9C4ACEE65EB24301B1C0D9E4CF3A6Ehttp://localhost:8080/nginx_test/ sessionId=8D9C4ACEE65EB24301B1C0D9E4CF3A6Ehttp://localhost:8090/nginx_test/ sessionId=7539B2C4AFD433ECEFAC8F2B2EBCC411 由于配置了权重 因此大部分是8080端口</description>
+    </item>
+    
+    <item>
+      <title>Notepad&#43;&#43; 学习与使用</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/</guid>
+      <description>Notepad++是一套非常有特色的自由软件的纯文字编辑器(许可证:GPL)。有完整的中文化接口及支持多国语言编写的功能(UTF8 技术)。 它的功能比 Windows 中的 Notepad(记事本)强大，除了可以用来制作一般的纯文字说明文件，也十分适合当作编写电脑程序的编辑器。 Notepad++ 不仅有语法高亮度显示，也有语法折叠功能，并且支持宏以及扩充基本功能的外挂模组。但是可惜的是Notepad++只能在Windows平台下使用。 工作中必须使用Windows时，Notepad++是众多程序员最喜爱的文本编辑器，在Ubuntu下是否能够使用到相同的软件呢？Notepadqq就是这样一款与Notepad++非常接近的编辑器，拥有几乎相同的功能。 如果您是一个Notepad++粉丝，我们推荐您尝试下Notepadqq。
+对于Ubuntu发行版本可以通过PPA安装，命令如下： sudo add-apt-repository ppa:notepadqq-team/notepadqq sudo apt-get update sudo apt-get install notepadqq 类似的，卸载命令如下：
+sudo apt-get remove notepadqq sudo add-apt-repository &amp;ndash;remove ppa:notepadqq-team/notepadqq
+回到上一级#</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 16.04修改hosts</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/</guid>
+      <description>IntelliJ IDE运行Tomcat报错解决办法的相关资料,出现“Unable to ping server at localhost:1099”错误解决方法，需要的朋友可以参考下
+sudo gedit /etc/hosts
+回到上一级#</description>
+    </item>
+    
+    <item>
+      <title>ubuntu安装chmsee</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/</guid>
+      <description>垃圾的ubuntu 14.04 又一次去掉一些特别好用的软件, 官方给的解释是怕破坏他们系统. 只想说一句 我去年买了个本.
+14.04 之前的版本,如13.10, 12.04 继续能够使用 sudo apt-get install chmsee 来安装.
+14.04 需要下载安装包来安装:
+sudo apt-get install libc6 libchm1 libgcrypt11 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk2.0-0 libpango1.0-0 libwebkitgtk-1.0-0 libxml2 安装依赖包
+(64位) sudo dpkg -i chmsee_1.3.0-2ubuntu2_amd64.deb 安装软件包,下载地址: http://kr.archive.ubuntu.com/ubuntu/pool/universe/c/chmsee/chmsee_1.3.0-2ubuntu2_amd64.deb Ubuntu的官方软件库放心下载.
+(32位) sudo dpkg -i chmsee_1.3.0-2ubuntu2_i386.deb 安装软件包,下载地址: http://kr.archive.ubuntu.com/ubuntu/pool/universe/c/chmsee/chmsee_1.3.0-2ubuntu2_i386.deb Ubuntu的官方软件库放心下载.
+回到上一级#</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu清理系统垃圾</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/</guid>
+      <description>1，非常有用的清理命令： sudo apt-get autoclean &amp;ndash;清理旧版本的软件缓存 www.2cto.com
+sudo apt-get clean&amp;ndash;清理所有软件缓存
+sudo apt-get autoremove&amp;ndash;删除系统不再使用的孤立软件
+这三个命令主要清理升级缓存以及无用包的。
+2，清理opera firefox的缓存文件： ls ~/.opera/cache4 ls ~/.mozilla/firefox/*.default/Cache
+3，清理Linux下孤立的包： 图形界面下我们可以用：gtkorphan sudo apt-get install gtkorphan -y 终端命令下我们可以用：deborphan sudo apt-get install deborphan -y
+4，卸载：tracker 这个东西一般我只要安装Ubuntu就会第一删掉tracker 他不仅会产生大量的cache文件而且还会影响开机速度。所以在新得利里面删掉就行。 www.2cto.com
+5，删除多余的内核：一定不要删错哦，切记！！ 打开终端敲命令：dpkg &amp;ndash;get-selections|grep linux 有image的就是内核文件 删除老的内核文件： sudo apt-get remove 内核文件名（例如：linux-image-2.6.27-2-generic） 内核删除，释放空间了，应该能释放130－140M空间。
+最后不要忘了看看当前内核：uname -a 附录： 包管理的临时文件目录: 包在 /var/cache/apt/archives 没有下载完的在 /var/cache/apt/archives/partial
+回到上一级#</description>
+    </item>
+    
+    <item>
+      <title>ubuntu软件卸载</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/</guid>
+      <description>ubuntu软件卸载
+安装Synaptic
+sudo apt-get install synaptic
+回到上一级#</description>
+    </item>
+    
+  </channel>
+</rss>

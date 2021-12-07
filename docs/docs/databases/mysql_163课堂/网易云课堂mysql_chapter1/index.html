@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MySQL数据库基础
+#
+
+1.1-认识MySQL
+#
+
+什么是数据库
+#
+
+ 计算机处理和存储的一切信息都是数据。 计算机系统中一种用于存取数据的程序。 一种：  计算机系统中有很多种能够存取数据的程序 它们各有特征和长处，有自己的适用范围。   存取：  能够保存数据避免丢失。 能够按照需求找到符合条件的数据。    为什么要使用数据库
+#
+
+数据库帮助我们解决一下数据存取难题：
+ 较大数据量 网络控制 并发访问 高性能要求 事务控制 持久化和数据安全 查询数据需求逻辑复杂  数据库分类
+#
+
+  关系型数据库
+ MySQL Oracle SQL Server PostgreSQL    非关系型数据库
+ hadoop：存放大数据 mongoDB： 文档型数据库 redis：键值型数据库 Cassandra：分布式数据库    最显著的区别：是否使用结构化查询语句（SQL）
+为什么学习MySQL
+#
+
+MySQL：The world&rsquo;s most popular open source database">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MySQL数据库基础" />
+<meta property="og:description" content="MySQL数据库基础
+#
+
+1.1-认识MySQL
+#
+
+什么是数据库
+#
+
+ 计算机处理和存储的一切信息都是数据。 计算机系统中一种用于存取数据的程序。 一种：  计算机系统中有很多种能够存取数据的程序 它们各有特征和长处，有自己的适用范围。   存取：  能够保存数据避免丢失。 能够按照需求找到符合条件的数据。    为什么要使用数据库
+#
+
+数据库帮助我们解决一下数据存取难题：
+ 较大数据量 网络控制 并发访问 高性能要求 事务控制 持久化和数据安全 查询数据需求逻辑复杂  数据库分类
+#
+
+  关系型数据库
+ MySQL Oracle SQL Server PostgreSQL    非关系型数据库
+ hadoop：存放大数据 mongoDB： 文档型数据库 redis：键值型数据库 Cassandra：分布式数据库    最显著的区别：是否使用结构化查询语句（SQL）
+为什么学习MySQL
+#
+
+MySQL：The world&rsquo;s most popular open source database" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<title>MySQL数据库基础 | 所悟所想</title>
+<link rel="manifest" href="./../../../../manifest.json">
+<link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
+<script defer src="./../../../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/data_link_layer/" class="">数据链路层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/network_layer/" class="">网络层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/transport_layer/" class="">传输层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/computer_network/application_layer/" class="">应用层 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle" checked />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class=" active">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle"  />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目一</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>MySQL数据库基础</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-认识mysql">1.1-认识MySQL</a>
+      <ul>
+        <li><a href="#什么是数据库">什么是数据库</a></li>
+        <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
+        <li><a href="#数据库分类">数据库分类</a></li>
+        <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
+        <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
+        <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
+        <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-轻松安装mysql">1.2-轻松安装MySQL</a>
+      <ul>
+        <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-mysql数据库连接">1.3-MySQL数据库连接</a>
+      <ul>
+        <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
+        <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
+        <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
+        <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
+        <li><a href="#使用socket连接">使用Socket连接</a></li>
+        <li><a href="#远程连接">远程连接</a></li>
+        <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
+        <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
+        <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
+        <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
+        <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
+        <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
+        <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-sql语言入门">1.4-SQL语言入门</a>
+      <ul>
+        <li><a href="#关系型数据库">关系型数据库</a></li>
+        <li><a href="#sql是什么">SQL是什么</a></li>
+        <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
+        <li><a href="#sql语句的分类">SQL语句的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-认识dba">1.5-认识DBA</a>
+      <ul>
+        <li><a href="#什么是dba">什么是DBA</a></li>
+        <li><a href="#为什么需要dba">为什么需要DBA</a></li>
+        <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
+        <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
+        <li><a href="#dba如何发展">DBA如何发展</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="mysql数据库基础">
+  MySQL数据库基础
+  <a class="anchor" href="#mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e5%9f%ba%e7%a1%80">#</a>
+</h1>
+<h2 id="11-认识mysql">
+  1.1-认识MySQL
+  <a class="anchor" href="#11-%e8%ae%a4%e8%af%86mysql">#</a>
+</h2>
+<h3 id="什么是数据库">
+  什么是数据库
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h3>
+<ul>
+<li>计算机处理和存储的一切信息都是数据。</li>
+<li>计算机系统中一种用于存取数据的程序。</li>
+<li>一种：
+<ul>
+<li>计算机系统中有很多种能够存取数据的程序</li>
+<li>它们各有特征和长处，有自己的适用范围。</li>
+</ul>
+</li>
+<li>存取：
+<ul>
+<li>能够保存数据避免丢失。</li>
+<li>能够按照需求找到符合条件的数据。</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么要使用数据库">
+  为什么要使用数据库
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bd%bf%e7%94%a8%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h3>
+<p>数据库帮助我们解决一下数据存取难题：</p>
+<ul>
+<li>较大数据量</li>
+<li>网络控制</li>
+<li>并发访问</li>
+<li>高性能要求</li>
+<li>事务控制</li>
+<li>持久化和数据安全</li>
+<li>查询数据需求逻辑复杂</li>
+</ul>
+<h3 id="数据库分类">
+  数据库分类
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e5%88%86%e7%b1%bb">#</a>
+</h3>
+<ul>
+<li>
+<p>关系型数据库</p>
+<ul>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>SQL Server</li>
+<li>PostgreSQL</li>
+</ul>
+</li>
+<li>
+<p>非关系型数据库</p>
+<ul>
+<li>hadoop：存放大数据</li>
+<li>mongoDB： 文档型数据库</li>
+<li>redis：键值型数据库</li>
+<li>Cassandra：分布式数据库</li>
+</ul>
+</li>
+</ul>
+<p><strong>最显著的区别：是否使用结构化查询语句（SQL）</strong></p>
+<h3 id="为什么学习mysql">
+  为什么学习MySQL
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%ad%a6%e4%b9%a0mysql">#</a>
+</h3>
+<p>MySQL：The world&rsquo;s most popular open source database</p>
+<ul>
+<li>
+<p>最流行</p>
+</li>
+<li>
+<p>开源</p>
+</li>
+<li>
+<p>并不是最先进</p>
+</li>
+<li>
+<p>前三强中唯一的开源数据库。</p>
+</li>
+<li>
+<p>在互联网企业中占据绝对主流地位。</p>
+</li>
+<li>
+<p>基于GPL协议开放源代码</p>
+</li>
+<li>
+<p>社区版完全免费</p>
+</li>
+<li>
+<p>代码允许自由的进行修改</p>
+</li>
+<li>
+<p>易于学习：</p>
+<ul>
+<li>MySQL具备关系型数据库核心功能但是特性并不繁多。</li>
+<li>架构设计上趋于精简。</li>
+<li>非常适合新手学习关系型数据库，入门后可向其他数据库发展。</li>
+</ul>
+</li>
+</ul>
+<h3 id="谁需要学习mysql">
+  谁需要学习MySQL
+  <a class="anchor" href="#%e8%b0%81%e9%9c%80%e8%a6%81%e5%ad%a6%e4%b9%a0mysql">#</a>
+</h3>
+<ul>
+<li>应用开发者</li>
+<li>DBA</li>
+</ul>
+<h3 id="学习目标---应用开发者">
+  学习目标 - 应用开发者
+  <a class="anchor" href="#%e5%ad%a6%e4%b9%a0%e7%9b%ae%e6%a0%87---%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e8%80%85">#</a>
+</h3>
+<p>有助于利用MySQL开发出性能优异的应用程序</p>
+<h3 id="学习目标---dba">
+  学习目标 - DBA
+  <a class="anchor" href="#%e5%ad%a6%e4%b9%a0%e7%9b%ae%e6%a0%87---dba">#</a>
+</h3>
+<p>为企业提供可靠的数据库技术保障</p>
+<h2 id="12-轻松安装mysql">
+  1.2-轻松安装MySQL
+  <a class="anchor" href="#12-%e8%bd%bb%e6%9d%be%e5%ae%89%e8%a3%85mysql">#</a>
+</h2>
+<h3 id="轻松部署mysql">
+  轻松部署MySQL
+  <a class="anchor" href="#%e8%bd%bb%e6%9d%be%e9%83%a8%e7%bd%b2mysql">#</a>
+</h3>
+<ul>
+<li>Windows下安装MySQL
+<ul>
+<li>图形化工具安装， MySQL Installer</li>
+</ul>
+</li>
+<li>Linux（Ubuntu）下安装MySQL
+<ul>
+<li>包管理安装，apt-get</li>
+</ul>
+</li>
+</ul>
+<p><strong>Windows安装时在安装中间starting server时报错解决办法是手动进入服务管理把MySQL服务的登录方式改为用本地账户且允许与桌面交互</strong></p>
+<p>在Ubuntu下可以用<code>apt-cache search mysql-server</code>查看可用的软件包</p>
+<p>使用<code>sudo apt-get install mysql-server-5.6</code>安装MySQL5.6</p>
+<p>启动与停止MySQL服务：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 启动</span>
+sudo /etc/init.d/mysql start
+<span style="color:#75715e"># 或者</span>
+sudo service mysql start
+
+<span style="color:#75715e"># 停止</span>
+sudo /etc/init.d/mysql stop
+<span style="color:#75715e"># 或者</span>
+sudo service mysql stop
+
+<span style="color:#75715e"># 重启</span>
+sudo service mysql restart
+
+<span style="color:#75715e"># 查看状态</span>
+sudo /etc/init.d/mysql status
+</code></pre></div><h2 id="13-mysql数据库连接">
+  1.3-MySQL数据库连接
+  <a class="anchor" href="#13-mysql%e6%95%b0%e6%8d%ae%e5%ba%93%e8%bf%9e%e6%8e%a5">#</a>
+</h2>
+<h3 id="工作中常用到的三种连接方式">
+  工作中常用到的三种连接方式
+  <a class="anchor" href="#%e5%b7%a5%e4%bd%9c%e4%b8%ad%e5%b8%b8%e7%94%a8%e5%88%b0%e7%9a%84%e4%b8%89%e7%a7%8d%e8%bf%9e%e6%8e%a5%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<ul>
+<li>Java App + JDBC client（其他语言也有，比如Python的MySQLdb）</li>
+<li>MySQL client</li>
+<li>&ldquo;MySQL&rdquo; utility</li>
+</ul>
+<h3 id="使用应用程序连接mysql">
+  使用应用程序连接MySQL
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e8%bf%9e%e6%8e%a5mysql">#</a>
+</h3>
+<ul>
+<li>应用程序使用驱动（connector/driver）客户端连接MySQL</li>
+<li>MySQL驱动程序涵盖各种主流语言</li>
+</ul>
+<h3 id="使用命令行连接mysql">
+  使用命令行连接MySQL
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%9e%e6%8e%a5mysql">#</a>
+</h3>
+<ul>
+<li>安装MySQL客户端软件包</li>
+<li>设置环境变量（Linux）</li>
+</ul>
+<h4 id="如何安装mysql-client">
+  如何安装MySQL-client
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e5%ae%89%e8%a3%85mysql-client">#</a>
+</h4>
+<ul>
+<li>从软件源安装<code>sudo apt-get install mysql-client</code></li>
+</ul>
+<h4 id="验证mysql的安装">
+  验证MySQL的安装
+  <a class="anchor" href="#%e9%aa%8c%e8%af%81mysql%e7%9a%84%e5%ae%89%e8%a3%85">#</a>
+</h4>
+<p><code>mysql -V</code></p>
+<h3 id="命令行连接mysql的两种方式">
+  命令行连接MySQL的两种方式
+  <a class="anchor" href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%9e%e6%8e%a5mysql%e7%9a%84%e4%b8%a4%e7%a7%8d%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<ul>
+<li>Socket连接（本地连接）</li>
+<li>TCP/IP连接（远程连接）</li>
+</ul>
+<h3 id="使用socket连接">
+  使用Socket连接
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8socket%e8%bf%9e%e6%8e%a5">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 需要指定socket文件和用户名、密码</span>
+mysql -S/tmp/mysql.sock -uroot -p
+</code></pre></div><h3 id="远程连接">
+  远程连接
+  <a class="anchor" href="#%e8%bf%9c%e7%a8%8b%e8%bf%9e%e6%8e%a5">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 需要指定IP和端口</span>
+mysql -h127.0.0.1 -P3306 -uroot -p
+</code></pre></div><h3 id="本地连接vs远程连接">
+  本地连接VS远程连接
+  <a class="anchor" href="#%e6%9c%ac%e5%9c%b0%e8%bf%9e%e6%8e%a5vs%e8%bf%9c%e7%a8%8b%e8%bf%9e%e6%8e%a5">#</a>
+</h3>
+<ul>
+<li>本地连接只能在MySQL服务器上创建，常用作为MySQL状态检查，或程序和MySQL部署在一台机器上。</li>
+<li>远程连接在MySQL服务器内外都能生效，适合应用服务器和MySQL部署在不同机器上的场景。</li>
+</ul>
+<h3 id="在windows下用命令行连接mysql">
+  在Windows下用命令行连接MySQL
+  <a class="anchor" href="#%e5%9c%a8windows%e4%b8%8b%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%9e%e6%8e%a5mysql">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">mysql -hlocalhost -P3306 -uroot -p
+</code></pre></div><h3 id="连接进入之后可以做什么">
+  连接进入之后可以做什么
+  <a class="anchor" href="#%e8%bf%9e%e6%8e%a5%e8%bf%9b%e5%85%a5%e4%b9%8b%e5%90%8e%e5%8f%af%e4%bb%a5%e5%81%9a%e4%bb%80%e4%b9%88">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">数据库状态</span>
+status;
+
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">展示当前连接</span>
+<span style="color:#66d9ef">show</span> processlist;
+</code></pre></div><h3 id="使用命令行连接mysql的注意事项">
+  使用命令行连接MySQL的注意事项
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%9e%e6%8e%a5mysql%e7%9a%84%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
+</h3>
+<ul>
+<li>socket一般存储路径为：/tmp/mysql.sock</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">如果找不到文件可以通过</span>tcp连接进来然后通过如下命令查找
+<span style="color:#66d9ef">show</span> <span style="color:#66d9ef">global</span> variables <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;socket&#39;</span>;
+</code></pre></div><ul>
+<li>socket文件的权限必须是777</li>
+<li>不要将密码直接输入在命令行里，存在安全风险！</li>
+</ul>
+<h3 id="命令行连接mysql的特点">
+  命令行连接MySQL的特点
+  <a class="anchor" href="#%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%bf%9e%e6%8e%a5mysql%e7%9a%84%e7%89%b9%e7%82%b9">#</a>
+</h3>
+<ul>
+<li>MySQL命令行里有丰富的扩展参数</li>
+<li>DBA运维管理工具大多使用命令行方式</li>
+<li>多台机器可以同时操作，对于DBA来说非常有效率</li>
+</ul>
+<h3 id="使用图形客户端连接mysql">
+  使用图形客户端连接MySQL
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%9b%be%e5%bd%a2%e5%ae%a2%e6%88%b7%e7%ab%af%e8%bf%9e%e6%8e%a5mysql">#</a>
+</h3>
+<ul>
+<li>常用的图形客户端工具
+<ul>
+<li>Navicat</li>
+<li>MySQLWorkBench</li>
+</ul>
+</li>
+</ul>
+<h3 id="图形gui工具的优势">
+  图形GUI工具的优势
+  <a class="anchor" href="#%e5%9b%be%e5%bd%a2gui%e5%b7%a5%e5%85%b7%e7%9a%84%e4%bc%98%e5%8a%bf">#</a>
+</h3>
+<ul>
+<li>操作简单易于上手</li>
+<li>支持图形化的导入、导出</li>
+<li>可视化界面输出，输出可视化</li>
+</ul>
+<h3 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h3>
+<ul>
+<li>应用程序需要使用API接口连接MySQL</li>
+<li>开发工程师可以使用图形工具连接MySQL</li>
+<li>命令行客户端才是DBA的最爱</li>
+</ul>
+<h2 id="14-sql语言入门">
+  1.4-SQL语言入门
+  <a class="anchor" href="#14-sql%e8%af%ad%e8%a8%80%e5%85%a5%e9%97%a8">#</a>
+</h2>
+<h3 id="关系型数据库">
+  关系型数据库
+  <a class="anchor" href="#%e5%85%b3%e7%b3%bb%e5%9e%8b%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h3>
+<ul>
+<li>数据存放在表中</li>
+<li>表的每一行被称为记录</li>
+<li>表中所有记录都有相同的字段（列）</li>
+</ul>
+<h3 id="sql是什么">
+  SQL是什么
+  <a class="anchor" href="#sql%e6%98%af%e4%bb%80%e4%b9%88">#</a>
+</h3>
+<ul>
+<li>Structured Query Language</li>
+<li>是一种特殊目的的编程语言，用于关系型数据库中的标准数据存取操作</li>
+<li>与数据库进行沟通的钥匙</li>
+</ul>
+<h3 id="sql语言与数据库">
+  SQL语言与数据库
+  <a class="anchor" href="#sql%e8%af%ad%e8%a8%80%e4%b8%8e%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h3>
+<ul>
+<li>用SQL创建表，定义表中的字段</li>
+<li>用SQL向表中增加，删除，修改记录</li>
+<li>用SQL从表中查询到想要的记录</li>
+<li>用SQL操作数据库的一切</li>
+</ul>
+<h3 id="sql语句的分类">
+  SQL语句的分类
+  <a class="anchor" href="#sql%e8%af%ad%e5%8f%a5%e7%9a%84%e5%88%86%e7%b1%bb">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>SQL语句的分类</th>
+<th>大致用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDL(Data Definition Language)</td>
+<td>创建表，删除表，修改表……</td>
+</tr>
+<tr>
+<td>DML(Data Manipulation Language)</td>
+<td>向表中插入记录，修改或者删除表中的记录……</td>
+</tr>
+<tr>
+<td>select</td>
+<td>根据条件从表中查询出想要得到的记录</td>
+</tr>
+<tr>
+<td>DCL(Data Control Language)</td>
+<td>控制数据库的访问权限等设置</td>
+</tr>
+<tr>
+<td>TCL(Transaction Control Language)</td>
+<td>控制事务进展</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DDL
+<ul>
+<li>CREATE TABLE</li>
+<li>DROP TABLE</li>
+<li>ALTER TABLE</li>
+</ul>
+</li>
+<li>DML
+<ul>
+<li>SELECT FROM TABLE</li>
+<li>INSERT INTO TABLE</li>
+<li>UPDATE TABLE SET</li>
+<li>DELETE FROM TABLE</li>
+</ul>
+</li>
+<li>DCL
+<ul>
+<li>GRANT</li>
+<li>REVOKE</li>
+</ul>
+</li>
+<li>TCL
+<ul>
+<li>COMMIT</li>
+<li>ROLLBACK</li>
+</ul>
+</li>
+</ul>
+<p>example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">查看当前有哪些数据库</span>
+<span style="color:#66d9ef">show</span> databases;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">使用名为</span>test的数据库
+use test;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">创建一张学生表</span>
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> stu(
+  id int(<span style="color:#ae81ff">10</span>),
+  name varchar(<span style="color:#ae81ff">20</span>),
+  age int(<span style="color:#ae81ff">10</span>),
+  <span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span>(id));
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">每一张表都需要包含一个主键，主键唯一标识一条记录，唯一的字段，不可重复不能为空，通过</span><span style="color:#f92672">`</span><span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span><span style="color:#f92672">`</span><span style="color:#960050;background-color:#1e0010">关键字来定义。</span>
+
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">查看创建好的表</span>
+<span style="color:#66d9ef">show</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> stu;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">新加一个字段</span>
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> stu <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">column</span> gender varchar(<span style="color:#ae81ff">20</span>);
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">修改一个字段</span>
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> stu <span style="color:#66d9ef">modify</span> <span style="color:#66d9ef">column</span> gender varchar(<span style="color:#ae81ff">40</span>);
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">删除一个字段</span>
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> stu <span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">column</span> gender;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">删除表</span>
+<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> stu;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">查看当前数据库中的表</span>
+<span style="color:#66d9ef">show</span> tables;
+
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">向表中插入数据</span>
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> stu(id,name,age) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;pw&#39;</span>,<span style="color:#ae81ff">28</span>);
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">插入全部字段时可以只写表名</span>
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> stu <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;nss&#39;</span>,<span style="color:#ae81ff">29</span>);
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">查看刚才添加的数据</span>,<span style="color:#e6db74">&#34;*&#34;</span><span style="color:#960050;background-color:#1e0010">代表查询全部字段</span>
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> stu;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">如果只想查询两个字段，则只写要查询的字段名</span>
+<span style="color:#66d9ef">select</span> name, age <span style="color:#66d9ef">from</span> stu;
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">也可以根据某个条件进行查询，比如只查询</span>id为1的记录
+<span style="color:#66d9ef">select</span> name age <span style="color:#66d9ef">from</span> stu <span style="color:#66d9ef">where</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">更新语句</span>
+<span style="color:#66d9ef">update</span> stu <span style="color:#66d9ef">set</span> age<span style="color:#f92672">=</span><span style="color:#ae81ff">29</span> <span style="color:#66d9ef">where</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">删除表中的数据</span>
+<span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">from</span> stu <span style="color:#66d9ef">where</span> id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</code></pre></div><h2 id="15-认识dba">
+  1.5-认识DBA
+  <a class="anchor" href="#15-%e8%ae%a4%e8%af%86dba">#</a>
+</h2>
+<h3 id="什么是dba">
+  什么是DBA
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%afdba">#</a>
+</h3>
+<p>DBA是数据库管理员，就像是足球队的守门员，是业务最后一道屏障，是业务稳定运行的基石，可以提供更畅快的用户体验</p>
+<h3 id="为什么需要dba">
+  为什么需要DBA
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81dba">#</a>
+</h3>
+<ul>
+<li>小公司
+<ul>
+<li>没有专职DBA</li>
+<li>但肯定有懂数据库的人</li>
+</ul>
+</li>
+<li>大公司
+<ul>
+<li>专职DBA</li>
+<li>数据存储技术专家</li>
+</ul>
+</li>
+</ul>
+<p>互联网业务有以下严格要求：</p>
+<ul>
+<li>高性能（数据库是重要的一环）</li>
+<li>高可用（需要业务不中断的运行）</li>
+<li>可扩展（支撑海量数据和业务，数据库拓展）</li>
+<li>安全性（核心业务数据敏感）</li>
+</ul>
+<p>没有DBA，就没有稳定的数据库，请求变慢，数据丢失，安全问题，用户投诉，无穷无尽</p>
+<h3 id="dba要做哪些工作">
+  DBA要做哪些工作
+  <a class="anchor" href="#dba%e8%a6%81%e5%81%9a%e5%93%aa%e4%ba%9b%e5%b7%a5%e4%bd%9c">#</a>
+</h3>
+<ul>
+<li>基础运维工作
+<ul>
+<li>安装部署</li>
+<li>监控</li>
+<li>故障处理</li>
+</ul>
+</li>
+<li>安全运维工作
+<ul>
+<li>数据备份与恢复</li>
+<li>安全访问、安全漏洞</li>
+<li>审计</li>
+</ul>
+</li>
+<li>性能调优
+<ul>
+<li>数据库优化</li>
+<li>容量评估、软硬件升级</li>
+</ul>
+</li>
+<li>开发支持工作
+<ul>
+<li>存储方案制定</li>
+<li>数据库设计</li>
+<li>数据库变更、SQL Review</li>
+</ul>
+</li>
+<li>流程与培训
+<ul>
+<li>数据库开发规范</li>
+<li>运维流程标准化</li>
+<li>业务培训</li>
+</ul>
+</li>
+</ul>
+<h3 id="dba需要哪些技能">
+  DBA需要哪些技能
+  <a class="anchor" href="#dba%e9%9c%80%e8%a6%81%e5%93%aa%e4%ba%9b%e6%8a%80%e8%83%bd">#</a>
+</h3>
+<ul>
+<li>专业技能
+<ul>
+<li>数据库原理</li>
+<li>Linux与Shell</li>
+<li>计算机体系结构</li>
+<li>网络原理</li>
+<li>数据库系统与操作</li>
+<li>服务器硬件</li>
+<li>业务架构设计</li>
+</ul>
+</li>
+<li>软技能
+<ul>
+<li>责任心、执行力</li>
+<li>坚韧、抗压</li>
+<li>学习与沟通能力</li>
+<li>正直、诚信</li>
+<li>耐心，注重细节</li>
+<li>分析能力</li>
+<li>团队协作</li>
+</ul>
+</li>
+</ul>
+<h3 id="dba如何发展">
+  DBA如何发展
+  <a class="anchor" href="#dba%e5%a6%82%e4%bd%95%e5%8f%91%e5%b1%95">#</a>
+</h3>
+<ul>
+<li>小公司or大公司</li>
+<li>发展通道：
+<ul>
+<li>DBA -&gt; 业务架构师</li>
+<li>DBA -&gt; 运维专家</li>
+<li>DBA -&gt; 数据库研发</li>
+</ul>
+</li>
+</ul>
+<h3 id="小结">
+  小结
+  <a class="anchor" href="#%e5%b0%8f%e7%bb%93">#</a>
+</h3>
+<ul>
+<li>认识DBA</li>
+<li>管理好数据库</li>
+<li>DBA工作很重要</li>
+<li>专业技能与软技能并重</li>
+<li>不错的发展前景</li>
+<li>互联网公司很缺优秀的DBA</li>
+</ul>
+<h2 id="回到上一级">
+  <a href="../">回到上一级</a>
+  <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-认识mysql">1.1-认识MySQL</a>
+      <ul>
+        <li><a href="#什么是数据库">什么是数据库</a></li>
+        <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
+        <li><a href="#数据库分类">数据库分类</a></li>
+        <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
+        <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
+        <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
+        <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-轻松安装mysql">1.2-轻松安装MySQL</a>
+      <ul>
+        <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-mysql数据库连接">1.3-MySQL数据库连接</a>
+      <ul>
+        <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
+        <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
+        <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
+        <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
+        <li><a href="#使用socket连接">使用Socket连接</a></li>
+        <li><a href="#远程连接">远程连接</a></li>
+        <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
+        <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
+        <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
+        <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
+        <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
+        <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
+        <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-sql语言入门">1.4-SQL语言入门</a>
+      <ul>
+        <li><a href="#关系型数据库">关系型数据库</a></li>
+        <li><a href="#sql是什么">SQL是什么</a></li>
+        <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
+        <li><a href="#sql语句的分类">SQL语句的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-认识dba">1.5-认识DBA</a>
+      <ul>
+        <li><a href="#什么是dba">什么是DBA</a></li>
+        <li><a href="#为什么需要dba">为什么需要DBA</a></li>
+        <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
+        <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
+        <li><a href="#dba如何发展">DBA如何发展</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
