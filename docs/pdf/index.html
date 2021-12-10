@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pdf测试</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="container">
+        <div class="col-md-12" style="margin-top:5px;">
+
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2> pdf阅读器</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="well well-lg">书本导航</div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link active" href="#"> 上海-拼多多-Java高级</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link" href="#">深圳-OPPO-Java高级.pdf</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link" href="#">深圳-中国平安-Java中级.pdf</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12" style="margin-top:5px;">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2">
+                    <iframe id="readPdfBookFrame" src="web/viewer.html?file=../book/上海-拼多多-Java高级.pdf" frameborder="0" width="100%" height="900"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+<script>
+    function onReadBook(file) {
+        document.getElementById("readPdfBookFrame").src = "web/viewer.html?file=../book/"+file;
+    }
+</script>
+</html>

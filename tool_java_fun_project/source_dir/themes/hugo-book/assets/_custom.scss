@@ -1,3 +1,54 @@
 /* You can add custom styles here. */
 
 // @import "plugins/numbered";
+//#navUUID-ZZZSGSDH {
+//  width: 100%;
+//  background: #666666;
+//  color: #FFFFFF;
+//  font-family: 黑体;
+//  text-align: center;
+//  font-size: 13px;
+//  font-weight: bold;
+//}
+//
+//#navUUID-ZZZSGSDH a, span {
+//  border-left: #CCCCCC 1px solid;
+//  display: inline-block;
+//  height: 40px;
+//  line-height: 40px;
+//  padding: 0px 10px;
+//  margin-left: -8px;
+//}
+//
+//#navUUID-ZZZSGSDH a:link, a:visited, a:active {
+//  text-decoration: none;
+//  color: #FFFFFF;
+//}
+//
+//#navUUID-ZZZSGSDH a:hover {
+//  background: #CCCCCC;
+//}
+
+#navUUID-VVzz ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navUUID-VVzz ul li {
+  float: left;
+}
+
+#navUUID-VVzz ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navUUID-VVzz ul li a:hover {
+  background-color: #111;
+}
