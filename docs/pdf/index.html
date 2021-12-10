@@ -34,7 +34,7 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a onclick="onReadBook($(this).text());" class="nav-link active" href="#"> 上海-拼多多-Java高级</a>
+                <a onclick="onReadBook($(this).text());" class="nav-link active" href="#">上海-拼多多-Java高级.pdf</a>
             </li>
             <li class="nav-item">
                 <a onclick="onReadBook($(this).text());" class="nav-link" href="#">深圳-OPPO-Java高级.pdf</a>
@@ -49,7 +49,7 @@
     <div class="container">
         <div class="col-md-12" style="margin-top:5px;">
             <div class="row">
-                <div class="col-md-10 col-md-offset-2">
+                <div class="col-md-12">
                     <iframe id="readPdfBookFrame" src="web/viewer.html?file=../book/上海-拼多多-Java高级.pdf" frameborder="0" width="100%" height="900"></iframe>
                 </div>
             </div>
@@ -62,6 +62,7 @@
 
 <script>
     function onReadBook(file) {
+        prompt("pdf加载较慢","加载中!");
         document.getElementById("readPdfBookFrame").src = "web/viewer.html?file=../book/"+file;
     }
 </script>
