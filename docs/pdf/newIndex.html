@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pdf 书籍</title>
+
+    <!-- 引入bootstrap样式 -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-table/css/bootstrap.css" rel="stylesheet">
+    <link href="./assembly/plugins/bootstrap/bootstrap-table/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- 引入bootstrap-table样式 -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-table/css/bootstrap-table.css" rel="stylesheet">
+    <!-- jquery -->
+    <script src="./assembly/plugins/jquery/core/jquery-1.9.1.js"></script>
+    <script src="./assembly/plugins/bootstrap/bootstrap-table/js/bootstrap.js"></script>
+    <!-- bootstrap-table.js -->
+    <script src="./assembly/plugins/bootstrap/bootstrap-table/js/bootstrap-table.js"></script>
+    <!-- 引入中文语言包 -->
+    <script src="./assembly/plugins/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- x-editable bootstrap3-editable -->
+    <link href="./assembly/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <script src="./assembly/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="./assembly/plugins/x-editable/bootstrap3-editable/js/bootstrap-table-editable.js"></script>
+
+    <!-- bootstrap-switch -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-switch/static/stylesheets/bootstrap-switch.css" rel="stylesheet">
+    <script src="./assembly/plugins/bootstrap/bootstrap-switch/static/js/bootstrap-switch.js"></script>
+    <!-- bootstrap-timepicker -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <script src="./assembly/plugins/bootstrap/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <!-- bootstrap-datetimepicker 日期组件 -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <script src="./assembly/plugins/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="./assembly/plugins/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- bootstrap-treeview -->
+    <link href="./assembly/plugins/bootstrap/bootstrap-treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <script src="./assembly/plugins/bootstrap/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+
+    <!-- select2 -->
+    <link href="./assembly/plugins/jquery/select2/select2.css" rel="stylesheet">
+    <link href="./assembly/plugins/jquery/select2/select2-bootstrap.css" rel="stylesheet">
+    <script src="./assembly/plugins/jquery/select2/select2.js"></script>
+    <script src="./assembly/plugins/jquery/select2/select2_locale_zh-CN.js"></script>
+    <!-- jquery validation -->
+    <script src="./assembly/plugins/jquery/jquery-validation-1.17.0/dist/jquery.validate.js"></script>
+    <script src="./assembly/plugins/jquery/jquery-validation-1.17.0/dist/localization/messages_zh.js"></script>
+
+
+    <!-- 图标组件 -->
+    <link href="./assembly/plugins/bootstrap/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!-- 公共js -->
+    <script src="./assembly/js/common/common.js" type="text/javascript"></script>
+    <!-- md5 -->
+    <script src="./assembly/plugins/message/bootbox.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div>
+    <div class="container">
+        <div class="col-md-12" style="margin-top:5px;">
+
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2> pdf阅读器</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="well well-lg">书本导航</div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link active" href="#">上海-拼多多-Java高级.pdf</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link" href="#">深圳-OPPO-Java高级.pdf</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="onReadBook($(this).text());" class="nav-link" href="#">深圳-中国平安-Java中级.pdf</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12" style="margin-top:5px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe id="readPdfBookFrame" src="pdf_web/viewer.html?file=../book/上海-拼多多-Java高级.pdf" frameborder="0" width="100%" height="900"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+<script>
+    function onReadBook(file) {
+        document.getElementById("readPdfBookFrame").src = "pdf_web/viewer.html?file=../book/"+file;
+        // prompt("pdf加载较慢","加载中!");
+        bootbox.alert("pdf加载较慢,请稍等!");
+    }
+</script>
+</html>

@@ -2,3 +2,27 @@
 
 // @import "plugins/numbered";
 // @import "plugins/scrollbars";
+
+
+
+.ul_abc {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  margin-bottom:10px;
+}
+.li_abc {
+  float: left;
+  a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    &:hover {
+      background-color: #111;
+    }
+  }
+}

@@ -12,4 +12,4 @@ Summary
 
 主题：hugo-book
 
-[面试书籍](../pdf/index.html)
+[面试书籍](../pdf/newIndex.html)
