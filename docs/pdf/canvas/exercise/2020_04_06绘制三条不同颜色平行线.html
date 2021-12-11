@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas </title>
+
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+
+
+            <div class="panel">
+                <div class="panel-body">
+                    <canvas height="400" width="800" style="border:1px solid red">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //获取canvas
+    var myCanvas = document.querySelector("canvas") ;
+
+    //获取上下文 或者说工具箱
+    var ctx = myCanvas.getContext("2d") ; // webgl  绘制3d
+
+
+    ctx.beginPath();
+    //移动画笔
+    ctx.moveTo(110,280.5) ;
+    //绘制直线 (轨迹)
+    ctx.lineTo(250,280.5) ;
+    ctx.strokeStyle = 'red' ;
+    ctx.lineWidth  = 4.5 ;//不要加上px
+    ctx.stroke() ;
+
+    ctx.beginPath();
+    //移动画笔
+    ctx.moveTo(110,300.5) ;
+    //绘制直线 (轨迹)
+    ctx.lineTo(250,300.5) ;
+    ctx.strokeStyle = 'green' ;
+    ctx.lineWidth  = 3.5 ;//不要加上px
+    ctx.stroke() ;
+
+    ctx.beginPath();
+    //移动画笔
+    ctx.moveTo(110,320.5) ;
+    //绘制直线 (轨迹)
+    ctx.lineTo(250,320.5) ;
+    ctx.strokeStyle = 'blue' ;
+    ctx.lineWidth  = 6.5 ;//不要加上px
+    ctx.stroke() ;
+
+
+
+    //开启新路径可以决绝样式覆盖问题
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

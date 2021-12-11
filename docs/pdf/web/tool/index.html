@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web 工具</title>
+    <script src="resources.js"></script>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+
+        span {
+            width: 30px;
+            height: 30px;
+            background: url("resources/img/star.png") no-repeat;
+            position: absolute;
+            background-size: 100% 100%;
+            animation: flash 1s alternate infinite;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        span:hover {
+            transform: scale(3, 3) rotate(180deg) !important;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 70px;">
+    <div style="margin-top: 70px;">
+        <div class="navbar-wrapper">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" onclick="">编码加密</a>
+                        </div>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group"></div>
+                            <button type="button" class="btn btn-info"
+                                    onclick="$('.viewHtml').children().hide(); $('#internet_include').show() ;"><i
+                                    class="fa fa-signal"></i> 网络
+                            </button>
+                            <button type="button" class="btn btn-success"
+                                    onclick="$('.viewHtml').children().hide();$('#frontEnd_include').show() ;"><span
+                                    class="fa fa-stack-exchange"></span> 前端
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                    onclick="$('.viewHtml').children().hide();$('#conversionHtml_include').show() ; "><span
+                                    class="fa fa-exchange"></span> 转换
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                    onclick="$('.viewHtml').children().hide();$('#jsonHtml_include').show() ; "><span
+                                    class="fa fa-exchange"></span> json转换
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                    onclick="$('.viewHtml').children().hide();$('#format_include').show() ; "><span
+                                    class="fa fa-exchange"></span> 格式化
+                            </button>
+                        </form>
+                        <div class="navbar-right">
+                            <ul class="nav navbar-nav">
+                                <li><a>sql 语法</a></li>
+                                <li><a>常用js方法</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="viewHtml">
+                        <div id="conversionHtml_include" style="display: none;"></div>
+                        <div id="format_include" style="display: none;"></div>
+                        <div id="internet_include" style="display: none;"></div>
+                        <div id="frontEnd_include" style="display: none;"></div>
+                        <div id="jsonHtml_include" style="display: none;"></div>
+                        <canvas id="drawingModel" width="300" height="390">没有金刚钻就不要揽瓷器活</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function loadStarEvent() {
+        // 屏幕的尺寸
+        var screenW = document.body.clientWidth + 1000;
+        var screenH = window.screen.height * 3.6 + 20;
+
+        // 2. 动态创建多个星星
+        for (var i = 0; i < 1250; i++) {
+            var d = new Date();
+
+            var span = document.createElement('span');
+            document.body.appendChild(span);
+
+            //位置随机
+            var x = parseInt(Math.random() * screenW + d.getMinutes());
+            var y = parseInt(Math.random() * screenH + d.getSeconds() / 2);
+            span.style.left = x + 'px';
+            span.style.top = y + 'px';
+
+            //大小随机
+            var scale = Math.random() * 1.5;
+            span.style.transform = 'scale(' + scale + ', ' + scale + ')';
+
+            //频率随机
+            var rate = Math.random() * 2;
+            span.style.animationDelay = rate + 's';
+        }
+    }
+
+    // document.addEventListener("DOMSubtreeModified", function () {
+    //     loadStarEvent();
+    // }, false);
+
+    window.onload = function () {
+        // loadStarEvent();
+    };
+
+    $(document).ready(function () {
+        /* 发生跨域错误  浏览器 快捷栏 目标添加 --allow-file-access-from-files*/
+        $("#conversionHtml_include").load("html/conversionHtml.html");
+        $("#format_include").load("html/format_include.html");
+        $("#internet_include").load("html/internet.html");
+        $("#frontEnd_include").load("html/frontEnd_include.html");
+        $("#jsonHtml_include").load("html/jsonHtml_include.html");
+    });
+</script>
+
+<script>
+    function hous(x, y, r, h, context) {
+
+        var gen3 = Math.sqrt(3);
+        var rs = 0.5 * r;
+        switch (h) {
+            case 1:
+                context.fillText("1", x + rs, y - rs * gen3);
+                break;
+            case 2:
+                context.fillText("2", x + gen3 * rs, y - rs);
+                break;
+            case 3:
+                context.fillText("3", x + 2 * rs, y);
+                break;
+            case 4:
+                context.fillText("4", x + gen3 * rs, y + rs);
+                break;
+            case 5:
+                context.fillText("5", x + rs, y + gen3 * rs);
+                break;
+            case 6:
+                context.fillText("6", x, y + 2 * rs);
+                break;
+            case 7:
+                context.fillText("7", x - rs, y + gen3 * rs);
+                break;
+            case 8:
+                context.fillText("8", x - gen3 * rs, y + rs);
+                break;
+            case 9:
+                context.fillText("9", x - 2 * rs, y);
+                break;
+            case 10:
+                context.fillText("10", x - gen3 * rs, y - rs);
+                break;
+            case 11:
+                context.fillText("11", x - rs, y - gen3 * rs);
+                break;
+            case 12:
+                context.fillText("12", x, y - 2 * rs);
+                break;
+            default:
+                alert("请输入正确的时间刻度！");
+        }
+    }
+
+
+    var drawing = document.getElementById("drawingModel");
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+        context.beginPath();
+        //绘制外圆
+        context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+        //绘制内圆
+        context.moveTo(194, 100);
+        context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+        context.closePath();
+        context.stroke();
+    }
+
+    //绘制刻度
+    context.font = "bold 14px Arial";
+    context.textAlign = "center";
+    context.textBaseline = "midden";
+    for (var i = 1; i < 13; i++) {
+        hous(100, 105, 85, i, context);
+    }
+    context.closePath();
+    context.stroke();
+
+    var oDate = new Date(); //实例一个时间对象；
+    var h = oDate.getHours(); //获取系统时，
+    var m = oDate.getMinutes(); //分
+    var s = oDate.getSeconds(); //秒
+    m += s / 60;
+    h += m / 60;
+
+    function times(r, context, s) {
+        context.moveTo(100, 100);
+        var a = Math.PI * s / 30;
+        var x = r * Math.sin(a) + 100;
+        var y = 100 - r * Math.cos(a)
+        context.lineTo(x, y);
+    }
+
+    function timeh(r, context, h) {
+        context.moveTo(100, 100);
+        var a = Math.PI * h / 6;
+        var x = r * Math.sin(a) + 100;
+        var y = 100 - r * Math.cos(a)
+        context.lineTo(x, y);
+    }
+
+    function time(context, r) {
+        //描边路径
+        context.beginPath();
+        var oDate = new Date(); //实例一个时间对象；
+        var h = oDate.getHours(); //获取系统时，
+        var m = oDate.getMinutes(); //分
+        var s = oDate.getSeconds(); //秒
+        m += s / 60;
+        h += m / 60;
+        //绘制小圆
+        context.moveTo(103, 100);
+        context.arc(100, 100, 3, 0, 2 * Math.PI, false);
+        //绘制秒针
+        times(r, context, s);
+        // 绘制分针
+        times(r - 15, context, m);
+        //绘制时针
+        timeh(r - 30, context, h);
+        context.closePath();
+        context.stroke();
+
+    }
+
+    var r = 94 / Math.sqrt(2) - 1;
+    setInterval(function () {
+        context.clearRect(100 - r, 100 - r, 2 * r, 2 * r);
+        time(context, r - 1);
+    }, 16.7);
+</script>
+
+
+</body>
+</html>

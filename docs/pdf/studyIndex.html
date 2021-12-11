@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的 主页</title>
+
+    <link href="assembly/plugins/bootstrap/bootstrap-table/css/bootstrap.css" rel="stylesheet">
+    <link href="assembly/plugins/bootstrap/bootstrap-table/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- 引入bootstrap-table样式 -->
+    <link href="assembly/plugins/bootstrap/bootstrap-table/css/bootstrap-table.css" rel="stylesheet">
+    <!-- jquery -->
+    <script src="assembly/plugins/jquery/core/jquery-1.9.1.js"></script>
+    <script src="assembly/plugins/bootstrap/bootstrap-table/js/bootstrap.js"></script>
+    <!-- bootstrap-table.js -->
+    <script src="assembly/plugins/bootstrap/bootstrap-table/js/bootstrap-table.js"></script>
+    <!-- 引入中文语言包 -->
+    <script src="assembly/plugins/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- x-editable bootstrap3-editable -->
+    <link href="assembly/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <script src="assembly/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="assembly/plugins/x-editable/bootstrap3-editable/js/bootstrap-table-editable.js"></script>
+
+    <!-- bootstrap-switch -->
+    <link href="assembly/plugins/bootstrap/bootstrap-switch/static/stylesheets/bootstrap-switch.css" rel="stylesheet">
+    <script src="assembly/plugins/bootstrap/bootstrap-switch/static/js/bootstrap-switch.js"></script>
+    <!-- bootstrap-timepicker -->
+    <link href="assembly/plugins/bootstrap/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <script src="assembly/plugins/bootstrap/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <!-- bootstrap-datetimepicker 日期组件 -->
+    <link href="assembly/plugins/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <script src="assembly/plugins/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="assembly/plugins/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- bootstrap-treeview -->
+    <link href="assembly/plugins/bootstrap/bootstrap-treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <script src="assembly/plugins/bootstrap/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+
+    <!-- select2 -->
+    <link href="assembly/plugins/jquery/select2/select2.css" rel="stylesheet">
+    <link href="assembly/plugins/jquery/select2/select2-bootstrap.css" rel="stylesheet">
+    <script src="assembly/plugins/jquery/select2/select2.js"></script>
+    <script src="assembly/plugins/jquery/select2/select2_locale_zh-CN.js"></script>
+    <!-- jquery validation -->
+    <script src="assembly/plugins/jquery/jquery-validation-1.17.0/dist/jquery.validate.js"></script>
+    <script src="assembly/plugins/jquery/jquery-validation-1.17.0/dist/localization/messages_zh.js"></script>
+
+    <!-- 图标组件 -->
+    <link href="assembly/plugins/bootstrap/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!-- 公共js -->
+    <script src="assembly/js/common/common.js" type="text/javascript"></script>
+    <script src="assembly/plugins/message/bootbox.js" type="text/javascript"></script>
+
+
+
+
+    <script src="assembly/js/vue.min.js" type="text/javascript"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/marked/2.0.3/marked.js"></script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="container">
+<div class="row">
+
+    <div class="col-xs-8  col-sm-12  col-md-12  col-lg-8  " style="margin-top:10px;margin-bottom:10px;">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                Cras justo odio
+            </a>
+
+            <a href="resources/李XX.pdf" class="list-group-item" download="李XX.pdf">测试 下载</a>
+
+            <a href="resources/员工健康情况申报卡.docx" class="list-group-item" download="员工健康情况申报卡.docx">员工健康情况申报卡 下载</a>
+
+            <!--<button type="button" class="btn btn-default" onclick="zchObj.downloadResume('resources/李XX.pdf')">-->
+            <!--下载-->
+            <!--</button>-->
+        </div>
+    </div>
+
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top:10px;margin-bottom:10px;">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a  target="_blank" href="blog/index.html" class="btn btn-primary btn-lg">数据信息</a>
+            </li>
+            <li class="list-group-item">
+                <a  target="_blank" href="web/tool/index.html" class="btn btn-primary btn-lg">web工具</a>
+            </li>
+            <li class="list-group-item">
+                <a  target="_blank" href="index.html" class="btn btn-primary btn-lg">旅程开始</a>
+            </li>
+            <li class="list-group-item">
+                <a  target="_blank" href="web/example/vue/index.html" class="btn btn-primary btn-lg">vue学习</a>
+            </li>
+            <li class="list-group-item">
+                <a  target="_blank" href="canvas/index.html" class="btn btn-primary btn-lg">canvas</a>
+            </li>
+            <li class="list-group-item">
+                <a  href="/" class="btn btn-primary btn-lg">回到首页 正常方式</a>
+            </li>
+            <li class="list-group-item">
+                <a  target="_blank" href="assembly/plugins/utilFn/index.html" class="btn btn-primary btn-lg">JavaScript常用的方法大全集</a>
+            </li>
+            <li class="list-group-item">
+                <a target="_blank" href="inspinia-HTML5/index.html" class="btn btn-primary btn-lg">inspinia-HTML5</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top:10px;margin-bottom:10px;">
+        <div id="content"></div>
+        <div id="content2"></div>
+
+        <script>
+            try {
+                // $.get('../tool_java_fun_project/source_dir/content/_index.md', function(response, status, xhr){
+                //     $("#content2").html(marked(response));
+                // });
+            }catch (e) {
+
+            }
+        </script>
+
+    </div>
+
+
+</div>
+</body>
+
+<script>
+
+
+    var rendererMD = new marked.Renderer();
+    marked.setOptions({
+        renderer: rendererMD,
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false
+    });
+    var markdownString = '```js\n console.log("hello"); \n```';
+    marked.setOptions({
+        highlight: function (code) {
+            return hljs.highlightAuto(code).value;
+        }
+    });
+
+    document.getElementById('content').innerHTML = marked(markdownString);
+
+    var zchObj = {};
+
+    /*下载简历*/
+    zchObj.downloadResume = function (resourceUrl) {
+        var x = new XMLHttpRequest();
+        //var resourceUrl = "http://static.xuezhong100.com/uploadfile/20190401/45549715ba2e428b8e415a30d9392c97.doc";
+        // var resourceUrl = 'http://static.xuezhong100.com/uploadfile/20190401/59a00a5259004f459f79a541dd05f1c3.pptx';
+        //var resourceUrl = "http://static.shuxuejia.com/img/201708020.gif";
+        x.open("GET", resourceUrl, true);
+        x.responseType = 'blob';
+        x.onload = function (e) {
+            // ie10+
+            if (navigator.msSaveBlob) {
+                var name = resourceUrl.substr(resourceUrl.lastIndexOf("/") + 1);
+                return navigator.msSaveBlob(x.response, name);
+            } else {
+                var url = window.URL.createObjectURL(x.response);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = '下载';
+                a.click();
+            }
+        };
+        x.send();
+    };
+
+</script>
+
+</html>

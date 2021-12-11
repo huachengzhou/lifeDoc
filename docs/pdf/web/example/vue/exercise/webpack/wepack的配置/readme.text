@@ -1,0 +1,7 @@
+ "build": "webpack"
+
+ 1:第一步 D:\IdeaProjects\cycle\docs\webc\web\example\vue\exercise\webpack\wepack的配置 目录下 运行 npm init  主要是为了生成 package.json
+
+ 2:第二步  npm install webpack@3.6.0 --save-dev 安装本地生产环境
+
+ 3:第三步 运行 npm run build

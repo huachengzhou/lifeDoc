@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> vue slot-插槽的基本使用</title>
+    <script src="inspinia-HTML5-resources.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 70px;" class="container">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">百度</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">阿里巴巴</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">腾讯</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">字节跳动</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="container" style="margin-top: 70px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top: 30px;">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>vue
+                    <small>study</small>
+                </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ibox-content" id="vue-content">
+                <div class="row">
+
+                    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " :style="{'margin-top':top}">
+                        <form class="form-horizontal" style="margin-top: 80px;">
+
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component>
+
+                                    </panel-component>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component>
+                                        <div class="panel-body">
+                                            sjsdsdj
+                                        </div>
+                                    </panel-component>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component-x>
+
+                                    </panel-component-x>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component-x>
+                                        <button type="button" class="btn btn-warning"><i class="fa fa-dashboard"></i>
+                                        </button>
+                                    </panel-component-x>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component-y>
+                                        <button slot="center" type="button" class="btn btn-warning"><i class="fa fa-star"></i>
+                                        </button>
+                                    </panel-component-y>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<template id="templateParent">
+    <div class="panel-body">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        Group Item #1
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </div>
+                <slot>
+
+                </slot>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template id="templateParent2">
+    <div class="panel-body">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        Group Item #1
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </div>
+                <!-- 插槽默认值 -->
+                <slot>
+                    <button type="button" class="btn btn-primary btn-sm">button</button>
+                </slot>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template id="templateParent3">
+    <div class="panel-body">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        Group Item #1
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    <!-- 插槽默认值 -->
+                    <slot>
+                        <button type="button" class="btn btn-primary btn-sm">button <i class="fa fa-amazon"></i>
+                        </button>
+                    </slot>
+                    <slot name="left">
+                        <button type="button" class="btn btn-primary btn-sm">button left<i class="fa fa-angle-left"></i>
+                        </button>
+                    </slot>
+                    <slot name="right">
+                        <button type="button" class="btn btn-primary btn-sm">button right<i
+                                class="fa fa-angle-right"></i></button>
+                    </slot>
+                    <slot name="center">
+                        <button type="button" class="btn btn-primary btn-sm">button center<i
+                                class="fa fa-centercode"></i></button>
+                    </slot>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+
+    Vue.component('panel-component', {
+        template: '#templateParent',
+    });
+
+
+    Vue.component('panel-component-x', {
+        template: '#templateParent2',
+    });
+
+    Vue.component('panel-component-y', {
+        template: '#templateParent3',
+    });
+
+
+    const ele = document.getElementById('vue-content');
+
+    const app = new Vue({
+        el: ele.querySelectorAll('form')[0],
+        data: {
+            message: getRandomNumber(),
+            simulationInfo: '模拟信息',
+            top: '20px;'
+        },
+        //可以写很多方法
+        methods: {}
+    });
+
+</script>
+
+</body>
+</html>

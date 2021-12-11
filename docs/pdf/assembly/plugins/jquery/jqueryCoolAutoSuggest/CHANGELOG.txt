@@ -1,0 +1,6 @@
+Version 2.0
+- Added callback function on item selection
+
+Version 2.1
+- Add support for unicode character
+- Fix cleared initial value bug in textfield when using idField

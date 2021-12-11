@@ -1,0 +1,1 @@
+console.log("home",Math.round(Math.random()*100));

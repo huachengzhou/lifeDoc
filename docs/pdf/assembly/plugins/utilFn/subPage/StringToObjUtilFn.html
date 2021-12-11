@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../src/utilFn.js"></script>
+    <script src="../utilPackage/jquery-1.11.3.min.js"></script>
+    <link href="../utilPackage/utilFn.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="subPage">
+        <div class="subPage-title">
+            字符串与对象相互转换处理常用的方法
+        </div>
+        <div class="subPage-sub-title"></div>
+
+        <div id="cookie2obj" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>cookie2obj</strong> </span> <span class="title-type">Function(String)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">              </span><span class="com">//*-------------------就是将URL参数转化为对象**// </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">cookie2obj</span><span class="pun">(</span><span class="str">'a=1&amp;b=2&amp;c=ab'</span><span class="pun">);</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//str1就是'{"a":"1","b":"2","c":"ab"}';</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">cookie2obj</span><span class="pun">(</span><span class="str">'id=1&amp;name=guolianyan&amp;sex=女'</span><span class="pun">);</span><span class="pln"> </span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//str1就是'{"id":"1","name":"guolianyan","sex":"女"}';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.cookie2obj(String)//就是将URL参数转化为对象<br />                 
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[String]
+                </div>
+                <div>
+                    <textarea id="cookie2objInput" class="InputTextarea">a=1&b=2&c=ab</textarea>
+                </div>
+                <div> <input id="cookie2objButton" type="button" value="执行 g.cookie2obj(String)" /> </div>
+                <div>
+                    显示结果  （对象中用JSON.stringify(Obj)）
+                </div>
+                <div>
+                    <textarea id="cookie2objOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#cookie2objButton").click(function () {
+                        var str1 = $('#cookie2objInput').val();
+                        var str2 = g.cookie2obj(str1);
+                        $('#cookie2objOutput').val(JSON.stringify(  str2));
+                    });
+                </script>
+            </div>
+        </div>   
+
+        <div id="obj2cookie" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>obj2cookie</strong> </span> <span class="title-type">Function(Object)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">             </span><span class="com">//*-------------------就是将对象转为URL参数**// </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"a"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"b"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"c"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"ab"</span><span class="pln"> </span><span class="pun">};</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2cookie</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="com">//str2就是'a=1&amp;b=2&amp;c=ab';</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"guolianyan"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"sex"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"女"</span><span class="pln"> </span><span class="pun">};</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2cookie</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="com">//str2就是'id=1&amp;name=guolianyan&amp;sex=女';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.obj2cookie(Object)//就是将对象转化为URL参数<br />                 
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Object]（对象中用JSON.parse(Obj)）
+                </div>
+                <div>
+                    <textarea id="obj2cookieInput" class="InputTextarea">{"a":"1","b":"2","c":"ab"}</textarea>
+                </div>
+                <div> <input id="obj2cookieButton" type="button" value="执行 g.obj2cookie(Object)" /> </div>
+                <div>
+                    显示结果  
+                </div>
+                <div>
+                    <textarea id="obj2cookieOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#obj2cookieButton").click(function () {
+                        var str1 = $('#obj2cookieInput').val();
+                        var str2 = g.obj2cookie(JSON.parse(str1));
+                        $('#obj2cookieOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="css2obj" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>css2obj</strong> </span> <span class="title-type">Function(String)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">              </span><span class="com">//*-------------------就是将css属性转化为对象**// </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">css2obj</span><span class="pun">(</span><span class="str">'a:1;b:2;c:ab;'</span><span class="pun">);</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是'{"a":"1","b":"2","c":"ab"}'; </span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">css2obj</span><span class="pun">(</span><span class="str">'id:1;name:guolianyan;sex:女;'</span><span class="pun">);</span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是'{"id":"1","name":"guolianyan","sex":"女"}';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.css2obj(String)//就是将css属性转化为对象<br />                 
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[String]
+                </div>
+                <div>
+                    <textarea id="css2objInput" class="InputTextarea">a:1;b:2;c:ab;</textarea>
+                </div>
+                <div> <input id="css2objButton" type="button" value="执行 g.css2obj(String)" /> </div>
+                <div>
+                    显示结果  （对象中用JSON.stringify(Obj)）
+                </div>
+                <div>
+                    <textarea id="css2objOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#css2objButton").click(function () {
+                        var str1 = $('#css2objInput').val();
+                        var str2 = g.css2obj(str1);
+                        $('#css2objOutput').val(JSON.stringify(str2));
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="obj2css" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>obj2css</strong> </span> <span class="title-type">Function(Object)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">               </span><span class="com">//*-------------------就是将对象属性转化为css**// </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"a"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"b"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"c"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"ab"</span><span class="pln"> </span><span class="pun">};</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2css</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="pln">  </span><span class="com">//str2就是'a:1;b:2;c:ab;';</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"guolianyan"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"sex"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"女"</span><span class="pln"> </span><span class="pun">};</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2css</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="pln">  </span><span class="com">//str2就是'id:1;name:guolianyan;sex:女;';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.obj2css(Object)//就是将对象转化为css属性<br />                
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Object]（对象中用JSON.parse(Obj)）
+                </div>
+                <div>
+                    <textarea id="obj2cssInput" class="InputTextarea">{"a":"1","b":"2","c":"ab"}</textarea>
+                </div>
+                <div> <input id="obj2cssButton" type="button" value="执行 g.obj2css(Object)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="obj2cssOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#obj2cssButton").click(function () {
+                        var str1 = $('#obj2cssInput').val();
+                        var str2 = g.obj2css(JSON.parse(str1));
+                        $('#obj2cssOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="string2obj" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>string2obj</strong> </span> <span class="title-type">Function(String,String,String)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//*-------------------就是特定的字符串转为对象,String2是一级符号，String3是二级符号，**// </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">string2obj</span><span class="pun">(</span><span class="str">'a=1&amp;b=2&amp;c=ab'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'&amp;'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'='</span><span class="pun">);</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1就是'{"a":"1","b":"2","c":"ab"}'; </span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">string2obj</span><span class="pun">(</span><span class="str">'id=1;name=guolianyan;sex=女'</span><span class="pun">,</span><span class="pln"> </span><span class="str">';'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'='</span><span class="pun">);</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是'{"id":"1","name":"guolianyan","sex":"女"}';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.string2obj(String1,String2,String3)<br /> 
+                    //就是特定的字符串转为对象,String2是一级符号，String3是二级符号，<br />                  
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[String1]
+                </div>
+                <div>
+                    <textarea id="string2objInput" class="InputTextarea">a=1&b=2&c=ab</textarea>
+                </div>
+                <div style="padding:10px;">
+                    参数1[String2]：<input id="string2objCanshu1" type="text" value="&" />
+                    参数2[String3]：<input id="string2objCanshu2" type="text" value="=" />
+                </div>
+                <div> <input id="string2objButton" type="button" value="执行  g.string2obj(String1,String2,String3)" /> </div>
+                <div>
+                    显示结果  （对象中用JSON.stringify(Obj)）
+                </div>
+                <div>
+                    <textarea id="string2objOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#string2objButton").click(function () {
+                        var str1 = $('#string2objInput').val();
+                        var canshu1 = $('#string2objCanshu1').val();
+                        var canshu2 = parseInt($('#string2objCanshu2').val());
+                        var str2 = g.string2obj(str1, canshu1, canshu2);
+                        $('#string2objOutput').val(JSON.stringify(str2));
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="obj2string" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>obj2string</strong> </span> <span class="title-type">Function(Object,String,String)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//*-------------------就是特定的对象转为字符串,String2是一级符号，String3是二级符号，**// </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"a"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"b"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"c"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"ab"</span><span class="pln"> </span><span class="pun">};</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2string</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//默认是url形式 </span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str2就是'a=1&amp;b=2&amp;c=ab'; </span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str2 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">obj2string</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">,</span><span class="pln"> </span><span class="str">';'</span><span class="pun">,</span><span class="pln"> </span><span class="str">':'</span><span class="pun">);</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str2</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str2就是'id:1;name:guolianyan;sex:女';</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.obj2string(Object,String1,String2)//就是将URL参数转化为对象<br />
+                    例如：var str1 =g.obj2string(JSON.stringify('{"a":"1","b":"2","c":"ab"}'));<br />
+                    str1就是'a=1&b=2&c=ab';<br />
+                    例如：var str1 =g.obj2string(JSON.stringify('{"id":"1","name":"guolianyan","sex":"女"}'),';',':');<br />
+                    str1就是'id:1;name:guolianyan;sex:女';<br />
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Object]（对象中用JSON.parse(Obj)）
+                </div>
+                <div>
+                    <textarea id="obj2stringInput" class="InputTextarea">{"a":"1","b":"2","c":"ab"}</textarea>
+                </div>
+                <div style="padding:10px;">
+                    参数1[String1]：<input id="obj2stringCanshu1" type="text" value="&" />
+                    参数2[String2]：<input id="obj2stringCanshu2" type="text" value="=" />
+                </div>
+                <div> <input id="obj2stringButton" type="button" value="执行 g.obj2string(Object,String1,String2)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="obj2stringOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#obj2stringButton").click(function () {
+                        var str1 = $('#obj2stringInput').val();
+                        var canshu1 = $('#obj2stringCanshu1').val();
+                        var canshu2 = $('#obj2stringCanshu2').val();                     
+                        var str2 = g.obj2string(JSON.parse(str1), canshu1, canshu2);
+                        $('#obj2stringOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="Cookie" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>Cookie</strong> </span> <span class="title-type">Function(String,String,Object)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                  </span><span class="com">//*-------------------将字符串存取cookie**//  </span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//g.Cookie 最后一个参数 </span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> option </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                        expires</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="com">//表示过期时间,null表示无限期，数字表示天数，比如1表示一天过期，字符串表示d1表示一天，M1表示一个月，h1表示一个小时过期 </span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                       path</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span><span class="com">//表示null表示当前路径，/表示根路径下面 </span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                       domain</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">,</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                        secure</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    </span><span class="pun">};</span></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如1： </span></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                     g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'gly'</span><span class="pun">);</span><span class="com">//'gly'存入cookie 默认存的时间是不限期 </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span><span class="com">//获取cookie </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1是'gly'</span></code></li><li class="L4"><code class="lang-javascript"></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如2： </span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'gly'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"expires"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2"</span><span class="pun">});</span><span class="com">//'gly'存入cookie  时间为2天 </span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span><span class="com">//获取cookie </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1是'gly'</span></code></li><li class="L9"><code class="lang-javascript"></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如3： </span></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'gly'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"expires"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2d"</span><span class="pun">});</span><span class="com">//'gly'存入cookie  时间为2天 </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span><span class="com">//获取cookie </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1是'gly'</span></code></li><li class="L4"><code class="lang-javascript"></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如4： </span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'gly'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"expires"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"2M"</span><span class="pln"> </span><span class="pun">});</span><span class="com">//'gly'存入cookie  时间为2个月 </span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span><span class="com">//获取cookie </span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1是'gly'</span></code></li><li class="L9"><code class="lang-javascript"></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                     </span><span class="com">//例如5： </span></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> guoqi </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">addDays</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">(),</span><span class="lit">6</span><span class="pun">);</span><span class="pln"> </span><span class="com">//今天后第6天 </span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'gly'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="str">"expires"</span><span class="pun">:</span><span class="pln"> guoqi </span><span class="pun">});</span><span class="com">//'gly'存入cookie  时间为6天后过期 </span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="typ">Cookie</span><span class="pun">(</span><span class="str">'name'</span><span class="pun">);</span><span class="com">//获取cookie </span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln"> </span><span class="com">//str1是'gly'</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.Cookie(String1,String2,Object);//将字符串存入cookie<br />                  
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div style="padding:10px;">
+                    参数1[String1]：<input id="CookieCanshu1" type="text" value="name" />（输入cookie名称）
+                </div>
+                <div>
+                    请输入字符串[String2]（存入cookie）
+                </div>           
+                <div>
+                    <textarea id="CookieInput" class="InputTextarea">{"a":"1","b":"2","c":"ab"}</textarea>
+                </div>
+                <div style="padding:10px;">        
+                    参数2[Object]：<input id="CookieCanshu2" type="text" value="" />（输入配置默认为null）
+                </div>
+                <div> <input id="CookieButton" type="button" value="执行 g.Cookie(String1,String2,Object)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="CookieOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#CookieButton").click(function () {
+                        var str1  = $('#CookieCanshu1').val();
+                        var canshu1 = $('#CookieInput').val();                      
+                        var canshu2 = $('#CookieCanshu2').val();
+                        if (canshu2 == "") {
+                            canshu2 = null;
+                        } else {
+                            canshu2 = JSON.parse(canshu2);
+                        }
+                        if (canshu1 == "")
+                        {
+                            canshu1 = null;
+                        }
+                        var str2 = '';
+                        if (canshu1 && canshu2) {
+                            str2 = g.Cookie(str1, canshu1, canshu2);
+                        } else if (!canshu1) {
+                            str2 = g.Cookie(str1);
+                        } else if (canshu1) {
+                            str2 = g.Cookie(str1, canshu1);
+                        }      
+                     
+                        $('#CookieOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+</html>

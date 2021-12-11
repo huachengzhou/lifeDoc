@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> vue 组件通信-父子通信案例</title>
+    <script src="inspinia-HTML5-resources.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 70px;" class="container">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">百度</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">阿里巴巴</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">腾讯</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">字节跳动</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="container" style="margin-top: 70px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top: 30px;">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>vue
+                    <small>study</small>
+                </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ibox-content" id="vue-content">
+                <div class="row">
+                    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " :style="{'margin-top':top}">
+                        <form class="form-horizontal" style="margin-top: 80px;">
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <div>
+                                        <span>价格比较</span>
+                                        <small class="float-right">{{totalCustomPrice}} / {{totalPrice}} ￥</small>
+                                    </div>
+                                    <div class="progress progress-small">
+                                        <div :data-v="progressO" :style="{width:progressO}" style="width: 100%;" class="progress-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component-first-one :c_books="books"
+                                                               v-on:book-input="bookClick"></panel-component-first-one>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<template id="templateFirstTwo">
+    <div>
+        <!-- 错误写法 -->
+        <!--<input :data-title="otitle" type="text" v-model.lazy="oprice"-->
+               <!--v-on:input="priceChange(otitle,oprice)" class="form-control">-->
+
+        <input  :data-title="otitle" type="text" v-model.lazy="oprice"
+               v-on:input="priceChange(otitle,$event.target.value)" class="form-control" >
+
+        <span class="form-text m-b-none">
+                    您预期价格是{{oprice}}
+                </span>
+    </div>
+</template>
+
+<template id="templateFirstOne">
+    <div>
+        <div class="form-group row" v-for="(book,index) in c_books">
+            <label class="col-sm-2 col-form-label">{{book.title}}</label>
+
+            <div class="col-sm-10">
+                <price-input :oprice="book.price" :otitle="book.title" v-on:cpt-one-input="btnClick">
+                </price-input>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    const ele = document.getElementById('vue-content');
+
+
+    // 创建组件构造器对象
+    const cptFirstOne = {
+        template: '#templateFirstOne',
+        methods: {
+            btnClick: function (book) {
+                this.$emit('book-input', book);
+            }
+        },
+        props: {
+            c_books: {
+                type: Array
+            }
+        },
+        components: {
+            'price-input': {
+                template: '#templateFirstTwo',
+                data() {
+                    return {price: 0};
+                },
+                props: {
+                    oprice: {
+                        type: Number
+                    },
+                    otitle: {
+                        type: String
+                    }
+                },
+                methods: {
+                    priceChange: function (title, price) {
+                        this.$emit('cpt-one-input', {title: title, price: Number(price)});
+                    }
+                }
+            }
+        }
+    };
+
+
+    const app = new Vue({
+        el: ele.querySelectorAll('form')[0],
+        data: {
+            message: getRandomNumber(),
+            simulationInfo: '模拟信息',
+            top: '20px;',
+            books:[{title: '计算机设计艺术', price: 99}, {title: 'linux编程艺术', price: 56}],//不能直接引用同一个地址
+            consumption: [{title: '计算机设计艺术', price: 99}, {title: 'linux编程艺术', price: 56}]
+        },
+        computed:{
+            totalPrice:function () {
+                let totalPrice = 0;
+                let len = this.books.length;
+                for (let i = 0; i < len; i++) {
+                    totalPrice += Number(this.books[i].price) ;
+                }
+                return totalPrice.toFixed(2);
+            },
+            totalCustomPrice:function () {
+                let totalCustomPrice = 0;
+                let len = this.consumption.length;
+                for (let i = 0; i < len; i++) {
+                    totalCustomPrice += Number(this.consumption[i].price) ;
+                }
+                return totalCustomPrice.toFixed(2);
+            },
+            progressO:function () {
+                let totalPrice = 0;
+                let len = this.books.length;
+                for (let i = 0; i < len; i++) {
+                    totalPrice += Number(this.books[i].price) ;
+                }
+                let totalCustomPrice = 0;
+                for (let i = 0; i < len; i++) {
+                    totalCustomPrice += Number(this.consumption[i].price) ;
+                }
+                let v = totalCustomPrice / totalPrice * 100;
+                return v.toFixed(2 ) +'%';
+            }
+        },
+        //可以写很多方法
+        methods: {
+            bookClick: function (book) {
+                let consumption = this.consumption ;
+                for (let i = 0; i < consumption.length; i++) {
+                    let item = consumption[i];
+                    if (book.title == item.title) {
+                        consumption[i].price = book.price;
+                    }
+                }
+                this.consumption = consumption ;
+            }
+        },
+        components: {
+            'panel-component-first-one': cptFirstOne
+        }
+    });
+
+</script>
+
+</body>
+</html>

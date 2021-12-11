@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../src/utilFn.js"></script>
+    <script src="../utilPackage/jquery-1.11.3.min.js"></script>
+    <link href="../utilPackage/utilFn.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="subPage">
+        <div class="subPage-title">
+            数字处理常用的方法
+        </div>
+        <div class="subPage-sub-title"></div>
+        <div id="lenWithZero" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>lenWithZero</strong> </span> <span class="title-type">Function(Number,Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                 </span><span class="com">//*-------------------往数字前面补零至n位//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">lenWithZero</span><span class="pun">(</span><span class="lit">12.3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">);</span><span class="com">//往前面补0直到8位</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln">  </span><span class="com">//str1就是000012.3;</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">lenWithZero</span><span class="pun">(</span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">);</span><span class="com">//往前面补0直到8位</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln">  </span><span class="com">//str1就是00000030;</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">lenWithZero</span><span class="pun">(</span><span class="lit">626989844</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">);</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//往前面补0直到8位,如果原数字超过8位返回原值</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="pln">  </span><span class="com">//str1就是626989844;</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.lenWithZero(Number,Number1)<br />
+                    //往前面补0直到Number1位 返回是字符串<br />
+                
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="lenWithZeroInput" class="InputTextarea">12.3</textarea>
+                </div>
+                <div style="padding:10px;">参数1[Number1]：<input id="lenWithZeroCanshu1" type="text" value="8" /></div>
+                <div> <input id="lenWithZeroButton" type="button" value="执行  g.lenWithZero(Number,Number1)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="lenWithZeroOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#lenWithZeroButton").click(function () {
+                        var str1 = $('#lenWithZeroInput').val();
+                        var canshu1 = $('#lenWithZeroCanshu1').val();
+                        var str2 = g.lenWithZero(parseFloat(str1), canshu1);
+                        $('#lenWithZeroOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="toFixed" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">Number.<strong>toFixed</strong> </span> <span class="title-type">Function(Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                  </span><span class="com">//*-------------------保留几位小数 ，返回string类型//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Number</span><span class="pun">(</span><span class="lit">12.36586</span><span class="pun">).</span><span class="pln">toFixed</span><span class="pun">(</span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数会四舍五入</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是12.37;</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Number</span><span class="pun">(</span><span class="lit">12.6</span><span class="pun">).</span><span class="pln">toFixed</span><span class="pun">(</span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数，会自动补零</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是12.60;</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Number</span><span class="pun">(</span><span class="lit">12.6</span><span class="pun">).</span><span class="pln">toFixed</span><span class="pun">(</span><span class="lit">0</span><span class="pun">);</span><span class="com">//保留2位小数，会四舍五入</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是13;</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    number.toFixed(Number1)<br />
+                    //保留几位小数，会补零，但会四舍五入 返回是字符串<br />
+                  
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="toFixedInput" class="InputTextarea">12.36586</textarea>
+                </div>
+                <div style="padding:10px;">参数1[Number1]：<input id="toFixedCanshu1" type="text" value="2" /></div>
+                <div> <input id="toFixedButton" type="button" value="执行   number.toFixed(Number1)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="toFixedOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#toFixedButton").click(function () {
+                        var str1 = $('#toFixedInput').val();
+                        var canshu1 = $('#toFixedCanshu1').val();
+                        var str2 = parseFloat(str1).toFixed(canshu1);
+                        $('#toFixedOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="decimal" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>decimal</strong> </span> <span class="title-type">Function(Number,Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                  </span><span class="com">//*-------------------保留几位小数 ，返回Number类型//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">decimal</span><span class="pun">(</span><span class="lit">12.36586</span><span class="pun">,</span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数会四舍五入</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是12.37;  </span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">decimal</span><span class="pun">(</span><span class="lit">12.6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数，不会自动补零</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是12.6;</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">decimal</span><span class="pun">(</span><span class="lit">12.6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="com">//保留2位小数，会四舍五入</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是13;</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.decimal(Number,Number1)<br />
+                    //保留几位小数，不会补零，但会四舍五入 返回是数字<br />
+                   
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="decimalInput" class="InputTextarea">12.36586</textarea>
+                </div>
+                <div style="padding:10px;">参数1[Number1]：<input id="decimalCanshu1" type="text" value="2" /></div>
+                <div> <input id="decimalButton" type="button" value="执行 g.decimal(Number,Number1)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="decimalOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#decimalButton").click(function () {
+                        var str1 = $('#decimalInput').val();
+                        var canshu1 = $('#decimalCanshu1').val();
+                        var str2 = g.decimal(parseFloat(str1), canshu1);
+                        $('#decimalOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="percent" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>percent</strong> </span> <span class="title-type">Function(Number,Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                </span><span class="com">//*-------------------将数字转化为百分格式 返回String类型//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">percent</span><span class="pun">(</span><span class="lit">0.1236586</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数会四舍五入</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是12.37%;  </span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">percent</span><span class="pun">(</span><span class="lit">0.1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">);</span><span class="com">//保留2位小数，会自动补零</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是10.00%;</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">percent</span><span class="pun">(</span><span class="lit">12.6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">);</span><span class="com">//保留3位小数，会四舍五入</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1就是1360.000%;</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.percent(Number,Number1)<br />
+                    //保留几位小数，会补零，会四舍五入 返回是字符串<br />                  
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="percentInput" class="InputTextarea">0.1236586</textarea>
+                </div>
+                <div style="padding:10px;">参数1[Number1]：<input id="percentCanshu1" type="text" value="2" /></div>
+                <div> <input id="percentButton" type="button" value="执行  g.percent(Number,Number1)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="percentOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#percentButton").click(function () {
+                        var str1 = $('#percentInput').val();
+                        var canshu1 = $('#percentCanshu1').val();
+                        var str2 = g.percent(parseFloat(str1), canshu1);
+                        $('#percentOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="RMB" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>RMB</strong> </span> <span class="title-type">Function(Number,String,Number,Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">              </span><span class="com">//*-------------------将数字转化为货币 返回String类型//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">RMB</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="pln"> </span><span class="str">'￥'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">);</span><span class="com">// 2表示保留的小数，3是千位符</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是￥11,212,222.37</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">RMB</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">);</span><span class="com">//默认就是上面例子的参数</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是￥11,212,222.37</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">RMB</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="str">'$'</span><span class="pun">,</span><span class="lit">0</span><span class="pun">);</span><span class="com">//取整数</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是$11,212,222</span></code></li><li class="L4"><code class="lang-javascript"></code></li><li class="L5"><code class="lang-javascript"></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如4：</span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">RMB</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="pln"> </span><span class="str">'$'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="lit">0</span><span class="pun">);</span><span class="com">//不用千位符，保留2为小数</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是$11212222.37</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.RMB(Number,String,Number1,Number2)<br />
+                    //String是货币符号￥,Number2表示小数后面保留几位默认为2，Number3表示千分隔默认为3<br />    
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="RMBInput" class="InputTextarea">11212222.36586</textarea>
+                </div>
+                <div style="padding:10px;line-height:32px;">
+                    参数1[String]：<input id="RMBCanshu1" type="text" value="￥" /><br/>
+                    参数2[Number1]：<input id="RMBCanshu2" type="text" value="2" /><br />
+                    参数3[Number2]：<input id="RMBCanshu3" type="text" value="3" />  <br />              
+                </div>
+                <div> <input id="RMBButton" type="button" value="执行 g.RMB(Number,String,Number1,Number2)" /> 
+                </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="RMBOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#RMBButton").click(function () {
+                        var str1 = $('#RMBInput').val();
+                        var canshu1 = $('#RMBCanshu1').val();
+                        var canshu2 = $('#RMBCanshu2').val();
+                        var canshu3 = $('#RMBCanshu3').val();
+                        var str2 = g.RMB(parseFloat(str1), canshu1, canshu2, canshu3);
+                        $('#RMBOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="currency" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>currency</strong> </span> <span class="title-type">Function(Number,String,Number,Number)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">              </span><span class="com">//*-------------------将数字转化为货币 返回String类型//</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//与g.RMB方法一样就是默认不一样</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">currency</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="pln"> </span><span class="str">'￥'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">);</span><span class="com">// 2表示保留的小数，3是千位符</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是￥11,212,222.37</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">currency</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">);</span><span class="com">//默认就是上面例子的参数</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是11212222.37</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">currency</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="str">'$'</span><span class="pun">,</span><span class="lit">0</span><span class="pun">);</span><span class="com">//取整数</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是$11212222</span></code></li><li class="L4"><code class="lang-javascript"></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如4：</span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">currency</span><span class="pun">(</span><span class="lit">11212222.36586</span><span class="pun">,</span><span class="pln"> </span><span class="str">'$'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="lit">0</span><span class="pun">);</span><span class="com">//不用千位符，保留2为小数</span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是$11212222.37</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.currency(Number,String,Number1,Number2)<br />
+                    //String是货币符号为空,Number2表示小数后面保留几位默认为2，Number3表示千分隔默认为0<br />
+                    //跟g.RMB(Number1,String,Number2,Number3)方法一样，就是换了一个名称 <br />                 
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="currencyInput" class="InputTextarea">11212222.36586</textarea>
+                </div>
+                <div style="padding:10px;line-height:32px;">
+                    参数1[String]：<input id="currencyCanshu1" type="text" value="￥" /><br/>
+                    参数2[Number1]：<input id="currencyCanshu2" type="text" value="2" /><br />
+                    参数3[Number2]：<input id="currencyCanshu3" type="text" value="3" /><br />
+
+                </div>
+                <div>
+                    <input id="currencyButton" type="button" value="执行  g.currency(Number,String,Number1,Number2)" />
+                </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="currencyOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#currencyButton").click(function () {
+                        var str1 = $('#currencyInput').val();
+                        var canshu1 = $('#currencyCanshu1').val();
+                        var canshu2 = $('#currencyCanshu2').val();
+                        var canshu3 = $('#currencyCanshu3').val();
+                        var str2 = g.currency(parseFloat(str1), canshu1, canshu2, canshu3);
+                        $('#currencyOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+        <div id="numShort" class="subPage-part">
+            <div class="subPage-part-title"><span class="title-name">g.<strong>numShort</strong> </span> <span class="title-type">Function(Number,String)</span> </div>
+            <div class="subPage-part-code">
+                <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                </span><span class="com">//*-------------------大数简写//</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如1：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln">  str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">123454665656879</span><span class="pun">,</span><span class="str">'BMK'</span><span class="pun">));</span><span class="com">//B表示十亿， M表示百万，K表示千</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是123,455B</span></code></li><li class="L6"><code class="lang-javascript"></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如2：</span></code></li><li class="L8"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">123454665656879</span><span class="pun">);</span><span class="com">//与上面例子一样，默认就是MK</span></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是123,455B</span></code></li><li class="L0"><code class="lang-javascript"></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如3：</span></code></li><li class="L2"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">123456789748</span><span class="pun">,</span><span class="str">'K'</span><span class="pun">);</span></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是123,456,790K</span></code></li><li class="L4"><code class="lang-javascript"></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如4：</span></code></li><li class="L6"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span></code></li><li class="L7"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是1K</span></code></li><li class="L8"><code class="lang-javascript"></code></li><li class="L9"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如5：</span></code></li><li class="L0"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">123456789748</span><span class="pun">,</span><span class="str">'MK'</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">);</span></code></li><li class="L1"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是123,456.79M</span></code></li><li class="L2"><code class="lang-javascript"></code></li><li class="L3"><code class="lang-javascript"><span class="pln">                    </span><span class="com">//例如6：</span></code></li><li class="L4"><code class="lang-javascript"><span class="pln">                    </span><span class="kwd">var</span><span class="pln"> str1 </span><span class="pun">=</span><span class="pln"> g</span><span class="pun">.</span><span class="pln">numShort</span><span class="pun">(</span><span class="lit">123456</span><span class="pun">,</span><span class="str">'M'</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">);</span></code></li><li class="L5"><code class="lang-javascript"><span class="pln">                    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">str1</span><span class="pun">);</span><span class="com">//str1是123,456</span></code></li></ol></pre>
+            </div>
+            <div class="subPage-part-explain">
+                <tt>
+                    g.numShort(Number,String,Number1,Number2)<br />
+                    //数字简写，String默认为BMK，B表示十亿，M表示百万，K表示千，还有T表示万亿，W表示万，Y表示亿<br />
+                    //Number1表示保留几位小数，默认不保留<br />
+                    //Number2表示数字千分符，默认为2位千分符<br />
+                  
+                </tt>
+            </div>
+            <div class="subPage-part-explain">
+                <div><b>测试方法</b></div>
+                <div>
+                    请输入字符串[Number]
+                </div>
+                <div>
+                    <textarea id="numShortInput" class="InputTextarea">123456789556</textarea>
+                </div>
+                <div style="padding:10px;">
+                    参数1[String]：<input id="numShortCanshu1" type="text" value="BMK" /><br />
+                    参数2[Number1]：<input id="numShortCanshu2" type="text" value="2" /><br />
+                    参数3[Number2]：<input id="numShortCanshu3" type="text" value="3" /><br />
+                </div>
+                <div> <input id="numShortButton" type="button" value="执行 g.numShort(Number,String)" /> </div>
+                <div>
+                    显示结果
+                </div>
+                <div>
+                    <textarea id="numShortOutput" class="OutputTextarea"></textarea>
+                </div>
+                <script>
+                    $("#numShortButton").click(function () {
+                        var str1 = $('#numShortInput').val();
+                        var canshu1 = $('#numShortCanshu1').val();
+                        var canshu2 = $('#numShortCanshu2').val();
+                        var canshu3 = $('#numShortCanshu3').val();
+                        var str2 = g.numShort(parseFloat(str1), canshu1, canshu2, canshu3);
+                        $('#numShortOutput').val(str2);
+                    });
+                </script>
+            </div>
+        </div>
+
+    
+    </div>
+
+</body>
+</html>

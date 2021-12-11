@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas </title>
+
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+
+
+            <div class="panel">
+                <div class="panel-body">
+                    <canvas height="400" width="800">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //获取canvas
+    var myCanvas = document.querySelector("canvas") ;
+
+    //获取上下文 或者说工具箱
+    var ctx = myCanvas.getContext("2d") ; // webgl  绘制3d
+
+    //移动画笔
+    ctx.moveTo(100,100) ;
+
+    //绘制直线 (轨迹)
+    ctx.lineTo(200,200) ;
+
+    //描边
+    ctx.stroke() ;
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call apply bind </title>
+</head>
+<body>
+
+<script>
+
+    //======================================== 1 =======================================
+    //凡是用let标识的 windows无法读取第一层级
+    let name = '张三';
+    let objs = {
+        name: this.name,
+        showName() {
+            console.log("name:" + this.name);
+        }
+    };
+
+    console.log(objs.name);
+    objs.showName();
+    console.log(window);
+
+    //================================================= 2 ============================================
+
+    //反射用var 或者var标识都没有的  那么window
+    var age = 25;
+    var obj = {
+        age: this.age,
+        showAge: function () {
+            console.log("age:" + this.age);
+        }
+    };
+
+    console.log(obj.age);
+    obj.showAge();
+    console.log(window);
+
+    //================================================== 3 ============================================
+    //call()、apply()、bind() 都是用来重定义 this 这个对象的
+    function Run(name, age) {
+        this.name = name;
+        this.age = age;
+        //使用函数构造器
+        this.toString = function (... params) {
+            console.log("age:" + this.age + " ; name:" + this.name);
+            console.log(params) ;
+        }
+    }
+
+    new Run("张三", 22).toString() ;
+
+    //这里发现使用call改变了toString中的this指向
+    new Run("张三", 22).toString.call({
+        age: 13,
+        name: "call"
+    },1,2,3,4);
+
+    new Run("张三", 22).toString.apply({
+        age: 13,
+        name: "apply"
+    },[1,2,3,4]);
+
+    let bachFun = new Run("张三", 22).toString.bind({
+        age: 13,
+        name: "bind"
+    },1,2,3,4);
+
+    bachFun();
+
+</script>
+
+</body>
+</html>

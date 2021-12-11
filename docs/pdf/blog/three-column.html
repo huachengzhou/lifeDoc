@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVA 树</title>
+    <script src="resources.js" type="text/javascript"></script>
+    <!-- 引入zTree 3 -->
+    <link href="../assembly/plugins/zTree/v3/css/metroStyle/metroStyle.css" rel="stylesheet">
+    <script src="../assembly/plugins/zTree/v3/js/jquery.ztree.all.js"></script>
+    <link href="../assembly/css/other/notebook.style.css" rel="stylesheet">
+
+    <script src="../assembly/js/vue.min.js" type="text/javascript"></script>
+    <style>
+        body {
+            background-color: #b0c4de;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <div id="navBarToolView" style="margin-top: 70px;">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3  col-sm-3  col-md-3  col-lg-3" style="margin-top:10px;margin-bottom:10px;">
+
+                <div class="sidebar-box">
+                    <h4>类型</h4>
+                    <div class="list-group list-group-root">
+                        <button type="button" class="list-group-item" onclick="window.open('index.html','_blank')">主页</button>
+                        <button type="button" class="list-group-item" onclick="threeColumn.handleEvent('Java.core',this);">Java核心知识</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.structure',this);">Java程序结构</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.obj',this);">面向对象</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.string',this);">字符串</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.collection',this);">集合</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.io',this);">io (bio)</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.reflection',this);">反射</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.generic',this);">泛型</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.nio',this);">nio</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.aio',this);">aio</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.thread',this);">多线程</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.net',this);">网络</button>
+                            <button type="button" class="list-group-item"  onclick="threeColumn.handleEvent('Java.regex',this);">正则表达式</button>
+                        </div>
+                        <button type="button" class="list-group-item" onclick="threeColumn.handleEvent('technology.stack',this);">技术栈</button>
+                        <button type="button" class="list-group-item" onclick="threeColumn.handleEvent('c.core',this);">C&C++核心知识</button>
+                    </div>
+                </div>
+
+                <div class="sidebar-box sidebar-box-bg">
+                    <h4>关于</h4>
+                    <p>Java 理论知识树 <a href="#" class="readmore">更多 »</a></p>
+                </div>
+
+                <div class="sidebar-box">
+                    <h4>搜索</h4>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn my-2 my-sm-0" type="button">Search</button>
+                    </form>
+                </div>
+
+                <div class="sidebar-box">
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-9  col-sm-9  col-md-9  col-lg-9" style="margin-top:10px;margin-bottom:10px;">
+                <div id="textExampleA">
+                    <!--<object style="border: 0px;" type="text/x-scriptlet" data="knowledge/text2.html" width=100% height=100%></object>-->
+                </div>
+                <div id="threeColumnDemo">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="threeColumnModel">
+    <article>
+        <h2 class="article-title">{mainTitle}</h2>
+        <p class="article-meta">{subtitle}</p>
+        <p></p>
+    </article>
+</script>
+<script src="../assembly/js/navbar.js"></script>
+<script src="../assembly/js/aesTool.js" type="text/javascript"></script>
+<script src="../assembly/js/threeColumnTool.js"></script>
+<script src="../assembly/js/bootstrapModel.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        threeColumn.handleEvent("Java.core",null) ;
+        $("#navBarToolView").empty().append(navBarTool.getHtml());
+    });
+</script>
+</body>
+</html>

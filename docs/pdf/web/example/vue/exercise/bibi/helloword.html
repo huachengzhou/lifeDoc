@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue hello word</title>
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div style="margin-top: 70px;">
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand"></a>
+                    </div>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group"></div>
+                        <button type="button" class="btn btn-success" onclick=""><span
+                                class="fa fa-calculator"></span>
+                        </button>
+                        <button type="button" class="btn btn-success" onclick=""><span
+                                class="fa fa-tree"></span>
+                        </button>
+                        <button type="button" data-toggle="modal" href="#modelDataAssetsAppraisalDic"
+                                class="btn btn-default" onclick="" title="aes工具">&nbsp; <span
+                                class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-info" onclick="">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </form>
+                    <div class="navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><a data-toggle="modal" data-target="#signin"></a></li>
+                            <li><a data-toggle="modal" data-target="#signin"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 panel-body panel">
+        <div class="form-horizontal" id="frmApp">
+            <div class="form-group">
+                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+                    <div>
+                        <input type="text" class="form-control" placeholder="vue hello world" v-model="message">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+                    <p>
+                        {{message}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const app = new Vue({
+        el: "#frmApp",
+        data: {message: "vue 双向绑定"}
+    });
+
+    console.log(app.message) ;
+
+    app.message = Math.random() ;
+
+    console.log(app.message) ;
+
+</script>
+
+</body>
+</html>

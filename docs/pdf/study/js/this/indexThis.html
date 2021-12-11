@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文档标题</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="col-sm-12">
+            <h1>我的第一个HTML页面</h1>
+            <p>我的第一个段落。</p>
+        </div>
+
+        <div class=" col-sm-12" style="background-color: #dedef8;
+        box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+    const sum = function (a, b) {
+        console.log("第一个this:", this);
+        return a + b;
+    }
+
+    console.log(sum(2, 3));
+
+    function div(param, value) {
+        console.log("第二个this:", this);
+        return param / value;
+    }
+
+    console.log(div(2, 3));
+
+    let objOne = {
+        sum(a, b) {
+            console.log("第三个this:", this);
+            return a + b;
+        },
+        //实际相当于方法了
+        sub: function (a, b) {
+            console.log("第四个this:", this);
+            return a - b;
+        },
+        call(callback) {
+            callback();
+        },
+        jiantou : (... params) => {
+            console.log(params) ;
+            console.log("this ",this) ;
+        }
+    };
+
+    objOne.call(function () {
+        console.log("回调函数this:", this);
+    });
+
+    let objTwo = (a, b) => {
+        console.log("第五个this:", this);
+        return a + b;
+    }
+    objOne.sum(4, 5);
+    objOne.sub(9, 2);
+    objOne.jiantou(23,632,236,27) ;
+
+    console.log(objTwo(22, 33));
+
+
+    (function (a, b) {
+        console.log("第六个this:", this);
+    }(2, 5));
+
+    var name = "小红";//会变为全局变量
+    let age = 66;//非全局变量
+
+    console.log(window.name) ;
+
+    console.log(window.age) ;
+
+    function PERSON(name,age){
+        this.name = name ;
+        this.age = age ;
+        console.log(" PERSON this " , this) ;
+        this.run = function(){
+            console.log(" PERSON run this " , this) ;
+        },
+        this.apply = () => {
+            //箭头函数的this是找最近作用域的this
+            console.log(" PERSON apply this " , this) ;
+        }
+    }
+
+    PERSON("admin" ,26) ;
+
+    let person = new PERSON("sadssjd" ,273) ;
+    person.run();
+    person.apply();
+
+
+    //在对象创建的属性同级情况下this指向windows
+    var testager = 20;
+    var testObj = {
+        testager : this.testager
+    }
+
+    /*
+    箭头函数里的this找最近作用域的this
+    回调函数里的this永远是windows
+    */
+
+</script>
+
+</html>

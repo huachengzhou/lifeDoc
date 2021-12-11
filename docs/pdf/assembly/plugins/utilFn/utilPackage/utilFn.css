@@ -1,0 +1,359 @@
+﻿* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 15px;
+}
+
+body, div {
+    position: relative;
+    color:#333;
+}
+
+    html, body, div.page-full {
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    div.page-full {
+        padding-left: 290px;
+        background-color: #fafafc;
+    }
+
+.page-left {
+    width: 290px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 1px solid #dddddd;
+    background-color: #fafafc;
+    overflow:hidden;
+}
+.page-left a {
+line-height:24px;
+cursor:pointer;
+}
+    .page-left ul ul {    
+    display:none;
+    padding-left:10px;
+    }
+    
+    .page-right {
+        width: 100%;
+        height: 100%;
+        overflow:hidden;
+    }
+.page-frame {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow: hidden;   
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+} 
+/*--*/
+.subPage {
+    width: 100%;
+    height: auto;
+    padding: 50px;
+    padding-top:15px;
+}
+    .subPage .subPage-title {
+        width: 100%;
+        height: 38px;
+        line-height: 37px;
+        border-bottom: 1px solid #cccccc;
+        color: #b03a5b;
+        font-size:20px;
+        font-weight:bolder;
+    }
+    .subPage .subPage-sub-title {
+    padding:10px 0px;
+    
+    }
+    .subPage .subPage-part {
+        background-color: #fff;
+        border: 1px solid #e5e5e7;     
+        padding-top:0px;
+        padding-bottom:15px;
+        margin-top:20px;
+
+    }
+    .subPage .subPage-part-title {
+        height: 41px;
+        padding: 10px 15px;       
+    }
+    .subPage .subPage-part-code {
+        font-family: Monaco, Consolas, 'Courier New';
+        background-color: #1e1e1e;      
+        line-height: 1.1;
+        color: #c8c8c8;      
+        overflow: auto;        
+    }
+    .subPage .subPage-part-explain {
+        padding: 5px 15px;
+        line-height: 1.5;
+    }
+
+.font-part-title1 {
+    color: #C592A0;
+    font-size: 14px;
+    padding-right: 20px;
+}
+.font-part-title2 {
+    color: #B03A5B;
+    font-size: 18px;
+    padding-left: 5px;
+    font-weight:bold;
+}
+.font-link {
+    color: #23527c;
+    text-decoration: underline;
+}
+.font-explain {
+    color: #800;
+}
+.font-red {
+    color: #ff0000;
+}
+.font-string {
+    color: #d69d85;
+}
+.font-object {  
+    color: #606;
+}
+.font-keyword {
+    color: #569cd6;
+}
+.font-num {
+    color: #b5cea8;
+}
+.font-array {
+    color: #660;
+}
+.title-name {
+    color: #C592A0;
+    font-size: 14px;
+    padding-right: 20px;
+}
+    .title-name strong {
+        color: #B03A5B;
+        font-size: 18px;
+        padding-right: 20px;
+    }
+.title-type {
+    border-left:1px solid #ccc;
+    padding-left:20px;
+    color: #660;
+}
+.InputTextarea {
+    width:100%;
+    min-height:120px;
+    padding:10px;
+}
+.OutputTextarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+}
+
+/**JS编辑器样式*/
+.jKey {
+    color: #569cd6;
+}
+.jNum {
+    color: #b5cea8;
+}
+.jStr {
+    color: #d69d85;
+}
+.jDes {
+    color: #57a64a;
+}
+.jPrt {
+    color: #60c4f7;
+}
+    .jDes .jStr, .jDes .jNum {
+        color: #57a64a;
+    }
+textarea.span {
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    display: inline;
+    height: 14px;
+    resize: none;
+    overflow:hidden;
+    width:auto;
+    white-space:nowrap;
+}
+
+
+
+/* Pretty printing styles. Used with prettify.js. */
+
+/* SPAN elements with the classes below are added by prettyprint. */
+
+.pln {
+    /*color: #000;*/
+    color: #c8c8c8;
+}
+
+/* plain text */
+
+@media screen {
+    .str {
+        /*color: #080;*/
+        color: #d69d85;
+    }
+    /* string content */
+    .kwd {
+        /*color: #008;*/ 
+        color: #569cd6;
+    }
+    /* a keyword */
+    .com {
+        /*color: #800;*/
+        color: #57a64a;
+    }
+    /* a comment */
+    .typ {
+        color: #c8c8c8;
+    }
+    /* a type name */
+    .lit {
+        color: #b5cea8;
+    }
+    /* a literal value */
+    /* punctuation, lisp open bracket, lisp close bracket */
+    .pun,
+    .opn,
+    .clo {
+        color: #660;
+        color: #c8c8c8;
+    }
+
+    .tag {
+        color: #008
+    }
+    /* a markup tag name */
+    .atn {
+        color: #606
+    }
+    /* a markup attribute name */
+    .atv {
+        color: #080
+    }
+    /* a markup attribute value */
+    .dec,
+    .var {
+        color: #606
+    }
+    /* a declaration; a variable name */
+    .fun {
+        color: red
+    }
+    /* a function name */
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+
+ol.linenums {
+    margin-top: 0;
+    margin-bottom: 0;
+    /*color: rgba(102, 128, 153, 0.4);*/
+    color:#2b91af;
+}
+
+/* IE indents via margin-left */
+
+ol.linenums {
+    margin-left: 35px;
+}
+
+    ol.linenums > li {
+        padding-left: 15px;
+    }
+
+pre.prettyprint {
+    /*display: block;
+    background-color: rgba(102, 128, 153, 0.05);
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1) inset, 45px 0 0 rgba(102, 128, 153, 0.05) inset, 0 1px 0 rgba(102, 128, 153, 0.05);
+    padding: 9.5px;*/
+    margin:0px;
+    font-family: Monaco, Consolas, 'Courier New';
+    background-color: #1e1e1e;
+    padding:15px 5px;
+    line-height: 1.1;
+    color: #c8c8c8;
+    border-left: 30px solid #333333;
+    overflow: auto;
+}
+
+/* li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 { list-style-type: none } */
+
+/* Alternate shading for lines */
+
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+}
+
+/* Use higher contrast and text-weight for printable form. */
+
+@media print, projection {
+    .str {
+        /*color: #060*/
+        color: #d69d85;
+    }
+
+    .kwd {
+        color: #006;
+        font-weight: bold
+    }
+
+    .com {
+        /*color: #600;*/
+        color: #569cd6;
+        font-style: italic
+    }
+
+    .typ {
+        color: #c8c8c8;
+        font-weight: bold
+    }
+
+    .lit {
+        color: #044
+    }
+
+    .pun,
+    .opn,
+    .clo {
+        color: #440;
+        color: #c8c8c8;
+    }
+
+    .tag {
+        color: #006;
+        font-weight: bold
+    }
+
+    .atn {
+        color: #404
+    }
+
+    .atv {
+        color: #060
+    }
+}

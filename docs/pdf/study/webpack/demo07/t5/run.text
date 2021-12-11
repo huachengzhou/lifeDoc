@@ -1,0 +1,239 @@
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm init -y
+Wrote to D:\IdeaProjects\cycle\study\webpack\demo07\t5\package.json:
+
+{
+  "name": "t5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm add -D webpack webpack-cli
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ webpack@5.44.0
++ webpack-cli@4.7.2
+added 121 packages from 155 contributors in 5.746s
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm add -D css-loader
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ css-loader@5.2.6
+added 21 packages from 55 contributors in 1.634s
+
+18 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm add -D style-loader
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ style-loader@3.0.0
+added 1 package from 1 contributor in 1.102s
+
+19 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm add -D less-loader
+npm WARN less-loader@10.0.1 requires a peer of less@^3.5.0 || ^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ less-loader@10.0.1
+added 2 packages from 2 contributors in 1.55s
+
+20 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm run build
+
+> t5@1.0.0 build D:\IdeaProjects\cycle\study\webpack\demo07\t5
+> webpack
+
+[webpack-cli] Failed to load 'D:\IdeaProjects\cycle\study\webpack\demo07\t5\webpack.config.js' config
+[webpack-cli] Error: Cannot find module 'html-webpack-plugin'
+Require stack:
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\webpack.config.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\webpack-cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\bootstrap.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\bin\cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\bin\webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:746:27)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\v8-compile-cache\v8-compile-cache.js:159:20)
+    at Object.<anonymous> (D:\IdeaProjects\cycle\study\webpack\demo07\t5\webpack.config.js:1:89)
+    at Module._compile (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\v8-compile-cache\v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+    at Module.load (internal/modules/cjs/loader.js:950:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:790:14)
+    at Module.require (internal/modules/cjs/loader.js:974:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'D:\\IdeaProjects\\cycle\\study\\webpack\\demo07\\t5\\webpack.config.js',
+    'D:\\IdeaProjects\\cycle\\study\\webpack\\demo07\\t5\\node_modules\\webpack-cli\\lib\\webpack-cli.js',
+    'D:\\IdeaProjects\\cycle\\study\\webpack\\demo07\\t5\\node_modules\\webpack-cli\\lib\\bootstrap.js',
+    'D:\\IdeaProjects\\cycle\\study\\webpack\\demo07\\t5\\node_modules\\webpack-cli\\bin\\cli.js',
+    'D:\\IdeaProjects\\cycle\\study\\webpack\\demo07\\t5\\node_modules\\webpack\\bin\\webpack.js'
+  ]
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 2
+npm ERR! t5@1.0.0 build: `webpack`
+npm ERR! Exit status 2
+npm ERR!
+npm ERR! Failed at the t5@1.0.0 build script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\dell\AppData\Roaming\npm-cache\_logs\2021-07-11T08_27_34_668Z-debug.log
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm install -D --save-dev html-webpack-plugin
+npm WARN less-loader@10.0.1 requires a peer of less@^3.5.0 || ^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ html-webpack-plugin@5.3.2
+added 33 packages from 19 contributors in 2.886s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm run build
+
+> t5@1.0.0 build D:\IdeaProjects\cycle\study\webpack\demo07\t5
+> webpack
+
+asset index.js 24.6 KiB [emitted] (name: index)
+asset index.html 94 bytes [emitted]
+runtime modules 937 bytes 4 modules
+cacheable modules 9.27 KiB
+  modules by path ./src/ 3.58 KiB
+    modules by path ./src/*.css 1.85 KiB 2 modules
+    modules by path ./src/*.less 1.65 KiB
+      ./src/index.less 1.61 KiB [built] [code generated]
+      ./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/index.less 39 bytes [built] [code generated] [2 errors]
+    ./src/index.js 82 bytes [built] [code generated]
+  modules by path ./node_modules/ 5.69 KiB
+    ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js 2.19 KiB [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/styleDomAPI.js 1010 bytes [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/getTarget.js 709 bytes [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/insertStyleElement.js 261 bytes [built] [code generated]
+    ./node_modules/css-loader/dist/runtime/api.js 1.57 KiB [built] [code generated]
+
+ERROR in ./src/index.less (./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/index.less)
+Module Error (from ./node_modules/less-loader/dist/cjs.js):
+Cannot find module 'less'
+Require stack:
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\utils.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\index.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\cjs.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\loader-runner\lib\loadLoader.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\loader-runner\lib\LoaderRunner.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\NormalModule.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\NormalModuleFactory.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\Compiler.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\webpack.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\index.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\webpack-cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\bootstrap.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\bin\cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\bin\webpack.js
+Error: Cannot find module 'less'
+Require stack:
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\utils.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\index.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\cjs.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\loader-runner\lib\loadLoader.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\loader-runner\lib\LoaderRunner.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\NormalModule.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\NormalModuleFactory.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\Compiler.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\webpack.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\lib\index.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\webpack-cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\lib\bootstrap.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack-cli\bin\cli.js
+- D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\webpack\bin\webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:746:27)
+    at Module.require (internal/modules/cjs/loader.js:974:19)
+    at require (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\v8-compile-cache\v8-compile-cache.js:159:20)
+    at getLessImplementation (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\utils.js:222:32)
+    at Object.lessLoader (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\index.js:21:59)
+ @ ./src/index.less 6:6-140 45:17-24 49:0-110 49:0-110 50:22-29 50:33-47 50:50-64
+ @ ./src/index.js 2:0-23
+
+ERROR in ./src/index.less (./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/index.less)
+Module build failed (from ./node_modules/less-loader/dist/cjs.js):
+Error: The Less implementation "undefined" not found
+    at Object.lessLoader (D:\IdeaProjects\cycle\study\webpack\demo07\t5\node_modules\less-loader\dist\index.js:24:14)
+ @ ./src/index.less 6:6-140 45:17-24 49:0-110 49:0-110 50:22-29 50:33-47 50:50-64
+ @ ./src/index.js 2:0-23
+
+webpack 5.44.0 compiled with 2 errors in 367 ms
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! t5@1.0.0 build: `webpack`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the t5@1.0.0 build script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\dell\AppData\Roaming\npm-cache\_logs\2021-07-11T08_28_35_889Z-debug.log
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm add -D less
+npm WARN t5@1.0.0 No description
+npm WARN t5@1.0.0 No repository field.
+
++ less@4.1.1
+added 18 packages from 18 contributors in 3.418s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>npm run build
+
+> t5@1.0.0 build D:\IdeaProjects\cycle\study\webpack\demo07\t5
+> webpack
+
+asset index.js 24.4 KiB [emitted] (name: index)
+asset index.html 94 bytes [compared for emit]
+runtime modules 937 bytes 4 modules
+cacheable modules 9.57 KiB
+  modules by path ./src/ 3.88 KiB
+    modules by path ./src/*.css 1.85 KiB 2 modules
+    modules by path ./src/*.less 1.94 KiB
+      ./src/index.less 1.61 KiB [built] [code generated]
+      ./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/index.less 340 bytes [built] [code generated]
+    ./src/index.js 82 bytes [built] [code generated]
+  modules by path ./node_modules/ 5.69 KiB
+    ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js 2.19 KiB [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/styleDomAPI.js 1010 bytes [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/getTarget.js 709 bytes [built] [code generated]
+    ./node_modules/style-loader/dist/runtime/insertStyleElement.js 261 bytes [built] [code generated]
+    ./node_modules/css-loader/dist/runtime/api.js 1.57 KiB [built] [code generated]
+webpack 5.44.0 compiled successfully in 448 ms
+
+D:\IdeaProjects\cycle\study\webpack\demo07\t5>

@@ -1,0 +1,133 @@
+/*
+jsontree
+
+ */
+
+
+.JSONEdit {
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+.JSONEdit li {
+    list-style-type:none;
+}
+
+.JSONEdit ul{
+    padding: 0 0 0 30px;
+    margin-bottom: 0px !important;
+}
+
+.JSONEdit span
+{
+    font-family: Tahoma,arial,simsun;
+    font-size: 14px;
+    text-shadow: -2px 1px 3px rgba(70, 70, 70, 0.2);
+}
+
+.JSONEdit span:hover
+{
+    background-color: #e6e6e6;
+    color: #cf0404;
+}
+
+.JSONEdit a
+{
+color: #333;
+text-decoration: none;
+}
+.JSONEdit a:hover
+{
+color: #06F;
+}
+
+.JSONEdit .line{
+  background: url("images/line.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.JSONEdit .last .line{
+    background-image:none!important;
+}
+
+.JSONEdit .node{
+  background: url("images/node.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+}
+.JSONEdit .nodelast{
+  background: url("images/nodelast.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+  /*padding-bottom: 5px;*/
+  /*margin-bottom: 5px;*/
+}
+
+.JSONEdit .elm{
+    color: #2c3;
+    content: " :";
+    font-weight: bold;
+    padding: 3px 8px;
+    white-space: nowrap;
+     /*padding-left: 0px;*/
+    margin-left: 20px;
+}
+
+.JSONEdit .red {
+    color: #f63;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.JSONEdit .value{
+    color: #f63;
+    padding: 0 8px;
+}
+
+
+.JSONEdit li span.button,.JSONRoot div span.button {
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("images/tree.png");
+    background-repeat: no-repeat;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    line-height: 0;
+    margin: 0;
+    outline: medium none;
+    vertical-align: middle;
+    width: 16px;
+}
+
+
+.JSONRoot div span.button.add {
+    background-position: -144px 0;
+    margin-left: 2px;
+    margin-right: -1px;
+    vertical-align: top;
+}
+
+.JSONEdit li span.button.add {
+    background-position: -144px 0;
+    margin-left: 2px;
+    margin-right: -1px;
+    vertical-align: top;
+}
+
+.JSONEdit li span.button.edit {
+    background-position: -110px -48px;
+    margin-right: 2px;
+    vertical-align: top;
+}
+
+.JSONEdit li span.button.remove {
+    background-position: -110px -64px;
+    margin-right: 2px;
+    vertical-align: top;
+}
+
+.JSONEdit input.rename {
+    border: 1px solid #7ec4cc;
+    font-size: 12px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+}

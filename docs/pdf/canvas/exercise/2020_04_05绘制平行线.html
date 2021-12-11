@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas </title>
+
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+
+
+            <div class="panel">
+                <div class="panel-body">
+                    <canvas height="400" width="800" style="border:1px dashed red">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //获取canvas
+    var myCanvas = document.querySelector("canvas") ;
+
+    //获取上下文 或者说工具箱
+    var ctx = myCanvas.getContext("2d") ; // webgl  绘制3d
+
+    //移动画笔
+    ctx.moveTo(100,100) ;
+
+    //绘制直线 (轨迹)
+    ctx.lineTo(200,200) ;
+
+
+    //移动画笔
+    ctx.moveTo(100,200) ;
+
+    //绘制直线 (轨迹)
+    ctx.lineTo(200,300) ;
+
+
+    //移动画笔
+    ctx.moveTo(210,250.5) ;
+    //绘制直线 (轨迹)
+    ctx.lineTo(250,250.5) ;
+    //移动画笔
+    ctx.moveTo(210,300) ;
+    //绘制直线 (轨迹)
+    ctx.lineTo(250,300) ;
+
+
+    //描边
+    ctx.stroke() ;
+
+
+    //关于线条的问题
+
+    //默认的宽度是多少 1px;
+
+    //默认的颜色 黑色;
+
+    /*
+    * 产生的原因，对齐的点是线的中心位置  ,会把线分成0.5px ,显示的是不饱和的,和增加宽度
+    *  解决方案  前后移动0.5px
+    * */
+
+
+
+</script>
+
+
+</body>
+</html>

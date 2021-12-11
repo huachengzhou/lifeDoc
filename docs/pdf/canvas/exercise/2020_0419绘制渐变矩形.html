@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas </title>
+
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+
+
+            <div class="panel">
+                <div class="panel-body">
+                    <canvas height="400" width="800" style="border:1px dashed red">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //获取canvas
+    var myCanvas = document.querySelector("canvas");
+
+    //获取上下文 或者说工具箱
+    var ctx = myCanvas.getContext("2d"); // webgl  绘制3d
+    ctx.lineWidth = 30;
+    //说明线是点构成的
+    for (var i = 0; i < 255; i++) {
+        ctx.beginPath();
+        ctx.moveTo(100 + i - 1, 100);
+        ctx.lineTo(100 + i, 100);
+        ctx.strokeStyle = "rgb(" + i + "," + i + "," + i + ")";
+        ctx.stroke();
+    }
+
+
+    //    ctx.strokeRect(50, 50, 100, 100);//绘制矩形（无填充）
+
+
+    //    ctx.font = '24px Helvetica';
+    //    ctx.fillText('点击任何处以擦除', 175, 40);
+    //    ctx.fillRect(325,100,200,200);//绘制“被填充”的矩形
+
+    //描边
+    //    ctx.stroke();
+
+    ctx.canvas.onmousedown = function (ev) {
+//        ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+    }
+
+</script>
+
+
+</body>
+</html>

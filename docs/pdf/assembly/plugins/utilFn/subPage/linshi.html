@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../src/utilFn.js"></script>
+    <script src="../utilPackage/jquery-1.11.3.min.js"></script>
+    <link href="../utilPackage/utilFn.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="trimLINSHIYONG" class="subPage-part">
+        <div class="subPage-part-title"><span class="title-name">g.<strong>trimLINSHIYONG</strong> </span> <span class="title-type">Function(String)</span> </div>
+        <div class="subPage-part-code">
+            <pre>
+            <code> 
+            <span class="font-keyword">this</span>.trimLINSHIYONG = <span class="font-keyword">function</span> (v) {
+            <span class="font-keyword">if</span>(<span class="font-keyword">typeof</span>(v) == <span class="font-string">'string'</span>)
+            <span class="font-keyword">return</span>  v.replace(<span class="font-string">/(^\s*)|(\s*$)/</span><span class="font-keyword">g</span>, <span class="font-string">''</span>);
+                        };   </code> 
+              </pre>
+        </div>
+        <div class="subPage-part-explain">
+            <tt>
+                g.trimLINSHIYONG就是输入一个字符串把头尾两端的空格号去掉<br />
+                例如：var str1 =g.trimLINSHIYONG(' nihao ');//去掉头尾空格号<br />
+                str1就是'nihao';
+            </tt>
+        </div>
+        <div class="subPage-part-explain">
+            <div><b>测试方法</b></div>
+            <div>
+                请输入字符串
+            </div>
+            <div>
+                <textarea id="trimLINSHIYONGInput" class="InputTextarea"></textarea>
+            </div>
+            <div> <input id="trimLINSHIYONGButton" type="button" value="执行 g.trimLINSHIYONG(str)" /> </div>
+            <div>
+                显示结果
+            </div>
+            <div>
+                <textarea id="trimLINSHIYONGOutput" class="OutputTextarea"></textarea>
+            </div>
+            <script>
+                    $("#trimLINSHIYONGButton").click(function () {
+                        var str1 = $('#trimLINSHIYONGInput').val();
+                        var str2 = g.trimLINSHIYONG(str1);
+                        $('#trimLINSHIYONGOutput').val(str2);
+                    });
+            </script>
+        </div>
+    </div>        
+</body>
+</html>

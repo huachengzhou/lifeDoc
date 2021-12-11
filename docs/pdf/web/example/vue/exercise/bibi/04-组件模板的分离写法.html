@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> vue 04-组件模板的分离写法</title>
+    <script src="inspinia-HTML5-resources.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 70px;" class="container">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">百度</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">阿里巴巴</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">腾讯</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">字节跳动</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="container" style="margin-top: 70px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top: 30px;">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>vue
+                    <small>study</small>
+                </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ibox-content" id="vue-content">
+                <div class="row">
+
+                    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " :style="{'margin-top':top}">
+                        <form class="form-horizontal" style="margin-top: 80px;">
+
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-component></panel-component>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <panel-son></panel-son>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- 1.script标签注意类型是text/x-template -->
+<script type="text/x-template" id="templateSon">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed"
+                   aria-expanded="false">Collapsible Group Item #1</a>
+            </h5>
+        </div>
+        <div id="collapseOne" class="panel-collapse in collapse" style="">
+            <div class="panel-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </div>
+        </div>
+    </div>
+</script>
+
+<template id="templateParent">
+    <div class="panel-body">
+        <div class="panel-group">
+            <panel-son></panel-son>
+        </div>
+    </div>
+</template>
+<script>
+    // 1.创建子组件构造器对象
+    const cptSon = {
+        template: '#templateSon',
+    };
+
+    // 2.创建父组件构造器对象
+    const cptParent = {
+        template: '#templateParent',
+        components: {
+            'panel-son': cptSon
+        }
+    };
+
+    Vue.component('panel-son', cptSon);
+    Vue.component('panel-component', cptParent);
+
+
+    const ele = document.getElementById('vue-content');
+
+    const app = new Vue({
+        el: ele.querySelectorAll('form')[0],
+        data: {
+            message: getRandomNumber(),
+            simulationInfo: '模拟信息',
+            top: '20px;'
+        },
+        //可以写很多方法
+        methods: {}
+    });
+
+</script>
+
+</body>
+</html>

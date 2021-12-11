@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> vue 组件通信-子传父(自定义事件)</title>
+    <script src="inspinia-HTML5-resources.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 70px;" class="container">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">百度</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">阿里巴巴</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">腾讯</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">字节跳动</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="container" style="margin-top: 70px;">
+    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " style="margin-top: 30px;">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>vue
+                    <small>study</small>
+                </h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ibox-content" id="vue-content">
+                <div class="row">
+                    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " :style="{'margin-top':top}">
+                        <form class="form-horizontal" style="margin-top: 80px;">
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <!-- 参数传递 , item-click这里按我的理解假如不是循环体感觉直接写cpnClick也没事，但是组件直接是一个实例了是不能在上面加父组件等其它方法的-->
+                                    <panel-component-first-one v-on:item-click="cpnClick"></panel-component-first-one>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 " :style="{'margin-top':top}">
+                        <form class="form-horizontal" style="margin-top: 80px;">
+                            <div class="form-group">
+                                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 ">
+                                    <!--  父组件向子组件传递参数-->
+                                    <panel-component-two-one v-bind:time_items="getItems()"></panel-component-two-one>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<template id="templateFirstOne">
+    <div class="panel-body">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <h5 class="panel-title">
+
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li @click="btnClick(item)" class="list-group-item" v-for="(item,index) in categorys">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="template_time_line_item">
+    <div>
+        <!-- 即使在这里面还是得必须有标签包着 -->
+        <div class="timeline-item" v-for="(item,index) in time_items">
+            <div class="row">
+                <div class="col-4 date">
+                    <i class="fa fa-file"></i>
+                    {{index+1}} am
+                    <br>
+                    <small class="text-navy">{{item.num}} ago</small>
+                </div>
+                <div class="col content">
+                    <p class="m-b-xs"><strong>>{{item.title}}</strong></p>
+                    <p>{{item.content}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+    const ele = document.getElementById('vue-content');
+    const time_line_item = {
+        template: '#template_time_line_item',
+        props: {
+            time_items: {
+                type: Array
+            }
+        },
+        computed:{
+
+        }
+    };
+
+    new Vue({
+        el: ele.querySelectorAll('form')[1],
+        data: {
+            message: getRandomNumber(),
+            simulationInfo: '模拟信息',
+            top: '20px;'
+        },
+        //可以写很多方法
+        methods: {
+            getItems: function () {
+                const len = 10;
+                let infos = [];
+                for (let i = 0; i < len; i++) {
+                    let info = {};
+                    info.title = "[" + getRandomIntegerNumber() + "]";
+                    info.content = createRandomId();
+                    info.num = getRandomIntegerNumber();
+                    infos.unshift(info);
+                }
+                return infos;
+            }
+        },
+        components: {
+            'panel-component-two-one': time_line_item
+        }
+    });
+
+    // 创建组件构造器对象
+    const cptFirstOne = {
+        template: '#templateFirstOne',
+        data() {
+            return {
+                categorys: [{
+                    id: 'aaa',
+                    name: '热门推荐'
+                },
+                    {
+                        id: 'bbb',
+                        name: '手机数码'
+                    },
+                    {
+                        id: 'ccc',
+                        name: '家用家电'
+                    },
+                    {
+                        id: 'ddd',
+                        name: '电脑办公'
+                    },
+                ]
+            }
+        },
+        methods: {
+            btnClick: function (item) {
+                //子组件向父组件通信 (item-click 感觉就像起到中间过渡这样)
+                this.$emit('item-click', item);
+            }
+        }
+    };
+
+
+    const app = new Vue({
+        el: ele.querySelectorAll('form')[0],
+        data: {
+            message: getRandomNumber(),
+            simulationInfo: '模拟信息',
+            top: '20px;',
+        },
+        //可以写很多方法
+        methods: {
+            cpnClick: function (item) {
+                console.log(item);
+                console.log("test2");
+            }
+        },
+        components: {
+            'panel-component-first-one': cptFirstOne
+        }
+    });
+
+</script>
+
+</body>
+</html>

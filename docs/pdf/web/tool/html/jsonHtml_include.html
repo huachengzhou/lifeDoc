@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+
+<form class="form-horizontal" role="form">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+                    <textarea id="jsoneditor1" class="form-control" rows="8" cols="50" name="code">
+
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+                     <pre name="result" id="jsoneditor3">
+                     </pre>
+                    <div   id="jsoneditor2" style="height: 600px; width: 100%;display: none;">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2  col-sm-2  col-md-2  col-lg-2">
+                    <button class="btn btn-success btn-sm" type="button" onclick="json_formatCode(this) ;">格式化code
+                    </button>
+                </div>
+                <div class="col-xs-2  col-sm-2  col-md-2  col-lg-2">
+                    <button type="button" class="btn btn-danger"
+                            onclick="$(this).closest('form').find('[name=code]').val('');$('#jsoneditor3').text('')">
+                        清空
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

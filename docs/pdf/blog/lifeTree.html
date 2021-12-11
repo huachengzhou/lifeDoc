@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生活经验</title>
+    <script src="resources.js" type="text/javascript"></script>
+
+
+    <link href="../assembly/css/other/notebook.style.css" rel="stylesheet">
+    <script src="../assembly/js/vue.min.js" type="text/javascript"></script>
+    <style>
+        body {
+            background-color: #b0c4de;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <div id="navBarToolView" style="margin-top: 70px;">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3  col-sm-3  col-md-3  col-lg-3" style="margin-top:10px;margin-bottom:10px;">
+
+                <div class="sidebar-box">
+                    <h4>类型</h4>
+                    <div class="list-group list-group-root">
+                        <button type="button" class="list-group-item" onclick="">生活经验</button>
+                        <button type="button" class="list-group-item" onclick="threeColumnWrite(5)">身体排毒 心脏有了毒素</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(1)">舌头溃疡</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(2)">额头长痘</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(3)">失眠，心悸</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(4)">胸闷或刺痛</button>
+                        </div>
+                        <button type="button" class="list-group-item" onclick="threeColumnWrite(10)">肝脏有了毒素</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(6)">
+                                指甲凸起或向下凹陷，指甲表面有凸起的棱线，或是向下凹陷
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(7)">乳腺增生，经前胀痛
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(8)">情绪容易抑郁</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(9)">偏头痛，两侧长痘痘，痛经
+                            </button>
+                        </div>
+                        <button type="button" class="list-group-item" onclick="threeColumnWrite(14)">脾脏有了毒素</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item">
+                                面部长色斑长斑的女性通常消化系统能力弱一些。
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(11)">白带过多
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(12)">脂肪堆积</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(13)">口气明显，唇周长痘或溃疡
+                            </button>
+                        </div>
+                        <button type="button" class="list-group-item" onclick="threeColumnWrite(17)">肺脏有了毒素</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item">
+                                皮肤呈锈色，晦暗中医认为肺管理全身的皮肤，皮肤是否润泽、白皙，都要依靠肺的功能良好
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(15)">便秘
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(16)">多愁善感，容易悲伤
+                            </button>
+                        </div>
+                        <button type="button" class="list-group-item" onclick="threeColumnWrite(22)">肾脏有了毒素</button>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(18)">月经量少，或经期短，颜色暗
+                            </button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(19)">水肿</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(20)">下颌长痘</button>
+                            <button type="button" class="list-group-item" onclick="threeColumnWrite(21)">容易疲倦</button>
+                        </div>
+
+                        <button type="button" class="list-group-item" onclick="">美食</button>
+                    </div>
+                </div>
+
+                <div class="sidebar-box sidebar-box-bg">
+                    <h4>关于</h4>
+                    <p>更多生活知识树 <a href="#" class="readmore">更多 »</a></p>
+                </div>
+
+                <div class="sidebar-box">
+                    <h4>搜索</h4>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn my-2 my-sm-0" type="button">Search</button>
+                    </form>
+                </div>
+
+                <div class="sidebar-box">
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-9  col-sm-9  col-md-9  col-lg-9" style="margin-top:10px;margin-bottom:10px;">
+                <div id="textExampleA">
+                    <!--<object style="border: 0px;" type="text/x-scriptlet" data="knowledge/text2.html" width=100% height=100%></object>-->
+                </div>
+                <div id="threeColumnDemo">
+                    <article>
+                        <div class="panel panel-heading">
+                            在道医看来，我们体内有很多毒素，凡是不能及时排出体外、对我们的身体和精神会产生不良作用的物质都可以称为“毒”，例如瘀血、痰湿、寒气、食积、气郁、上火。这些毒素堆积在五脏之内，就会加速五脏的衰老，然后由五脏供养的皮肤、筋骨、肌肉、神经也就跟着一起衰老了。虽然毒素深藏，但它们在身体表面还是留下了蛛丝马迹，不同的样貌代表毒素藏在哪里，现在，我们要找出毒素的藏身处，尽快把它赶出身体。
+                            8个信号说明内脏需要洗澡了
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">慢性便秘</li>
+                            <li class="list-group-item">总是感到疲劳</li>
+                            <li class="list-group-item">应对压力能力下降/抑郁</li>
+                            <li class="list-group-item">认知力下降/注意力难以集中</li>
+                            <li class="list-group-item">减脂效果打折扣</li>
+                            <li class="list-group-item">难以入眠</li>
+                            <li class="list-group-item">性欲下降</li>
+                            <li class="list-group-item">皮肤发暗/痤疮</li>
+                        </ul>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            我们体内有很多毒素，凡是不能即时排出体外，对我们的身体和精神会产生不良作用的物质都可以称为"毒“，比如：淤血、痰湿、寒气、食积、气郁、上火。这些毒素堆积在体内。导致五脏加速衰老，五脏是一个小型的加工厂，我们所吸收的营养会通过五脏运输到全身，毒素也不例外。五脏即心、肝、脾、肺、肾五个器官的合称，五脏的问题各有不同，那么如何给五脏去排一次毒呢？
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            <h5>心脏排毒</h5>
+                            心脏毒素堆积的话会造成：失眠、额头长痘、时长会出现胸闷，严重时还容易出现疼痛。日益累积的毒素不及时排除，堆积在体内就会形成血管堵塞。
+                            生物复合酶系列产品，我们知道心脏保养可以吃辅酶，其实就是外源性补充心脏所缺的酶。对于饮食以清淡为宜，少吃咸食。吃盐过多会使血管硬化和血压升高。
+                            首推莲子芯，味苦可以散发心火。
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            <h5>肝脏排毒</h5>
+                            肝最重要的代谢和解读良将。偏头痛、抑郁、乳腺增生、痛经、痘痘、脸色不好等都是肝毒导致的。脂肪肝酒精肝大家不陌生吧，大部分都是由于食用超出人体所需的营养和过度酗酒造成的，人体本身的消耗和吸收时成正比的，过多的就会堆积在体内，不及时处理有可能还会导致肝硬化，之所以堆积也是和新陈代谢有关。对于饮食以枸杞为宜，每天吃一小把可以提升肝脏抵抗毒素的能力。
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            <h5>脾脏排毒</h5>
+                            脸部出现色斑，伴随着口臭，嘴边长痘等情况。吃酸助脾脏排毒。对于饮食以乌梅、醋，可以增强肠胃的消化功能，使食物中的毒素在最短的时间内排出，多食用酸味食物还具有健脾的功效。
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            <h5>肺部排毒</h5>
+                            肺部出现毒素最大的表现就是便秘，还有皮肤容易出现锈色、晦暗，都是由燥气中引起的，老年人居多，对于饮食以百合为宜，百合提高肺脏抗毒能力，有很好的养肺滋阴功效。
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            <h5>肾脏排毒</h5>
+                            虚弱疲倦，且四肢乏力并容易出现水肿的情况，这种现象就表面你肾脏积累毒素已经很多了，不及时排除毒素就会出现各种问题。对于饮食以山药为宜，山药可以同时滋补很多脏器，但最终还是以补肾为主，经常吃可以增强肾脏排毒功能。
+                        </div>
+
+                        <div class="panel panel-body" style="margin-top: 25px;">
+                            我们身体时刻都在释放出毒素，可是毒素太多，排毒系统又不给力，所以堆积在体内的毒素就会越来越多，影响五脏六腑的功能，从而诱发疾病。所以排毒养生是必不可少的步骤。生物复合酶适当补充可以提高身体免疫力，加速新陈代谢等。
+                        </div>
+
+                    </article>
+                    <div class="well">
+                        <h6>参考地址</h6>
+                        <p>
+                            <code>
+                                https://jingyan.baidu.com/article/ff42efa9334bdec19e2202ff.html
+                                https://jingyan.baidu.com/article/08b6a59199cfa714a9092242.html
+                                https://jingyan.baidu.com/article/ca2d939d4b8715eb6c31cee0.html
+                            </code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="threeColumnModel">
+    <article>
+        <h2 class="article-title">{mainTitle}</h2>
+        <p class="article-meta">{subtitle}</p>
+        <p></p>
+    </article>
+</script>
+<script src="../assembly/js/navbar.js"></script>
+<script src="../assembly/js/aesTool.js" type="text/javascript"></script>
+<script src="../assembly/js/bootstrapModel.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function threeColumnWrite(num) {
+        var target = $("#threeColumnDemo");
+        var html = null;
+        switch (num) {
+            case 1:
+                html = "<article>";
+                html += "<h4> <article-title>" + "心脏有了毒素" + "</article-title> </h4>";
+                html += "舌头溃疡中医认为舌和心脏的关系最为密切，所以溃疡长在舌头上，通常认为是心脏有内火，或是火毒";
+                html += "</article>";
+                break;
+            case 2:
+                html = "<article>";
+                html += "<h4> <article-title>" + "心脏有了毒素" + "</article-title> </h4>";
+                html += "额头是心脏管辖的一个属地，心火旺盛成为火毒时，这个属地也会沸腾，于是此起彼伏地出现很多痘痘。";
+                html += "</article>";
+                break;
+            case 3:
+                html = "<article>";
+                html += "<h4> <article-title>" + "心脏有了毒素" + "</article-title> </h4>";
+                html += "心脏处于不停的工作中，当火毒停留于心而无法排除时，睡眠不会安稳。";
+                html += "</article>";
+                break;
+            case 4:
+                html = "<article>";
+                html += "<h4> <article-title>" + "心脏有了毒素" + "</article-title> </h4>";
+                html += "心脏内出现瘀血也是一种毒素，就像是在公路上堵车，轻一些的是胸闷，重一些的则会出现刺痛。";
+                html += "</article>";
+                break;
+            case 5://
+                html = "<article>";
+                html += "<h4> <article-title>" + "吃苦排毒" + "</article-title> </h4>";
+                html += "<p>首推莲子芯，它味苦，可以发散心火，虽然有寒性，但不会损伤人体的阳气，所以一向被认为是最好的化解心脏热毒的食物。可以用莲子芯泡茶，不妨再加些竹叶或生甘草，能增强莲子芯的排毒作用。给内脏器官排毒的日常方法</p>";
+                html += "<h4> <article-title>" + "按压心脏排毒要穴：少府穴" + "</article-title> </h4>";
+                html += "<p>这是指少府穴，位置在手掌心，第4、5掌骨之间，握拳时小指与无名指指端之间。按压这个穴位不妨用些力，左右手交替。</p>";
+                html += "<h4> <article-title>" + "绿豆利尿排毒" + "</article-title> </h4>";
+                html += "<p>绿豆可以通过利尿、清热的办法，来化解并排出心脏的毒素，但吃绿豆时要用液体的形式，例如绿豆浆或绿豆汤，绿豆糕的效果会差一些。心脏最佳排毒时间中午11~13点是心脏最强的时间，可以吃些保心、助排毒的食物，例如茯苓、坚果、黄豆、黑芝麻、小枣、莲子等。</p>";
+                html += "</article>";
+                break;
+            case 6:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肝脏有了毒素" + "</article-title> </h4>";
+                html += "指甲凸起或向下凹陷，指甲表面有凸起的棱线，或是向下凹陷。中医认为“肝主筋”，指甲是“筋”的一部分，所以毒素在肝脏蓄积时，指甲上会有明显的信号。";
+                html += "</article>";
+                break;
+            case 7:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肝脏有了毒素" + "</article-title> </h4>";
+                html += "乳腺出现增生，经前乳腺的胀痛明显增加。乳腺属于肝经循行路线上的要塞，一旦肝经中有“毒”存在，乳腺增生随即产生，尤其在经血即将排出时，会因气血的充盛而变得胀痛明显。";
+                html += "</article>";
+                break;
+            case 8:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肝脏有了毒素" + "</article-title> </h4>";
+                html += "肝脏是体内调控情绪的脏器，一旦肝内的毒不能及时排出，阻塞气的运行，就会产生明显的不良情绪。";
+                html += "</article>";
+                break;
+            case 9:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肝脏有了毒素" + "</article-title> </h4>";
+                html += "偏头痛，脸部的两侧长痘痘，还会出现痛经。脸部两侧以及小腹，是肝经和它的搭档胆经的“一亩三分地”，一旦肝的排毒不畅快，自己的后院就会先着火。";
+                html += "</article>";
+                break;
+            case 10://
+                html = "<article>";
+                html += "<h4> <article-title>" + "吃青色的食物" + "</article-title> </h4>";
+                html += "<p>按中医五行理论，青色的食物可以通达肝气，起到很好的疏肝、解郁、缓解情绪作用，属于帮助肝脏排毒的食物。中医专家推荐青色的橘子或柠檬，连皮做成青橘果汁或是青柠檬水，直接饮用就好。</p>";
+                html += "<h4> <article-title>" + "枸杞提升肝脏的耐受性" + "</article-title> </h4>";
+                html += "<p>除了排毒之外，还应该提升肝脏抵抗毒素的能力。这种食物首推枸杞，它具有很好的保护肝脏的作用，可以提升肝脏对毒素的耐受性。食用时以咀嚼着吃最好，每天吃一小把。</p>";
+                html += "<h4> <article-title>" + "按压肝脏排毒要穴：太冲穴" + "</article-title> </h4>";
+                html += "<p>给内脏器官排毒的日常方法，这是指太冲穴，位置在足背第一、二跖骨结合部之前的凹陷中。用拇指按揉3~5分钟，感觉轻微酸胀即可。不要用太大的力气，两只脚交替按压。</p>";
+                html += "</article>";
+                break;
+            case 11:
+                html = "<article>";
+                html += "<h4> <article-title>" + "脾脏有了毒素" + "</article-title> </h4>";
+                html += "脾主管体内排湿，如果湿气过多，超出了脾的能力，就会出现体内湿气过盛，白带增多是其中的一个体现。";
+                html += "</article>";
+                break;
+            case 12:
+                html = "<article>";
+                html += "<h4> <article-title>" + "脾脏有了毒素" + "</article-title> </h4>";
+                html += "脂肪在中医里另有一个名字：痰湿，是由于脾的消化功能不佳，不能及时把垃圾毒素排出体外而产生的。有效的减肥必须围绕恢复脾胃正常代谢痰湿的主题来做，否则就会反弹。";
+                html += "</article>";
+                break;
+            case 13:
+                html = "<article>";
+                html += "<h4> <article-title>" + "脾脏有了毒素" + "</article-title> </h4>";
+                html += "口唇周围都属于脾，当脾中的毒素无法排出体外，蓄积的毒素就要找机会从这些地方爆发出来";
+                html += "</article>";
+                break;
+            case 14://
+                html = "<article>";
+                html += "<h4> <article-title>" + "吃酸助脾脏排毒" + "</article-title> </h4>";
+                html += "<p>例如乌梅、醋，这是用来化解食物中毒素的最佳食品，可以增强肠胃的消化功能，使食物中的毒素在最短的时间内排出体外。同时酸味食物还具有健脾的功效，可以很好地起到“抗毒食品”的功效。给内脏器官排毒的日常方法</p>";
+                html += "<h4> <article-title>" + "按压脾脏排毒要穴：商丘穴" + "</article-title> </h4>";
+                html += "<p>这是指商丘穴，位置在内踝前下方的凹陷中，用手指按揉该穴位，保持酸重感即可，每次3分钟左右，两脚交替做。</p>";
+                html += "</article>";
+                break;
+            case 15:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肺脏有了毒素" + "</article-title> </h4>";
+                html += "中医认为，肺脏和大肠是一套系统，当上面肺脏有毒素时，下面肠道内也会有不正常淤积，就出现了便秘。";
+                html += "</article>";
+                break;
+            case 16:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肺脏有了毒素" + "</article-title> </h4>";
+                html += "毒素在肺会干扰肺内的气血运行，使得肺脏不能正常舒畅胸中的闷气，被压抑得多愁善感起来.";
+                html += "</article>";
+                break;
+            case 17://
+                html = "<article>";
+                html += "<h4> <article-title>" + "萝卜是肺脏的排毒食品" + "</article-title> </h4>";
+                html += "<p>在中医眼中，大肠和肺的关系最密切，肺排出毒素程度取决于大肠是否通畅，萝卜能帮助大肠排泄宿便，生吃或拌成凉菜都可以。</p>";
+                html += "<h4> <article-title>" + "百合提高肺脏抗毒能力" + "</article-title> </h4>";
+                html += "<p>肺脏向来不喜欢燥气，在燥的情况下，容易导致积累毒素。蘑菇、百合有很好的养肺滋阴的功效，可以帮肺脏抗击毒素，食用时加工时间不要过长，否则百合中的汁液会减少，防毒效果要大打折扣。给内脏器官排毒的日常方法</p>";
+                html += "<h4> <article-title>" + "按压肺脏排毒要穴：合谷穴" + "</article-title> </h4>";
+                html += "<p>有利肺脏的穴位是合谷穴，位置在手背上，第1、2掌骨间，当第2掌骨桡侧的中点处，可以用拇指和食指捏住这个部位，用力按压。</p>";
+                html += "</article>";
+                break;
+            case 18:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肾脏有了毒素" + "</article-title> </h4>";
+                html += "毒素在肺会干扰肺内的气血运行，使得肺脏不能正常舒畅胸中的闷气，被压抑得多愁善感起来.";
+                html += "</article>";
+                break;
+            case 19:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肾脏有了毒素" + "</article-title> </h4>";
+                html += "肾脏管理体内的液体运行，肾脏堆积毒素后，排出多余液体的能力降低，就出现了水肿。";
+                html += "</article>";
+                break;
+            case 20:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肾脏有了毒素" + "</article-title> </h4>";
+                html += "脸部下颌部位由肾管辖，肾的排毒不足，多余的毒素会表现在下颌部位。";
+                html += "</article>";
+                break;
+            case 21:
+                html = "<article>";
+                html += "<h4> <article-title>" + "肾脏有了毒素" + "</article-title> </h4>";
+                html += "身体内的毒素消耗了肾的能量，肾脏提供的能量减少，于是出现体倦，神疲思睡，四肢无力。";
+                html += "</article>";
+                break;
+            case 22://
+                html = "<article>";
+                html += "<h4> <article-title>" + "肾脏排毒食品：冬瓜" + "</article-title> </h4>";
+                html += "<p>冬瓜富含汁液，进入人体后，会刺激肾脏增加尿液，排出体内的毒素。食用时可用冬瓜煲汤或清炒，味道尽量淡一些。</p>";
+                html += "<h4> <article-title>" + "肾脏抗毒食品：山药" + "</article-title> </h4>";
+                html += "<p>山药虽然可以同时滋补很多脏器，但最终还是以补肾为主，经常吃山药可以增强肾脏的排毒功能。拔丝山药是很好的一种食用方法，用焦糖“炮制”过的山药，补肾抗毒的功效会相应增强。</p>";
+                html += "<h4> <article-title>" + "按压肝脏排毒要穴：涌泉穴" + "</article-title> </h4>";
+                html += "<p>这是人体最低的穴位，如果人体是一幢大楼，这个穴位就是排污下水管道的出口，经常按揉它，排毒效果明显。涌泉穴位置在足底的前1/3处(计算时不包括足趾)，这个穴位比较敏感，不要用太大的力度，稍有感觉即可，以边按边揉为佳，持续5分钟左右即可。</p>";
+                html += "</article>";
+                break;
+            default:
+                break;
+        }
+        if (html) {
+            target.empty().append(html);
+        }
+    }
+
+
+    $(document).ready(function () {
+        $("#navBarToolView").empty().append(navBarTool.getHtml());
+    });
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas </title>
+
+    <script src="resources.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+
+
+            <div class="panel">
+                <div class="panel-body">
+                    <canvas height="700" width="800" style="border: 1px dotted red">
+
+                    </canvas>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body">
+                   <img src="13414419-a356ba502d65e264.png">
+                   <img src="非零填充.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //获取canvas
+    var myCanvas = document.querySelector("canvas");
+
+    //获取上下文 或者说工具箱cd
+    var ctx = myCanvas.getContext("2d");
+
+    ctx.moveTo(100, 100);
+    ctx.lineTo(300, 100);
+    ctx.lineTo(300, 300);
+    ctx.lineTo(100, 300);
+
+    //关闭路径
+    ctx.closePath();
+
+    ctx.moveTo(150, 150);
+
+    //顺时针
+    // ctx.lineTo(250, 150);
+    // ctx.lineTo(250, 250);
+    // ctx.lineTo(150, 250);
+
+    //逆时针
+    ctx.lineTo(150, 250);
+    ctx.lineTo(250, 250);
+    ctx.lineTo(250, 150);
+
+    //关闭路径
+    ctx.closePath();
+
+    //描边
+    // ctx.stroke();
+    //填充的时候遵循非零规则
+    ctx.fill();
+
+    //canvas-非零填充规则
+    /*
+    *
+    *1,看一块区域是否填充
+2,从这个区域拉一条直线出去
+3,看和这条直线相交的轨迹
+4,如果相交的是顺时针轨迹就+1
+5,如果相交的是逆时针轨迹就-1
+6,所有的轨迹的值计算出来
+7,如果是非0那么填充
+8,如果是0那么不填充
+
+    *
+    *
+    * */
+
+</script>
+
+
+</body>
+</html>
