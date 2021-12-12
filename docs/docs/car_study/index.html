@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="科目一 科目二 科目三">
@@ -10,12 +10,12 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/car_study/" />
-<meta property="og:updated_time" content="2021-01-17T15:26:15+00:00" />
+
 <title>汽车教学 | 所悟所想</title>
 <link rel="manifest" href="./../../manifest.json">
 <link rel="icon" href="./../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css"  >
-<script defer src="./../../en.search.min.c71252da2b79de67c714ba091082d2b54850b15169b0c6797132f8cdfbf54d61.js"  ></script>
+<link rel="stylesheet" href="./../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../en.search.min.da2e61160dd8658b17828adab4a56bb6160995e0e748a745ecd49c05846558e7.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../docs/car_study/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -23,28 +23,6 @@ https://github.com/alex-shpak/hugo-book
 -->
 
   
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
-    
-
-
-
-    
-    
-    
-    
-
-
 </head>
 
 <body dir="ltr">
@@ -1653,6 +1631,28 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-a61b294d5fe4a63fddde070933328b8a" class="toggle"  />
+    <label for="section-a61b294d5fe4a63fddde070933328b8a" class="flex justify-between">
+      <a href="./../../docs/about/" class="">关于程序员</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle" checked />
     <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
       <a href="./../../docs/car_study/" class="active">汽车教学</a>
@@ -1716,6 +1716,50 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ae4278ffcaad5eddcb3add9757c83b1" class="toggle"  />
+    <label for="section-4ae4278ffcaad5eddcb3add9757c83b1" class="flex justify-between">
+      <a href="./../../docs/compilation_principle/" class="">编译原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-75093b6572bead2615e3964d3a3f0832" class="toggle"  />
+    <label for="section-75093b6572bead2615e3964d3a3f0832" class="flex justify-between">
+      <a href="./../../docs/computer_composition_principle/" class="">计算机组成原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -2269,7 +2313,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -2308,13 +2352,146 @@ https://github.com/alex-shpak/hugo-book
       </header>
 
       
+<ul class="ul_abc">
+    <li class="li_abc"><a class="active" href="../pdf/index.html">自定义工具</a></li>
+    <li class="li_abc"><a href="about/index.html">关于程序员</a></li>
+    <li class="li_abc"><a href="compilation_principle/index.html">编译原理</a></li>
+    <li class="li_abc"><a href="computer_composition_principle/index.html">计算机组成原理</a></li>
+    <li class="li_abc"><a href="../pdf/newIndex.html">book</a></li>
+</ul>
       
   <article class="markdown"><p><a href="./one">科目一</a>
 <a href="./two">科目二</a>
 <a href="./three">科目三</a></p>
 </article>
  
-      
+      <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
+
+<script>
+    function hous(x,y,r,h,context){
+
+        var gen3=Math.sqrt(3);
+        var rs=0.5*r;
+        switch(h)
+        {
+            case 1:
+                context.fillText("1",x+rs,y-rs*gen3);
+                break;
+            case 2:
+                context.fillText("2",x+gen3*rs,y-rs);
+                break;
+            case 3:
+                context.fillText("3",x+2*rs,y);
+                break;
+            case 4:
+                context.fillText("4",x+gen3*rs,y+rs);
+                break;
+            case 5:
+                context.fillText("5",x+rs,y+gen3*rs);
+                break;
+            case 6:
+                context.fillText("6",x,y+2*rs);
+                break;
+            case 7:
+                context.fillText("7",x-rs,y+gen3*rs);
+                break;
+            case 8:
+                context.fillText("8",x-gen3*rs,y+rs);
+                break;
+            case 9:
+                context.fillText("9",x-2*rs,y);
+                break;
+            case 10:
+                context.fillText("10",x-gen3*rs,y-rs);
+                break;
+            case 11:
+                context.fillText("11",x-rs,y-gen3*rs);
+                break;
+            case 12:
+                context.fillText("12",x,y-2*rs);
+                break;
+            default:
+                alert("请输入正确的时间刻度！");
+        }
+    }
+
+
+
+    var drawing=document.getElementById("drawing");
+    if(drawing.getContext){
+        var context=drawing.getContext("2d");
+        context.beginPath();
+        
+        context.arc(100,100,99,0,2*Math.PI,false);
+        
+        context.moveTo(194,100);
+        context.arc(100,100,94,0,2*Math.PI,false);
+        context.closePath();
+        context.stroke();
+    }
+
+    
+    context.font="bold 14px Arial";
+    context.textAlign="center";
+    context.textBaseline="midden";
+    for(var i=1;i<13;i++){
+        hous(100,105,85,i,context);
+    }
+    context.closePath();
+    context.stroke();
+
+    var oDate = new Date(); 
+    var h=oDate.getHours(); 
+    var m=oDate.getMinutes(); 
+    var s=oDate.getSeconds(); 
+    m+=s/60;
+    h+=m/60;
+
+    function times(r,context,s){
+        context.moveTo(100,100);
+        var a=Math.PI*s/30;
+        var x=r*Math.sin(a)+100;
+        var y=100-r*Math.cos(a)
+        context.lineTo(x,y);
+    }
+
+    function timeh(r,context,h){
+        context.moveTo(100,100);
+        var a=Math.PI*h/6;
+        var x=r*Math.sin(a)+100;
+        var y=100-r*Math.cos(a)
+        context.lineTo(x,y);
+    }
+
+    function time(context,r){
+        
+        context.beginPath();
+        var oDate = new Date(); 
+        var h=oDate.getHours(); 
+        var m=oDate.getMinutes(); 
+        var s=oDate.getSeconds(); 
+        m+=s/60;
+        h+=m/60;
+        
+        context.moveTo(103,100);
+        context.arc(100,100,3,0,2*Math.PI,false);
+        
+        times(r,context,s);
+        
+        times(r-15,context,m);
+        
+        timeh(r-30,context,h);
+        context.closePath();
+        context.stroke();
+
+    }
+
+    var r=94/Math.sqrt(2)-1;
+    setInterval(function(){
+        context.clearRect(100-r,100-r,2*r,2*r);
+        time(context,r-1);
+    },16.7);
+</script>
 
       <footer class="book-footer">
         

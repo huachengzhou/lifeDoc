@@ -31,24 +31,42 @@ public class FileUtils {
 
     @Test
     public void printFileDir() {
-        String path = "D:\\IdeaProjects\\cycle\\study\\webpack\\demo10";
+        String path = "D:\\IdeaProjects\\lifeDoc\\docs\\pdf\\book";
 //        String path = "D:\\IdeaProjects\\lifeDoc\\book\\public";
         File file = new File(path);
-        print(file, 0, file.getParent());
+        List<String> list = new ArrayList<>();
+        print(file, 0, file.getParent(), list);
+        List<String> stringList = new ArrayList<>();
+        for (String s : list) {
+            String substringAfter = org.apache.commons.lang.StringUtils.substringAfter(s, "    \\book\\");
+            if (StringUtils.isNotBlank(substringAfter)) {
+                String book = " <li class=\"nav-item\">\n" +
+                        "    <a onclick=\"onReadBook($(this).text());\" class=\"nav-link active\" href=\"#\">{book}</a>\n" +
+                        "</li>";
+                String replace = StringUtils.replace(book, "{book}", substringAfter);
+                System.out.println(replace);
+                stringList.add(replace);
+            }
+        }
+        if (CollectionUtils.isNotEmpty(stringList)) {
+
+        }
     }
 
-    private void print(File file, int index, final String parent) {
+    private void print(File file, int index, final String parent, List<String> list) {
         StringBuilder stringBuilder = new StringBuilder();
         String str = "▸";
+        str = "";
         if (file.isFile()) {
             stringBuilder.append(str).append(StringUtils.repeat(" ", index)).append(StringUtils.remove(file.getPath(), parent));
-            System.out.println(stringBuilder.toString());
+//            System.out.println(stringBuilder.toString());
+            list.add(stringBuilder.toString());
         } else {
             stringBuilder.append(str).append(StringUtils.repeat(" ", index)).append(StringUtils.remove(file.getPath(), parent));
-            System.out.println(stringBuilder.toString());
+//            System.out.println(stringBuilder.toString());
             for (File f : file.listFiles()) {
                 int newIndex = index + 2;
-                print(f, newIndex, parent);
+                print(f, newIndex, parent, list);
             }
         }
     }
