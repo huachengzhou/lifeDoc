@@ -657,6 +657,21 @@ https://www.codenong.com/34288451/
     </item>
     
     <item>
+      <title> 中断和异常 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_5_/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_5_/</guid>
+      <description>一:知识总览 #  中断的作用 #   “中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权
+   CPU 上会运行两种程序，一种是操作系统内核程序，一种是应用程序
+  在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序(进程管理相关内容)
+  如果没有“中断”机制，那么一旦应用程序上CPU运行，CPU就会一直运行这个应用程序
+    内核态à用户态：执行一条特权指令——修改PSW的标志位为“用户态”，这个动作意味着操作系统将主动让出CPU使用权
+  用户态à内核态：由“中断”引发，硬件自动完成变态过程，触发中断信号意味着操作系统将强行夺回CPU的使用权
+  中断的类型 #  中断机制的基本原理 #  二:知识回顾与重要考点 #  </description>
+    </item>
+    
+    <item>
       <title>字符串el表达式 </title>
       <link>https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
@@ -732,6 +747,18 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
+      <title> 系统调用 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_6_/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_6_/</guid>
+      <description>一:知识总览 #  什么是系统调用，有何作用？ #   知识点回顾：操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务。主要包括命令接口和程序接口。其中，程序接口由一组系统调用组成。
+  “系统调用”是操作系统提供给应用程序（程序员/编程人员）使用的接口，可以理解为一种可供应用程序调用的特殊函数，应用程序可以通过系统调用来请求获得操作系统内核的服务
+ 系统调用与库函数的区别 #  小例子：为什么系统调用是必须的？ #  什么功能要用到系统调用？ #   应用程序通过系统调用请求操作系统的服务。而系统中的各种共享资源都由操作系统内核统一掌管，因此凡是与共享资源有关的操作（如存储分配、I/O操作、文件管理等），都必须通过系统调用的方式向操作系统内核提出服务请求，由操作系统内核代为完成。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。
+ 系统调用的过程 #  二:知识回顾与重要考点 #  </description>
+    </item>
+    
+    <item>
       <title>mysql安装</title>
       <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -785,6 +812,15 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
   具有图形化用户界面
   拥有快速变化的功能
   Java编译器会产生可以在Java虚拟机上运行的字节码。 #  Groovy类和Java是二进制兼容的。 #  Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。 #  ——对于JVM而言，Groovy和Java是完全一样的。 #  因此，Groovy能够完全使用各种Java API。 #  Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。 #  回到上一级 #  </description>
+    </item>
+    
+    <item>
+      <title> 操作系统的体系结构 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_7_/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_7_/</guid>
+      <description>一:知识总览 #  操作系统的内核 #  二:知识回顾与重要考点 #  </description>
     </item>
     
     <item>
