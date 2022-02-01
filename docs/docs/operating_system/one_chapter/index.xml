@@ -12,7 +12,42 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</guid>
-      <description>一:大家熟悉的操作系统 #  </description>
+      <description>一:大家熟悉的操作系统 #  二:知识总览 #   1:操作系统的概念（定义）   操作系统（Operating System， OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调 度计算机的工作和资源的分配；以提供给用户和其他软件方便的接口和环境；它是计算机系统中最基本 的系统软件。
+   直观的例子：打开 Windows 操作系统的“任务管理器”（快捷键：Ctrl+Alt+Del）
+  ①操作系统是系统资源的管理者
+  ②向上层提供方便易用的服务
+  ③是最接近硬件的一层软件
+  一台电脑的诞生~Step 1：厂家组装一台裸机Step 2：出售前安装操作系统Step 3：用户安装应用程序（eg：QQ）Step 4：使用 QQ 聊天 2:操作系统的功能和目标——作为系统资源的管理者   操作系统的功能和目标——向上层提供方便易用的服务  </description>
+    </item>
+    
+    <item>
+      <title>操作系统的特征</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_2_/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_2_/</guid>
+      <description>一:知识总览 #  二:分类描述 #   1:操作系统的特征——并发   2:操作系统的特征——共享   3:操作系统的特征——并发和共享的关系   4:操作系统的特征——虚拟   5:操作系统的特征——异步   总结  </description>
+    </item>
+    
+    <item>
+      <title> 操作系统的发展与分类 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_3_/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_3_/</guid>
+      <description>一:知识总览 #  二:分类描述 #   1:手工操作阶段   2:批处理阶段——单道批处理系统   引入脱机输入/输出技术（用外围机+磁带完成），并由监督程序负责控制作业的输入、输出
+  和上面不同的是不必等结果输出在执行而是计算机执行完毕马上将结果输入磁带中并在同事已经开始执行其它数据程序
+  3:批处理阶段——多道批处理系统   4:分时操作系统   5:实时操作系统   主要优点：能够优先响应一些紧急任务，某些紧急任务不需时间片排队。在实时操作系统的控制下，计算机系统接收到外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是及时性和可靠性  三:其他几种操作系统 #   网络操作系统：是伴随着计算机网络的发展而诞生的，能把网络中各个计算机有机地结合起来，实现数据传送等功能，实现网络中各种资源的共享（如文件共享）和各台计算机之间的通信。（如：Windows NT 就是一种典型的网络操作系统，网站服务器就可以使用） 分布式操作系统：主要特点是分布性和并行性。系统中的各台计算机地位相同，任何工作都可以分布在这些计算机上，由它们并行、协同完成这个任务。 个人计算机操作系统：如 Windows XP、MacOS，方便个人使用。  四:知识回顾与重要考点 #  </description>
+    </item>
+    
+    <item>
+      <title> 操作系统的运行机制与体系结构 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_4_/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_4_/</guid>
+      <description>运行机制 #  一: 知识总览 #  二: 预备知识：程序是如何运行的？ #  三:内核程序 v.s. 应用程序 #  四:特权指令 v.s. 非特权指令 #  五:内核态 v.s. 用户态 #  六:内核态、用户态 的切换 #  知识回顾与重要考点 #  体系结构 #  两种指令、两种处理器状态、两种程序 #  操作系统的内核 #   Yo~生活经验：我们安装完 Windows 操作系统后，会发现操作系统提供了多种多样的功能，比如“记事本”、 “任务管理器”。然而，这些功能并不是必不可少的。即使没有“任务管理器”，我们仍然可以使用计算机。
+  内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。实现操作系统内核功能的那些程序就是内核程序。   计算机系统的层次结构  知识回顾与重要考点 #  </description>
     </item>
     
   </channel>

@@ -3,13 +3,15 @@ title: Introduction
 type: docs
 ---
 
-# book 初始页
 
-Summary
-本文档收集整理 生活感悟、电视剧经典语录总结，有问题欢迎提 zch 👏
+# Summary
 
-页面生成工具：Hugo
+> 不要温和地走进那个良夜。白昼将尽，暮年仍应燃烧咆哮。怒斥吧，怒斥光的消逝。
 
-主题：hugo-book
++ 本文档收集整理 生活感悟、电视剧经典语录总结，有问题欢迎提 zch 👏
+
++ 页面生成工具：Hugo
+
++ 主题：hugo-book
 
 [面试书籍](../pdf/newIndex.html)
