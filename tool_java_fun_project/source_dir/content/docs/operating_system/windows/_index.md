@@ -3,6 +3,7 @@ title: "windows学习与使用 "
 date: 2021-04-15
 draft: false
 weight: 1
+bookCollapseSection: true
 ---
 
 # windows系统
@@ -67,5 +68,3 @@ Windows 10 Mobile是微软发发布的一个手机系统 [5]  。
 
 
 
-
-## [回到上一级](../)

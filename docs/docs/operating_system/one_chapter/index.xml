@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>第一章 操作系统概述  on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/</link>
+    <description>Recent content in 第一章 操作系统概述  on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/operating_system/one_chapter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>操作系统的概念、功能</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</guid>
+      <description>一:大家熟悉的操作系统 #  </description>
+    </item>
+    
+  </channel>
+</rss>

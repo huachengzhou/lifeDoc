@@ -67,5 +67,3 @@ flush privileges;
 show grants for 'blake'@'localhost';
 ```
 
-
-## [回到上一级](../)

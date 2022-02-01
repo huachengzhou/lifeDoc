@@ -34,5 +34,3 @@ weight: 2
 
 ### [MySQL分库分表原理](mysql_distinguish)
 
-
-## [回到上一级](../)

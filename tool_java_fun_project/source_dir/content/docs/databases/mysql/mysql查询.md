@@ -80,5 +80,3 @@ CREATE TABLE user_test(
 匹配最左前缀是指优先匹配最左索引列，如：上面创建的索引可用于查询条件为：（user_name ）、（user_name, city）、（user_name , city , age）
 
 注：满足最左前缀查询条件的顺序与索引列的顺序无关，如：（city, user_name）、（age, city, user_name）
-
-## [回到上一级](../)

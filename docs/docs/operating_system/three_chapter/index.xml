@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>第三章 内存管理  on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/operating_system/three_chapter/</link>
+    <description>Recent content in 第三章 内存管理  on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/operating_system/three_chapter/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

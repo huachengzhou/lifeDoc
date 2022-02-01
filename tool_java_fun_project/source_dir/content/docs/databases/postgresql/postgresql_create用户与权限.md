@@ -52,4 +52,3 @@ sudo su postgres -c psql template1
 postgres=# \q
 ```
 
-## [回到上一级](../)

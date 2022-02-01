@@ -117,5 +117,3 @@ Constraint FkResultStudent foreign key  (StudentID) references Students(StudentI
 >三范式追求的目标存储空间尽量小；反三范式追求的目标是查询速度。
 创建数据库设计时首先按三范式设计，然后局部优化。
 
-
-## [回到上一级](../)

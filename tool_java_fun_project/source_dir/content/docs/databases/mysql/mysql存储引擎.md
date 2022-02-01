@@ -59,5 +59,3 @@ ALTER TABLE tbl_name IMPORT TABLESPACE;
 ## MERGE存储引擎
 > Merge存储引擎是一组MyISAM表的组合，这些MyISAM表必须结构完全相同，merge表本身并没有数据，对merge类型的表可以进行查询，更新，删除操作，这些操作实际上是对内部的MyISAM表进行的。
 
-
-## [回到上一级](../)

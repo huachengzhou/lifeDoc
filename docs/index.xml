@@ -352,6 +352,15 @@ sudo apt-get install synaptic
     </item>
     
     <item>
+      <title>操作系统的概念、功能</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</guid>
+      <description>一:大家熟悉的操作系统 #  </description>
+    </item>
+    
+    <item>
       <title>数据通信基础知识 </title>
       <link>https://huachengzhou.github.io/life/docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -360,7 +369,7 @@ sudo apt-get install synaptic
       <description>典型的数据通信模型 #  数据通信相关术语 #   通信的目的是传送消息(消息:语音、文字、图像、视频等)。
    信号:数据的电气/电磁的表现，是数据在传输过程中的存在形式。
   数字信号/离散信号:代表消息的参数的取值是离散的
-   模拟信号/连续信号:代表消息的参数的取值是连续的   信源:产生和发送数据的源头。 信宿:接收数据的终点。 信道:信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道。   信道  按传输信号分 模拟信道(传送模拟信号) 数字信道(传送数字信号) 按传输介质分 无线信道 有线信道    设计数据通信系统要考虑的三个问题 #  采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) * #  采用串行通信/并行通信 #  采用同步通信/异步通信 #  串行传输&amp;amp;并行传输 #  同步传输&amp;amp;异步传输 #  回到上一级 #  </description>
+   模拟信号/连续信号:代表消息的参数的取值是连续的   信源:产生和发送数据的源头。 信宿:接收数据的终点。 信道:信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道。   信道  按传输信号分 模拟信道(传送模拟信号) 数字信道(传送数字信号) 按传输介质分 无线信道 有线信道    设计数据通信系统要考虑的三个问题 #  采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) * #  采用串行通信/并行通信 #  采用同步通信/异步通信 #  串行传输&amp;amp;并行传输 #  同步传输&amp;amp;异步传输 #  </description>
     </item>
     
     <item>
@@ -370,7 +379,7 @@ sudo apt-get install synaptic
       
       <guid>https://huachengzhou.github.io/life/docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
       <description>物理层接口特性 #   物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。 物理层主要任务：确定与传输媒体接口有关的一些特性 ==&amp;gt; 定义标准
-  1.机械特性 定义物理连接的特性，规定物理连接时所采用的规格、接口形状、引线数目、引脚数量、排列情况  2.电器特性 规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制。 某网络在物理层规定，信号的电平用+10V~+15V表示二进制0，用-10V~-15V表示二进制1，电线长度限于15m以内 3.功能特性 指明某条线上出现的某一电平表示何种意义，接口部件的信号线的用途。 描述一个物理层接口引脚处于高电平时的含义 4.过程特性 定义各条物理线路的工作规程和时序关系。  回到上一级 #  </description>
+  1.机械特性 定义物理连接的特性，规定物理连接时所采用的规格、接口形状、引线数目、引脚数量、排列情况  2.电器特性 规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制。 某网络在物理层规定，信号的电平用+10V~+15V表示二进制0，用-10V~-15V表示二进制1，电线长度限于15m以内 3.功能特性 指明某条线上出现的某一电平表示何种意义，接口部件的信号线的用途。 描述一个物理层接口引脚处于高电平时的含义 4.过程特性 定义各条物理线路的工作规程和时序关系。  </description>
     </item>
     
     <item>
@@ -379,7 +388,7 @@ sudo apt-get install synaptic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/</guid>
-      <description>计算机网络 #  概念 #   计算机网络是互连的、自治的计算机集合。  组成 #   组成部分:硬件、软件、协议 1 工作方式:边缘部分、核心部分 2 功能组成:通信子网、资源子网  分类 #   1 分布范围:广域网、城域网、局域网、个人区域网 2 使用者: 公用网、专用网 3 交换技术:电路交换、报文交换、分组交换 4 拓扑结构:总线型、星型、环型、网状型 5 传输技术:广播式、点对点  功能 #   1:数据通信 2:资源共享 3:分布式处理、提高可靠性、负载均衡  回到上一级 #  </description>
+      <description>计算机网络 #  概念 #   计算机网络是互连的、自治的计算机集合。  组成 #   组成部分:硬件、软件、协议 1 工作方式:边缘部分、核心部分 2 功能组成:通信子网、资源子网  分类 #   1 分布范围:广域网、城域网、局域网、个人区域网 2 使用者: 公用网、专用网 3 交换技术:电路交换、报文交换、分组交换 4 拓扑结构:总线型、星型、环型、网状型 5 传输技术:广播式、点对点  功能 #   1:数据通信 2:资源共享 3:分布式处理、提高可靠性、负载均衡  </description>
     </item>
     
     <item>
@@ -453,7 +462,7 @@ sudo apt-get install synaptic
   2:建议标准
   3:草案标准
   4:因特网标准
-  国际标准化组织 ISO (最重要) #  国际电信联盟 ITU #  国际电气电子工程协会 IEEE #  回到上一级 #  </description>
+  国际标准化组织 ISO (最重要) #  国际电信联盟 ITU #  国际电气电子工程协会 IEEE #  </description>
     </item>
     
     <item>
@@ -563,7 +572,7 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
       
       <guid>https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</guid>
       <description>为什么要分层，分层要做什么 #   （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构 #   使用 协议 ，服务， 接口 来完成分层
- 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  回到上一级 #  </description>
+ 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  </description>
     </item>
     
     <item>
@@ -636,7 +645,7 @@ https://www.codenong.com/34288451/
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</guid>
-      <description>   名称 英文 作用     应用层 Application Layer 直接为用户的应用进程（例如电子邮件、文件传输和终端仿真）提供服务。如HTTP、SMTP、FTP、DNS等   表示层 Presentation Layer 把数据转换为能与接收者的系统格式兼容并适合传输的格式，即让两个系统可以交换信息   会话层 Session Layer 负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接   传输层 Transport Layer 负责端到端通讯，可靠传输，不可靠传输 ，流量控制，复用分用   网络层 Network Layer 负责选择路由最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)，拥塞控制   数据链路层 Data Link Layer 帧的开始和结束，还有透明传输，差错校验(纠错由传输层解决)   物理层 Physical Layer 定义网络设备接口标准，电气标准(电压)，如何在物理链路上传输的更快    回到上一级 #  </description>
+      <description>   名称 英文 作用     应用层 Application Layer 直接为用户的应用进程（例如电子邮件、文件传输和终端仿真）提供服务。如HTTP、SMTP、FTP、DNS等   表示层 Presentation Layer 把数据转换为能与接收者的系统格式兼容并适合传输的格式，即让两个系统可以交换信息   会话层 Session Layer 负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接   传输层 Transport Layer 负责端到端通讯，可靠传输，不可靠传输 ，流量控制，复用分用   网络层 Network Layer 负责选择路由最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)，拥塞控制   数据链路层 Data Link Layer 帧的开始和结束，还有透明传输，差错校验(纠错由传输层解决)   物理层 Physical Layer 定义网络设备接口标准，电气标准(电压)，如何在物理链路上传输的更快    </description>
     </item>
     
     <item>
@@ -771,7 +780,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  回到上一级 #  </description>
+      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
     </item>
     
     <item>
@@ -817,7 +826,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/</guid>
-      <description>回到上一级 #  </description>
+      <description></description>
     </item>
     
     <item>
@@ -906,7 +915,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
   MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
   MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
   默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
- 回到上一级 #  </description>
+ </description>
     </item>
     
     <item>

@@ -720,5 +720,3 @@ tpcc_start -h server_host -P port -d database_name -u mysql_user -p mysql_passwo
 * 运行测试程序需要同时监控机器负载，MySQL各项监控指标
 
 
-
-## [回到上一级](../)

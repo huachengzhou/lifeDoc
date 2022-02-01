@@ -81,7 +81,6 @@ SELECT CONCAT('drop table ',table_name,';') FROM information_schema.`TABLES` WHE
 ```
 
 
-## [回到上一级](../)
 
 
 

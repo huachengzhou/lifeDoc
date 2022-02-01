@@ -16,5 +16,3 @@ weight: 8
 + 排序号定死名称ORDER_NO
 + 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门
 + 记录创建时间CREATE_TIME
-
-## [回到上一级](../)
