@@ -2,21 +2,28 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  ">
+<meta name="description" content="数据库设计的规范
+#
+
+ 数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="数据库设计的规范" />
-<meta property="og:description" content="数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  " />
+<meta property="og:description" content="数据库设计的规范
+#
+
+ 数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>数据库设计的规范 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.fa9060809d1c219a49f6242ad8ae3b70be0014f298b0014c9fd07d8126d50114.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1471,6 +1478,97 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2504,7 +2602,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

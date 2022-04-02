@@ -2,31 +2,50 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="mysql.version=5.7 (必须注意版本)
- 创建用户 #   ( CREATE USER &lsquo;bob&rsquo;@&#39;%&#39; IDENTIFIED BY &lsquo;07fa533360d9&rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &ldquo;test&rdquo;@&ldquo;localhost&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456 ( CREATE USER &ldquo;test&rdquo;@&ldquo;192.168.87.26&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456   参数说明:&#39;%&lsquo;表示所有情况都能访问;&lsquo;localhost&rsquo;表示本机才能访问;&lsquo;192.168.87.26&rsquo; 某个具体 ip 才能访问
- 授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; ) #  GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
+ 创建用户
+#
+
+ ( CREATE USER &lsquo;bob&rsquo;@&#39;%&#39; IDENTIFIED BY &lsquo;07fa533360d9&rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &ldquo;test&rdquo;@&ldquo;localhost&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456 ( CREATE USER &ldquo;test&rdquo;@&ldquo;192.168.87.26&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456   参数说明:&#39;%&lsquo;表示所有情况都能访问;&lsquo;localhost&rsquo;表示本机才能访问;&lsquo;192.168.87.26&rsquo; 某个具体 ip 才能访问
+ 授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; )
+#
+
+GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限 #  create database testDB;
+ 授权test用户拥有testDB数据库的所有权限
+#
+
+create database testDB;
 grant all privileges on testDB.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql用户与权限" />
 <meta property="og:description" content="mysql.version=5.7 (必须注意版本)
- 创建用户 #   ( CREATE USER &lsquo;bob&rsquo;@&#39;%&#39; IDENTIFIED BY &lsquo;07fa533360d9&rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &ldquo;test&rdquo;@&ldquo;localhost&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456 ( CREATE USER &ldquo;test&rdquo;@&ldquo;192.168.87.26&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456   参数说明:&#39;%&lsquo;表示所有情况都能访问;&lsquo;localhost&rsquo;表示本机才能访问;&lsquo;192.168.87.26&rsquo; 某个具体 ip 才能访问
- 授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; ) #  GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
+ 创建用户
+#
+
+ ( CREATE USER &lsquo;bob&rsquo;@&#39;%&#39; IDENTIFIED BY &lsquo;07fa533360d9&rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &ldquo;test&rdquo;@&ldquo;localhost&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456 ( CREATE USER &ldquo;test&rdquo;@&ldquo;192.168.87.26&rdquo; IDENTIFIED BY &lsquo;123456&rsquo; )创建test用户　密码123456   参数说明:&#39;%&lsquo;表示所有情况都能访问;&lsquo;localhost&rsquo;表示本机才能访问;&lsquo;192.168.87.26&rsquo; 某个具体 ip 才能访问
+ 授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; )
+#
+
+GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限 #  create database testDB;
+ 授权test用户拥有testDB数据库的所有权限
+#
+
+create database testDB;
 grant all privileges on testDB." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mysql用户与权限 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.fa9060809d1c219a49f6242ad8ae3b70be0014f298b0014c9fd07d8126d50114.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1481,6 +1500,97 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2514,7 +2624,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

@@ -15,5 +15,68 @@
       <description></description>
     </item>
     
+    <item>
+      <title>进程的状态与转换</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>进程控制</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>进程通信</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>线程概念与多线程模型</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>处理机调度的概念、层次</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>进程调度的时机、切换与过程、方式</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>调度算法的评价指标</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_3/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

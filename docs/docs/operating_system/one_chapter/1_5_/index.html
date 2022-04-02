@@ -2,33 +2,64 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:知识总览 #  中断的作用 #   “中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权
+<meta name="description" content="一:知识总览
+#
+
+中断的作用
+#
+
+ “中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权
    CPU 上会运行两种程序，一种是操作系统内核程序，一种是应用程序
   在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序(进程管理相关内容)
   如果没有“中断”机制，那么一旦应用程序上CPU运行，CPU就会一直运行这个应用程序
     内核态à用户态：执行一条特权指令——修改PSW的标志位为“用户态”，这个动作意味着操作系统将主动让出CPU使用权
   用户态à内核态：由“中断”引发，硬件自动完成变态过程，触发中断信号意味着操作系统将强行夺回CPU的使用权
-  中断的类型 #  中断机制的基本原理 #  二:知识回顾与重要考点 #  ">
+  中断的类型
+#
+
+中断机制的基本原理
+#
+
+二:知识回顾与重要考点
+#
+
+">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content=" 中断和异常 " />
-<meta property="og:description" content="一:知识总览 #  中断的作用 #   “中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权
+<meta property="og:description" content="一:知识总览
+#
+
+中断的作用
+#
+
+ “中断”会使CPU由用户态变为内核态，使操作系统重新夺回对CPU的控制权
    CPU 上会运行两种程序，一种是操作系统内核程序，一种是应用程序
   在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序(进程管理相关内容)
   如果没有“中断”机制，那么一旦应用程序上CPU运行，CPU就会一直运行这个应用程序
     内核态à用户态：执行一条特权指令——修改PSW的标志位为“用户态”，这个动作意味着操作系统将主动让出CPU使用权
   用户态à内核态：由“中断”引发，硬件自动完成变态过程，触发中断信号意味着操作系统将强行夺回CPU的使用权
-  中断的类型 #  中断机制的基本原理 #  二:知识回顾与重要考点 #  " />
+  中断的类型
+#
+
+中断机制的基本原理
+#
+
+二:知识回顾与重要考点
+#
+
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_5_/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_5_/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title> 中断和异常  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.fa9060809d1c219a49f6242ad8ae3b70be0014f298b0014c9fd07d8126d50114.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1483,6 +1514,97 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2516,7 +2638,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

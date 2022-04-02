@@ -2,21 +2,70 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Push master to origin/master was rejected by remote  有三种原因 1:push的这个工程是其他人新建的，找她开通master权限后，再次push 2:git 工程错误 git pull git pull origin master git pull origin master --allow-unrelated-histories 3:github 设置原因 勾选了Keep my email addresses private 解决办法2种 第一种 通知账户人员取消勾选 第二种 重新设置你的全局用户E-mail git config --list 查看这个时候一定不对 因此重新设置全局email 重置上次提交的作者信息 git commit --amend --reset-author git config --global user.name &quot;zch&quot; git config --global user.email &quot;sdhshd@163.com&quot; ok 对了你如果使用的不是idea而是git 那么抛出的错误非常明显 如果抛出 git报错--&gt;! [remote rejected] master -&gt; master (push declined due to email privacy restrictions) 那么一定是这个原因  git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误  原因1：缓存区溢出 git config http.">
+<meta name="description" content="Push master to origin/master was rejected by remote  有三种原因
+1:push的这个工程是其他人新建的，找她开通master权限后，再次push
+2:git 工程错误
+git pull
+git pull origin master
+git pull origin master --allow-unrelated-histories
+3:github 设置原因
+勾选了Keep my email addresses private
+解决办法2种
+第一种 通知账户人员取消勾选
+第二种
+重新设置你的全局用户E-mail
+git config --list 查看这个时候一定不对
+因此重新设置全局email
+重置上次提交的作者信息 git commit --amend --reset-author
+git config --global user.name &quot;zch&quot;
+git config --global user.email &quot;sdhshd@163.com&quot;
+ok
+对了你如果使用的不是idea而是git
+那么抛出的错误非常明显
+如果抛出
+git报错--&gt;! [remote rejected] master -&gt; master (push declined due to email privacy restrictions)
+那么一定是这个原因
+ git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误  原因1：缓存区溢出
+git config http.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="git处理网络和权限问题" />
-<meta property="og:description" content="Push master to origin/master was rejected by remote  有三种原因 1:push的这个工程是其他人新建的，找她开通master权限后，再次push 2:git 工程错误 git pull git pull origin master git pull origin master --allow-unrelated-histories 3:github 设置原因 勾选了Keep my email addresses private 解决办法2种 第一种 通知账户人员取消勾选 第二种 重新设置你的全局用户E-mail git config --list 查看这个时候一定不对 因此重新设置全局email 重置上次提交的作者信息 git commit --amend --reset-author git config --global user.name &quot;zch&quot; git config --global user.email &quot;sdhshd@163.com&quot; ok 对了你如果使用的不是idea而是git 那么抛出的错误非常明显 如果抛出 git报错--&gt;! [remote rejected] master -&gt; master (push declined due to email privacy restrictions) 那么一定是这个原因  git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误  原因1：缓存区溢出 git config http." />
+<meta property="og:description" content="Push master to origin/master was rejected by remote  有三种原因
+1:push的这个工程是其他人新建的，找她开通master权限后，再次push
+2:git 工程错误
+git pull
+git pull origin master
+git pull origin master --allow-unrelated-histories
+3:github 设置原因
+勾选了Keep my email addresses private
+解决办法2种
+第一种 通知账户人员取消勾选
+第二种
+重新设置你的全局用户E-mail
+git config --list 查看这个时候一定不对
+因此重新设置全局email
+重置上次提交的作者信息 git commit --amend --reset-author
+git config --global user.name &quot;zch&quot;
+git config --global user.email &quot;sdhshd@163.com&quot;
+ok
+对了你如果使用的不是idea而是git
+那么抛出的错误非常明显
+如果抛出
+git报错--&gt;! [remote rejected] master -&gt; master (push declined due to email privacy restrictions)
+那么一定是这个原因
+ git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误  原因1：缓存区溢出
+git config http." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" />
-<meta property="article:published_time" content="2021-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2021-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-17T15:26:15&#43;00:00" />
+
 <title>git处理网络和权限问题 | 所悟所想</title>
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../../en.search.min.fa9060809d1c219a49f6242ad8ae3b70be0014f298b0014c9fd07d8126d50114.js"  ></script>
+<link rel="stylesheet" href="./../../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1471,6 +1520,97 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2504,7 +2644,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

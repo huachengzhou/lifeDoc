@@ -2,37 +2,56 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="权限 #   系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
+<meta name="description" content="权限
+#
+
+ 系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
  Pg权限分为两部分，一部分是“系统权限”或者数据库用户的属性，可以授予role或user（两者区别在于login权限）；
 一部分为数据库对象上的操作权限。对超级用户不做权限检查，其它走acl。
 对于数据库对象，开始只有所有者和超级用户可以做任何操作，其它走acl。
 在pg里，对acl模型做了简化，组和角色都是role，用户和角色的区别是角色没有login权限。
-超级权限 #   创建超级用户(create user alice with superuser password &lsquo;123456&rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限 #    (create role blake password &lsquo;123456&rsquo;;)(create user bob password &lsquo;123456&rsquo;;)(create database testdb;)
+超级权限
+#
+
+ 创建超级用户(create user alice with superuser password &lsquo;123456&rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限
+#
+
+  (create role blake password &lsquo;123456&rsquo;;)(create user bob password &lsquo;123456&rsquo;;)(create database testdb;)
   (grant all on database testdb to bob;grant all on database testdb to blake;)
   测试如下 用户bob可以登录而blake不能登录直接抛出了FATL:role blake is not &lsquo;permitted to log in&rsquo;
   ( drop database testdb;drop role blake;drop user bob;)">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="权限" />
-<meta property="og:description" content="权限 #   系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
+<meta property="og:description" content="权限
+#
+
+ 系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
  Pg权限分为两部分，一部分是“系统权限”或者数据库用户的属性，可以授予role或user（两者区别在于login权限）；
 一部分为数据库对象上的操作权限。对超级用户不做权限检查，其它走acl。
 对于数据库对象，开始只有所有者和超级用户可以做任何操作，其它走acl。
 在pg里，对acl模型做了简化，组和角色都是role，用户和角色的区别是角色没有login权限。
-超级权限 #   创建超级用户(create user alice with superuser password &lsquo;123456&rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限 #    (create role blake password &lsquo;123456&rsquo;;)(create user bob password &lsquo;123456&rsquo;;)(create database testdb;)
+超级权限
+#
+
+ 创建超级用户(create user alice with superuser password &lsquo;123456&rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限
+#
+
+  (create role blake password &lsquo;123456&rsquo;;)(create user bob password &lsquo;123456&rsquo;;)(create database testdb;)
   (grant all on database testdb to bob;grant all on database testdb to blake;)
   测试如下 用户bob可以登录而blake不能登录直接抛出了FATL:role blake is not &lsquo;permitted to log in&rsquo;
   ( drop database testdb;drop role blake;drop user bob;)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>权限 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.fa9060809d1c219a49f6242ad8ae3b70be0014f298b0014c9fd07d8126d50114.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1487,6 +1506,97 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2520,7 +2630,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
