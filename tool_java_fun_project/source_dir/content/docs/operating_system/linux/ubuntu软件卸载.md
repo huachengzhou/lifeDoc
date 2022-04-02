@@ -13,5 +13,3 @@ ubuntu软件卸载
 
 sudo apt-get install synaptic
 
-
-## [回到上一级](../)

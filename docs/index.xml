@@ -164,8 +164,7 @@ System.out.println(&amp;quot;It&#39;s a Groovy baby, yeah!&amp;quot;);def write
       <description>sudo vi hosts
 127.0.0.1	localhost 127.0.1.1	zhou-Lenovo-Z480
 The following lines are desirable for IPv6 capable hosts #  ::1 ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters
-#pmcc dev 127.0.0.1 dev.pmcc.com
-回到上一级 #  </description>
+#pmcc dev 127.0.0.1 dev.pmcc.com</description>
     </item>
     
     <item>
@@ -233,8 +232,7 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/</guid>
       <description>Notepad++是一套非常有特色的自由软件的纯文字编辑器(许可证:GPL)。有完整的中文化接口及支持多国语言编写的功能(UTF8 技术)。 它的功能比 Windows 中的 Notepad(记事本)强大，除了可以用来制作一般的纯文字说明文件，也十分适合当作编写电脑程序的编辑器。 Notepad++ 不仅有语法高亮度显示，也有语法折叠功能，并且支持宏以及扩充基本功能的外挂模组。但是可惜的是Notepad++只能在Windows平台下使用。 工作中必须使用Windows时，Notepad++是众多程序员最喜爱的文本编辑器，在Ubuntu下是否能够使用到相同的软件呢？Notepadqq就是这样一款与Notepad++非常接近的编辑器，拥有几乎相同的功能。 如果您是一个Notepad++粉丝，我们推荐您尝试下Notepadqq。
 对于Ubuntu发行版本可以通过PPA安装，命令如下： sudo add-apt-repository ppa:notepadqq-team/notepadqq sudo apt-get update sudo apt-get install notepadqq 类似的，卸载命令如下：
-sudo apt-get remove notepadqq sudo add-apt-repository &amp;ndash;remove ppa:notepadqq-team/notepadqq
-回到上一级 #  </description>
+sudo apt-get remove notepadqq sudo add-apt-repository &amp;ndash;remove ppa:notepadqq-team/notepadqq</description>
     </item>
     
     <item>
@@ -279,8 +277,7 @@ sudo apt-get remove notepadqq sudo add-apt-repository &amp;ndash;remove ppa:note
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/</guid>
       <description>IntelliJ IDE运行Tomcat报错解决办法的相关资料,出现“Unable to ping server at localhost:1099”错误解决方法，需要的朋友可以参考下
-sudo gedit /etc/hosts
-回到上一级 #  </description>
+sudo gedit /etc/hosts</description>
     </item>
     
     <item>
@@ -294,8 +291,7 @@ sudo gedit /etc/hosts
 14.04 需要下载安装包来安装:
 sudo apt-get install libc6 libchm1 libgcrypt11 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk2.0-0 libpango1.0-0 libwebkitgtk-1.0-0 libxml2 安装依赖包
 (64位) sudo dpkg -i chmsee_1.3.0-2ubuntu2_amd64.deb 安装软件包,下载地址: http://kr.archive.ubuntu.com/ubuntu/pool/universe/c/chmsee/chmsee_1.3.0-2ubuntu2_amd64.deb Ubuntu的官方软件库放心下载.
-(32位) sudo dpkg -i chmsee_1.3.0-2ubuntu2_i386.deb 安装软件包,下载地址: http://kr.archive.ubuntu.com/ubuntu/pool/universe/c/chmsee/chmsee_1.3.0-2ubuntu2_i386.deb Ubuntu的官方软件库放心下载.
-回到上一级 #  </description>
+(32位) sudo dpkg -i chmsee_1.3.0-2ubuntu2_i386.deb 安装软件包,下载地址: http://kr.archive.ubuntu.com/ubuntu/pool/universe/c/chmsee/chmsee_1.3.0-2ubuntu2_i386.deb Ubuntu的官方软件库放心下载.</description>
     </item>
     
     <item>
@@ -312,8 +308,7 @@ sudo apt-get autoremove&amp;ndash;删除系统不再使用的孤立软件
 3，清理Linux下孤立的包： 图形界面下我们可以用：gtkorphan sudo apt-get install gtkorphan -y 终端命令下我们可以用：deborphan sudo apt-get install deborphan -y
 4，卸载：tracker 这个东西一般我只要安装Ubuntu就会第一删掉tracker 他不仅会产生大量的cache文件而且还会影响开机速度。所以在新得利里面删掉就行。 www.2cto.com
 5，删除多余的内核：一定不要删错哦，切记！！ 打开终端敲命令：dpkg &amp;ndash;get-selections|grep linux 有image的就是内核文件 删除老的内核文件： sudo apt-get remove 内核文件名（例如：linux-image-2.6.27-2-generic） 内核删除，释放空间了，应该能释放130－140M空间。
-最后不要忘了看看当前内核：uname -a 附录： 包管理的临时文件目录: 包在 /var/cache/apt/archives 没有下载完的在 /var/cache/apt/archives/partial
-回到上一级 #  </description>
+最后不要忘了看看当前内核：uname -a 附录： 包管理的临时文件目录: 包在 /var/cache/apt/archives 没有下载完的在 /var/cache/apt/archives/partial</description>
     </item>
     
     <item>
@@ -324,8 +319,7 @@ sudo apt-get autoremove&amp;ndash;删除系统不再使用的孤立软件
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/</guid>
       <description>ubuntu软件卸载
 安装Synaptic
-sudo apt-get install synaptic
-回到上一级 #  </description>
+sudo apt-get install synaptic</description>
     </item>
     
     <item>
@@ -394,6 +388,15 @@ sudo apt-get install synaptic
       
       <guid>https://huachengzhou.github.io/life/docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/</guid>
       <description>计算机网络 #  概念 #   计算机网络是互连的、自治的计算机集合。  组成 #   组成部分:硬件、软件、协议 1 工作方式:边缘部分、核心部分 2 功能组成:通信子网、资源子网  分类 #   1 分布范围:广域网、城域网、局域网、个人区域网 2 使用者: 公用网、专用网 3 交换技术:电路交换、报文交换、分组交换 4 拓扑结构:总线型、星型、环型、网状型 5 传输技术:广播式、点对点  功能 #   1:数据通信 2:资源共享 3:分布式处理、提高可靠性、负载均衡  </description>
+    </item>
+    
+    <item>
+      <title>进程的概念、组成、特征</title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_1/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -743,7 +746,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/windows_question/</guid>
-      <description> 磁盘变为了动态磁盘解决办法 最好是找软件解决 如DiskGenius 或者 傲梅分区助手 暴力解决办法  1、diskpart2、list disk3、select disk n4、convert basicSTEP 1：打开命令提示符窗口，在其中键入：“diskpart”命令并按下回车键。 STEP 2：在DISKPART命令提示符下，键入“list disk”命令并按下回车键后，能够查看到电脑中的磁盘情况。 STEP 3：在DISKPART命令提示符下，继续键入“select disk n”命令并按下回车键，其中n代表磁盘的序号。 STEP 4：在DISKPART命令提示符下，键入“convert dynamic”命令并按下回车键后，开始转换的工作。回到上一级 #  </description>
+      <description> 磁盘变为了动态磁盘解决办法 最好是找软件解决 如DiskGenius 或者 傲梅分区助手 暴力解决办法  1、diskpart2、list disk3、select disk n4、convert basicSTEP 1：打开命令提示符窗口，在其中键入：“diskpart”命令并按下回车键。 STEP 2：在DISKPART命令提示符下，键入“list disk”命令并按下回车键后，能够查看到电脑中的磁盘情况。 STEP 3：在DISKPART命令提示符下，继续键入“select disk n”命令并按下回车键，其中n代表磁盘的序号。 STEP 4：在DISKPART命令提示符下，键入“convert dynamic”命令并按下回车键后，开始转换的工作。</description>
     </item>
     
     <item>

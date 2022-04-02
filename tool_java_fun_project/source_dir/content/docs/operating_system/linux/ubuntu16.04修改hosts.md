@@ -17,7 +17,6 @@ sudo gedit /etc/hosts
 
 
 
-## [回到上一级](../)
 
 
 

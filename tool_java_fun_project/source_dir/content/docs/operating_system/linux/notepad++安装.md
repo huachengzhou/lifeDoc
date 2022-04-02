@@ -38,5 +38,3 @@ sudo add-apt-repository --remove ppa:notepadqq-team/notepadqq
 
 
 
-
-## [回到上一级](../)
