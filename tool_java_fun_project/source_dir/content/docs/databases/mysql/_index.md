@@ -8,6 +8,7 @@ weight: 2
 
 
 ### [windows下 Mysql安装](mysql_install)
+### [Win10一台电脑安装多个版本的Mysql](mysql_install_more)
 
 ### [windows下 Mysql安装的一些问题解决方法](mysql_install_problem)
 

@@ -12,8 +12,8 @@ public class FileImageLastUpdateSoft {
 
     @Test
     public void printImageTime() {
-        String dir = "C:\\Users\\noatn\\Downloads";
-        String baseName = "imgs/operating_system/2/" ;
+        String dir = "C:\\Users\\HP\\Downloads";
+        String baseName = "imgs/mysql/install/" ;
         File file = new File(dir);
         if (!file.isDirectory()){
             System.out.println("不是文件夹");
