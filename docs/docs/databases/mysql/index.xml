@@ -160,6 +160,15 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
     </item>
     
     <item>
+      <title>mysql整理</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
+      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
+    </item>
+    
+    <item>
       <title>mysql用户与权限</title>
       <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>

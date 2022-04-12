@@ -23,6 +23,8 @@ weight: 2
 
 ### [mysql查询](mysql查询)
 
+### [mysql整理](mysql整理)
+
 
 
 ### [mysql用户与权限](mysql用户与权限)
