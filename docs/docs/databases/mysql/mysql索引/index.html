@@ -2,36 +2,29 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="索引
-#
-
- 所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
+<meta name="description" content="索引 #   所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
   MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
   MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
   默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql索引" />
-<meta property="og:description" content="索引
-#
-
- 所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
+<meta property="og:description" content="索引 #   所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
   MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
   MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
   默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql索引 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.2eca52a23cbd77ba7501c25cb1107a057c7f4cedc7ce1b59d714898192351cdd.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
+<script defer src="./../../../../en.search.min.1106bad3acc5832adb19fd874937364594799529e0d65a0ffbffe4abecee8c95.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -388,6 +381,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_more/" class="">Win10一台电脑安装多个版本的Mysql</a>
   
 
         </li>
@@ -2610,7 +2616,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

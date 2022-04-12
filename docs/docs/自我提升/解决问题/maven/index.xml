@@ -13,10 +13,10 @@
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/</guid>
       <description>idea导入项目出现Unable to import maven project: See logs for details提示
- 第一种解决办法#  删除项目根目录下.idea文件夹
+ 第一种解决办法 #    删除项目根目录下.idea文件夹
   关闭idea工具，重新打开选择File-&amp;gt;New-&amp;gt;Project from the existing source ,选择刚才的项目根目，下一步：
   一直点next，最后点击主工程的pom.xml 完成！
-  第二种#  打开idea 的日志文件如果发现【Error】com.google.inject.CreationException: Unable to create injector
+  第二种 #    打开idea 的日志文件如果发现【Error】com.google.inject.CreationException: Unable to create injector
   那么自定义配置Maven3.6.2报错 或者更高版本maven
   原因：Maven3.6.2的版本兼容问题。
   解决方法：重新下载较低版本Maven3.6.1及以下版本可以顺利解决。

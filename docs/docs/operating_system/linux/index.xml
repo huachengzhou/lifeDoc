@@ -12,7 +12,7 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/git_introduction/</guid>
-      <description>git学习#git 区域概念# git分为工作区(我们自己的file)和版本库这其中版本库又包含暂存区(Stage)和分支区(master)    git add ********** 把文件添加到仓库
+      <description>git学习 #  git 区域概念 #   git分为工作区(我们自己的file)和版本库这其中版本库又包含暂存区(Stage)和分支区(master)    git add ********** 把文件添加到仓库
   git reset README.md 取消提交到暂存区域
   git commmit -m &amp;lsquo;xxxx&amp;rsquo; 提交到仓库
   git diff 查看提交到仓库文件之后文件又被修改的变化
@@ -20,7 +20,7 @@
   git rm -f gitS.md 强制删除
   git log 显示从最近到最远的提交日志
   git log &amp;ndash;pretty=oneline 只显示版本号
-  关于版本回退问题#  git reset &amp;ndash;hard HEAD^ 版本重置为上一个版本
+  关于版本回退问题 #    git reset &amp;ndash;hard HEAD^ 版本重置为上一个版本
   git 关于版本处理进行了设置</description>
     </item>
     
@@ -41,7 +41,7 @@
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/host%E6%98%A0%E5%B0%84/</guid>
       <description>sudo vi hosts
 127.0.0.1	localhost 127.0.1.1	zhou-Lenovo-Z480
-The following lines are desirable for IPv6 capable hosts#::1 ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters
+The following lines are desirable for IPv6 capable hosts #  ::1 ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters
 #pmcc dev 127.0.0.1 dev.pmcc.com</description>
     </item>
     
@@ -53,7 +53,7 @@ The following lines are desirable for IPv6 capable hosts#::1 ip6-localhost ip
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
       <description>Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，变量永久生效。 2 临时的：使用export命令声明即可，变量在关闭shell时失效。
 设置变量的三种方法 1 在/etc/profile文件中添加变量【对所有用户生效(永久的)】 用VI在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。 例如：编辑/etc/profile文件，添加CLASSPATH变量
-vi /etc/profile#export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+vi /etc/profile #  export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
 注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
 2 在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】 用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。 例如：编辑guok用户目录(/home/guok)下的.bash_profile $ vi /home/guok/.bash.profile 添加如下内容： export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib 注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
 3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，
@@ -70,7 +70,7 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/</guid>
-      <description>linux命令#文件管理#文件基本操作#  less命令 (Q退出less命令)([pagedown]： 向下翻动一页)([pageup]： 向上翻动一页) less ss.md
+      <description>linux命令 #  文件管理 #  文件基本操作 #    less命令 (Q退出less命令)([pagedown]： 向下翻动一页)([pageup]： 向上翻动一页) less ss.md
   cat命令 (cat -n ss.md &amp;gt; sdfsd.txt)把 ss.md 的文档内容加上行号后输入 sdfsd.txt 这个文档里, 这要注意假如sdfsd.txt先有文档会被清空,另外(cat ss.md)可以把消息打印到输出流中,cat 软盘功能暂时不予以考虑
   ls命令 (ls -a)显示所有文件及目录包括隐藏文件,相当于la命令,ll显示具体信息
   touch命令 主要用作创建文件如touch ss.md,(touch -m miss,touch -a miss)可以改变文件的读取时间,另外touch miss也可以改变文件的读取时间, 当且仅当miss不存在的时候会创建miss空文件
@@ -85,7 +85,7 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/linux/nginx/</guid>
-      <description>nginx学习#基础操作# start ./sbin/nginx stop ./sbin/nginx -s stop quite ./sbin/nginx -s quit   启动成功标志
+      <description>nginx学习 #  基础操作 #   start ./sbin/nginx stop ./sbin/nginx -s stop quite ./sbin/nginx -s quit   启动成功标志
  Welcome to nginx! 默认监听的端口是80 也就是说访问此端口就可以得到启动成功的标识符号
   简单的负载均衡配置    http 模块中配置  #配置开始 author zhouupstream myproject{server 127.0.0.1:8000 weight=3;server 127.0.0.1:8080 weight=10;server 127.0.0.1:8090;}#配置结束 author zhou location模块配置  proxy_pass http://myproject;注意:这的myproject要和上面的name一致测试结果 (这的测试用到了session的唯一性)
  http://localhost/nginx_test/ sessionId=8D9C4ACEE65EB24301B1C0D9E4CF3A6Ehttp://localhost:8080/nginx_test/ sessionId=8D9C4ACEE65EB24301B1C0D9E4CF3A6Ehttp://localhost:8090/nginx_test/ sessionId=7539B2C4AFD433ECEFAC8F2B2EBCC411 由于配置了权重 因此大部分是8080端口</description>
