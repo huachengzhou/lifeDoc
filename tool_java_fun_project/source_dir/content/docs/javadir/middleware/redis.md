@@ -39,7 +39,22 @@ weight: 1
 
 # 二.Redis安装
 
+# redis 注册服务
 
+```dos
+C:\Users\noatn>e:
+
+E:\>cd E:\CS\Redis-x64-3.2.100
+
+E:\CS\Redis-x64-3.2.100>redis-server.exe service-install redis.windows.conf
+[18580] 27 Apr 09:09:52.679 # Fatal error, can't open config file 'service-install'
+
+E:\CS\Redis-x64-3.2.100>redis-server.exe --service-install redis.windows.conf
+[6244] 27 Apr 09:10:07.336 # Granting read/write access to 'NT AUTHORITY\NetworkService' on: "E:\CS\Redis-x64-3.2.100" "E:\CS\Redis-x64-3.2.100\"
+[6244] 27 Apr 09:10:07.337 # Redis successfully installed as a service.
+
+E:\CS\Redis-x64-3.2.100>
+```
 
 # 三.Redis命令
 
