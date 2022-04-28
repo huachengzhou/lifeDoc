@@ -45,6 +45,30 @@ weight: 13
 * [在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与合计函数一起使用]
 + (select f.s_id,count(*) as total,group_concat(f.f_name) as g_name,sum(f.f_price) as price from fruits f group by f.s_id having sum(f.f_price)>20)
 
+
+### 合并使用
+
+```mysql
+SELECT
+	count( project_work_stage_id ) project_work_stage_id,
+	count( project_phase_id ) project_phase_id_count,
+	sum( actual_hours ) actual_hours_sum,
+	AVG( actual_hours ) actual_hours_avg,
+	GROUP_CONCAT( id ) ids,
+	project_id 
+FROM
+	tb_project_plan_details 
+WHERE
+	1 = 1 
+GROUP BY
+	project_id # 以项目编号分组
+HAVING # having的好处是可以把列中查询用作比较
+	project_phase_id_count >= 3 # 工作事项数量必须大于等于3
+ORDER BY
+	project_phase_id_count DESC  #确定最大数
+	LIMIT 1;  #确定最大数
+```
+
 ## 分页查询 
 + (select f.* from fruits f LIMIT 10,5) ||(3-1)*5,5
 
