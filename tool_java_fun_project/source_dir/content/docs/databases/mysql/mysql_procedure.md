@@ -19,9 +19,9 @@ weight: 13
 + 提高代码维护的复杂度，实际使用中要评估场景是否适合。
 
 
-## 存储过程-基本语法：
+## 存储过程-基本语法： (非常重要)
 
-```mysql
+```scrip
 CREATE
   [DEFINER = { user | CURRENT_USER }]
   PROCEDURE sp_name ([proc_parameter[,...]])
@@ -38,7 +38,8 @@ routine_body:
   Valid SQL routine statement
 ```
 
-```mysql
+```scrip
+-- $ 可以改为分号 假如你直接是在控制台那么建议用$
 delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行
 create procedure 存储过程名(参数列表)
 begin
@@ -48,7 +49,7 @@ delimiter ; --将结束符修改为默认的分号
 
 ```
 
-## 例子一 
+### 例子
 
 ```mysql
 
@@ -107,11 +108,60 @@ SHOW CREATE PROCEDURE proc_initData ;
 SHOW PROCEDURE STATUS LIKE '%pro%';
 ```
 
+## 删除存储过程
+
+```mysql
+Drop procedure [if exists] sp_name; 
+```
+
+### 例子
+
+```mysql
+drop procedure if exists pro_insert_user;
+```
+
+## 修改存储过程 (实际无法修改  修改的是存储特征)
+
+```mysql
+-- ALTER PROCEDURE 存储过程名 [ 特征 ... ]
+Alter procedure proc_name[characteristic…] 
+```
+> 特征指定了存储过程的特性，可能的取值有：
+
++ CONTAINS SQL 表示子程序包含 SQL 语句，但不包含读或写数据的语句。
++ NO SQL 表示子程序中不包含 SQL 语句。
++ READS SQL DATA 表示子程序中包含读数据的语句。
++ MODIFIES SQL DATA 表示子程序中包含写数据的语句。
++ SQL SECURITY { DEFINER |INVOKER } 指明谁有权限来执行。
++ DEFINER 表示只有定义者自己才能够执行。
++ INVOKER 表示调用者可以执行。
++ COMMENT 'string' 表示注释信息。
+
+### 例子
+
+```mysql
+-- 创建
+delimiter ;
+Alter procedure pro_t11(IN param1 varchar(255), IN param2 varchar(255), OUT result varchar(2000))
+  begin
+    set result = concat(param1, '_---_',param2);
+  end;
+
+call pro_t11(uuid(), md5(uuid()), @param);
+select @param;
+-- 修改
+ALTER PROCEDURE pro_t11 MODIFIES SQL DATA SQL SECURITY INVOKER;
+-- 结果
+ALTER PROCEDURE pro_t11 MODIFIES SQL DATA SQL SECURITY INVOKER
+> OK
+> 时间: 0.077s
+```
+
 ## 传递参数
 
 > 语法结构
 
-```mysql
+```scrip
 create procedure 存储过程名([in/out/inout] 参数名 参数类型)
 ...
 ```
@@ -256,3 +306,204 @@ SELECT @p_num;
 
 ```
 
+### 随机练习
+
+```mysql
+-- 练习1
+drop procedure  if exists  pro_t10 ;
+DELIMITER ;
+create procedure pro_t10(INOUT param int)
+  begin
+    set param = param*10;
+  end;
+set @param = 2;
+call pro_t10(@param);
+
+select @param ;
+
+-- 练习2
+drop procedure if exists pro_t11;
+delimiter ;
+create procedure pro_t11(in param1 varchar(255), in param2 varchar(255), out result varchar(2000))
+  begin
+    set result = concat(param1, '---',param2);
+  end;
+
+call pro_t11(uuid(), md5(uuid()), @param);
+select @param;
+
+```
+
+## 存储过程体 (非常重要)
+
+> 存储过程体中可以使用各种sql语句和过程式语句的组合，来封装数据库应用中复杂的业务逻辑和处理规则，以实现数据库应用的灵活编程。下面主要介绍几个用于构造存储过程体的常用语法元素。
+
+### 局部变量
+
+> 在存储过程体中可以声明局部变量，用来存储存储过程体中临时结果
+
+```scrip
+DECLARE var_name[,…] type [DEFAULT value] 
+Var_name:指定局部变量的名称 
+Type:用于声明局部变量的数据类型 
+default子句:用于为局部变量指定一个默认值。若没有指定，默认为null.
+```
++ 例如 Declare cid int(10);
+
+#### 使用说明
+
++ 局部变量只能在存储过程体的begin…end语句块中声明。
++ 局部变量必须在存储过程体的开头处声明。
++ 局部变量的作用范围仅限于声明它的begin..end语句块，其他语句块中的语句不可以使用它。
++ 局部变量不同于用户变量，两者区别：局部变量声明时，在其前面没有使用@符号，并且它只能在begin..end语句块中使用；而用户变量在声明时，会在其名称前面使用@符号，同时已声明的用户变量存在于整个会话之中。
+
+#### 例子
+
+```mysql
+drop procedure if exists pro_add_t1;
+
+delimiter ;
+create procedure pro_add_t1(in  a1 int,in a2 int ,out result int )
+  begin
+    declare  x int default 0;
+    set x = a1 + a2;
+    set result  = x;
+    -- 虽然可以 result = a1 + a2 但是我们为了用上局部变量还是多走一步
+  end;
+
+call pro_add_t1(1,2,@result) ;
+select @result ;
+
+
+```
+
+
+### set语句
+
+> 使用set语句为局部变量赋值
+
++ Set var_name=expr 
++ Set cid=910; 
+
+#### 例子
+
+```mysql
+drop procedure if exists pro_set_example_t1;
+delimiter ;
+
+create procedure pro_set_example_t1(in a1  int(12),in text_v1 longtext,in f_float float(12,7),in d_double double(14,6),out result longtext)
+  begin
+    declare spl varchar(200) default '   ' ;
+  set result = concat(a1,spl,text_v1,spl,f_float,spl,d_double) ;
+  end;
+
+call pro_set_example_t1(1,uuid(),rand(),rand(),@result) ;
+select @result ;
+```
+
+### 流程控制语句
+
+#### (1)条件判断语句
+
++ **If语句**
+
+```scrip
+If search_condition then statement_list 
+[elseif search_condition then statement_list]… 
+[else statement_list] 
+End if 
+
+ -- 参考
+if 满足条件 then
+执行语句
+elseif 满足条件 then
+执行语句
+else 
+执行语句
+end if;
+```
+
+##### 例子
+
+```mysql
+
+drop procedure if exists pro_if_example_t ;
+
+delimiter ;
+create procedure pro_if_example_t(in input double,inout  text_value longtext)
+  begin
+    declare remark_ varchar(200) default '学生' ;
+
+    if input >= 90
+      then set text_value = concat('a+' ,remark_) ;
+      elseif input<90 and input >= 80
+        then set text_value = concat('a' ,remark_) ;
+      elseif input<80 and input >= 70
+        then set text_value = concat('a-' ,remark_) ;
+      elseif input >= 60 and input < 70
+        then set text_value = concat('b+' ,remark_) ;
+      else
+      set text_value = concat('c' ,remark_) ;
+    end if;
+  end;
+
+set @input = 100*rand();
+call pro_if_example_t(@input,@result) ;
+select @result ;
+-- 不能字符串和数字相加 如 'b+' + remark_ 可以考虑 concat('b+' ,remark_)
+```
+
+#### (2)循环语句
+
+> While语句、repeat语句和loop语句。
+
+#### while
+
+```script
+[begin_label:] 
+while search_condition do 
+Statement_list 
+End while 
+[end_label]
+
+while 满足的条件 do
+执行sql语句
+end while;
+```
+
+##### 例子
+
+```mysql
+drop procedure if exists pro_example_while_t;
+
+delimiter ;
+create procedure pro_example_while_t(in len int,out result longtext)
+  begin
+  declare i int default  0;
+  declare v_text longtext default '' ;
+    while i <= len
+    do
+      set v_text = concat(v_text,',',i) , i = i+1;
+    end while ;
+    set result = v_text ;
+  end ;
+
+call pro_example_while_t(200,@result) ;
+
+select @result ;
+```
+
+#### (3)Case 语句
+
+### select … into 语句
+
+### 定义处理程序
+
+
+
+
+[参考1(重点)](https://www.jb51.net/article/70677.htm)
+
+[参考2](https://blog.csdn.net/qq_34720818/article/details/117463865)
+
+[参考3](https://www.jb51.net/list/list_112_1.htm)

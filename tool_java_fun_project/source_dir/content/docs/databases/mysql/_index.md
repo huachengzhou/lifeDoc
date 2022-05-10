@@ -25,6 +25,8 @@ weight: 2
 
 ### [mysql存储过程](mysql_procedure)
 
+### [mysql存储函数](mysql_procedure_function)
+
 ### [mysql用户与权限](mysql用户与权限)
 
 ### [mysql整理](mysql整理)

@@ -948,7 +948,8 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</guid>
-      <description></description>
+      <description>centos7单机安装多个mysql8.0
+ 一:上传 #  下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz上传mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz到服务器指定文件夹，如：/home/mysql二:解压 #  cd /home/mysqltar -xvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz三:重命名文件夹 #  mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306四:新建mysql用户、mysql用户组 #  cd /home/mysql/mysql3306#新建mysql用户、mysql用户组，如果之前已经建立过，就不用建立了groupadd mysql#给mysql添加用户为 mysqluseradd mysql -g mysql五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用 #  cd /home/mysql/mysql3306mkdir data var tmp binlogs logschmod 777 ./tmpchmod 777 ./logscd /home/mysql/mysql3306/logstouch error.log六:在/home/mysql/mysql3306/etc下创建数据库配置文件 #  cd /home/mysql/mysql3306mkdir etccd /home/mysql/mysql3306/etctouch my.cnfvim my.cnf# my.</description>
     </item>
     
     <item>
@@ -1044,7 +1045,17 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</guid>
       <description>MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： #  CREATE [DEFINER = { user | CURRENT_USER }] PROCEDURE sp_name ([proc_parameter[,...]]) [characteristic ...] routine_body proc_parameter: [ IN | OUT | INOUT ] param_name type type: Any valid MySQL data type characteristic: COMMENT &amp;#39;string&amp;#39; | [NOT] DETERMINISTIC routine_body: Valid SQL routine statement delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行 create procedure 存储过程名(参数列表) begin sql语句集合 end$ delimiter ; --将结束符修改为默认的分号 例子一 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE[DEFINER = { user | CURRENT_USER }]PROCEDURE sp_name ([proc_parameter[,...]])[characteristic ...] routine_bodyproc_parameter:[ IN | OUT | INOUT ] param_name typetype:Any valid MySQL data typecharacteristic:COMMENT &#39;string&#39;| [NOT] DETERMINISTICroutine_body:Valid SQL routine statement-- $ 可以改为分号 假如你直接是在控制台那么建议用$delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行create procedure 存储过程名(参数列表)beginsql语句集合end$delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>mysql存储函数</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure_function/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure_function/</guid>
+      <description>参考1(重点)
+参考2</description>
     </item>
     
     <item>

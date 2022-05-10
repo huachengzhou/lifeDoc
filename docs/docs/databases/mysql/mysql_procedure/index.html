@@ -6,10 +6,48 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： #  CREATE [DEFINER = { user | CURRENT_USER }] PROCEDURE sp_name ([proc_parameter[,...]]) [characteristic ...] routine_body proc_parameter: [ IN | OUT | INOUT ] param_name type type: Any valid MySQL data type characteristic: COMMENT &#39;string&#39; | [NOT] DETERMINISTIC routine_body: Valid SQL routine statement delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行 create procedure 存储过程名(参数列表) begin sql语句集合 end$ delimiter ; --将结束符修改为默认的分号 例子一 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;.">
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE
+[DEFINER = { user | CURRENT_USER }]
+PROCEDURE sp_name ([proc_parameter[,...]])
+[characteristic ...] routine_body
+proc_parameter:
+[ IN | OUT | INOUT ] param_name type
+type:
+Any valid MySQL data type
+characteristic:
+COMMENT &#39;string&#39;
+| [NOT] DETERMINISTIC
+routine_body:
+Valid SQL routine statement
+-- $ 可以改为分号 假如你直接是在控制台那么建议用$
+delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行
+create procedure 存储过程名(参数列表)
+begin
+sql语句集合
+end$
+delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql存储过程" />
 <meta property="og:description" content="MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： #  CREATE [DEFINER = { user | CURRENT_USER }] PROCEDURE sp_name ([proc_parameter[,...]]) [characteristic ...] routine_body proc_parameter: [ IN | OUT | INOUT ] param_name type type: Any valid MySQL data type characteristic: COMMENT &#39;string&#39; | [NOT] DETERMINISTIC routine_body: Valid SQL routine statement delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行 create procedure 存储过程名(参数列表) begin sql语句集合 end$ delimiter ; --将结束符修改为默认的分号 例子一 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE
+[DEFINER = { user | CURRENT_USER }]
+PROCEDURE sp_name ([proc_parameter[,...]])
+[characteristic ...] routine_body
+proc_parameter:
+[ IN | OUT | INOUT ] param_name type
+type:
+Any valid MySQL data type
+characteristic:
+COMMENT &#39;string&#39;
+| [NOT] DETERMINISTIC
+routine_body:
+Valid SQL routine statement
+-- $ 可以改为分号 假如你直接是在控制台那么建议用$
+delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行
+create procedure 存储过程名(参数列表)
+begin
+sql语句集合
+end$
+delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/" />
 <meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
@@ -18,7 +56,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.ac80f184999336841cb01c850c284e2b84aedc72d7abfd5caa5f68f7fb343053.js"  ></script>
+<script defer src="./../../../../en.search.min.b4f46a82ea2f6a17448eb90a80a031a4ad3eb0981639cde6ffeb0beaf59b07b1.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -407,6 +445,17 @@ https://github.com/alex-shpak/hugo-book
       
     
       
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_install_centos/" class="">centos7安装多个mysql</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -457,6 +506,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql_procedure/" class=" active">mysql存储过程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_procedure_function/" class="">mysql存储函数</a>
   
 
         </li>
@@ -2672,14 +2734,37 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#特点">特点：</a></li>
-    <li><a href="#存储过程-基本语法">存储过程-基本语法：</a></li>
-    <li><a href="#例子一">例子一</a></li>
+    <li><a href="#存储过程-基本语法-非常重要">存储过程-基本语法： (非常重要)</a>
+      <ul>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
     <li><a href="#查看存储结构">查看存储结构</a></li>
+    <li><a href="#删除存储过程">删除存储过程</a>
+      <ul>
+        <li><a href="#例子-1">例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改存储过程-实际无法修改--修改的是存储特征">修改存储过程 (实际无法修改  修改的是存储特征)</a>
+      <ul>
+        <li><a href="#例子-2">例子</a></li>
+      </ul>
+    </li>
     <li><a href="#传递参数">传递参数</a>
       <ul>
         <li><a href="#in">IN</a></li>
         <li><a href="#out">OUT</a></li>
         <li><a href="#inout">INOUT</a></li>
+        <li><a href="#随机练习">随机练习</a></li>
+      </ul>
+    </li>
+    <li><a href="#存储过程体-非常重要">存储过程体 (非常重要)</a>
+      <ul>
+        <li><a href="#局部变量">局部变量</a></li>
+        <li><a href="#set语句">set语句</a></li>
+        <li><a href="#流程控制语句">流程控制语句</a></li>
+        <li><a href="#select--into-语句">select … into 语句</a></li>
+        <li><a href="#定义处理程序">定义处理程序</a></li>
       </ul>
     </li>
   </ul>
@@ -2719,35 +2804,36 @@ https://github.com/alex-shpak/hugo-book
 <li>减少网络传输。</li>
 <li>提高代码维护的复杂度，实际使用中要评估场景是否适合。</li>
 </ul>
-<h2 id="存储过程-基本语法">
-  存储过程-基本语法：
-  <a class="anchor" href="#%e5%ad%98%e5%82%a8%e8%bf%87%e7%a8%8b-%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95">#</a>
+<h2 id="存储过程-基本语法-非常重要">
+  存储过程-基本语法： (非常重要)
+  <a class="anchor" href="#%e5%ad%98%e5%82%a8%e8%bf%87%e7%a8%8b-%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95-%e9%9d%9e%e5%b8%b8%e9%87%8d%e8%a6%81">#</a>
 </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">CREATE</span>
-  [DEFINER <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">user</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">CURRENT_USER</span> <span style="color:#960050;background-color:#1e0010">}</span>]
-  <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">sp_name</span> ([proc_parameter[,...]])
+<pre><code class="language-scrip" data-lang="scrip">CREATE
+  [DEFINER = { user | CURRENT_USER }]
+  PROCEDURE sp_name ([proc_parameter[,...]])
   [characteristic ...] routine_body
 
 proc_parameter:
-  [ <span style="color:#66d9ef">IN</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">OUT</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">INOUT</span> ] param_name type
+  [ IN | OUT | INOUT ] param_name type
 type:
   Any valid MySQL data type
 characteristic:
-    COMMENT <span style="color:#e6db74">&#39;string&#39;</span>
-  <span style="color:#f92672">|</span> [<span style="color:#66d9ef">NOT</span>] <span style="color:#66d9ef">DETERMINISTIC</span>
+    COMMENT 'string'
+  | [NOT] DETERMINISTIC
 routine_body:
-  Valid <span style="color:#66d9ef">SQL</span> routine statement
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">delimiter <span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">--</span><span style="color:#960050;background-color:#1e0010">将</span>sql语句结束符号修改为<span style="color:#960050;background-color:#1e0010">$</span>,<span style="color:#960050;background-color:#1e0010">这样只有</span>sql遇到<span style="color:#960050;background-color:#1e0010">$时才开始执行</span>
-<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#960050;background-color:#1e0010">存储过程名</span>(<span style="color:#960050;background-color:#1e0010">参数列表</span>)
+  Valid SQL routine statement
+</code></pre><pre><code class="language-scrip" data-lang="scrip">-- $ 可以改为分号 假如你直接是在控制台那么建议用$
+delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行
+create procedure 存储过程名(参数列表)
 begin
 sql语句集合
-end<span style="color:#960050;background-color:#1e0010">$</span>
-delimiter ; <span style="color:#f92672">--</span><span style="color:#960050;background-color:#1e0010">将结束符修改为默认的分号</span> 
+end$
+delimiter ; --将结束符修改为默认的分号 
 
-</code></pre></div><h2 id="例子一">
-  例子一
-  <a class="anchor" href="#%e4%be%8b%e5%ad%90%e4%b8%80">#</a>
-</h2>
+</code></pre><h3 id="例子">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90">#</a>
+</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
 <span style="color:#75715e">-- 创建一个表
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span> (
@@ -2801,6 +2887,54 @@ END ;
 <span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> proc_initData ;
 
 <span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">PROCEDURE</span> STATUS <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%pro%&#39;</span>;
+</code></pre></div><h2 id="删除存储过程">
+  删除存储过程
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e5%ad%98%e5%82%a8%e8%bf%87%e7%a8%8b">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">Drop</span> <span style="color:#66d9ef">procedure</span> [<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span>] sp_name; 
+</code></pre></div><h3 id="例子-1">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-1">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_insert_user;
+</code></pre></div><h2 id="修改存储过程-实际无法修改--修改的是存储特征">
+  修改存储过程 (实际无法修改  修改的是存储特征)
+  <a class="anchor" href="#%e4%bf%ae%e6%94%b9%e5%ad%98%e5%82%a8%e8%bf%87%e7%a8%8b-%e5%ae%9e%e9%99%85%e6%97%a0%e6%b3%95%e4%bf%ae%e6%94%b9--%e4%bf%ae%e6%94%b9%e7%9a%84%e6%98%af%e5%ad%98%e5%82%a8%e7%89%b9%e5%be%81">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- ALTER PROCEDURE 存储过程名 [ 特征 ... ]
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">Alter</span> <span style="color:#66d9ef">procedure</span> proc_name[characteristic<span style="color:#960050;background-color:#1e0010">…</span>] 
+</code></pre></div><blockquote>
+<p>特征指定了存储过程的特性，可能的取值有：</p>
+</blockquote>
+<ul>
+<li>CONTAINS SQL 表示子程序包含 SQL 语句，但不包含读或写数据的语句。</li>
+<li>NO SQL 表示子程序中不包含 SQL 语句。</li>
+<li>READS SQL DATA 表示子程序中包含读数据的语句。</li>
+<li>MODIFIES SQL DATA 表示子程序中包含写数据的语句。</li>
+<li>SQL SECURITY { DEFINER |INVOKER } 指明谁有权限来执行。</li>
+<li>DEFINER 表示只有定义者自己才能够执行。</li>
+<li>INVOKER 表示调用者可以执行。</li>
+<li>COMMENT &lsquo;string&rsquo; 表示注释信息。</li>
+</ul>
+<h3 id="例子-2">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-2">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 创建
+</span><span style="color:#75715e"></span>delimiter ;
+<span style="color:#66d9ef">Alter</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_t11</span>(<span style="color:#66d9ef">IN</span> param1 <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>), <span style="color:#66d9ef">IN</span> param2 <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>), <span style="color:#66d9ef">OUT</span> result <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">2000</span>))
+  begin
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(param1, <span style="color:#e6db74">&#39;_---_&#39;</span>,param2);
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_t11</span>(<span style="color:#a6e22e">uuid</span>(), <span style="color:#a6e22e">md5</span>(<span style="color:#a6e22e">uuid</span>()), <span style="color:#f92672">@</span>param);
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>param;
+<span style="color:#75715e">-- 修改
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">PROCEDURE</span> pro_t11 <span style="color:#66d9ef">MODIFIES</span> <span style="color:#66d9ef">SQL</span> DATA <span style="color:#66d9ef">SQL</span> SECURITY INVOKER;
+<span style="color:#75715e">-- 结果
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">PROCEDURE</span> pro_t11 <span style="color:#66d9ef">MODIFIES</span> <span style="color:#66d9ef">SQL</span> DATA <span style="color:#66d9ef">SQL</span> SECURITY INVOKER
+<span style="color:#f92672">&gt;</span> OK
+<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">时间</span>: <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">077</span>s
 </code></pre></div><h2 id="传递参数">
   传递参数
   <a class="anchor" href="#%e4%bc%a0%e9%80%92%e5%8f%82%e6%95%b0">#</a>
@@ -2808,9 +2942,9 @@ END ;
 <blockquote>
 <p>语法结构</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#960050;background-color:#1e0010">存储过程名</span>([<span style="color:#66d9ef">in</span><span style="color:#f92672">/</span><span style="color:#66d9ef">out</span><span style="color:#f92672">/</span><span style="color:#66d9ef">inout</span>] <span style="color:#960050;background-color:#1e0010">参数名</span> <span style="color:#960050;background-color:#1e0010">参数类型</span>)
+<pre><code class="language-scrip" data-lang="scrip">create procedure 存储过程名([in/out/inout] 参数名 参数类型)
 ...
-</code></pre></div><ul>
+</code></pre><ul>
 <li>IN : 该参数可以作为输入，也就是需要调用方传入值 , 默认</li>
 <li>OUT: 该参数作为输出，也就是该参数可以作为返回值</li>
 <li>INOUT: 既可以作为输入参数，也可以作为输出参数</li>
@@ -2949,7 +3083,219 @@ END ;
 <span style="color:#66d9ef">call</span> <span style="color:#a6e22e">sp_inout</span>(<span style="color:#f92672">@</span>p_num); 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>p_num; 
 
-</code></pre></div></article>
+</code></pre></div><h3 id="随机练习">
+  随机练习
+  <a class="anchor" href="#%e9%9a%8f%e6%9c%ba%e7%bb%83%e4%b9%a0">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 练习1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span>  <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span>  pro_t10 ;
+DELIMITER ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_t10</span>(<span style="color:#66d9ef">INOUT</span> param <span style="color:#66d9ef">int</span>)
+  begin
+    <span style="color:#66d9ef">set</span> param <span style="color:#f92672">=</span> param<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span>;
+  end;
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>param <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_t10</span>(<span style="color:#f92672">@</span>param);
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>param ;
+
+<span style="color:#75715e">-- 练习2
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_t11;
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_t11</span>(<span style="color:#66d9ef">in</span> param1 <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>), <span style="color:#66d9ef">in</span> param2 <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>), <span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">2000</span>))
+  begin
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(param1, <span style="color:#e6db74">&#39;---&#39;</span>,param2);
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_t11</span>(<span style="color:#a6e22e">uuid</span>(), <span style="color:#a6e22e">md5</span>(<span style="color:#a6e22e">uuid</span>()), <span style="color:#f92672">@</span>param);
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>param;
+
+</code></pre></div><h2 id="存储过程体-非常重要">
+  存储过程体 (非常重要)
+  <a class="anchor" href="#%e5%ad%98%e5%82%a8%e8%bf%87%e7%a8%8b%e4%bd%93-%e9%9d%9e%e5%b8%b8%e9%87%8d%e8%a6%81">#</a>
+</h2>
+<blockquote>
+<p>存储过程体中可以使用各种sql语句和过程式语句的组合，来封装数据库应用中复杂的业务逻辑和处理规则，以实现数据库应用的灵活编程。下面主要介绍几个用于构造存储过程体的常用语法元素。</p>
+</blockquote>
+<h3 id="局部变量">
+  局部变量
+  <a class="anchor" href="#%e5%b1%80%e9%83%a8%e5%8f%98%e9%87%8f">#</a>
+</h3>
+<blockquote>
+<p>在存储过程体中可以声明局部变量，用来存储存储过程体中临时结果</p>
+</blockquote>
+<pre><code class="language-scrip" data-lang="scrip">DECLARE var_name[,…] type [DEFAULT value] 
+Var_name:指定局部变量的名称 
+Type:用于声明局部变量的数据类型 
+default子句:用于为局部变量指定一个默认值。若没有指定，默认为null.
+</code></pre><ul>
+<li>例如 Declare cid int(10);</li>
+</ul>
+<h4 id="使用说明">
+  使用说明
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e">#</a>
+</h4>
+<ul>
+<li>局部变量只能在存储过程体的begin…end语句块中声明。</li>
+<li>局部变量必须在存储过程体的开头处声明。</li>
+<li>局部变量的作用范围仅限于声明它的begin..end语句块，其他语句块中的语句不可以使用它。</li>
+<li>局部变量不同于用户变量，两者区别：局部变量声明时，在其前面没有使用@符号，并且它只能在begin..end语句块中使用；而用户变量在声明时，会在其名称前面使用@符号，同时已声明的用户变量存在于整个会话之中。</li>
+</ul>
+<h4 id="例子-3">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-3">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_add_t1;
+
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_add_t1</span>(<span style="color:#66d9ef">in</span>  a1 <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">in</span> a2 <span style="color:#66d9ef">int</span> ,<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">int</span> )
+  begin
+    <span style="color:#66d9ef">declare</span>  x <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">set</span> x <span style="color:#f92672">=</span> a1 <span style="color:#f92672">+</span> a2;
+    <span style="color:#66d9ef">set</span> result  <span style="color:#f92672">=</span> x;
+    <span style="color:#75715e">-- 虽然可以 result = a1 + a2 但是我们为了用上局部变量还是多走一步
+</span><span style="color:#75715e"></span>  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_add_t1</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+
+
+</code></pre></div><h3 id="set语句">
+  set语句
+  <a class="anchor" href="#set%e8%af%ad%e5%8f%a5">#</a>
+</h3>
+<blockquote>
+<p>使用set语句为局部变量赋值</p>
+</blockquote>
+<ul>
+<li>Set var_name=expr</li>
+<li>Set cid=910;</li>
+</ul>
+<h4 id="例子-4">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-4">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_set_example_t1;
+delimiter ;
+
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_set_example_t1</span>(<span style="color:#66d9ef">in</span> a1  <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">12</span>),<span style="color:#66d9ef">in</span> text_v1 <span style="color:#66d9ef">longtext</span>,<span style="color:#66d9ef">in</span> f_float <span style="color:#66d9ef">float</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">7</span>),<span style="color:#66d9ef">in</span> d_double <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">6</span>),<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">longtext</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> spl <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">200</span>) <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;   &#39;</span> ;
+  <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(a1,spl,text_v1,spl,f_float,spl,d_double) ;
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_set_example_t1</span>(<span style="color:#ae81ff">1</span>,<span style="color:#a6e22e">uuid</span>(),<span style="color:#a6e22e">rand</span>(),<span style="color:#a6e22e">rand</span>(),<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+</code></pre></div><h3 id="流程控制语句">
+  流程控制语句
+  <a class="anchor" href="#%e6%b5%81%e7%a8%8b%e6%8e%a7%e5%88%b6%e8%af%ad%e5%8f%a5">#</a>
+</h3>
+<h4 id="1条件判断语句">
+  (1)条件判断语句
+  <a class="anchor" href="#1%e6%9d%a1%e4%bb%b6%e5%88%a4%e6%96%ad%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<ul>
+<li><strong>If语句</strong></li>
+</ul>
+<pre><code class="language-scrip" data-lang="scrip">If search_condition then statement_list 
+[elseif search_condition then statement_list]… 
+[else statement_list] 
+End if 
+
+ -- 参考
+if 满足条件 then
+执行语句
+elseif 满足条件 then
+执行语句
+else 
+执行语句
+end if;
+</code></pre><h5 id="例子-5">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-5">#</a>
+</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_if_example_t ;
+
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_if_example_t</span>(<span style="color:#66d9ef">in</span> input <span style="color:#66d9ef">double</span>,<span style="color:#66d9ef">inout</span>  text_value <span style="color:#66d9ef">longtext</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> remark_ <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">200</span>) <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;学生&#39;</span> ;
+
+    <span style="color:#66d9ef">if</span> input <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>
+      <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">set</span> text_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;a+&#39;</span> ,remark_) ;
+      <span style="color:#66d9ef">elseif</span> input<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">90</span> <span style="color:#66d9ef">and</span> input <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>
+        <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">set</span> text_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;a&#39;</span> ,remark_) ;
+      <span style="color:#66d9ef">elseif</span> input<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">80</span> <span style="color:#66d9ef">and</span> input <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span>
+        <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">set</span> text_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;a-&#39;</span> ,remark_) ;
+      <span style="color:#66d9ef">elseif</span> input <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span> <span style="color:#66d9ef">and</span> input <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">70</span>
+        <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">set</span> text_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;b+&#39;</span> ,remark_) ;
+      <span style="color:#66d9ef">else</span>
+      <span style="color:#66d9ef">set</span> text_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;c&#39;</span> ,remark_) ;
+    end <span style="color:#66d9ef">if</span>;
+  end;
+
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>input <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">*</span><span style="color:#a6e22e">rand</span>();
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_if_example_t</span>(<span style="color:#f92672">@</span>input,<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+<span style="color:#75715e">-- 不能字符串和数字相加 如 &#39;b+&#39; + remark_ 可以考虑 concat(&#39;b+&#39; ,remark_)
+</span></code></pre></div><h4 id="2循环语句">
+  (2)循环语句
+  <a class="anchor" href="#2%e5%be%aa%e7%8e%af%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<blockquote>
+<p>While语句、repeat语句和loop语句。</p>
+</blockquote>
+<h4 id="while">
+  while
+  <a class="anchor" href="#while">#</a>
+</h4>
+<pre><code class="language-script" data-lang="script">[begin_label:] 
+while search_condition do 
+Statement_list 
+End while 
+[end_label]
+
+while 满足的条件 do
+执行sql语句
+end while;
+</code></pre><h5 id="例子-6">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-6">#</a>
+</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_example_while_t;
+
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_example_while_t</span>(<span style="color:#66d9ef">in</span> len <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">longtext</span>)
+  begin
+  <span style="color:#66d9ef">declare</span> i <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span>  <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">declare</span> v_text <span style="color:#66d9ef">longtext</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span> ;
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;=</span> len
+    do
+      <span style="color:#66d9ef">set</span> v_text <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(v_text,<span style="color:#e6db74">&#39;,&#39;</span>,i) , i <span style="color:#f92672">=</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+    end <span style="color:#66d9ef">while</span> ;
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> v_text ;
+  end ;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_example_while_t</span>(<span style="color:#ae81ff">200</span>,<span style="color:#f92672">@</span>result) ;
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+</code></pre></div><h4 id="3case-语句">
+  (3)Case 语句
+  <a class="anchor" href="#3case-%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<h3 id="select--into-语句">
+  select … into 语句
+  <a class="anchor" href="#select--into-%e8%af%ad%e5%8f%a5">#</a>
+</h3>
+<h3 id="定义处理程序">
+  定义处理程序
+  <a class="anchor" href="#%e5%ae%9a%e4%b9%89%e5%a4%84%e7%90%86%e7%a8%8b%e5%ba%8f">#</a>
+</h3>
+<p><a href="https://www.jb51.net/article/70677.htm">参考1(重点)</a></p>
+<p><a href="https://blog.csdn.net/qq_34720818/article/details/117463865">参考2</a></p>
+<p><a href="https://www.jb51.net/list/list_112_1.htm">参考3</a></p>
+</article>
  
       <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
 
@@ -3112,14 +3458,37 @@ END ;
 <nav id="TableOfContents">
   <ul>
     <li><a href="#特点">特点：</a></li>
-    <li><a href="#存储过程-基本语法">存储过程-基本语法：</a></li>
-    <li><a href="#例子一">例子一</a></li>
+    <li><a href="#存储过程-基本语法-非常重要">存储过程-基本语法： (非常重要)</a>
+      <ul>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
     <li><a href="#查看存储结构">查看存储结构</a></li>
+    <li><a href="#删除存储过程">删除存储过程</a>
+      <ul>
+        <li><a href="#例子-1">例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改存储过程-实际无法修改--修改的是存储特征">修改存储过程 (实际无法修改  修改的是存储特征)</a>
+      <ul>
+        <li><a href="#例子-2">例子</a></li>
+      </ul>
+    </li>
     <li><a href="#传递参数">传递参数</a>
       <ul>
         <li><a href="#in">IN</a></li>
         <li><a href="#out">OUT</a></li>
         <li><a href="#inout">INOUT</a></li>
+        <li><a href="#随机练习">随机练习</a></li>
+      </ul>
+    </li>
+    <li><a href="#存储过程体-非常重要">存储过程体 (非常重要)</a>
+      <ul>
+        <li><a href="#局部变量">局部变量</a></li>
+        <li><a href="#set语句">set语句</a></li>
+        <li><a href="#流程控制语句">流程控制语句</a></li>
+        <li><a href="#select--into-语句">select … into 语句</a></li>
+        <li><a href="#定义处理程序">定义处理程序</a></li>
       </ul>
     </li>
   </ul>
