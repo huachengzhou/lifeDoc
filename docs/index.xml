@@ -248,7 +248,7 @@ sudo apt-get remove notepadqq sudo add-apt-repository &amp;ndash;remove ppa:note
   1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装 #  三.Redis命令 #   keys * 获取所有的keyclear 清除屏幕quit ,exit 退出set name blake 设置值setex ip 5 192.</description>
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&amp;gt;e:E:\&amp;gt;cd E:\CS\Redis-x64-3.</description>
     </item>
     
     <item>
@@ -920,15 +920,6 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
-      <title>数据库设计的规范</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
-    </item>
-    
-    <item>
       <title>调度算法的评价指标</title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -949,6 +940,15 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
   npm add -D less-loader@3.0.0
    上面两条等价
  升级到最高版本 , 更新npm到最新版本 #   npm i npm@latest -d npm i npm@latest -g  安装所有依赖 (package.json) #   npm install request  删除包问题 #    npm uninstall webpack webpack-cli -g 全局</description>
+    </item>
+    
+    <item>
+      <title>centos7安装多个mysql</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1038,47 +1038,22 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
-      <title>mysql查询</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</link>
+      <title>mysql存储过程</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</guid>
-      <description>mysql学习(下面所有都是针对mysql而言) #  sql排序语句 #   升序   (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE s_id IN (101,102) order by f_name asc)   对于sql的升序而言,当使用了order by之后如果不添加desc那么默认是升序 order by f_name 和 order by f_name ASC 效果一致 降序   (select f.* from fruits f WHERE s_id not IN (101,102) order by f_name DESC )   order by之后加上DESC结果集就是降序   上面结合了 关键字in可以看到 in (101,102)和not in (101,102)</description>
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</guid>
+      <description>MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： #  CREATE [DEFINER = { user | CURRENT_USER }] PROCEDURE sp_name ([proc_parameter[,...]]) [characteristic ...] routine_body proc_parameter: [ IN | OUT | INOUT ] param_name type type: Any valid MySQL data type characteristic: COMMENT &amp;#39;string&amp;#39; | [NOT] DETERMINISTIC routine_body: Valid SQL routine statement delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行 create procedure 存储过程名(参数列表) begin sql语句集合 end$ delimiter ; --将结束符修改为默认的分号 例子一 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
     </item>
     
     <item>
-      <title>mysql整理</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</link>
+      <title>mysql运维</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
-      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
-    </item>
-    
-    <item>
-      <title>mysql用户与权限</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</guid>
-      <description>mysql.version=5.7 (必须注意版本)
- 创建用户 #   ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;192.168.87.26&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456   参数说明:&#39;%&amp;lsquo;表示所有情况都能访问;&amp;lsquo;localhost&amp;rsquo;表示本机才能访问;&amp;lsquo;192.168.87.26&amp;rsquo; 某个具体 ip 才能访问
- 授权命令 (GRANT privileges ON databasename.tablename TO &amp;lsquo;username&amp;rsquo;@&amp;lsquo;host&amp;rsquo; ) #  GRANT SELECT,INSERT privileges on spring.* to &amp;lsquo;alice&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; identified by &amp;lsquo;123456&amp;rsquo;
- 参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限 #  create database testDB;grant all privileges on testDB.</description>
-    </item>
-    
-    <item>
-      <title>mysql索引</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</guid>
-      <description>索引 #   所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
-  MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
-  MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
-  默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
- </description>
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1129,6 +1104,59 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</guid>
       <description>MySQL运维实践 #  5.1-MySQL日志系统 #  什么是日志 #   日志(log)是一种顺序记录事件流水的文件 记录计算机程序运行过程中发生了什么 多种多样的用途  帮助分析程序问题 分析服务请求的特征、流量等 判断工作是否成功执行 等等……    MySQL日志的分类 #   服务器日志  记录进程启动运行过程中的特殊事件，帮助分析MySQL服务遇到的问题 根据需求抓取特定的SQL语句，追踪性能可能存在的问题的业务SQL   事务日志  记录应用程序对数据的所有更改 可用于数据恢复 可用于实例间数据同步       分类 日志名称     服务器日志 服务错误日志   服务器日志 慢查询日志   服务器日志 综合查询日志   事务日志 存储引擎事务日志   事务日志 二进制日志    服务错误日志 #   记录实例启动运行过程中重要消息 配置参数  log_error = /data/mysql_data/node-1/mysql.</description>
+    </item>
+    
+    <item>
+      <title>数据库设计的规范</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
+      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
+    </item>
+    
+    <item>
+      <title>mysql查询</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</guid>
+      <description>mysql学习(下面所有都是针对mysql而言) #  sql排序语句 #   升序   (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE s_id IN (101,102) order by f_name asc)   对于sql的升序而言,当使用了order by之后如果不添加desc那么默认是升序 order by f_name 和 order by f_name ASC 效果一致 降序   (select f.* from fruits f WHERE s_id not IN (101,102) order by f_name DESC )   order by之后加上DESC结果集就是降序   上面结合了 关键字in可以看到 in (101,102)和not in (101,102)</description>
+    </item>
+    
+    <item>
+      <title>mysql用户与权限</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</guid>
+      <description>mysql.version=5.7 (必须注意版本)
+ 创建用户 #   ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;192.168.87.26&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456   参数说明:&#39;%&amp;lsquo;表示所有情况都能访问;&amp;lsquo;localhost&amp;rsquo;表示本机才能访问;&amp;lsquo;192.168.87.26&amp;rsquo; 某个具体 ip 才能访问
+ 授权命令 (GRANT privileges ON databasename.tablename TO &amp;lsquo;username&amp;rsquo;@&amp;lsquo;host&amp;rsquo; ) #  GRANT SELECT,INSERT privileges on spring.* to &amp;lsquo;alice&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; identified by &amp;lsquo;123456&amp;rsquo;
+ 参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
+ 授权test用户拥有testDB数据库的所有权限 #  create database testDB;grant all privileges on testDB.</description>
+    </item>
+    
+    <item>
+      <title>mysql索引</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</guid>
+      <description>索引 #   所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
+  MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
+  MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
+  默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
+ </description>
+    </item>
+    
+    <item>
+      <title>mysql整理</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
+      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
     </item>
     
     <item>

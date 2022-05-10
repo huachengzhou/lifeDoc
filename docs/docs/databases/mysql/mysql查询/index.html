@@ -16,7 +16,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.926f03f8135b72f4adb4740acaa72481e92644c20eb09cc1fa445edb57135fba.js"  ></script>
+<script defer src="./../../../../en.search.min.ac80f184999336841cb01c850c284e2b84aedc72d7abfd5caa5f68f7fb343053.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -405,17 +405,6 @@ https://github.com/alex-shpak/hugo-book
       
     
       
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -465,7 +454,22 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class=" active">mysql查询</a>
+    <a href="./../../../../docs/databases/mysql/mysql_procedure/" class="">mysql存储过程</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
   
 
         </li>
@@ -478,7 +482,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class=" active">mysql查询</a>
   
 
         </li>
@@ -505,6 +509,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
   
 
         </li>
@@ -2662,6 +2679,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#分组查询">分组查询</a>
       <ul>
         <li><a href="#having">HAVING</a></li>
+        <li><a href="#合并使用">合并使用</a></li>
       </ul>
     </li>
     <li><a href="#分页查询">分页查询</a></li>
@@ -2776,7 +2794,29 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>(select f.s_id,count(*) as total,group_concat(f.f_name) as g_name,sum(f.f_price) as price from fruits f group by f.s_id having sum(f.f_price)&gt;20)</li>
 </ul>
-<h2 id="分页查询">
+<h3 id="合并使用">
+  合并使用
+  <a class="anchor" href="#%e5%90%88%e5%b9%b6%e4%bd%bf%e7%94%a8">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span>
+	<span style="color:#a6e22e">count</span>( project_work_stage_id ) project_work_stage_id,
+	<span style="color:#a6e22e">count</span>( project_phase_id ) project_phase_id_count,
+	<span style="color:#a6e22e">sum</span>( actual_hours ) actual_hours_sum,
+	<span style="color:#a6e22e">AVG</span>( actual_hours ) actual_hours_avg,
+	<span style="color:#a6e22e">GROUP_CONCAT</span>( id ) ids,
+	project_id 
+<span style="color:#66d9ef">FROM</span>
+	tb_project_plan_details 
+<span style="color:#66d9ef">WHERE</span>
+	<span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span>
+	project_id <span style="color:#75715e"># 以项目编号分组
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">HAVING</span> <span style="color:#75715e"># having的好处是可以把列中查询用作比较
+</span><span style="color:#75715e"></span>	project_phase_id_count <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># 工作事项数量必须大于等于3
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+	project_phase_id_count <span style="color:#66d9ef">DESC</span>  <span style="color:#75715e">#确定最大数
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">#确定最大数
+</span></code></pre></div><h2 id="分页查询">
   分页查询
   <a class="anchor" href="#%e5%88%86%e9%a1%b5%e6%9f%a5%e8%af%a2">#</a>
 </h2>
@@ -2993,6 +3033,7 @@ CREATE TABLE user_test(
     <li><a href="#分组查询">分组查询</a>
       <ul>
         <li><a href="#having">HAVING</a></li>
+        <li><a href="#合并使用">合并使用</a></li>
       </ul>
     </li>
     <li><a href="#分页查询">分页查询</a></li>

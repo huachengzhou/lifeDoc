@@ -3,7 +3,7 @@
 title: "数据库设计的规范"
 date: 2020-01-17T15:26:15Z
 draft: false
-weight: 8
+weight: 27
 ---
 
 

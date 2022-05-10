@@ -92,12 +92,12 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
     </item>
     
     <item>
-      <title>数据库设计的规范</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
+      <title>centos7安装多个mysql</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -151,21 +151,40 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
     </item>
     
     <item>
+      <title>mysql存储过程</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</guid>
+      <description>MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： #  CREATE [DEFINER = { user | CURRENT_USER }] PROCEDURE sp_name ([proc_parameter[,...]]) [characteristic ...] routine_body proc_parameter: [ IN | OUT | INOUT ] param_name type type: Any valid MySQL data type characteristic: COMMENT &amp;#39;string&amp;#39; | [NOT] DETERMINISTIC routine_body: Valid SQL routine statement delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行 create procedure 存储过程名(参数列表) begin sql语句集合 end$ delimiter ; --将结束符修改为默认的分号 例子一 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>mysql运维</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据库设计的规范</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
+      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
+    </item>
+    
+    <item>
       <title>mysql查询</title>
       <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</guid>
       <description>mysql学习(下面所有都是针对mysql而言) #  sql排序语句 #   升序   (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE s_id IN (101,102) order by f_name asc)   对于sql的升序而言,当使用了order by之后如果不添加desc那么默认是升序 order by f_name 和 order by f_name ASC 效果一致 降序   (select f.* from fruits f WHERE s_id not IN (101,102) order by f_name DESC )   order by之后加上DESC结果集就是降序   上面结合了 关键字in可以看到 in (101,102)和not in (101,102)</description>
-    </item>
-    
-    <item>
-      <title>mysql整理</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
-      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
     </item>
     
     <item>
@@ -192,6 +211,15 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
   MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
   默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
  </description>
+    </item>
+    
+    <item>
+      <title>mysql整理</title>
+      <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
+      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
     </item>
     
   </channel>

@@ -505,17 +505,17 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
-    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_3/</loc>
   </url>
   
   <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url>
   
   <url>
@@ -564,22 +564,12 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</loc>
-    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url>
   
@@ -629,6 +619,21 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/</loc>
     <lastmod>2021-01-17T15:26:15+00:00</lastmod>
   </url>
@@ -656,6 +661,16 @@
   <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2021-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url>
   
   <url>

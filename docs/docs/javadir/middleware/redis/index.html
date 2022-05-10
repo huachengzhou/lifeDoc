@@ -12,11 +12,8 @@
   1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装 #  三.Redis命令 #   keys * 获取所有的key
-clear 清除屏幕
-quit ,exit 退出
-set name blake 设置值
-setex ip 5 192.">
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&gt;e:
+E:\&gt;cd E:\CS\Redis-x64-3.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Redis 学习与使用" />
 <meta property="og:description" content="一.Redis介绍 #  1.1引言 #   1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
  #  1.2 NOSQL #   redis就是nosql
@@ -25,11 +22,8 @@ setex ip 5 192.">
   1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装 #  三.Redis命令 #   keys * 获取所有的key
-clear 清除屏幕
-quit ,exit 退出
-set name blake 设置值
-setex ip 5 192." />
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&gt;e:
+E:\&gt;cd E:\CS\Redis-x64-3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/redis/" />
 <meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
@@ -38,7 +32,7 @@ setex ip 5 192." />
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.926f03f8135b72f4adb4740acaa72481e92644c20eb09cc1fa445edb57135fba.js"  ></script>
+<script defer src="./../../../../en.search.min.ac80f184999336841cb01c850c284e2b84aedc72d7abfd5caa5f68f7fb343053.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -427,17 +421,6 @@ https://github.com/alex-shpak/hugo-book
       
     
       
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -487,7 +470,22 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+    <a href="./../../../../docs/databases/mysql/mysql_procedure/" class="">mysql存储过程</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
   
 
         </li>
@@ -500,7 +498,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
+    <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
   
 
         </li>
@@ -527,6 +525,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
   
 
         </li>
@@ -2769,7 +2780,23 @@ Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据�
   二.Redis安装
   <a class="anchor" href="#%e4%ba%8credis%e5%ae%89%e8%a3%85">#</a>
 </h1>
-<h1 id="三redis命令">
+<h1 id="redis-注册服务">
+  redis 注册服务
+  <a class="anchor" href="#redis-%e6%b3%a8%e5%86%8c%e6%9c%8d%e5%8a%a1">#</a>
+</h1>
+<pre><code class="language-dos" data-lang="dos">C:\Users\noatn&gt;e:
+
+E:\&gt;cd E:\CS\Redis-x64-3.2.100
+
+E:\CS\Redis-x64-3.2.100&gt;redis-server.exe service-install redis.windows.conf
+[18580] 27 Apr 09:09:52.679 # Fatal error, can't open config file 'service-install'
+
+E:\CS\Redis-x64-3.2.100&gt;redis-server.exe --service-install redis.windows.conf
+[6244] 27 Apr 09:10:07.336 # Granting read/write access to 'NT AUTHORITY\NetworkService' on: &quot;E:\CS\Redis-x64-3.2.100&quot; &quot;E:\CS\Redis-x64-3.2.100\&quot;
+[6244] 27 Apr 09:10:07.337 # Redis successfully installed as a service.
+
+E:\CS\Redis-x64-3.2.100&gt;
+</code></pre><h1 id="三redis命令">
   三.Redis命令
   <a class="anchor" href="#%e4%b8%89redis%e5%91%bd%e4%bb%a4">#</a>
 </h1>
