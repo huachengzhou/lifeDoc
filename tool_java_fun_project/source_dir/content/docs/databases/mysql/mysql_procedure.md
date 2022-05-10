@@ -491,6 +491,63 @@ create procedure pro_example_while_t(in len int,out result longtext)
 call pro_example_while_t(200,@result) ;
 
 select @result ;
+
+-- 其他
+drop procedure if exists pro_example_while_t3;
+delimiter ;
+create procedure pro_example_while_t3(in len int,out result int)
+  begin
+    declare total int default 0;
+    declare i int default  0;
+    while i < len
+      do
+      set i = i +1;
+      set total = total + i ;
+    end while ;
+    set result = total ;
+  end;
+
+call pro_example_while_t3(100,@result) ;
+select @result ;
+```
+
+##### repeat结构
+
+```script
+repeat
+执行sql语句
+until 不满的条件
+end repeat;
+```
+
+##### 例子
+
+```mysql
+drop procedure if exists pro_example_repeat_t;
+delimiter ;
+create procedure pro_example_repeat_t(in len_value int,out result_value longtext)
+  begin
+    declare i int default 0;
+    declare v_text longtext default '' ;
+    repeat
+    set i = i +1;
+    set v_text = concat( v_text,i,'-') ;
+    until i >= len_value
+    end repeat;
+    set result_value = v_text ;
+  end ;
+
+call pro_example_repeat_t(200,@result) ;
+
+select @result;
+```
+
+##### loop和leave语句
+
+```script
+[loop标签名:] loop
+执行sql语句(sql语句中应该包括，退出循环的命令：leave loop标签名;如果没有将会造成死循环)
+end loop [loop标签名];
 ```
 
 #### (3)Case 语句
