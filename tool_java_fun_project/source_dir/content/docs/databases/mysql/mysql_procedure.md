@@ -550,7 +550,42 @@ select @result;
 end loop [loop标签名];
 ```
 
+##### 例子
+
+```mysql
+drop procedure if exists pro_loop_example_t;
+
+delimiter ;
+create procedure pro_loop_example_t(in len_value int, inout result int)
+  begin
+    declare i int default 0;
+    declare total int default 0;
+    label_loop:loop
+      if i >= len_value
+      then leave label_loop;
+      end if;
+      set i = i + 1;
+      set total = total + i;
+    end loop label_loop;
+		set result = total;
+  end;
+call pro_loop_example_t(100,@result) ;
+select @result;
+```
+
 #### (3)Case 语句
+
+```script 
+case 
+when 条件 then
+执行sql语句
+when 条件 then
+执行sql语句
+...
+else
+执行sql语句
+end case;
+```
 
 ### select … into 语句
 
