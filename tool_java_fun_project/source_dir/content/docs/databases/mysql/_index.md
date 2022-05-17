@@ -33,6 +33,8 @@ weight: 2
 
 ### [mysql存储引擎](mysql存储引擎)
 
+### [mysql运维](mysql_operation_maintenance)
+
 ### [开发规范](mysql_开发规范)
 
 ### [数据库设计三范式](mysql_数据库设计三范式)

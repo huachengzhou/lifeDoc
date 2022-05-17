@@ -587,11 +587,134 @@ else
 end case;
 ```
 
-### select … into 语句
+```mysql
+drop procedure if exists pro_case_example_t2;
+
+delimiter ;
+
+create procedure pro_case_example_t2(in number_value double, out result longtext)
+  begin
+    declare temp_value longtext;
+    case
+      when number_value >= 90
+      then
+        set temp_value = '非常优秀';
+      when number_value < 90 and number_value >= 80
+      then
+        set temp_value = '优秀';
+      when number_value < 80 and number_value >= 70
+      then
+        set temp_value = '良';
+      when number_value < 70 and number_value >= 60
+      then
+        set temp_value = '及格';
+      when number_value < 60
+      then set temp_value = '未及格';
+    end case;
+    set result = temp_value;
+  end;
+set @input = rand() * 100 + rand() * 100;
+call pro_case_example_t2(@input, @result);
+
+select @result;
+```
+
+### select … into 语句 (通过select … into 方式进行赋值操作)
+
+> 把选定列的值直接存储到局部变量中，语法格式
+
+> 说明:存储过程体中的select…into语句返回的结果集只能有一行数据。
+
+```script
+Select col_name[,…] into var_name[,…] table_expr 
+Col_name:用于指定列名 
+Var_name:用于指定要赋值的变量名 
+Table_expr:表示select语句中的from字句及后面的语法部分 
+```
+
+```mysql
+drop procedure if exists pro_select_into_example_t2;
+
+delimiter ;
+
+create procedure pro_select_into_example_t2(out result longtext)
+  begin
+    declare name_value longtext;
+    declare password_value longtext;
+    select USER_NAME , USER_PASSWORD into name_value , password_value from `t_user` where USER_ID='2019';
+    set result = concat(name_value,'-',password_value);
+  end;
+
+call pro_select_into_example_t2( @result);
+select @result;
+```
 
 ### 定义处理程序
 
+> 是事先定义程序执行过程中可能遇到的问题。并且可以在处理程序中定义解决这些问题的办法。这种方式可以提前预测可能出现的问题，并提出解决方法
 
+```script
+DECLARE handler_type HANDLER FOR condition_value[,…] sp_statement 
+handler_type:CONTINUE | EXIT | UNDO 
+Condition_value:Sqlwarning | not found | sqlexception
+```
+
+```mysql
+
+```
+
+## 游标（光标）
+
+> 游标又称光标是用来存储查询结果集的数据类型，在存储过程和函数中可以使用光标对结果集进行循环的处理。类似高级编程语言中的集合类型。
+> 光标的使用包括光标的声明、open、fetch和 close，其语法分别如下
+
++ 声明光标
+
+```script
+declare  光标名称 cursor for sql语句;
+```
+
++ 打开光标
+
+```script
+open 光标名;
+```
+
++ 获取光标(将光标当前数据存储到变量中)
+
+```script
+fetch 光标名 into 变量名[,变量名...];
+```
+
++ 关闭光标
+
+```script
+close 光标名;
+```
+
++ 简单例子
+
+```mysql
+drop procedure if exists pro_cursor_example_t2;
+delimiter ;
+create procedure pro_cursor_example_t2()
+  begin
+    declare name_value longtext;
+    declare password_value longtext;
+    -- 定义光标
+    declare get_user_data_list cursor for select USER_NAME, USER_PASSWORD from `t_user`;
+    -- 打开光标
+    open get_user_data_list;
+    -- 获取光标
+    fetch get_user_data_list   into name_value, password_value;
+    -- 打印 获取到的数据
+    select concat('name: ',name_value,' password: ',password_value) as print_data;
+    -- 关闭光标
+    close get_user_data_list;
+  end;
+
+call pro_cursor_example_t2();
+```
 
 
 [参考1(重点)](https://www.jb51.net/article/70677.htm)
