@@ -659,7 +659,44 @@ handler_type:CONTINUE | EXIT | UNDO
 Condition_value:Sqlwarning | not found | sqlexception
 ```
 
++ handler_type(自定义程序类型)
+
+> 为错误处理方式，参数取值有三个
+
++ CONTINUE continue 表示遇到错误不处理，继续执行
++ EXIT 退出
++ UNDO undo 撤销
+  
+> 表示遇到错误后，撤销之前的操作，MysqL中，暂时不支持这样的操作
+
++ Condition_value
+
+
+
+
+
 ```mysql
+
+drop table if EXISTS test2.t ;
+CREATE TABLE test2.t (s1 int,primary key (s1));
+
+
+drop procedure if exists pro_handler_example_t1;
+delimiter ;
+
+CREATE PROCEDURE pro_handler_example_t1()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
+  SET @x = 1;
+  INSERT INTO test2.t VALUES (10);
+  SET @x = 2;
+  INSERT INTO test2.t VALUES (20);
+  SET @x = 3;
+END;
+
+call pro_handler_example_t1() ;
+
+SELECT @x;
 
 ```
 
@@ -722,3 +759,6 @@ call pro_cursor_example_t2();
 [参考2](https://blog.csdn.net/qq_34720818/article/details/117463865)
 
 [参考3](https://www.jb51.net/list/list_112_1.htm)
+
+[参考4](https://blog.csdn.net/weixin_42364301/article/details/113441294)
+
