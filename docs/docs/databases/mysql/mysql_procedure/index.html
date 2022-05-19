@@ -56,7 +56,7 @@ delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.b4f46a82ea2f6a17448eb90a80a031a4ad3eb0981639cde6ffeb0beaf59b07b1.js"  ></script>
+<script defer src="./../../../../en.search.min.cc71b2cb75b5e167ff6f5580940b55dd59a58bc18b5de786f46c02ba2d679442.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -524,6 +524,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_operation_maintenance/" class="">mysql运维</a>
+  
+
+        </li>
       
     
       
@@ -2763,10 +2774,11 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#局部变量">局部变量</a></li>
         <li><a href="#set语句">set语句</a></li>
         <li><a href="#流程控制语句">流程控制语句</a></li>
-        <li><a href="#select--into-语句">select … into 语句</a></li>
+        <li><a href="#select--into-语句-通过select--into-方式进行赋值操作">select … into 语句 (通过select … into 方式进行赋值操作)</a></li>
         <li><a href="#定义处理程序">定义处理程序</a></li>
       </ul>
     </li>
+    <li><a href="#游标光标">游标（光标）</a></li>
   </ul>
 </nav>
 
@@ -3280,19 +3292,210 @@ delimiter ;
 <span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_example_while_t</span>(<span style="color:#ae81ff">200</span>,<span style="color:#f92672">@</span>result) ;
 
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+
+<span style="color:#75715e">-- 其他
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_example_while_t3;
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_example_while_t3</span>(<span style="color:#66d9ef">in</span> len <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">int</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> total <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">declare</span> i <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span>  <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len
+      do
+      <span style="color:#66d9ef">set</span> i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+      <span style="color:#66d9ef">set</span> total <span style="color:#f92672">=</span> total <span style="color:#f92672">+</span> i ;
+    end <span style="color:#66d9ef">while</span> ;
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> total ;
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_example_while_t3</span>(<span style="color:#ae81ff">100</span>,<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+</code></pre></div><h5 id="repeat结构">
+  repeat结构
+  <a class="anchor" href="#repeat%e7%bb%93%e6%9e%84">#</a>
+</h5>
+<pre><code class="language-script" data-lang="script">repeat
+执行sql语句
+until 不满的条件
+end repeat;
+</code></pre><h5 id="例子-7">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-7">#</a>
+</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_example_repeat_t;
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_example_repeat_t</span>(<span style="color:#66d9ef">in</span> len_value <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">out</span> result_value <span style="color:#66d9ef">longtext</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> i <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">declare</span> v_text <span style="color:#66d9ef">longtext</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span> ;
+    <span style="color:#66d9ef">repeat</span>
+    <span style="color:#66d9ef">set</span> i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">set</span> v_text <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>( v_text,i,<span style="color:#e6db74">&#39;-&#39;</span>) ;
+    until i <span style="color:#f92672">&gt;=</span> len_value
+    end <span style="color:#66d9ef">repeat</span>;
+    <span style="color:#66d9ef">set</span> result_value <span style="color:#f92672">=</span> v_text ;
+  end ;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_example_repeat_t</span>(<span style="color:#ae81ff">200</span>,<span style="color:#f92672">@</span>result) ;
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
+</code></pre></div><h5 id="loop和leave语句">
+  loop和leave语句
+  <a class="anchor" href="#loop%e5%92%8cleave%e8%af%ad%e5%8f%a5">#</a>
+</h5>
+<pre><code class="language-script" data-lang="script">[loop标签名:] loop
+执行sql语句(sql语句中应该包括，退出循环的命令：leave loop标签名;如果没有将会造成死循环)
+end loop [loop标签名];
+</code></pre><h5 id="例子-8">
+  例子
+  <a class="anchor" href="#%e4%be%8b%e5%ad%90-8">#</a>
+</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_loop_example_t;
+
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_loop_example_t</span>(<span style="color:#66d9ef">in</span> len_value <span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">inout</span> result <span style="color:#66d9ef">int</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> i <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">declare</span> total <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    label_loop:<span style="color:#66d9ef">loop</span>
+      <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> len_value
+      <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">leave</span> label_loop;
+      end <span style="color:#66d9ef">if</span>;
+      <span style="color:#66d9ef">set</span> i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+      <span style="color:#66d9ef">set</span> total <span style="color:#f92672">=</span> total <span style="color:#f92672">+</span> i;
+    end <span style="color:#66d9ef">loop</span> label_loop;
+		<span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> total;
+  end;
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_loop_example_t</span>(<span style="color:#ae81ff">100</span>,<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
 </code></pre></div><h4 id="3case-语句">
   (3)Case 语句
   <a class="anchor" href="#3case-%e8%af%ad%e5%8f%a5">#</a>
 </h4>
-<h3 id="select--into-语句">
-  select … into 语句
-  <a class="anchor" href="#select--into-%e8%af%ad%e5%8f%a5">#</a>
+<pre><code class="language-script" data-lang="script">case 
+when 条件 then
+执行sql语句
+when 条件 then
+执行sql语句
+...
+else
+执行sql语句
+end case;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_case_example_t2;
+
+delimiter ;
+
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_case_example_t2</span>(<span style="color:#66d9ef">in</span> number_value <span style="color:#66d9ef">double</span>, <span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">longtext</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> temp_value <span style="color:#66d9ef">longtext</span>;
+    <span style="color:#66d9ef">case</span>
+      <span style="color:#66d9ef">when</span> number_value <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>
+      <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">set</span> temp_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;非常优秀&#39;</span>;
+      <span style="color:#66d9ef">when</span> number_value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">90</span> <span style="color:#66d9ef">and</span> number_value <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>
+      <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">set</span> temp_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;优秀&#39;</span>;
+      <span style="color:#66d9ef">when</span> number_value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">and</span> number_value <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span>
+      <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">set</span> temp_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;良&#39;</span>;
+      <span style="color:#66d9ef">when</span> number_value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">70</span> <span style="color:#66d9ef">and</span> number_value <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span>
+      <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">set</span> temp_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;及格&#39;</span>;
+      <span style="color:#66d9ef">when</span> number_value <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">60</span>
+      <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">set</span> temp_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;未及格&#39;</span>;
+    end <span style="color:#66d9ef">case</span>;
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> temp_value;
+  end;
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>input <span style="color:#f92672">=</span> <span style="color:#a6e22e">rand</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">rand</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>;
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_case_example_t2</span>(<span style="color:#f92672">@</span>input, <span style="color:#f92672">@</span>result);
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
+</code></pre></div><h3 id="select--into-语句-通过select--into-方式进行赋值操作">
+  select … into 语句 (通过select … into 方式进行赋值操作)
+  <a class="anchor" href="#select--into-%e8%af%ad%e5%8f%a5-%e9%80%9a%e8%bf%87select--into-%e6%96%b9%e5%bc%8f%e8%bf%9b%e8%a1%8c%e8%b5%8b%e5%80%bc%e6%93%8d%e4%bd%9c">#</a>
 </h3>
-<h3 id="定义处理程序">
+<blockquote>
+<p>把选定列的值直接存储到局部变量中，语法格式</p>
+</blockquote>
+<blockquote>
+<p>说明:存储过程体中的select…into语句返回的结果集只能有一行数据。</p>
+</blockquote>
+<pre><code class="language-script" data-lang="script">Select col_name[,…] into var_name[,…] table_expr 
+Col_name:用于指定列名 
+Var_name:用于指定要赋值的变量名 
+Table_expr:表示select语句中的from字句及后面的语法部分 
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_select_into_example_t2;
+
+delimiter ;
+
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_select_into_example_t2</span>(<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">longtext</span>)
+  begin
+    <span style="color:#66d9ef">declare</span> name_value <span style="color:#66d9ef">longtext</span>;
+    <span style="color:#66d9ef">declare</span> password_value <span style="color:#66d9ef">longtext</span>;
+    <span style="color:#66d9ef">select</span> USER_NAME , USER_PASSWORD <span style="color:#66d9ef">into</span> name_value , password_value <span style="color:#66d9ef">from</span> <span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span> <span style="color:#66d9ef">where</span> USER_ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2019&#39;</span>;
+    <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">concat</span>(name_value,<span style="color:#e6db74">&#39;-&#39;</span>,password_value);
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_select_into_example_t2</span>( <span style="color:#f92672">@</span>result);
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
+</code></pre></div><h3 id="定义处理程序">
   定义处理程序
   <a class="anchor" href="#%e5%ae%9a%e4%b9%89%e5%a4%84%e7%90%86%e7%a8%8b%e5%ba%8f">#</a>
 </h3>
-<p><a href="https://www.jb51.net/article/70677.htm">参考1(重点)</a></p>
+<blockquote>
+<p>是事先定义程序执行过程中可能遇到的问题。并且可以在处理程序中定义解决这些问题的办法。这种方式可以提前预测可能出现的问题，并提出解决方法</p>
+</blockquote>
+<pre><code class="language-script" data-lang="script">DECLARE handler_type HANDLER FOR condition_value[,…] sp_statement 
+handler_type:CONTINUE | EXIT | UNDO 
+Condition_value:Sqlwarning | not found | sqlexception
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+</code></pre></div><h2 id="游标光标">
+  游标（光标）
+  <a class="anchor" href="#%e6%b8%b8%e6%a0%87%e5%85%89%e6%a0%87">#</a>
+</h2>
+<blockquote>
+<p>游标又称光标是用来存储查询结果集的数据类型，在存储过程和函数中可以使用光标对结果集进行循环的处理。类似高级编程语言中的集合类型。
+光标的使用包括光标的声明、open、fetch和 close，其语法分别如下</p>
+</blockquote>
+<ul>
+<li>声明光标</li>
+</ul>
+<pre><code class="language-script" data-lang="script">declare  光标名称 cursor for sql语句;
+</code></pre><ul>
+<li>打开光标</li>
+</ul>
+<pre><code class="language-script" data-lang="script">open 光标名;
+</code></pre><ul>
+<li>获取光标(将光标当前数据存储到变量中)</li>
+</ul>
+<pre><code class="language-script" data-lang="script">fetch 光标名 into 变量名[,变量名...];
+</code></pre><ul>
+<li>关闭光标</li>
+</ul>
+<pre><code class="language-script" data-lang="script">close 光标名;
+</code></pre><ul>
+<li>简单例子</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_cursor_example_t2;
+delimiter ;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_cursor_example_t2</span>()
+  begin
+    <span style="color:#66d9ef">declare</span> name_value <span style="color:#66d9ef">longtext</span>;
+    <span style="color:#66d9ef">declare</span> password_value <span style="color:#66d9ef">longtext</span>;
+    <span style="color:#75715e">-- 定义光标
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">declare</span> get_user_data_list <span style="color:#66d9ef">cursor</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">select</span> USER_NAME, USER_PASSWORD <span style="color:#66d9ef">from</span> <span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span>;
+    <span style="color:#75715e">-- 打开光标
+</span><span style="color:#75715e"></span>    open get_user_data_list;
+    <span style="color:#75715e">-- 获取光标
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fetch</span> get_user_data_list   <span style="color:#66d9ef">into</span> name_value, password_value;
+    <span style="color:#75715e">-- 打印 获取到的数据
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> <span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;name: &#39;</span>,name_value,<span style="color:#e6db74">&#39; password: &#39;</span>,password_value) <span style="color:#66d9ef">as</span> print_data;
+    <span style="color:#75715e">-- 关闭光标
+</span><span style="color:#75715e"></span>    close get_user_data_list;
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_cursor_example_t2</span>();
+</code></pre></div><p><a href="https://www.jb51.net/article/70677.htm">参考1(重点)</a></p>
 <p><a href="https://blog.csdn.net/qq_34720818/article/details/117463865">参考2</a></p>
 <p><a href="https://www.jb51.net/list/list_112_1.htm">参考3</a></p>
 </article>
@@ -3487,10 +3690,11 @@ delimiter ;
         <li><a href="#局部变量">局部变量</a></li>
         <li><a href="#set语句">set语句</a></li>
         <li><a href="#流程控制语句">流程控制语句</a></li>
-        <li><a href="#select--into-语句">select … into 语句</a></li>
+        <li><a href="#select--into-语句-通过select--into-方式进行赋值操作">select … into 语句 (通过select … into 方式进行赋值操作)</a></li>
         <li><a href="#定义处理程序">定义处理程序</a></li>
       </ul>
     </li>
+    <li><a href="#游标光标">游标（光标）</a></li>
   </ul>
 </nav>
 

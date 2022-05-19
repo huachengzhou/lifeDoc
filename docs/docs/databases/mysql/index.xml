@@ -177,7 +177,15 @@ drop datbase ch10;create database ch10;use ch10;CREATE TABLE fruits(f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</guid>
-      <description></description>
+      <description>一: 备份 #  1: 备份内容 #    数据 (数据文件或文本格式数据)
+  操作日志(binlog) (数据库变更日志)
+  2:冷备份与热备份 #    冷备份 (关闭数据库服务，完整拷贝数据文件)
+  热备份 (在不影响数据库读写服务的情况下备份数据库)
+  3:本地备份与远程备份 #    本地备份 (在数据库服务器本地进行备份)
+  远程备份 (远程连接数据库进行备份)
+  4:全量备份与增量备份 #    全量备份 (备份完整的数据库)
+  增量备份 (只备份上一次备份以来发生修改的数据)
+  5:备份周期 #   考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法 #   mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump #  </description>
     </item>
     
     <item>

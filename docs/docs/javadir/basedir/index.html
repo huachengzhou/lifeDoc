@@ -5,7 +5,7 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="目录 #   jsp  回到上一级 #  ">
+<meta name="description" content="目录 #   jsp  @Test public void mapTest() throws Exception { Map map = new HashMap(); map.put(&#34;1&#34;, UUID.randomUUID().toString()) ; map.put(&#34;4&#34;, UUID.randomUUID().toString()) ; Map&lt;Integer ,String&gt; integerStringMap = new HashMap&lt;&gt;() ; integerStringMap.put(1,UUID.randomUUID().toString()) ; // integerStringMap = map;  if (!integerStringMap.isEmpty()){ for ( Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; iterator = integerStringMap.entrySet().iterator();iterator.hasNext();){ Map.Entry&lt;Integer, String&gt; next = iterator.next(); System.out.println(next.getKey()&#43;&#34;-&#34;&#43;next.getValue()); System.out.println(next.getKey() instanceof Integer); System.out.println(next.getValue() instanceof String); } } //print result  /** * 1-aeec41b6-bb7c-4e77-a57c-70a416bc03eb * false * true * 4-e02bb587-9714-4873-9b6c-5e2d4494117f * false * true */ } 回到上一级 #  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Java基础知识 " />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -15,7 +15,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../en.search.min.b4f46a82ea2f6a17448eb90a80a031a4ad3eb0981639cde6ffeb0beaf59b07b1.js"  ></script>
+<script defer src="./../../../en.search.min.cc71b2cb75b5e167ff6f5580940b55dd59a58bc18b5de786f46c02ba2d679442.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/javadir/basedir/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -484,6 +484,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_operation_maintenance/" class="">mysql运维</a>
+  
+
+        </li>
       
     
       
@@ -2722,7 +2733,33 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li><a href="jsp_dir">jsp</a></li>
 </ul>
-<h2 id="回到上一级">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mapTest</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        Map map  <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">();</span>
+                map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">,</span> UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">())</span> <span style="color:#f92672">;</span>
+                map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;4&#34;</span><span style="color:#f92672">,</span> UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">())</span> <span style="color:#f92672">;</span>
+                Map<span style="color:#f92672">&lt;</span>Integer <span style="color:#f92672">,</span>String<span style="color:#f92672">&gt;</span> integerStringMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;()</span> <span style="color:#f92672">;</span>
+                integerStringMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span>UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">())</span> <span style="color:#f92672">;</span>
+        <span style="color:#75715e">//        integerStringMap = map;
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>integerStringMap<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+                    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span> Iterator<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> integerStringMap<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">().</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">();){</span>
+                        Map<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> next <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>next<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">+</span>next<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">());</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>next<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">instanceof</span> Integer<span style="color:#f92672">);</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>next<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">instanceof</span> String<span style="color:#f92672">);</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#75715e">//print result
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">/**
+</span><span style="color:#75715e">                 * 1-aeec41b6-bb7c-4e77-a57c-70a416bc03eb
+</span><span style="color:#75715e">                 * false
+</span><span style="color:#75715e">                 * true
+</span><span style="color:#75715e">                 * 4-e02bb587-9714-4873-9b6c-5e2d4494117f
+</span><span style="color:#75715e">                 * false
+</span><span style="color:#75715e">                 * true
+</span><span style="color:#75715e">                 */</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="回到上一级">
   <a href="../">回到上一级</a>
   <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
 </h2>

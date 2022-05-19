@@ -5,9 +5,25 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="一: 备份 #  1: 备份内容 #    数据 (数据文件或文本格式数据)
+  操作日志(binlog) (数据库变更日志)
+  2:冷备份与热备份 #    冷备份 (关闭数据库服务，完整拷贝数据文件)
+  热备份 (在不影响数据库读写服务的情况下备份数据库)
+  3:本地备份与远程备份 #    本地备份 (在数据库服务器本地进行备份)
+  远程备份 (远程连接数据库进行备份)
+  4:全量备份与增量备份 #    全量备份 (备份完整的数据库)
+  增量备份 (只备份上一次备份以来发生修改的数据)
+  5:备份周期 #   考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法 #   mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump #  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql运维" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="一: 备份 #  1: 备份内容 #    数据 (数据文件或文本格式数据)
+  操作日志(binlog) (数据库变更日志)
+  2:冷备份与热备份 #    冷备份 (关闭数据库服务，完整拷贝数据文件)
+  热备份 (在不影响数据库读写服务的情况下备份数据库)
+  3:本地备份与远程备份 #    本地备份 (在数据库服务器本地进行备份)
+  远程备份 (远程连接数据库进行备份)
+  4:全量备份与增量备份 #    全量备份 (备份完整的数据库)
+  增量备份 (只备份上一次备份以来发生修改的数据)
+  5:备份周期 #   考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法 #   mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump #  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/" />
 <meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
@@ -16,7 +32,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.b4f46a82ea2f6a17448eb90a80a031a4ad3eb0981639cde6ffeb0beaf59b07b1.js"  ></script>
+<script defer src="./../../../../en.search.min.cc71b2cb75b5e167ff6f5580940b55dd59a58bc18b5de786f46c02ba2d679442.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -484,6 +500,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_operation_maintenance/" class=" active">mysql运维</a>
+  
+
+        </li>
       
     
       
@@ -2691,7 +2718,20 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-备份内容">1: 备份内容</a></li>
+    <li><a href="#2冷备份与热备份">2:冷备份与热备份</a></li>
+    <li><a href="#3本地备份与远程备份">3:本地备份与远程备份</a></li>
+    <li><a href="#4全量备份与增量备份">4:全量备份与增量备份</a></li>
+    <li><a href="#5备份周期">5:备份周期</a></li>
+    <li><a href="#6常用工具及用法">6:常用工具及用法</a>
+      <ul>
+        <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -2710,7 +2750,84 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/pdf/newIndex.html">book</a></li>
 </ul>
       
-  <article class="markdown"></article>
+  <article class="markdown"><h1 id="一-备份">
+  一: 备份
+  <a class="anchor" href="#%e4%b8%80-%e5%a4%87%e4%bb%bd">#</a>
+</h1>
+<h2 id="1-备份内容">
+  1: 备份内容
+  <a class="anchor" href="#1-%e5%a4%87%e4%bb%bd%e5%86%85%e5%ae%b9">#</a>
+</h2>
+<ul>
+<li>
+<p>数据 (数据文件或文本格式数据)</p>
+</li>
+<li>
+<p>操作日志(binlog)  (数据库变更日志)</p>
+</li>
+</ul>
+<h2 id="2冷备份与热备份">
+  2:冷备份与热备份
+  <a class="anchor" href="#2%e5%86%b7%e5%a4%87%e4%bb%bd%e4%b8%8e%e7%83%ad%e5%a4%87%e4%bb%bd">#</a>
+</h2>
+<ul>
+<li>
+<p>冷备份 (关闭数据库服务，完整拷贝数据文件)</p>
+</li>
+<li>
+<p>热备份 (在不影响数据库读写服务的情况下备份数据库)</p>
+</li>
+</ul>
+<h2 id="3本地备份与远程备份">
+  3:本地备份与远程备份
+  <a class="anchor" href="#3%e6%9c%ac%e5%9c%b0%e5%a4%87%e4%bb%bd%e4%b8%8e%e8%bf%9c%e7%a8%8b%e5%a4%87%e4%bb%bd">#</a>
+</h2>
+<ul>
+<li>
+<p>本地备份 (在数据库服务器本地进行备份)</p>
+</li>
+<li>
+<p>远程备份 (远程连接数据库进行备份)</p>
+</li>
+</ul>
+<h2 id="4全量备份与增量备份">
+  4:全量备份与增量备份
+  <a class="anchor" href="#4%e5%85%a8%e9%87%8f%e5%a4%87%e4%bb%bd%e4%b8%8e%e5%a2%9e%e9%87%8f%e5%a4%87%e4%bb%bd">#</a>
+</h2>
+<ul>
+<li>
+<p>全量备份 (备份完整的数据库)</p>
+</li>
+<li>
+<p>增量备份 (只备份上一次备份以来发生修改的数据)</p>
+</li>
+</ul>
+<h2 id="5备份周期">
+  5:备份周期
+  <a class="anchor" href="#5%e5%a4%87%e4%bb%bd%e5%91%a8%e6%9c%9f">#</a>
+</h2>
+<ul>
+<li>考虑因素：</li>
+<li>数据库大小(决定备份时间)</li>
+<li>恢复速度要求(快速or慢速)</li>
+<li>备份方式(全量or增量)</li>
+</ul>
+<h2 id="6常用工具及用法">
+  6:常用工具及用法
+  <a class="anchor" href="#6%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e5%8f%8a%e7%94%a8%e6%b3%95">#</a>
+</h2>
+<ul>
+<li>mysqldump - 逻辑备份，热备</li>
+<li>xtrabackup - 物理备份， 热备</li>
+<li>Lvm/zfs snapshot - 物理备份</li>
+<li>mydumper - 逻辑备份，热备</li>
+<li>cp - 物理备份，冷备</li>
+</ul>
+<h3 id="常用工具及用法---mysqldump">
+  常用工具及用法 - mysqldump
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7%e5%8f%8a%e7%94%a8%e6%b3%95---mysqldump">#</a>
+</h3>
+</article>
  
       <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
 
@@ -2856,6 +2973,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -2866,7 +2987,20 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-备份内容">1: 备份内容</a></li>
+    <li><a href="#2冷备份与热备份">2:冷备份与热备份</a></li>
+    <li><a href="#3本地备份与远程备份">3:本地备份与远程备份</a></li>
+    <li><a href="#4全量备份与增量备份">4:全量备份与增量备份</a></li>
+    <li><a href="#5备份周期">5:备份周期</a></li>
+    <li><a href="#6常用工具及用法">6:常用工具及用法</a>
+      <ul>
+        <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
