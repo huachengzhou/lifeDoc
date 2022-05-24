@@ -19,6 +19,8 @@ weight: 2
 
 ### [mysql查询](mysql查询)
 
+### [mysql新查询](mysql_select)
+
 ### [mysql正则表达式](mysql_regexp)
 
 ### [mysql事务](mysql事务)
