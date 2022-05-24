@@ -2,19 +2,43 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="webpack和nodejs关系 #   webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
-  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm #  npm是什么 #  是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）
-为何产生？ #  当网站的依赖的js越来越多，程序员发现这是一件麻烦事：
+<meta name="description" content="webpack和nodejs关系
+#
+
+ webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
+  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm
+#
+
+npm是什么
+#
+
+是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）
+为何产生？
+#
+
+当网站的依赖的js越来越多，程序员发现这是一件麻烦事：
 去JQuery官网下载JQuery，去 BootStrap 官网下载 BootStrap ，去 Underscore 官网下载 Underscore .......没完没了
 于是npm就出来了（全称 Node Package Manager 包管理工具），大家把自己写好的源码上传到npm官网上，如果要用某个或某些个，直接通过npm安装就可以了，并且模块A依赖B，B依赖C、D，此时只需安装A即可，因为此时npm会根据依赖关系，把所有依赖的包都下载下来并且管理起来；
 这一点和maven、gradle十分相似，只不过maven、gradle是用来管理java jar包的，而npm是用来管理js的。
-常用命令 #   npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node #  node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。
+常用命令
+#
+
+ npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node
+#
+
+node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。
 包含关系，nodejs中含有npm，比如说你安装好nodejs，你打开cmd输入npm -v会发现出啊线npm的版本号，说明npm已经安装好。
-webpack #  Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。
-我们为什么使用webpack? #  开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）
+webpack
+#
+
+Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。
+我们为什么使用webpack?
+#
+
+开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）
 本地代码的时候，要是调后端的接口不跨域就好了（代理服务）
 为了跟上时代，要是能用上ES678N就好了（翻译服务）
 项目要上线了，要是能一键压缩代码，图片什么的就好了（压缩打包服务）
@@ -22,16 +46,40 @@ webpack #  Webpack 是一个前端资源加载/打包工具。它将根据模块
 这么多服务，我们需要webpack帮我们去整合那么多的服务，而node的出现，赋予了我们操作系统的能力，要根据自己的需求来使用webpack，知道自己需要什么样的服务，webpack能不能提供这样的服务，如果可以，那么这个服务应该在构建中的呢个环节被处理。
 1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="webpack和nodejs关系 " />
-<meta property="og:description" content="webpack和nodejs关系 #   webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
-  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm #  npm是什么 #  是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）
-为何产生？ #  当网站的依赖的js越来越多，程序员发现这是一件麻烦事：
+<meta property="og:description" content="webpack和nodejs关系
+#
+
+ webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
+  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm
+#
+
+npm是什么
+#
+
+是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）
+为何产生？
+#
+
+当网站的依赖的js越来越多，程序员发现这是一件麻烦事：
 去JQuery官网下载JQuery，去 BootStrap 官网下载 BootStrap ，去 Underscore 官网下载 Underscore .......没完没了
 于是npm就出来了（全称 Node Package Manager 包管理工具），大家把自己写好的源码上传到npm官网上，如果要用某个或某些个，直接通过npm安装就可以了，并且模块A依赖B，B依赖C、D，此时只需安装A即可，因为此时npm会根据依赖关系，把所有依赖的包都下载下来并且管理起来；
 这一点和maven、gradle十分相似，只不过maven、gradle是用来管理java jar包的，而npm是用来管理js的。
-常用命令 #   npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node #  node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。
+常用命令
+#
+
+ npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node
+#
+
+node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。
 包含关系，nodejs中含有npm，比如说你安装好nodejs，你打开cmd输入npm -v会发现出啊线npm的版本号，说明npm已经安装好。
-webpack #  Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。
-我们为什么使用webpack? #  开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）
+webpack
+#
+
+Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。
+我们为什么使用webpack?
+#
+
+开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）
 本地代码的时候，要是调后端的接口不跨域就好了（代理服务）
 为了跟上时代，要是能用上ES678N就好了（翻译服务）
 项目要上线了，要是能一键压缩代码，图片什么的就好了（压缩打包服务）
@@ -39,14 +87,15 @@ webpack #  Webpack 是一个前端资源加载/打包工具。它将根据模块
 这么多服务，我们需要webpack帮我们去整合那么多的服务，而node的出现，赋予了我们操作系统的能力，要根据自己的需求来使用webpack，知道自己需要什么样的服务，webpack能不能提供这样的服务，如果可以，那么这个服务应该在构建中的呢个环节被处理。
 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" />
-<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-06-17T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00&#43;00:00" />
+
 <title>webpack和nodejs关系  | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../en.search.min.cc71b2cb75b5e167ff6f5580940b55dd59a58bc18b5de786f46c02ba2d679442.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../en.search.min.b041436949bc7b3683e1f347a066a559c9d0e9f059f0583b1aa66d1c168493f0.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -548,6 +597,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_regexp/" class="">mysql正则表达式</a>
   
 
         </li>
@@ -2703,7 +2765,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

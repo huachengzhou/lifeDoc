@@ -12,7 +12,7 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/</guid>
-      <description>Apache Commons 工具类介绍及简单使用 #     组件 功能介绍     BeanUtils Commons-BeanUtils 提供对 Java 反射和自省API的包装, 提供了对于JavaBean进行各种操作，克隆对象,属性等等.   Betwixt XML与Java对象之间相互转换.   Codec 处理常用的编码方法的工具类包 例如DES、SHA1、MD5、Base64等.   Collections java集合框架操作.   Compress java提供文件打包 压缩类库.   Configuration Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助,java应用程序的配置管理类库.   DBCP 提供数据库连接池服务.   DbUtils DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码,提供对jdbc 的操作封装来简化数据查询和记录读取操作   Email java发送邮件 对javamail的封装.   FileUpload 提供文件上传功能.   HttpClient 提供HTTP客户端与服务器的各种通讯操作. 现在已改成HttpComponents   Lang Java基本对象方法的工具类包 如：StringUtils,ArrayUtils等等.</description>
+      <description>Apache Commons 工具类介绍及简单使用#   组件 功能介绍     BeanUtils Commons-BeanUtils 提供对 Java 反射和自省API的包装, 提供了对于JavaBean进行各种操作，克隆对象,属性等等.   Betwixt XML与Java对象之间相互转换.   Codec 处理常用的编码方法的工具类包 例如DES、SHA1、MD5、Base64等.   Collections java集合框架操作.   Compress java提供文件打包 压缩类库.   Configuration Commons-Configuration 工具对各种各式的配置和参考文件提供读取帮助,java应用程序的配置管理类库.   DBCP 提供数据库连接池服务.   DbUtils DbUtils 是一个 JDBC helper 类库，完成数据库任务的简单的资源清除代码,提供对jdbc 的操作封装来简化数据查询和记录读取操作   Email java发送邮件 对javamail的封装.   FileUpload 提供文件上传功能.   HttpClient 提供HTTP客户端与服务器的各种通讯操作. 现在已改成HttpComponents   Lang Java基本对象方法的工具类包 如：StringUtils,ArrayUtils等等.</description>
     </item>
     
     <item>
@@ -21,7 +21,7 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/commons_io/</guid>
-      <description>org.apache.commons.io.FilenameUtils 文件名称操作 #    FilenameUtils.getExtension(fileName) 获取文件后缀 //text
+      <description>org.apache.commons.io.FilenameUtils 文件名称操作#  FilenameUtils.getExtension(fileName) 获取文件后缀 //text
   FilenameUtils.getName(fileName) 获取文件完整名称 //c.text
   FilenameUtils.getBaseName(fileName) 获取文件名称 //c
   FilenameUtils.getFullPath(fileName) 获取文件的完整路径 //D:\data\
@@ -34,7 +34,7 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/dom4j/</guid>
-      <description>dom4j #   选取节点
+      <description>dom4j# 选取节点
    nodename 选取当前节点的所有子节点
   / 从根节点选取
   // 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置
@@ -56,7 +56,7 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/guava-common/</guid>
-      <description>Guava 基于java1.6的类库集合的扩展项目 #   com.google.common.annotations：普通注解类型。 com.google.common.base：基本工具类库和接口。 com.google.common.cache：缓存工具包，非常简单易用且功能强大的JVM内缓存。 com.google.common.collect：带泛型的集合接口扩展和实现，以及工具类，这里你会发现很多好玩的集合。 com.google.common.eventbus：发布订阅风格的事件总线。 com.google.common.hash： 哈希工具包。 com.google.common.io：I/O工具包。 com.google.common.math：原始算术类型和超大数的运算工具包。 com.google.common.net：网络工具包。 com.google.common.primitives：八种原始类型和无符号类型的静态工具包。 com.google.common.reflect：反射工具包。 com.google.common.util.concurrent：多线程工具包。 常见Object方法   hashCode compare/compareTo 实现一个比较器[Comparator]，或者直接实现Comparable接口有时也伤不起
+      <description>Guava 基于java1.6的类库集合的扩展项目# com.google.common.annotations：普通注解类型。 com.google.common.base：基本工具类库和接口。 com.google.common.cache：缓存工具包，非常简单易用且功能强大的JVM内缓存。 com.google.common.collect：带泛型的集合接口扩展和实现，以及工具类，这里你会发现很多好玩的集合。 com.google.common.eventbus：发布订阅风格的事件总线。 com.google.common.hash： 哈希工具包。 com.google.common.io：I/O工具包。 com.google.common.math：原始算术类型和超大数的运算工具包。 com.google.common.net：网络工具包。 com.google.common.primitives：八种原始类型和无符号类型的静态工具包。 com.google.common.reflect：反射工具包。 com.google.common.util.concurrent：多线程工具包。 常见Object方法   hashCode compare/compareTo 实现一个比较器[Comparator]，或者直接实现Comparable接口有时也伤不起
  public class ProjectInfo implements Serializable,Comparable&amp;lt;ProjectInfo&amp;gt; {private int id;private String name;public int getId() {return id;}public String getName() {return name;}public void setId(int id) {this.id = id;}public void setName(String name) {this.name = name;}@Overridepublic int compareTo(ProjectInfo o) {return ComparisonChain.</description>
     </item>
     
@@ -66,9 +66,9 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/jsoup/</guid>
-      <description>jsoup学习文档 #  简介 #   Jsoup是用于解析HTML，就类似XML解析器用于解析XML。 Jsoup它解析HTML成为真实世界的HTML。 它与jquery选择器的语法非常相似，并且非常灵活容易使用以获得所需的结果
+      <description>jsoup学习文档#简介# Jsoup是用于解析HTML，就类似XML解析器用于解析XML。 Jsoup它解析HTML成为真实世界的HTML。 它与jquery选择器的语法非常相似，并且非常灵活容易使用以获得所需的结果
  +jsoup api 6个包提供用于开发jsoup应用程序的类和接口。
-org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parserorg.jsoup.safetyorg.jsoup.salect引入 #  //大多数情况使用jsouporg.jsoup.nodes.Document document = Jsoup.parse(html);Document doc = Jsoup.parse(new URL(&amp;quot;http://www.funi.com/&amp;quot;),7000);//少数情况使用httpUnitWebClient webClient = new WebClient() ;HtmlPage htmlPage = webClient.getPage(&amp;quot;http://www.89ip.cn/&amp;quot;);htmlPage.asXml()//html使用(maven) #  &amp;lt;dependency&amp;gt;&amp;lt;!-- jsoup HTML parser library @ http://jsoup.org/ --&amp;gt;&amp;lt;groupId&amp;gt;org.jsoup&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;jsoup&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;1.10.2&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;!-- httpclient --&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;org.apache.httpcomponents&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;httpclient&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;4.5.6&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;net.</description>
+org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parserorg.jsoup.safetyorg.jsoup.salect引入#//大多数情况使用jsouporg.jsoup.nodes.Document document = Jsoup.parse(html);Document doc = Jsoup.parse(new URL(&amp;quot;http://www.funi.com/&amp;quot;),7000);//少数情况使用httpUnitWebClient webClient = new WebClient() ;HtmlPage htmlPage = webClient.getPage(&amp;quot;http://www.89ip.cn/&amp;quot;);htmlPage.asXml()//html使用(maven)#&amp;lt;dependency&amp;gt;&amp;lt;!-- jsoup HTML parser library @ http://jsoup.org/ --&amp;gt;&amp;lt;groupId&amp;gt;org.jsoup&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;jsoup&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;1.10.2&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;!-- httpclient --&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;org.apache.httpcomponents&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;httpclient&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;4.5.6&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;net.</description>
     </item>
     
     <item>
@@ -77,7 +77,7 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/</guid>
-      <description>spring工具类 #   Spring-core中提供了大量的工具类，常用的有StringUtils、ObjectUtils、NumberUtils、Base64Utils等，Spring工具类在spring-core.jar中的org.springframework.util包下。
+      <description>spring工具类# Spring-core中提供了大量的工具类，常用的有StringUtils、ObjectUtils、NumberUtils、Base64Utils等，Spring工具类在spring-core.jar中的org.springframework.util包下。
   1:StringUtils  方法名	返回值类型	作用	备注isEmpty(Object str)	boolean	判断字符串是否为Null或者空字符串	null和&#39;&#39;都为truehasLength(CharSequence str)	boolean	判断字符串长度是否大于1	null和&#39;&#39;都为falsehasText(CharSequence str)	boolean	判断字符串中是否有字符	null和空字白符都为falsecontainsWhitespace(CharSequence str)	boolean	字符串中是否含有空白字符	trimWhitespace(CharSequence str)	String	去掉字符串中首尾的空白字符	trimAllWhitespace(String str)	String	去 掉字符串中所有的空白字符	trimLeadingWhitespace(String str)	String	去掉字符串左边的空白字符	trimTrailingWhitespace(String str)	String	去掉字符串右边边的空白字符	startsWithIgnoreCase(String str, String prefix)	String	判断字符串是否以xx开头，并且忽略大小写	getFilename(String path)	String	获取文件名	“mypath/myfile.txt” -&amp;gt; “myfile.txt”getFilenameExtension(String path)	String	获取文件扩展名	“mypath/myfile.txt” -&amp;gt; “txt”stripFilenameExtension(String path)	String	去掉文件扩展名	“mypath/myfile.</description>
     </item>
     
@@ -87,7 +87,7 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/</guid>
-      <description>spring常用的工具类 #  内置的resouce类型 #  UrlResourceClassPathResourceFileSystemResourceServletContextResourceInputStreamResourceByteArrayResourceEncodedResource 也就是Resource加上encoding, 可以认为是有编码的资源VfsResource(在jboss里经常用到, 相应还有 工具类 VfsUtils)org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;amp;quot;classpath:&amp;amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类 #  org.springframework.core.annotation.AnnotationUtils 处理注解org.springframework.core.io.support.PathMatchingResourcePatternResolver 用 于处理 ant 匹配风格(com/*.jsp, com/**/*.jsp),找出所有的资源, 结合上面的resource的概念一起使用,对于遍历文件很有用. 具体请详细查看javadocorg.springframework.core.io.support.PropertiesLoaderUtils 加载Properties资源工具类,和Resource结合org.springframework.core.BridgeMethodResolver 桥接方法分析器. 关于桥接方法请参考: http://java.sun.com/docs/books/jls/third_edition/html/expressions.html#15.12.4.5org.springframework.core.GenericTypeResolver 范型分析器, 在用于对范型方法, 参数分析.org.springframework.core.NestedExceptionUtilsxml工具 #  org.springframework.util.xml.AbstractStaxContentHandlerorg.springframework.util.xml.AbstractStaxXMLReaderorg.springframework.util.xml.AbstractXMLReaderorg.springframework.util.xml.AbstractXMLStreamReaderorg.springframework.util.xml.DomUtilsorg.springframework.util.xml.SimpleNamespaceContextorg.springframework.util.xml.SimpleSaxErrorHandlerorg.springframework.util.xml.SimpleTransformErrorListenerorg.springframework.util.xml.StaxUtilsorg.springframework.util.xml.TransformerUtils其它工具集 #  org.springframework.util.xml.AntPathMatcherant风格的处理org.</description>
+      <description>spring常用的工具类#内置的resouce类型#UrlResourceClassPathResourceFileSystemResourceServletContextResourceInputStreamResourceByteArrayResourceEncodedResource 也就是Resource加上encoding, 可以认为是有编码的资源VfsResource(在jboss里经常用到, 相应还有 工具类 VfsUtils)org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;amp;quot;classpath:&amp;amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类#org.springframework.core.annotation.AnnotationUtils 处理注解org.springframework.core.io.support.PathMatchingResourcePatternResolver 用 于处理 ant 匹配风格(com/*.jsp, com/**/*.jsp),找出所有的资源, 结合上面的resource的概念一起使用,对于遍历文件很有用. 具体请详细查看javadocorg.springframework.core.io.support.PropertiesLoaderUtils 加载Properties资源工具类,和Resource结合org.springframework.core.BridgeMethodResolver 桥接方法分析器. 关于桥接方法请参考: http://java.sun.com/docs/books/jls/third_edition/html/expressions.html#15.12.4.5org.springframework.core.GenericTypeResolver 范型分析器, 在用于对范型方法, 参数分析.org.springframework.core.NestedExceptionUtilsxml工具#org.springframework.util.xml.AbstractStaxContentHandlerorg.springframework.util.xml.AbstractStaxXMLReaderorg.springframework.util.xml.AbstractXMLReaderorg.springframework.util.xml.AbstractXMLStreamReaderorg.springframework.util.xml.DomUtilsorg.springframework.util.xml.SimpleNamespaceContextorg.springframework.util.xml.SimpleSaxErrorHandlerorg.springframework.util.xml.SimpleTransformErrorListenerorg.springframework.util.xml.StaxUtilsorg.springframework.util.xml.TransformerUtils其它工具集#org.springframework.util.xml.AntPathMatcherant风格的处理org.</description>
     </item>
     
     <item>
@@ -96,8 +96,8 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/</guid>
-      <description>Console 对象方法 #    常用 Console 调试命令
-  console.log(&#39;hello&#39;);console.info(&#39;信息&#39;);console.error(&#39;错误&#39;);console.warn(&#39;警告&#39;);assert() #   ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例console.assert(true === false, &amp;quot;判断条件不成立&amp;quot;)// Assertion failed: 判断条件不成立clear() #   清除当前控制台的所有输出，将光标回置到第一行。  console.clear()count() #   用于计数，输出它被调用了多少次。  (function() {for (var i = 0; i &amp;lt; 5; i++) { console.count(&#39;count&#39;); }})()error() #   输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&amp;quot;Error: %s (%i)&amp;quot;, &amp;quot;Server is not responding&amp;quot;,500)group() #   用于将显示的信息分组，可以把信息进行折叠和展开。  console.</description>
+      <description>Console 对象方法#  常用 Console 调试命令
+  console.log(&#39;hello&#39;);console.info(&#39;信息&#39;);console.error(&#39;错误&#39;);console.warn(&#39;警告&#39;);assert()# ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例console.assert(true === false, &amp;quot;判断条件不成立&amp;quot;)// Assertion failed: 判断条件不成立clear()# 清除当前控制台的所有输出，将光标回置到第一行。  console.clear()count()# 用于计数，输出它被调用了多少次。  (function() {for (var i = 0; i &amp;lt; 5; i++) { console.count(&#39;count&#39;); }})()error()# 输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&amp;quot;Error: %s (%i)&amp;quot;, &amp;quot;Server is not responding&amp;quot;,500)group()# 用于将显示的信息分组，可以把信息进行折叠和展开。  console.</description>
     </item>
     
   </channel>

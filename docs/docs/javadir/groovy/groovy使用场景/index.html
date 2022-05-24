@@ -2,43 +2,122 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="groovy 使用场景 #  Groovy可以用于多种情况。比如 #    1、作为shell脚本语言完成数据处理和文件操作任务。
+<meta name="description" content="groovy 使用场景
+#
+
+Groovy可以用于多种情况。比如
+#
+
+  1、作为shell脚本语言完成数据处理和文件操作任务。
   2、在Java或者Java EE应用程序中嵌入Groovy，实现Java和Groovy的集成。（这样有助于编写和集中处理经常变化的业务逻辑，或者给应用程序架构提供可编程的配置管理能力。）
-  Groovy是增强Java平台的唯一的脚本语言。 #   它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言： #   脚本语言不会替代系统编程语言，两者是相互补充的。
- 系统编程语言的目的： #    开发复杂的算法或者数据结构
+  Groovy是增强Java平台的唯一的脚本语言。
+#
+
+ 它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言：
+#
+
+ 脚本语言不会替代系统编程语言，两者是相互补充的。
+ 系统编程语言的目的：
+#
+
+  开发复杂的算法或者数据结构
   实现计算密集型应用
   操作大型数据集
   实现定义良好的、变更缓慢的需求
-  脚本语言应用的目的： #    连接已有的组件
+  脚本语言应用的目的：
+#
+
+  连接已有的组件
   处理经常变化的多种类型的实体
   具有图形化用户界面
   拥有快速变化的功能
-  Java编译器会产生可以在Java虚拟机上运行的字节码。 #  Groovy类和Java是二进制兼容的。 #  Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。 #  ——对于JVM而言，Groovy和Java是完全一样的。 #  因此，Groovy能够完全使用各种Java API。 #  Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。 #  回到上一级 #  ">
+  Java编译器会产生可以在Java虚拟机上运行的字节码。
+#
+
+Groovy类和Java是二进制兼容的。
+#
+
+Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。
+#
+
+——对于JVM而言，Groovy和Java是完全一样的。
+#
+
+因此，Groovy能够完全使用各种Java API。
+#
+
+Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。
+#
+
+回到上一级
+#
+
+">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content=" groovy使用场景 " />
-<meta property="og:description" content="groovy 使用场景 #  Groovy可以用于多种情况。比如 #    1、作为shell脚本语言完成数据处理和文件操作任务。
+<meta property="og:description" content="groovy 使用场景
+#
+
+Groovy可以用于多种情况。比如
+#
+
+  1、作为shell脚本语言完成数据处理和文件操作任务。
   2、在Java或者Java EE应用程序中嵌入Groovy，实现Java和Groovy的集成。（这样有助于编写和集中处理经常变化的业务逻辑，或者给应用程序架构提供可编程的配置管理能力。）
-  Groovy是增强Java平台的唯一的脚本语言。 #   它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言： #   脚本语言不会替代系统编程语言，两者是相互补充的。
- 系统编程语言的目的： #    开发复杂的算法或者数据结构
+  Groovy是增强Java平台的唯一的脚本语言。
+#
+
+ 它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言：
+#
+
+ 脚本语言不会替代系统编程语言，两者是相互补充的。
+ 系统编程语言的目的：
+#
+
+  开发复杂的算法或者数据结构
   实现计算密集型应用
   操作大型数据集
   实现定义良好的、变更缓慢的需求
-  脚本语言应用的目的： #    连接已有的组件
+  脚本语言应用的目的：
+#
+
+  连接已有的组件
   处理经常变化的多种类型的实体
   具有图形化用户界面
   拥有快速变化的功能
-  Java编译器会产生可以在Java虚拟机上运行的字节码。 #  Groovy类和Java是二进制兼容的。 #  Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。 #  ——对于JVM而言，Groovy和Java是完全一样的。 #  因此，Groovy能够完全使用各种Java API。 #  Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。 #  回到上一级 #  " />
+  Java编译器会产生可以在Java虚拟机上运行的字节码。
+#
+
+Groovy类和Java是二进制兼容的。
+#
+
+Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。
+#
+
+——对于JVM而言，Groovy和Java是完全一样的。
+#
+
+因此，Groovy能够完全使用各种Java API。
+#
+
+Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。
+#
+
+回到上一级
+#
+
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title> groovy使用场景  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.cc71b2cb75b5e167ff6f5580940b55dd59a58bc18b5de786f46c02ba2d679442.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../../en.search.min.b041436949bc7b3683e1f347a066a559c9d0e9f059f0583b1aa66d1c168493f0.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -540,6 +619,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_regexp/" class="">mysql正则表达式</a>
   
 
         </li>
@@ -2695,7 +2787,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

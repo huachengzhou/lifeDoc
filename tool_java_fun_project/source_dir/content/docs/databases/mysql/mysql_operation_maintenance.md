@@ -46,3 +46,30 @@ weight: 15
 + cp - 物理备份，冷备
 
 ### 常用工具及用法 - mysqldump
+
+```mysql
+-- 备份全部数据库的数据库结构
+mysqldump -h localhost -p3307 -uroot  -p123456 -A -d >  D:\data\mysql_all.sql
+
+-- 备份全部数据库的数据和结构
+mysqldump -h localhost -p3307 -uroot  -p123456 -A >  D:\data\mysql_all_2.sql
+
+-- 备份单个数据库的结构和数据
+mysqldump -h localhost -p3307 -uroot  -p123456 --databases test3  >  D:\data\test3_all.sql
+
+-- 备份单个数据库的结构(当你需要备份结构和数据同时的时候移除-d 参数即可)
+mysqldump -h localhost -p3307 -uroot  -p123456 --databases test3 -d >  D:\data\test3_all_1.sql
+
+-- 备份单个数据库的数据
+mysqldump -h localhost -p3307 -uroot  -p123456 --databases test3 -t >  D:\data\test3_data_1.sql
+
+-- 备份单个数据库的结构
+mysqldump -h localhost -p3307 -uroot  -p123456  test3 -d >  D:\data\test3_jiegou.sql
+
+-- 备份单个数据库的结构和数据
+mysqldump -h localhost -p3307 -uroot  -p123456 --databases test3 > D:\data\test3.sql
+
+-- 登录数据库
+mysql -h localhost -p3307 -uroot  -p123456
+
+```
