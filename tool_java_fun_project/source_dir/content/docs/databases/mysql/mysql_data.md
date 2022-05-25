@@ -16,7 +16,7 @@ weight: 4
 
 数据准备
 
-```
+```mysql
 drop datbase ch10;
 create database ch10;
 use ch10;
@@ -164,6 +164,81 @@ VALUES (1001, 'SMITH', 'm',20, 'CLERK',800,'2005-11-12'),
 (1010, 'TURNER', 'f',30, 'SALESMAN', 1500,'1997-10-12'),
 (1011, 'ADAMS', 'm',20, 'CLERK', 1100,'1999-10-05'),
 (1012, 'JAMES', 'm',30, 'CLERK', 950,'2008-06-15');
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for score
+-- ----------------------------
+DROP TABLE IF EXISTS `score`;
+CREATE TABLE `score`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `stu_id` int(0) NOT NULL,
+  `c_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `grade` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `id`(`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of score
+-- ----------------------------
+INSERT INTO `score` VALUES (1, 901, '计算机', 98);
+INSERT INTO `score` VALUES (2, 901, '英语', 80);
+INSERT INTO `score` VALUES (3, 902, '计算机', 65);
+INSERT INTO `score` VALUES (4, 902, '中文', 88);
+INSERT INTO `score` VALUES (5, 903, '中文', 95);
+INSERT INTO `score` VALUES (6, 904, '计算机', 70);
+INSERT INTO `score` VALUES (7, 904, '英语', 92);
+INSERT INTO `score` VALUES (8, 905, '英语', 94);
+INSERT INTO `score` VALUES (9, 906, '计算机', 90);
+INSERT INTO `score` VALUES (10, 906, '英语', 85);
+
+-- ----------------------------
+-- Table structure for student
+-- ----------------------------
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student`  (
+  `id` int(0) NOT NULL,
+  `class_id` int(0) NULL DEFAULT NULL,
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `sex` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `birth` year NULL DEFAULT NULL,
+  `department` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `id`(`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+INSERT INTO `student` VALUES (901, 1, '张老大', '男', 1985, '计算机系', '北京市海淀区');
+INSERT INTO `student` VALUES (902, 1, '张老二', '男', 1986, '中文系', '北京市昌平区');
+INSERT INTO `student` VALUES (903, 1, '张三', '女', 1990, '中文系', '湖南省永州市');
+INSERT INTO `student` VALUES (904, 2, '李四', '男', 1990, '英语系', '辽宁省阜新市');
+INSERT INTO `student` VALUES (905, 1, '王五', '女', 1991, '英语系', '福建省厦门市');
+INSERT INTO `student` VALUES (906, 2, '王六', '男', 1988, '计算机系', '湖南省衡阳市');
+
+-- ----------------------------
+-- Table structure for tb_class
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_class`;
+CREATE TABLE `tb_class`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_class
+-- ----------------------------
+INSERT INTO `tb_class` VALUES (1, '一班');
+INSERT INTO `tb_class` VALUES (2, '二班');
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 ```
 
 

@@ -32,11 +32,59 @@ select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_va
 + 例子二
 
 ```mysql
-
+SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name
 ```
 
 
 ## 三:创建联结
+
+### 使用表别名
+
+> student 取名为 tb_stu
+
+```mysql
+select concat(tb_stu.department,'-',tb_stu.name) as name from student as tb_stu;
+```
+
+> 当在一次查询中 不止一次地引用相同的表
+
+### 自联结
+
+> 当你知道某个童鞋的分数是98你想查看和98分数相同科目的其他童鞋的分数
+
+```mysql
+
+-- 不适用联结查询的方法
+select c_name ,grade from score where c_name = (select c_name from score where grade = 98 )
+
+-- 使用联结的查询方法 (清晰很多)
+select tb1.c_name ,tb1.grade from score tb1, score tb2 where 1=1 and  tb1.c_name = tb2.c_name  and tb2.grade = 98;
+
+
+```
+
+
+
+### 自然联结
+
+> 当对多个表联结查询或者对一个表进行两次引用查询 这个时候有相同的列可能要出现  这个时候我们手动控制某些列出现某些列不出现
+
+```mysql 
+
+ -- fruits 中s_id和suppliers中s_id是相同的列名称
+
+ select fruits.*,suppliers.s_name as s_name , suppliers.s_city as s_city from fruits ,suppliers where suppliers.s_id = fruits.s_id
+```
+
+### 外部联结
+
+> 将一个表中的行与另一个表中的行关联，但有时候需要包含那些没有关联的行
+
+```mysql
+select customers.cust_id,orders.order_num from customers left outer join orders on customers.cust_id = orders.cust_id
+```
+
+### 使用带聚集函数的联结
 
 ## 四:分组查询、过滤
 
@@ -58,5 +106,22 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
 > 不要使用 count(列名)来替代 count(*) ， count(*) 是 SQL92 定义的标准统计行数的语法，跟数 据库无关，跟 NULL 和非 NULL 无关。
 
 > count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行。
+
++ 解决MySQL5.7版本之后使用GROUP BY语句时报错
+
+* 1、先使用SQL查询sql_mode 
+
+```mysql
+select @@global.sql_mode
+```
+
+* 2、重新设置sql_mode，删除ONLY_FULL_GROUP_BY 
+
+```MYSQL
+set @@global.sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
+```
+
+
+
 
 
