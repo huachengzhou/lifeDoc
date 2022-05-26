@@ -6,60 +6,10 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="数据准备  数据准备
-drop datbase ch10;
-create database ch10;
-use ch10;
-CREATE TABLE fruits
-(
-f_id char(10) NOT NULL,
-s_id INT NOT NULL,
-f_name char(255) NOT NULL,
-f_price decimal(8,2) NOT NULL,
-PRIMARY KEY(f_id) );
-INSERT INTO fruits (f_id, s_id, f_name, f_price)
-VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2),
-(&#39;b1&#39;,101,&#39;blackberry&#39;, 10.2),
-(&#39;bs1&#39;,102,&#39;orange&#39;, 11.2),
-(&#39;bs2&#39;,105,&#39;melon&#39;,8.2),
-(&#39;t1&#39;,102,&#39;banana&#39;, 10.3),
-(&#39;t2&#39;,102,&#39;grape&#39;, 5.3),
-(&#39;o2&#39;,103,&#39;coconut&#39;, 9.2),
-(&#39;c0&#39;,101,&#39;cherry&#39;, 3.2),
-(&#39;a2&#39;,103, &#39;apricot&#39;,2.2),
-(&#39;l2&#39;,104,&#39;lemon&#39;, 6.4),
-(&#39;b2&#39;,104,&#39;berry&#39;, 7.6),
-(&#39;m1&#39;,106,&#39;mango&#39;, 15.6),
-(&#39;m2&#39;,105,&#39;xbabay&#39;, 2.6),
-(&#39;t4&#39;,107,&#39;xbababa&#39;, 3.6),
-(&#39;m3&#39;,105,&#39;xxtt&#39;, 11.">
+drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id char(10) NOT NULL, s_id INT NOT NULL, f_name char(255) NOT NULL, f_price decimal(8,2) NOT NULL, PRIMARY KEY(f_id) ); INSERT INTO fruits (f_id, s_id, f_name, f_price) VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2), (&#39;b1&#39;,101,&#39;blackberry&#39;, 10.2), (&#39;bs1&#39;,102,&#39;orange&#39;, 11.2), (&#39;bs2&#39;,105,&#39;melon&#39;,8.2), (&#39;t1&#39;,102,&#39;banana&#39;, 10.3), (&#39;t2&#39;,102,&#39;grape&#39;, 5.3), (&#39;o2&#39;,103,&#39;coconut&#39;, 9.2), (&#39;c0&#39;,101,&#39;cherry&#39;, 3.2), (&#39;a2&#39;,103, &#39;apricot&#39;,2.2), (&#39;l2&#39;,104,&#39;lemon&#39;, 6.4), (&#39;b2&#39;,104,&#39;berry&#39;, 7.6), (&#39;m1&#39;,106,&#39;mango&#39;, 15.6), (&#39;m2&#39;,105,&#39;xbabay&#39;, 2.6), (&#39;t4&#39;,107,&#39;xbababa&#39;, 3.6), (&#39;m3&#39;,105,&#39;xxtt&#39;, 11.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="数据准备" />
 <meta property="og:description" content="数据准备  数据准备
-drop datbase ch10;
-create database ch10;
-use ch10;
-CREATE TABLE fruits
-(
-f_id char(10) NOT NULL,
-s_id INT NOT NULL,
-f_name char(255) NOT NULL,
-f_price decimal(8,2) NOT NULL,
-PRIMARY KEY(f_id) );
-INSERT INTO fruits (f_id, s_id, f_name, f_price)
-VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2),
-(&#39;b1&#39;,101,&#39;blackberry&#39;, 10.2),
-(&#39;bs1&#39;,102,&#39;orange&#39;, 11.2),
-(&#39;bs2&#39;,105,&#39;melon&#39;,8.2),
-(&#39;t1&#39;,102,&#39;banana&#39;, 10.3),
-(&#39;t2&#39;,102,&#39;grape&#39;, 5.3),
-(&#39;o2&#39;,103,&#39;coconut&#39;, 9.2),
-(&#39;c0&#39;,101,&#39;cherry&#39;, 3.2),
-(&#39;a2&#39;,103, &#39;apricot&#39;,2.2),
-(&#39;l2&#39;,104,&#39;lemon&#39;, 6.4),
-(&#39;b2&#39;,104,&#39;berry&#39;, 7.6),
-(&#39;m1&#39;,106,&#39;mango&#39;, 15.6),
-(&#39;m2&#39;,105,&#39;xbabay&#39;, 2.6),
-(&#39;t4&#39;,107,&#39;xbababa&#39;, 3.6),
-(&#39;m3&#39;,105,&#39;xxtt&#39;, 11." />
+drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id char(10) NOT NULL, s_id INT NOT NULL, f_name char(255) NOT NULL, f_price decimal(8,2) NOT NULL, PRIMARY KEY(f_id) ); INSERT INTO fruits (f_id, s_id, f_name, f_price) VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2), (&#39;b1&#39;,101,&#39;blackberry&#39;, 10.2), (&#39;bs1&#39;,102,&#39;orange&#39;, 11.2), (&#39;bs2&#39;,105,&#39;melon&#39;,8.2), (&#39;t1&#39;,102,&#39;banana&#39;, 10.3), (&#39;t2&#39;,102,&#39;grape&#39;, 5.3), (&#39;o2&#39;,103,&#39;coconut&#39;, 9.2), (&#39;c0&#39;,101,&#39;cherry&#39;, 3.2), (&#39;a2&#39;,103, &#39;apricot&#39;,2.2), (&#39;l2&#39;,104,&#39;lemon&#39;, 6.4), (&#39;b2&#39;,104,&#39;berry&#39;, 7.6), (&#39;m1&#39;,106,&#39;mango&#39;, 15.6), (&#39;m2&#39;,105,&#39;xbabay&#39;, 2.6), (&#39;t4&#39;,107,&#39;xbababa&#39;, 3.6), (&#39;m3&#39;,105,&#39;xxtt&#39;, 11." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_data/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
@@ -69,7 +19,7 @@ VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2),
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.b041436949bc7b3683e1f347a066a559c9d0e9f059f0583b1aa66d1c168493f0.js"  ></script>
+<script defer src="./../../../../en.search.min.b4bbb62be6fbde8db6721f5d5a9b3002b5b85022c58367d25876fd386ceb3afc.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -623,6 +573,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_select/" class="">mysql新查询</a>
   
 
         </li>
@@ -2791,154 +2754,229 @@ https://github.com/alex-shpak/hugo-book
 <li>数据准备</li>
 </ul>
 <p>数据准备</p>
-<pre><code>drop datbase ch10;
-create database ch10;
-use ch10;
-CREATE TABLE fruits
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> datbase ch10;
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> ch10;
+<span style="color:#66d9ef">use</span> ch10;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">fruits</span>
 (
-f_id    char(10)     	NOT NULL,
-s_id    INT        	NOT NULL,
-f_name  char(255)  	NOT NULL,
-f_price decimal(8,2)  	NOT NULL,
-PRIMARY KEY(f_id) 
+f_id    <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">10</span>)     	<span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+s_id    <span style="color:#66d9ef">INT</span>        	<span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+f_name  <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">255</span>)  	<span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+f_price <span style="color:#66d9ef">decimal</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">2</span>)  	<span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+<span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>(f_id) 
 );
 
-INSERT INTO fruits (f_id, s_id, f_name, f_price)
-     VALUES('a1', 101,'apple',5.2),
-     ('b1',101,'blackberry', 10.2),
-     ('bs1',102,'orange', 11.2),
-     ('bs2',105,'melon',8.2),
-     ('t1',102,'banana', 10.3),
-     ('t2',102,'grape', 5.3),
-     ('o2',103,'coconut', 9.2),
-     ('c0',101,'cherry', 3.2),
-     ('a2',103, 'apricot',2.2),
-     ('l2',104,'lemon', 6.4),
-     ('b2',104,'berry', 7.6),
-     ('m1',106,'mango', 15.6),
-     ('m2',105,'xbabay', 2.6),
-     ('t4',107,'xbababa', 3.6),
-     ('m3',105,'xxtt', 11.6),
-     ('b5',107,'xxxx', 3.6);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">fruits</span> (f_id, s_id, f_name, f_price)
+     <span style="color:#66d9ef">VALUES</span>(<span style="color:#e6db74">&#39;a1&#39;</span>, <span style="color:#ae81ff">101</span>,<span style="color:#e6db74">&#39;apple&#39;</span>,<span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;b1&#39;</span>,<span style="color:#ae81ff">101</span>,<span style="color:#e6db74">&#39;blackberry&#39;</span>, <span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;bs1&#39;</span>,<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;orange&#39;</span>, <span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;bs2&#39;</span>,<span style="color:#ae81ff">105</span>,<span style="color:#e6db74">&#39;melon&#39;</span>,<span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;t1&#39;</span>,<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">3</span>),
+     (<span style="color:#e6db74">&#39;t2&#39;</span>,<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;grape&#39;</span>, <span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">3</span>),
+     (<span style="color:#e6db74">&#39;o2&#39;</span>,<span style="color:#ae81ff">103</span>,<span style="color:#e6db74">&#39;coconut&#39;</span>, <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;c0&#39;</span>,<span style="color:#ae81ff">101</span>,<span style="color:#e6db74">&#39;cherry&#39;</span>, <span style="color:#ae81ff">3</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;a2&#39;</span>,<span style="color:#ae81ff">103</span>, <span style="color:#e6db74">&#39;apricot&#39;</span>,<span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">2</span>),
+     (<span style="color:#e6db74">&#39;l2&#39;</span>,<span style="color:#ae81ff">104</span>,<span style="color:#e6db74">&#39;lemon&#39;</span>, <span style="color:#ae81ff">6</span>.<span style="color:#ae81ff">4</span>),
+     (<span style="color:#e6db74">&#39;b2&#39;</span>,<span style="color:#ae81ff">104</span>,<span style="color:#e6db74">&#39;berry&#39;</span>, <span style="color:#ae81ff">7</span>.<span style="color:#ae81ff">6</span>),
+     (<span style="color:#e6db74">&#39;m1&#39;</span>,<span style="color:#ae81ff">106</span>,<span style="color:#e6db74">&#39;mango&#39;</span>, <span style="color:#ae81ff">15</span>.<span style="color:#ae81ff">6</span>),
+     (<span style="color:#e6db74">&#39;m2&#39;</span>,<span style="color:#ae81ff">105</span>,<span style="color:#e6db74">&#39;xbabay&#39;</span>, <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">6</span>),
+     (<span style="color:#e6db74">&#39;t4&#39;</span>,<span style="color:#ae81ff">107</span>,<span style="color:#e6db74">&#39;xbababa&#39;</span>, <span style="color:#ae81ff">3</span>.<span style="color:#ae81ff">6</span>),
+     (<span style="color:#e6db74">&#39;m3&#39;</span>,<span style="color:#ae81ff">105</span>,<span style="color:#e6db74">&#39;xxtt&#39;</span>, <span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">6</span>),
+     (<span style="color:#e6db74">&#39;b5&#39;</span>,<span style="color:#ae81ff">107</span>,<span style="color:#e6db74">&#39;xxxx&#39;</span>, <span style="color:#ae81ff">3</span>.<span style="color:#ae81ff">6</span>);
 	 
-CREATE TABLE customers
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">customers</span>
 (
-  c_id      int       NOT NULL AUTO_INCREMENT,
-  c_name    char(50)  NOT NULL,
-  c_address char(50)  NULL,
-  c_city    char(50)  NULL,
-  c_zip     char(10)  NULL,
-  c_contact char(50)  NULL,
-  c_email   char(255) NULL,
-  PRIMARY KEY (c_id)
+  c_id      <span style="color:#66d9ef">int</span>       <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  c_name    <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>)  <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  c_address <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>)  <span style="color:#66d9ef">NULL</span>,
+  c_city    <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>)  <span style="color:#66d9ef">NULL</span>,
+  c_zip     <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">10</span>)  <span style="color:#66d9ef">NULL</span>,
+  c_contact <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>)  <span style="color:#66d9ef">NULL</span>,
+  c_email   <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (c_id)
 );
 
-INSERT INTO customers(c_id, c_name, c_address, c_city, 
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">customers</span>(c_id, c_name, c_address, c_city, 
 c_zip,  c_contact, c_email) 
-VALUES(10001, 'RedHook', '200 Street ', 'Tianjin', 
- '300000',  'LiMing', 'LMing@163.com'),
-(10002, 'Stars', '333 Fromage Lane',
- 'Dalian', '116000',  'Zhangbo','Jerry@hotmail.com'),
-(10003, 'Netbhood', '1 Sunny Place', 'Qingdao',  '266000',
- 'LuoCong', NULL),
-(10004, 'JOTO', '829 Riverside Drive', 'Haikou', 
- '570000',  'YangShan', 'sam@hotmail.com');
+<span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">10001</span>, <span style="color:#e6db74">&#39;RedHook&#39;</span>, <span style="color:#e6db74">&#39;200 Street &#39;</span>, <span style="color:#e6db74">&#39;Tianjin&#39;</span>, 
+ <span style="color:#e6db74">&#39;300000&#39;</span>,  <span style="color:#e6db74">&#39;LiMing&#39;</span>, <span style="color:#e6db74">&#39;LMing@163.com&#39;</span>),
+(<span style="color:#ae81ff">10002</span>, <span style="color:#e6db74">&#39;Stars&#39;</span>, <span style="color:#e6db74">&#39;333 Fromage Lane&#39;</span>,
+ <span style="color:#e6db74">&#39;Dalian&#39;</span>, <span style="color:#e6db74">&#39;116000&#39;</span>,  <span style="color:#e6db74">&#39;Zhangbo&#39;</span>,<span style="color:#e6db74">&#39;Jerry@hotmail.com&#39;</span>),
+(<span style="color:#ae81ff">10003</span>, <span style="color:#e6db74">&#39;Netbhood&#39;</span>, <span style="color:#e6db74">&#39;1 Sunny Place&#39;</span>, <span style="color:#e6db74">&#39;Qingdao&#39;</span>,  <span style="color:#e6db74">&#39;266000&#39;</span>,
+ <span style="color:#e6db74">&#39;LuoCong&#39;</span>, <span style="color:#66d9ef">NULL</span>),
+(<span style="color:#ae81ff">10004</span>, <span style="color:#e6db74">&#39;JOTO&#39;</span>, <span style="color:#e6db74">&#39;829 Riverside Drive&#39;</span>, <span style="color:#e6db74">&#39;Haikou&#39;</span>, 
+ <span style="color:#e6db74">&#39;570000&#39;</span>,  <span style="color:#e6db74">&#39;YangShan&#39;</span>, <span style="color:#e6db74">&#39;sam@hotmail.com&#39;</span>);
  
-CREATE TABLE orderitems
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">orderitems</span>
 (
-  o_num      int          NOT NULL,
-  o_item     int          NOT NULL,
-  f_id       char(10)     NOT NULL,
-  quantity   int          NOT NULL,
-  item_price decimal(8,2) NOT NULL,
-  PRIMARY KEY (o_num,o_item)
+  o_num      <span style="color:#66d9ef">int</span>          <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  o_item     <span style="color:#66d9ef">int</span>          <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  f_id       <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">10</span>)     <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  quantity   <span style="color:#66d9ef">int</span>          <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  item_price <span style="color:#66d9ef">decimal</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (o_num,o_item)
 ) ;
-INSERT INTO orderitems(o_num, o_item, f_id, quantity, item_price)
-VALUES(30001, 1, 'a1', 10, 5.2),
-(30001, 2, 'b2', 3, 7.6),
-(30001, 3, 'bs1', 5, 11.2),
-(30001, 4, 'bs2', 15, 9.2),
-(30002, 1, 'b3', 2, 20.0),
-(30003, 1, 'c0', 100, 10),
-(30004, 1, 'o2', 50, 2.50),
-(30005, 1, 'c0', 5, 10),
-(30005, 2, 'b1', 10, 8.99),
-(30005, 3, 'a2', 10, 2.2),
-(30005, 4, 'm1', 5, 14.99);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">orderitems</span>(o_num, o_item, f_id, quantity, item_price)
+<span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">30001</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;a1&#39;</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">2</span>),
+(<span style="color:#ae81ff">30001</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;b2&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">7</span>.<span style="color:#ae81ff">6</span>),
+(<span style="color:#ae81ff">30001</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;bs1&#39;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>),
+(<span style="color:#ae81ff">30001</span>, <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;bs2&#39;</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">2</span>),
+(<span style="color:#ae81ff">30002</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;b3&#39;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">20</span>.<span style="color:#ae81ff">0</span>),
+(<span style="color:#ae81ff">30003</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;c0&#39;</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>),
+(<span style="color:#ae81ff">30004</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;o2&#39;</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">50</span>),
+(<span style="color:#ae81ff">30005</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;c0&#39;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>),
+(<span style="color:#ae81ff">30005</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;b1&#39;</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">99</span>),
+(<span style="color:#ae81ff">30005</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;a2&#39;</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">2</span>),
+(<span style="color:#ae81ff">30005</span>, <span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;m1&#39;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">14</span>.<span style="color:#ae81ff">99</span>);
 
-CREATE TABLE suppliers
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">suppliers</span>
 (
-  s_id      int      NOT NULL AUTO_INCREMENT,
-  s_name    char(50) NOT NULL,
-  s_city    char(50) NULL,
-  s_zip     char(10) NULL,
-  s_call    CHAR(50) NOT NULL,
-  PRIMARY KEY (s_id)
+  s_id      <span style="color:#66d9ef">int</span>      <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  s_name    <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  s_city    <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NULL</span>,
+  s_zip     <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">NULL</span>,
+  s_call    <span style="color:#66d9ef">CHAR</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (s_id)
 ) ;
 
-INSERT INTO suppliers(s_id, s_name,s_city,  s_zip, s_call)
-VALUES(101,'FastFruit Inc.','Tianjin','300000','48075'),
-(102,'LT Supplies','Chongqing','400000','44333'),
-(103,'ACME','Shanghai','200000','90046'),
-(104,'FNK Inc.','Zhongshan','528437','11111'),
-(105,'Good Set','Taiyuang','030000', '22222'),
-(106,'Just Eat Ours','Beijing','010', '45678'),
-(107,'DK Inc.','Zhengzhou','450000', '33332');
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">suppliers</span>(s_id, s_name,s_city,  s_zip, s_call)
+<span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">101</span>,<span style="color:#e6db74">&#39;FastFruit Inc.&#39;</span>,<span style="color:#e6db74">&#39;Tianjin&#39;</span>,<span style="color:#e6db74">&#39;300000&#39;</span>,<span style="color:#e6db74">&#39;48075&#39;</span>),
+(<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;LT Supplies&#39;</span>,<span style="color:#e6db74">&#39;Chongqing&#39;</span>,<span style="color:#e6db74">&#39;400000&#39;</span>,<span style="color:#e6db74">&#39;44333&#39;</span>),
+(<span style="color:#ae81ff">103</span>,<span style="color:#e6db74">&#39;ACME&#39;</span>,<span style="color:#e6db74">&#39;Shanghai&#39;</span>,<span style="color:#e6db74">&#39;200000&#39;</span>,<span style="color:#e6db74">&#39;90046&#39;</span>),
+(<span style="color:#ae81ff">104</span>,<span style="color:#e6db74">&#39;FNK Inc.&#39;</span>,<span style="color:#e6db74">&#39;Zhongshan&#39;</span>,<span style="color:#e6db74">&#39;528437&#39;</span>,<span style="color:#e6db74">&#39;11111&#39;</span>),
+(<span style="color:#ae81ff">105</span>,<span style="color:#e6db74">&#39;Good Set&#39;</span>,<span style="color:#e6db74">&#39;Taiyuang&#39;</span>,<span style="color:#e6db74">&#39;030000&#39;</span>, <span style="color:#e6db74">&#39;22222&#39;</span>),
+(<span style="color:#ae81ff">106</span>,<span style="color:#e6db74">&#39;Just Eat Ours&#39;</span>,<span style="color:#e6db74">&#39;Beijing&#39;</span>,<span style="color:#e6db74">&#39;010&#39;</span>, <span style="color:#e6db74">&#39;45678&#39;</span>),
+(<span style="color:#ae81ff">107</span>,<span style="color:#e6db74">&#39;DK Inc.&#39;</span>,<span style="color:#e6db74">&#39;Zhengzhou&#39;</span>,<span style="color:#e6db74">&#39;450000&#39;</span>, <span style="color:#e6db74">&#39;33332&#39;</span>);
 
-CREATE TABLE orders
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">orders</span>
 (
-  o_num  int      NOT NULL AUTO_INCREMENT,
-  o_date datetime NOT NULL,
-  c_id   int      NOT NULL,
-  PRIMARY KEY (o_num)
+  o_num  <span style="color:#66d9ef">int</span>      <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  o_date <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  c_id   <span style="color:#66d9ef">int</span>      <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (o_num)
 ) ;
-INSERT INTO orders(o_num, o_date, c_id)
-VALUES(30001, '2008-09-01', 10001),
-(30002, '2008-09-12', 10003),
-(30003, '2008-09-30', 10004),
-(30004, '2008-10-03', 10005),
-(30005, '2008-10-08', 10001);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">orders</span>(o_num, o_date, c_id)
+<span style="color:#66d9ef">VALUES</span>(<span style="color:#ae81ff">30001</span>, <span style="color:#e6db74">&#39;2008-09-01&#39;</span>, <span style="color:#ae81ff">10001</span>),
+(<span style="color:#ae81ff">30002</span>, <span style="color:#e6db74">&#39;2008-09-12&#39;</span>, <span style="color:#ae81ff">10003</span>),
+(<span style="color:#ae81ff">30003</span>, <span style="color:#e6db74">&#39;2008-09-30&#39;</span>, <span style="color:#ae81ff">10004</span>),
+(<span style="color:#ae81ff">30004</span>, <span style="color:#e6db74">&#39;2008-10-03&#39;</span>, <span style="color:#ae81ff">10005</span>),
+(<span style="color:#ae81ff">30005</span>, <span style="color:#e6db74">&#39;2008-10-08&#39;</span>, <span style="color:#ae81ff">10001</span>);
 
-CREATE TABLE dept
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">dept</span>
 (
-d_no         INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-d_name       VARCHAR(50),
-d_location     VARCHAR(100)
+d_no         <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+d_name       <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">50</span>),
+d_location     <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">100</span>)
 );
-# 由于employee表dept_no依赖于父表dept的主键d_no，因此需要先创建dept表，然后创建employee表。
-CREATE TABLE employee
+<span style="color:#75715e"># 由于employee表dept_no依赖于父表dept的主键d_no，因此需要先创建dept表，然后创建employee表。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">employee</span>
 (
-e_no        INT NOT NULL PRIMARY KEY,
-e_name      VARCHAR(100) NOT NULL,
-e_gender    CHAR(2) NOT NULL,
-dept_no    INT NOT NULL,
-e_job       VARCHAR(100) NOT NULL,
-e_salary   SMALLINT NOT NULL,
-hireDate   DATE,
-CONSTRAINT dno_fk FOREIGN KEY(dept_no)
-REFERENCES dept(d_no)
+e_no        <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+e_name      <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+e_gender    <span style="color:#66d9ef">CHAR</span>(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+dept_no    <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+e_job       <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+e_salary   <span style="color:#66d9ef">SMALLINT</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+hireDate   <span style="color:#66d9ef">DATE</span>,
+<span style="color:#66d9ef">CONSTRAINT</span> dno_fk <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span>(dept_no)
+<span style="color:#66d9ef">REFERENCES</span> <span style="color:#a6e22e">dept</span>(d_no)
 );
 
-INSERT INTO dept 
-VALUES (10, 'ACCOUNTING', 'ShangHai'),
-(20, 'RESEARCH ', 'BeiJing '),
-(30, 'SALES ', 'ShenZhen '),
-(40, 'OPERATIONS ', 'FuJian ');
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> dept 
+<span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;ACCOUNTING&#39;</span>, <span style="color:#e6db74">&#39;ShangHai&#39;</span>),
+(<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#39;RESEARCH &#39;</span>, <span style="color:#e6db74">&#39;BeiJing &#39;</span>),
+(<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;SALES &#39;</span>, <span style="color:#e6db74">&#39;ShenZhen &#39;</span>),
+(<span style="color:#ae81ff">40</span>, <span style="color:#e6db74">&#39;OPERATIONS &#39;</span>, <span style="color:#e6db74">&#39;FuJian &#39;</span>);
 
-INSERT INTO employee 
-VALUES (1001, 'SMITH', 'm',20, 'CLERK',800,'2005-11-12'),
-(1002, 'ALLEN', 'f',30, 'SALESMAN', 1600,'2003-05-12'),
-(1003, 'WARD', 'f',30, 'SALESMAN', 1250,'2003-05-12'),
-(1004, 'JONES', 'm',20, 'MANAGER', 2975,'1998-05-18'),
-(1005, 'MARTIN', 'm',30, 'SALESMAN', 1250,'2001-06-12'), 
-(1006, 'BLAKE', 'f',30, 'MANAGER', 2850,'1997-02-15'),
-(1007, 'CLARK', 'm',10, 'MANAGER', 2450,'2002-09-12'),
-(1008, 'SCOTT', 'm',20, 'ANALYST', 3000,'2003-05-12'),
-(1009, 'KING', 'f',10, 'PRESIDENT', 5000,'1995-01-01'),
-(1010, 'TURNER', 'f',30, 'SALESMAN', 1500,'1997-10-12'),
-(1011, 'ADAMS', 'm',20, 'CLERK', 1100,'1999-10-05'),
-(1012, 'JAMES', 'm',30, 'CLERK', 950,'2008-06-15');
-</code></pre></article>
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> employee 
+<span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1001</span>, <span style="color:#e6db74">&#39;SMITH&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#39;CLERK&#39;</span>,<span style="color:#ae81ff">800</span>,<span style="color:#e6db74">&#39;2005-11-12&#39;</span>),
+(<span style="color:#ae81ff">1002</span>, <span style="color:#e6db74">&#39;ALLEN&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;SALESMAN&#39;</span>, <span style="color:#ae81ff">1600</span>,<span style="color:#e6db74">&#39;2003-05-12&#39;</span>),
+(<span style="color:#ae81ff">1003</span>, <span style="color:#e6db74">&#39;WARD&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;SALESMAN&#39;</span>, <span style="color:#ae81ff">1250</span>,<span style="color:#e6db74">&#39;2003-05-12&#39;</span>),
+(<span style="color:#ae81ff">1004</span>, <span style="color:#e6db74">&#39;JONES&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#39;MANAGER&#39;</span>, <span style="color:#ae81ff">2975</span>,<span style="color:#e6db74">&#39;1998-05-18&#39;</span>),
+(<span style="color:#ae81ff">1005</span>, <span style="color:#e6db74">&#39;MARTIN&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;SALESMAN&#39;</span>, <span style="color:#ae81ff">1250</span>,<span style="color:#e6db74">&#39;2001-06-12&#39;</span>), 
+(<span style="color:#ae81ff">1006</span>, <span style="color:#e6db74">&#39;BLAKE&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;MANAGER&#39;</span>, <span style="color:#ae81ff">2850</span>,<span style="color:#e6db74">&#39;1997-02-15&#39;</span>),
+(<span style="color:#ae81ff">1007</span>, <span style="color:#e6db74">&#39;CLARK&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;MANAGER&#39;</span>, <span style="color:#ae81ff">2450</span>,<span style="color:#e6db74">&#39;2002-09-12&#39;</span>),
+(<span style="color:#ae81ff">1008</span>, <span style="color:#e6db74">&#39;SCOTT&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#39;ANALYST&#39;</span>, <span style="color:#ae81ff">3000</span>,<span style="color:#e6db74">&#39;2003-05-12&#39;</span>),
+(<span style="color:#ae81ff">1009</span>, <span style="color:#e6db74">&#39;KING&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>,<span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;PRESIDENT&#39;</span>, <span style="color:#ae81ff">5000</span>,<span style="color:#e6db74">&#39;1995-01-01&#39;</span>),
+(<span style="color:#ae81ff">1010</span>, <span style="color:#e6db74">&#39;TURNER&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;SALESMAN&#39;</span>, <span style="color:#ae81ff">1500</span>,<span style="color:#e6db74">&#39;1997-10-12&#39;</span>),
+(<span style="color:#ae81ff">1011</span>, <span style="color:#e6db74">&#39;ADAMS&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">20</span>, <span style="color:#e6db74">&#39;CLERK&#39;</span>, <span style="color:#ae81ff">1100</span>,<span style="color:#e6db74">&#39;1999-10-05&#39;</span>),
+(<span style="color:#ae81ff">1012</span>, <span style="color:#e6db74">&#39;JAMES&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#ae81ff">30</span>, <span style="color:#e6db74">&#39;CLERK&#39;</span>, <span style="color:#ae81ff">950</span>,<span style="color:#e6db74">&#39;2008-06-15&#39;</span>);
+
+<span style="color:#66d9ef">SET</span> NAMES utf8mb4;
+<span style="color:#66d9ef">SET</span> FOREIGN_KEY_CHECKS <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Table structure for score
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span>  (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>stu_id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>c_name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>grade<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE,
+  <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">INDEX</span> <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>(<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE
+) <span style="color:#66d9ef">ENGINE</span> <span style="color:#f92672">=</span> InnoDB <span style="color:#66d9ef">AUTO_INCREMENT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span> <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">=</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> <span style="color:#f92672">=</span> utf8mb4_bin ROW_FORMAT <span style="color:#f92672">=</span> Dynamic;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Records of score
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">901</span>, <span style="color:#e6db74">&#39;计算机&#39;</span>, <span style="color:#ae81ff">98</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">901</span>, <span style="color:#e6db74">&#39;英语&#39;</span>, <span style="color:#ae81ff">80</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">902</span>, <span style="color:#e6db74">&#39;计算机&#39;</span>, <span style="color:#ae81ff">65</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">902</span>, <span style="color:#e6db74">&#39;中文&#39;</span>, <span style="color:#ae81ff">88</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">903</span>, <span style="color:#e6db74">&#39;中文&#39;</span>, <span style="color:#ae81ff">95</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">904</span>, <span style="color:#e6db74">&#39;计算机&#39;</span>, <span style="color:#ae81ff">70</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">904</span>, <span style="color:#e6db74">&#39;英语&#39;</span>, <span style="color:#ae81ff">92</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">905</span>, <span style="color:#e6db74">&#39;英语&#39;</span>, <span style="color:#ae81ff">94</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">906</span>, <span style="color:#e6db74">&#39;计算机&#39;</span>, <span style="color:#ae81ff">90</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>score<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">906</span>, <span style="color:#e6db74">&#39;英语&#39;</span>, <span style="color:#ae81ff">85</span>);
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Table structure for student
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span>  (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>class_id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>sex<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>birth<span style="color:#f92672">`</span> <span style="color:#66d9ef">year</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>department<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>address<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE,
+  <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">INDEX</span> <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>(<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE
+) <span style="color:#66d9ef">ENGINE</span> <span style="color:#f92672">=</span> InnoDB <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">=</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> <span style="color:#f92672">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span style="color:#f92672">=</span> Dynamic;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Records of student
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">901</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;张老大&#39;</span>, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#ae81ff">1985</span>, <span style="color:#e6db74">&#39;计算机系&#39;</span>, <span style="color:#e6db74">&#39;北京市海淀区&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">902</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;张老二&#39;</span>, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#ae81ff">1986</span>, <span style="color:#e6db74">&#39;中文系&#39;</span>, <span style="color:#e6db74">&#39;北京市昌平区&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">903</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;张三&#39;</span>, <span style="color:#e6db74">&#39;女&#39;</span>, <span style="color:#ae81ff">1990</span>, <span style="color:#e6db74">&#39;中文系&#39;</span>, <span style="color:#e6db74">&#39;湖南省永州市&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">904</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;李四&#39;</span>, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#ae81ff">1990</span>, <span style="color:#e6db74">&#39;英语系&#39;</span>, <span style="color:#e6db74">&#39;辽宁省阜新市&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">905</span>, <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;王五&#39;</span>, <span style="color:#e6db74">&#39;女&#39;</span>, <span style="color:#ae81ff">1991</span>, <span style="color:#e6db74">&#39;英语系&#39;</span>, <span style="color:#e6db74">&#39;福建省厦门市&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>student<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">906</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;王六&#39;</span>, <span style="color:#e6db74">&#39;男&#39;</span>, <span style="color:#ae81ff">1988</span>, <span style="color:#e6db74">&#39;计算机系&#39;</span>, <span style="color:#e6db74">&#39;湖南省衡阳市&#39;</span>);
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Table structure for tb_class
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>tb_class<span style="color:#f92672">`</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>tb_class<span style="color:#f92672">`</span>  (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE
+) <span style="color:#66d9ef">ENGINE</span> <span style="color:#f92672">=</span> InnoDB <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">=</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> <span style="color:#f92672">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span style="color:#f92672">=</span> Dynamic;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Records of tb_class
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>tb_class<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;一班&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>tb_class<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;二班&#39;</span>);
+
+<span style="color:#66d9ef">SET</span> FOREIGN_KEY_CHECKS <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+</code></pre></div></article>
  
       <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
 

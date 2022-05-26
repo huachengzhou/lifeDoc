@@ -92,6 +92,174 @@ select customers.cust_id,orders.order_num from customers left outer join orders 
 
 ## 六:行转列&列转行
 
+
+### 行转列
+
++ 数据准备
+
+```mysql
+
+-- 创建表
+
+-- ----------------------------
+-- Table structure for user_column_row
+-- ----------------------------
+DROP TABLE IF EXISTS `user_column_row`;
+CREATE TABLE `user_column_row`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
+  `features` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '特征',
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '数值',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_column_row
+-- ----------------------------
+INSERT INTO `user_column_row` VALUES (2, '小明', '身高', '172.00');
+INSERT INTO `user_column_row` VALUES (3, '小明', '体重', '48kg');
+INSERT INTO `user_column_row` VALUES (4, '小明', '年龄', '23');
+INSERT INTO `user_column_row` VALUES (5, '小红', '身高', '161.00');
+INSERT INTO `user_column_row` VALUES (6, '小红', '体重', '40kg');
+INSERT INTO `user_column_row` VALUES (7, '小红', '年龄', '19');
+INSERT INTO `user_column_row` VALUES (8, '小花', '身高', '153.00');
+INSERT INTO `user_column_row` VALUES (9, '小花', '体重', '42kg');
+INSERT INTO `user_column_row` VALUES (10, '小花', '年龄', '17');
+INSERT INTO `user_column_row` VALUES (11, '小明', '身高', '172.33');
+INSERT INTO `user_column_row` VALUES (12, '小军', '身高', NULL);
+INSERT INTO `user_column_row` VALUES (13, '小军', '体重', NULL);
+INSERT INTO `user_column_row` VALUES (14, '小军', '年龄', NULL);
+INSERT INTO `user_column_row` VALUES (15, '小胖', NULL, NULL);
+INSERT INTO `user_column_row` VALUES (16, '小胖', NULL, NULL);
+INSERT INTO `user_column_row` VALUES (17, '小胖', NULL, NULL);
+```
+
++ 例子
+
++ 进行之前 先说一个语句 mysql case…when…then 这个经常用来处理行转列
+
++ CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END  表示 匹配到体重就使用value 假如匹配不到就使用0kg
+
+```script
+-- 第一次
+
+SELECT
+	tb_user.id,tb_user.NAME , 
+	( CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END ) AS weight ,
+	( CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END ) AS height,
+	( CASE WHEN `features` = '年龄' THEN `value` ELSE  0    END ) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME;
+-- 结果
+id  name   weight  height age
+2	小明	0kg	   172.00	0
+5	小红	0kg	   161.00	0
+8	小花	0kg	   153.00	0
+12	小军	0kg		        0
+15	小胖	0kg	   0cm	    0
+
+
+-- 可以看到根本没有达到目的
+
+-- 第二次
+
+SELECT
+	tb_user.id,tb_user.NAME , 
+	( CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END ) AS weight ,
+	( CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END ) AS height,
+	max( CASE WHEN `features` = '年龄' THEN `value` ELSE  0    END ) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME;
+
+
+-- 结果
+
+2	小明	0kg	172.00	23
+5	小红	0kg	161.00	19
+8	小花	0kg	153.00	17
+12	小军	0kg		0
+15	小胖	0kg	0cm	0
+
+-- 对年龄进行取最大倒是满足了 但是不是所有的行数据都是数字啊 所以还是不靠谱
+
+
+-- 第三次
+
+SELECT
+	tb_user.id,tb_user.NAME ,
+	group_concat(CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END) AS weight,
+	group_concat(CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END) AS height,
+	group_concat(CASE WHEN `features` = '年龄' THEN `value` ELSE ' 0 ' END) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
+
+-- 结果
+
+2	小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
+5	小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
+8	小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
+12	小军	0kg,0kg	             0cm,0cm	               0 ,  0 
+15	小胖	0kg,0kg,0kg	         0cm,0cm,0cm	           0 , 0 , 0 
+
+-- 可以看到已经全部取出组合而来  虽然结果值很乱 但是这是最靠谱的 把结果处理下就行啦,比如可以考虑代码直接处理或者存储过程处理
+
+```
+
+### 列转行
+
++ 数据准备
+
+```mysql
+
+CREATE TABLE `user2` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+  `age` double(11,2) DEFAULT NULL COMMENT '年龄',
+  `height` double(11,2) DEFAULT NULL COMMENT '身高',
+  `weight` double(11,2) DEFAULT NULL COMMENT '体重',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- ----------------------------
+-- Table structure for user2
+-- ----------------------------
+DROP TABLE IF EXISTS `user2`;
+CREATE TABLE `user2`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '名称',
+  `age` double(11, 2) NULL DEFAULT NULL COMMENT '年龄',
+  `height` double(11, 2) NULL DEFAULT NULL COMMENT '身高',
+  `weight` double(11, 2) NULL DEFAULT NULL COMMENT '体重',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user2
+-- ----------------------------
+INSERT INTO `user2` VALUES (2, '小明', 22.00, 48.00, 178.40);
+INSERT INTO `user2` VALUES (3, '小胖', 25.00, 50.00, 168.00);
+
+```
+
++ 列转行关键点：
+
+> union，使用'年龄' as 特征、'身高' as 特征、'体重' as 特征 来确定图5第3列的列名与每行数据该列的值，使用age as 数值、height as 数值、weight as 数值来确定图5第4列的列名与每行数据该列的值，3个select 查询出3张表格，再通过union连接成一张表格
+
++ union注意点
+
+> 使用union连接表时需要注意表的字段一致，此处我们3个select 查询出3张表格字段是一致的
+
++ 例子
+
+```mysql
+select  id , name ,'年龄' as features,age as value  from user2  union 
+
+select  id , name ,'体重' as features,weight as value  from user2 union
+
+select  id , name ,'身高' as features,height as value  from user2 
+
+-- 这里面有一个常设值 比如 '年龄' as features , '体重' as features  直接挂到列上的  除了这个就没有其它难点了
+```
+
+
 ## 七:重要函数单独说明
 
 ###  count 函数

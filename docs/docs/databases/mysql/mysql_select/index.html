@@ -5,21 +5,41 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:数据准备
+<meta name="description" content="一:创建计算字段
 #
 
-CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb3; -- 如果存在此存储过程则删掉 DROP PROCEDURE IF EXISTS proc_initData; DELIMITER ; CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=6000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql正则表达式" />
-<meta property="og:description" content="一:数据准备
+-- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:聚集函数
 #
 
-CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb3; -- 如果存在此存储过程则删掉 DROP PROCEDURE IF EXISTS proc_initData; DELIMITER ; CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=6000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
+ 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 三:创建联结
+#
+
+使用表别名
+#
+
+ student 取名为 tb_stu">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql新查询" />
+<meta property="og:description" content="一:创建计算字段
+#
+
+-- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:聚集函数
+#
+
+ 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 三:创建联结
+#
+
+使用表别名
+#
+
+ student 取名为 tb_stu" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_regexp/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
 <meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
 
-<title>mysql正则表达式 | 所悟所想</title>
+<title>mysql新查询 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
@@ -537,7 +557,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql_regexp/" class=" active">mysql正则表达式</a>
+    <a href="./../../../../docs/databases/mysql/mysql_regexp/" class="">mysql正则表达式</a>
   
 
         </li>
@@ -589,7 +609,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/mysql/mysql_select/" class="">mysql新查询</a>
+    <a href="./../../../../docs/databases/mysql/mysql_select/" class=" active">mysql新查询</a>
   
 
         </li>
@@ -2721,7 +2741,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="./../../../../svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>mysql正则表达式</strong>
+  <strong>mysql新查询</strong>
 
   <label for="toc-control">
     
@@ -2737,8 +2757,30 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#一数据准备">一:数据准备</a></li>
-    <li><a href="#二符号介绍">二:符号介绍</a></li>
+    <li><a href="#一创建计算字段">一:创建计算字段</a></li>
+    <li><a href="#二聚集函数">二:聚集函数</a></li>
+    <li><a href="#三创建联结">三:创建联结</a>
+      <ul>
+        <li><a href="#使用表别名">使用表别名</a></li>
+        <li><a href="#自联结">自联结</a></li>
+        <li><a href="#自然联结">自然联结</a></li>
+        <li><a href="#外部联结">外部联结</a></li>
+        <li><a href="#使用带聚集函数的联结">使用带聚集函数的联结</a></li>
+      </ul>
+    </li>
+    <li><a href="#四分组查询过滤">四:分组查询、过滤</a></li>
+    <li><a href="#五全文搜索">五:全文搜索</a></li>
+    <li><a href="#六行转列列转行">六:行转列&amp;列转行</a>
+      <ul>
+        <li><a href="#行转列">行转列</a></li>
+        <li><a href="#列转行">列转行</a></li>
+      </ul>
+    </li>
+    <li><a href="#七重要函数单独说明">七:重要函数单独说明</a>
+      <ul>
+        <li><a href="#count-函数">count 函数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -2759,88 +2801,304 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/pdf/newIndex.html">book</a></li>
 </ul>
       
-  <article class="markdown"><h2 id="一数据准备">
-  一:数据准备
-  <a class="anchor" href="#%e4%b8%80%e6%95%b0%e6%8d%ae%e5%87%86%e5%a4%87">#</a>
+  <article class="markdown"><h2 id="一创建计算字段">
+  一:创建计算字段
+  <a class="anchor" href="#%e4%b8%80%e5%88%9b%e5%bb%ba%e8%ae%a1%e7%ae%97%e5%ad%97%e6%ae%b5">#</a>
 </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span> (
-  <span style="color:#f92672">`</span>USER_ID<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
-  <span style="color:#f92672">`</span>USER_NAME<span style="color:#f92672">`</span> <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8 <span style="color:#66d9ef">COLLATE</span> utf8_general_ci <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-  <span style="color:#f92672">`</span>USER_PASSWORD<span style="color:#f92672">`</span> <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8 <span style="color:#66d9ef">COLLATE</span> utf8_general_ci <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-  <span style="color:#f92672">`</span>USER_EMAIL<span style="color:#f92672">`</span> <span style="color:#66d9ef">char</span>(<span style="color:#ae81ff">80</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8 <span style="color:#66d9ef">COLLATE</span> utf8_general_ci <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
-  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>USER_ID<span style="color:#f92672">`</span>),
-  <span style="color:#66d9ef">KEY</span> <span style="color:#f92672">`</span>IDX_NAME<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>USER_NAME<span style="color:#f92672">`</span>)
-) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">AUTO_INCREMENT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">209</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb3;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> fruits.f_name <span style="color:#66d9ef">as</span> name ,suppliers.s_city <span style="color:#66d9ef">as</span> city <span style="color:#66d9ef">from</span> suppliers <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> fruits <span style="color:#66d9ef">on</span> fruits.s_id <span style="color:#f92672">=</span> suppliers.s_id <span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span>  <span style="color:#a6e22e">CONCAT</span>(fruits.f_name,<span style="color:#e6db74">&#39;-&#39;</span>,suppliers.s_city) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;apple-Tianjin&#39;</span> ;
 
-<span style="color:#75715e">-- 如果存在此存储过程则删掉
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> proc_initData;
-DELIMITER ;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">proc_initData</span>()
-BEGIN
-    <span style="color:#66d9ef">DECLARE</span> i <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">1</span>;
-    <span style="color:#66d9ef">WHILE</span> i<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">6000</span> DO
-        <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">t_user</span>(USER_NAME,USER_PASSWORD,USER_EMAIL) <span style="color:#66d9ef">VALUES</span>(<span style="color:#a6e22e">MD5</span>(<span style="color:#a6e22e">UUID</span>()),<span style="color:#a6e22e">MD5</span>(<span style="color:#a6e22e">UUID</span>()),
-				 <span style="color:#a6e22e">CONCAT</span>(<span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">UUID</span>(),<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">7</span>) , <span style="color:#e6db74">&#39;@&#39;</span>, <span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">UUID</span>(),<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">8</span>) ,<span style="color:#e6db74">&#39;.com&#39;</span>)
-				);
-        <span style="color:#66d9ef">SET</span> i <span style="color:#f92672">=</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
-    END <span style="color:#66d9ef">WHILE</span>;
-END ;
-<span style="color:#66d9ef">CALL</span> <span style="color:#a6e22e">proc_initData</span>();
-
-</code></pre></div><h2 id="二符号介绍">
-  二:符号介绍
-  <a class="anchor" href="#%e4%ba%8c%e7%ac%a6%e5%8f%b7%e4%bb%8b%e7%bb%8d">#</a>
+<span style="color:#75715e">-- 员工的部门和名称组合为新字段
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">CONCAT_WS</span>(<span style="color:#e6db74">&#39;-&#39;</span>,dept.d_name,employee.e_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">from</span> employee <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> dept <span style="color:#66d9ef">on</span> dept.d_no <span style="color:#f92672">=</span> employee.dept_no 
+</code></pre></div><h2 id="二聚集函数">
+  二:聚集函数
+  <a class="anchor" href="#%e4%ba%8c%e8%81%9a%e9%9b%86%e5%87%bd%e6%95%b0">#</a>
 </h2>
-<pre><code class="language-linux" data-lang="linux">模式	描述（具体匹配什么）
-^	匹配字符串的开始位置。
-$	匹配字符串的结束位置。
-.	匹配除 &quot;\n&quot; 之外的任何单个字符。
-[...]	匹配所包含的任意一个字符。
-[^...]	匹配未包含的任意字符。
-?	匹配它前面的零个或一个子表达式（字符串）。
-*	匹配它前面的零个或多个子表达式（字符串）。
-+	匹配它前面的一个或多个子表达式（字符串）。
-[abc]	匹配方括号之间列出的任何字符。
-[^abc]	匹配方括号之间未列出的任何字符。
-[A-Z]	匹配任何大写字母。
-[a-z]	匹配任何小写字母。
-[0-9]	匹配从0到9的任何数字。
-[[:&lt;:]]	匹配单词的开头。
-[[:&gt;:]]	匹配单词的结尾。
-[:class:]	匹配字符类，即[：alpha：]匹配字母，[：space：]匹配空格，[：punct：]匹配标点符号，[：upper：] 匹配上层字母。
-p1|p2|p3	匹配任何模式，p1或 p2或p3
-{n}	匹配n前面元素的子表达式
-{m,n}	匹配m到前面元素的n个子表达式
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user;
+<ul>
+<li>什么是聚合函数</li>
+</ul>
+<blockquote>
+<p>聚合函数作用于一组数据，并对一组数据返回一个值</p>
+</blockquote>
+<ul>
+<li>例子一</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 计算表中数量,最小值,最大值,平均值,平均值,累加值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">as</span> count_value ,<span style="color:#a6e22e">MIN</span>(f_price) <span style="color:#66d9ef">as</span> min_value,<span style="color:#a6e22e">MAX</span>(f_price) <span style="color:#66d9ef">as</span> max_value,<span style="color:#a6e22e">AVG</span>(f_price) <span style="color:#66d9ef">as</span> avg_value ,<span style="color:#a6e22e">SUM</span>(f_price) <span style="color:#66d9ef">as</span> sum_value <span style="color:#66d9ef">from</span> fruits
+</code></pre></div><ul>
+<li>例子二</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> c_name, <span style="color:#a6e22e">sum</span>(grade) <span style="color:#66d9ef">as</span> total_grade ,<span style="color:#a6e22e">avg</span>(grade) <span style="color:#66d9ef">as</span> avg_grade <span style="color:#66d9ef">FROM</span> score <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> c_name
+</code></pre></div><h2 id="三创建联结">
+  三:创建联结
+  <a class="anchor" href="#%e4%b8%89%e5%88%9b%e5%bb%ba%e8%81%94%e7%bb%93">#</a>
+</h2>
+<h3 id="使用表别名">
+  使用表别名
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e8%a1%a8%e5%88%ab%e5%90%8d">#</a>
+</h3>
+<blockquote>
+<p>student 取名为 tb_stu</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">concat</span>(tb_stu.department,<span style="color:#e6db74">&#39;-&#39;</span>,tb_stu.name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">from</span> student <span style="color:#66d9ef">as</span> tb_stu;
+</code></pre></div><blockquote>
+<p>当在一次查询中 不止一次地引用相同的表</p>
+</blockquote>
+<h3 id="自联结">
+  自联结
+  <a class="anchor" href="#%e8%87%aa%e8%81%94%e7%bb%93">#</a>
+</h3>
+<blockquote>
+<p>当你知道某个童鞋的分数是98你想查看和98分数相同科目的其他童鞋的分数</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 不适用联结查询的方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> c_name ,grade <span style="color:#66d9ef">from</span> score <span style="color:#66d9ef">where</span> c_name <span style="color:#f92672">=</span> (<span style="color:#66d9ef">select</span> c_name <span style="color:#66d9ef">from</span> score <span style="color:#66d9ef">where</span> grade <span style="color:#f92672">=</span> <span style="color:#ae81ff">98</span> )
 
-<span style="color:#75715e">-- 包含8的正则匹配
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;8&#39;</span>;
-
-<span style="color:#75715e">-- 包含8或者9的正则匹配 or
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;8|9&#39;</span>;
-
-<span style="color:#75715e">-- 以8开头的正则匹配
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;^8&#39;</span> ;
-
-<span style="color:#75715e">-- 以1结尾的正则匹配
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;1$&#39;</span> ;
+<span style="color:#75715e">-- 使用联结的查询方法 (清晰很多)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> tb1.c_name ,tb1.grade <span style="color:#66d9ef">from</span> score tb1, score tb2 <span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span>  tb1.c_name <span style="color:#f92672">=</span> tb2.c_name  <span style="color:#66d9ef">and</span> tb2.grade <span style="color:#f92672">=</span> <span style="color:#ae81ff">98</span>;
 
 
-<span style="color:#75715e">-- 以8或者9开头的正则匹配
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;^[8-9]&#39;</span> ;
+</code></pre></div><h3 id="自然联结">
+  自然联结
+  <a class="anchor" href="#%e8%87%aa%e7%84%b6%e8%81%94%e7%bb%93">#</a>
+</h3>
+<blockquote>
+<p>当对多个表联结查询或者对一个表进行两次引用查询 这个时候有相同的列可能要出现  这个时候我们手动控制某些列出现某些列不出现</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+ <span style="color:#75715e">-- fruits 中s_id和suppliers中s_id是相同的列名称
+</span><span style="color:#75715e"></span>
+ <span style="color:#66d9ef">select</span> fruits.<span style="color:#f92672">*</span>,suppliers.s_name <span style="color:#66d9ef">as</span> s_name , suppliers.s_city <span style="color:#66d9ef">as</span> s_city <span style="color:#66d9ef">from</span> fruits ,suppliers <span style="color:#66d9ef">where</span> suppliers.s_id <span style="color:#f92672">=</span> fruits.s_id
+</code></pre></div><h3 id="外部联结">
+  外部联结
+  <a class="anchor" href="#%e5%a4%96%e9%83%a8%e8%81%94%e7%bb%93">#</a>
+</h3>
+<blockquote>
+<p>将一个表中的行与另一个表中的行关联，但有时候需要包含那些没有关联的行</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> customers.cust_id,orders.order_num <span style="color:#66d9ef">from</span> customers <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">outer</span> <span style="color:#66d9ef">join</span> orders <span style="color:#66d9ef">on</span> customers.cust_id <span style="color:#f92672">=</span> orders.cust_id
+</code></pre></div><h3 id="使用带聚集函数的联结">
+  使用带聚集函数的联结
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%b8%a6%e8%81%9a%e9%9b%86%e5%87%bd%e6%95%b0%e7%9a%84%e8%81%94%e7%bb%93">#</a>
+</h3>
+<h2 id="四分组查询过滤">
+  四:分组查询、过滤
+  <a class="anchor" href="#%e5%9b%9b%e5%88%86%e7%bb%84%e6%9f%a5%e8%af%a2%e8%bf%87%e6%bb%a4">#</a>
+</h2>
+<h2 id="五全文搜索">
+  五:全文搜索
+  <a class="anchor" href="#%e4%ba%94%e5%85%a8%e6%96%87%e6%90%9c%e7%b4%a2">#</a>
+</h2>
+<h2 id="六行转列列转行">
+  六:行转列&amp;列转行
+  <a class="anchor" href="#%e5%85%ad%e8%a1%8c%e8%bd%ac%e5%88%97%e5%88%97%e8%bd%ac%e8%a1%8c">#</a>
+</h2>
+<h3 id="行转列">
+  行转列
+  <a class="anchor" href="#%e8%a1%8c%e8%bd%ac%e5%88%97">#</a>
+</h3>
+<ul>
+<li>数据准备</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 创建表
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Table structure for user_column_row
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span>  (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;姓名&#39;</span>,
+  <span style="color:#f92672">`</span>features<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;特征&#39;</span>,
+  <span style="color:#f92672">`</span>value<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;数值&#39;</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE
+) <span style="color:#66d9ef">ENGINE</span> <span style="color:#f92672">=</span> MyISAM <span style="color:#66d9ef">AUTO_INCREMENT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">=</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> <span style="color:#f92672">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span style="color:#f92672">=</span> Dynamic;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Records of user_column_row
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;小明&#39;</span>, <span style="color:#e6db74">&#39;身高&#39;</span>, <span style="color:#e6db74">&#39;172.00&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;小明&#39;</span>, <span style="color:#e6db74">&#39;体重&#39;</span>, <span style="color:#e6db74">&#39;48kg&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;小明&#39;</span>, <span style="color:#e6db74">&#39;年龄&#39;</span>, <span style="color:#e6db74">&#39;23&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;小红&#39;</span>, <span style="color:#e6db74">&#39;身高&#39;</span>, <span style="color:#e6db74">&#39;161.00&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#39;小红&#39;</span>, <span style="color:#e6db74">&#39;体重&#39;</span>, <span style="color:#e6db74">&#39;40kg&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">7</span>, <span style="color:#e6db74">&#39;小红&#39;</span>, <span style="color:#e6db74">&#39;年龄&#39;</span>, <span style="color:#e6db74">&#39;19&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;小花&#39;</span>, <span style="color:#e6db74">&#39;身高&#39;</span>, <span style="color:#e6db74">&#39;153.00&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">9</span>, <span style="color:#e6db74">&#39;小花&#39;</span>, <span style="color:#e6db74">&#39;体重&#39;</span>, <span style="color:#e6db74">&#39;42kg&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;小花&#39;</span>, <span style="color:#e6db74">&#39;年龄&#39;</span>, <span style="color:#e6db74">&#39;17&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">11</span>, <span style="color:#e6db74">&#39;小明&#39;</span>, <span style="color:#e6db74">&#39;身高&#39;</span>, <span style="color:#e6db74">&#39;172.33&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">12</span>, <span style="color:#e6db74">&#39;小军&#39;</span>, <span style="color:#e6db74">&#39;身高&#39;</span>, <span style="color:#66d9ef">NULL</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">13</span>, <span style="color:#e6db74">&#39;小军&#39;</span>, <span style="color:#e6db74">&#39;体重&#39;</span>, <span style="color:#66d9ef">NULL</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">14</span>, <span style="color:#e6db74">&#39;小军&#39;</span>, <span style="color:#e6db74">&#39;年龄&#39;</span>, <span style="color:#66d9ef">NULL</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">15</span>, <span style="color:#e6db74">&#39;小胖&#39;</span>, <span style="color:#66d9ef">NULL</span>, <span style="color:#66d9ef">NULL</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">16</span>, <span style="color:#e6db74">&#39;小胖&#39;</span>, <span style="color:#66d9ef">NULL</span>, <span style="color:#66d9ef">NULL</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user_column_row<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">17</span>, <span style="color:#e6db74">&#39;小胖&#39;</span>, <span style="color:#66d9ef">NULL</span>, <span style="color:#66d9ef">NULL</span>);
+</code></pre></div><ul>
+<li>
+<p>例子</p>
+</li>
+<li>
+<p>进行之前 先说一个语句 mysql case…when…then 这个经常用来处理行转列</p>
+</li>
+<li>
+<p>CASE WHEN <code>features</code> = &lsquo;体重&rsquo; THEN <code>value</code> ELSE &lsquo;0kg&rsquo; END  表示 匹配到体重就使用value 假如匹配不到就使用0kg</p>
+</li>
+</ul>
+<pre><code class="language-script" data-lang="script">-- 第一次
+
+SELECT
+	tb_user.id,tb_user.NAME , 
+	( CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END ) AS weight ,
+	( CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END ) AS height,
+	( CASE WHEN `features` = '年龄' THEN `value` ELSE  0    END ) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME;
+-- 结果
+id  name   weight  height age
+2	小明	0kg	   172.00	0
+5	小红	0kg	   161.00	0
+8	小花	0kg	   153.00	0
+12	小军	0kg		        0
+15	小胖	0kg	   0cm	    0
 
 
-<span style="color:#75715e">-- 以a-z开头的正则匹配 并且第二位是数字8的正则匹配
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;^[a-z]8&#39;</span> ;
+-- 可以看到根本没有达到目的
 
-<span style="color:#75715e">-- 转义符号 由于.是特殊符号 那么要找包含.的字符必须转义
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_PASSWORD <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;\\.&#39;</span> ;
+-- 第二次
+
+SELECT
+	tb_user.id,tb_user.NAME , 
+	( CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END ) AS weight ,
+	( CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END ) AS height,
+	max( CASE WHEN `features` = '年龄' THEN `value` ELSE  0    END ) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME;
 
 
-<span style="color:#75715e">-- ^[8]* 以8开头有0个或者多个  [a-z]+ 有1个或者多个 0? 有0个或者1个匹配  [:alpha:]{1,4} 任意字符1到4个
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;^[8]*[a-z]+0?[:alpha:]{1,4}&#39;</span> ;
-<span style="color:#66d9ef">SELECT</span> <span style="color:#a6e22e">CONCAT</span>(USER_ID,<span style="color:#e6db74">&#39;-&#39;</span>,USER_PASSWORD,<span style="color:#e6db74">&#39; USER_NAME:&#39;</span>,USER_NAME) <span style="color:#66d9ef">as</span> new_name <span style="color:#66d9ef">from</span> t_user <span style="color:#66d9ef">where</span> USER_NAME <span style="color:#66d9ef">REGEXP</span> <span style="color:#e6db74">&#39;^[8]*[a-z]+0?[:alpha:]{1,4}&#39;</span> ;
+-- 结果
 
+2	小明	0kg	172.00	23
+5	小红	0kg	161.00	19
+8	小花	0kg	153.00	17
+12	小军	0kg		0
+15	小胖	0kg	0cm	0
+
+-- 对年龄进行取最大倒是满足了 但是不是所有的行数据都是数字啊 所以还是不靠谱
+
+
+-- 第三次
+
+SELECT
+	tb_user.id,tb_user.NAME ,
+	group_concat(CASE WHEN `features` = '体重' THEN `value` ELSE '0kg' END) AS weight,
+	group_concat(CASE WHEN `features` = '身高' THEN `value` ELSE '0cm' END) AS height,
+	group_concat(CASE WHEN `features` = '年龄' THEN `value` ELSE ' 0 ' END) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
+
+-- 结果
+
+2	小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
+5	小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
+8	小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
+12	小军	0kg,0kg	             0cm,0cm	               0 ,  0 
+15	小胖	0kg,0kg,0kg	         0cm,0cm,0cm	           0 , 0 , 0 
+
+-- 可以看到已经全部取出组合而来  虽然结果值很乱 但是这是最靠谱的 把结果处理下就行啦,比如可以考虑代码直接处理或者存储过程处理
+
+</code></pre><h3 id="列转行">
+  列转行
+  <a class="anchor" href="#%e5%88%97%e8%bd%ac%e8%a1%8c">#</a>
+</h3>
+<ul>
+<li>数据准备</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>user2<span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;名称&#39;</span>,
+  <span style="color:#f92672">`</span>age<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;年龄&#39;</span>,
+  <span style="color:#f92672">`</span>height<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;身高&#39;</span>,
+  <span style="color:#f92672">`</span>weight<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;体重&#39;</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>MyISAM <span style="color:#66d9ef">AUTO_INCREMENT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb4 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8mb4_0900_ai_ci;
+
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Table structure for user2
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>user2<span style="color:#f92672">`</span>;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>user2<span style="color:#f92672">`</span>  (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> utf8mb4_0900_ai_ci <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;名称&#39;</span>,
+  <span style="color:#f92672">`</span>age<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;年龄&#39;</span>,
+  <span style="color:#f92672">`</span>height<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;身高&#39;</span>,
+  <span style="color:#f92672">`</span>weight<span style="color:#f92672">`</span> <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;体重&#39;</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">USING</span> BTREE
+) <span style="color:#66d9ef">ENGINE</span> <span style="color:#f92672">=</span> MyISAM <span style="color:#66d9ef">AUTO_INCREMENT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">=</span> utf8mb4 <span style="color:#66d9ef">COLLATE</span> <span style="color:#f92672">=</span> utf8mb4_0900_ai_ci ROW_FORMAT <span style="color:#f92672">=</span> Dynamic;
+
+<span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e">-- Records of user2
+</span><span style="color:#75715e">-- ----------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user2<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;小明&#39;</span>, <span style="color:#ae81ff">22</span>.<span style="color:#ae81ff">00</span>, <span style="color:#ae81ff">48</span>.<span style="color:#ae81ff">00</span>, <span style="color:#ae81ff">178</span>.<span style="color:#ae81ff">40</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#f92672">`</span>user2<span style="color:#f92672">`</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;小胖&#39;</span>, <span style="color:#ae81ff">25</span>.<span style="color:#ae81ff">00</span>, <span style="color:#ae81ff">50</span>.<span style="color:#ae81ff">00</span>, <span style="color:#ae81ff">168</span>.<span style="color:#ae81ff">00</span>);
+
+</code></pre></div><ul>
+<li>列转行关键点：</li>
+</ul>
+<blockquote>
+<p>union，使用&rsquo;年龄' as 特征、&lsquo;身高&rsquo; as 特征、&lsquo;体重&rsquo; as 特征 来确定图5第3列的列名与每行数据该列的值，使用age as 数值、height as 数值、weight as 数值来确定图5第4列的列名与每行数据该列的值，3个select 查询出3张表格，再通过union连接成一张表格</p>
+</blockquote>
+<ul>
+<li>union注意点</li>
+</ul>
+<blockquote>
+<p>使用union连接表时需要注意表的字段一致，此处我们3个select 查询出3张表格字段是一致的</p>
+</blockquote>
+<ul>
+<li>例子</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span>  id , name ,<span style="color:#e6db74">&#39;年龄&#39;</span> <span style="color:#66d9ef">as</span> features,age <span style="color:#66d9ef">as</span> value  <span style="color:#66d9ef">from</span> user2  <span style="color:#66d9ef">union</span> 
+
+<span style="color:#66d9ef">select</span>  id , name ,<span style="color:#e6db74">&#39;体重&#39;</span> <span style="color:#66d9ef">as</span> features,weight <span style="color:#66d9ef">as</span> value  <span style="color:#66d9ef">from</span> user2 <span style="color:#66d9ef">union</span>
+
+<span style="color:#66d9ef">select</span>  id , name ,<span style="color:#e6db74">&#39;身高&#39;</span> <span style="color:#66d9ef">as</span> features,height <span style="color:#66d9ef">as</span> value  <span style="color:#66d9ef">from</span> user2 
+
+<span style="color:#75715e">-- 这里面有一个常设值 比如 &#39;年龄&#39; as features , &#39;体重&#39; as features  直接挂到列上的  除了这个就没有其它难点了
+</span></code></pre></div><h2 id="七重要函数单独说明">
+  七:重要函数单独说明
+  <a class="anchor" href="#%e4%b8%83%e9%87%8d%e8%a6%81%e5%87%bd%e6%95%b0%e5%8d%95%e7%8b%ac%e8%af%b4%e6%98%8e">#</a>
+</h2>
+<h3 id="count-函数">
+  count 函数
+  <a class="anchor" href="#count-%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<ul>
+<li>问题：用count(*)，count(1)，count(不存在NULL的列名)谁好呢?</li>
+</ul>
+<blockquote>
+<p>其实，对于MyISAM引擎的表是没有区别的(O(1))。这种引擎内部有一计数器在维护着行数。
+Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因为innodb真的要去数一遍。但好于具体的count(列名)。</p>
+</blockquote>
+<ul>
+<li>问题：能不能使用count(列名)替换count(*)?</li>
+</ul>
+<blockquote>
+<p>不要使用 count(列名)来替代 count(<em>) ， count(</em>) 是 SQL92 定义的标准统计行数的语法，跟数 据库无关，跟 NULL 和非 NULL 无关。</p>
+</blockquote>
+<blockquote>
+<p>count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行。</p>
+</blockquote>
+<ul>
+<li>解决MySQL5.7版本之后使用GROUP BY语句时报错</li>
+</ul>
+<ul>
+<li>1、先使用SQL查询sql_mode</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">@@</span>global.sql_mode
+</code></pre></div><ul>
+<li>2、重新设置sql_mode，删除ONLY_FULL_GROUP_BY</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-MYSQL" data-lang="MYSQL"><span style="color:#66d9ef">set</span> <span style="color:#f92672">@@</span>global.sql_mode <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION&#39;</span>
 </code></pre></div></article>
  
       <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
@@ -3003,8 +3261,30 @@ p1|p2|p3	匹配任何模式，p1或 p2或p3
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#一数据准备">一:数据准备</a></li>
-    <li><a href="#二符号介绍">二:符号介绍</a></li>
+    <li><a href="#一创建计算字段">一:创建计算字段</a></li>
+    <li><a href="#二聚集函数">二:聚集函数</a></li>
+    <li><a href="#三创建联结">三:创建联结</a>
+      <ul>
+        <li><a href="#使用表别名">使用表别名</a></li>
+        <li><a href="#自联结">自联结</a></li>
+        <li><a href="#自然联结">自然联结</a></li>
+        <li><a href="#外部联结">外部联结</a></li>
+        <li><a href="#使用带聚集函数的联结">使用带聚集函数的联结</a></li>
+      </ul>
+    </li>
+    <li><a href="#四分组查询过滤">四:分组查询、过滤</a></li>
+    <li><a href="#五全文搜索">五:全文搜索</a></li>
+    <li><a href="#六行转列列转行">六:行转列&amp;列转行</a>
+      <ul>
+        <li><a href="#行转列">行转列</a></li>
+        <li><a href="#列转行">列转行</a></li>
+      </ul>
+    </li>
+    <li><a href="#七重要函数单独说明">七:重要函数单独说明</a>
+      <ul>
+        <li><a href="#count-函数">count 函数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
