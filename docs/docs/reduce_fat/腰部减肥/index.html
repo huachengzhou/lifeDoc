@@ -149,7 +149,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../en.search.min.b4bbb62be6fbde8db6721f5d5a9b3002b5b85022c58367d25876fd386ceb3afc.js"  ></script>
+<script defer src="./../../../en.search.min.684efe1faad23eccef4eba6656722a28e3908463c5120e175bac40b9dc56a502.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -3090,8 +3090,88 @@ https://github.com/alex-shpak/hugo-book
 <p><a href="https://www.zhihu.com/question/33277243/answer/625199100">链接处</a></p>
 </article>
  
-      <canvas id="drawing" width="300" height="300">没有金刚钻就不要揽瓷器活</canvas>
+      
 
+
+<p id="inspirational_statement_content" style="color: red"></p>
+<script>
+
+    
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    var inspirational_statement_array = [] ;
+
+    inspirational_statement_array.push('不奋斗，你的才华如何配得上你的任性。不奋斗，你的脚步如何赶得上父母老去的速度。不奋斗，世界这么大你靠什么去看看') ;
+    inspirational_statement_array.push('开挂的人生，不是天生就有持续不断的鸡血，而是后天获得了从痛苦中给自己充电的能力。') ;
+    inspirational_statement_array.push('如果你连工作挣钱都要别人开导你，都要人盯着，看着，哄着，鼓励着，劝你还是别干了，那你就应该穷！这是不是鸡汤，这是现实。') ;
+    inspirational_statement_array.push('趁着梦想还有温度，人生还有转机，抓紧时间去奋斗，不要等到中年时，只能叹息自己的碌碌无为') ;
+    inspirational_statement_array.push('世上所有的牛逼背后，都是一帮玩命的人') ;
+    inspirational_statement_array.push('你可以一辈子不登山，但你心中一定要有座山。它使你总往高处爬，它使你总有个奋斗的方向，它使你任何一刻抬起头，都能看到自己的希望') ;
+    inspirational_statement_array.push('我喜欢这个功利的世界，因为它承认每个人的努力，好看的姑娘能轻松几年，但会赚钱的姑娘才能过好一生') ;
+    inspirational_statement_array.push('影响我们人生的绝不仅仅是环境，其实是心态在控制个人的行动和思想。同时，心态也决定了一个人的视野、事业和成就，甚至一生') ;
+    inspirational_statement_array.push('第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由') ;
+    inspirational_statement_array.push('愿你能把梦想放在心底，化为最坚定的力量。不管一路上多么坎坷和不安，那份坚持一直在；不管一路上多么坦途或荆棘，那份努力一直在') ;
+    inspirational_statement_array.push('你所做的事情，也许暂时看不到成果，但不要灰心或焦虑，你不是没有成长，而是在扎根。') ;
+    inspirational_statement_array.push('生活教会我们的第一件事就是——没有人可以宠你一辈子，要想走得精彩又坦荡，唯有独立坚强。新的一天开始了，替未来的你抱抱现在努力奋斗的自己') ;
+    inspirational_statement_array.push('我终于相信，每一条走上来的路，都有它不得不那样跋涉的理由。每一条要走下去的路，都有它不得不那样选择的方向') ;
+    inspirational_statement_array.push('人生，就要活得漂亮，走得铿锵。无论你是谁，宁可做拼搏的失败者，也不要做安于现状的平凡人') ;
+    inspirational_statement_array.push('有梦想的人不做选择题，只做证明题，所以，年轻的你，可以犯错，可以跌倒，但千万不要怀疑自己，也不要放弃梦想。去想去的地方，做该做的事情，不迟疑，不徘徊') ;
+    inspirational_statement_array.push('能力不在脸上，本事不在嘴上。要踏踏实实做实事，生活不会因为某个节点而变得与众不同，未来的幸运都是过往努力的积攒') ;
+    inspirational_statement_array.push('当所有人都拿你当回事的时候，你不能太拿自己当回事；当所有人都不拿你当回事的时，你一定得瞧得上自己。这就是淡定，这就是从容') ;
+    inspirational_statement_array.push('生活给你的很多难堪，不是在跟你过不去，而是要你不断提高生存的技能。你看别人干什么好像都是轻而易举，很容易成功，那是因为别人背后可能比你多付出了百倍的努力!') ;
+    inspirational_statement_array.push('当一个人的心中有着更高的山峰想去攀登时，他就不会在意脚下的泥沼，他才可能用最平静的方式去面对一般人难以承受的痛苦。') ;
+    inspirational_statement_array.push('这世间从来没有所谓的逆袭。如果有的话，也不过是日复一日自律和努力的结果。') ;
+    inspirational_statement_array.push('人生就是一个磨练的过程，如果没有这些酸甜苦辣，你永远都不会成熟！所以，我们应该在阳光下灿烂，风雨中奔跑，泪水中成长，拼搏中展望，对自己说一声：昨天挺好，今天很好，明天会更好！') ;
+
+    inspirational_statement_array.push('人生要用简单的心境，对待复杂的人生，最无情的不是人，是时间；最珍贵的不是金钱，是情感；最可怕的不是失恋，是心身不全；最舒适的不是酒店，是家里；最难听的不是脏话，是无言；最美好的不是未来，是今天。') ;
+
+    inspirational_statement_array.push('在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来。有时候，选择快乐，更需要勇气。') ;
+    inspirational_statement_array.push('如果你的生活已处于低谷，那就，大胆走，因为你怎样走都是在向上。') ;
+    inspirational_statement_array.push('你可以哭但不能输，你可以难过但不可以落魄，你不努力怎么会知道自己可以赢得多少掌声?如果你能每天呐喊遍“我用不着为这一点小事而烦恼”，你会发现，你心里有一种不可思议的力量，试试看，很管用的。') ;
+    inspirational_statement_array.push('生活不是用来妥协的，你退缩得越多，能让你喘息的空间就越有限。日子不是用来将就的，你表现得越卑微，一些幸福的东西就会离你越远。') ;
+    inspirational_statement_array.push('过去的事，就让它过去吧，我们错过了昨日的日落，再也不能错过今日的日出，保持平衡的心态，以最美好的心情来对待每一天，每一天都会充满阳光，洋溢着希望。') ;
+    inspirational_statement_array.push('人生快不快乐看心情，幸不幸福看心态。漫长人生中，什么都不是一眼看到头的，一时的春风得意算不了什么，一时的失败也不能算数。') ;
+    inspirational_statement_array.push('成功没有快车道，幸福没有高速路。所有的成功，都来自不倦的努力和奔跑；所有幸福，都来自平凡的奋斗和坚持。') ;
+    inspirational_statement_array.push('每天都是一个起点，每天都有一点进步，每天都有一点收获!') ;
+    inspirational_statement_array.push('眼泪不是我们的答案，拼搏才是我们的选择。') ;
+    inspirational_statement_array.push('静下来，铸我实力；拼上去，亮我风采。') ;
+    inspirational_statement_array.push('霸气盈胸，高山有顶我为峰；豪情壮志，乾坤朗朗我称雄。') ;
+    inspirational_statement_array.push(' 宁可战死，不可吓死。今朝不搏，更待何时?') ;
+    inspirational_statement_array.push('不论在何时开始，重要的是开始之后就不要停止；不论在何时，重要的是之后就不要悔恨。') ;
+    inspirational_statement_array.push('明天是世上增值最快的一块土地，因它充满了希望。') ;
+    inspirational_statement_array.push('越接近考试，往往越要在坚实上下功夫。') ;
+    inspirational_statement_array.push('最弱的人，集中精力于单一目标，也能有所成就，最强的人，分心太多事务，可能一事无成。') ;
+    inspirational_statement_array.push('你想活得更有质量更有层次更有品位吗?那就努力改变你的现状!') ;
+    inspirational_statement_array.push('时间不等待，珍惜今天，把握现在!') ;
+    inspirational_statement_array.push('以阳光和微笑示人，在逆境中燃起斗志!') ;
+    inspirational_statement_array.push('苦想没盼头，苦干有奔头。') ;
+    inspirational_statement_array.push('人的才华就如海绵的水，没有外力的挤压，它是绝对流不出来的。流出来后，海绵才能吸收新的源泉。') ;
+    inspirational_statement_array.push('忍别人所不能忍的痛，吃别人所不能吃的苦，是为了收获得不到的收获。') ;
+    inspirational_statement_array.push('人生如梦，一切皆有可能，只要你能想。') ;
+    inspirational_statement_array.push('别想一下造出大海，必须先由小河川开始。') ;
+    inspirational_statement_array.push('悲观些看成功，乐观些看失败。轻松些看自己，宽容些看别人。理智些看问题，纯真些看人生。') ;
+    inspirational_statement_array.push('无须自卑，不要自负，坚持自信。') ;
+    inspirational_statement_array.push('身体常动，内心常静。') ;
+    inspirational_statement_array.push('学习与坐禅相似，须有一颗恒心。') ;
+
+    window.onload = function () {
+        var index = randomNum(0,inspirational_statement_array.length-1) ;
+        console.log(index);
+        document.getElementById('inspirational_statement_content').innerText = inspirational_statement_array[index] ;
+    } ;
+</script>
 <script>
     function hous(x,y,r,h,context){
 
@@ -3142,80 +3222,80 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    var drawing=document.getElementById("drawing");
-    if(drawing.getContext){
-        var context=drawing.getContext("2d");
-        context.beginPath();
-        
-        context.arc(100,100,99,0,2*Math.PI,false);
-        
-        context.moveTo(194,100);
-        context.arc(100,100,94,0,2*Math.PI,false);
-        context.closePath();
-        context.stroke();
-    }
-
     
-    context.font="bold 14px Arial";
-    context.textAlign="center";
-    context.textBaseline="midden";
-    for(var i=1;i<13;i++){
-        hous(100,105,85,i,context);
-    }
-    context.closePath();
-    context.stroke();
-
-    var oDate = new Date(); 
-    var h=oDate.getHours(); 
-    var m=oDate.getMinutes(); 
-    var s=oDate.getSeconds(); 
-    m+=s/60;
-    h+=m/60;
-
-    function times(r,context,s){
-        context.moveTo(100,100);
-        var a=Math.PI*s/30;
-        var x=r*Math.sin(a)+100;
-        var y=100-r*Math.cos(a)
-        context.lineTo(x,y);
-    }
-
-    function timeh(r,context,h){
-        context.moveTo(100,100);
-        var a=Math.PI*h/6;
-        var x=r*Math.sin(a)+100;
-        var y=100-r*Math.cos(a)
-        context.lineTo(x,y);
-    }
-
-    function time(context,r){
-        
-        context.beginPath();
-        var oDate = new Date(); 
-        var h=oDate.getHours(); 
-        var m=oDate.getMinutes(); 
-        var s=oDate.getSeconds(); 
-        m+=s/60;
-        h+=m/60;
-        
-        context.moveTo(103,100);
-        context.arc(100,100,3,0,2*Math.PI,false);
-        
-        times(r,context,s);
-        
-        times(r-15,context,m);
-        
-        timeh(r-30,context,h);
-        context.closePath();
-        context.stroke();
-
-    }
-
-    var r=94/Math.sqrt(2)-1;
-    setInterval(function(){
-        context.clearRect(100-r,100-r,2*r,2*r);
-        time(context,r-1);
-    },16.7);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </script>
 
       <footer class="book-footer">

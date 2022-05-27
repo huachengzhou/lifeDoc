@@ -71,8 +71,7 @@ System.out.println(&amp;quot;It&#39;s a Groovy baby, yeah!&amp;quot;);def write
       <guid>https://huachengzhou.github.io/life/docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/</guid>
       <description>groovy变量值获取#`
 https://www.codenong.com/34288451/
-`
-回到上一级#</description>
+`</description>
     </item>
     
     <item>
@@ -104,7 +103,7 @@ https://www.codenong.com/34288451/
   处理经常变化的多种类型的实体
   具有图形化用户界面
   拥有快速变化的功能
-  Java编译器会产生可以在Java虚拟机上运行的字节码。#Groovy类和Java是二进制兼容的。#Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。#——对于JVM而言，Groovy和Java是完全一样的。#因此，Groovy能够完全使用各种Java API。#Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。#回到上一级#</description>
+  Java编译器会产生可以在Java虚拟机上运行的字节码。#Groovy类和Java是二进制兼容的。#Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。#——对于JVM而言，Groovy和Java是完全一样的。#因此，Groovy能够完全使用各种Java API。#Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。#</description>
     </item>
     
     <item>
