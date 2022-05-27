@@ -58,4 +58,3 @@ weight: 1
 + //title | //price 选取所有文档中的 title 和 price 元素。
 + /bookstore/book/title|//price 选取所有属于 bookstore 元素的 book 元素的title 元素，以及文档中所有的 price 元素。
   
-## [回到上一级](../)
