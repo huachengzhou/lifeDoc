@@ -16,11 +16,32 @@ select fruits.f_name as name ,suppliers.s_city as city from suppliers left join 
 select CONCAT_WS('-',dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 
 ```
 
-## 二:聚集函数
+## 二:函数
+
++ 聚集函数
++ 预定义函数-字符串函数
++ 预定义函数-时间处理函数
++ 预定义函数-数字处理函数
++ 算数、逻辑运算
+
+### 1:聚集函数 (聚合函数可以理解成多对一)
+
 
 + 什么是聚合函数
 
 > 聚合函数作用于一组数据，并对一组数据返回一个值
+
+* 常用聚合函数：
+
+| 函数 | 描述 |
+| :------------- | :------------- |
+| AVG() | 返回列的平均值 |
+| COUNT(DISTINCT) | 返回列去重后的行数 |
+| COUNT() | 返回列的行数 |
+| MAX() | 返回列的最大值 |
+| MIN() | 返回列的最小值 |
+| SUM() | 返回列的总和 |
+| GROUP_CONCAT() | 返回一组值的连接字符串(MySQL独有) |
 
 + 例子一
 
@@ -32,9 +53,171 @@ select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_va
 + 例子二
 
 ```mysql
-SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name
+SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name
 ```
 
+### 2:预定义函数-字符串函数
+
+
+| 函数 | 描述 |
+| :------------- | :------------- |
+| LENGTH() | 返回列的字节数 |
+| CHAR_LENGTH() | 返回列的字符数 |
+| TRIM()/RTRIM()/LTRIM() | 去除两边空格/去除右边空格/去除左边空格 |
+| SUBSTRING(str, pos, [len]) | 从pos位置截取字符串str，截取len长度 |
+| LOCATE(substr, str, [pos]) | 返回substr在str字符串中的位置 |
+| REPLACE(str, from_str, to_str) | 将str字符串中的from_str替换成to_str |
+| LOWER(), UPPER() | 字符串转换为小写/大写 |
+
++ 例子
+
+```mysql
+SELECT
+	`USER_NAME`,
+	LENGTH( `USER_NAME` ) AS name_length,
+	CHAR_LENGTH( USER_NAME ) AS string_length,
+	LOWER( USER_NAME ) AS LOWER_NAME,
+	UPPER( USER_NAME ) AS UPPER_NAME,
+	REPLACE ( USER_NAME, '0', 'O' ) AS REPLACE_NAME,
+	SUBSTRING( USER_NAME, '0', 5 ) AS SUBSTRING_NAME,
+	TRIM( `USER_NAME` ) AS TRIM_NAME 
+FROM
+	`t_user` 
+	LIMIT 2,40
+```
+
+### 3:预定义函数-数字处理函数
+
+| 函数 | 描述 |
+| :------------- | :------------- |
+| ABS() | 返回数值的绝对值 |
+| CEIL() | 对小数向上取整 CEIL(1.2)=2 |
+| ROUND() | 四舍五入 |
+| POW(num, n) | num的n次幂 POW(2, 2)=4 |
+| FLOOR() | 对小数向下取整 CELL(1.2)=1 |
+| MOD(N, M) | 取模(返回n除以m的余数)=N % M |
+| RAND() | 取0~1之间的一个随机数 |
+
++ 例子一
+
+
+```mysql
+select ABS(-22.4) as ABS_VALUE,CEIL(1.4)as CEIL_VALUE,ROUND(1.49)as ROUND_VALUE,FLOOR(1.4) as FLOOR_VALUE,POW(2,3) AS POW_VALUE,RAND()*10 AS RAND_VALUE,MOD(8,3) AS MOD_VALUE ;
+```
+
++ 例子二
+
+```mysql
+SELECT
+	ABS( `f_price` ) AS ABS_VALUE,
+	CEIL( `f_price` ) AS CEIL_VALUE,
+	ROUND( `f_price` ) AS ROUND_VALUE,
+	FLOOR( `f_price` ) AS FLOOR_VALUE,
+	POW( `f_price`, 3 ) AS POW_VALUE,
+	RAND( ) * `f_price` AS RAND_VALUE,
+	MOD ( `f_price`, 3 ) AS MOD_VALUE 
+FROM
+	`fruits`;
+
+```
+
+### 4:预定义函数-时间处理函数
+
+| 函数  | 描述 |
+| :------------- | :------------- |
+| CURDATE() | 当前日期 |
+| CURTIME() | 当前时间 |
+| NOW() | 显示当前时间日期(常用) |
+| UNIX_TIMESTAMP() | 当前时间戳 |
+| DATE_FORMAT(date, format) | 按指定格式显示时间 |
+| DATE_ADD(date, INTERVAL unit) | 计算指定日期向后加一段时间的日期 |
+| DATE_SUB(date, INTERVAL unit) | 计算指定日期向前减一段时间的日期 |
+
++ 例子1
+
+```mysql
+
+-- 使用临时日期函数来创建查询 基本全部用到了上面的函数
+
+SELECT
+	CURDATE( ) AS CURDATE,
+	CURTIME( ) AS CURTIME,
+	NOW( ) AS NOW,
+	DATE_ADD( NOW( ), INTERVAL 1 MONTH ) AS DATE_ADD_ONE_MONTH,
+	DATE_SUB( NOW( ), INTERVAL 1 MONTH ) AS DATE_SUB_ONE_MONTH,
+	UNIX_TIMESTAMP( ) AS UNIX_TIMESTAMP,
+	DATE_FORMAT( NOW( ), '%Y-%m-%d %H-%i-%S' ) AS DATE_FORMAT;
+```
+
++ 例子2 这里我们结合实际来说
+
++ 需要准备数据 来查询  这里我们使用存储过程来创建特定的日期表
+
+```mysql
+
+-- 创建表
+
+CREATE TABLE `temp_date` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `age` float(14,2) DEFAULT NULL COMMENT 'age',
+  `name` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL COMMENT '生日',
+  `gmt_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='临时用户表';
+
+ -- 存储过程创建数据
+
+DROP PROCEDURE IF EXISTS proc_insert_into_temp_date;--如果存在此存储过程则删掉
+DELIMITER ;
+CREATE PROCEDURE proc_insert_into_temp_date(in custom_value int(20))
+BEGIN
+    DECLARE i INT DEFAULT 1;
+		DECLARE num_value INT DEFAULT 0;
+		SET num_value = custom_value ;
+    WHILE i<=num_value DO
+        INSERT INTO temp_date(name,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()),
+				 CONCAT(substring(UUID(),1,7) , '@', substring(UUID(),4,8) ,'.com')
+				);
+        SET i = i+1;
+    END WHILE;
+END ;
+CALL proc_insert_into_temp_date();
+
+
+DROP PROCEDURE IF EXISTS proc_random_date;--如果存在此存储过程则删掉
+DELIMITER ;
+CREATE PROCEDURE proc_random_date(in custom_start_year int(20),in custom_end_year int(20))
+BEGIN
+    DECLARE i INT DEFAULT 1;
+		DECLARE num_value INT DEFAULT 0;
+		
+END ;
+CALL proc_random_date(1890,2022);
+
+
+
+
+DROP PROCEDURE IF EXISTS proc_random_num;
+DELIMITER ;
+CREATE PROCEDURE proc_random_num(in custom_start_value double(20,2),in custom_end_value double(20,2),out result_value double(20,2))
+BEGIN
+    DECLARE start_value double DEFAULT 0;
+		DECLARE end_value double  DEFAULT 0;
+		DECLARE num double DEFAULT 0;
+		DECLARE num_value double DEFAULT 0;
+		DECLARE range_value  double DEFAULT 0;
+		set range_value = RAND();
+		set start_value = 2 ;
+		set end_value = 3;
+END ;
+
+call proc_random_num(10,20,@result) ;
+select @result;
+
+
+```
 
 ## 三:创建联结
 
@@ -191,14 +374,31 @@ SELECT
 FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
 
 -- 结果
-
-2	小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
-5	小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
-8	小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
+id  NAME  weight               height                   age
+2	  小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
+5	  小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
+8	  小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
 12	小军	0kg,0kg	             0cm,0cm	               0 ,  0 
 15	小胖	0kg,0kg,0kg	         0cm,0cm,0cm	           0 , 0 , 0 
 
 -- 可以看到已经全部取出组合而来  虽然结果值很乱 但是这是最靠谱的 把结果处理下就行啦,比如可以考虑代码直接处理或者存储过程处理
+
+-- 第四次  (优化第三次)
+
+SELECT
+	tb_user.id,tb_user.NAME ,
+	group_concat(DISTINCT  CASE WHEN `features` = '体重' and `value` != '0kg'  THEN `value` ELSE null  END  ) AS  weight,
+	group_concat(DISTINCT CASE WHEN `features` = '身高' and `value` !=  '0cm' THEN `value` ELSE null END) AS height,
+	group_concat(DISTINCT CASE WHEN `features` = '年龄' and `value` !=  '0'  THEN `value` ELSE null END) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
+
+-- 结果
+id  NAME  weight  height          age
+2	  小明	48kg	  172.00,172.33	  23
+5	  小红	40kg	  161.00	        19
+8	  小花	42kg	  153.00	        17
+12	小军			
+15	小胖			
 
 ```
 
@@ -260,7 +460,16 @@ select  id , name ,'身高' as features,height as value  from user2
 ```
 
 
-## 七:重要函数单独说明
+
+## 七:行锁(悲观锁),表锁
+
+
+
+## 八:事务
+
+
+
+## 九:重要函数单独说明
 
 ###  count 函数
 
@@ -288,6 +497,8 @@ select @@global.sql_mode
 ```MYSQL
 set @@global.sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
 ```
+
+###  批量插入
 
 
 

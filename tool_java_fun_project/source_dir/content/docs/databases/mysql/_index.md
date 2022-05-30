@@ -21,6 +21,8 @@ weight: 2
 
 ### [mysql新查询](mysql_select)
 
+### [mysql视图](mysql_view)
+
 ### [mysql正则表达式](mysql_regexp)
 
 ### [mysql事务](mysql事务)
@@ -46,4 +48,10 @@ weight: 2
 ### [mysql索引](mysql索引)
 
 ### [MySQL分库分表原理](mysql_distinguish)
+
+### [mysql优化](mysq_advanced_optimization)
+
+
+
+
 
