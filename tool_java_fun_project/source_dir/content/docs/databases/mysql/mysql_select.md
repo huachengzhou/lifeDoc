@@ -169,52 +169,78 @@ CREATE TABLE `temp_date` (
 
  -- 存储过程创建数据
 
+-- 创建生成指定范围的随机数字
+DROP PROCEDURE IF EXISTS proc_random_num;
+DELIMITER ;
+
+CREATE PROCEDURE proc_random_num(in custom_start_value double(12,2),in custom_end_value double(12,2),out result_value double(12,2))
+BEGIN
+  DECLARE start_value_p1 double(12,2) DEFAULT 0;
+  DECLARE end_value_p1 double(12,2) DEFAULT 0;
+  DECLARE num double DEFAULT 0;
+  DECLARE num_value double DEFAULT 0;
+  DECLARE range_value_t  double DEFAULT 0;
+  DECLARE random_value_t  double DEFAULT 0;
+
+  set `start_value_p1`  =  `custom_start_value`  ;
+  set `end_value_p1`  = `custom_end_value`  ;
+	set range_value_t = `custom_end_value` -  `custom_start_value` ;
+  set random_value_t = RAND();
+	set num_value =  `custom_start_value` + ROUND(random_value_t * range_value_t) ;
+	set result_value = num_value ;
+--   SELECT start_value_p1,`end_value_p1` ;
+END ;
+
+
+
+-- 创建生成指定范围的随机日期
+
+
+DROP PROCEDURE IF EXISTS proc_random_date;--如果存在此存储过程则删掉
+DELIMITER ;
+CREATE PROCEDURE proc_random_date(in custom_start_year int(20),in custom_end_year int(20),in custom_start_month int(20),in custom_end_month int(20),in custom_start_day int(20),in custom_end_day int(20),out result_string LONGTEXT)
+BEGIN
+    DECLARE a1 int default 0;
+    DECLARE a2 int default 0;
+    DECLARE a3 int default 0;
+		DECLARE string_value LONGTEXT DEFAULT '' ;
+		-- 调用生成指定范围的数字存储过程
+		CALL  proc_random_num(`custom_start_year` , `custom_end_year` , a1) ;
+		CALL  proc_random_num(`custom_start_month` , `custom_end_month` , a2) ;
+		CALL  proc_random_num(`custom_start_day` , `custom_end_day` , a3) ;
+		set string_value = CONCAT_WS( '-', a1 , a2 , a3) ;
+		set result_string = string_value ;
+END ;
+CALL proc_random_date(1890,2022,1,12,1,31,@result);
+select @result;
+
+-- 插入指定数量的日期
+
+-- 创建插入数据的存储过程
+
+
 DROP PROCEDURE IF EXISTS proc_insert_into_temp_date;--如果存在此存储过程则删掉
 DELIMITER ;
 CREATE PROCEDURE proc_insert_into_temp_date(in custom_value int(20))
 BEGIN
     DECLARE i INT DEFAULT 1;
 		DECLARE num_value INT DEFAULT 0;
+		DECLARE date_value_param VARCHAR(255) ;
 		SET num_value = custom_value ;
     WHILE i<=num_value DO
-        INSERT INTO temp_date(name,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()),
-				 CONCAT(substring(UUID(),1,7) , '@', substring(UUID(),4,8) ,'.com')
-				);
+				CALL proc_random_date(1890,2022,1,12,1,31,date_value_param);
+        INSERT INTO temp_date(`name`,`age`,`birthday`) VALUES(MD5(UUID()),CEILING(RAND()*100),date_value_param);
         SET i = i+1;
     END WHILE;
 END ;
-CALL proc_insert_into_temp_date();
 
+set @result_num = 1000;
+CALL proc_insert_into_temp_date(@result_num);
 
-DROP PROCEDURE IF EXISTS proc_random_date;--如果存在此存储过程则删掉
-DELIMITER ;
-CREATE PROCEDURE proc_random_date(in custom_start_year int(20),in custom_end_year int(20))
-BEGIN
-    DECLARE i INT DEFAULT 1;
-		DECLARE num_value INT DEFAULT 0;
-		
-END ;
-CALL proc_random_date(1890,2022);
+-- 完成数据准备
 
+-- 开始查询
 
-
-
-DROP PROCEDURE IF EXISTS proc_random_num;
-DELIMITER ;
-CREATE PROCEDURE proc_random_num(in custom_start_value double(20,2),in custom_end_value double(20,2),out result_value double(20,2))
-BEGIN
-    DECLARE start_value double DEFAULT 0;
-		DECLARE end_value double  DEFAULT 0;
-		DECLARE num double DEFAULT 0;
-		DECLARE num_value double DEFAULT 0;
-		DECLARE range_value  double DEFAULT 0;
-		set range_value = RAND();
-		set start_value = 2 ;
-		set end_value = 3;
-END ;
-
-call proc_random_num(10,20,@result) ;
-select @result;
 
 
 ```
@@ -501,6 +527,17 @@ set @@global.sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_F
 ###  批量插入
 
 
+### mysql 出现 truncated incorrect double value （已解决）
+
++ 当 int 类型 与 字符串 相连的时候 用 + 就会报错
++ 使用CONCAT(）函数来连接即可
++ 列如 CONCAT(1,‘王’）代替 1 + ‘王’
+
+### MySQL 1064 You have an error in your SQL syntax 错误解决办法
+
++ 　这是因为数据库表中的字段名引用了关键字，例如上面报错字段“desc
++  写sql语句时，引用到与mysql关键字重名的字段时，加上`` 
++  如: set `start_value_p1`  =  `custom_start_value`  ;
 
 
 
