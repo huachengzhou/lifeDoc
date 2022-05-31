@@ -2,48 +2,23 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:聚集函数
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 三:创建联结
-#
-
-使用表别名
-#
-
- student 取名为 tb_stu">
+<meta name="description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql新查询" />
-<meta property="og:description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:聚集函数
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name, sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 三:创建联结
-#
-
-使用表别名
-#
-
- student 取名为 tb_stu" />
+<meta property="og:description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql新查询 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.684efe1faad23eccef4eba6656722a28e3908463c5120e175bac40b9dc56a502.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
+<script defer src="./../../../../en.search.min.37a1a146d2d0958baab958a9f2cc98ee025842b04a1ad5b5fa7ebe7e7ae9b9c5.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -609,10 +584,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/databases/mysql/mysq_advanced_optimization/" class="">mysql优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/databases/mysql/mysql_select/" class=" active">mysql新查询</a>
   
 
         </li>
+      
+    
       
     
   </ul>
@@ -2726,7 +2716,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -2758,7 +2748,14 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#一创建计算字段">一:创建计算字段</a></li>
-    <li><a href="#二聚集函数">二:聚集函数</a></li>
+    <li><a href="#二函数">二:函数</a>
+      <ul>
+        <li><a href="#1聚集函数-聚合函数可以理解成多对一">1:聚集函数 (聚合函数可以理解成多对一)</a></li>
+        <li><a href="#2预定义函数-字符串函数">2:预定义函数-字符串函数</a></li>
+        <li><a href="#3预定义函数-数字处理函数">3:预定义函数-数字处理函数</a></li>
+        <li><a href="#4预定义函数-时间处理函数">4:预定义函数-时间处理函数</a></li>
+      </ul>
+    </li>
     <li><a href="#三创建联结">三:创建联结</a>
       <ul>
         <li><a href="#使用表别名">使用表别名</a></li>
@@ -2776,9 +2773,14 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#列转行">列转行</a></li>
       </ul>
     </li>
-    <li><a href="#七重要函数单独说明">七:重要函数单独说明</a>
+    <li><a href="#七行锁悲观锁表锁">七:行锁(悲观锁),表锁</a></li>
+    <li><a href="#八事务">八:事务</a></li>
+    <li><a href="#九重要函数单独说明">九:重要函数单独说明</a>
       <ul>
         <li><a href="#count-函数">count 函数</a></li>
+        <li><a href="#批量插入">批量插入</a></li>
+        <li><a href="#mysql-出现-truncated-incorrect-double-value-已解决">mysql 出现 truncated incorrect double value （已解决）</a></li>
+        <li><a href="#mysql-1064-you-have-an-error-in-your-sql-syntax-错误解决办法">MySQL 1064 You have an error in your SQL syntax 错误解决办法</a></li>
       </ul>
     </li>
   </ul>
@@ -2810,16 +2812,68 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">-- 员工的部门和名称组合为新字段
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">CONCAT_WS</span>(<span style="color:#e6db74">&#39;-&#39;</span>,dept.d_name,employee.e_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">from</span> employee <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> dept <span style="color:#66d9ef">on</span> dept.d_no <span style="color:#f92672">=</span> employee.dept_no 
-</code></pre></div><h2 id="二聚集函数">
-  二:聚集函数
-  <a class="anchor" href="#%e4%ba%8c%e8%81%9a%e9%9b%86%e5%87%bd%e6%95%b0">#</a>
+</code></pre></div><h2 id="二函数">
+  二:函数
+  <a class="anchor" href="#%e4%ba%8c%e5%87%bd%e6%95%b0">#</a>
 </h2>
+<ul>
+<li>聚集函数</li>
+<li>预定义函数-字符串函数</li>
+<li>预定义函数-时间处理函数</li>
+<li>预定义函数-数字处理函数</li>
+<li>算数、逻辑运算</li>
+</ul>
+<h3 id="1聚集函数-聚合函数可以理解成多对一">
+  1:聚集函数 (聚合函数可以理解成多对一)
+  <a class="anchor" href="#1%e8%81%9a%e9%9b%86%e5%87%bd%e6%95%b0-%e8%81%9a%e5%90%88%e5%87%bd%e6%95%b0%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e6%88%90%e5%a4%9a%e5%af%b9%e4%b8%80">#</a>
+</h3>
 <ul>
 <li>什么是聚合函数</li>
 </ul>
 <blockquote>
 <p>聚合函数作用于一组数据，并对一组数据返回一个值</p>
 </blockquote>
+<ul>
+<li>常用聚合函数：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AVG()</td>
+<td style="text-align:left">返回列的平均值</td>
+</tr>
+<tr>
+<td style="text-align:left">COUNT(DISTINCT)</td>
+<td style="text-align:left">返回列去重后的行数</td>
+</tr>
+<tr>
+<td style="text-align:left">COUNT()</td>
+<td style="text-align:left">返回列的行数</td>
+</tr>
+<tr>
+<td style="text-align:left">MAX()</td>
+<td style="text-align:left">返回列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">MIN()</td>
+<td style="text-align:left">返回列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">SUM()</td>
+<td style="text-align:left">返回列的总和</td>
+</tr>
+<tr>
+<td style="text-align:left">GROUP_CONCAT()</td>
+<td style="text-align:left">返回一组值的连接字符串(MySQL独有)</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>例子一</li>
 </ul>
@@ -2828,7 +2882,277 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><ul>
 <li>例子二</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> c_name, <span style="color:#a6e22e">sum</span>(grade) <span style="color:#66d9ef">as</span> total_grade ,<span style="color:#a6e22e">avg</span>(grade) <span style="color:#66d9ef">as</span> avg_grade <span style="color:#66d9ef">FROM</span> score <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> c_name
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> c_name,<span style="color:#a6e22e">GROUP_CONCAT</span>(grade), <span style="color:#a6e22e">sum</span>(grade) <span style="color:#66d9ef">as</span> total_grade ,<span style="color:#a6e22e">avg</span>(grade) <span style="color:#66d9ef">as</span> avg_grade <span style="color:#66d9ef">FROM</span> score <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> c_name
+</code></pre></div><h3 id="2预定义函数-字符串函数">
+  2:预定义函数-字符串函数
+  <a class="anchor" href="#2%e9%a2%84%e5%ae%9a%e4%b9%89%e5%87%bd%e6%95%b0-%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LENGTH()</td>
+<td style="text-align:left">返回列的字节数</td>
+</tr>
+<tr>
+<td style="text-align:left">CHAR_LENGTH()</td>
+<td style="text-align:left">返回列的字符数</td>
+</tr>
+<tr>
+<td style="text-align:left">TRIM()/RTRIM()/LTRIM()</td>
+<td style="text-align:left">去除两边空格/去除右边空格/去除左边空格</td>
+</tr>
+<tr>
+<td style="text-align:left">SUBSTRING(str, pos, [len])</td>
+<td style="text-align:left">从pos位置截取字符串str，截取len长度</td>
+</tr>
+<tr>
+<td style="text-align:left">LOCATE(substr, str, [pos])</td>
+<td style="text-align:left">返回substr在str字符串中的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">REPLACE(str, from_str, to_str)</td>
+<td style="text-align:left">将str字符串中的from_str替换成to_str</td>
+</tr>
+<tr>
+<td style="text-align:left">LOWER(), UPPER()</td>
+<td style="text-align:left">字符串转换为小写/大写</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span>
+	<span style="color:#f92672">`</span>USER_NAME<span style="color:#f92672">`</span>,
+	<span style="color:#a6e22e">LENGTH</span>( <span style="color:#f92672">`</span>USER_NAME<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> name_length,
+	<span style="color:#a6e22e">CHAR_LENGTH</span>( USER_NAME ) <span style="color:#66d9ef">AS</span> string_length,
+	<span style="color:#a6e22e">LOWER</span>( USER_NAME ) <span style="color:#66d9ef">AS</span> LOWER_NAME,
+	<span style="color:#a6e22e">UPPER</span>( USER_NAME ) <span style="color:#66d9ef">AS</span> UPPER_NAME,
+	<span style="color:#66d9ef">REPLACE</span> ( USER_NAME, <span style="color:#e6db74">&#39;0&#39;</span>, <span style="color:#e6db74">&#39;O&#39;</span> ) <span style="color:#66d9ef">AS</span> REPLACE_NAME,
+	<span style="color:#a6e22e">SUBSTRING</span>( USER_NAME, <span style="color:#e6db74">&#39;0&#39;</span>, <span style="color:#ae81ff">5</span> ) <span style="color:#66d9ef">AS</span> SUBSTRING_NAME,
+	<span style="color:#a6e22e">TRIM</span>( <span style="color:#f92672">`</span>USER_NAME<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> TRIM_NAME 
+<span style="color:#66d9ef">FROM</span>
+	<span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span> 
+	<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">40</span>
+</code></pre></div><h3 id="3预定义函数-数字处理函数">
+  3:预定义函数-数字处理函数
+  <a class="anchor" href="#3%e9%a2%84%e5%ae%9a%e4%b9%89%e5%87%bd%e6%95%b0-%e6%95%b0%e5%ad%97%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ABS()</td>
+<td style="text-align:left">返回数值的绝对值</td>
+</tr>
+<tr>
+<td style="text-align:left">CEIL()</td>
+<td style="text-align:left">对小数向上取整 CEIL(1.2)=2</td>
+</tr>
+<tr>
+<td style="text-align:left">ROUND()</td>
+<td style="text-align:left">四舍五入</td>
+</tr>
+<tr>
+<td style="text-align:left">POW(num, n)</td>
+<td style="text-align:left">num的n次幂 POW(2, 2)=4</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOOR()</td>
+<td style="text-align:left">对小数向下取整 CELL(1.2)=1</td>
+</tr>
+<tr>
+<td style="text-align:left">MOD(N, M)</td>
+<td style="text-align:left">取模(返回n除以m的余数)=N % M</td>
+</tr>
+<tr>
+<td style="text-align:left">RAND()</td>
+<td style="text-align:left">取0~1之间的一个随机数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子一</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">ABS</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">22</span>.<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">as</span> ABS_VALUE,<span style="color:#a6e22e">CEIL</span>(<span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">4</span>)<span style="color:#66d9ef">as</span> CEIL_VALUE,<span style="color:#a6e22e">ROUND</span>(<span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">49</span>)<span style="color:#66d9ef">as</span> ROUND_VALUE,<span style="color:#a6e22e">FLOOR</span>(<span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">as</span> FLOOR_VALUE,<span style="color:#a6e22e">POW</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">AS</span> POW_VALUE,<span style="color:#a6e22e">RAND</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">AS</span> RAND_VALUE,<span style="color:#66d9ef">MOD</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">AS</span> MOD_VALUE ;
+</code></pre></div><ul>
+<li>例子二</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span>
+	<span style="color:#a6e22e">ABS</span>( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> ABS_VALUE,
+	<span style="color:#a6e22e">CEIL</span>( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> CEIL_VALUE,
+	<span style="color:#a6e22e">ROUND</span>( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> ROUND_VALUE,
+	<span style="color:#a6e22e">FLOOR</span>( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span> ) <span style="color:#66d9ef">AS</span> FLOOR_VALUE,
+	<span style="color:#a6e22e">POW</span>( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span>, <span style="color:#ae81ff">3</span> ) <span style="color:#66d9ef">AS</span> POW_VALUE,
+	<span style="color:#a6e22e">RAND</span>( ) <span style="color:#f92672">*</span> <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span> <span style="color:#66d9ef">AS</span> RAND_VALUE,
+	<span style="color:#66d9ef">MOD</span> ( <span style="color:#f92672">`</span>f_price<span style="color:#f92672">`</span>, <span style="color:#ae81ff">3</span> ) <span style="color:#66d9ef">AS</span> MOD_VALUE 
+<span style="color:#66d9ef">FROM</span>
+	<span style="color:#f92672">`</span>fruits<span style="color:#f92672">`</span>;
+
+</code></pre></div><h3 id="4预定义函数-时间处理函数">
+  4:预定义函数-时间处理函数
+  <a class="anchor" href="#4%e9%a2%84%e5%ae%9a%e4%b9%89%e5%87%bd%e6%95%b0-%e6%97%b6%e9%97%b4%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CURDATE()</td>
+<td style="text-align:left">当前日期</td>
+</tr>
+<tr>
+<td style="text-align:left">CURTIME()</td>
+<td style="text-align:left">当前时间</td>
+</tr>
+<tr>
+<td style="text-align:left">NOW()</td>
+<td style="text-align:left">显示当前时间日期(常用)</td>
+</tr>
+<tr>
+<td style="text-align:left">UNIX_TIMESTAMP()</td>
+<td style="text-align:left">当前时间戳</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_FORMAT(date, format)</td>
+<td style="text-align:left">按指定格式显示时间</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_ADD(date, INTERVAL unit)</td>
+<td style="text-align:left">计算指定日期向后加一段时间的日期</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_SUB(date, INTERVAL unit)</td>
+<td style="text-align:left">计算指定日期向前减一段时间的日期</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子1</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 使用临时日期函数来创建查询 基本全部用到了上面的函数
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span>
+	<span style="color:#a6e22e">CURDATE</span>( ) <span style="color:#66d9ef">AS</span> CURDATE,
+	<span style="color:#a6e22e">CURTIME</span>( ) <span style="color:#66d9ef">AS</span> CURTIME,
+	<span style="color:#a6e22e">NOW</span>( ) <span style="color:#66d9ef">AS</span> NOW,
+	<span style="color:#a6e22e">DATE_ADD</span>( <span style="color:#a6e22e">NOW</span>( ), <span style="color:#66d9ef">INTERVAL</span> <span style="color:#ae81ff">1</span> MONTH ) <span style="color:#66d9ef">AS</span> DATE_ADD_ONE_MONTH,
+	<span style="color:#a6e22e">DATE_SUB</span>( <span style="color:#a6e22e">NOW</span>( ), <span style="color:#66d9ef">INTERVAL</span> <span style="color:#ae81ff">1</span> MONTH ) <span style="color:#66d9ef">AS</span> DATE_SUB_ONE_MONTH,
+	<span style="color:#a6e22e">UNIX_TIMESTAMP</span>( ) <span style="color:#66d9ef">AS</span> UNIX_TIMESTAMP,
+	<span style="color:#a6e22e">DATE_FORMAT</span>( <span style="color:#a6e22e">NOW</span>( ), <span style="color:#e6db74">&#39;%Y-%m-%d %H-%i-%S&#39;</span> ) <span style="color:#66d9ef">AS</span> DATE_FORMAT;
+</code></pre></div><ul>
+<li>
+<p>例子2 这里我们结合实际来说</p>
+</li>
+<li>
+<p>需要准备数据 来查询  这里我们使用存储过程来创建特定的日期表</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 创建表
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>temp_date<span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>age<span style="color:#f92672">`</span> <span style="color:#66d9ef">float</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;age&#39;</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>birthday<span style="color:#f92672">`</span> <span style="color:#66d9ef">date</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;生日&#39;</span>,
+  <span style="color:#f92672">`</span>gmt_created<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#f92672">`</span>gmt_modified<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb4 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8mb4_0900_ai_ci COMMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;临时用户表&#39;</span>;
+
+ <span style="color:#75715e">-- 存储过程创建数据
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 创建生成指定范围的随机数字
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> proc_random_num;
+DELIMITER ;
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">proc_random_num</span>(<span style="color:#66d9ef">in</span> custom_start_value <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>),<span style="color:#66d9ef">in</span> custom_end_value <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>),<span style="color:#66d9ef">out</span> result_value <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>))
+BEGIN
+  <span style="color:#66d9ef">DECLARE</span> start_value_p1 <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">DECLARE</span> end_value_p1 <span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">DECLARE</span> num <span style="color:#66d9ef">double</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">DECLARE</span> num_value <span style="color:#66d9ef">double</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">DECLARE</span> range_value_t  <span style="color:#66d9ef">double</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">DECLARE</span> random_value_t  <span style="color:#66d9ef">double</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+
+  <span style="color:#66d9ef">set</span> <span style="color:#f92672">`</span>start_value_p1<span style="color:#f92672">`</span>  <span style="color:#f92672">=</span>  <span style="color:#f92672">`</span>custom_start_value<span style="color:#f92672">`</span>  ;
+  <span style="color:#66d9ef">set</span> <span style="color:#f92672">`</span>end_value_p1<span style="color:#f92672">`</span>  <span style="color:#f92672">=</span> <span style="color:#f92672">`</span>custom_end_value<span style="color:#f92672">`</span>  ;
+	<span style="color:#66d9ef">set</span> range_value_t <span style="color:#f92672">=</span> <span style="color:#f92672">`</span>custom_end_value<span style="color:#f92672">`</span> <span style="color:#f92672">-</span>  <span style="color:#f92672">`</span>custom_start_value<span style="color:#f92672">`</span> ;
+  <span style="color:#66d9ef">set</span> random_value_t <span style="color:#f92672">=</span> <span style="color:#a6e22e">RAND</span>();
+	<span style="color:#66d9ef">set</span> num_value <span style="color:#f92672">=</span>  <span style="color:#f92672">`</span>custom_start_value<span style="color:#f92672">`</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ROUND</span>(random_value_t <span style="color:#f92672">*</span> range_value_t) ;
+	<span style="color:#66d9ef">set</span> result_value <span style="color:#f92672">=</span> num_value ;
+<span style="color:#75715e">--   SELECT start_value_p1,`end_value_p1` ;
+</span><span style="color:#75715e"></span>END ;
+
+
+
+<span style="color:#75715e">-- 创建生成指定范围的随机日期
+</span><span style="color:#75715e"></span>
+
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> proc_random_date;<span style="color:#f92672">--</span><span style="color:#960050;background-color:#1e0010">如果存在此存储过程则删掉</span>
+DELIMITER ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">proc_random_date</span>(<span style="color:#66d9ef">in</span> custom_start_year <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">in</span> custom_end_year <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">in</span> custom_start_month <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">in</span> custom_end_month <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">in</span> custom_start_day <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">in</span> custom_end_day <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>),<span style="color:#66d9ef">out</span> result_string <span style="color:#66d9ef">LONGTEXT</span>)
+BEGIN
+    <span style="color:#66d9ef">DECLARE</span> a1 <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">DECLARE</span> a2 <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">DECLARE</span> a3 <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#66d9ef">DECLARE</span> string_value <span style="color:#66d9ef">LONGTEXT</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> ;
+		<span style="color:#75715e">-- 调用生成指定范围的数字存储过程
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">CALL</span>  <span style="color:#a6e22e">proc_random_num</span>(<span style="color:#f92672">`</span>custom_start_year<span style="color:#f92672">`</span> , <span style="color:#f92672">`</span>custom_end_year<span style="color:#f92672">`</span> , a1) ;
+		<span style="color:#66d9ef">CALL</span>  <span style="color:#a6e22e">proc_random_num</span>(<span style="color:#f92672">`</span>custom_start_month<span style="color:#f92672">`</span> , <span style="color:#f92672">`</span>custom_end_month<span style="color:#f92672">`</span> , a2) ;
+		<span style="color:#66d9ef">CALL</span>  <span style="color:#a6e22e">proc_random_num</span>(<span style="color:#f92672">`</span>custom_start_day<span style="color:#f92672">`</span> , <span style="color:#f92672">`</span>custom_end_day<span style="color:#f92672">`</span> , a3) ;
+		<span style="color:#66d9ef">set</span> string_value <span style="color:#f92672">=</span> <span style="color:#a6e22e">CONCAT_WS</span>( <span style="color:#e6db74">&#39;-&#39;</span>, a1 , a2 , a3) ;
+		<span style="color:#66d9ef">set</span> result_string <span style="color:#f92672">=</span> string_value ;
+END ;
+<span style="color:#66d9ef">CALL</span> <span style="color:#a6e22e">proc_random_date</span>(<span style="color:#ae81ff">1890</span>,<span style="color:#ae81ff">2022</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">31</span>,<span style="color:#f92672">@</span>result);
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
+
+<span style="color:#75715e">-- 插入指定数量的日期
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 创建插入数据的存储过程
+</span><span style="color:#75715e"></span>
+
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> proc_insert_into_temp_date;<span style="color:#f92672">--</span><span style="color:#960050;background-color:#1e0010">如果存在此存储过程则删掉</span>
+DELIMITER ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">proc_insert_into_temp_date</span>(<span style="color:#66d9ef">in</span> custom_value <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">20</span>))
+BEGIN
+    <span style="color:#66d9ef">DECLARE</span> i <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">1</span>;
+		<span style="color:#66d9ef">DECLARE</span> num_value <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#66d9ef">DECLARE</span> date_value_param <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">255</span>) ;
+		<span style="color:#66d9ef">SET</span> num_value <span style="color:#f92672">=</span> custom_value ;
+    <span style="color:#66d9ef">WHILE</span> i<span style="color:#f92672">&lt;=</span>num_value DO
+				<span style="color:#66d9ef">CALL</span> <span style="color:#a6e22e">proc_random_date</span>(<span style="color:#ae81ff">1890</span>,<span style="color:#ae81ff">2022</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">31</span>,date_value_param);
+        <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">temp_date</span>(<span style="color:#f92672">`</span>name<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>age<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>birthday<span style="color:#f92672">`</span>) <span style="color:#66d9ef">VALUES</span>(<span style="color:#a6e22e">MD5</span>(<span style="color:#a6e22e">UUID</span>()),<span style="color:#a6e22e">CEILING</span>(<span style="color:#a6e22e">RAND</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),date_value_param);
+        <span style="color:#66d9ef">SET</span> i <span style="color:#f92672">=</span> i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+    END <span style="color:#66d9ef">WHILE</span>;
+END ;
+
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>result_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+<span style="color:#66d9ef">CALL</span> <span style="color:#a6e22e">proc_insert_into_temp_date</span>(<span style="color:#f92672">@</span>result_num);
+
+<span style="color:#75715e">-- 完成数据准备
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 开始查询
+</span><span style="color:#75715e"></span>
+
+
 </code></pre></div><h2 id="三创建联结">
   三:创建联结
   <a class="anchor" href="#%e4%b8%89%e5%88%9b%e5%bb%ba%e8%81%94%e7%bb%93">#</a>
@@ -2996,14 +3320,31 @@ SELECT
 FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
 
 -- 结果
-
-2	小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
-5	小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
-8	小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
+id  NAME  weight               height                   age
+2	  小明	0kg,48.0kg,0kg,0kg	 172.00,0cm,0cm,172.33	   0 , 0 ,23, 0 
+5	  小红	0kg,40.0kg,0kg	     161.00,0cm,0cm	           0 , 0 ,19
+8	  小花	0kg,42.0kg,0kg	     153.00,0cm,0cm	           0 , 0 ,17
 12	小军	0kg,0kg	             0cm,0cm	               0 ,  0 
 15	小胖	0kg,0kg,0kg	         0cm,0cm,0cm	           0 , 0 , 0 
 
 -- 可以看到已经全部取出组合而来  虽然结果值很乱 但是这是最靠谱的 把结果处理下就行啦,比如可以考虑代码直接处理或者存储过程处理
+
+-- 第四次  (优化第三次)
+
+SELECT
+	tb_user.id,tb_user.NAME ,
+	group_concat(DISTINCT  CASE WHEN `features` = '体重' and `value` != '0kg'  THEN `value` ELSE null  END  ) AS  weight,
+	group_concat(DISTINCT CASE WHEN `features` = '身高' and `value` !=  '0cm' THEN `value` ELSE null END) AS height,
+	group_concat(DISTINCT CASE WHEN `features` = '年龄' and `value` !=  '0'  THEN `value` ELSE null END) AS age 
+FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
+
+-- 结果
+id  NAME  weight  height          age
+2	  小明	48kg	  172.00,172.33	  23
+5	  小红	40kg	  161.00	        19
+8	  小花	42kg	  153.00	        17
+12	小军			
+15	小胖			
 
 </code></pre><h3 id="列转行">
   列转行
@@ -3064,9 +3405,17 @@ FROM user_column_row tb_user  GROUP BY tb_user.NAME order by tb_user.id;
 <span style="color:#66d9ef">select</span>  id , name ,<span style="color:#e6db74">&#39;身高&#39;</span> <span style="color:#66d9ef">as</span> features,height <span style="color:#66d9ef">as</span> value  <span style="color:#66d9ef">from</span> user2 
 
 <span style="color:#75715e">-- 这里面有一个常设值 比如 &#39;年龄&#39; as features , &#39;体重&#39; as features  直接挂到列上的  除了这个就没有其它难点了
-</span></code></pre></div><h2 id="七重要函数单独说明">
-  七:重要函数单独说明
-  <a class="anchor" href="#%e4%b8%83%e9%87%8d%e8%a6%81%e5%87%bd%e6%95%b0%e5%8d%95%e7%8b%ac%e8%af%b4%e6%98%8e">#</a>
+</span></code></pre></div><h2 id="七行锁悲观锁表锁">
+  七:行锁(悲观锁),表锁
+  <a class="anchor" href="#%e4%b8%83%e8%a1%8c%e9%94%81%e6%82%b2%e8%a7%82%e9%94%81%e8%a1%a8%e9%94%81">#</a>
+</h2>
+<h2 id="八事务">
+  八:事务
+  <a class="anchor" href="#%e5%85%ab%e4%ba%8b%e5%8a%a1">#</a>
+</h2>
+<h2 id="九重要函数单独说明">
+  九:重要函数单独说明
+  <a class="anchor" href="#%e4%b9%9d%e9%87%8d%e8%a6%81%e5%87%bd%e6%95%b0%e5%8d%95%e7%8b%ac%e8%af%b4%e6%98%8e">#</a>
 </h2>
 <h3 id="count-函数">
   count 函数
@@ -3099,7 +3448,29 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
 <li>2、重新设置sql_mode，删除ONLY_FULL_GROUP_BY</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-MYSQL" data-lang="MYSQL"><span style="color:#66d9ef">set</span> <span style="color:#f92672">@@</span>global.sql_mode <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION&#39;</span>
-</code></pre></div></article>
+</code></pre></div><h3 id="批量插入">
+  批量插入
+  <a class="anchor" href="#%e6%89%b9%e9%87%8f%e6%8f%92%e5%85%a5">#</a>
+</h3>
+<h3 id="mysql-出现-truncated-incorrect-double-value-已解决">
+  mysql 出现 truncated incorrect double value （已解决）
+  <a class="anchor" href="#mysql-%e5%87%ba%e7%8e%b0-truncated-incorrect-double-value-%e5%b7%b2%e8%a7%a3%e5%86%b3">#</a>
+</h3>
+<ul>
+<li>当 int 类型 与 字符串 相连的时候 用 + 就会报错</li>
+<li>使用CONCAT(）函数来连接即可</li>
+<li>列如 CONCAT(1,‘王’）代替 1 + ‘王’</li>
+</ul>
+<h3 id="mysql-1064-you-have-an-error-in-your-sql-syntax-错误解决办法">
+  MySQL 1064 You have an error in your SQL syntax 错误解决办法
+  <a class="anchor" href="#mysql-1064-you-have-an-error-in-your-sql-syntax-%e9%94%99%e8%af%af%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95">#</a>
+</h3>
+<ul>
+<li>　这是因为数据库表中的字段名引用了关键字，例如上面报错字段“desc</li>
+<li>写sql语句时，引用到与mysql关键字重名的字段时，加上``</li>
+<li>如: set <code>start_value_p1</code>  =  <code>custom_start_value</code>  ;</li>
+</ul>
+</article>
  
       
 
@@ -3342,7 +3713,14 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
 <nav id="TableOfContents">
   <ul>
     <li><a href="#一创建计算字段">一:创建计算字段</a></li>
-    <li><a href="#二聚集函数">二:聚集函数</a></li>
+    <li><a href="#二函数">二:函数</a>
+      <ul>
+        <li><a href="#1聚集函数-聚合函数可以理解成多对一">1:聚集函数 (聚合函数可以理解成多对一)</a></li>
+        <li><a href="#2预定义函数-字符串函数">2:预定义函数-字符串函数</a></li>
+        <li><a href="#3预定义函数-数字处理函数">3:预定义函数-数字处理函数</a></li>
+        <li><a href="#4预定义函数-时间处理函数">4:预定义函数-时间处理函数</a></li>
+      </ul>
+    </li>
     <li><a href="#三创建联结">三:创建联结</a>
       <ul>
         <li><a href="#使用表别名">使用表别名</a></li>
@@ -3360,9 +3738,14 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
         <li><a href="#列转行">列转行</a></li>
       </ul>
     </li>
-    <li><a href="#七重要函数单独说明">七:重要函数单独说明</a>
+    <li><a href="#七行锁悲观锁表锁">七:行锁(悲观锁),表锁</a></li>
+    <li><a href="#八事务">八:事务</a></li>
+    <li><a href="#九重要函数单独说明">九:重要函数单独说明</a>
       <ul>
         <li><a href="#count-函数">count 函数</a></li>
+        <li><a href="#批量插入">批量插入</a></li>
+        <li><a href="#mysql-出现-truncated-incorrect-double-value-已解决">mysql 出现 truncated incorrect double value （已解决）</a></li>
+        <li><a href="#mysql-1064-you-have-an-error-in-your-sql-syntax-错误解决办法">MySQL 1064 You have an error in your SQL syntax 错误解决办法</a></li>
       </ul>
     </li>
   </ul>

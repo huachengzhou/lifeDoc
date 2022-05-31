@@ -2,13 +2,10 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一、 编译程序
-#
-
-  1、 编译器是一种翻译程序，它用于将源语言（即用某种程序设计语言写成的）程序翻译为目标语言（即用二进制数表示的伪机器代码写成的）程序。后者在windows操作系统平台下，其文件的扩展名通常为.obj。该文件通常还要经过进一步的连接，生成可执行文件（机器代码写成的程序，文件扩展名为.exe）。通常有两种方式进行这种翻译，一种是编译，另一种是解释。后者并不生成可执行文件，只是翻译一条语句、执行一条语句。这两种方式相编译比解释运行的速度要快得多。
+<meta name="description" content="一、 编译程序 #    1、 编译器是一种翻译程序，它用于将源语言（即用某种程序设计语言写成的）程序翻译为目标语言（即用二进制数表示的伪机器代码写成的）程序。后者在windows操作系统平台下，其文件的扩展名通常为.obj。该文件通常还要经过进一步的连接，生成可执行文件（机器代码写成的程序，文件扩展名为.exe）。通常有两种方式进行这种翻译，一种是编译，另一种是解释。后者并不生成可执行文件，只是翻译一条语句、执行一条语句。这两种方式相编译比解释运行的速度要快得多。
   2、 编译过程的5个阶段：词法分析；语法分析；语义分析与中间代码产生；优化；目标代码生成。
   3、 在这五个阶段中，词法分析的任务是识别源程序中的单词是否有误，编译程序中实现这种功能的部分一般称为词法分析器。在编译器中，词法分析器通常仅作为语法分析程序的一个子程序以便在它需要单词符号时调用。在这一编译阶段中发现的源程序错误，称为词法错误。
   4、 语法分析阶段的目的是识别出源程序的语法结构（即语句或句子）是否错误，所以有时又常为句子分析。编译程序中负责这一功能的程序称为语法分析器或语法分析程序。在这一阶段中发现的错误称为语法错误。
@@ -21,10 +18,7 @@
  语法分析阶段中，处理的输入数据是来自词法分析阶段的单词符号。它们是词法分析阶段的终结符。
   7、 编译程序总框
   8、 在计算机发展的早期阶段，内存较小的不能一次完成程序的编译。这时通常将编译过程分成若干遍来完成。每一遍完成一部分功能，称为多遍编译。 与采用高级程序设计语言写的词法分析器相比，用汇编语言写的词法分析通常分析速度要快些。
-  二. 词法与语法
-#
-
-  1、 程序语言主要由语法和语义两个方面来定义。
+  二. 词法与语法 #    1、 程序语言主要由语法和语义两个方面来定义。
   2、 任何语言的程序都可看成是某字符集上的一个长字符串。
   3、 语言的语法：是指这样的一组规则（即产生式），用它可以生成和产生一个良定的程序。这些规则的一部分称为词法规则，另一部分称为语法规则。
   4、 词法规则：单词符号的形成规则；语法规则：语法单位（句子）的形成规则。语义规则：定义程序句子的意义。">
@@ -32,12 +26,12 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/compilation_principle/" />
-
+<meta property="og:updated_time" content="2021-01-17T15:26:15+00:00" />
 <title>编译原理 | 所悟所想</title>
 <link rel="manifest" href="./../../manifest.json">
 <link rel="icon" href="./../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../en.search.min.684efe1faad23eccef4eba6656722a28e3908463c5120e175bac40b9dc56a502.js"  ></script>
+<link rel="stylesheet" href="./../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
+<script defer src="./../../en.search.min.37a1a146d2d0958baab958a9f2cc98ee025842b04a1ad5b5fa7ebe7e7ae9b9c5.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../docs/compilation_principle/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -604,10 +598,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../docs/databases/mysql/mysq_advanced_optimization/" class="">mysql优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../docs/databases/mysql/mysql_select/" class="">mysql新查询</a>
   
 
         </li>
+      
+    
       
     
   </ul>
@@ -2721,7 +2730,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
