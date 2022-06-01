@@ -47,6 +47,8 @@ weight: 15
 
 ### 常用工具及用法 - mysqldump
 
++ 逻辑备份
+
 ```mysql
 -- 备份全部数据库的数据库结构
 mysqldump -h localhost -p3307 -uroot  -p123456 -A -d >  D:\data\mysql_all.sql
