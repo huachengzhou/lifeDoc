@@ -241,7 +241,12 @@ CALL proc_insert_into_temp_date(@result_num);
 
 -- 开始查询
 
-
+SELECT
+	DATE_ADD( `birthday`, INTERVAL 1 MONTH ) AS DATE_ADD_ONE_MONTH,
+	DATE_SUB( `birthday`, INTERVAL 1 MONTH ) AS DATE_SUB_ONE_MONTH,
+	DATE_FORMAT( `birthday`, '%Y-%m-%d %H-%i-%S' ) AS DATE_FORMAT 
+FROM
+	temp_date limit 1,30
 
 ```
 
@@ -487,7 +492,7 @@ select  id , name ,'身高' as features,height as value  from user2
 
 
 
-## 七:行锁(悲观锁),表锁
+## 七:行锁(悲观锁),表锁,页面锁
 
 
 
