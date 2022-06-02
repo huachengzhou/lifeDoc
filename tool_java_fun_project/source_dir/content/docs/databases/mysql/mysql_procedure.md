@@ -401,6 +401,51 @@ call pro_set_example_t1(1,uuid(),rand(),rand(),@result) ;
 select @result ;
 ```
 
++ set 中 := 和 =作用一致
+
+```mysql
+drop procedure if exists pro_set_example_t2;
+delimiter ;
+
+create procedure pro_set_example_t2(in a1  int(12),out result longtext)
+  begin
+	declare par1 int default 0 ;
+	declare par2 int default 0 ;
+	set par1 := par1 + 1 ;
+	set par2 = par2 + 1 ;
+	set a1 = a1 + 1;
+  set result = CONCAT_WS('-', par1 , par2 , a1) ;
+  end;
+
+call pro_set_example_t2(round(rand()*10),@result) ;
+select @result ;
+```
+
++ := 特殊作用 (用变量实现行号时，必须用:=)
+
+```mysql
+
+CREATE TABLE `temp_date` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `age` float(14,2) DEFAULT NULL COMMENT 'age',
+  `name` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL COMMENT '生日',
+  `gmt_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='临时用户表';
+
+set @param = ROUND(RAND()*100);
+SELECT @param as param_one , @param := @param + 1 as param_two ;
+
+-- 来看下在具体例子中的妙处吧
+-- (SELECT @rownum := 0) new_table  表示派生出来了一个新的临时表
+SELECT * FROM temp_date , (SELECT @rownum := 0) new_table ;
+
+-- 然后在赋值上去
+SELECT * ,( @rownum :=  @rownum + 1)as rownum FROM temp_date , (SELECT @rownum := 0) new_table ;
+```
+
 ### 流程控制语句
 
 #### (1)条件判断语句

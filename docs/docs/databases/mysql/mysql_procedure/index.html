@@ -2,20 +2,11 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MySQL mysql存储过程概述
-#
-
- 存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点：
-#
-
- 使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要)
-#
-
-CREATE
+<meta name="description" content="MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE
 [DEFINER = { user | CURRENT_USER }]
 PROCEDURE sp_name ([proc_parameter[,...]])
 [characteristic ...] routine_body
@@ -34,22 +25,10 @@ create procedure 存储过程名(参数列表)
 begin
 sql语句集合
 end$
-delimiter ; --将结束符修改为默认的分号 例子
-#
-
--- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;.">
+delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql存储过程" />
-<meta property="og:description" content="MySQL mysql存储过程概述
-#
-
- 存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点：
-#
-
- 使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要)
-#
-
-CREATE
+<meta property="og:description" content="MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE
 [DEFINER = { user | CURRENT_USER }]
 PROCEDURE sp_name ([proc_parameter[,...]])
 [characteristic ...] routine_body
@@ -68,20 +47,16 @@ create procedure 存储过程名(参数列表)
 begin
 sql语句集合
 end$
-delimiter ; --将结束符修改为默认的分号 例子
-#
-
--- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
+delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql存储过程 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.e937daca7efcc2a3e4e2234325838eda98254a9bb83458b0d564f69645f3a02d.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
+<script defer src="./../../../../en.search.min.438d806b57691d138b6a6b99740c591da91aeaca181ca7196200babea0fcd757.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2779,7 +2754,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -3264,6 +3239,47 @@ delimiter ;
 
 <span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_set_example_t1</span>(<span style="color:#ae81ff">1</span>,<span style="color:#a6e22e">uuid</span>(),<span style="color:#a6e22e">rand</span>(),<span style="color:#a6e22e">rand</span>(),<span style="color:#f92672">@</span>result) ;
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+</code></pre></div><ul>
+<li>set 中 := 和 =作用一致</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_set_example_t2;
+delimiter ;
+
+<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">procedure</span> <span style="color:#a6e22e">pro_set_example_t2</span>(<span style="color:#66d9ef">in</span> a1  <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">12</span>),<span style="color:#66d9ef">out</span> result <span style="color:#66d9ef">longtext</span>)
+  begin
+	<span style="color:#66d9ef">declare</span> par1 <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span> ;
+	<span style="color:#66d9ef">declare</span> par2 <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span> ;
+	<span style="color:#66d9ef">set</span> par1 :<span style="color:#f92672">=</span> par1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> ;
+	<span style="color:#66d9ef">set</span> par2 <span style="color:#f92672">=</span> par2 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> ;
+	<span style="color:#66d9ef">set</span> a1 <span style="color:#f92672">=</span> a1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">set</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">CONCAT_WS</span>(<span style="color:#e6db74">&#39;-&#39;</span>, par1 , par2 , a1) ;
+  end;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_set_example_t2</span>(<span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">rand</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span>),<span style="color:#f92672">@</span>result) ;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result ;
+</code></pre></div><ul>
+<li>:= 特殊作用 (用变量实现行号时，必须用:=)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>temp_date<span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>age<span style="color:#f92672">`</span> <span style="color:#66d9ef">float</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;age&#39;</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>birthday<span style="color:#f92672">`</span> <span style="color:#66d9ef">date</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;生日&#39;</span>,
+  <span style="color:#f92672">`</span>gmt_created<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#f92672">`</span>gmt_modified<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">AUTO_INCREMENT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb4 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8mb4_0900_ai_ci COMMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;临时用户表&#39;</span>;
+
+<span style="color:#66d9ef">set</span> <span style="color:#f92672">@</span>param <span style="color:#f92672">=</span> <span style="color:#a6e22e">ROUND</span>(<span style="color:#a6e22e">RAND</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>);
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>param <span style="color:#66d9ef">as</span> param_one , <span style="color:#f92672">@</span>param :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>param <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">as</span> param_two ;
+
+<span style="color:#75715e">-- 来看下在具体例子中的妙处吧
+</span><span style="color:#75715e">-- (SELECT @rownum := 0) new_table  表示派生出来了一个新的临时表
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> temp_date , (<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) new_table ;
+
+<span style="color:#75715e">-- 然后在赋值上去
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> ,( <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span>  <span style="color:#f92672">@</span>rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)<span style="color:#66d9ef">as</span> rownum <span style="color:#66d9ef">FROM</span> temp_date , (<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) new_table ;
 </code></pre></div><h3 id="流程控制语句">
   流程控制语句
   <a class="anchor" href="#%e6%b5%81%e7%a8%8b%e6%8e%a7%e5%88%b6%e8%af%ad%e5%8f%a5">#</a>

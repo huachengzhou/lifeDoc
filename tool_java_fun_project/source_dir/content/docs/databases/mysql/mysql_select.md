@@ -544,6 +544,123 @@ select  id , name ,'身高' as features,height as value  from user2
 + 2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；
 + 3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；
 
+### 行锁例子
+
++ InnoDB实现了以下两种类型的行锁：
++ 共享锁（S）：允许一个事务去读一行，阻止其他事务获得相同数据集的排它锁
++ 排他锁（X）：允许获取排他锁的事务更新数据，阻止其他事务获得相同数据集的共享锁和排他锁
+
+
+| 当前锁类型\请求锁类型                | S (共享锁)              |         X(排他锁)                 |
+|           :-------------            |     :-------------      |         :-------------           |
+|              S(共享锁)              |        兼容              |                冲突              |
+|              X(排他锁)              |        冲突              |                冲突              |
+
+
+
+
+
+|      SQL               |           行锁类型            |        说明                 |
+|           :-------------            |     :-------------      |         :-------------               |
+|             INSERT...             |        排他锁              |                自动加锁              |
+|             UPDATE...             |        排他锁              |                自动加锁              |
+|             DELETE...             |        排他锁              |                自动加锁              |
+|             SELECT...             |        不加任何锁              |                                  |
+| SELECT... LOCK IN SHARE MODE   |        共享锁             |     需要在手动在SELECT之后LOCK IN SHARE MODE |
+| SELECT... FOR UPDATE   |        排他锁             |     需要在手动在SELECT之后FOR UPDATE |
+
+* 例子1 行级锁(排他锁)
+```mysql
+-- 创建行锁条件
+-- 1、表中创建索引， select 。。。 where   字段（必须是索引）  不然行锁就无效。
+-- 2、必须要有事务，这样才是 行锁（排他锁）
+-- 3、在select  语句后面 加 上    FOR UPDATE；
+
+start transaction ;
+select age,birthday from temp_date where 1=1 and age = 60 for update;
+-- 休眠5秒
+select SLEEP(5);
+commit ;
+```
+
+### 表锁定例子
+
++ 获取表的锁的简单形式
+
+```mysql
+LOCK TABLES table_name [READ | WRITE]
+-- 可将表的名称放在LOCK TABLES关键字后面，后跟一个锁类型。 MySQL提供两种锁类型：READ和WRITE
+```
+
++ 释放表的锁
+
+```mysql
+UNLOCK TABLES;
+```
+
++ 表锁定为READ
+
+* 同时可以通过多个会话获取表的READ锁。此外，其他会话可以从表中读取数据，而无需获取锁定。
+* 持有READ锁的会话只能从表中读取数据，但不能写入。此外，其他会话在释放READ锁之前无法将数据写入表中。来自另一个会话的写操作将被放入等待状态，直到释放READ锁。
+* 如果会话正常或异常终止，MySQL将会隐式释放所有锁。这也与WRITE锁相关。
+
+```mysql
+lock table temp_date read;
+insert into temp_date(age,birthday) values(102,'2008-04-25') ;
+
+-- 结果
+lock table temp_date read
+> OK
+> 时间: 0s
+
+
+insert into temp_date(age,birthday) values(102,'2008-04-25')
+> 1099 - Table 'temp_date' was locked with a READ lock and can't be updated
+> 时间: 0s
+
+-- 继续
+select age,birthday  from temp_date;
+-- 可以看到 READ锁  是可以读取数据的
+-- 释放锁
+unlock tables ;
+```
+
++ 表锁定WRITE
+
+* 只有拥有表锁定的会话才能从表读取和写入数据。
+* 在释放WRITE锁之前，其他会话不能从表中读写。
+
+```mysql
+-- 加锁
+lock table temp_date write;
+insert into temp_date(age,birthday) values(102,'2008-04-25') ;
+-- 测试是否还可继续读(从其他会话查询,因为当前会话连接是有锁的)
+select age,birthday  from temp_date; 
+-- 发现已经被阻塞了
+-- 释放锁
+unlock tables ;
+```
+
++ 表锁了，强制释放
+
+* 1、查看当前进程
+
+*  show processlist;
+
+* 2、查看当前运行的事务
+
+* SELECT * FROM information_schema.INNODB_TRX;
+
+* 3、当前出现的锁
+
+*  SELECT * FROM information_schema.INNODB_LOCKs;
+
+* 4、kill掉对应进程
+
+* kill  id
+
+
+
 
 ## 八:事务
 
@@ -753,4 +870,102 @@ set @@global.sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_F
 +  如: set `start_value_p1`  =  `custom_start_value`  ;
 
 
+### mysql中 FORM的疑问
 
+```mysql
+
+CREATE TABLE `temp_date` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `age` float(14,2) DEFAULT NULL COMMENT 'age',
+  `name` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL COMMENT '生日',
+  `gmt_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='临时用户表';
+
+-- 正常操作
+
+SELECT id,age,birthday FROM temp_date ;
+
+-- 奇奇怪怪的东西出来了
+
+SELECT id,age,birthday FROM (SELECT id,age,birthday FROM temp_date ) tb_table ;
+-- 注意上面tb_table还必须得加上 否则就报错误 Every derived table must have its own alias 相当于派生表了
+
+-- 相当于FROM 实际可以跟上虚拟的派生表
+```
+
+### Mysql 相邻两行记录某列的差值方法
+
++ 最终demo
+
+```mysql
+SELECT 
+ r_tab.id,
+ r_tab.age,
+ r_tab.birthday,
+ r_tab.diff ,
+ r_tab.diff_content 
+FROM
+
+(
+SELECT tb_r.id, tb_r.age, tb_r.birthday, (tb_r.age - tb_y.age)as diff ,(CONCAT_WS('-',tb_r.age,tb_y.age))as diff_content 
+ FROM 
+
+(
+SELECT tab.age,tab.id,(@rownum := @rownum + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @rownum := 0) r_tx
+) tb_r 
+
+LEFT JOIN
+
+(
+SELECT tab.age,tab.id,(@INDEX_NUM := @INDEX_NUM + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @INDEX_NUM := 0) r_ty
+) tb_y
+
+on tb_r.rownum = tb_y.rownum + 1
+) r_tab
+
+-- tb_r 和 tb_y比较后形成新的衍生或者派生表 r_tab  然后再把 r_tab 数据查出来
+```
+
++ 简化后
+
+```mysql
+SELECT tb_r.id, tb_r.age, tb_r.birthday, (tb_r.age - tb_y.age)as diff ,(CONCAT_WS('-',tb_r.age,tb_y.age))as diff_content 
+ FROM 
+
+(
+SELECT tab.age,tab.id,(@rownum := @rownum + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @rownum := 0) r_tx
+) tb_r 
+
+LEFT JOIN
+
+(
+SELECT tab.age,tab.id,(@INDEX_NUM := @INDEX_NUM + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @INDEX_NUM := 0) r_ty
+) tb_y
+
+on tb_r.rownum = tb_y.rownum + 1
+
+-- tb_r 和 tb_y 直接作比较得出数据就可以了 (然后这里用left join就是以tb_r为主)
+```
+
++ 在上面的例子解决后 增加 SQL实现相邻两行数据的加减乘除操作
+
+```mysql
+SELECT tb_r.id, tb_r.age, tb_r.birthday,(tb_r.age + tb_y.age)as add_v, (tb_r.age - tb_y.age)as sub_v , (tb_r.age * tb_y.age)as mul_v,(tb_r.age / tb_y.age)as div_v
+ FROM 
+
+(
+SELECT tab.age,tab.id,(@rownum := @rownum + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @rownum := 0) r_tx
+) tb_r 
+
+LEFT JOIN
+
+(
+SELECT tab.age,tab.id,(@INDEX_NUM := @INDEX_NUM + 1) AS rownum,tab.birthday FROM  temp_date tab,(SELECT @INDEX_NUM := 0) r_ty
+) tb_y
+
+on tb_r.rownum = tb_y.rownum + 1
+-- 利用上面的例子实现加减乘除
+```

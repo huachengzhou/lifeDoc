@@ -2,54 +2,23 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数
-#
-
- 聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一)
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数
-#
-
-   函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数
-#
-
-   函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.">
+<meta name="description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql新查询" />
-<meta property="og:description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数
-#
-
- 聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一)
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数
-#
-
-   函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数
-#
-
-   函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
+<meta property="og:description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql新查询 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.e937daca7efcc2a3e4e2234325838eda98254a9bb83458b0d564f69645f3a02d.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
+<script defer src="./../../../../en.search.min.438d806b57691d138b6a6b99740c591da91aeaca181ca7196200babea0fcd757.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2747,7 +2716,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -2804,7 +2773,18 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#列转行">列转行</a></li>
       </ul>
     </li>
-    <li><a href="#七行锁悲观锁表锁页面锁">七:行锁(悲观锁),表锁,页面锁</a></li>
+    <li><a href="#七行锁悲观锁表锁页面锁">七:行锁(悲观锁),表锁,页面锁</a>
+      <ul>
+        <li><a href="#行级锁">行级锁</a></li>
+        <li><a href="#表级锁">表级锁</a></li>
+        <li><a href="#页级锁">页级锁</a></li>
+        <li><a href="#mysql常用存储引擎的锁机制">MySQL常用存储引擎的锁机制</a></li>
+        <li><a href="#innodb中的行锁与表锁">Innodb中的行锁与表锁</a></li>
+        <li><a href="#行级锁与死锁">行级锁与死锁</a></li>
+        <li><a href="#行锁例子">行锁例子</a></li>
+        <li><a href="#表锁定例子">表锁定例子</a></li>
+      </ul>
+    </li>
     <li><a href="#八事务">八:事务</a>
       <ul>
         <li><a href="#什么是事务">什么是事务</a></li>
@@ -2829,6 +2809,8 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#批量插入">批量插入</a></li>
         <li><a href="#mysql-出现-truncated-incorrect-double-value-已解决">mysql 出现 truncated incorrect double value （已解决）</a></li>
         <li><a href="#mysql-1064-you-have-an-error-in-your-sql-syntax-错误解决办法">MySQL 1064 You have an error in your SQL syntax 错误解决办法</a></li>
+        <li><a href="#mysql中-form的疑问">mysql中 FORM的疑问</a></li>
+        <li><a href="#mysql-相邻两行记录某列的差值方法">Mysql 相邻两行记录某列的差值方法</a></li>
       </ul>
     </li>
   </ul>
@@ -3462,6 +3444,264 @@ id  NAME  weight  height          age
   七:行锁(悲观锁),表锁,页面锁
   <a class="anchor" href="#%e4%b8%83%e8%a1%8c%e9%94%81%e6%82%b2%e8%a7%82%e9%94%81%e8%a1%a8%e9%94%81%e9%a1%b5%e9%9d%a2%e9%94%81">#</a>
 </h2>
+<blockquote>
+<p>锁定用于确保事务完整性和数据库一致性。 锁定可以防止用户读取其他用户正在更改的数据，并防止多个用户同时更改相同的数据。 如果不使用锁定，数据库中的数据可能在逻辑上变得不正确，而针对这些数据进行查询可能会产生想不到的结果。</p>
+</blockquote>
+<blockquote>
+<p>在计算机科学中，锁是在执行多线程时用于强行限制资源访问的同步机制，即用于在并发控制中保证对互斥要求的满足。在数据库的锁机制中介绍过，在DBMS中，可以按照锁的粒度把数据库锁分为行级锁(INNODB引擎)、表级锁(MYISAM引擎)和页级锁(BDB引擎 )。</p>
+</blockquote>
+<h3 id="行级锁">
+  行级锁
+  <a class="anchor" href="#%e8%a1%8c%e7%ba%a7%e9%94%81">#</a>
+</h3>
+<ul>
+<li>
+<p>行级锁是Mysql中锁定粒度最细的一种锁，表示只针对当前操作的行进行加锁。行级锁能大大减少数据库操作的冲突。其加锁粒度最小，但加锁的开销也最大。行级锁分为<strong>共享锁</strong> 和 <strong>排他锁</strong>。</p>
+</li>
+<li>
+<p>特点:开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。</p>
+</li>
+</ul>
+<h3 id="表级锁">
+  表级锁
+  <a class="anchor" href="#%e8%a1%a8%e7%ba%a7%e9%94%81">#</a>
+</h3>
+<ul>
+<li>
+<p>表级锁是MySQL中锁定粒度最大的一种锁，表示对当前操作的整张表加锁，它实现简单，资源消耗较少，被大部分MySQL引擎支持。最常使用的MYISAM与INNODB都支持表级锁定。表级锁定分为<strong>表共享读锁</strong>（共享锁）与<strong>表独占写锁</strong>（排他锁）</p>
+</li>
+<li>
+<p>特点:开销小，加锁快；不会出现死锁；锁定粒度大，发出锁冲突的概率最高，并发度最低。</p>
+</li>
+</ul>
+<h3 id="页级锁">
+  页级锁
+  <a class="anchor" href="#%e9%a1%b5%e7%ba%a7%e9%94%81">#</a>
+</h3>
+<ul>
+<li>
+<p>页级锁是MySQL中锁定粒度介于行级锁和表级锁中间的一种锁。表级锁速度快，但冲突多，行级冲突少，但速度慢。所以取了折衷的页级，一次锁定相邻的一组记录。BDB支持页级锁</p>
+</li>
+<li>
+<p>特点:开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般</p>
+</li>
+</ul>
+<h3 id="mysql常用存储引擎的锁机制">
+  MySQL常用存储引擎的锁机制
+  <a class="anchor" href="#mysql%e5%b8%b8%e7%94%a8%e5%ad%98%e5%82%a8%e5%bc%95%e6%93%8e%e7%9a%84%e9%94%81%e6%9c%ba%e5%88%b6">#</a>
+</h3>
+<ul>
+<li>MyISAM和MEMORY采用表级锁(table-level locking)</li>
+<li>BDB采用页面锁(page-level locking)或表级锁，默认为页面锁</li>
+<li>InnoDB支持行级锁(row-level locking)和表级锁,默认为行级锁</li>
+</ul>
+<h3 id="innodb中的行锁与表锁">
+  Innodb中的行锁与表锁
+  <a class="anchor" href="#innodb%e4%b8%ad%e7%9a%84%e8%a1%8c%e9%94%81%e4%b8%8e%e8%a1%a8%e9%94%81">#</a>
+</h3>
+<ul>
+<li>前面提到过，在Innodb引擎中既支持行锁也支持表锁，那么什么时候会锁住整张表，什么时候或只锁住一行呢？</li>
+<li>InnoDB行锁是通过给索引上的索引项加锁来实现的，这一点MySQL与Oracle不同，后者是通过在数据块中对相应数据行加锁来实现的。InnoDB这种行锁实现特点意味着：只有通过索引条件检索数据，InnoDB才使用行级锁，否则，InnoDB将使用表锁！</li>
+<li>在实际应用中，要特别注意InnoDB行锁的这一特性，不然的话，可能导致大量的锁冲突，从而影响并发性能。</li>
+<li>行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁。行级锁的缺点是：由于需要请求大量的锁资源，所以速度慢，内存消耗大。</li>
+</ul>
+<h3 id="行级锁与死锁">
+  行级锁与死锁
+  <a class="anchor" href="#%e8%a1%8c%e7%ba%a7%e9%94%81%e4%b8%8e%e6%ad%bb%e9%94%81">#</a>
+</h3>
+<blockquote>
+<p>MyISAM中是不会产生死锁的，因为MyISAM总是一次性获得所需的全部锁，要么全部满足，要么全部等待。而在InnoDB中，锁是逐步获得的，就造成了死锁的可能。</p>
+</blockquote>
+<blockquote>
+<p>在MySQL中，行级锁并不是直接锁记录，而是锁索引。索引分为主键索引和非主键索引两种，如果一条sql语句操作了主键索引，MySQL就会锁定这条主键索引；如果一条语句操作了非主键索引，MySQL会先锁定该非主键索引，再锁定相关的主键索引。 在UPDATE、DELETE操作时，MySQL不仅锁定WHERE条件扫描过的所有索引记录，而且会锁定相邻的键值，即所谓的next-key locking。</p>
+</blockquote>
+<ul>
+<li>
+<p>当两个事务同时执行，一个锁住了主键索引，在等待其他相关索引。另一个锁定了非主键索引，在等待主键索引。这样就会发生死锁。</p>
+</li>
+<li>
+<p>发生死锁后，InnoDB一般都可以检测到，并使一个事务释放锁回退，另一个获取锁完成事务。</p>
+</li>
+<li>
+<p>有多种方法可以避免死锁，这里只介绍常见的三种</p>
+</li>
+<li>
+<p>1、如果不同程序会并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会。</p>
+</li>
+<li>
+<p>2、在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；</p>
+</li>
+<li>
+<p>3、对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</p>
+</li>
+</ul>
+<h3 id="行锁例子">
+  行锁例子
+  <a class="anchor" href="#%e8%a1%8c%e9%94%81%e4%be%8b%e5%ad%90">#</a>
+</h3>
+<ul>
+<li>InnoDB实现了以下两种类型的行锁：</li>
+<li>共享锁（S）：允许一个事务去读一行，阻止其他事务获得相同数据集的排它锁</li>
+<li>排他锁（X）：允许获取排他锁的事务更新数据，阻止其他事务获得相同数据集的共享锁和排他锁</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">当前锁类型\请求锁类型</th>
+<th style="text-align:left">S (共享锁)</th>
+<th style="text-align:left">X(排他锁)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">S(共享锁)</td>
+<td style="text-align:left">兼容</td>
+<td style="text-align:left">冲突</td>
+</tr>
+<tr>
+<td style="text-align:left">X(排他锁)</td>
+<td style="text-align:left">冲突</td>
+<td style="text-align:left">冲突</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SQL</th>
+<th style="text-align:left">行锁类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">INSERT&hellip;</td>
+<td style="text-align:left">排他锁</td>
+<td style="text-align:left">自动加锁</td>
+</tr>
+<tr>
+<td style="text-align:left">UPDATE&hellip;</td>
+<td style="text-align:left">排他锁</td>
+<td style="text-align:left">自动加锁</td>
+</tr>
+<tr>
+<td style="text-align:left">DELETE&hellip;</td>
+<td style="text-align:left">排他锁</td>
+<td style="text-align:left">自动加锁</td>
+</tr>
+<tr>
+<td style="text-align:left">SELECT&hellip;</td>
+<td style="text-align:left">不加任何锁</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">SELECT&hellip; LOCK IN SHARE MODE</td>
+<td style="text-align:left">共享锁</td>
+<td style="text-align:left">需要在手动在SELECT之后LOCK IN SHARE MODE</td>
+</tr>
+<tr>
+<td style="text-align:left">SELECT&hellip; FOR UPDATE</td>
+<td style="text-align:left">排他锁</td>
+<td style="text-align:left">需要在手动在SELECT之后FOR UPDATE</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>例子1 行级锁(排他锁)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 创建行锁条件
+</span><span style="color:#75715e">-- 1、表中创建索引， select 。。。 where   字段（必须是索引）  不然行锁就无效。
+</span><span style="color:#75715e">-- 2、必须要有事务，这样才是 行锁（排他锁）
+</span><span style="color:#75715e">-- 3、在select  语句后面 加 上    FOR UPDATE；
+</span><span style="color:#75715e"></span>
+start transaction ;
+<span style="color:#66d9ef">select</span> age,birthday <span style="color:#66d9ef">from</span> temp_date <span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> age <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">update</span>;
+<span style="color:#75715e">-- 休眠5秒
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">SLEEP</span>(<span style="color:#ae81ff">5</span>);
+commit ;
+</code></pre></div><h3 id="表锁定例子">
+  表锁定例子
+  <a class="anchor" href="#%e8%a1%a8%e9%94%81%e5%ae%9a%e4%be%8b%e5%ad%90">#</a>
+</h3>
+<ul>
+<li>获取表的锁的简单形式</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">LOCK</span> <span style="color:#66d9ef">TABLES</span> table_name [<span style="color:#66d9ef">READ</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">WRITE</span>]
+<span style="color:#75715e">-- 可将表的名称放在LOCK TABLES关键字后面，后跟一个锁类型。 MySQL提供两种锁类型：READ和WRITE
+</span></code></pre></div><ul>
+<li>释放表的锁</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">UNLOCK</span> <span style="color:#66d9ef">TABLES</span>;
+</code></pre></div><ul>
+<li>表锁定为READ</li>
+</ul>
+<ul>
+<li>同时可以通过多个会话获取表的READ锁。此外，其他会话可以从表中读取数据，而无需获取锁定。</li>
+<li>持有READ锁的会话只能从表中读取数据，但不能写入。此外，其他会话在释放READ锁之前无法将数据写入表中。来自另一个会话的写操作将被放入等待状态，直到释放READ锁。</li>
+<li>如果会话正常或异常终止，MySQL将会隐式释放所有锁。这也与WRITE锁相关。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">lock</span> <span style="color:#66d9ef">table</span> temp_date <span style="color:#66d9ef">read</span>;
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> <span style="color:#a6e22e">temp_date</span>(age,birthday) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;2008-04-25&#39;</span>) ;
+
+<span style="color:#75715e">-- 结果
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">lock</span> <span style="color:#66d9ef">table</span> temp_date <span style="color:#66d9ef">read</span>
+<span style="color:#f92672">&gt;</span> OK
+<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">时间</span>: <span style="color:#ae81ff">0</span>s
+
+
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> <span style="color:#a6e22e">temp_date</span>(age,birthday) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;2008-04-25&#39;</span>)
+<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1099</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">Table</span> <span style="color:#e6db74">&#39;temp_date&#39;</span> was locked <span style="color:#66d9ef">with</span> a <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">lock</span> <span style="color:#66d9ef">and</span> can<span style="color:#e6db74">&#39;t be updated
+</span><span style="color:#e6db74">&gt; 时间: 0s
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">-- 继续
+</span><span style="color:#e6db74">select age,birthday  from temp_date;
+</span><span style="color:#e6db74">-- 可以看到 READ锁  是可以读取数据的
+</span><span style="color:#e6db74">-- 释放锁
+</span><span style="color:#e6db74">unlock tables ;
+</span></code></pre></div><ul>
+<li>表锁定WRITE</li>
+</ul>
+<ul>
+<li>只有拥有表锁定的会话才能从表读取和写入数据。</li>
+<li>在释放WRITE锁之前，其他会话不能从表中读写。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 加锁
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">lock</span> <span style="color:#66d9ef">table</span> temp_date <span style="color:#66d9ef">write</span>;
+<span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> <span style="color:#a6e22e">temp_date</span>(age,birthday) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">102</span>,<span style="color:#e6db74">&#39;2008-04-25&#39;</span>) ;
+<span style="color:#75715e">-- 测试是否还可继续读(从其他会话查询,因为当前会话连接是有锁的)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> age,birthday  <span style="color:#66d9ef">from</span> temp_date; 
+<span style="color:#75715e">-- 发现已经被阻塞了
+</span><span style="color:#75715e">-- 释放锁
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">unlock</span> <span style="color:#66d9ef">tables</span> ;
+</code></pre></div><ul>
+<li>表锁了，强制释放</li>
+</ul>
+<ul>
+<li>
+<p>1、查看当前进程</p>
+</li>
+<li>
+<p>show processlist;</p>
+</li>
+<li>
+<p>2、查看当前运行的事务</p>
+</li>
+<li>
+<p>SELECT * FROM information_schema.INNODB_TRX;</p>
+</li>
+<li>
+<p>3、当前出现的锁</p>
+</li>
+<li>
+<p>SELECT * FROM information_schema.INNODB_LOCKs;</p>
+</li>
+<li>
+<p>4、kill掉对应进程</p>
+</li>
+<li>
+<p>kill  id</p>
+</li>
+</ul>
 <h2 id="八事务">
   八:事务
   <a class="anchor" href="#%e5%85%ab%e4%ba%8b%e5%8a%a1">#</a>
@@ -3787,7 +4027,102 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
 <li>写sql语句时，引用到与mysql关键字重名的字段时，加上``</li>
 <li>如: set <code>start_value_p1</code>  =  <code>custom_start_value</code>  ;</li>
 </ul>
-</article>
+<h3 id="mysql中-form的疑问">
+  mysql中 FORM的疑问
+  <a class="anchor" href="#mysql%e4%b8%ad-form%e7%9a%84%e7%96%91%e9%97%ae">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>temp_date<span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  <span style="color:#f92672">`</span>age<span style="color:#f92672">`</span> <span style="color:#66d9ef">float</span>(<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;age&#39;</span>,
+  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  <span style="color:#f92672">`</span>birthday<span style="color:#f92672">`</span> <span style="color:#66d9ef">date</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span> COMMENT <span style="color:#e6db74">&#39;生日&#39;</span>,
+  <span style="color:#f92672">`</span>gmt_created<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#f92672">`</span>gmt_modified<span style="color:#f92672">`</span> <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">AUTO_INCREMENT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1001</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb4 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8mb4_0900_ai_ci COMMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;临时用户表&#39;</span>;
+
+<span style="color:#75715e">-- 正常操作
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> id,age,birthday <span style="color:#66d9ef">FROM</span> temp_date ;
+
+<span style="color:#75715e">-- 奇奇怪怪的东西出来了
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> id,age,birthday <span style="color:#66d9ef">FROM</span> (<span style="color:#66d9ef">SELECT</span> id,age,birthday <span style="color:#66d9ef">FROM</span> temp_date ) tb_table ;
+<span style="color:#75715e">-- 注意上面tb_table还必须得加上 否则就报错误 Every derived table must have its own alias 相当于派生表了
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 相当于FROM 实际可以跟上虚拟的派生表
+</span></code></pre></div><h3 id="mysql-相邻两行记录某列的差值方法">
+  Mysql 相邻两行记录某列的差值方法
+  <a class="anchor" href="#mysql-%e7%9b%b8%e9%82%bb%e4%b8%a4%e8%a1%8c%e8%ae%b0%e5%bd%95%e6%9f%90%e5%88%97%e7%9a%84%e5%b7%ae%e5%80%bc%e6%96%b9%e6%b3%95">#</a>
+</h3>
+<ul>
+<li>最终demo</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> 
+ r_tab.id,
+ r_tab.age,
+ r_tab.birthday,
+ r_tab.diff ,
+ r_tab.diff_content 
+<span style="color:#66d9ef">FROM</span>
+
+(
+<span style="color:#66d9ef">SELECT</span> tb_r.id, tb_r.age, tb_r.birthday, (tb_r.age <span style="color:#f92672">-</span> tb_y.age)<span style="color:#66d9ef">as</span> diff ,(<span style="color:#a6e22e">CONCAT_WS</span>(<span style="color:#e6db74">&#39;-&#39;</span>,tb_r.age,tb_y.age))<span style="color:#66d9ef">as</span> diff_content 
+ <span style="color:#66d9ef">FROM</span> 
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_tx
+) tb_r 
+
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span>
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>INDEX_NUM <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_ty
+) tb_y
+
+<span style="color:#66d9ef">on</span> tb_r.rownum <span style="color:#f92672">=</span> tb_y.rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+) r_tab
+
+<span style="color:#75715e">-- tb_r 和 tb_y比较后形成新的衍生或者派生表 r_tab  然后再把 r_tab 数据查出来
+</span></code></pre></div><ul>
+<li>简化后</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> tb_r.id, tb_r.age, tb_r.birthday, (tb_r.age <span style="color:#f92672">-</span> tb_y.age)<span style="color:#66d9ef">as</span> diff ,(<span style="color:#a6e22e">CONCAT_WS</span>(<span style="color:#e6db74">&#39;-&#39;</span>,tb_r.age,tb_y.age))<span style="color:#66d9ef">as</span> diff_content 
+ <span style="color:#66d9ef">FROM</span> 
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_tx
+) tb_r 
+
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span>
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>INDEX_NUM <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_ty
+) tb_y
+
+<span style="color:#66d9ef">on</span> tb_r.rownum <span style="color:#f92672">=</span> tb_y.rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">-- tb_r 和 tb_y 直接作比较得出数据就可以了 (然后这里用left join就是以tb_r为主)
+</span></code></pre></div><ul>
+<li>在上面的例子解决后 增加 SQL实现相邻两行数据的加减乘除操作</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">SELECT</span> tb_r.id, tb_r.age, tb_r.birthday,(tb_r.age <span style="color:#f92672">+</span> tb_y.age)<span style="color:#66d9ef">as</span> add_v, (tb_r.age <span style="color:#f92672">-</span> tb_y.age)<span style="color:#66d9ef">as</span> sub_v , (tb_r.age <span style="color:#f92672">*</span> tb_y.age)<span style="color:#66d9ef">as</span> mul_v,(tb_r.age <span style="color:#f92672">/</span> tb_y.age)<span style="color:#66d9ef">as</span> div_v
+ <span style="color:#66d9ef">FROM</span> 
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>rownum :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_tx
+) tb_r 
+
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span>
+
+(
+<span style="color:#66d9ef">SELECT</span> tab.age,tab.id,(<span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#f92672">@</span>INDEX_NUM <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">AS</span> rownum,tab.birthday <span style="color:#66d9ef">FROM</span>  temp_date tab,(<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>INDEX_NUM :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) r_ty
+) tb_y
+
+<span style="color:#66d9ef">on</span> tb_r.rownum <span style="color:#f92672">=</span> tb_y.rownum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+<span style="color:#75715e">-- 利用上面的例子实现加减乘除
+</span></code></pre></div></article>
  
       
 
@@ -4055,7 +4390,18 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
         <li><a href="#列转行">列转行</a></li>
       </ul>
     </li>
-    <li><a href="#七行锁悲观锁表锁页面锁">七:行锁(悲观锁),表锁,页面锁</a></li>
+    <li><a href="#七行锁悲观锁表锁页面锁">七:行锁(悲观锁),表锁,页面锁</a>
+      <ul>
+        <li><a href="#行级锁">行级锁</a></li>
+        <li><a href="#表级锁">表级锁</a></li>
+        <li><a href="#页级锁">页级锁</a></li>
+        <li><a href="#mysql常用存储引擎的锁机制">MySQL常用存储引擎的锁机制</a></li>
+        <li><a href="#innodb中的行锁与表锁">Innodb中的行锁与表锁</a></li>
+        <li><a href="#行级锁与死锁">行级锁与死锁</a></li>
+        <li><a href="#行锁例子">行锁例子</a></li>
+        <li><a href="#表锁定例子">表锁定例子</a></li>
+      </ul>
+    </li>
     <li><a href="#八事务">八:事务</a>
       <ul>
         <li><a href="#什么是事务">什么是事务</a></li>
@@ -4080,6 +4426,8 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
         <li><a href="#批量插入">批量插入</a></li>
         <li><a href="#mysql-出现-truncated-incorrect-double-value-已解决">mysql 出现 truncated incorrect double value （已解决）</a></li>
         <li><a href="#mysql-1064-you-have-an-error-in-your-sql-syntax-错误解决办法">MySQL 1064 You have an error in your SQL syntax 错误解决办法</a></li>
+        <li><a href="#mysql中-form的疑问">mysql中 FORM的疑问</a></li>
+        <li><a href="#mysql-相邻两行记录某列的差值方法">Mysql 相邻两行记录某列的差值方法</a></li>
       </ul>
     </li>
   </ul>

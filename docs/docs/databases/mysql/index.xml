@@ -22,7 +22,7 @@
   查看其他库中所有的表：show tables from 库名;
   查看表的创建语句：show create table 表名;
   查看表结构：desc 表名;
-  SQL的语言分类#DQL（Data Query Language）：数据查询语言select 相关语句DML（Data Manipulate Language）：数据操作语言insert 、update、delete 语句DDL（Data Define Languge）：数据定义语言create、drop、alter 语句TCL（Transaction Control Language）：事务控制语言set autocommit=0、start transaction、savepoint、commit、rollbackmysql语法规范#不区分大小写，但建议关键字大写，表名、列名小写每条命令最好用英文分号结尾每条命令根据需要，可以进行缩进或换行注释单行注释：#注释文字单行注释：-- 注释文字 ，注意， 这里需要加空格多行注释：/* 注释文字 */MySQL删除数据库中的所有表#SELECT CONCAT(&#39;drop table &#39;,table_name,&#39;;&#39;) FROM information_schema.</description>
+  SQL的语言分类 #  DQL（Data Query Language）：数据查询语言select 相关语句DML（Data Manipulate Language）：数据操作语言insert 、update、delete 语句DDL（Data Define Languge）：数据定义语言create、drop、alter 语句TCL（Transaction Control Language）：事务控制语言set autocommit=0、start transaction、savepoint、commit、rollbackmysql语法规范 #  不区分大小写，但建议关键字大写，表名、列名小写每条命令最好用英文分号结尾每条命令根据需要，可以进行缩进或换行注释单行注释：#注释文字单行注释：-- 注释文字 ，注意， 这里需要加空格多行注释：/* 注释文字 */MySQL删除数据库中的所有表 #  SELECT CONCAT(&#39;drop table &#39;,table_name,&#39;;&#39;) FROM information_schema.</description>
     </item>
     
     <item>
@@ -41,7 +41,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_distinguish/</guid>
-      <description>前言#在互联网还未崛起的时代,我们的传统应用都有这样一个特点：访问量、数据量都比较小，单库单表都完全可以支撑整个业务。随着互联网的发展和用户规模的迅速扩大,对系统的要求也越来越高。因此传统的MySQL单库单表架构的性能问题就暴露出来了。而有下面几个因素会影响数据库性能: 数据量  MySQL单库数据量在5000万以内性能比较好,超过阈值后性能会随着数据量的增大而变弱。MySQL单表的数据量是500w-1000w之间性能比较好,超过1000w性能也会下降。 磁盘  因为单个服务的磁盘空间是有限制的,如果并发压力下,所有的请求都访问同一个节点,肯定会对磁盘IO造成非常大的影响。 数据库连接  数据库连接是非常稀少的资源,如果一个库里既有用户、商品、订单相关的数据,当海量用户同时操作时,数据库连接就很可能成为瓶颈。为了提升性能,所以我们必须要解决上述几个问题,那就有必要引进分库分表。垂直拆分 or 水平拆分？#当我们单个库太大时,我们先要看一下是因为表太多还是数据量太大，如果是表太多,则应该将部分表进行迁移(可以按业务区分),这就是所谓的垂直切分。如果是数据量太大,则需要将表拆成更多的小表,来减少单表的数据量,这就是所谓的水平拆分。垂直拆分# 垂直分库  垂直分库针对的是一个系统中的不同业务进行拆分,比如用户一个库,商品一个库,订单一个库。 一个购物网站对外提供服务时,会同时对用户、商品、订单表进行操作。没拆分之前, 全部都是落到单一的库上的,这会让数据库的单库处理能力成为瓶颈。如果垂直分库后还是将用户、商品、订单放到同一个服务器上,只是分到了不同的库,这样虽然会减少单库的压力,但是随着用户量增大,这会让整个数据库的处理能力成为瓶颈,还有单个服务器的磁盘空间、内存也会受非常大的影响。 所以我们要将其拆分到多个服务器上，这样上面的问题都解决了，以后也不会面对单机资源问题。 垂直分表  也就是“大表拆小表”，基于列字段进行的。一般是表中的字段较多，将不常用的， 数据较大，长度较长（比如text类型字段）的拆分到“扩展表“。一般是针对那种几百列的大表，也避免查询时，数据量太大造成的“跨页”问题。水平拆分# 水平分表  和垂直分表有一点类似,不过垂直分表是基于列的,而水平分表是基于全表的。水平拆分可以大大减少单表数据量,提升查询效率。 水平分库分表  将单张表的数据切分到多个服务器上去，每个服务器具有相应的库与表，只是表中数据集合不同。 水平分库分表能够有效的缓解单机和单库的性能瓶颈和压力，突破IO、连接数、硬件资源等的瓶颈。几种常用的分库分表的策略# HASH取模  假设有用户表user,将其分成3个表user0,user1,user2.路由规则是对3取模,当uid=1时,对应到的是user1,uid=2时,对应的是user2。 范围分片  从1-10000一个表,10001-20000一个表。 地理位置分片  华南区一个表,华北一个表。 时间分片  按月分片，按季度分片等等,可以做到冷热数据。分库分表后引入的问题# 分布式事务问题  如果我们做了垂直分库或者水平分库以后,就必然会涉及到跨库执行SQL的问题,这样就引发了互联网界的老大难问题-&amp;quot;分布式事务&amp;quot;。那要如何解决这个问题呢？1.</description>
+      <description>前言 #  在互联网还未崛起的时代,我们的传统应用都有这样一个特点：访问量、数据量都比较小，单库单表都完全可以支撑整个业务。随着互联网的发展和用户规模的迅速扩大,对系统的要求也越来越高。因此传统的MySQL单库单表架构的性能问题就暴露出来了。而有下面几个因素会影响数据库性能: 数据量  MySQL单库数据量在5000万以内性能比较好,超过阈值后性能会随着数据量的增大而变弱。MySQL单表的数据量是500w-1000w之间性能比较好,超过1000w性能也会下降。 磁盘  因为单个服务的磁盘空间是有限制的,如果并发压力下,所有的请求都访问同一个节点,肯定会对磁盘IO造成非常大的影响。 数据库连接  数据库连接是非常稀少的资源,如果一个库里既有用户、商品、订单相关的数据,当海量用户同时操作时,数据库连接就很可能成为瓶颈。为了提升性能,所以我们必须要解决上述几个问题,那就有必要引进分库分表。垂直拆分 or 水平拆分？ #  当我们单个库太大时,我们先要看一下是因为表太多还是数据量太大，如果是表太多,则应该将部分表进行迁移(可以按业务区分),这就是所谓的垂直切分。如果是数据量太大,则需要将表拆成更多的小表,来减少单表的数据量,这就是所谓的水平拆分。垂直拆分 #   垂直分库  垂直分库针对的是一个系统中的不同业务进行拆分,比如用户一个库,商品一个库,订单一个库。 一个购物网站对外提供服务时,会同时对用户、商品、订单表进行操作。没拆分之前, 全部都是落到单一的库上的,这会让数据库的单库处理能力成为瓶颈。如果垂直分库后还是将用户、商品、订单放到同一个服务器上,只是分到了不同的库,这样虽然会减少单库的压力,但是随着用户量增大,这会让整个数据库的处理能力成为瓶颈,还有单个服务器的磁盘空间、内存也会受非常大的影响。 所以我们要将其拆分到多个服务器上，这样上面的问题都解决了，以后也不会面对单机资源问题。 垂直分表  也就是“大表拆小表”，基于列字段进行的。一般是表中的字段较多，将不常用的， 数据较大，长度较长（比如text类型字段）的拆分到“扩展表“。一般是针对那种几百列的大表，也避免查询时，数据量太大造成的“跨页”问题。水平拆分 #   水平分表  和垂直分表有一点类似,不过垂直分表是基于列的,而水平分表是基于全表的。水平拆分可以大大减少单表数据量,提升查询效率。 水平分库分表  将单张表的数据切分到多个服务器上去，每个服务器具有相应的库与表，只是表中数据集合不同。 水平分库分表能够有效的缓解单机和单库的性能瓶颈和压力，突破IO、连接数、硬件资源等的瓶颈。几种常用的分库分表的策略 #   HASH取模  假设有用户表user,将其分成3个表user0,user1,user2.路由规则是对3取模,当uid=1时,对应到的是user1,uid=2时,对应的是user2。 范围分片  从1-10000一个表,10001-20000一个表。 地理位置分片  华南区一个表,华北一个表。 时间分片  按月分片，按季度分片等等,可以做到冷热数据。分库分表后引入的问题 #   分布式事务问题  如果我们做了垂直分库或者水平分库以后,就必然会涉及到跨库执行SQL的问题,这样就引发了互联网界的老大难问题-&amp;quot;分布式事务&amp;quot;。那要如何解决这个问题呢？1.</description>
     </item>
     
     <item>
@@ -50,15 +50,15 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install/</guid>
-      <description>mysql安装# 这里我们不再采用exe的安装的方式,我们使用压缩包的方式安装
+      <description>mysql安装 #   这里我们不再采用exe的安装的方式,我们使用压缩包的方式安装
    地址 https://downloads.mysql.com/archives/community/
   将页面拉到最下面选择选择操作系统后，选择要下载的版本点击 Downloads
   我选择安装的版本为8.0.13。如果不想要最新的版本也可以进Archives页面选择其他版本
   选择压缩包的版本哦
-  一:配置环境变量#  因为下载的mysql数据库包的格式是zip的，下载完成后直接解压就可以用，但解压后需要进行配置。
+  一:配置环境变量 #    因为下载的mysql数据库包的格式是zip的，下载完成后直接解压就可以用，但解压后需要进行配置。
   首先进行环境变量的配置：右击计算机-&amp;gt;属性-&amp;gt;高级系统设置-&amp;gt;环境变量，选择双击Path，在最后面添加你的mysql bin文件夹的路径
   我的目录是：D:\databases\mysql-8.0.13-winx64
-   必须设置这个才行,因为后面我们要在控制台运行命令,假如你不设置这个环境变量那么在控制台根本识别不了,exe安装会自动在环境中设置,而压缩包没有设置  二:在 D:\databases\mysql-8.0.13-winx64 目录下新建一个my.ini的文件#[mysqld]# skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误# 设置3306端口port=3306# 自定义设置mysql的安装目录，即解压mysql压缩包的目录# 切记此处一定要用双斜杠\\，单斜杠这里会出错。basedir=D:\\databases\\mysql-8.0.13-winx64# 自定义设置mysql数据库的数据存放目录datadir=D:\\databases\\mysql-8.0.13-winx64\\data# 允许最大连接数max_connections=200# 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统max_connect_errors=10# 服务端使用的字符集默认为UTF8character-set-server=utf8mb4# 创建新表时将使用的默认存储引擎default-storage-engine=INNODB# 默认使用“mysql_native_password”插件认证default_authentication_plugin=mysql_native_password[mysql]# 设置mysql客户端默认字符集default-character-set=utf8mb4[client]# 设置mysql客户端连接服务端时默认使用的端口和默认字符集port=3306default-character-set=utf8mb4三:windows下运行控制台程序# 进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:初始化mysql# mysqld &amp;ndash;initialize &amp;ndash;console，等待一会出现几行代码，root@localhost：后面的是随机生成的数据库初始密码，将初始密码记下来后面会用到。 没记住初始密码的话，删掉初始化的 data目录，再执行一遍初始化命令又会重新生成  D:\databases\mysql-8.</description>
+   必须设置这个才行,因为后面我们要在控制台运行命令,假如你不设置这个环境变量那么在控制台根本识别不了,exe安装会自动在环境中设置,而压缩包没有设置  二:在 D:\databases\mysql-8.0.13-winx64 目录下新建一个my.ini的文件 #  [mysqld]# skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误# 设置3306端口port=3306# 自定义设置mysql的安装目录，即解压mysql压缩包的目录# 切记此处一定要用双斜杠\\，单斜杠这里会出错。basedir=D:\\databases\\mysql-8.0.13-winx64# 自定义设置mysql数据库的数据存放目录datadir=D:\\databases\\mysql-8.0.13-winx64\\data# 允许最大连接数max_connections=200# 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统max_connect_errors=10# 服务端使用的字符集默认为UTF8character-set-server=utf8mb4# 创建新表时将使用的默认存储引擎default-storage-engine=INNODB# 默认使用“mysql_native_password”插件认证default_authentication_plugin=mysql_native_password[mysql]# 设置mysql客户端默认字符集default-character-set=utf8mb4[client]# 设置mysql客户端连接服务端时默认使用的端口和默认字符集port=3306default-character-set=utf8mb4三:windows下运行控制台程序 #   进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:初始化mysql #   mysqld &amp;ndash;initialize &amp;ndash;console，等待一会出现几行代码，root@localhost：后面的是随机生成的数据库初始密码，将初始密码记下来后面会用到。 没记住初始密码的话，删掉初始化的 data目录，再执行一遍初始化命令又会重新生成  D:\databases\mysql-8.</description>
     </item>
     
     <item>
@@ -67,15 +67,15 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_more/</guid>
-      <description>mysql安装# 这里我们不再采用exe的安装的方式,我们使用压缩包的方式安装
+      <description>mysql安装 #   这里我们不再采用exe的安装的方式,我们使用压缩包的方式安装
    地址 https://downloads.mysql.com/archives/community/
   将页面拉到最下面选择选择操作系统后，选择要下载的版本点击 Downloads
   我选择安装的版本为8.0.22。如果不想要最新的版本也可以进Archives页面选择其他版本
   选择压缩包的版本哦
-  一:配置环境变量#  因为下载的mysql数据库包的格式是zip的，下载完成后直接解压就可以用，但解压后需要进行配置。
+  一:配置环境变量 #    因为下载的mysql数据库包的格式是zip的，下载完成后直接解压就可以用，但解压后需要进行配置。
   首先进行环境变量的配置：右击计算机-&amp;gt;属性-&amp;gt;高级系统设置-&amp;gt;环境变量，选择双击Path，在最后面添加你的mysql bin文件夹的路径
   我的目录是：D:\CS\databases\mysql-8.0.22-winx64   必须设置这个才行,因为后面我们要在控制台运行命令,假如你不设置这个环境变量那么在控制台根本识别不了,exe安装会自动在环境中设置,而压缩包没有设置
-  二:在D:\CS\databases\mysql-8.0.22-winx64 目录下新建一个my.ini的文件#[mysqld] # skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误 # 设置3307端口 port=3307 # 自定义设置mysql的安装目录，即解压mysql压缩包的目录 # 切记此处一定要用双斜杠\\，单斜杠这里会出错。 basedir=D:\\CS\\databases\\mysql-8.0.22-winx64 # 自定义设置mysql数据库的数据存放目录 datadir=D:\\CS\\databases\\mysql-8.0.22-winx64\\data # 允许最大连接数 max_connections=200 # 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统 max_connect_errors=10 # 服务端使用的字符集默认为UTF8 character-set-server=utf8mb4 # 创建新表时将使用的默认存储引擎 default-storage-engine=INNODB # 默认使用“mysql_native_password”插件认证 default_authentication_plugin=mysql_native_password [mysql] # 设置mysql客户端默认字符集 default-character-set=utf8mb4 [client] # 设置mysql客户端连接服务端时默认使用的端口和默认字符集 port=3307 default-character-set=utf8mb4 三:windows下运行控制台程序# 进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:mysql执行核心插件服务#D:\CS\databases\mysql-8.</description>
+  二:在D:\CS\databases\mysql-8.0.22-winx64 目录下新建一个my.ini的文件 #  [mysqld] # skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误 # 设置3307端口 port=3307 # 自定义设置mysql的安装目录，即解压mysql压缩包的目录 # 切记此处一定要用双斜杠\\，单斜杠这里会出错。 basedir=D:\\CS\\databases\\mysql-8.0.22-winx64 # 自定义设置mysql数据库的数据存放目录 datadir=D:\\CS\\databases\\mysql-8.0.22-winx64\\data # 允许最大连接数 max_connections=200 # 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统 max_connect_errors=10 # 服务端使用的字符集默认为UTF8 character-set-server=utf8mb4 # 创建新表时将使用的默认存储引擎 default-storage-engine=INNODB # 默认使用“mysql_native_password”插件认证 default_authentication_plugin=mysql_native_password [mysql] # 设置mysql客户端默认字符集 default-character-set=utf8mb4 [client] # 设置mysql客户端连接服务端时默认使用的端口和默认字符集 port=3307 default-character-set=utf8mb4 三:windows下运行控制台程序 #   进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:mysql执行核心插件服务 #  D:\CS\databases\mysql-8.</description>
     </item>
     
     <item>
@@ -84,7 +84,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_problem/</guid>
-      <description>windows下 Mysql安装的一些问题解决方法#1: The service already exists#  在mysql安装的时候要执行 mysqld &amp;ndash;install 这个命令,假如你已经安装完之后觉得不对，但是mysql服务已经生成(windows注册服务已经有mysql了),你不删除此服务为报一个错误
+      <description>windows下 Mysql安装的一些问题解决方法 #  1: The service already exists #    在mysql安装的时候要执行 mysqld &amp;ndash;install 这个命令,假如你已经安装完之后觉得不对，但是mysql服务已经生成(windows注册服务已经有mysql了),你不删除此服务为报一个错误
   The service already exists
   决绝方法就是 删除mysql相关的服务
   首先查询下是否存在mysql服务
@@ -98,7 +98,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install_centos/</guid>
       <description>centos7单机安装多个mysql8.0
- 一:上传#下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz上传mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz到服务器指定文件夹，如：/home/mysql二:解压#cd /home/mysqltar -xvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz三:重命名文件夹#mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306四:新建mysql用户、mysql用户组#cd /home/mysql/mysql3306#新建mysql用户、mysql用户组，如果之前已经建立过，就不用建立了groupadd mysql#给mysql添加用户为 mysqluseradd mysql -g mysql五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用#cd /home/mysql/mysql3306mkdir data var tmp binlogs logschmod 777 ./tmpchmod 777 ./logscd /home/mysql/mysql3306/logstouch error.log六:在/home/mysql/mysql3306/etc下创建数据库配置文件#cd /home/mysql/mysql3306mkdir etccd /home/mysql/mysql3306/etctouch my.cnfvim my.cnf# my.</description>
+ 一:上传 #  下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz上传mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz到服务器指定文件夹，如：/home/mysql二:解压 #  cd /home/mysqltar -xvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz三:重命名文件夹 #  mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306四:新建mysql用户、mysql用户组 #  cd /home/mysql/mysql3306#新建mysql用户、mysql用户组，如果之前已经建立过，就不用建立了groupadd mysql#给mysql添加用户为 mysqluseradd mysql -g mysql五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用 #  cd /home/mysql/mysql3306mkdir data var tmp binlogs logschmod 777 ./tmpchmod 777 ./logscd /home/mysql/mysql3306/logstouch error.log六:在/home/mysql/mysql3306/etc下创建数据库配置文件 #  cd /home/mysql/mysql3306mkdir etccd /home/mysql/mysql3306/etctouch my.cnfvim my.cnf# my.</description>
     </item>
     
     <item>
@@ -109,10 +109,10 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/</guid>
       <description>设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。
   目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。
- 数据库三范式#第一范式（1NF）# 所谓第一范式（1NF）是指在关系模型中，对域添加的一个规范要求，所有的域都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式（1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。简而言之，第一范式就是无重复的域。 说明：在任何一个关系数据库中，第一范式（1NF）是对关系模式的设计基本要求，一般设计中都必须满足第一范式（1NF）。不过有些关系模型中突破了1NF的限制，这种称为非1NF的关系模型。换句话说，是否必须满足1NF的最低要求，主要依赖于所使用的关系模型。  第二范式（2NF）# 在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖） 第二范式（2NF）是在第一范式（1NF）的基础上建立起来的，即满足第二范式（2NF）必须先满足第一范式（1NF）。第二范式（2NF）要求数据库表中的每个实例或记录必须可以被唯一地区分。选取一个能区分每个实体的属性或属性组，作为实体的唯一标识。例如在员工表中的身份证号码即可实现每个一员工的区分，该身份证号码即为候选键，任何一个候选键都可以被选作主键。在找不到候选键时，可额外增加属性以实现区分，如果在员工关系中，没有对其身份证号进行存储，而姓名可能会在数据库运行的某个时间重复，无法区分出实体时，设计辟如ID等不重复的编号以实现区分，被添加的编号或ID选作主键。（该主键的添加是在ER设计时添加，不是建库时随意添加） 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。  第三范式（3NF）# 在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖） 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。简而言之，第三范式（3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息。例如，存在一个部门信息表，其中每个部门有部门编号（dept_id）、部门名称、部门简介等信息。那么在员工信息表中列出部门编号后就不能再将部门名称、部门简介等与部门有关的信息再加入员工信息表中。如果不存在部门信息表，则根据第三范式（3NF）也应该构建它，否则就会有大量的数据冗余。简而言之，第三范式就是属性不依赖于其它非主属性，也就是在满足2NF的基础上，任何非主属性不得传递依赖于主属性。  巴斯-科德范式（BCNF）# Boyce-Codd Normal Form（巴斯-科德范式）
+ 数据库三范式 #  第一范式（1NF） #   所谓第一范式（1NF）是指在关系模型中，对域添加的一个规范要求，所有的域都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式（1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。简而言之，第一范式就是无重复的域。 说明：在任何一个关系数据库中，第一范式（1NF）是对关系模式的设计基本要求，一般设计中都必须满足第一范式（1NF）。不过有些关系模型中突破了1NF的限制，这种称为非1NF的关系模型。换句话说，是否必须满足1NF的最低要求，主要依赖于所使用的关系模型。  第二范式（2NF） #   在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖） 第二范式（2NF）是在第一范式（1NF）的基础上建立起来的，即满足第二范式（2NF）必须先满足第一范式（1NF）。第二范式（2NF）要求数据库表中的每个实例或记录必须可以被唯一地区分。选取一个能区分每个实体的属性或属性组，作为实体的唯一标识。例如在员工表中的身份证号码即可实现每个一员工的区分，该身份证号码即为候选键，任何一个候选键都可以被选作主键。在找不到候选键时，可额外增加属性以实现区分，如果在员工关系中，没有对其身份证号进行存储，而姓名可能会在数据库运行的某个时间重复，无法区分出实体时，设计辟如ID等不重复的编号以实现区分，被添加的编号或ID选作主键。（该主键的添加是在ER设计时添加，不是建库时随意添加） 第二范式（2NF）要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。简而言之，第二范式就是在第一范式的基础上属性完全依赖于主键。  第三范式（3NF） #   在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖） 第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。简而言之，第三范式（3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息。例如，存在一个部门信息表，其中每个部门有部门编号（dept_id）、部门名称、部门简介等信息。那么在员工信息表中列出部门编号后就不能再将部门名称、部门简介等与部门有关的信息再加入员工信息表中。如果不存在部门信息表，则根据第三范式（3NF）也应该构建它，否则就会有大量的数据冗余。简而言之，第三范式就是属性不依赖于其它非主属性，也就是在满足2NF的基础上，任何非主属性不得传递依赖于主属性。  巴斯-科德范式（BCNF） #   Boyce-Codd Normal Form（巴斯-科德范式）
   在3NF基础上，任何非主属性不能对主键子集依赖（在3NF基础上消除对主码子集的依赖） 巴斯-科德范式（BCNF）是第三范式（3NF）的一个子集，即满足巴斯-科德范式（BCNF）必须满足第三范式（3NF）。通常情况下，巴斯-科德范式被认为没有新的设计规范加入，只是对第二范式与第三范式中设计规范要求更强，因而被认为是修正第三范式，也就是说，它事实上是对第三范式的修正，使数据库冗余度更小。这也是BCNF不被称为第四范式的原因。某些书上，根据范式要求的递增性将其称之为第四范式是不规范，也是更让人不容易理解的地方。而真正的第四范式，则是在设计规范中添加了对多值及依赖的要求。 定义：关系模式R&amp;lt;U,F&amp;gt;∈1FNF,若X→Y且Y不是X的子集时X必含有码，则R&amp;lt;U,F&amp;gt;∈BCNF。也就是说，关系模式R&amp;lt;U,F&amp;gt;中，若每一个决定因素都包含码，则R&amp;lt;U,F&amp;gt;∈BCNF。   由BCNF的定义可以得到结论，一个满足BCNF的关系模式有：
   -所有非主属性对每一个码都是完全函数依赖。 -所有主属性对每一个不包含它的码也是完全函数依赖。 -没有任何属性完全函数依赖于非码的任何一组属性。 若R∈BCNF，按定义排除了任何属性对码的传递依赖与部分依赖，所以R∈3NF。[1] 一般关系型数据库设计中，达到BCNF就可以了！  #【数据库五大约束】
- 1.primary KEY:设置主键约束； 2.UNIQUE：设置唯一性约束，不能有重复值； 3.DEFAULT 默认值约束，height DOUBLE(3,2)DEFAULT 1.2 height不输入是默认为1,2 4.NOT NULL：设置非空约束，该字段不能为空； 5.FOREIGN key :设置外键约束。  【主键】# 1.</description>
+ 1.primary KEY:设置主键约束； 2.UNIQUE：设置唯一性约束，不能有重复值； 3.DEFAULT 默认值约束，height DOUBLE(3,2)DEFAULT 1.2 height不输入是默认为1,2 4.NOT NULL：设置非空约束，该字段不能为空； 5.FOREIGN key :设置外键约束。  【主键】 #   1.</description>
     </item>
     
     <item>
@@ -130,10 +130,10 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/</guid>
-      <description>日期函数#  返回当前日期，只包含年月日 select curdate()
+      <description>日期函数 #    返回当前日期，只包含年月日 select curdate()
   返回当前时间，只包含时分秒 select curtime()
   返回当前的日期和时间，年月日时分秒全都包含 select now()
-  提取具体日期类型# year() yearweek() ,hour(),month()等等   select year(now()) as &amp;lsquo;年&amp;rsquo;,yearweek(now()) as &amp;lsquo;年,周&amp;rsquo;,hour(now()) as &amp;lsquo;周&amp;rsquo;,minute(now()) as &amp;lsquo;小时&amp;rsquo;,month(now()) &amp;lsquo;月&amp;rsquo;,monthname(now()) &amp;lsquo;月名字&amp;rsquo;,dayofmonth(now()) as &amp;lsquo;当月多少日&amp;rsquo;   EXTRACT() 函数用于返回日期/时间的单独部分，比如年、月、日、小时、分钟等等。   (select extract(year from now()),extract(month from now()),extract(day from now()),extract(hour from now()),extract(minute from now()))  日期格式# DATE_FORMAT(date,fmt)函数：按字符串 fmt 格式化日期 date 值 (select date_format(now(),&#39;%Y-%m-%d&#39;))  日期运算#  date_add(date,interval number dateType) example (select date_add(now(),interval 2 year) as &amp;lsquo;add 2 year date&amp;rsquo;) (select date_add(now(),interval -2 hour) as &amp;lsquo;add 2&amp;rsquo;)也可以传入负数即回到过去某个时间</description>
+  提取具体日期类型 #   year() yearweek() ,hour(),month()等等   select year(now()) as &amp;lsquo;年&amp;rsquo;,yearweek(now()) as &amp;lsquo;年,周&amp;rsquo;,hour(now()) as &amp;lsquo;周&amp;rsquo;,minute(now()) as &amp;lsquo;小时&amp;rsquo;,month(now()) &amp;lsquo;月&amp;rsquo;,monthname(now()) &amp;lsquo;月名字&amp;rsquo;,dayofmonth(now()) as &amp;lsquo;当月多少日&amp;rsquo;   EXTRACT() 函数用于返回日期/时间的单独部分，比如年、月、日、小时、分钟等等。   (select extract(year from now()),extract(month from now()),extract(day from now()),extract(hour from now()),extract(minute from now()))  日期格式 #   DATE_FORMAT(date,fmt)函数：按字符串 fmt 格式化日期 date 值 (select date_format(now(),&#39;%Y-%m-%d&#39;))  日期运算 #    date_add(date,interval number dateType) example (select date_add(now(),interval 2 year) as &amp;lsquo;add 2 year date&amp;rsquo;) (select date_add(now(),interval -2 hour) as &amp;lsquo;add 2&amp;rsquo;)也可以传入负数即回到过去某个时间</description>
     </item>
     
     <item>
@@ -142,12 +142,12 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/</guid>
-      <description>MySQL 存储引擎概述# MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
-  查看当前引擎 show ENGINES  MyISAM存储引擎# 不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
+      <description>MySQL 存储引擎概述 #   MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
+  查看当前引擎 show ENGINES  MyISAM存储引擎 #   不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
   支持3种不同的存储格式，分别是：静态表；动态表；压缩表   静态表：表中的字段都是非变长字段，这样每个记录都是固定长度的，优点存储非常迅速，容易缓存，出现故障容易恢复；缺点是占用的空间通常比动态表多（因为存储时会按照列的宽度定义补足空格）ps：在取数据的时候，默认会把字段后面的空格去掉，如果不注意会把数据本身带的空格也会忽略。 动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能 压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
   动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能
   压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
- InnoDB存储引擎# nnoDB 存储表和索引有两种方式
+ InnoDB存储引擎 #   nnoDB 存储表和索引有两种方式
   使用共享表空间存储，这种方式创建的表的表结构保存在.frm 文件中，数据和索引 保存在 innodb_data_home_dir 和 innodb_data_file_path 定义的表空间中，可以是 多个文件。 使用多表空间存储，这种方式创建的表的表结构仍然保存在.frm 文件中，但是每个 表的数据和索引单独保存在.ibd 中。如果是个分区表，则每个分区对应单独的.</description>
     </item>
     
@@ -157,8 +157,8 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</guid>
-      <description>MySQL mysql存储过程概述# 存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
- 特点：# 使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要)#CREATE[DEFINER = { user | CURRENT_USER }]PROCEDURE sp_name ([proc_parameter[,...]])[characteristic ...] routine_bodyproc_parameter:[ IN | OUT | INOUT ] param_name typetype:Any valid MySQL data typecharacteristic:COMMENT &#39;string&#39;| [NOT] DETERMINISTICroutine_body:Valid SQL routine statement-- $ 可以改为分号 假如你直接是在控制台那么建议用$delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行create procedure 存储过程名(参数列表)beginsql语句集合end$delimiter ; --将结束符修改为默认的分号 例子#-- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+      <description>MySQL mysql存储过程概述 #   存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
+ 特点： #   使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要) #  CREATE[DEFINER = { user | CURRENT_USER }]PROCEDURE sp_name ([proc_parameter[,...]])[characteristic ...] routine_bodyproc_parameter:[ IN | OUT | INOUT ] param_name typetype:Any valid MySQL data typecharacteristic:COMMENT &#39;string&#39;| [NOT] DETERMINISTICroutine_body:Valid SQL routine statement-- $ 可以改为分号 假如你直接是在控制台那么建议用$delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行create procedure 存储过程名(参数列表)beginsql语句集合end$delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
     </item>
     
     <item>
@@ -177,15 +177,15 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/</guid>
-      <description>一: 备份#1: 备份内容#  数据 (数据文件或文本格式数据)
+      <description>一: 备份 #  1: 备份内容 #    数据 (数据文件或文本格式数据)
   操作日志(binlog) (数据库变更日志)
-  2:冷备份与热备份#  冷备份 (关闭数据库服务，完整拷贝数据文件)
+  2:冷备份与热备份 #    冷备份 (关闭数据库服务，完整拷贝数据文件)
   热备份 (在不影响数据库读写服务的情况下备份数据库)
-  3:本地备份与远程备份#  本地备份 (在数据库服务器本地进行备份)
+  3:本地备份与远程备份 #    本地备份 (在数据库服务器本地进行备份)
   远程备份 (远程连接数据库进行备份)
-  4:全量备份与增量备份#  全量备份 (备份完整的数据库)
+  4:全量备份与增量备份 #    全量备份 (备份完整的数据库)
   增量备份 (只备份上一次备份以来发生修改的数据)
-  5:备份周期# 考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法# mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump# 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A -d &amp;gt; D:\data\mysql_all.</description>
+  5:备份周期 #   考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法 #   mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump #   逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A -d &amp;gt; D:\data\mysql_all.</description>
     </item>
     
     <item>
@@ -194,7 +194,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-      <description>数据库设计的规范# 数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
+      <description>数据库设计的规范 #   数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，主键是表名去掉业务后缀，加_ID，大多表的主键使用UUID 字段多个单词时，全大写，用下划线隔开 类型INT/LONG/DOUBLE/TIMESTAMP/CHAR/VARCHAR2 尽量化在这几个类型中，这样数据库设计相当简单 排序号定死名称ORDER_NO 权限两个字段CREATE_BY创建人，CREATE_DEPT创建部门 记录创建时间CREATE_TIME  </description>
     </item>
     
     <item>
@@ -203,7 +203,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/</guid>
-      <description>mysql学习(下面所有都是针对mysql而言)#sql排序语句# 升序   (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE s_id IN (101,102) order by f_name asc)   对于sql的升序而言,当使用了order by之后如果不添加desc那么默认是升序 order by f_name 和 order by f_name ASC 效果一致 降序   (select f.* from fruits f WHERE s_id not IN (101,102) order by f_name DESC )   order by之后加上DESC结果集就是降序   上面结合了 关键字in可以看到 in (101,102)和not in (101,102)</description>
+      <description>mysql学习(下面所有都是针对mysql而言) #  sql排序语句 #   升序   (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE s_id IN (101,102) order by f_name asc)   对于sql的升序而言,当使用了order by之后如果不添加desc那么默认是升序 order by f_name 和 order by f_name ASC 效果一致 降序   (select f.* from fruits f WHERE s_id not IN (101,102) order by f_name DESC )   order by之后加上DESC结果集就是降序   上面结合了 关键字in可以看到 in (101,102)和not in (101,102)</description>
     </item>
     
     <item>
@@ -212,7 +212,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_regexp/</guid>
-      <description>一:数据准备#CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb3; -- 如果存在此存储过程则删掉 DROP PROCEDURE IF EXISTS proc_initData; DELIMITER ; CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=6000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+      <description>一:数据准备 #  CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb3; -- 如果存在此存储过程则删掉 DROP PROCEDURE IF EXISTS proc_initData; DELIMITER ; CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=6000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
     </item>
     
     <item>
@@ -222,10 +222,10 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</guid>
       <description>mysql.version=5.7 (必须注意版本)
- 创建用户# ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;192.168.87.26&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456   参数说明:&#39;%&amp;lsquo;表示所有情况都能访问;&amp;lsquo;localhost&amp;rsquo;表示本机才能访问;&amp;lsquo;192.168.87.26&amp;rsquo; 某个具体 ip 才能访问
- 授权命令 (GRANT privileges ON databasename.tablename TO &amp;lsquo;username&amp;rsquo;@&amp;lsquo;host&amp;rsquo; )#GRANT SELECT,INSERT privileges on spring.* to &amp;lsquo;alice&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; identified by &amp;lsquo;123456&amp;rsquo;
+ 创建用户 #   ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;192.168.87.26&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456   参数说明:&#39;%&amp;lsquo;表示所有情况都能访问;&amp;lsquo;localhost&amp;rsquo;表示本机才能访问;&amp;lsquo;192.168.87.26&amp;rsquo; 某个具体 ip 才能访问
+ 授权命令 (GRANT privileges ON databasename.tablename TO &amp;lsquo;username&amp;rsquo;@&amp;lsquo;host&amp;rsquo; ) #  GRANT SELECT,INSERT privileges on spring.* to &amp;lsquo;alice&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; identified by &amp;lsquo;123456&amp;rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限#create database testDB;grant all privileges on testDB.</description>
+ 授权test用户拥有testDB数据库的所有权限 #  create database testDB;grant all privileges on testDB.</description>
     </item>
     
     <item>
@@ -234,7 +234,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</guid>
-      <description>索引# 所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
+      <description>索引 #   所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
   MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
   MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
   默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
@@ -247,7 +247,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E6%95%B4%E7%90%86/</guid>
-      <description>mysql整理#跨库更新数据#UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
+      <description>mysql整理 #  跨库更新数据 #  UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.contract_id = bTable.data_uuid SET aTable.contract_uuid = bTable.data_uuid , aTable.contract_id = null where 1=1 and aTable.contract_uuid is null and aTable.contract_id is not null and aTable.id = 596; UPDATE pmcc_assess.tb_project_info aTable INNER JOIN ( SELECT id as data_id, uuid as data_uuid FROM pmcc_contract.tb_cms_contract bTable ) bTable ON aTable.</description>
     </item>
     
     <item>
@@ -256,7 +256,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysq_advanced_optimization/</guid>
-      <description>索引优化#缓存#全文#</description>
+      <description>索引优化 #  缓存 #  全文 #  </description>
     </item>
     
     <item>
@@ -265,8 +265,8 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/</guid>
-      <description>一:创建计算字段#-- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&amp;#39;-&amp;#39;,suppliers.s_city) = &amp;#39;apple-Tianjin&amp;#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&amp;#39;-&amp;#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数# 聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一)# 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数#   函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &amp;#39;0&amp;#39;, &amp;#39;O&amp;#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &amp;#39;0&amp;#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数#   函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.</description>
+      <description>一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&amp;#39;-&amp;#39;,suppliers.s_city) = &amp;#39;apple-Tianjin&amp;#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&amp;#39;-&amp;#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &amp;#39;0&amp;#39;, &amp;#39;O&amp;#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &amp;#39;0&amp;#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.</description>
     </item>
     
     <item>
