@@ -302,7 +302,32 @@ select customers.cust_id,orders.order_num from customers left outer join orders 
 
 ## 四:分组查询、过滤
 
+```mysql
+select count(id)as count,age,birthday from temp_date group by age ;
+select count(id)as count,age,birthday from temp_date group by age having age > 20 and count > 10 ;
+```
+
+
 ## 五:全文搜索
+
+```mysql
+
+-- 创建包含FULLTEXT(全文索引)的表
+CREATE TABLE tb_posts (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
+  post_content text,
+	`gmt_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FULLTEXT KEY post_content (post_content)
+);
+
+
+
+
+
+```
 
 ## 六:行转列&列转行
 
