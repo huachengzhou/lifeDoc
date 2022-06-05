@@ -677,6 +677,8 @@ Var_name:用于指定要赋值的变量名
 Table_expr:表示select语句中的from字句及后面的语法部分 
 ```
 
++ 例子1
+
 ```mysql
 drop procedure if exists pro_select_into_example_t2;
 
@@ -693,6 +695,27 @@ create procedure pro_select_into_example_t2(out result longtext)
 call pro_select_into_example_t2( @result);
 select @result;
 ```
+
++ 例子2
+
+```mysql
+DROP PROCEDURE IF EXISTS pro_set_example_ty;
+
+delimiter ;
+CREATE PROCEDURE pro_set_example_ty ( INOUT result VARCHAR ( 255 ) ) 
+	BEGIN 
+	DECLARE	c1 DOUBLE DEFAULT 0;
+	DECLARE	c2 DOUBLE DEFAULT 0;
+	-- INTO函数不一定需要from字句及后面的语法部分
+	SELECT	round( rand( ) * 10 ),	round( rand( ) * 10 ) INTO c1,	c2;
+	SET result = CONCAT_WS( '-', c1, c2 );
+	END;
+
+SET @result = '';
+CALL pro_set_example_ty ( @result );
+SELECT @result;
+```
+
 
 ### 定义处理程序
 

@@ -23,6 +23,7 @@ select CONCAT_WS('-',dept.d_name,employee.e_name) as name from employee left joi
 + 预定义函数-时间处理函数
 + 预定义函数-数字处理函数
 + 算数、逻辑运算
++ 流程函数
 
 ### 1:聚集函数 (聚合函数可以理解成多对一)
 
@@ -250,6 +251,21 @@ FROM
 
 ```
 
+### 5:流程函数
+
+```mysql
+select IF ( 0.5 > rand(),'大于','小于') as if_value , rand() as rand_value
+
+
+ SELECT IFNULL(5,8),IFNULL(NULL,'OK'),IFNULL(SQRT(-8),'FALSE'),SQRT(-8);
+
+
+  SELECT CASE WEEKDAY(NOW()) WHEN 0 THEN '星期一' WHEN 1 THEN '星期二' WHEN
+2 THEN '星期三' WHEN 3 THEN '星期四' WHEN 4 THEN '星期五' WHEN 5 THEN '星期六'
+ELSE '星期天' END AS COLUMN1,NOW(),WEEKDAY(NOW()),DAYNAME(NOW());
+
+```
+
 ## 三:创建联结
 
 ### 使用表别名
@@ -310,23 +326,81 @@ select count(id)as count,age,birthday from temp_date group by age having age > 2
 
 ## 五:全文搜索
 
-```mysql
 
--- 创建包含FULLTEXT(全文索引)的表
+> 在MySQL 5.7.6之前，全文索引只支持英文全文索引，不支持中文全文索引，需要利用分词器把中文段落预处理拆分成单词，然后存入数据库。
+
+
+> 从MySQL 5.7.6开始，MySQL内置了ngram全文解析器，用来支持中文、日文、韩文分词。本文使用的MySQL 版本是5.7.22，InnoDB数据库引擎。
+
+
+### ngram全文解析器
+
+>ngram就是一段文字里面连续的n个字的序列。ngram全文解析器能够对文本进行分词，每个单词是连续的n个字的序列。例如，用ngram全文解析器对“生日快乐”进行分词
+
++ MySQL 中使用全局变量ngram_token_size来配置ngram中n的大小，它的取值范围是1到10，默认值是2
++ 如果需要搜索单字，就要把ngram_token_size设置为1,因为中文单词最少是两个汉字，推荐使用默认值2
++ 全局变量ngram_token_size的两种设置方法
++ 1、启动mysqld命令时
+
+```mysql
+mysqld --ngram_token_size=2
+```
+
++ 修改MySQL配置文件
+
+```mysql
+[mysqld] 
+ngram_token_size=2
+```
+
+
+
+```mysql
+n=1: '生', '日', '快', '乐' 
+n=2: '生日', '日快', '快乐' 
+n=3: '生日快', '日快乐' 
+n=4: '生日快乐'
+```
+
+```mysql
+-- 1:创建包含FULLTEXT(全文索引)的表
 CREATE TABLE tb_posts (
   id int(11) NOT NULL AUTO_INCREMENT,
+  pro_date datetime DEFAULT NULL,
+  price_remark varchar(255) DEFAULT NULL,
   title varchar(255) NOT NULL,
   post_content text,
-	`gmt_created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `gmt_modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	gmt_created datetime DEFAULT CURRENT_TIMESTAMP,
+  gmt_modified datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FULLTEXT KEY post_content (post_content)
 );
 
+-- 2:通过 alter table 的方式来添加
 
+ALTER TABLE tb_posts ADD FULLTEXT INDEX ft_index (post_content) WITH PARSER ngram;
 
+-- 3、直接通过create index的方式
 
+CREATE FULLTEXT INDEX ft_index ON tb_posts (post_content) WITH PARSER ngram;
+```
 
+### 全文检索模式
+
++ 常用的全文检索模式有两种
++ 1、自然语言模式(NATURAL LANGUAGE MODE)
+  
+> 自然语言模式是MySQL 默认的全文检索模式。自然语言模式不能使用操作符，不能指定关键词必须出现或者必须不能出现等复杂查询。
+
++ 2、BOOLEAN模式(BOOLEAN MODE)
+
+> BOOLEAN模式可以使用操作符，可以支持指定关键词必须出现或者必须不能出现或者关键词的权重高还是低等复杂查询。
+
+```mysql
+
+SELECT * FROM tb_posts
+WHERE MATCH (post_content)
+AGAINST ('北京' IN NATURAL LANGUAGE MODE);
 ```
 
 ## 六:行转列&列转行
