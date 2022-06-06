@@ -103,6 +103,8 @@ KeyIdentifier [
 
 ```
 
++ 查看key C:\Program Files\Java\jdk1.8.0_202\bin>keytool -v -list -keystore test.keystore
+
 + 5 将 jdk环境下生成的test.keystore找到并复制到HBuilder-Integrate-AS_c\simpleDemo\test.keystore
 
 + 6: 回到刚才的黑窗子，查看sha1的指纹
@@ -147,6 +149,8 @@ build.gradle 中
 ```
 
 + 10完毕 点击打包apk
+
++ 如果是android studio 直接Generate Signed Bundle or APK或Build Bundle APK
 
 [github地址](https://github.com/huachengzhou/uniapp-integrate-as_c.git)
 
