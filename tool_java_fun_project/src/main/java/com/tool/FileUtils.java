@@ -30,8 +30,24 @@ import java.util.zip.ZipOutputStream;
 public class FileUtils {
 
     @Test
+    public void updateFile(){
+        String baseDir = "E:\\myProjects\\lifeDoc\\docs\\pdf\\book\\2020最新Java面试题资料" ;
+        File dir = new File(baseDir) ;
+        File[] files = dir.listFiles();
+        String str = "！" ;
+        for (File f:files){
+            String extension = FilenameUtils.getExtension(f.getName());
+            String baseName = FilenameUtils.getBaseName(f.getName());
+            baseName =  StringUtils.remove(baseName,str) ;
+            String path =f.getParent()+File.separator+ baseName+"."+extension;
+            f.renameTo(new File(path)) ;
+            System.out.println(path);
+        }
+    }
+
+    @Test
     public void printFileDir() {
-        String path = "D:\\IdeaProjects\\lifeDoc\\docs\\pdf\\book";
+        String path = "E:\\myProjects\\lifeDoc\\docs\\pdf\\book";
 //        String path = "D:\\IdeaProjects\\lifeDoc\\book\\public";
         File file = new File(path);
         List<String> list = new ArrayList<>();
