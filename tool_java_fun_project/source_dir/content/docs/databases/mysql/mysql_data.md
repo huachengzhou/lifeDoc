@@ -20,6 +20,8 @@ weight: 4
 drop datbase ch10;
 create database ch10;
 use ch10;
+
+
 CREATE TABLE fruits
 (
 f_id    char(10)     	NOT NULL,
@@ -189,8 +191,6 @@ INSERT INTO  `score`(`id`, `stu_id`, `c_name`, `grade`) VALUES (9, 906, '计算�
 INSERT INTO  `score`(`id`, `stu_id`, `c_name`, `grade`) VALUES (10, 906, '英语', 85);
 
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for score
@@ -365,16 +365,6 @@ CREATE TABLE `productnotes` (
   FULLTEXT KEY `note_text` (`note_text`)
 ) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `products` (
-  `prod_id` char(10) NOT NULL,
-  `vend_id` int NOT NULL,
-  `prod_name` char(255) NOT NULL,
-  `prod_price` decimal(8,2) NOT NULL,
-  `prod_desc` text,
-  PRIMARY KEY (`prod_id`),
-  KEY `fk_products_vendors` (`vend_id`),
-  CONSTRAINT `fk_products_vendors` FOREIGN KEY (`vend_id`) REFERENCES `vendors` (`vend_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `vendors` (
   `vend_id` int NOT NULL AUTO_INCREMENT,
@@ -386,6 +376,19 @@ CREATE TABLE `vendors` (
   `vend_country` char(50) DEFAULT NULL,
   PRIMARY KEY (`vend_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `products` (
+  `prod_id` char(10) NOT NULL,
+  `vend_id` int NOT NULL,
+  `prod_name` char(255) NOT NULL,
+  `prod_price` decimal(8,2) NOT NULL,
+  `prod_desc` text,
+  PRIMARY KEY (`prod_id`),
+  KEY `fk_products_vendors` (`vend_id`),
+  CONSTRAINT `fk_products_vendors` FOREIGN KEY (`vend_id`) REFERENCES `vendors` (`vend_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 
 INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALUES (101, 'TNT2', '2005-08-17 00:00:00', 'Customer complaint:\r\nSticks not individually wrapped, too easy to mistakenly detonate all at once.\r\nRecommend individual wrapping.');
 INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALUES (102, 'OL1', '2005-08-18 00:00:00', 'Can shipped full, refills not available.\r\nNeed to order new can if refill needed.');
@@ -401,6 +404,15 @@ INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALU
 INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALUES (112, 'SAFE', '2005-09-02 00:00:00', 'Customer complaint:\r\nCircular hole in safe floor can apparently be easily cut with handsaw.');
 INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALUES (113, 'ANV01', '2005-09-05 00:00:00', 'Customer complaint:\r\nNot heavy enough to generate flying stars around head of victim. If being purchased for dropping, recommend ANV02 or ANV03 instead.');
 INSERT INTO  `productnotes`(`note_id`, `prod_id`, `note_date`, `note_text`) VALUES (114, 'SAFE', '2005-09-07 00:00:00', 'Call from individual trapped in safe plummeting to the ground, suggests an escape hatch be added.\r\nComment forwarded to vendor.');
+
+
+
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1001, 'Anvils R Us', '123 Main Street', 'Southfield', 'MI', '48075', 'USA');
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1002, 'LT Supplies', '500 Park Street', 'Anytown', 'OH', '44333', 'USA');
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1003, 'ACME', '555 High Street', 'Los Angeles', 'CA', '90046', 'USA');
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1004, 'Furball Inc.', '1000 5th Avenue', 'New York', 'NY', '11111', 'USA');
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1005, 'Jet Set', '42 Galaxy Road', 'London', NULL, 'N16 6PS', 'England');
+INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1006, 'Jouets Et Ours', '1 Rue Amusement', 'Paris', NULL, '45678', 'France');
 
 
 INSERT INTO  `products`(`prod_id`, `vend_id`, `prod_name`, `prod_price`, `prod_desc`) VALUES ('ANV01', 1001, '.5 ton anvil', 5.99, '.5 ton anvil, black, complete with handy hook');
@@ -420,12 +432,7 @@ INSERT INTO  `products`(`prod_id`, `vend_id`, `prod_name`, `prod_price`, `prod_d
 
 
 
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1001, 'Anvils R Us', '123 Main Street', 'Southfield', 'MI', '48075', 'USA');
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1002, 'LT Supplies', '500 Park Street', 'Anytown', 'OH', '44333', 'USA');
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1003, 'ACME', '555 High Street', 'Los Angeles', 'CA', '90046', 'USA');
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1004, 'Furball Inc.', '1000 5th Avenue', 'New York', 'NY', '11111', 'USA');
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1005, 'Jet Set', '42 Galaxy Road', 'London', NULL, 'N16 6PS', 'England');
-INSERT INTO  `vendors`(`vend_id`, `vend_name`, `vend_address`, `vend_city`, `vend_state`, `vend_zip`, `vend_country`) VALUES (1006, 'Jouets Et Ours', '1 Rue Amusement', 'Paris', NULL, '45678', 'France');
+
 
 
 CREATE TABLE `tb_posts` (
@@ -642,23 +649,10 @@ INSERT INTO `tb_posts`(`id`, `pro_date`, `price_remark`, `title`, `post_content`
 INSERT INTO `tb_posts`(`id`, `pro_date`, `price_remark`, `title`, `post_content`, `gmt_created`, `gmt_modified`) VALUES (200, '2022-06-02 00:00:00', '5元/公斤', '面粉', '山西太原丈子头农产品物流园（原城东利民）', '2022-06-02 21:03:32', '2022-06-02 21:03:32');
 INSERT INTO `tb_posts`(`id`, `pro_date`, `price_remark`, `title`, `post_content`, `gmt_created`, `gmt_modified`) VALUES (201, '2022-06-02 00:00:00', '3.8元/公斤', '面粉', '山西省晋城市绿欣农产品贸易有限公司', '2022-06-02 21:03:32', '2022-06-02 21:03:32');
 
+
+
+
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

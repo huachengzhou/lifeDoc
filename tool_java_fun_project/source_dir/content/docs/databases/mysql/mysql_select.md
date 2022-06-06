@@ -254,15 +254,28 @@ FROM
 ### 5:流程函数
 
 ```mysql
-select IF ( 0.5 > rand(),'大于','小于') as if_value , rand() as rand_value
+select IF ( 0.5 > rand(),'大于','小于') as if_value , rand() as rand_value ;
+
+set @input = ROUND(RAND()*10) ;
+
+select case @input 
+when 0 then '其它' 
+when 1 then '星期一' 
+when 2 then '星期二' 
+when 3 then '星期三' 
+when 4 then '星期四' 
+when 5 then '星期五' 
+when 6 then '星期六' 
+else '星期天' end  as 'column1',@input as value_;
 
 
- SELECT IFNULL(5,8),IFNULL(NULL,'OK'),IFNULL(SQRT(-8),'FALSE'),SQRT(-8);
+-- 如果 expr1 = expr2 返回 NULL  然后expr1为null那么同样返回null
+select NULLIF(1,1) as v1, NULLIF(2,1) as v2  ,NULLIF(null,3) as v3,NULLIF(4,null) as v4,NULLIF(null,null) as v5;
 
 
-  SELECT CASE WEEKDAY(NOW()) WHEN 0 THEN '星期一' WHEN 1 THEN '星期二' WHEN
-2 THEN '星期三' WHEN 3 THEN '星期四' WHEN 4 THEN '星期五' WHEN 5 THEN '星期六'
-ELSE '星期天' END AS COLUMN1,NOW(),WEEKDAY(NOW()),DAYNAME(NOW());
+-- IFNULL(expr1,expr2) 如果expr1不是 NULL， 则IFNULL()返回 expr1；否则返回 expr2。
+select IFNULL(1,0) as v1 ,IFNULL(null,0) as v2 ;   
+
 
 ```
 
@@ -324,7 +337,9 @@ select count(id)as count,age,birthday from temp_date group by age having age > 2
 ```
 
 
-## 五:全文搜索
+## 五:全文搜索 
+
++ v 5.7.6
 
 
 > 在MySQL 5.7.6之前，全文索引只支持英文全文索引，不支持中文全文索引，需要利用分词器把中文段落预处理拆分成单词，然后存入数据库。
@@ -398,9 +413,93 @@ CREATE FULLTEXT INDEX ft_index ON tb_posts (post_content) WITH PARSER ngram;
 
 ```mysql
 
+-- 普通短语搜索
+
+SELECT * FROM tb_posts
+WHERE MATCH (post_content)
+AGAINST ('天津' );
+
+-- 自然语言模式
+-- 包含北京关键词
 SELECT * FROM tb_posts
 WHERE MATCH (post_content)
 AGAINST ('北京' IN NATURAL LANGUAGE MODE);
+
+-- 布尔模式
+-- 必须包含
+SELECT * FROM tb_posts
+WHERE MATCH (post_content)
+AGAINST ('无锡' IN  BOOLEAN MODE);
+
+-- 通配符搜索
+-- 匹配包含北京的字符串前缀开头的数据
+SELECT * FROM tb_posts
+WHERE MATCH (post_content)
+AGAINST ('北京*' );
+
+-- 如果通配符中的前缀术语长于ngram令牌大小，MySQL将把前缀术语转换为ngram短语并忽略通配符运算符
+SELECT * FROM tb_posts
+WHERE MATCH (post_content)
+AGAINST ('北京顺鑫石门国际*' );
+
+
+```
+
++ 全文停用词
+
++ 查看停用的默认词 SELECT * FROM INFORMATION_SCHEMA.INNODB_FT_DEFAULT_STOPWORD;
+
++ 思路 创建一个表和默认停用词相同的结构 然后你自己加记录进去 然后在设置这个表为自定义的停用词
+
+```mysql
+-- Create a new stopword table
+
+CREATE TABLE my_stopwords(value VARCHAR(30)) ENGINE = INNODB;
+
+
+-- Insert stopwords (for simplicity, a single stopword is used in this example)
+
+INSERT INTO my_stopwords(value) VALUES ('Ishmael');
+
+
+-- Create the table
+
+ CREATE TABLE opening_lines (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+opening_line TEXT(500),
+author VARCHAR(200),
+title VARCHAR(200)
+) ENGINE=InnoDB;
+
+
+-- Insert data into the table
+
+INSERT INTO opening_lines(opening_line,author,title) VALUES
+('Call me Ishmael.','Herman Melville','Moby-Dick'),
+('A screaming comes across the sky.','Thomas Pynchon','Gravity\'s Rainbow'),
+('I am an invisible man.','Ralph Ellison','Invisible Man'),
+('Where now? Who now? When now?','Samuel Beckett','The Unnamable'),
+('It was love at first sight.','Joseph Heller','Catch-22'),
+('All this happened, more or less.','Kurt Vonnegut','Slaughterhouse-Five'),
+('Mrs. Dalloway said she would buy the flowers herself.','Virginia Woolf','Mrs. Dalloway'),
+('It was a pleasure to burn.','Ray Bradbury','Fahrenheit 451');
+
+
+-- Set the innodb_ft_server_stopword_table option to the new stopword table
+
+SET GLOBAL innodb_ft_server_stopword_table = 'test/my_stopwords';
+
+
+-- Create the full-text index (which rebuilds the table if no FTS_DOC_ID column is defined)
+
+CREATE FULLTEXT INDEX idx ON opening_lines(opening_line);
+
+```
+
++ 设置
+
+```mysql
+SET GLOBAL innodb_ft_aux_table='test/opening_lines';
 ```
 
 ## 六:行转列&列转行

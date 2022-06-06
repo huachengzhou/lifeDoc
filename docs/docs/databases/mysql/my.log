@@ -3,3 +3,18 @@
 
 
 晚上回去把数据同步了 家里的数据库和公司的数据库
+
+全文检索 y
+索引优化
+视图
+触发器
+流程控制 y
+存储过程 自定义处理程序
+存储函数
+
+
+https://www.begtut.com/mysql/mysql-ngram-full-text-parser.html
+
+https://dev.mysql.com/doc/refman/5.7/en/
+
+http://c.biancheng.net/mysql/function/

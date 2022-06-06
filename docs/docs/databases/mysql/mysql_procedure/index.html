@@ -56,7 +56,7 @@ delimiter ; --将结束符修改为默认的分号 例子 #  -- 创建一个表 
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.438d806b57691d138b6a6b99740c591da91aeaca181ca7196200babea0fcd757.js"  ></script>
+<script defer src="./../../../../en.search.min.6df971317e6fa798bfb0db6fe8ab1e9813a37a76e3822ada9066592be5e2632d.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -470,6 +470,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
       
     
       
@@ -3506,7 +3517,10 @@ delimiter ;
 Col_name:用于指定列名 
 Var_name:用于指定要赋值的变量名 
 Table_expr:表示select语句中的from字句及后面的语法部分 
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_select_into_example_t2;
+</code></pre><ul>
+<li>例子1</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_select_into_example_t2;
 
 delimiter ;
 
@@ -3520,6 +3534,24 @@ delimiter ;
 
 <span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_select_into_example_t2</span>( <span style="color:#f92672">@</span>result);
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">@</span>result;
+</code></pre></div><ul>
+<li>例子2</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">EXISTS</span> pro_set_example_ty;
+
+delimiter ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_set_example_ty</span> ( <span style="color:#66d9ef">INOUT</span> result <span style="color:#66d9ef">VARCHAR</span> ( <span style="color:#ae81ff">255</span> ) ) 
+	BEGIN 
+	<span style="color:#66d9ef">DECLARE</span>	c1 <span style="color:#66d9ef">DOUBLE</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+	<span style="color:#66d9ef">DECLARE</span>	c2 <span style="color:#66d9ef">DOUBLE</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+	<span style="color:#75715e">-- INTO函数不一定需要from字句及后面的语法部分
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">SELECT</span>	<span style="color:#a6e22e">round</span>( <span style="color:#a6e22e">rand</span>( ) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span> ),	<span style="color:#a6e22e">round</span>( <span style="color:#a6e22e">rand</span>( ) <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span> ) <span style="color:#66d9ef">INTO</span> c1,	c2;
+	<span style="color:#66d9ef">SET</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">CONCAT_WS</span>( <span style="color:#e6db74">&#39;-&#39;</span>, c1, c2 );
+	END;
+
+<span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+<span style="color:#66d9ef">CALL</span> <span style="color:#a6e22e">pro_set_example_ty</span> ( <span style="color:#f92672">@</span>result );
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>result;
 </code></pre></div><h3 id="定义处理程序">
   定义处理程序
   <a class="anchor" href="#%e5%ae%9a%e4%b9%89%e5%a4%84%e7%90%86%e7%a8%8b%e5%ba%8f">#</a>
