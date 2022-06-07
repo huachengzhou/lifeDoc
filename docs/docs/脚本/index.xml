@@ -37,7 +37,7 @@
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>uni-app的基本使用 #  课程介绍：
 基础部分：
- 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：黑马商城项目
+ 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：xxxx
 uni-app介绍 官方网页 #  uni-app view uni-app view #  uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
 即使不跨端，uni-app同时也是更好的小程序开发框架。
 具有vue和微信小程序的开发经验，可快速上手uni-app

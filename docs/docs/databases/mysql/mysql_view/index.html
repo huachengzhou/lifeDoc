@@ -5,9 +5,23 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="数据库视图简介 #   数据库视图是一个虚拟表或逻辑表，它被定义为带有INNER的SQL SELECT查询。因为数据库视图类似于由行和列组成的数据库表，所以您可以针对它查询数据。大多数数据库管理系统（包括MySQL）允许您通过数据库视图更新基础表中的数据，并具有一些先决条件
+ 数据库视图的优点 #    数据库视图允许您简化复杂查询：数据库视图由与许多基础表关联的SQL语句定义。您可以使用数据库视图向最终用户和外部应用程序隐藏基础表的复杂性。通过数据库视图，您只需使用简单的SQL语句而不是具有许多连接的复杂语句。
+  数据库视图有助于限制对特定用户的数据访问。您可能不希望所有用户都可以查询敏感数据的子集。您可以使用数据库视图仅将非敏感数据公开给特定用户组。
+  数据库视图提供额外的安全层。安全性是任何关系数据库管理系统的重要组成部分。数据库视图为数据库管理系统提供了额外的保护。数据库视图允许您创建只读视图以向特定用户公开只读数据。用户只能以只读视图检索数据，但无法更新数据。
+  数据库视图启用计算列。数据库表不应有计算列，但数据库视图应。假设orderDetails您在表中有quantityOrder（订购产品的数量）和priceEach（每个产品的价格）列。但是，orderDetails 表没有用于存储订单的每个行项目的总销售额的计算列。如果有，数据库模式将不是一个好的设计。在这种情况下，您可以创建一个名为的计算列total ，它是quantityOrder和priceEach计算结果的乘积。从数据库视图查询数据时，将动态计算计算列的数据。
+  数据库视图可实现向后兼容性。假设您有一个中央数据库，许多应用程序正在使用它。有一天，您决定重新设计数据库以适应新的业务需求。您删除了一些表并创建新表，并且您不希望更改影响其他应用程序。在此方案中，您可以使用与要删除的旧表相同的模式创建数据库视图
+  数据库视图的缺点 #   性能：从数据库视图查询数据可能会很慢，尤其是在基于其他视图创建视图时。 表依赖项：您基于数据库的基础表创建视图。每当您更改与其关联的视图的这些表的结构时，您也必须更改视图。  创建视图 #  CREATE [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED}] VIEW view_name [(column_list)] AS select-statement; 视图的处理算法 #   MERGE   使用MERGE算法，MySQL首先将输入查询与SELECT定义视图的语句组合成单个查询。然后MySQL执行组合查询以返回结果集。 如果SELECT语句包含聚合函数，例如 MIN，MAX，SUM，COUNT，AVG 或DISTINCT，GROUP BY，HAVING，LIMIT，UNION，UNION ALL，子查询，则不允许使用MERGE算法。如果SELECT语句引用无表，则也不允许MERGE算法。如果不允许MERGE算法，MySQL将算法更改为UNDEFINED。请注意，将视图定义中的输入查询和查询组合到一个查询中称为视图分辨率
+  TEMPTABLE   使用TEMPTABLE算法，MySQL首先根据定义视图的SELECT语句创建临时表，然后对临时表执行输入查询。因为MySQL必须创建一个临时表来存储结果集并将数据从基表移动到临时表，所以TEMPTABLE 算法的效率低于MERGE算法。此外，使用TEMPTABLE 算法的视图不可更新。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql视图" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="数据库视图简介 #   数据库视图是一个虚拟表或逻辑表，它被定义为带有INNER的SQL SELECT查询。因为数据库视图类似于由行和列组成的数据库表，所以您可以针对它查询数据。大多数数据库管理系统（包括MySQL）允许您通过数据库视图更新基础表中的数据，并具有一些先决条件
+ 数据库视图的优点 #    数据库视图允许您简化复杂查询：数据库视图由与许多基础表关联的SQL语句定义。您可以使用数据库视图向最终用户和外部应用程序隐藏基础表的复杂性。通过数据库视图，您只需使用简单的SQL语句而不是具有许多连接的复杂语句。
+  数据库视图有助于限制对特定用户的数据访问。您可能不希望所有用户都可以查询敏感数据的子集。您可以使用数据库视图仅将非敏感数据公开给特定用户组。
+  数据库视图提供额外的安全层。安全性是任何关系数据库管理系统的重要组成部分。数据库视图为数据库管理系统提供了额外的保护。数据库视图允许您创建只读视图以向特定用户公开只读数据。用户只能以只读视图检索数据，但无法更新数据。
+  数据库视图启用计算列。数据库表不应有计算列，但数据库视图应。假设orderDetails您在表中有quantityOrder（订购产品的数量）和priceEach（每个产品的价格）列。但是，orderDetails 表没有用于存储订单的每个行项目的总销售额的计算列。如果有，数据库模式将不是一个好的设计。在这种情况下，您可以创建一个名为的计算列total ，它是quantityOrder和priceEach计算结果的乘积。从数据库视图查询数据时，将动态计算计算列的数据。
+  数据库视图可实现向后兼容性。假设您有一个中央数据库，许多应用程序正在使用它。有一天，您决定重新设计数据库以适应新的业务需求。您删除了一些表并创建新表，并且您不希望更改影响其他应用程序。在此方案中，您可以使用与要删除的旧表相同的模式创建数据库视图
+  数据库视图的缺点 #   性能：从数据库视图查询数据可能会很慢，尤其是在基于其他视图创建视图时。 表依赖项：您基于数据库的基础表创建视图。每当您更改与其关联的视图的这些表的结构时，您也必须更改视图。  创建视图 #  CREATE [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED}] VIEW view_name [(column_list)] AS select-statement; 视图的处理算法 #   MERGE   使用MERGE算法，MySQL首先将输入查询与SELECT定义视图的语句组合成单个查询。然后MySQL执行组合查询以返回结果集。 如果SELECT语句包含聚合函数，例如 MIN，MAX，SUM，COUNT，AVG 或DISTINCT，GROUP BY，HAVING，LIMIT，UNION，UNION ALL，子查询，则不允许使用MERGE算法。如果SELECT语句引用无表，则也不允许MERGE算法。如果不允许MERGE算法，MySQL将算法更改为UNDEFINED。请注意，将视图定义中的输入查询和查询组合到一个查询中称为视图分辨率
+  TEMPTABLE   使用TEMPTABLE算法，MySQL首先根据定义视图的SELECT语句创建临时表，然后对临时表执行输入查询。因为MySQL必须创建一个临时表来存储结果集并将数据从基表移动到临时表，所以TEMPTABLE 算法的效率低于MERGE算法。此外，使用TEMPTABLE 算法的视图不可更新。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_view/" />
 <meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
@@ -16,7 +30,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../../en.search.min.6df971317e6fa798bfb0db6fe8ab1e9813a37a76e3822ada9066592be5e2632d.js"  ></script>
+<script defer src="./../../../../en.search.min.a31e7b8c4b4c00ef6d83e314347dfa3694b8d90f0ceb62ce0c804f719e002b01.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -612,6 +626,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/mysql/mysql_view/" class=" active">mysql视图</a>
+  
+
+        </li>
       
     
   </ul>
@@ -2754,7 +2779,18 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据库视图简介">数据库视图简介</a></li>
+    <li><a href="#数据库视图的优点">数据库视图的优点</a></li>
+    <li><a href="#数据库视图的缺点">数据库视图的缺点</a>
+      <ul>
+        <li><a href="#创建视图">创建视图</a></li>
+        <li><a href="#可更新视图">可更新视图</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -2773,7 +2809,85 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/pdf/newIndex.html">book</a></li>
 </ul>
       
-  <article class="markdown"></article>
+  <article class="markdown"><h2 id="数据库视图简介">
+  数据库视图简介
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a7%86%e5%9b%be%e7%ae%80%e4%bb%8b">#</a>
+</h2>
+<blockquote>
+<p>数据库视图是一个虚拟表或逻辑表，它被定义为带有INNER的SQL SELECT查询。因为数据库视图类似于由行和列组成的数据库表，所以您可以针对它查询数据。大多数数据库管理系统（包括MySQL）允许您通过数据库视图更新基础表中的数据，并具有一些先决条件</p>
+</blockquote>
+<h2 id="数据库视图的优点">
+  数据库视图的优点
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a7%86%e5%9b%be%e7%9a%84%e4%bc%98%e7%82%b9">#</a>
+</h2>
+<ul>
+<li>
+<p>数据库视图允许您简化复杂查询：数据库视图由与许多基础表关联的SQL语句定义。您可以使用数据库视图向最终用户和外部应用程序隐藏基础表的复杂性。通过数据库视图，您只需使用简单的SQL语句而不是具有许多连接的复杂语句。</p>
+</li>
+<li>
+<p>数据库视图有助于限制对特定用户的数据访问。您可能不希望所有用户都可以查询敏感数据的子集。您可以使用数据库视图仅将非敏感数据公开给特定用户组。</p>
+</li>
+<li>
+<p>数据库视图提供额外的安全层。安全性是任何关系数据库管理系统的重要组成部分。数据库视图为数据库管理系统提供了额外的保护。数据库视图允许您创建只读视图以向特定用户公开只读数据。用户只能以只读视图检索数据，但无法更新数据。</p>
+</li>
+<li>
+<p>数据库视图启用计算列。数据库表不应有计算列，但数据库视图应。假设orderDetails您在表中有quantityOrder（订购产品的数量）和priceEach（每个产品的价格）列。但是，orderDetails  表没有用于存储订单的每个行项目的总销售额的计算列。如果有，数据库模式将不是一个好的设计。在这种情况下，您可以创建一个名为的计算列total ，它是quantityOrder和priceEach计算结果的乘积。从数据库视图查询数据时，将动态计算计算列的数据。</p>
+</li>
+<li>
+<p>数据库视图可实现向后兼容性。假设您有一个中央数据库，许多应用程序正在使用它。有一天，您决定重新设计数据库以适应新的业务需求。您删除了一些表并创建新表，并且您不希望更改影响其他应用程序。在此方案中，您可以使用与要删除的旧表相同的模式创建数据库视图</p>
+</li>
+</ul>
+<h2 id="数据库视图的缺点">
+  数据库视图的缺点
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e5%ba%93%e8%a7%86%e5%9b%be%e7%9a%84%e7%bc%ba%e7%82%b9">#</a>
+</h2>
+<ul>
+<li>性能：从数据库视图查询数据可能会很慢，尤其是在基于其他视图创建视图时。</li>
+<li>表依赖项：您基于数据库的基础表创建视图。每当您更改与其关联的视图的这些表的结构时，您也必须更改视图。</li>
+</ul>
+<h3 id="创建视图">
+  创建视图
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba%e8%a7%86%e5%9b%be">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">CREATE</span> 
+   [ALGORITHM <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{</span>MERGE  <span style="color:#f92672">|</span> TEMPTABLE <span style="color:#f92672">|</span> UNDEFINED<span style="color:#960050;background-color:#1e0010">}</span>]
+VIEW view_name [(column_list)]
+<span style="color:#66d9ef">AS</span>
+<span style="color:#66d9ef">select</span><span style="color:#f92672">-</span>statement; 
+</code></pre></div><h4 id="视图的处理算法">
+  视图的处理算法
+  <a class="anchor" href="#%e8%a7%86%e5%9b%be%e7%9a%84%e5%a4%84%e7%90%86%e7%ae%97%e6%b3%95">#</a>
+</h4>
+<ul>
+<li>MERGE</li>
+</ul>
+<blockquote>
+<p>使用MERGE算法，MySQL首先将输入查询与SELECT定义视图的语句组合成单个查询。然后MySQL执行组合查询以返回结果集。 如果SELECT语句包含聚合函数，例如  MIN，MAX，SUM，COUNT，AVG 或DISTINCT，GROUP BY，HAVING，LIMIT，UNION，UNION ALL，子查询，则不允许使用MERGE算法。如果SELECT语句引用无表，则也不允许MERGE算法。如果不允许MERGE算法，MySQL将算法更改为UNDEFINED。请注意，将视图定义中的输入查询和查询组合到一个查询中称为视图分辨率</p>
+</blockquote>
+<ul>
+<li>TEMPTABLE</li>
+</ul>
+<blockquote>
+<p>使用TEMPTABLE算法，MySQL首先根据定义视图的SELECT语句创建临时表，然后对临时表执行输入查询。因为MySQL必须创建一个临时表来存储结果集并将数据从基表移动到临时表，所以TEMPTABLE  算法的效率低于MERGE算法。此外，使用TEMPTABLE  算法的视图不可更新。</p>
+</blockquote>
+<ul>
+<li>UNDEFINED</li>
+</ul>
+<blockquote>
+<p>在未指定显式算法的情况下创建视图时，这是默认UNDEFINED算法。UNDEFINED算法允许MySQL选择使用  MERGE或TEMPTABLE  算法。MySQL更喜欢MERGE  算法在TEMPTABLE 算法中，因为  MERGE算法效率更高</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">create</span> view temp_date_view <span style="color:#66d9ef">as</span> 
+<span style="color:#66d9ef">select</span> <span style="color:#a6e22e">count</span>(age) <span style="color:#66d9ef">as</span> count_vlue,<span style="color:#a6e22e">max</span>(age) <span style="color:#66d9ef">as</span> max_value,<span style="color:#a6e22e">min</span>(age) <span style="color:#66d9ef">as</span> min_value,<span style="color:#a6e22e">avg</span>(age) <span style="color:#66d9ef">as</span> avg_value <span style="color:#66d9ef">from</span> temp_date <span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+
+<span style="color:#75715e">-- 如果使用SHOW TABLE命令查看数据库中的所有表，我们还会看到temp_date_view视图显示在列表中
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> <span style="color:#66d9ef">tables</span>;
+
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> temp_date_view;
+</code></pre></div><h3 id="可更新视图">
+  可更新视图
+  <a class="anchor" href="#%e5%8f%af%e6%9b%b4%e6%96%b0%e8%a7%86%e5%9b%be">#</a>
+</h3>
+</article>
  
       
 
@@ -2853,8 +2967,9 @@ https://github.com/alex-shpak/hugo-book
 
     window.onload = function () {
         var index = randomNum(0,inspirational_statement_array.length-1) ;
+        var oldText = "" ;
         console.log(index);
-        document.getElementById('inspirational_statement_content').innerText = inspirational_statement_array[index] ;
+        document.getElementById('inspirational_statement_content').innerText = oldText+""+inspirational_statement_array[index] ;
     } ;
 </script>
 <script>
@@ -2999,6 +3114,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -3009,7 +3128,18 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据库视图简介">数据库视图简介</a></li>
+    <li><a href="#数据库视图的优点">数据库视图的优点</a></li>
+    <li><a href="#数据库视图的缺点">数据库视图的缺点</a>
+      <ul>
+        <li><a href="#创建视图">创建视图</a></li>
+        <li><a href="#可更新视图">可更新视图</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

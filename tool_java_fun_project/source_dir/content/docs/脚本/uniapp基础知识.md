@@ -25,7 +25,7 @@ weight: 5
 + 组件创建和通讯，及组件的生命周期
 + uni-app中使用uni-ui库
 
-项目：黑马商城项目
+项目：xxxx
 
 ##### uni-app介绍 [官方网页](https://uniapp.dcloud.io/resource)
 ##### uni-app view [uni-app view](https://hellouniapp.dcloud.net.cn/pages/component/view/view)

@@ -648,7 +648,7 @@ drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id ch
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>uni-app的基本使用 #  课程介绍：
 基础部分：
- 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：黑马商城项目
+ 环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：xxxx
 uni-app介绍 官方网页 #  uni-app view uni-app view #  uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
 即使不跨端，uni-app同时也是更好的小程序开发框架。
 具有vue和微信小程序的开发经验，可快速上手uni-app
@@ -1211,7 +1211,14 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_view/</guid>
-      <description></description>
+      <description>数据库视图简介 #   数据库视图是一个虚拟表或逻辑表，它被定义为带有INNER的SQL SELECT查询。因为数据库视图类似于由行和列组成的数据库表，所以您可以针对它查询数据。大多数数据库管理系统（包括MySQL）允许您通过数据库视图更新基础表中的数据，并具有一些先决条件
+ 数据库视图的优点 #    数据库视图允许您简化复杂查询：数据库视图由与许多基础表关联的SQL语句定义。您可以使用数据库视图向最终用户和外部应用程序隐藏基础表的复杂性。通过数据库视图，您只需使用简单的SQL语句而不是具有许多连接的复杂语句。
+  数据库视图有助于限制对特定用户的数据访问。您可能不希望所有用户都可以查询敏感数据的子集。您可以使用数据库视图仅将非敏感数据公开给特定用户组。
+  数据库视图提供额外的安全层。安全性是任何关系数据库管理系统的重要组成部分。数据库视图为数据库管理系统提供了额外的保护。数据库视图允许您创建只读视图以向特定用户公开只读数据。用户只能以只读视图检索数据，但无法更新数据。
+  数据库视图启用计算列。数据库表不应有计算列，但数据库视图应。假设orderDetails您在表中有quantityOrder（订购产品的数量）和priceEach（每个产品的价格）列。但是，orderDetails 表没有用于存储订单的每个行项目的总销售额的计算列。如果有，数据库模式将不是一个好的设计。在这种情况下，您可以创建一个名为的计算列total ，它是quantityOrder和priceEach计算结果的乘积。从数据库视图查询数据时，将动态计算计算列的数据。
+  数据库视图可实现向后兼容性。假设您有一个中央数据库，许多应用程序正在使用它。有一天，您决定重新设计数据库以适应新的业务需求。您删除了一些表并创建新表，并且您不希望更改影响其他应用程序。在此方案中，您可以使用与要删除的旧表相同的模式创建数据库视图
+  数据库视图的缺点 #   性能：从数据库视图查询数据可能会很慢，尤其是在基于其他视图创建视图时。 表依赖项：您基于数据库的基础表创建视图。每当您更改与其关联的视图的这些表的结构时，您也必须更改视图。  创建视图 #  CREATE [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED}] VIEW view_name [(column_list)] AS select-statement; 视图的处理算法 #   MERGE   使用MERGE算法，MySQL首先将输入查询与SELECT定义视图的语句组合成单个查询。然后MySQL执行组合查询以返回结果集。 如果SELECT语句包含聚合函数，例如 MIN，MAX，SUM，COUNT，AVG 或DISTINCT，GROUP BY，HAVING，LIMIT，UNION，UNION ALL，子查询，则不允许使用MERGE算法。如果SELECT语句引用无表，则也不允许MERGE算法。如果不允许MERGE算法，MySQL将算法更改为UNDEFINED。请注意，将视图定义中的输入查询和查询组合到一个查询中称为视图分辨率
+  TEMPTABLE   使用TEMPTABLE算法，MySQL首先根据定义视图的SELECT语句创建临时表，然后对临时表执行输入查询。因为MySQL必须创建一个临时表来存储结果集并将数据从基表移动到临时表，所以TEMPTABLE 算法的效率低于MERGE算法。此外，使用TEMPTABLE 算法的视图不可更新。</description>
     </item>
     
     <item>

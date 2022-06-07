@@ -76,8 +76,9 @@
 
     window.onload = function () {
         var index = randomNum(0,inspirational_statement_array.length-1) ;
+        var oldText = "" ;
         console.log(index);
-        document.getElementById('inspirational_statement_content').innerText = inspirational_statement_array[index] ;
+        document.getElementById('inspirational_statement_content').innerText = oldText+""+inspirational_statement_array[index] ;
     } ;
 </script>
 <script>

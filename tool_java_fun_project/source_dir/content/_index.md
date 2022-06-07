@@ -14,4 +14,6 @@ type: docs
 
 + 主题：hugo-book
 
++ 一个人要博学 审问 慎思 明辨 然后力行
+
 [面试书籍](../pdf/newIndex.html)
