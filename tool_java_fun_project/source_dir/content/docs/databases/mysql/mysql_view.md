@@ -59,8 +59,76 @@ select count(age) as count_vlue,max(age) as max_value,min(age) as min_value,avg(
 show tables;
 
 select * from temp_date_view;
+
+-- 要知道哪个对象是视图或表，请使用以下SHOW FULL TABLES命令
+SHOW FULL TABLES ;
+```
+
++ 基于另一个视图创建视图
+
+```mysql
+-- 第一个视图
+create view temp_date_view_source as  select id,age,birthday from temp_date ;
+
+select * from temp_date_view_source;
+
+-- 第二个视图
+
+create view temp_date_view_source_new as select id,age,birthday from temp_date_view_source where 1=1 and age > 50 ;
+select * from  temp_date_view_source_new;
+
 ```
 
 
 ### 可更新视图
 
+> 在MySQL中，视图不仅可查询，还可以更新。这意味着您可以使用INSERT或  UPDATE语句通过可更新视图插入或更新基表的行。此外，您可以使用DELETE语句通过视图删除基础表的行。
+
+#### 要创建可更新视图，定义视图的SELECT语句不得包含以下任何元素
+
++ 聚合函数  ，如MIN，MAX，SUM，AVG和  COUNT。
++ DISTINCT
++ GROUP BY子句。
++ HAVING子句。
++ UNION或UNION ALL子句。
++ 左连接或外连接。
++ 子查询 中的SELECT子句或在引用表WHERE语句出现在FROM子句中。
++ 引用FROM子句中的不可更新视图
++ 仅引用文字值
++ 对基表的任何列的多次引用
++ 使用TEMPTABLE算法创建视图，则无法更新视图
++ 有时可以使用内部联接基于多个表创建可更新视图
+
+```mysql
+CREATE TABLE `tb_office_info` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `office_code` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (1, '1', '+1 650 219 4782', 'San Francisco ');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (2, '2', '+1 215 837 0825', 'Boston ');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (3, '3', '+1 212 555 3000', 'NYC');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (4, '4', '+33 14 723 4404', 'Paris');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (5, '5', '+86 33 224 5000', 'Beijing   ');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (6, '6', ' +61 2 9264 2451', 'Sydney');
+INSERT INTO `tb_office_info`(`id`, `office_code`, `phone`, `city`) VALUES (7, '7', '+44 20 7877 2041', 'London');
+
+create view tb_office_info_view as select office_code as officeCode,phone,city from tb_office_info ;
+
+select * from tb_office_info_view;
+-- 验证 更新
+UPDATE tb_office_info SET   phone = '+33 14 723 5555' WHERE office_code = 4;
+
+select * from tb_office_info_view;
+
+-- 删除一行记录
+
+delete from tb_office_info where office_code = 7;
+
+select * from tb_office_info_view;
+-- 视图记录同样更新了
+
+```
