@@ -14,6 +14,13 @@
             userInfo() {
                 return this.$route.query
             }
+        },
+        mounted(){
+            //载入后
+            let user = this.$route.query;
+            this.$store.commit('setUser',user) ;
+
+            console.log(this.$store.state.user)
         }
     }
 </script>

@@ -158,6 +158,12 @@
             return {
                 tableData: Array(20).fill(item)
             }
+        },
+        mounted(){
+            //载入后
+            this.$store.commit('increment') ;
+
+            console.log(this.$store.state.count) // -> 1
         }
     }
 </script>
