@@ -62,6 +62,11 @@ select * from temp_date_view;
 
 -- 要知道哪个对象是视图或表，请使用以下SHOW FULL TABLES命令
 SHOW FULL TABLES ;
+
+insert into temp_date_view(max_value,min_value,count_vlue) values(100,3,20) ;
+> 1471 - The target table temp_date_view of the INSERT is not insertable-into
+> 时间: 0.047s
+-- 下面会说到可更新视图
 ```
 
 + 基于另一个视图创建视图
