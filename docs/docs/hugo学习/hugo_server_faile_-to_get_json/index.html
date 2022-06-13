@@ -2,23 +2,36 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="今天尝试了一下静态博客 hugo , hugo的官网本身也是使用 hugo 制作的网站。安装和运行非常简单。只有两个步骤安装和运行。运行的时候出现了一个小问题，就是由于网络的原因不能启动成功。
- 粗暴的禁用网络连接相关的操作 #   就是两个 短代码 给删除了 instagram, tweet。  find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; instagram/cinstagram content&amp;#x27; find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; tweet/ctwitter content&amp;#x27; hugo server --bind &amp;#x27;0.0.0.0&amp;#x27;  print code  ERROR 2021/03/06 09:55:20 Failed to get JSON resource &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: Get &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: dial tcp 31.13.91.33:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.">
+ 粗暴的禁用网络连接相关的操作
+#
+
+ 就是两个 短代码 给删除了 instagram, tweet。  find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; instagram/cinstagram content&amp;#x27;
+find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; tweet/ctwitter content&amp;#x27;
+hugo server --bind &amp;#x27;0.0.0.0&amp;#x27;
+ print code  ERROR 2021/03/06 09:55:20 Failed to get JSON resource &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: Get &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: dial tcp 31.13.91.33:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="hugo教程 hugo server Failed to get JSON" />
 <meta property="og:description" content="今天尝试了一下静态博客 hugo , hugo的官网本身也是使用 hugo 制作的网站。安装和运行非常简单。只有两个步骤安装和运行。运行的时候出现了一个小问题，就是由于网络的原因不能启动成功。
- 粗暴的禁用网络连接相关的操作 #   就是两个 短代码 给删除了 instagram, tweet。  find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; instagram/cinstagram content&amp;#x27; find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; tweet/ctwitter content&amp;#x27; hugo server --bind &amp;#x27;0.0.0.0&amp;#x27;  print code  ERROR 2021/03/06 09:55:20 Failed to get JSON resource &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: Get &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: dial tcp 31.13.91.33:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond." />
+ 粗暴的禁用网络连接相关的操作
+#
+
+ 就是两个 短代码 给删除了 instagram, tweet。  find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; instagram/cinstagram content&amp;#x27;
+find . -name &amp;quot;*.md&amp;quot; | xargs sed -i &amp;#x27;/{{&amp;lt; tweet/ctwitter content&amp;#x27;
+hugo server --bind &amp;#x27;0.0.0.0&amp;#x27;
+ print code  ERROR 2021/03/06 09:55:20 Failed to get JSON resource &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: Get &quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;dnt=false&quot;: dial tcp 31.13.91.33:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" />
-<meta property="article:published_time" content="2017-10-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2017-10-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2017-10-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2017-10-17T15:26:15&#43;00:00" />
+
 <title>hugo教程 hugo server Failed to get JSON | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.1c4c21c0933da4b4bfd6758aeaeb8616d2b607fa6fed24f9f7399656313c80df.css"  >
-<script defer src="./../../../en.search.min.a31e7b8c4b4c00ef6d83e314347dfa3694b8d90f0ceb62ce0c804f719e002b01.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
+<script defer src="./../../../en.search.min.00e9ecb670d2181c6895d008a0472a00ea84b6622fa0a7c7a3c2b09ad5bee92f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2738,7 +2751,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
