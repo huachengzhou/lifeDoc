@@ -78,6 +78,10 @@ select title,content from demo_like_table where 1=1 and title  like '73%';
 
 ## 索引优化
 
+### 索引
+
+> 排好序的快速查找数据结构,影响查找和排序
+
 
 ## 缓存
 
