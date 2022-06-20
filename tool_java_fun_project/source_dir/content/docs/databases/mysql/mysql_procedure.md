@@ -821,6 +821,114 @@ create procedure pro_cursor_example_t2()
 call pro_cursor_example_t2();
 ```
 
++ 复杂例子
+
+```mysql
+CREATE TABLE `t_user` (
+  `USER_ID` int NOT NULL AUTO_INCREMENT,
+  `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`USER_ID`),
+  KEY `IDX_NAME` (`USER_NAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+
+
+drop procedure if exists pro_cursor_example_t_3;
+delimiter ;
+create procedure pro_cursor_example_t_3()
+  begin
+	
+		declare name_value varchar(100) default '';
+		declare v_finished INTEGER DEFAULT 0;
+		declare id_value int default 0;
+    declare password_value varchar(100) default '';
+		
+		
+		  -- 定义光标
+    declare get_user_data_list_cursor cursor for select USER_NAME, USER_PASSWORD,USER_ID from `t_user`;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+		 
+		 DROP TEMPORARY TABLE if exists t_user_temp_print;
+		CREATE TEMPORARY TABLE t_user_temp_print(
+			id INT PRIMARY KEY,
+			name varchar(100),
+			password varchar(100)
+		);
+		
+		   -- 打开光标
+    open get_user_data_list_cursor;
+		label_while_loop : LOOP
+			FETCH get_user_data_list_cursor into name_value, password_value , id_value;
+			IF v_finished = 1 THEN	LEAVE label_while_loop;
+			END IF;
+			INSERT INTO t_user_temp_print(`id`,`name`,`password`) values(id_value,name_value,password_value) ;
+		END LOOP label_while_loop;
+		-- 关闭光标
+    close get_user_data_list_cursor;
+		-- 打印数据
+		select * from  t_user_temp_print;
+		-- 删除临时表
+		DROP TABLE  t_user_temp_print ;
+  end;
+
+
+
+call pro_cursor_example_t_3();
+
+
+
+
+drop procedure if exists pro_cursor_example_t_4;
+delimiter ;
+create procedure pro_cursor_example_t_4()
+  begin
+	
+		declare name_value varchar(100) default '';
+		declare v_finished INTEGER DEFAULT 0;
+		declare id_value int default 0;
+    declare password_value varchar(100) default '';
+		
+		
+		  -- 定义光标
+    declare get_user_data_list_cursor cursor for select USER_NAME, USER_PASSWORD,USER_ID from `t_user`;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+		 
+		 DROP TEMPORARY TABLE if exists t_user_temp_print;
+		CREATE TEMPORARY TABLE t_user_temp_print(
+			id INT ,
+			name varchar(100),
+			password varchar(100)
+		);
+		
+		   -- 打开光标
+    open get_user_data_list_cursor;
+		while v_finished != 1 
+		do 
+		FETCH get_user_data_list_cursor into name_value, password_value , id_value;
+		INSERT INTO t_user_temp_print(`id`,`name`,`password`) values(id_value,name_value,password_value) ;
+		end while ;
+		-- 关闭光标
+    close get_user_data_list_cursor;
+		-- 打印数据
+		select * from  t_user_temp_print;
+		-- 删除临时表
+		DROP TABLE  t_user_temp_print ;
+  end;
+
+
+
+call pro_cursor_example_t_4();
+
+
+-- 创建结构基于现有表的临时表
+
+
+CREATE TEMPORARY TABLE temp_table_name
+SELECT * FROM original_table
+LIMIT 0;
+```
+
 
 [参考1(重点)](https://www.jb51.net/article/70677.htm)
 

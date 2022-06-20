@@ -23,6 +23,11 @@ weight: 2
 
 ### [mysql视图](mysql_view)
 
+
+### [mysql触发器](triggers)
+
+
+
 ### [mysql正则表达式](mysql_regexp)
 
 ### [mysql事务](mysql事务)
