@@ -81,7 +81,7 @@ delimiter ; --将结束符修改为默认的分号 例子
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.07ae605f03e9445178ebc15929d97c060318d7b307e15b46504759dc4c66a8c3.js"  ></script>
+<script defer src="./../../../../en.search.min.0871ef8b411b0f6f1f7c7bdc4be45dc067b3f7bcdb92d48b35b8978d1347c4f5.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3620,36 +3620,173 @@ Condition_value:Sqlwarning | not found | sqlexception
 <ul>
 <li>CONTINUE continue 表示遇到错误不处理，继续执行</li>
 <li>EXIT 退出</li>
-<li>UNDO undo 撤销</li>
+<li>UNDO 撤销</li>
 </ul>
 <blockquote>
 <p>表示遇到错误后，撤销之前的操作，MysqL中，暂时不支持这样的操作</p>
 </blockquote>
 <ul>
-<li>Condition_value</li>
+<li>
+<p>Condition_value</p>
+</li>
+<li>
+<p>例子一 <strong>违反完整性约束</strong> SQLSTATE &lsquo;23000&rsquo;</p>
+</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
-<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">EXISTS</span> test2.t ;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> test2.<span style="color:#a6e22e">t</span> (s1 <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> (s1));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 先创建一个表
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">EXISTS</span> t_table_x ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">t_table_x</span> (s1 <span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> (s1));
 
-
-<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_t1;
+<span style="color:#75715e">-- 定义第一个存储过程 没有任何错误的 (SET @x2 = 1)表示发生了错误就把 @x2 = 1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_t1;
 delimiter ;
-
 <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_handler_example_t1</span>()
 BEGIN
   <span style="color:#66d9ef">DECLARE</span> <span style="color:#66d9ef">CONTINUE</span> HANDLER <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SQLSTATE</span> <span style="color:#e6db74">&#39;23000&#39;</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
   <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> test2.t <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>);
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>);
   <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> test2.t <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
   <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
 END;
 
 <span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_handler_example_t1</span>() ;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>x;
+<span style="color:#75715e">-- @x = 3
+</span><span style="color:#75715e">-- 表数据
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">10</span>
+<span style="color:#ae81ff">20</span>
+<span style="color:#75715e">-- SELECT @x2 = 1;
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 定义第二个存储过程  第三条语句违反约束
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_t2;
+delimiter ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_handler_example_t2</span>()
+BEGIN
+  <span style="color:#66d9ef">DECLARE</span> <span style="color:#66d9ef">CONTINUE</span> HANDLER <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SQLSTATE</span> <span style="color:#e6db74">&#39;23000&#39;</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+	<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+	<span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+END;
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_handler_example_t2</span>() ;
 
 <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>x;
+<span style="color:#75715e">-- @x = 4
+</span><span style="color:#75715e">-- 表数据
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">10</span>
+<span style="color:#ae81ff">20</span>
+<span style="color:#75715e">-- 可以看到一共插入了三条语句  由于其中一条违反了约束只有两条语句,但是SET @x = 4依然被执行了是为什么呢，就是因为handler_type=CONTINUE(表示遇到错误不处理，继续执行)
+</span><span style="color:#75715e">-- 我们对上面的handler_type定义的值作改动 改为 EXIT 定义是退出 那么实际结果如何呢
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">-- 定义第三个存储过程
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_t3;
+delimiter ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_handler_example_t3</span>()
+BEGIN
+  <span style="color:#66d9ef">DECLARE</span> <span style="color:#66d9ef">EXIT</span> HANDLER <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SQLSTATE</span> <span style="color:#e6db74">&#39;23000&#39;</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+	<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+	<span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+END;
 
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_handler_example_t3</span>() ;
+
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">@</span>x;
+<span style="color:#75715e">-- @x = 3
+</span><span style="color:#75715e">-- 表数据
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">10</span>
+<span style="color:#ae81ff">20</span>
+<span style="color:#75715e">-- 可以看到 SET @x = 4; 正如预期的那样没有执行这正是handler_type=EXIT 的作用 在发生错误的时候就退出了
+</span><span style="color:#75715e">-- 最后我们把 handler_type=EXIT 改为 handler_type=UNDO  虽然mysql不支持但是还是把它写一下
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_t4;
+delimiter ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_handler_example_t4</span>()
+BEGIN
+  <span style="color:#66d9ef">DECLARE</span> <span style="color:#66d9ef">UNDO</span> HANDLER <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SQLSTATE</span> <span style="color:#e6db74">&#39;23000&#39;</span> <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">10</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+  <span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+	<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> t_table_x <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">20</span>);
+	<span style="color:#66d9ef">SET</span> <span style="color:#f92672">@</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+END;
+
+<span style="color:#75715e">-- 就不执行了 因为mysql不支持嘛  理论上 @x=&#39;&#39; 并且t_table_x没有这其中插入的任意数据
+</span></code></pre></div><ul>
+<li>例子二 NOTFOUND条件用于游标(这个经常用)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 我们使用游标 并且结合mysql临时表的语法作一个遍历查询
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">procedure</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> pro_handler_example_cursor_not_found;
+delimiter ;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#a6e22e">pro_handler_example_cursor_not_found</span>() 
+begin 
+
+<span style="color:#66d9ef">declare</span> id_value <span style="color:#66d9ef">int</span> <span style="color:#66d9ef">default</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">declare</span> password_value <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>;
+<span style="color:#66d9ef">declare</span> name_value <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;&#39;</span>;
+<span style="color:#75715e">-- 定义 游标结束的变量
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">declare</span> v_finished <span style="color:#66d9ef">INTEGER</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#75715e">-- 定义游标结束后到底该咋办 必须在游标定义语句的下一行
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">declare</span> get_user_data_list_cursor <span style="color:#66d9ef">cursor</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">select</span> USER_NAME, USER_PASSWORD,USER_ID <span style="color:#66d9ef">from</span> <span style="color:#f92672">`</span>t_user<span style="color:#f92672">`</span>;
+
+<span style="color:#66d9ef">declare</span> <span style="color:#66d9ef">continue</span> handler <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">not</span> found <span style="color:#66d9ef">set</span> v_finished <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+<span style="color:#75715e">-- 定义一个临时表 (临时表只在会话中或者会话结束以后mysql自动删除)
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">DROP</span> TEMPORARY <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">exists</span> t_user_temp_print;
+		<span style="color:#66d9ef">CREATE</span> TEMPORARY <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">t_user_temp_print</span>(
+			id <span style="color:#66d9ef">INT</span> ,
+			name <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">100</span>),
+			password <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">100</span>)
+		);
+<span style="color:#75715e">-- 打开光标
+</span><span style="color:#75715e"></span>    open get_user_data_list_cursor;
+		<span style="color:#66d9ef">while</span> v_finished <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> 
+		do 
+		<span style="color:#66d9ef">FETCH</span> get_user_data_list_cursor <span style="color:#66d9ef">into</span> name_value, password_value , id_value;
+		<span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#a6e22e">t_user_temp_print</span>(<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>name<span style="color:#f92672">`</span>,<span style="color:#f92672">`</span>password<span style="color:#f92672">`</span>) <span style="color:#66d9ef">values</span>(id_value,name_value,password_value) ;
+		end <span style="color:#66d9ef">while</span> ;
+		<span style="color:#75715e">-- 关闭光标
+</span><span style="color:#75715e"></span>    close get_user_data_list_cursor;
+		<span style="color:#75715e">-- 打印数据
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span>  t_user_temp_print;
+		<span style="color:#75715e">-- 删除临时表
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span>  t_user_temp_print ;
+
+end;
+
+
+<span style="color:#66d9ef">call</span> <span style="color:#a6e22e">pro_handler_example_cursor_not_found</span>();
+id     name                          password
+<span style="color:#ae81ff">9</span>	<span style="color:#ae81ff">8</span>d80af597433177f201f86f1fe0f9d9d	<span style="color:#ae81ff">64</span>a3680910b95bc6361b560fc5e07970
+<span style="color:#ae81ff">10</span>	d0e1cc42e2774e52cce412e9f5027491	ea346e9806c5f80b2a2eda551b45827b
+<span style="color:#ae81ff">11</span>	<span style="color:#ae81ff">88693</span>fb73cab1f860ccfaf80de83e204	a624aa6c82faa32379892106b6daa249
+<span style="color:#ae81ff">12</span>	<span style="color:#ae81ff">6</span>d47c9fffc66612fbc057201a4d910bd	<span style="color:#ae81ff">1</span>e34c1122675a45e525a1ab1b6348ca2
+<span style="color:#ae81ff">13</span>	<span style="color:#ae81ff">418</span>f57775bfcdb3e0687e6c423e57d05	<span style="color:#ae81ff">0</span>a7089f91c7ab7850df0802e5ca3bc12
+<span style="color:#ae81ff">14</span>	ea0f6876c57dcc3f82a36208a97afea6	b6a8591804f06e9bd99fb2114cb50861
+<span style="color:#ae81ff">15</span>	<span style="color:#ae81ff">3</span>d0a07879b2e826e0b29d8ced8e92b4c	<span style="color:#ae81ff">875</span>e61c2fe9025fa30326bad73e070ca
+<span style="color:#ae81ff">16</span>	<span style="color:#ae81ff">877</span>b734119235886088a5124a7fe8ddf	c293b45da05a29a3e9204625831977c5
+<span style="color:#ae81ff">17</span>	f3f3c624bb418b63bdc3f580dd5039b0	<span style="color:#ae81ff">860514262</span>f38d33545d6c8301d5921b2
+<span style="color:#ae81ff">18</span>	bffcad8fdfd4a95d2062d6e83098186d	<span style="color:#ae81ff">2</span>fff3c910cca03887ab6b26ee2b76cf3
+<span style="color:#ae81ff">19</span>	<span style="color:#ae81ff">2</span>f1e409ea4569648270507e424a09621	<span style="color:#ae81ff">78</span>ffe25a4e2ef08605f2c25a2392f611
+<span style="color:#ae81ff">20</span>	<span style="color:#ae81ff">2</span>f87b8d6988cd55c4361768735955861	e4dd44e0bf104610f915c26854f0e6f2
+<span style="color:#ae81ff">21</span>	<span style="color:#ae81ff">94879</span>aadb598a19ab612b97fa0f0c769	<span style="color:#ae81ff">92912589</span>c3a3ddb4457ccc5f183df822
+<span style="color:#ae81ff">22</span>	<span style="color:#ae81ff">69</span>cbf1919065ce7a04f0cb486d7a0320	<span style="color:#ae81ff">03</span>bed78d5031fd536f0af3a6f0e3cc1f
+<span style="color:#ae81ff">23</span>	b77b1800acc41f27d8158c05c53ca743	fb1001ca32eea35a0a561416e9bd1996
+<span style="color:#ae81ff">24</span>	<span style="color:#ae81ff">57</span>dab3aacd9776d067f7f42f1adf92d3	ddc141fef43e5d6f87659fdc5455333c
+<span style="color:#ae81ff">25</span>	<span style="color:#ae81ff">1208</span>d1d73683c335a8e601f6eef5a5b4	c45e0d126705c9f83c35ed218e1b9a4e
+<span style="color:#ae81ff">26</span>	fe85827612e43eee230250d8f94f12ac	<span style="color:#ae81ff">301</span>a625913e87498b656836118294225
+<span style="color:#ae81ff">26</span>	fe85827612e43eee230250d8f94f12ac	<span style="color:#ae81ff">301</span>a625913e87498b656836118294225
 </code></pre></div><h2 id="游标光标">
   游标（光标）
   <a class="anchor" href="#%e6%b8%b8%e6%a0%87%e5%85%89%e6%a0%87">#</a>

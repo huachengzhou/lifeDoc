@@ -21,6 +21,7 @@ drop datbase ch10;
 create database ch10;
 use ch10;
 
+drop table if EXISTS fruits ;
 
 CREATE TABLE fruits
 (
@@ -48,6 +49,8 @@ INSERT INTO fruits (f_id, s_id, f_name, f_price)
      ('t4',107,'xbababa', 3.6),
      ('m3',105,'xxtt', 11.6),
      ('b5',107,'xxxx', 3.6);
+
+     drop table if EXISTS customers ;
 	 
 CREATE TABLE customers
 (
@@ -71,6 +74,8 @@ VALUES(10001, 'RedHook', '200 Street ', 'Tianjin',
  'LuoCong', NULL),
 (10004, 'JOTO', '829 Riverside Drive', 'Haikou', 
  '570000',  'YangShan', 'sam@hotmail.com');
+
+ drop table if EXISTS orderitems ;
  
 CREATE TABLE orderitems
 (
@@ -94,6 +99,8 @@ VALUES(30001, 1, 'a1', 10, 5.2),
 (30005, 3, 'a2', 10, 2.2),
 (30005, 4, 'm1', 5, 14.99);
 
+ drop table if EXISTS suppliers ;
+
 CREATE TABLE suppliers
 (
   s_id      int      NOT NULL AUTO_INCREMENT,
@@ -113,6 +120,8 @@ VALUES(101,'FastFruit Inc.','Tianjin','300000','48075'),
 (106,'Just Eat Ours','Beijing','010', '45678'),
 (107,'DK Inc.','Zhengzhou','450000', '33332');
 
+ drop table if EXISTS orders ;
+
 CREATE TABLE orders
 (
   o_num  int      NOT NULL AUTO_INCREMENT,
@@ -127,7 +136,7 @@ VALUES(30001, '2008-09-01', 10001),
 (30004, '2008-10-03', 10005),
 (30005, '2008-10-08', 10001);
 
-
+ drop table if EXISTS dept ;
 
 CREATE TABLE dept
 (
@@ -136,7 +145,9 @@ d_name       VARCHAR(50),
 d_location     VARCHAR(100)
 );
 
-# 由于employee表dept_no依赖于父表dept的主键d_no，因此需要先创建dept表，然后创建employee表。
+ drop table if EXISTS employee ;
+
+-- 由于employee表dept_no依赖于父表dept的主键d_no，因此需要先创建dept表，然后创建employee表。
 CREATE TABLE employee
 (
 e_no        INT NOT NULL PRIMARY KEY,
@@ -170,6 +181,8 @@ VALUES (1001, 'SMITH', 'm',20, 'CLERK',800,'2005-11-12'),
 (1011, 'ADAMS', 'm',20, 'CLERK', 1100,'1999-10-05'),
 (1012, 'JAMES', 'm',30, 'CLERK', 950,'2008-06-15');
 
+drop table if EXISTS score ;
+
 CREATE TABLE `score` (
   `id` int NOT NULL AUTO_INCREMENT,
   `stu_id` int NOT NULL,
@@ -192,36 +205,7 @@ INSERT INTO  `score`(`id`, `stu_id`, `c_name`, `grade`) VALUES (10, 906, '英语
 
 
 
--- ----------------------------
--- Table structure for score
--- ----------------------------
-DROP TABLE IF EXISTS `score`;
-CREATE TABLE `score`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `stu_id` int(0) NOT NULL,
-  `c_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `grade` int(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Records of score
--- ----------------------------
-INSERT INTO `score` VALUES (1, 901, '计算机', 98);
-INSERT INTO `score` VALUES (2, 901, '英语', 80);
-INSERT INTO `score` VALUES (3, 902, '计算机', 65);
-INSERT INTO `score` VALUES (4, 902, '中文', 88);
-INSERT INTO `score` VALUES (5, 903, '中文', 95);
-INSERT INTO `score` VALUES (6, 904, '计算机', 70);
-INSERT INTO `score` VALUES (7, 904, '英语', 92);
-INSERT INTO `score` VALUES (8, 905, '英语', 94);
-INSERT INTO `score` VALUES (9, 906, '计算机', 90);
-INSERT INTO `score` VALUES (10, 906, '英语', 85);
-
--- ----------------------------
--- Table structure for student
--- ----------------------------
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student`  (
   `id` int(0) NOT NULL,
@@ -235,9 +219,7 @@ CREATE TABLE `student`  (
   UNIQUE INDEX `id`(`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Records of student
--- ----------------------------
+
 INSERT INTO `student` VALUES (901, 1, '张老大', '男', 1985, '计算机系', '北京市海淀区');
 INSERT INTO `student` VALUES (902, 1, '张老二', '男', 1986, '中文系', '北京市昌平区');
 INSERT INTO `student` VALUES (903, 1, '张三', '女', 1990, '中文系', '湖南省永州市');
@@ -245,9 +227,7 @@ INSERT INTO `student` VALUES (904, 2, '李四', '男', 1990, '英语系', '辽�
 INSERT INTO `student` VALUES (905, 1, '王五', '女', 1991, '英语系', '福建省厦门市');
 INSERT INTO `student` VALUES (906, 2, '王六', '男', 1988, '计算机系', '湖南省衡阳市');
 
--- ----------------------------
--- Table structure for tb_class
--- ----------------------------
+
 DROP TABLE IF EXISTS `tb_class`;
 CREATE TABLE `tb_class`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
@@ -255,14 +235,11 @@ CREATE TABLE `tb_class`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Records of tb_class
--- ----------------------------
+
 INSERT INTO `tb_class` VALUES (1, '一班');
 INSERT INTO `tb_class` VALUES (2, '二班');
 
-SET FOREIGN_KEY_CHECKS = 1;
-
+DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
   `USER_ID` int NOT NULL AUTO_INCREMENT,
@@ -272,6 +249,9 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`USER_ID`),
   KEY `IDX_NAME` (`USER_NAME`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6209 DEFAULT CHARSET=utf8mb3;
+
+
+DROP TABLE IF EXISTS `temp_date`;
 
 CREATE TABLE `temp_date` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -283,6 +263,8 @@ CREATE TABLE `temp_date` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1075 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='临时用户表';
 
+DROP TABLE IF EXISTS `user_column_row`;
+
 CREATE TABLE `user_column_row` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '姓名',
@@ -290,6 +272,8 @@ CREATE TABLE `user_column_row` (
   `value` varchar(255) DEFAULT NULL COMMENT '数值',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `user2`;
 
 CREATE TABLE `user2` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -356,6 +340,9 @@ INSERT INTO  `t_user`(`USER_ID`, `USER_NAME`, `USER_PASSWORD`, `USER_EMAIL`) VAL
 INSERT INTO  `user2`(`id`, `name`, `age`, `height`, `weight`) VALUES (2, '小明', 22.00, 48.00, 178.40);
 INSERT INTO  `user2`(`id`, `name`, `age`, `height`, `weight`) VALUES (3, '小胖', 25.00, 50.00, 168.00);
 
+
+DROP TABLE IF EXISTS `productnotes`;
+
 CREATE TABLE `productnotes` (
   `note_id` int NOT NULL AUTO_INCREMENT,
   `prod_id` char(10) NOT NULL,
@@ -364,6 +351,9 @@ CREATE TABLE `productnotes` (
   PRIMARY KEY (`note_id`),
   FULLTEXT KEY `note_text` (`note_text`)
 ) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+DROP TABLE IF EXISTS `vendors`;
 
 
 CREATE TABLE `vendors` (
@@ -376,6 +366,9 @@ CREATE TABLE `vendors` (
   `vend_country` char(50) DEFAULT NULL,
   PRIMARY KEY (`vend_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+DROP TABLE IF EXISTS `products`;
 
 CREATE TABLE `products` (
   `prod_id` char(10) NOT NULL,
@@ -432,7 +425,7 @@ INSERT INTO  `products`(`prod_id`, `vend_id`, `prod_name`, `prod_price`, `prod_d
 
 
 
-
+DROP TABLE IF EXISTS `tb_posts`;
 
 
 CREATE TABLE `tb_posts` (

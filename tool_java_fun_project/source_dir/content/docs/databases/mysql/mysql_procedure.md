@@ -733,7 +733,7 @@ Condition_value:Sqlwarning | not found | sqlexception
 
 + CONTINUE continue 表示遇到错误不处理，继续执行
 + EXIT 退出
-+ UNDO undo 撤销
++ UNDO 撤销
   
 > 表示遇到错误后，撤销之前的操作，MysqL中，暂时不支持这样的操作
 
@@ -741,32 +741,167 @@ Condition_value:Sqlwarning | not found | sqlexception
 
 
 
-
++ 例子一 **违反完整性约束** SQLSTATE '23000'
 
 ```mysql
+-- 先创建一个表
+drop table if EXISTS t_table_x ;
+CREATE TABLE t_table_x (s1 int,primary key (s1));
 
-drop table if EXISTS test2.t ;
-CREATE TABLE test2.t (s1 int,primary key (s1));
-
-
+-- 定义第一个存储过程 没有任何错误的 (SET @x2 = 1)表示发生了错误就把 @x2 = 1
 drop procedure if exists pro_handler_example_t1;
 delimiter ;
-
 CREATE PROCEDURE pro_handler_example_t1()
 BEGIN
   DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
   SET @x = 1;
-  INSERT INTO test2.t VALUES (10);
+  INSERT INTO t_table_x VALUES (10);
   SET @x = 2;
-  INSERT INTO test2.t VALUES (20);
+  INSERT INTO t_table_x VALUES (20);
   SET @x = 3;
 END;
 
 call pro_handler_example_t1() ;
+SELECT @x;
+-- @x = 3
+-- 表数据
+10
+20
+-- SELECT @x2 = 1;
+
+-- 定义第二个存储过程  第三条语句违反约束
+drop procedure if exists pro_handler_example_t2;
+delimiter ;
+CREATE PROCEDURE pro_handler_example_t2()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
+  SET @x = 1;
+  INSERT INTO t_table_x VALUES (10);
+  SET @x = 2;
+  INSERT INTO t_table_x VALUES (20);
+  SET @x = 3;
+	INSERT INTO t_table_x VALUES (20);
+	SET @x = 4;
+END;
+
+call pro_handler_example_t2() ;
 
 SELECT @x;
+-- @x = 4
+-- 表数据
+10
+20
+-- 可以看到一共插入了三条语句  由于其中一条违反了约束只有两条语句,但是SET @x = 4依然被执行了是为什么呢，就是因为handler_type=CONTINUE(表示遇到错误不处理，继续执行)
+-- 我们对上面的handler_type定义的值作改动 改为 EXIT 定义是退出 那么实际结果如何呢
 
+-- 定义第三个存储过程
+drop procedure if exists pro_handler_example_t3;
+delimiter ;
+CREATE PROCEDURE pro_handler_example_t3()
+BEGIN
+  DECLARE EXIT HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
+  SET @x = 1;
+  INSERT INTO t_table_x VALUES (10);
+  SET @x = 2;
+  INSERT INTO t_table_x VALUES (20);
+  SET @x = 3;
+	INSERT INTO t_table_x VALUES (20);
+	SET @x = 4;
+END;
+
+call pro_handler_example_t3() ;
+
+SELECT @x;
+-- @x = 3
+-- 表数据
+10
+20
+-- 可以看到 SET @x = 4; 正如预期的那样没有执行这正是handler_type=EXIT 的作用 在发生错误的时候就退出了
+-- 最后我们把 handler_type=EXIT 改为 handler_type=UNDO  虽然mysql不支持但是还是把它写一下
+drop procedure if exists pro_handler_example_t4;
+delimiter ;
+CREATE PROCEDURE pro_handler_example_t4()
+BEGIN
+  DECLARE UNDO HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
+  SET @x = 1;
+  INSERT INTO t_table_x VALUES (10);
+  SET @x = 2;
+  INSERT INTO t_table_x VALUES (20);
+  SET @x = 3;
+	INSERT INTO t_table_x VALUES (20);
+	SET @x = 4;
+END;
+
+-- 就不执行了 因为mysql不支持嘛  理论上 @x='' 并且t_table_x没有这其中插入的任意数据
 ```
+
++ 例子二 NOTFOUND条件用于游标(这个经常用)
+
+```mysql
+-- 我们使用游标 并且结合mysql临时表的语法作一个遍历查询
+
+drop procedure if exists pro_handler_example_cursor_not_found;
+delimiter ;
+CREATE PROCEDURE pro_handler_example_cursor_not_found() 
+begin 
+
+declare id_value int default 0;
+declare password_value varchar(100) default '';
+declare name_value varchar(100) default '';
+-- 定义 游标结束的变量
+declare v_finished INTEGER DEFAULT 0;
+-- 定义游标结束后到底该咋办 必须在游标定义语句的下一行
+declare get_user_data_list_cursor cursor for select USER_NAME, USER_PASSWORD,USER_ID from `t_user`;
+
+declare continue handler for not found set v_finished = 1;
+
+-- 定义一个临时表 (临时表只在会话中或者会话结束以后mysql自动删除)
+ DROP TEMPORARY TABLE if exists t_user_temp_print;
+		CREATE TEMPORARY TABLE t_user_temp_print(
+			id INT ,
+			name varchar(100),
+			password varchar(100)
+		);
+-- 打开光标
+    open get_user_data_list_cursor;
+		while v_finished != 1 
+		do 
+		FETCH get_user_data_list_cursor into name_value, password_value , id_value;
+		INSERT INTO t_user_temp_print(`id`,`name`,`password`) values(id_value,name_value,password_value) ;
+		end while ;
+		-- 关闭光标
+    close get_user_data_list_cursor;
+		-- 打印数据
+		select * from  t_user_temp_print;
+		-- 删除临时表
+		DROP TABLE  t_user_temp_print ;
+
+end;
+
+
+call pro_handler_example_cursor_not_found();
+id     name                          password
+9	8d80af597433177f201f86f1fe0f9d9d	64a3680910b95bc6361b560fc5e07970
+10	d0e1cc42e2774e52cce412e9f5027491	ea346e9806c5f80b2a2eda551b45827b
+11	88693fb73cab1f860ccfaf80de83e204	a624aa6c82faa32379892106b6daa249
+12	6d47c9fffc66612fbc057201a4d910bd	1e34c1122675a45e525a1ab1b6348ca2
+13	418f57775bfcdb3e0687e6c423e57d05	0a7089f91c7ab7850df0802e5ca3bc12
+14	ea0f6876c57dcc3f82a36208a97afea6	b6a8591804f06e9bd99fb2114cb50861
+15	3d0a07879b2e826e0b29d8ced8e92b4c	875e61c2fe9025fa30326bad73e070ca
+16	877b734119235886088a5124a7fe8ddf	c293b45da05a29a3e9204625831977c5
+17	f3f3c624bb418b63bdc3f580dd5039b0	860514262f38d33545d6c8301d5921b2
+18	bffcad8fdfd4a95d2062d6e83098186d	2fff3c910cca03887ab6b26ee2b76cf3
+19	2f1e409ea4569648270507e424a09621	78ffe25a4e2ef08605f2c25a2392f611
+20	2f87b8d6988cd55c4361768735955861	e4dd44e0bf104610f915c26854f0e6f2
+21	94879aadb598a19ab612b97fa0f0c769	92912589c3a3ddb4457ccc5f183df822
+22	69cbf1919065ce7a04f0cb486d7a0320	03bed78d5031fd536f0af3a6f0e3cc1f
+23	b77b1800acc41f27d8158c05c53ca743	fb1001ca32eea35a0a561416e9bd1996
+24	57dab3aacd9776d067f7f42f1adf92d3	ddc141fef43e5d6f87659fdc5455333c
+25	1208d1d73683c335a8e601f6eef5a5b4	c45e0d126705c9f83c35ed218e1b9a4e
+26	fe85827612e43eee230250d8f94f12ac	301a625913e87498b656836118294225
+26	fe85827612e43eee230250d8f94f12ac	301a625913e87498b656836118294225
+```
+
 
 ## 游标（光标）
 
