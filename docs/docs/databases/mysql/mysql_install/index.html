@@ -41,20 +41,10 @@ character-set-server=utf8mb4
 default-storage-engine=INNODB
 # 默认使用“mysql_native_password”插件认证
 default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8mb4
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口和默认字符集
-port=3306
-default-character-set=utf8mb4
-三:windows下运行控制台程序
-#
-
- 进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:初始化mysql
-#
-
- mysqld &ndash;initialize &ndash;console，等待一会出现几行代码，root@localhost：后面的是随机生成的数据库初始密码，将初始密码记下来后面会用到。 没记住初始密码的话，删掉初始化的 data目录，再执行一遍初始化命令又会重新生成  D:\databases\mysql-8.">
+# 开启慢sql
+slow_query_log=ON
+# 慢sql存的文职
+slow_query_log_file=D:\CS\databases\mysql_8.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql安装" />
 <meta property="og:description" content="mysql安装
 #
@@ -92,20 +82,10 @@ character-set-server=utf8mb4
 default-storage-engine=INNODB
 # 默认使用“mysql_native_password”插件认证
 default_authentication_plugin=mysql_native_password
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8mb4
-[client]
-# 设置mysql客户端连接服务端时默认使用的端口和默认字符集
-port=3306
-default-character-set=utf8mb4
-三:windows下运行控制台程序
-#
-
- 进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:初始化mysql
-#
-
- mysqld &ndash;initialize &ndash;console，等待一会出现几行代码，root@localhost：后面的是随机生成的数据库初始密码，将初始密码记下来后面会用到。 没记住初始密码的话，删掉初始化的 data目录，再执行一遍初始化命令又会重新生成  D:\databases\mysql-8." />
+# 开启慢sql
+slow_query_log=ON
+# 慢sql存的文职
+slow_query_log_file=D:\CS\databases\mysql_8." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_install/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
@@ -115,7 +95,7 @@ default-character-set=utf8mb4
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.0871ef8b411b0f6f1f7c7bdc4be45dc067b3f7bcdb92d48b35b8978d1347c4f5.js"  ></script>
+<script defer src="./../../../../en.search.min.6d43e1c6a9c81f3eb4e0a56dbfbf9258aabac4406a1c9ee494a3321cbc920e44.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2982,6 +2962,33 @@ default-storage-engine=INNODB
 
 # 默认使用“mysql_native_password”插件认证
 default_authentication_plugin=mysql_native_password
+
+# 开启慢sql
+
+slow_query_log=ON
+
+# 慢sql存的文职
+
+slow_query_log_file=D:\CS\databases\mysql_8.027\log\slow.log
+
+# 会记录没有使用索引的查询sql,但前提是必须开启 slow_query_log='ON'
+
+log-queries-not-using-indexes =on
+
+# 超过10秒则属于慢SQL,慢查询时间,这里为10秒,超过10秒会被记录
+
+long_query_time=10
+# 查询日志,开启对所有执行语句进行记录
+
+general_log=on
+
+# 查询日志,存放位置
+
+general_log_file=D:\CS\databases\mysql_8.027\log\query.log
+
+# 查询日志，文件中的时间显示已系统时间为准
+
+log_timestamps = SYSTEM
 
 [mysql]
 # 设置mysql客户端默认字符集

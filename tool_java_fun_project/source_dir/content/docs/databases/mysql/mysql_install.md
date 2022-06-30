@@ -64,6 +64,33 @@ default-storage-engine=INNODB
 # 默认使用“mysql_native_password”插件认证
 default_authentication_plugin=mysql_native_password
 
+# 开启慢sql
+
+slow_query_log=ON
+
+# 慢sql存的文职
+
+slow_query_log_file=D:\CS\databases\mysql_8.027\log\slow.log
+
+# 会记录没有使用索引的查询sql,但前提是必须开启 slow_query_log='ON'
+
+log-queries-not-using-indexes =on
+
+# 超过10秒则属于慢SQL,慢查询时间,这里为10秒,超过10秒会被记录
+
+long_query_time=10
+# 查询日志,开启对所有执行语句进行记录
+
+general_log=on
+
+# 查询日志,存放位置
+
+general_log_file=D:\CS\databases\mysql_8.027\log\query.log
+
+# 查询日志，文件中的时间显示已系统时间为准
+
+log_timestamps = SYSTEM
+
 [mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8mb4

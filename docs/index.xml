@@ -810,7 +810,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
   一:配置环境变量#  因为下载的mysql数据库包的格式是zip的，下载完成后直接解压就可以用，但解压后需要进行配置。
   首先进行环境变量的配置：右击计算机-&amp;gt;属性-&amp;gt;高级系统设置-&amp;gt;环境变量，选择双击Path，在最后面添加你的mysql bin文件夹的路径
   我的目录是：D:\databases\mysql-8.0.13-winx64
-   必须设置这个才行,因为后面我们要在控制台运行命令,假如你不设置这个环境变量那么在控制台根本识别不了,exe安装会自动在环境中设置,而压缩包没有设置  二:在 D:\databases\mysql-8.0.13-winx64 目录下新建一个my.ini的文件#[mysqld]# skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误# 设置3306端口port=3306# 自定义设置mysql的安装目录，即解压mysql压缩包的目录# 切记此处一定要用双斜杠\\，单斜杠这里会出错。basedir=D:\\databases\\mysql-8.0.13-winx64# 自定义设置mysql数据库的数据存放目录datadir=D:\\databases\\mysql-8.0.13-winx64\\data# 允许最大连接数max_connections=200# 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统max_connect_errors=10# 服务端使用的字符集默认为UTF8character-set-server=utf8mb4# 创建新表时将使用的默认存储引擎default-storage-engine=INNODB# 默认使用“mysql_native_password”插件认证default_authentication_plugin=mysql_native_password[mysql]# 设置mysql客户端默认字符集default-character-set=utf8mb4[client]# 设置mysql客户端连接服务端时默认使用的端口和默认字符集port=3306default-character-set=utf8mb4三:windows下运行控制台程序# 进入 C:\Windows\System32 中搜索   右键用管理员权限执行  四:初始化mysql# mysqld &amp;ndash;initialize &amp;ndash;console，等待一会出现几行代码，root@localhost：后面的是随机生成的数据库初始密码，将初始密码记下来后面会用到。 没记住初始密码的话，删掉初始化的 data目录，再执行一遍初始化命令又会重新生成  D:\databases\mysql-8.</description>
+   必须设置这个才行,因为后面我们要在控制台运行命令,假如你不设置这个环境变量那么在控制台根本识别不了,exe安装会自动在环境中设置,而压缩包没有设置  二:在 D:\databases\mysql-8.0.13-winx64 目录下新建一个my.ini的文件#[mysqld]# skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误# 设置3306端口port=3306# 自定义设置mysql的安装目录，即解压mysql压缩包的目录# 切记此处一定要用双斜杠\\，单斜杠这里会出错。basedir=D:\\databases\\mysql-8.0.13-winx64# 自定义设置mysql数据库的数据存放目录datadir=D:\\databases\\mysql-8.0.13-winx64\\data# 允许最大连接数max_connections=200# 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统max_connect_errors=10# 服务端使用的字符集默认为UTF8character-set-server=utf8mb4# 创建新表时将使用的默认存储引擎default-storage-engine=INNODB# 默认使用“mysql_native_password”插件认证default_authentication_plugin=mysql_native_password# 开启慢sqlslow_query_log=ON# 慢sql存的文职slow_query_log_file=D:\CS\databases\mysql_8.</description>
     </item>
     
     <item>
@@ -1170,11 +1170,23 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</guid>
-      <description>索引# 所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表的最大索引数和最大索引长度， 每种存储引擎 （如 MyISAM、 InnoDB、BDB、MEMORY 等）对每个表至少支持 16 个索引，总索引长度至少为 256 字节。 大多数存储引擎有更高的限制。
-  MyISAM 和 InnoDB 存储引擎的表默认创建的都是 BTREE 索引。MySQL 目前还不支持函 数索引，但是支持前缀索引，即对索引字段的前 N 个字符创建索引。前缀索引的长度跟存 储引擎相关，对于 MyISAM 存储引擎的表，索引的前缀长度可以达到 1000 字节长，而对于 InnoDB 存储引擎的表，索引的前缀长度最长是 767 字节。请注意前缀的限制应以字节为单 位进行测量，而 CREATE TABLE 语句中的前缀长度解释为字符数。
-  MySQL 中还支持全文本（FULLTEXT）索引，该索引可以用于全文搜索。但是当前最新版 本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、 VARCHAR 和 TEXT 列。索引总是对整个列进行的，不支持局部（前缀）索引
-  默认情况下，MEMORY 存储引擎使用 HASH 索引，但也支持 BTREE 索引
- </description>
+      <description>索引# MySQL使用索引快速查找具有特定列值的行。如果没有索引，MySQL必须扫描整个表以找到相关的行。较大的表，搜索速度越慢。
+ 讨论索引之前讨论树这种结构#  B树
+  B树有如下特点:
+  所有键值分布在整颗树中（索引值和具体data都在每个节点里）；
+  任何一个关键字出现且只出现在一个结点中；
+  搜索有可能在非叶子结点结束（最好情况O(1)就能找到数据）；
+  在关键字全集内做一次查找,性能逼近二分查找；
+  与AVL 树，红黑树相比性能没那么好但是可以处理较大数据量后者虽然查得快但是处理大量数据有一定的问题比如(耗内存,数据库可能会有海量的数据)
+  B+树
+  B+树是B-树的变体，也是一种多路搜索树, 它与 B- 树的不同之处在于
+  所有关键字存储在叶子节点出现,内部节点(非叶子节点并不存储真正的 data) 为所有叶子结点增加了一个链指针
+  (自己理解)B+树每个节点都包含了指向其子节点的指针虽然没有直接包含子节点但是相当于间接包含了子节点
+  因此B+树是大多数 MySQL 存储引擎的默认索引类型
+  mysql索引类型#  单列索引
+  唯一索引
+  多列索引(组合索引)
+  前缀索引</description>
     </item>
     
     <item>
