@@ -9,7 +9,7 @@
 #
 
  MySQL使用索引快速查找具有特定列值的行。如果没有索引，MySQL必须扫描整个表以找到相关的行。较大的表，搜索速度越慢。
- 讨论索引之前讨论树这种结构
+  索引由类型和方法组成(有的时候你没有指定就是使用的默认方法Btree这是一种B&#43;树)有的人也把方法称为方式  讨论索引之前讨论树这种结构
 #
 
   B树
@@ -24,19 +24,16 @@
   所有关键字存储在叶子节点出现,内部节点(非叶子节点并不存储真正的 data) 为所有叶子结点增加了一个链指针
   (自己理解)B&#43;树每个节点都包含了指向其子节点的指针虽然没有直接包含子节点但是相当于间接包含了子节点
   因此B&#43;树是大多数 MySQL 存储引擎的默认索引类型
-  mysql索引类型
+  讨论hash结构
 #
 
-  单列索引
-  唯一索引
-  多列索引(组合索引)
-  前缀索引">
+ 哈希索引能以 O(1) 时间进行查找，但是失去了有序性，它具有以下限制 无法用于排序与分组 只支持精确查找，无法用于部分查找和范围查找。 InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B&#43;Tree 索引之上再创建一个哈希索引，这样就让 B&#43;Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。   MySQL中，只有Memory存储引擎显示支持hash索引，是Memory表的默认索引类型，尽管Memory表也可以使用B-Tree索引 也就是我们从某种程度日常开发基本就接触BTREE数据结构了">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql索引" />
 <meta property="og:description" content="索引
 #
 
  MySQL使用索引快速查找具有特定列值的行。如果没有索引，MySQL必须扫描整个表以找到相关的行。较大的表，搜索速度越慢。
- 讨论索引之前讨论树这种结构
+  索引由类型和方法组成(有的时候你没有指定就是使用的默认方法Btree这是一种B&#43;树)有的人也把方法称为方式  讨论索引之前讨论树这种结构
 #
 
   B树
@@ -51,13 +48,10 @@
   所有关键字存储在叶子节点出现,内部节点(非叶子节点并不存储真正的 data) 为所有叶子结点增加了一个链指针
   (自己理解)B&#43;树每个节点都包含了指向其子节点的指针虽然没有直接包含子节点但是相当于间接包含了子节点
   因此B&#43;树是大多数 MySQL 存储引擎的默认索引类型
-  mysql索引类型
+  讨论hash结构
 #
 
-  单列索引
-  唯一索引
-  多列索引(组合索引)
-  前缀索引" />
+ 哈希索引能以 O(1) 时间进行查找，但是失去了有序性，它具有以下限制 无法用于排序与分组 只支持精确查找，无法用于部分查找和范围查找。 InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B&#43;Tree 索引之上再创建一个哈希索引，这样就让 B&#43;Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。   MySQL中，只有Memory存储引擎显示支持hash索引，是Memory表的默认索引类型，尽管Memory表也可以使用B-Tree索引 也就是我们从某种程度日常开发基本就接触BTREE数据结构了" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
@@ -67,7 +61,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.6d43e1c6a9c81f3eb4e0a56dbfbf9258aabac4406a1c9ee494a3321cbc920e44.js"  ></script>
+<script defer src="./../../../../en.search.min.a9096c097e290239e6f1bc5b608c1fdf96567a5e491ce2fff73caee0c15840c0.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2833,10 +2827,23 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#索引">索引</a></li>
-        <li><a href="#mysql索引类型">mysql索引类型</a></li>
+        <li><a href="#讨论索引之前讨论树这种结构">讨论索引之前讨论树这种结构</a></li>
+        <li><a href="#讨论hash结构">讨论hash结构</a></li>
       </ul>
     </li>
+    <li><a href="#索引创建和更改语法">索引创建和更改语法</a></li>
+    <li><a href="#索引类型">索引类型</a>
+      <ul>
+        <li><a href="#normal-普通索引">Normal 普通索引</a></li>
+        <li><a href="#unique-唯一索引">Unique 唯一索引</a></li>
+        <li><a href="#full-text-全文索引">Full Text 全文索引</a></li>
+        <li><a href="#spatial-空间索引">SPATIAL 空间索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#索引方法">索引方法</a></li>
+    <li><a href="#索引组合的方式">索引组合的方式</a></li>
+    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a></li>
+    <li><a href="#索引注意事项">索引注意事项</a></li>
   </ul>
 </nav>
 
@@ -2857,17 +2864,20 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/pdf/newIndex.html">book</a></li>
 </ul>
       
-  <article class="markdown"><h3 id="索引">
+  <article class="markdown"><h1 id="索引">
   索引
   <a class="anchor" href="#%e7%b4%a2%e5%bc%95">#</a>
-</h3>
+</h1>
 <blockquote>
 <p>MySQL使用索引快速查找具有特定列值的行。如果没有索引，MySQL必须扫描整个表以找到相关的行。较大的表，搜索速度越慢。</p>
 </blockquote>
-<h4 id="讨论索引之前讨论树这种结构">
+<ul>
+<li>索引由<strong>类型</strong>和<strong>方法</strong>组成(有的时候你没有指定就是使用的默认方法Btree这是一种B+树)有的人也把方法称为方式</li>
+</ul>
+<h3 id="讨论索引之前讨论树这种结构">
   讨论索引之前讨论树这种结构
   <a class="anchor" href="#%e8%ae%a8%e8%ae%ba%e7%b4%a2%e5%bc%95%e4%b9%8b%e5%89%8d%e8%ae%a8%e8%ae%ba%e6%a0%91%e8%bf%99%e7%a7%8d%e7%bb%93%e6%9e%84">#</a>
-</h4>
+</h3>
 <ul>
 <li>
 <p>B树</p>
@@ -2906,10 +2916,206 @@ https://github.com/alex-shpak/hugo-book
 <p>因此B+树是大多数 MySQL 存储引擎的默认索引类型</p>
 </li>
 </ul>
-<h3 id="mysql索引类型">
-  mysql索引类型
-  <a class="anchor" href="#mysql%e7%b4%a2%e5%bc%95%e7%b1%bb%e5%9e%8b">#</a>
+<h3 id="讨论hash结构">
+  讨论hash结构
+  <a class="anchor" href="#%e8%ae%a8%e8%ae%bahash%e7%bb%93%e6%9e%84">#</a>
 </h3>
+<ul>
+<li>哈希索引能以 O(1) 时间进行查找，但是失去了有序性，它具有以下限制</li>
+<li>无法用于排序与分组</li>
+<li>只支持精确查找，无法用于部分查找和范围查找。</li>
+<li>InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。</li>
+</ul>
+<blockquote>
+<p>MySQL中，只有Memory存储引擎显示支持hash索引，是Memory表的默认索引类型，尽管Memory表也可以使用B-Tree索引
+也就是我们从某种程度日常开发基本就接触BTREE数据结构了</p>
+</blockquote>
+<h2 id="索引创建和更改语法">
+  索引创建和更改语法
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e5%88%9b%e5%bb%ba%e5%92%8c%e6%9b%b4%e6%94%b9%e8%af%ad%e6%b3%95">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-- 创建 索引 
+
+CREATE &lt;索引名&gt; ON &lt;表名&gt; <span style="color:#f92672">(</span>&lt;列名&gt; <span style="color:#f92672">[</span>&lt;长度&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span> ASC | DESC<span style="color:#f92672">])</span>
+CREATE &lt;索引类型&gt; &lt;索引名&gt; ON &lt;表名&gt; <span style="color:#f92672">(</span>&lt;列名&gt; <span style="color:#f92672">[</span>&lt;长度&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span> ASC | DESC<span style="color:#f92672">])</span>
+CREATE INDEX indexName ON table_name <span style="color:#f92672">(</span>column_name<span style="color:#f92672">)</span>
+CREATE TABLE 也可以创建TABLE
+-- 仅仅在这直接列举了
+-- 包含一个索引
+CREATE TABLE test_demo<span style="color:#f92672">(</span>
+id INT NOT NULL,
+name varchar<span style="color:#f92672">(</span>200<span style="color:#f92672">)</span> NOT NULL,
+UNIQUE INDEX uk_idx_id<span style="color:#f92672">(</span>id<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span>;
+-- 包含3个索引
+-- 设定为主键后数据库会自动建立索引，innodb为聚簇索引
+CREATE TABLE test_demo<span style="color:#f92672">(</span>
+id INT<span style="color:#f92672">(</span>10<span style="color:#f92672">)</span> UNSIGNED AUTO_INCREMENT ,
+uuid INT NOT NULL,
+name varchar<span style="color:#f92672">(</span>200<span style="color:#f92672">)</span> NOT NULL,
+PRIMARY KEY<span style="color:#f92672">(</span>id<span style="color:#f92672">)</span>,
+INDEX single_idx_name<span style="color:#f92672">(</span>name<span style="color:#f92672">(</span>20<span style="color:#f92672">))</span> ,
+UNIQUE KEY uk_idx_id<span style="color:#f92672">(</span>uuid<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span>;
+
+DROP INDEX &lt;索引名&gt; ON &lt;表名&gt;
+ALTER TABLE &lt;表名&gt;  DROP PRIMARY KEY：表示删除表中的主键。一个表只有一个主键，主键也是一个索引
+ALTER TABLE &lt;表名&gt;  DROP INDEX index_name：表示删除名称为 index_name 的索引
+ALTER TABLE &lt;表名&gt; DROP FOREIGN KEY fk_symbol：表示删除外键
+</code></pre></div><h2 id="索引类型">
+  索引类型
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e7%b1%bb%e5%9e%8b">#</a>
+</h2>
+<ul>
+<li>Normal 普通索引 Unique 唯一索引 Full Text 全文索引 SPATIAL 空间索引</li>
+</ul>
+<blockquote>
+<p>不管什么索引类型 都可以被一列或者多列使用 这点很重要</p>
+</blockquote>
+<h3 id="normal-普通索引">
+  Normal 普通索引
+  <a class="anchor" href="#normal-%e6%99%ae%e9%80%9a%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">drop table <span style="color:#66d9ef">if</span> EXISTS t_example_index ;
+
+CREATE TABLE t_example_index <span style="color:#f92672">(</span>
+    c1 INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    c2 VARCHAR<span style="color:#f92672">(</span>100<span style="color:#f92672">)</span>,
+    c3 VARCHAR<span style="color:#f92672">(</span>100<span style="color:#f92672">)</span>,
+	  n1 int<span style="color:#f92672">(</span>12<span style="color:#f92672">)</span>,
+	  n2 int<span style="color:#f92672">(</span>12<span style="color:#f92672">)</span>,
+    n3 int<span style="color:#f92672">(</span>12<span style="color:#f92672">))</span>
+ENGINE<span style="color:#f92672">=</span>InnoDB;
+
+-- Normal 表示普通索引，大多数情况下都可以使用
+-- 没有指定索引方法
+CREATE INDEX index_c1 ON t_example_index <span style="color:#f92672">(</span> n1 <span style="color:#f92672">)</span>;
+
+mysql&gt; SHOW INDEX FROM t_example_index ;
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table           | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| t_example_index |          <span style="color:#ae81ff">0</span> | PRIMARY  |            <span style="color:#ae81ff">1</span> | c1          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   |      | BTREE      |         |               | YES     | NULL       |
+| t_example_index |          <span style="color:#ae81ff">1</span> | index_c1 |            <span style="color:#ae81ff">1</span> | n1          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+<span style="color:#ae81ff">2</span> rows in set <span style="color:#f92672">(</span>0.06 sec<span style="color:#f92672">)</span>
+
+-- 当使用 NORMAL 的时候不需要加上NORMAL
+CREATE NORMAL INDEX index_c2 ON t_example_index <span style="color:#f92672">(</span> n2 <span style="color:#f92672">)</span>;
+-- 使用多列一起组成索引
+CREATE  INDEX index_c2 ON t_example_index <span style="color:#f92672">(</span> n2,n3 <span style="color:#f92672">)</span>;
+mysql&gt; SHOW INDEX FROM t_example_index ;
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table           | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| t_example_index |          <span style="color:#ae81ff">0</span> | PRIMARY  |            <span style="color:#ae81ff">1</span> | c1          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   |      | BTREE      |         |               | YES     | NULL       |
+| t_example_index |          <span style="color:#ae81ff">1</span> | index_c1 |            <span style="color:#ae81ff">1</span> | n1          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
+| t_example_index |          <span style="color:#ae81ff">1</span> | index_c2 |            <span style="color:#ae81ff">1</span> | n2          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
+| t_example_index |          <span style="color:#ae81ff">1</span> | index_c2 |            <span style="color:#ae81ff">2</span> | n3          | A         |           <span style="color:#ae81ff">0</span> | NULL     | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
++-----------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+<span style="color:#ae81ff">4</span> rows in set <span style="color:#f92672">(</span>0.09 sec<span style="color:#f92672">)</span>
+</code></pre></div><h3 id="unique-唯一索引">
+  Unique 唯一索引
+  <a class="anchor" href="#unique-%e5%94%af%e4%b8%80%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"> <span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">EXISTS</span> t_example_index_x2 ;
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">t_example_index_x2</span> (
+    c1 <span style="color:#66d9ef">INT</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+    c2 <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">100</span>),
+    c3 <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">100</span>),
+	  n1 <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">12</span>),
+	  n2 <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">12</span>),
+    n3 <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">12</span>))
+<span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB;
+<span style="color:#75715e">-- 使用单列索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">INDEX</span> index_c1 <span style="color:#66d9ef">ON</span> <span style="color:#a6e22e">t_example_index_x2</span> ( n1 );
+<span style="color:#75715e">-- 使用2列索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">INDEX</span> index_c2_3 <span style="color:#66d9ef">ON</span> <span style="color:#a6e22e">t_example_index_x2</span> ( n2,n3 );
+</code></pre></div><h3 id="full-text-全文索引">
+  Full Text 全文索引
+  <a class="anchor" href="#full-text-%e5%85%a8%e6%96%87%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">EXISTS</span> t_example_full_text_index ;
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">t_example_full_text_index</span>  (
+  id <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+  pro_date <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  price_remark <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+  title <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  post_content <span style="color:#66d9ef">text</span>,
+  body <span style="color:#66d9ef">text</span>,
+  remark <span style="color:#66d9ef">text</span>,
+  gmt_created <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  gmt_modified <span style="color:#66d9ef">datetime</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
+);
+
+<span style="color:#75715e">-- 单列索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">FULLTEXT</span> <span style="color:#66d9ef">INDEX</span> post_content_full_index <span style="color:#66d9ef">on</span> <span style="color:#a6e22e">t_example_full_text_index</span>(post_content) ;
+
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">INDEX</span> <span style="color:#66d9ef">FROM</span> t_example_full_text_index ;
+<span style="color:#f92672">+---------------------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">Table</span>                     <span style="color:#f92672">|</span> Non_unique <span style="color:#f92672">|</span> Key_name                <span style="color:#f92672">|</span> Seq_in_index <span style="color:#f92672">|</span> Column_name  <span style="color:#f92672">|</span> Collation <span style="color:#f92672">|</span> Cardinality <span style="color:#f92672">|</span> Sub_part <span style="color:#f92672">|</span> Packed <span style="color:#f92672">|</span> <span style="color:#66d9ef">Null</span> <span style="color:#f92672">|</span> Index_type <span style="color:#f92672">|</span> Comment <span style="color:#f92672">|</span> Index_comment <span style="color:#f92672">|</span> Visible <span style="color:#f92672">|</span> Expression <span style="color:#f92672">|</span>
+<span style="color:#f92672">+---------------------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">PRIMARY</span>                 <span style="color:#f92672">|</span>            <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> id           <span style="color:#f92672">|</span> A         <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span>      <span style="color:#f92672">|</span> BTREE      <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> post_content_full_index <span style="color:#f92672">|</span>            <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> post_content <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>      <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span> YES  <span style="color:#f92672">|</span> <span style="color:#66d9ef">FULLTEXT</span>   <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">+---------------------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#ae81ff">2</span> rows <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">18</span> sec)
+
+<span style="color:#75715e">-- 组合索引
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">FULLTEXT</span> <span style="color:#66d9ef">INDEX</span> body_and_title_full_index <span style="color:#66d9ef">on</span> <span style="color:#a6e22e">t_example_full_text_index</span>(body,title) ;
+
+mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">INDEX</span> <span style="color:#66d9ef">FROM</span> t_example_full_text_index ;
+<span style="color:#f92672">+---------------------------+------------+---------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#f92672">|</span> <span style="color:#66d9ef">Table</span>                     <span style="color:#f92672">|</span> Non_unique <span style="color:#f92672">|</span> Key_name                  <span style="color:#f92672">|</span> Seq_in_index <span style="color:#f92672">|</span> Column_name  <span style="color:#f92672">|</span> Collation <span style="color:#f92672">|</span> Cardinality <span style="color:#f92672">|</span> Sub_part <span style="color:#f92672">|</span> Packed <span style="color:#f92672">|</span> <span style="color:#66d9ef">Null</span> <span style="color:#f92672">|</span> Index_type <span style="color:#f92672">|</span> Comment <span style="color:#f92672">|</span> Index_comment <span style="color:#f92672">|</span> Visible <span style="color:#f92672">|</span> Expression <span style="color:#f92672">|</span>
+<span style="color:#f92672">+---------------------------+------------+---------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">PRIMARY</span>                   <span style="color:#f92672">|</span>            <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> id           <span style="color:#f92672">|</span> A         <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span>      <span style="color:#f92672">|</span> BTREE      <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> post_content_full_index   <span style="color:#f92672">|</span>            <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> post_content <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>      <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span> YES  <span style="color:#f92672">|</span> <span style="color:#66d9ef">FULLTEXT</span>   <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> body_and_title_full_index <span style="color:#f92672">|</span>            <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> body         <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>      <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span> YES  <span style="color:#f92672">|</span> <span style="color:#66d9ef">FULLTEXT</span>   <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> t_example_full_text_index <span style="color:#f92672">|</span>          <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> body_and_title_full_index <span style="color:#f92672">|</span>            <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span> title        <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>      <span style="color:#f92672">|</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>   <span style="color:#f92672">|</span>      <span style="color:#f92672">|</span> <span style="color:#66d9ef">FULLTEXT</span>   <span style="color:#f92672">|</span>         <span style="color:#f92672">|</span>               <span style="color:#f92672">|</span> YES     <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span>       <span style="color:#f92672">|</span>
+<span style="color:#f92672">+---------------------------+------------+---------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+</span>
+<span style="color:#ae81ff">4</span> rows <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">23</span> sec)
+<span style="color:#75715e">-- 提一句全文索引的使用方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> t_example_full_text_index <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">MATCH</span> (post_content) <span style="color:#a6e22e">AGAINST</span> (<span style="color:#e6db74">&#39;北京&#39;</span> <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">NATURAL</span> LANGUAGE MODE);
+
+<span style="color:#75715e">-- ALTER TABLE  t_example_full_text_index ADD FULLTEXT INDEX remark_index(remark)  ;
+</span></code></pre></div><h3 id="spatial-空间索引">
+  SPATIAL 空间索引
+  <a class="anchor" href="#spatial-%e7%a9%ba%e9%97%b4%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<blockquote>
+<p>空间索引创建中，要求空间类型的字段必须为非空</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">EXISTS</span> tb_geometry_example ;
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">tb_geometry_example</span>(
+id <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span>,
+geo GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+geo_a GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+geo_b GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+geo_c GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+ title <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+ remark <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">500</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+<span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (id)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>MyISAM;
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SPATIAL</span> <span style="color:#66d9ef">INDEX</span> geo_index <span style="color:#66d9ef">on</span> <span style="color:#a6e22e">tb_geometry_example</span>(geo);
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SPATIAL</span> <span style="color:#66d9ef">INDEX</span> geo_a_geo_b_index <span style="color:#66d9ef">on</span> <span style="color:#a6e22e">tb_geometry_example</span>(geo_a,geo_b)
+<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1070</span> <span style="color:#f92672">-</span> Too many <span style="color:#66d9ef">key</span> parts specified; max <span style="color:#ae81ff">1</span> parts allowed
+<span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">时间</span>: <span style="color:#ae81ff">0</span>s
+<span style="color:#75715e">-- 说明不能组合索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> tb_geometry_example <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">SPATIAL</span>  <span style="color:#66d9ef">INDEX</span> <span style="color:#a6e22e">geo_a_index</span>(geo_a) ;
+</code></pre></div><h2 id="索引方法">
+  索引方法
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e6%96%b9%e6%b3%95">#</a>
+</h2>
+<h2 id="索引组合的方式">
+  索引组合的方式
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e7%bb%84%e5%90%88%e7%9a%84%e6%96%b9%e5%bc%8f">#</a>
+</h2>
 <ul>
 <li>
 <p>单列索引</p>
@@ -2923,7 +3129,33 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>前缀索引</p>
 </li>
+<li>
+<p>隐藏索引</p>
+</li>
 </ul>
+<h2 id="聚簇索引和非聚簇索引">
+  聚簇索引和非聚簇索引
+  <a class="anchor" href="#%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95%e5%92%8c%e9%9d%9e%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95">#</a>
+</h2>
+<ul>
+<li>
+<p>聚集索引。表数据按照索引的顺序来存储的，也就是说索引项的顺序与表中记录的物理顺序一致。对于聚集索引，叶子结点即存储了真实的数据行，不再有另外单独的数据页。 在一张表上最多只能创建一个聚集索引，因为真实数据的物理顺序只能有一种</p>
+</li>
+<li>
+<p>非聚集索引。表数据存储顺序与索引顺序无关。对于非聚集索引，叶结点包含索引字段值及指向数据页数据行的逻辑指针，其行数量与数据表行数据量一致</p>
+</li>
+<li>
+<p>总结一下：聚集索引是一种稀疏索引，数据页上一级的索引页存储的是页指针，而不是行指针。而对于非聚集索引，则是密集索引，在数据页的上一级索引页它为每一个数据行存储一条索引记录</p>
+</li>
+</ul>
+<h2 id="索引注意事项">
+  索引注意事项
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
+</h2>
+<p><a href="https://cloud.tencent.com/developer/article/1541265">备注一</a>
+<a href="https://www.cnblogs.com/qlqwjy/p/7770580.html">备注二</a>
+<a href="https://blog.csdn.net/baidu_35813686/article/details/84434404">备注三</a>
+<a href="https://zhuanlan.zhihu.com/p/29118331">备注四</a></p>
 </article>
  
       
@@ -3169,10 +3401,23 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#索引">索引</a></li>
-        <li><a href="#mysql索引类型">mysql索引类型</a></li>
+        <li><a href="#讨论索引之前讨论树这种结构">讨论索引之前讨论树这种结构</a></li>
+        <li><a href="#讨论hash结构">讨论hash结构</a></li>
       </ul>
     </li>
+    <li><a href="#索引创建和更改语法">索引创建和更改语法</a></li>
+    <li><a href="#索引类型">索引类型</a>
+      <ul>
+        <li><a href="#normal-普通索引">Normal 普通索引</a></li>
+        <li><a href="#unique-唯一索引">Unique 唯一索引</a></li>
+        <li><a href="#full-text-全文索引">Full Text 全文索引</a></li>
+        <li><a href="#spatial-空间索引">SPATIAL 空间索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#索引方法">索引方法</a></li>
+    <li><a href="#索引组合的方式">索引组合的方式</a></li>
+    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a></li>
+    <li><a href="#索引注意事项">索引注意事项</a></li>
   </ul>
 </nav>
 

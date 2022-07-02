@@ -235,7 +235,7 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
       
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/</guid>
       <description>索引# MySQL使用索引快速查找具有特定列值的行。如果没有索引，MySQL必须扫描整个表以找到相关的行。较大的表，搜索速度越慢。
- 讨论索引之前讨论树这种结构#  B树
+  索引由类型和方法组成(有的时候你没有指定就是使用的默认方法Btree这是一种B+树)有的人也把方法称为方式  讨论索引之前讨论树这种结构#  B树
   B树有如下特点:
   所有键值分布在整颗树中（索引值和具体data都在每个节点里）；
   任何一个关键字出现且只出现在一个结点中；
@@ -247,10 +247,7 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
   所有关键字存储在叶子节点出现,内部节点(非叶子节点并不存储真正的 data) 为所有叶子结点增加了一个链指针
   (自己理解)B+树每个节点都包含了指向其子节点的指针虽然没有直接包含子节点但是相当于间接包含了子节点
   因此B+树是大多数 MySQL 存储引擎的默认索引类型
-  mysql索引类型#  单列索引
-  唯一索引
-  多列索引(组合索引)
-  前缀索引</description>
+  讨论hash结构# 哈希索引能以 O(1) 时间进行查找，但是失去了有序性，它具有以下限制 无法用于排序与分组 只支持精确查找，无法用于部分查找和范围查找。 InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。   MySQL中，只有Memory存储引擎显示支持hash索引，是Memory表的默认索引类型，尽管Memory表也可以使用B-Tree索引 也就是我们从某种程度日常开发基本就接触BTREE数据结构了</description>
     </item>
     
     <item>
