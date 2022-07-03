@@ -61,7 +61,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.a9096c097e290239e6f1bc5b608c1fdf96567a5e491ce2fff73caee0c15840c0.js"  ></script>
+<script defer src="./../../../../en.search.min.1b1b1ff1fdd7111349ba5dfcfccfd2afa40e87f415dc5e2baea1ef80c0cdf7e9.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2842,8 +2842,18 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#索引方法">索引方法</a></li>
     <li><a href="#索引组合的方式">索引组合的方式</a></li>
-    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a></li>
-    <li><a href="#索引注意事项">索引注意事项</a></li>
+    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a>
+      <ul>
+        <li><a href="#innodb的聚簇索引">InnoDB的聚簇索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#hash索引">Hash索引</a></li>
+    <li><a href="#索引注意事项">索引注意事项</a>
+      <ul>
+        <li><a href="#哪些情况适合创建索引">哪些情况适合创建索引</a></li>
+        <li><a href="#索引使用注意事项">索引使用注意事项</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -3117,23 +3127,41 @@ geo_c GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef
   <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e7%bb%84%e5%90%88%e7%9a%84%e6%96%b9%e5%bc%8f">#</a>
 </h2>
 <ul>
-<li>
-<p>单列索引</p>
-</li>
-<li>
-<p>唯一索引</p>
-</li>
-<li>
-<p>多列索引(组合索引)</p>
-</li>
-<li>
-<p>前缀索引</p>
-</li>
-<li>
-<p>隐藏索引</p>
-</li>
+<li>单列索引</li>
 </ul>
-<h2 id="聚簇索引和非聚簇索引">
+<pre><code>参考本文前面
+</code></pre><ul>
+<li>唯一索引</li>
+</ul>
+<pre><code>主键和唯一索引的区别
+1、主键是一种约束，唯一索引是一种索引，两者在本质上是不同的。
+
+2、主键创建后一定包含一个唯一性索引，唯一性索引不一定就是主键。
+
+3、唯一性索引列允许空值， 而主键列不允许为空值。
+
+4、主键可以被其他表引用为外键，而唯一索引不能。
+
+5、 一个表最多只能创建一个主键，但是可以创建多个唯一索引。
+
+6、主键更适合那些不容易改变的唯一标识，如自动递增列，身份证号等。
+
+7、在RBO 模式下，主键的执行计划优先级高于唯一索引。两者可以提高查询的速度。
+</code></pre><ul>
+<li>多列索引(组合索引)</li>
+</ul>
+<pre><code>参考本文前面
+</code></pre><ul>
+<li>前缀索引</li>
+</ul>
+<pre><code>指的是mysql like 某些对那列字段增加索引可以使用like 但是只能是前缀查询如keyword%
+select title,content from demo_like_table where 1=1 and title like ‘73%';
+具体参考本主题的mysql优化
+</code></pre><ul>
+<li>隐藏索引</li>
+</ul>
+<pre><code>实际指的是主键  主键是一种特殊索引 即使你没有指定主键列是索引它也是索引
+</code></pre><h2 id="聚簇索引和非聚簇索引">
   聚簇索引和非聚簇索引
   <a class="anchor" href="#%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95%e5%92%8c%e9%9d%9e%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95">#</a>
 </h2>
@@ -3147,16 +3175,201 @@ geo_c GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef
 <li>
 <p>总结一下：聚集索引是一种稀疏索引，数据页上一级的索引页存储的是页指针，而不是行指针。而对于非聚集索引，则是密集索引，在数据页的上一级索引页它为每一个数据行存储一条索引记录</p>
 </li>
+<li>
+<p>一个表只能有一个聚簇索引</p>
+</li>
 </ul>
-<h2 id="索引注意事项">
+<blockquote>
+<p>目前，只有solidDB和InnoDB支持聚簇索引，MyISAM不支持聚簇索引。一些DBMS允许用户指定聚簇索引，但是MySQL的存储引擎到目前为止都不支持</p>
+</blockquote>
+<h3 id="innodb的聚簇索引">
+  InnoDB的聚簇索引
+  <a class="anchor" href="#innodb%e7%9a%84%e8%81%9a%e7%b0%87%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>InnoDB对主键建立聚簇索引。</li>
+<li>如果你不指定主键，InnoDB会用一个具有唯一且非空值的索引来代替。</li>
+<li>如果不存在这样的索引，InnoDB会定义一个隐藏的主键，然后对其建立聚簇索引</li>
+</ul>
+<h2 id="hash索引">
+  Hash索引
+  <a class="anchor" href="#hash%e7%b4%a2%e5%bc%95">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">tb_test_hash</span> (
+  fname <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+  lname <span style="color:#66d9ef">VARCHAR</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>MEMORY;
+
+
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> tb_test_hash <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">INDEX</span>   <span style="color:#a6e22e">hash_index</span>(fname) ;
+
+<span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">INDEX</span> hash_index <span style="color:#66d9ef">on</span> tb_test_hash;
+</code></pre></div><h2 id="索引注意事项">
   索引注意事项
   <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
 </h2>
-<p><a href="https://cloud.tencent.com/developer/article/1541265">备注一</a>
-<a href="https://www.cnblogs.com/qlqwjy/p/7770580.html">备注二</a>
-<a href="https://blog.csdn.net/baidu_35813686/article/details/84434404">备注三</a>
-<a href="https://zhuanlan.zhihu.com/p/29118331">备注四</a></p>
-</article>
+<h3 id="哪些情况适合创建索引">
+  哪些情况适合创建索引
+  <a class="anchor" href="#%e5%93%aa%e4%ba%9b%e6%83%85%e5%86%b5%e9%80%82%e5%90%88%e5%88%9b%e5%bb%ba%e7%b4%a2%e5%bc%95">#</a>
+</h3>
+<ul>
+<li>字段的数值有唯一性的限制</li>
+</ul>
+<blockquote>
+<p>业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引。（来源：Alibaba）
+说明：不要以为唯一索引影响了 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的。</p>
+</blockquote>
+<ul>
+<li>频繁作为 WHERE 查询条件的字段</li>
+</ul>
+<blockquote>
+<p>某个字段在SELECT语句的 WHERE 条件中经常被使用到，那么就需要给这个字段创建索引了。尤其是在
+数据量大的情况下，创建普通索引就可以大幅提升数据查询的效率。</p>
+</blockquote>
+<ul>
+<li>经常 GROUP BY 和 ORDER BY 的列</li>
+</ul>
+<blockquote>
+<p>索引就是让数据按照某种顺序进行存储或检索，因此当我们使用 GROUP BY 对数据进行分组查询，或者
+使用 ORDER BY 对数据进行排序的时候，就需要 对分组或者排序的字段进行索引 。如果待排序的列有多
+个，那么可以在这些列上建立 组合索引</p>
+</blockquote>
+<ul>
+<li>UPDATE、DELETE 的 WHERE 条件列</li>
+</ul>
+<blockquote>
+<p>对数据按照某个条件进行查询后再进行 UPDATE 或 DELETE 的操作，如果对 WHERE 字段创建了索引，就
+能大幅提升效率。原理是因为我们需要先根据 WHERE 条件列检索出来这条记录，然后再对它进行更新或
+删除。如果进行更新的时候，更新的字段是非索引字段，提升的效率会更明显，这是因为非索引字段更
+新不需要对索引进行维护</p>
+</blockquote>
+<ul>
+<li>DISTINCT 字段需要创建索引</li>
+</ul>
+<pre><code>有时候我们需要对某个字段进行去重，使用 DISTINCT，那么对这个字段创建索引，也会提升查询效率。
+比如，我们想要查询课程表中不同的 student_id 都有哪些，如果我们没有对 student_id 创建索引，执行
+SQL 语句：
+运行结果（600637 条记录，运行时间 0.683s ）：
+如果我们对 student_id 创建索引，再执行 SQL 语句：
+运行结果（600637 条记录，运行时间 0.010s ）：
+你能看到 SQL 查询效率有了提升，同时显示出来的 student_id 还是按照 递增的顺序 进行展示的。这是因
+为索引会对数据按照某种顺序进行排序，所以在去重的时候也会快很多。
+</code></pre><ul>
+<li>多表 JOIN 连接操作时，创建索引注意事项</li>
+</ul>
+<blockquote>
+<p>首先， 连接表的数量尽量不要超过 3 张 ，因为每增加一张表就相当于增加了一次嵌套的循环，数量级增
+长会非常快，严重影响查询的效率。</p>
+</blockquote>
+<blockquote>
+<p>其次， 对 WHERE 条件创建索引 ，因为 WHERE 才是对数据条件的过滤。如果在数据量非常大的情况下，
+没有 WHERE 条件过滤是非常可怕的。</p>
+</blockquote>
+<blockquote>
+<p>最后， 对用于连接的字段创建索引 ，并且该字段在多张表中的 类型必须一致 。比如 course_id 在
+student_info 表和 course 表中都为 int(11) 类型，而不能一个为 int 另一个为 varchar 类型。
+举个例子，如果我们只对 student_id 创建索引，执行 SQL 语句：</p>
+</blockquote>
+<pre><code>SELECT course_id, name, student_info.student_id, course_name
+FROM student_info JOIN course
+ON student_info.course_id = course.course_id
+WHERE name = '462eed7ac6e791292a79';
+-- 运行结果（1 条数据，运行时间 0.189s ）：
+-- 这里我们对 name 创建索引，再执行上面的 SQL 语句，运行时间为 0.002s 。
+</code></pre><h3 id="索引使用注意事项">
+  索引使用注意事项
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e4%bd%bf%e7%94%a8%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">#</a>
+</h3>
+<ul>
+<li>如果对大的文本进行搜索，使用全文索引而不要用使用 like ‘%…%’</li>
+<li>like语句不要以通配符开头</li>
+<li>对于LIKE：在以通配符%和_开头作查询时，MySQL不会使用索引。like操作一般在全文索引中会用到（InnoDB数据表不支持全文索引）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 例如下句会使用索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> mytable <span style="color:#66d9ef">WHERE</span> username <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;admin%&#39;</span>
+<span style="color:#960050;background-color:#1e0010">而下句就不会使用</span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> mytable WHEREt Name <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%admin&#39;</span>
+</code></pre></div><ul>
+<li>不要在列上进行运算</li>
+<li>索引列不能是表达式的一部分，也不是是函数的参数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 例如以下两个查询无法使用索引
+</span><span style="color:#75715e">-- 1:表达式
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">select</span> actor_id <span style="color:#66d9ef">from</span> sakila.actor <span style="color:#66d9ef">where</span> actor_id<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
+
+<span style="color:#75715e">-- 2:函数参数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> ... <span style="color:#66d9ef">where</span> <span style="color:#a6e22e">TO_DAYS</span>(<span style="color:#66d9ef">CURRENT_DATE</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">TO_DAYS</span>(date_col)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">10</span>;
+</code></pre></div><ul>
+<li>尽量不要使用NOT IN、&lt;&gt;、!= 操作</li>
+<li>应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 对于not in，可以用not exists或者（外联结+判断为空）来代替；很多时候用 exists 代替 in 是一个好的选择：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> num <span style="color:#66d9ef">from</span> a <span style="color:#66d9ef">where</span> num <span style="color:#66d9ef">in</span>(<span style="color:#66d9ef">select</span> num <span style="color:#66d9ef">from</span> b) ;
+<span style="color:#75715e">-- 用下面的语句替换
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> num <span style="color:#66d9ef">from</span> a <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">exists</span>(<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> b <span style="color:#66d9ef">where</span> num<span style="color:#f92672">=</span>a.num) ;
+</code></pre></div><ul>
+<li>
+<p>对于&lt;&gt;，用其它相同功能的操作运算代替，如a&lt;&gt;0 改为 a&gt;0 or a&lt;0</p>
+</li>
+<li>
+<p>or条件</p>
+</li>
+<li>
+<p>用 or 分割开的条件， 如果 or 前的条件中的列有索引， 而后面的列中没有索引， 那么涉及到的索引都不会被用到</p>
+</li>
+<li>
+<p>应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描</p>
+</li>
+<li>
+<p>如:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 假设num1有索引，num2没有索引
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num1<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">or</span> num2<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> ;
+<span style="color:#75715e">-- 会放弃使用索引，可以改为这样查询
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num1<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">union</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> t <span style="color:#66d9ef">where</span> num2<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> ;
+<span style="color:#75715e">-- 这样虽然num2没有使用索引，但至少num1会使用索引，提高效率
+</span></code></pre></div><ul>
+<li>
+<p>组合索引的使用要遵守“最左前缀”原则'</p>
+</li>
+<li>
+<p>组合索引：当不需要考虑排序和分组时，将选择性最高的列放在前面通常是最好的</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 如
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#a6e22e">People</span> (
+  last_name <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+  first_name <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+  birthday <span style="color:#66d9ef">date</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+  gender <span style="color:#66d9ef">enum</span>(<span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
+  <span style="color:#66d9ef">key</span>(last_name, first_name, birthday)
+);
+</code></pre></div><ul>
+<li>查询必须从索引的最左边的列开始，否则无法使用索引。例如，你不能直接利用索引查找在某一天出生的人</li>
+<li>不能跳过某一索引列。例如，你不能利用索引查找last name为Smith且出生于某一天的人</li>
+<li>存储引擎不能使用索引中范围条件右边的列。例如，如果你的查询语句为WHERE last_name=&ldquo;Smith&rdquo; AND first_name LIKE &lsquo;J%&rsquo; AND dob=&lsquo;1976-12-23&rsquo;，则该查询只会使用索引中的前两列，因为LIKE是范围查询</li>
+<li>假如你一定要使用like 查询并且用到索引 那么参考本主题mysql优化</li>
+<li>使用索引排序时，ORDER BY也要遵守“最左前缀”原则</li>
+<li>当索引的顺序与ORDER BY中的列顺序相同，且所有的列是同一方向（全部升序或者全部降序）时，可以使用索引来排序</li>
+<li>ORDER BY子句和查询型子句的限制是一样的：需要满足索引的最左前缀的要求，有一种情况下ORDER BY子句可以不满足索引的最左前缀要求，那就是前导列为常量时：WHERE子句或者JOIN子句中对前导列指定了常量</li>
+<li>如果查询是连接多个表，仅当ORDER BY中的所有列都是第一个表的列时才会使用索引。其它情况都会使用filesort文件排序</li>
+<li>如果列类型是字符串，那么一定记得在 where 条件中把字符常量值用引号引起来，否则的话即便这个列上有索引，MySQL 也不会用到的，因为MySQL 默认把输入的常量值进行转换以后才进行检索</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">explain</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> company2 <span style="color:#66d9ef">where</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;294&#39;</span> ;
+</code></pre></div><ul>
+<li>最后</li>
+</ul>
+<pre><code>只有当数据库里已经有了足够多的测试数据时，它的性能测试结果才有实际参考价值。
+如果在测试数据库里只有几百条数据记录，它们往往在执行完第一条查询命令之后就被全部加载到内存里，
+这将使后续的查询命令都执行得非常快——不管有没有使用索引。只有当数据库里的记录超过了1000条、
+数据总量也超过了 MySQL服务器上的内存总量时，数据库的性能测试结果才有意义。
+
+在不确定应该在哪些数据列上创建索引的时候，人们从EXPLAIN SELECT命令那里往往可以获得一些帮助。
+这其实只是简单地给一条普通的SELECT命令加一个EXPLAIN关键字作为前缀而已。
+有了这个关键字，MySQL将不是去执行那条SELECT命令，而是去对它进行分析。
+MySQL将以表格的形式把查询的执行过程和用到的索引(如果有的话)等信息列出来。
+</code></pre></article>
  
       
 
@@ -3416,8 +3629,18 @@ geo_c GEOMETRY <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef
     </li>
     <li><a href="#索引方法">索引方法</a></li>
     <li><a href="#索引组合的方式">索引组合的方式</a></li>
-    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a></li>
-    <li><a href="#索引注意事项">索引注意事项</a></li>
+    <li><a href="#聚簇索引和非聚簇索引">聚簇索引和非聚簇索引</a>
+      <ul>
+        <li><a href="#innodb的聚簇索引">InnoDB的聚簇索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#hash索引">Hash索引</a></li>
+    <li><a href="#索引注意事项">索引注意事项</a>
+      <ul>
+        <li><a href="#哪些情况适合创建索引">哪些情况适合创建索引</a></li>
+        <li><a href="#索引使用注意事项">索引使用注意事项</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
