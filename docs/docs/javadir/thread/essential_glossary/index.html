@@ -8,10 +8,10 @@
 <meta name="description" content="锁分类
 #
 
-偏向锁
+轻量级锁
 #
 
-轻量级锁
+偏向锁
 #
 
  当一个线程访问同步块(部分文档和解释说也包括同步方法)并获取锁时,会在对象头和栈帧中的锁记录里存在存储偏向锁的线程ID, 以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁,只需要简单测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁 .如果测试成功,表示已经获取到了锁。如果测试失败,则需要再测试一下Mark word中偏向锁的标识符是否设置成1:如果没有设置,则使用CAS竞争锁; 如果设置了,则尝试使用CAS将对象头的偏向锁指向当前线程(实际就是在对象头锁记录存入线程标识的数据,当然顺带栈帧记录也得存入有关的锁记录数据)
@@ -42,10 +42,10 @@
 <meta property="og:description" content="锁分类
 #
 
-偏向锁
+轻量级锁
 #
 
-轻量级锁
+偏向锁
 #
 
  当一个线程访问同步块(部分文档和解释说也包括同步方法)并获取锁时,会在对象头和栈帧中的锁记录里存在存储偏向锁的线程ID, 以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁,只需要简单测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁 .如果测试成功,表示已经获取到了锁。如果测试失败,则需要再测试一下Mark word中偏向锁的标识符是否设置成1:如果没有设置,则使用CAS竞争锁; 如果设置了,则尝试使用CAS将对象头的偏向锁指向当前线程(实际就是在对象头锁记录存入线程标识的数据,当然顺带栈帧记录也得存入有关的锁记录数据)
@@ -81,7 +81,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.d4482cf64f852707d47df3211a6d0177f4873edac0aa68a4abee0286e120afce.js"  ></script>
+<script defer src="./../../../../en.search.min.16359ef9e13ecd144d50811de8a8879934120dd586fa2123de6bb5c47fd6c48a.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2878,8 +2878,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#偏向锁">偏向锁</a></li>
-    <li><a href="#轻量级锁">轻量级锁</a>
+    <li><a href="#轻量级锁">轻量级锁</a></li>
+    <li><a href="#偏向锁">偏向锁</a>
       <ul>
         <li><a href="#白话">白话</a></li>
       </ul>
@@ -2937,13 +2937,13 @@ https://github.com/alex-shpak/hugo-book
   锁分类
   <a class="anchor" href="#%e9%94%81%e5%88%86%e7%b1%bb">#</a>
 </h1>
-<h2 id="偏向锁">
-  偏向锁
-  <a class="anchor" href="#%e5%81%8f%e5%90%91%e9%94%81">#</a>
-</h2>
 <h2 id="轻量级锁">
   轻量级锁
   <a class="anchor" href="#%e8%bd%bb%e9%87%8f%e7%ba%a7%e9%94%81">#</a>
+</h2>
+<h2 id="偏向锁">
+  偏向锁
+  <a class="anchor" href="#%e5%81%8f%e5%90%91%e9%94%81">#</a>
 </h2>
 <blockquote>
 <p>当一个线程访问同步块(部分文档和解释说也包括同步方法)并获取锁时,会在对象头和栈帧中的锁记录里存在存储偏向锁的线程ID,
@@ -3335,8 +3335,8 @@ CAS，比较并替换，比较当前值（主内存中的值），与预期值�
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#偏向锁">偏向锁</a></li>
-    <li><a href="#轻量级锁">轻量级锁</a>
+    <li><a href="#轻量级锁">轻量级锁</a></li>
+    <li><a href="#偏向锁">偏向锁</a>
       <ul>
         <li><a href="#白话">白话</a></li>
       </ul>
