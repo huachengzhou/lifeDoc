@@ -18,6 +18,8 @@ type: docs
 
 + 一个人要博学 审问 慎思 明辨 然后力行
 
++ 设立一个规则要尽可能的人性化和可持续化
+
 [面试书籍](../pdf/newIndex.html)
 
 [java基础知识参考1](https://javaguide.cn/)
