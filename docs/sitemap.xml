@@ -322,6 +322,9 @@
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/physics/</loc>
+    <lastmod>2017-10-17T15:26:15+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/my-plugins/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -575,5 +578,7 @@
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/</loc>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/physics/light/</loc>
   </url>
 </urlset>

@@ -38,11 +38,11 @@ public class FileImageLastUpdateSoft {
         });
         Collections.sort(fileList,fileOrdering);
         Iterator<File> iterator = fileList.iterator();
-        int i = 8;
+        int i = 11;
         System.out.println("");
         while (iterator.hasNext()){
             File next = iterator.next();
-            if (!StringUtils.contains(next.getName(),"屏幕截图")) {
+            if (!StringUtils.contains(next.getName(),"微信截图")) {
                 continue;
             }
             String name = "[img"+i+"]" ;

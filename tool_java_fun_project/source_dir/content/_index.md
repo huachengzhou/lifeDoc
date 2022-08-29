@@ -20,6 +20,8 @@ type: docs
 
 + 设立一个规则要尽可能的人性化和可持续化
 
++ 可以考虑b站的视频分享和创造了,看考虑哪方面下手,如何下手
+
 [面试书籍](../pdf/newIndex.html)
 
 [java基础知识参考1](https://javaguide.cn/)
