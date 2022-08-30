@@ -387,18 +387,63 @@ rwLock.writeLock().unlock();
 ## 同步术语
 
 + volatile类型的变量
+
 + 显示锁 Explicit Lock
+
 + 原子变量
-+ synchronized
+
+## synchronized
+
+![][img19]
+![][img19_]
+
++ synchronized是Java中的关键字 用来修饰方法、对象实例。属于独占锁、悲观锁、 可重入锁、非公平锁。
+
++ 1.作用于实例方法时，锁住的是对象的实例(this)；
++ 2.当作用于静态方法时，锁住的是 Class类，相当于类的一个全局锁，会锁所有调用该方法的线程；
++ 3.synchronized 作用于一个非 NULL的对象实例时，锁住的是所有以该对象为锁的代码块。 它有多个队列，当多个线程一起访问某个对象监视器的时候，对象监视器会将这些线程存储在不同的容器中。
+
++ 每个对象都有个 monitor 对象， 加锁就是在竞争 monitor 对象，代码块加锁是在代码块前后分别加上 monitorenter 和 monitorexit 指令来实现的，方法加锁是通过一个标记位来判断的。
 
 
+## Lock和synchronized的区别
 
+### Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。
 
++ 1.Lock需要手动获取锁和释放锁。就好比自动挡和手动挡的区别
++ 2.Lock 是一个接口，而 synchronized 是 Java 中的关键字
++ synchronized 是内置的语言实现。
++ 3.synchronized 在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而 Lock 在发生异常时，如果没有主动通过 unLock()去释放锁，则很可能造成死锁现象，因此使用 Lock 时需要在 finally 块中释放锁。
++ 4.Lock 可以让等待锁的线程响应中断，而 synchronized 却不行，使用synchronized 时，等待的线程会一直等待下去，不能够响应中断。
++ 5.通过 Lock 可以知道有没有成功获取锁，而 synchronized 却无法办到。
++ 6.Lock 可以通过实现读写锁提高多个线程进行读操作的效率。
 
+### synchronized的优势：
++ 足够清晰简单，只需要基础的同步功能时，用synchronized。
++ Lock应该确保在finally块中释放锁。如果使用synchronized，JVM确保即
++ 使出现异常，锁也能被自动释放。
++ 使用Lock时，Java虚拟机很难得知哪些锁对象是由特定线程锁持有的。
 
+## ReentrantLock 和synchronized的区别
 
+![][img20]
+![][img20_]
 
++ ReentrantLock是Java中的类 ： 继承了Lock类，可重入锁、悲观锁、独占锁、互斥锁、同步锁。
 
+### 相同点
+
++ 1.主要解决共享变量如何安全访问的问题
++ 2.都是可重入锁，也叫做递归锁，同一线程可以多次获得同一个锁，
++ 3.保证了线程安全的两大特性：可见性、原子性。
+
+### 不同点
+
++ 1.ReentrantLock 就像手动汽车，需要显示的调用lock和unlock方法，synchronized 隐式获得释放锁。
++ 2.ReentrantLock 可响应中断， synchronized 是不可以响应中断的，ReentrantLock 为处理锁的不可用性提供了更高的灵活性
++ 3.ReentrantLock 是 API 级别的， synchronized 是 JVM 级别的
++ 4.ReentrantLock 可以实现公平锁、非公平锁，默认非公平锁，synchronized 是非公平锁，且不可更改。
++ 5.ReentrantLock 通过 Condition 可以绑定多个条件
 
 
 
@@ -446,3 +491,7 @@ rwLock.writeLock().unlock();
 [img18]:../.././imgs/java/thread/微信截图_20220829215816.png
 [img18_]:../../../imgs/java/thread/微信截图_20220829215816.png
 
+[img19]:../.././imgs/java/thread/微信截图_20220830214419.png
+[img19_]:../../../imgs/java/thread/微信截图_20220830214419.png
+[img20]:../.././imgs/java/thread/微信截图_20220830214445.png
+[img20_]:../../../imgs/java/thread/微信截图_20220830214445.png
