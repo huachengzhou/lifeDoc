@@ -59,7 +59,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.45816c51e8feff36b1c5e78fb7ec3aaf260f741fa0a7b3addb01faf2bd770cc8.js"  ></script>
+<script defer src="./../../../../en.search.min.ee35fb8c0474e370a83ce16d152e6ae3ef221f2d17c582b8a7d5af0476ec811d.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -997,6 +997,17 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/thread/glossary/" class="">名词解释</a>
+  
+
+        </li>
       
     
       
@@ -2925,11 +2936,31 @@ https://github.com/alex-shpak/hugo-book
 
   <ul>
     <li><a href="#cas">CAS</a></li>
-    <li><a href="#aqs">AQS</a></li>
+    <li><a href="#aqs">AQS</a>
+      <ul>
+        <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
+        <li><a href="#优势">优势</a></li>
+        <li><a href="#aqs核心知识">AQS核心知识</a></li>
+        <li><a href="#aqs实现细节">AQS实现细节</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
     <li><a href="#同步术语">同步术语</a></li>
+    <li><a href="#synchronized">synchronized</a></li>
+    <li><a href="#lock和synchronized的区别">Lock和synchronized的区别</a>
+      <ul>
+        <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
+        <li><a href="#synchronized的优势">synchronized的优势：</a></li>
+      </ul>
+    </li>
+    <li><a href="#reentrantlock-和synchronized的区别">ReentrantLock 和synchronized的区别</a>
+      <ul>
+        <li><a href="#相同点">相同点</a></li>
+        <li><a href="#不同点">不同点</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -3346,10 +3377,484 @@ ReentrantLock 来进行加锁，所以每次需要加锁的操作锁住的是一
   CAS
   <a class="anchor" href="#cas">#</a>
 </h2>
+<ul>
+<li>lock cmpxchgq (比较并交换指令)</li>
+<li>java调用链 普通api =&gt; java Unsafe =&gt; native cpp =&gt; 操作系统指令</li>
+<li>这里要注意即使是c++也不是真正底层 实际是通过操作系统执行中央处理器并做一些处理后得到的结果</li>
+</ul>
+<blockquote>
+<p>CAS，即Compare and Swap，是基于硬件级别的指令实现的同步原语，Java并发包java.utile.concurrent许多同步类基于CAS构建，因此可见CAS的重要性；</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">处理器（包括 Intel 和 Sparc 处理器）使用的最通用的方法是实现名为比较并转换或CAS的原语，在 Intel 处理器中，
+比较并交换通过指令的 cmpxchg系列实现。CAS 操作包含三个操作数 —— 内存位置（V）、预期原值（A）和新值<span style="color:#f92672">(</span>B<span style="color:#f92672">)</span>。
+如果内存位置的值V与预期原值A相匹配，那么处理器会自动将该位置值V更新为新值B，否则，处理器不做任何操作，整个操作保证了原子性，即在对比V<span style="color:#f92672">==</span>A后、
+设置V<span style="color:#f92672">=</span>B之前不会有其他线程修改V的值。
+</code></pre></div><ul>
+<li>Unsafe提供CAS操作的native方法</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/** 拿对象o在内存偏移offset处的对象与expected比较，如果相等，则设置o.offset=x并返回true，否则返回false */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapObject</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> Object expected<span style="color:#f92672">,</span> Object x<span style="color:#f92672">);</span>
+<span style="color:#75715e">/** 拿对象o在内存偏移offset处的long值与expected比较，如果相等则设置o.offset=x */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapLong</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> expected<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> x<span style="color:#f92672">);</span>
+<span style="color:#75715e">/** 拿对象o在内存偏移offset处的int值与expected比较，如果相等则设置o.offset=x */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapInt</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> expected<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> x<span style="color:#f92672">);</span>
+
+<span style="color:#75715e">/** 获取字段f的偏移量 */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">objectFieldOffset</span><span style="color:#f92672">(</span>Field f<span style="color:#f92672">);</span>
+<span style="color:#75715e">/** 获取静态field在对象中的偏移量 */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">staticFieldOffset</span><span style="color:#f92672">(</span>Field f<span style="color:#f92672">);</span>                                                  
+</code></pre></div><ul>
+<li>
+<p>例子1</p>
+</li>
+<li>
+<p>AbstractQueuedSynchronizer类中用到CAS实现state值的更新</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">long</span> stateOffset <span style="color:#f92672">=</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">objectFieldOffset</span>
+                <span style="color:#f92672">(</span>AbstractQueuedSynchronizer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;state&#34;</span><span style="color:#f92672">));</span>
+
+<span style="color:#75715e">// CAS方式修改state字段的值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSetState</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> expect<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> update<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">compareAndSwapInt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> stateOffset<span style="color:#f92672">,</span> expect<span style="color:#f92672">,</span> update<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>Unsafe提供给atomic原子类调用的方法</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAndAddInt</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> delta<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">int</span> v<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">do</span> <span style="color:#f92672">{</span>
+    	<span style="color:#75715e">// 获取内存中的值
+</span><span style="color:#75715e"></span>         v <span style="color:#f92672">=</span> getIntVolatile<span style="color:#f92672">(</span>o<span style="color:#f92672">,</span> offset<span style="color:#f92672">);</span>
+     <span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>compareAndSwapInt<span style="color:#f92672">(</span>o<span style="color:#f92672">,</span> offset<span style="color:#f92672">,</span> v<span style="color:#f92672">,</span> v <span style="color:#f92672">+</span> delta<span style="color:#f92672">));</span>
+     <span style="color:#66d9ef">return</span> v<span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">getAndAddLong</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> delta<span style="color:#f92672">)</span>
+ <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAndSetInt</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> newValue<span style="color:#f92672">)</span>
+ <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">getAndSetLong</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> newValue<span style="color:#f92672">)</span>
+ <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> Object <span style="color:#a6e22e">getAndSetObject</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> offset<span style="color:#f92672">,</span> Object newValue<span style="color:#f92672">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">此外，Unsafe类还基于这几个native方法封装了几个给atomic原子类调用的方法：
+拿getAndAddInt分析，首先取内存中的值，然后执行CAS操作，如果成功则返回修改前的值；
+如果取完内存值后执行CAS失败，比如被其他线程修改了值，则重新取内存中的值，继续CAS，直到成功，
+如果竞争比较激烈，可能会循环次数过多；这里可以引申出乐观锁悲观锁的含义，
+比如某个线程要对变量进行add操作，悲观锁认为期间一定会有其他线程修改变量，于是会在整个修改期间加锁，比如synchronized；
+而乐观锁认为不会有其他线程修改变量，getAndAddInt正是乐观锁，用CAS代替锁，如果出现竞争，则用自旋的方式等待；
+</code></pre></div><ul>
+<li>CAS在原子类中的应用—AtomicInteger为例</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// AtomicInteger可以理解为在并发场景下基于CAS乐观锁实现了int共享变量更新的线程安全，常见方法如下
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAndSet</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> newValue<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">getAndSetInt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> valueOffset<span style="color:#f92672">,</span> newValue<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSet</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> expect<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> update<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">compareAndSwapInt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> valueOffset<span style="color:#f92672">,</span> expect<span style="color:#f92672">,</span> update<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAndIncrement</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">getAndAddInt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> valueOffset<span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAndDecrement</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">getAndAddInt</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> valueOffset<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>CAS存在的问题</li>
+</ul>
+<ul>
+<li>
+<p>1:效率问题：前面提到，如果存在多个线程竞争，可能导致CAS失败，此时可能需要循环（自旋）执行CAS，竞争激烈情况下会对性能有一定影响；</p>
+</li>
+<li>
+<p>2:ABA问题：CAS过程中其他线程把变量从A改成B，然后又改回A，CAS判断值没变于是执行更新操作，但事实上值是被修改了的，与设计原语不符，atomic包引入AtomicStampReference类解决ABA问题，每次变量更新的时候，将变量的版本号+1，之前的ABA问题中，变量经过两次操作以后，变量的版本号就会由1变成3，也就是说只要线程对变量进行过操作，变量的版本号就会发生更改，从而解决了ABA问题；但实际应用中ABA问题如果对业务逻辑不会造成影响，可以忽略</p>
+</li>
+</ul>
 <h2 id="aqs">
   AQS
   <a class="anchor" href="#aqs">#</a>
 </h2>
+<blockquote>
+<p>AQS全称AbstractQueuedSynchronizer，即抽象的队列同步器，是一种用来构建锁和同步器的框架</p>
+</blockquote>
+<h3 id="基于aqs构建同步器">
+  基于AQS构建同步器
+  <a class="anchor" href="#%e5%9f%ba%e4%ba%8eaqs%e6%9e%84%e5%bb%ba%e5%90%8c%e6%ad%a5%e5%99%a8">#</a>
+</h3>
+<ul>
+<li>ReentrantLock</li>
+<li>Semaphore</li>
+<li>CountDownLatch</li>
+<li>ReentrantReadWriteLock</li>
+<li>SynchronusQueue</li>
+<li>FutureTask</li>
+</ul>
+<h3 id="优势">
+  优势
+  <a class="anchor" href="#%e4%bc%98%e5%8a%bf">#</a>
+</h3>
+<ul>
+<li>AQS 解决了在实现同步器时涉及的大量细节问题，例如自定义标准同步状态、FIFO 同步队列。</li>
+<li>基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作，而且也不必处理在多个位置上发生的竞争问题。</li>
+</ul>
+<h3 id="aqs核心知识">
+  AQS核心知识
+  <a class="anchor" href="#aqs%e6%a0%b8%e5%bf%83%e7%9f%a5%e8%af%86">#</a>
+</h3>
+<h4 id="aqs核心思想">
+  AQS核心思想
+  <a class="anchor" href="#aqs%e6%a0%b8%e5%bf%83%e6%80%9d%e6%83%b3">#</a>
+</h4>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831103316.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831103316.png" alt="" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">如果被请求的共享资源空闲，则将当前请求资源的线程设置为有效的工作线程，并且将共享资源设置为锁定状态。
+如果被请求的共享资源被占用，那么就需要一套线程阻塞等待以及被唤醒时锁分配的机制，
+这个机制AQS是用CLH队列锁实现的，即将暂时获取不到锁的线程加入到队列中。如图所示
+</code></pre></div><ul>
+<li>Sync queue： 同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度</li>
+</ul>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831105415.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831105415.png" alt="" /></p>
+<ul>
+<li>Condition queue： 非必须，单向列表。当程序中存在cindition的时候才会存在此列表</li>
+</ul>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831105602.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831105602.png" alt="" /></p>
+<h4 id="aqs设计思想">
+  AQS设计思想
+  <a class="anchor" href="#aqs%e8%ae%be%e8%ae%a1%e6%80%9d%e6%83%b3">#</a>
+</h4>
+<ul>
+<li>1:AQS使用一个int成员变量来表示同步状态</li>
+<li>2:使用Node实现FIFO队列，可以用于构建锁或者其他同步装置</li>
+<li>3:AQS资源共享方式：独占Exclusive（排它锁模式）和共享Share（共享锁模式）</li>
+</ul>
+<blockquote>
+<p>AQS它的所有子类中，要么实现并使用了它的独占功能的api，要么使用了共享锁的功能，而不会同时使用两套api，即便是最有名的子类ReentrantReadWriteLock也是通过两个内部类读锁和写锁分别实现了两套api来实现的</p>
+</blockquote>
+<h4 id="state状态">
+  state状态
+  <a class="anchor" href="#state%e7%8a%b6%e6%80%81">#</a>
+</h4>
+<ul>
+<li>
+<p>state状态使用volatile int类型的变量，表示当前同步状态。state的访问方式有三种</p>
+</li>
+<li>
+<p>getState()</p>
+</li>
+<li>
+<p>setState()</p>
+</li>
+<li>
+<p>compareAndSetState()</p>
+</li>
+</ul>
+<h4 id="aqs中node常量含义">
+  AQS中Node常量含义
+  <a class="anchor" href="#aqs%e4%b8%adnode%e5%b8%b8%e9%87%8f%e5%90%ab%e4%b9%89">#</a>
+</h4>
+<ul>
+<li>CANCELLED</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">waitStatus值为1时表示该线程节点已释放（超时、中断），已取消的节点不会再阻塞
+</code></pre></div><ul>
+<li>SIGNAL</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">waitStatus为-1时表示该线程的后续线程需要阻塞，即只要前置节点释放锁，就会通知标识为 SIGNAL 状态的后续节点的线程
+</code></pre></div><ul>
+<li>CONDITION</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">waitStatus为-2时，表示该线程在condition队列中阻塞（Condition有使用）
+</code></pre></div><ul>
+<li>PROPAGATE</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">waitStatus为-3时，表示该线程以及后续线程进行无条件传播（CountDownLatch中有使用）共享模式下， PROPAGATE 状态的线程处于可运行状态
+</code></pre></div><ul>
+<li>同步队列为什么称为FIFO呢？</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">因为只有前驱节点是head节点的节点才能被首先唤醒去进行同步状态的获取。当该节点获取到同步状态时，它会清除自己的值，将自己作为head节点，以便唤醒下一个节点
+</code></pre></div><ul>
+<li>Condition队列 (单向队列)</li>
+</ul>
+<blockquote>
+<p>Condition队列也是FIFO。调用ConditionObject.signal()方法，能够唤醒firstWaiter节点，将其添加到同步队列末尾</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 除了同步队列之外，AQS中还存在Condition队列，这是一个单向队列。调用ConditionObject.await<span style="color:#f92672">()</span>方法，
+ 能够将当前线程封装成Node加入到Condition队列的末尾，然后将获取的同步状态释放（即修改同步状态的值，唤醒在同步队列中的线程）
+</code></pre></div><ul>
+<li>自定义同步器的实现</li>
+</ul>
+<blockquote>
+<p>在构建自定义同步器时，只需要依赖AQS底层再实现共享资源state的获取与释放操作即可。自定义同步器实现时主要实现以下几种方法：</p>
+</blockquote>
+<ul>
+<li>isHeldExclusively()：该线程是否正在独占资源。只有用到condition才需要去实现它。</li>
+<li>tryAcquire(int)：独占方式。尝试获取资源，成功则返回true，失败则返回false。</li>
+<li>tryRelease(int)：独占方式。尝试释放资源，成功则返回true，失败则返回false。</li>
+<li>tryAcquireShared(int)：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。</li>
+<li>tryReleaseShared(int)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false</li>
+</ul>
+<h3 id="aqs实现细节">
+  AQS实现细节
+  <a class="anchor" href="#aqs%e5%ae%9e%e7%8e%b0%e7%bb%86%e8%8a%82">#</a>
+</h3>
+<blockquote>
+<p>线程首先尝试获取锁，如果失败就将当前线程及等待状态等信息包装成一个node节点加入到FIFO队列中。 接着会不断的循环尝试获取锁，条件是当前节点为head的直接后继才会尝试。如果失败就会阻塞自己直到自己被唤醒。而当持有锁的线程释放锁的时候，会唤醒队列中的后继线程。</p>
+</blockquote>
+<h4 id="独占模式下的aqs">
+  独占模式下的AQS
+  <a class="anchor" href="#%e7%8b%ac%e5%8d%a0%e6%a8%a1%e5%bc%8f%e4%b8%8b%e7%9a%84aqs">#</a>
+</h4>
+<ul>
+<li>所谓独占模式，即只允许一个线程获取同步状态，当这个线程还没有释放同步状态时，其他线程是获取不了的，只能加入到同步队列，进行等待</li>
+</ul>
+<blockquote>
+<p>很明显，我们可以将state的初始值设为0，表示空闲。当一个线程获取到同步状态时，利用CAS操作让state加1，表示非空闲，那么其他线程就只能等待了。释放同步状态时，不需要CAS操作，因为独占模式下只有一个线程能获取到同步状态。ReentrantLock、CyclicBarrier正是基于此设计的</p>
+</blockquote>
+<ul>
+<li>例如,ReentrantLock，state初始化为0，表示未锁定状态。A线程lock()时，会调用tryAcquire()独占该锁并将state+1</li>
+</ul>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831154453.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220831154453.png" alt="" /></p>
+<ul>
+<li>
+<p>独占模式下的AQS是不响应中断的，指的是加入到同步队列中的线程，如果因为中断而被唤醒的话，不会立即返回，并且抛出InterruptedException。而是再次去判断其前驱节点是否为head节点，决定是否争抢同步状态。如果其前驱节点不是head节点或者争抢同步状态失败，那么再次挂起</p>
+</li>
+<li>
+<p>独占模式获取资源-acquire方法</p>
+</li>
+<li>
+<p>acquire以独占exclusive方式获取资源。如果获取到资源，线程直接返回，否则进入等待队列，直到获取到资源为止，且整个过程忽略中断的影响。源码如下</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acquire</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>tryAcquire<span style="color:#f92672">(</span>arg<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span>
+ acquireQueued<span style="color:#f92672">(</span>addWaiter<span style="color:#f92672">(</span>Node<span style="color:#f92672">.</span><span style="color:#a6e22e">EXCLUSIVE</span><span style="color:#f92672">),</span> arg<span style="color:#f92672">))</span>
+ selfInterrupt<span style="color:#f92672">();</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>流程图</li>
+</ul>
+<p><img src="../.././imgs/java/thread/99551e3c9965ea44bade764f9124b131.png" alt="" />
+<img src="../../../imgs/java/thread/99551e3c9965ea44bade764f9124b131.png" alt="" /></p>
+<ul>
+<li>
+<p>调用自定义同步器的tryAcquire()尝试直接去获取资源，如果成功则直接返回；</p>
+</li>
+<li>
+<p>没成功，则addWaiter()将该线程加入等待队列的尾部，并标记为独占模式；</p>
+</li>
+<li>
+<p>acquireQueued()使线程在等待队列中休息，有机会时（轮到自己，会被unpark()）会去尝试获取资源。获取到资源后才返回。如果在整个等待过程中被中断过，则返回true，否则返回false。</p>
+</li>
+<li>
+<p>如果线程在等待过程中被中断过，它是不响应的。只是获取资源后才再进行自我中断selfInterrupt()，将中断补上</p>
+</li>
+<li>
+<p>独占模式获取资源-tryAcquire方法</p>
+</li>
+<li>
+<p>tryAcquire尝试以独占的方式获取资源，如果获取成功，则直接返回true，否则直接返回false，且具体实现由自定义AQS的同步器实现的</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">tryAcquire</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> UnsupportedOperationException<span style="color:#f92672">();</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>独占模式获取资源-addWaiter方法</p>
+</li>
+<li>
+<p>根据不同模式(Node.EXCLUSIVE互斥模式、Node.SHARED共享模式)创建结点并以CAS的方式将当前线程节点加入到不为空的等待队列的末尾(通过compareAndSetTail()方法)。如果队列为空，通过enq(node)方法初始化一个等待队列，并返回当前节点</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">* 参数
+</span><span style="color:#75715e">* @param mode Node.EXCLUSIVE for exclusive, Node.SHARED for shared
+</span><span style="color:#75715e">* 返回值
+</span><span style="color:#75715e">* @return the new node
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">addWaiter</span><span style="color:#f92672">(</span>Node mode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//将当前线程以指定的模式创建节点node
+</span><span style="color:#75715e"></span> Node node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node<span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">(),</span> mode<span style="color:#f92672">);</span>
+ <span style="color:#75715e">// Try the fast path of enq; backup to full enq on failure
+</span><span style="color:#75715e"></span> <span style="color:#75715e">// 获取当前同队列的尾节点
+</span><span style="color:#75715e"></span> Node pred <span style="color:#f92672">=</span> tail<span style="color:#f92672">;</span>
+ <span style="color:#75715e">//队列不为空，将新的node加入等待队列中
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>pred <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ node<span style="color:#f92672">.</span><span style="color:#a6e22e">prev</span> <span style="color:#f92672">=</span> pred<span style="color:#f92672">;</span>
+ <span style="color:#75715e">//CAS方式将当前节点尾插入队列中
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>compareAndSetTail<span style="color:#f92672">(</span>pred<span style="color:#f92672">,</span> node<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+ pred<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#75715e">//当队列为empty或者CAS失败时会调用enq方法处理
+</span><span style="color:#75715e"></span> enq<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+ <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>其中，队列为empty，使用enq(node)处理，将当前节点插入等待队列，如果队列为空，则初始化当前队列。所有操作都是CAS自旋的方式进行，直到成功加入队尾为止</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> Node <span style="color:#a6e22e">enq</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//不断自旋
+</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+        Node t <span style="color:#f92672">=</span> tail<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//当前队列为empty
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// Must initialize
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">//完成队列初始化操作，头结点中不放数据，只是作为起始标记，lazy-load，在第一次用的时候new
+</span><span style="color:#75715e"></span>             <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>compareAndSetHead<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Node<span style="color:#f92672">()))</span>
+                tail <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+             <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                node<span style="color:#f92672">.</span><span style="color:#a6e22e">prev</span> <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+                <span style="color:#75715e">//不断将当前节点使用CAS尾插入队列中直到成功为止
+</span><span style="color:#75715e"></span>                 <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>compareAndSetTail<span style="color:#f92672">(</span>t<span style="color:#f92672">,</span> node<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+                    t<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">return</span> t<span style="color:#f92672">;</span>
+                 <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+         <span style="color:#f92672">}</span>
+     <span style="color:#f92672">}</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>独占模式获取资源-acquireQueued方法</p>
+</li>
+<li>
+<p>acquireQueued用于已在队列中的线程以独占且不间断模式获取state状态，直到获取锁后返回。主要流程:</p>
+</li>
+<li>
+<p>结点node进入队列尾部后，检查状态；</p>
+</li>
+<li>
+<p>调用park()进入waiting状态，等待unpark()或interrupt()唤醒；</p>
+</li>
+<li></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">acquireQueued</span> <span style="color:#f92672">(</span> <span style="color:#66d9ef">final</span> Node node<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span>
+        <span style="color:#f92672">{</span> <span style="color:#75715e">//是否已获取锁的标志，默认为true 即为尚未
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">boolean</span> failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                 <span style="color:#66d9ef">boolean</span> interrupted <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span><span style="color:#75715e">//等待中是否被中断过的标记
+</span><span style="color:#75715e"></span>                 <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+                      <span style="color:#66d9ef">final</span> Node p <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">predecessor</span><span style="color:#f92672">();</span> <span style="color:#75715e">//获取前节点
+</span><span style="color:#75715e"></span>                     <span style="color:#75715e">// 如果当前节点已经成为头结点，尝试获取锁（tryAcquire）成功，然后返回 if (p == head &amp;&amp; tryAcquire(arg)) { setHead(node); p.next = null; 
+</span><span style="color:#75715e"></span>                    help GC failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#66d9ef">return</span> interrupted<span style="color:#f92672">;</span> <span style="color:#f92672">}</span> 
+                     shouldParkAfterFailedAcquire根据对当前节点的前一个节点的状态进行判断<span style="color:#960050;background-color:#1e0010">，</span>对当前节点做出不同的操作 
+                      parkAndCheckInterrupt让线程进入等待状态<span style="color:#960050;background-color:#1e0010">，</span>并检查当前线程是否被可以被中断 
+                      <span style="color:#a6e22e">if</span> <span style="color:#f92672">(</span>shouldParkAfterFailedAcquire<span style="color:#f92672">(</span>p<span style="color:#f92672">,</span> node<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> parkAndCheckInterrupt<span style="color:#f92672">())</span> interrupted <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+                     <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//将当前节点设置为取消状态；取消状态设置为1 if (failed) cancelAcquire(node); } }
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>独占模式释放资源-release方法</p>
+</li>
+<li>
+<p>release方法是独占exclusive模式下线程释放共享资源的锁。它会调用tryRelease()释放同步资源，如果全部释放了同步状态为空闲（即state=0）,当同步状态为空闲时，它会唤醒等待队列里的其他线程来获取资源。这也正是unlock()的语义，当然不仅仅只限于unlock()</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">release</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tryRelease<span style="color:#f92672">(</span>arg<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+ Node h <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> h<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span> <span style="color:#f92672">!=</span> 0<span style="color:#f92672">)</span>
+ unparkSuccessor<span style="color:#f92672">(</span>h<span style="color:#f92672">);</span>
+ <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>独占模式释放资源-tryRelease方法</p>
+</li>
+<li>
+<p>tryRelease()跟tryAcquire()一样实现都是由自定义定时器以独占exclusive模式实现的。因为其是独占模式，不需要考虑线程安全的问题去释放共享资源，直接减掉相应量的资源即可(state-=arg)。而且tryRelease()的返回值代表着该线程是否已经完成资源的释放，因此在自定义同步器的tryRelease()时，需要明确这条件，当已经彻底释放资源(state=0)，要返回true，否则返回false</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">tryRelease</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> UnsupportedOperationException<span style="color:#f92672">();</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>ReentrantReadWriteLock的实现</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">tryRelease</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> releases<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>isHeldExclusively<span style="color:#f92672">())</span>
+ <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalMonitorStateException<span style="color:#f92672">();</span>
+ <span style="color:#75715e">//减掉相应量的资源(state-=arg)
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">int</span> nextc <span style="color:#f92672">=</span> getState<span style="color:#f92672">()</span> <span style="color:#f92672">-</span> releases<span style="color:#f92672">;</span>
+ <span style="color:#75715e">//是否完全释放资源
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">boolean</span> free <span style="color:#f92672">=</span> exclusiveCount<span style="color:#f92672">(</span>nextc<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>free<span style="color:#f92672">)</span>
+ setExclusiveOwnerThread<span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+ setState<span style="color:#f92672">(</span>nextc<span style="color:#f92672">);</span>
+ <span style="color:#66d9ef">return</span> free<span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>独占模式释放资源-unparkSuccessor</p>
+</li>
+<li>
+<p>unparkSuccessor用unpark()唤醒等待队列中最前驱的那个未放弃线程，此线程并不一定是当前节点的next节点，而是下一个可以用来唤醒的线程，如果这个节点存在，调用unpark()方法唤醒</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unparkSuccessor</span><span style="color:#f92672">(</span>Node node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//当前线程所在的结点node
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">int</span> ws <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span><span style="color:#f92672">;</span>
+ <span style="color:#75715e">//置零当前线程所在的结点状态，允许失败
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ws <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span>
+ compareAndSetWaitStatus<span style="color:#f92672">(</span>node<span style="color:#f92672">,</span> ws<span style="color:#f92672">,</span> 0<span style="color:#f92672">);</span>
+ <span style="color:#75715e">//找到下一个需要唤醒的结点
+</span><span style="color:#75715e"></span> Node s <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ s <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+ <span style="color:#75715e">// 从后向前找
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Node t <span style="color:#f92672">=</span> tail<span style="color:#f92672">;</span> t <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> t <span style="color:#f92672">!=</span> node<span style="color:#f92672">;</span> t <span style="color:#f92672">=</span> t<span style="color:#f92672">.</span><span style="color:#a6e22e">prev</span><span style="color:#f92672">)</span>
+ <span style="color:#75715e">//从这里可以看出，&lt;=0的结点，都是还有效的结点
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span> <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span>
+ s <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+ <span style="color:#75715e">//唤醒
+</span><span style="color:#75715e"></span> LockSupport<span style="color:#f92672">.</span><span style="color:#a6e22e">unpark</span><span style="color:#f92672">(</span>s<span style="color:#f92672">.</span><span style="color:#a6e22e">thread</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>共享模式下的AQS</p>
+</li>
+<li>
+<p>共享模式，当然是允许多个线程同时获取到同步状态,共享模式下的AQS也是不响应中断的</p>
+</li>
+</ul>
+<blockquote>
+<p>很明显，我们可以将state的初始值设为N（N &gt; 0），表示空闲。每当一个线程获取到同步状态时，就利用CAS操作让state减1，直到减到0表示非空闲，其他线程就只能加入到同步队列，进行等待。释放同步状态时，需要CAS操作，因为共享模式下，有多个线程能获取到同步状态。CountDownLatch、Semaphore正是基于此设计的</p>
+</blockquote>
+<ul>
+<li>例如，CountDownLatch，任务分为N个子线程去执行，同步状态state也初始化为N（注意N要与线程个数一致）:  </li>
+</ul>
+<p><img src="../.././imgs/java/thread/68223fcc9e4aeb67bb01f0080fc0d0f0.png" alt="" />
+<img src="../../../imgs/java/thread/68223fcc9e4aeb67bb01f0080fc0d0f0.png" alt="" /></p>
+<ul>
+<li>
+<p>共享模式获取资源-acquireShared方法</p>
+</li>
+<li>
+<p>acquireShared在共享模式下线程获取共享资源的顶层入口。它会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acquireShared</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tryAcquireShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span>
+ doAcquireShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>流程：</p>
+</li>
+<li>
+<p>先通过tryAcquireShared()尝试获取资源，成功则直接返回；</p>
+</li>
+<li>
+<p>失败则通过doAcquireShared()中的park()进入等待队列，直到被unpark()/interrupt()并成功获取到资源才返回(整个等待过程也是忽略中断响应)。</p>
+</li>
+</ul>
 <h1 id="其它">
   其它
   <a class="anchor" href="#%e5%85%b6%e5%ae%83">#</a>
@@ -3359,10 +3864,94 @@ ReentrantLock 来进行加锁，所以每次需要加锁的操作锁住的是一
   <a class="anchor" href="#%e5%90%8c%e6%ad%a5%e6%9c%af%e8%af%ad">#</a>
 </h2>
 <ul>
-<li>volatile类型的变量</li>
-<li>显示锁 Explicit Lock</li>
-<li>原子变量</li>
-<li>synchronized</li>
+<li>
+<p>volatile类型的变量</p>
+</li>
+<li>
+<p>显示锁 Explicit Lock</p>
+</li>
+<li>
+<p>原子变量</p>
+</li>
+</ul>
+<h2 id="synchronized">
+  synchronized
+  <a class="anchor" href="#synchronized">#</a>
+</h2>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220830214419.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220830214419.png" alt="" /></p>
+<ul>
+<li>
+<p>synchronized是Java中的关键字 用来修饰方法、对象实例。属于独占锁、悲观锁、 可重入锁、非公平锁。</p>
+</li>
+<li>
+<p>1.作用于实例方法时，锁住的是对象的实例(this)；</p>
+</li>
+<li>
+<p>2.当作用于静态方法时，锁住的是 Class类，相当于类的一个全局锁，会锁所有调用该方法的线程；</p>
+</li>
+<li>
+<p>3.synchronized 作用于一个非 NULL的对象实例时，锁住的是所有以该对象为锁的代码块。 它有多个队列，当多个线程一起访问某个对象监视器的时候，对象监视器会将这些线程存储在不同的容器中。</p>
+</li>
+<li>
+<p>每个对象都有个 monitor 对象， 加锁就是在竞争 monitor 对象，代码块加锁是在代码块前后分别加上 monitorenter 和 monitorexit 指令来实现的，方法加锁是通过一个标记位来判断的。</p>
+</li>
+</ul>
+<h2 id="lock和synchronized的区别">
+  Lock和synchronized的区别
+  <a class="anchor" href="#lock%e5%92%8csynchronized%e7%9a%84%e5%8c%ba%e5%88%ab">#</a>
+</h2>
+<h3 id="lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">
+  Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。
+  <a class="anchor" href="#lock-%e6%98%afjava%e4%b8%ad%e7%9a%84%e6%8e%a5%e5%8f%a3%e5%8f%af%e9%87%8d%e5%85%a5%e9%94%81%e6%82%b2%e8%a7%82%e9%94%81%e7%8b%ac%e5%8d%a0%e9%94%81%e4%ba%92%e6%96%a5%e9%94%81%e5%90%8c%e6%ad%a5%e9%94%81">#</a>
+</h3>
+<ul>
+<li>1.Lock需要手动获取锁和释放锁。就好比自动挡和手动挡的区别</li>
+<li>2.Lock 是一个接口，而 synchronized 是 Java 中的关键字</li>
+<li>synchronized 是内置的语言实现。</li>
+<li>3.synchronized 在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而 Lock 在发生异常时，如果没有主动通过 unLock()去释放锁，则很可能造成死锁现象，因此使用 Lock 时需要在 finally 块中释放锁。</li>
+<li>4.Lock 可以让等待锁的线程响应中断，而 synchronized 却不行，使用synchronized 时，等待的线程会一直等待下去，不能够响应中断。</li>
+<li>5.通过 Lock 可以知道有没有成功获取锁，而 synchronized 却无法办到。</li>
+<li>6.Lock 可以通过实现读写锁提高多个线程进行读操作的效率。</li>
+</ul>
+<h3 id="synchronized的优势">
+  synchronized的优势：
+  <a class="anchor" href="#synchronized%e7%9a%84%e4%bc%98%e5%8a%bf">#</a>
+</h3>
+<ul>
+<li>足够清晰简单，只需要基础的同步功能时，用synchronized。</li>
+<li>Lock应该确保在finally块中释放锁。如果使用synchronized，JVM确保即</li>
+<li>使出现异常，锁也能被自动释放。</li>
+<li>使用Lock时，Java虚拟机很难得知哪些锁对象是由特定线程锁持有的。</li>
+</ul>
+<h2 id="reentrantlock-和synchronized的区别">
+  ReentrantLock 和synchronized的区别
+  <a class="anchor" href="#reentrantlock-%e5%92%8csynchronized%e7%9a%84%e5%8c%ba%e5%88%ab">#</a>
+</h2>
+<p><img src="../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220830214445.png" alt="" />
+<img src="../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20220830214445.png" alt="" /></p>
+<ul>
+<li>ReentrantLock是Java中的类 ： 继承了Lock类，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</li>
+</ul>
+<h3 id="相同点">
+  相同点
+  <a class="anchor" href="#%e7%9b%b8%e5%90%8c%e7%82%b9">#</a>
+</h3>
+<ul>
+<li>1.主要解决共享变量如何安全访问的问题</li>
+<li>2.都是可重入锁，也叫做递归锁，同一线程可以多次获得同一个锁，</li>
+<li>3.保证了线程安全的两大特性：可见性、原子性。</li>
+</ul>
+<h3 id="不同点">
+  不同点
+  <a class="anchor" href="#%e4%b8%8d%e5%90%8c%e7%82%b9">#</a>
+</h3>
+<ul>
+<li>1.ReentrantLock 就像手动汽车，需要显示的调用lock和unlock方法，synchronized 隐式获得释放锁。</li>
+<li>2.ReentrantLock 可响应中断， synchronized 是不可以响应中断的，ReentrantLock 为处理锁的不可用性提供了更高的灵活性</li>
+<li>3.ReentrantLock 是 API 级别的， synchronized 是 JVM 级别的</li>
+<li>4.ReentrantLock 可以实现公平锁、非公平锁，默认非公平锁，synchronized 是非公平锁，且不可更改。</li>
+<li>5.ReentrantLock 通过 Condition 可以绑定多个条件</li>
 </ul>
 </article>
  
@@ -3652,11 +4241,31 @@ ReentrantLock 来进行加锁，所以每次需要加锁的操作锁住的是一
 
   <ul>
     <li><a href="#cas">CAS</a></li>
-    <li><a href="#aqs">AQS</a></li>
+    <li><a href="#aqs">AQS</a>
+      <ul>
+        <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
+        <li><a href="#优势">优势</a></li>
+        <li><a href="#aqs核心知识">AQS核心知识</a></li>
+        <li><a href="#aqs实现细节">AQS实现细节</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
     <li><a href="#同步术语">同步术语</a></li>
+    <li><a href="#synchronized">synchronized</a></li>
+    <li><a href="#lock和synchronized的区别">Lock和synchronized的区别</a>
+      <ul>
+        <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
+        <li><a href="#synchronized的优势">synchronized的优势：</a></li>
+      </ul>
+    </li>
+    <li><a href="#reentrantlock-和synchronized的区别">ReentrantLock 和synchronized的区别</a>
+      <ul>
+        <li><a href="#相同点">相同点</a></li>
+        <li><a href="#不同点">不同点</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

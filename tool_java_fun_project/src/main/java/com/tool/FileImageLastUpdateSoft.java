@@ -38,7 +38,7 @@ public class FileImageLastUpdateSoft {
         });
         Collections.sort(fileList,fileOrdering);
         Iterator<File> iterator = fileList.iterator();
-        int i = 19;
+        int i = 21;
         System.out.println("");
         while (iterator.hasNext()){
             File next = iterator.next();
