@@ -34,17 +34,18 @@ class Demo_B2 {
     //jdk级别代码才能这样  因为这个级别的会涉及到绕过jvm所以得另寻出路
     final static Unsafe unsafe = UnsafeAccessor.getUnsafe();
     private volatile int value = 0;
-    private static long valueOffset = 0l;
+    //内存偏移量地址(相对地址)
+    private long valueOffset = 0l;
 
-    static {
-        try {
-            valueOffset = unsafe.objectFieldOffset(Demo_B2.class.getDeclaredField("value"));
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void increase() {
+        if (valueOffset == 0l) {
+            try {
+                valueOffset = unsafe.objectFieldOffset(Demo_B2.class.getDeclaredField("value"));
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        }
         int oldValue = 0;
         do {
             oldValue = value;
@@ -61,7 +62,7 @@ final class UnsafeAccessor {
 
     static {
         try {
-            //这个名字是Unsafe 里面的不要随便写
+            //这个名字是 theUnsafe 里面的不要随便写
             Field unsafeFile = Unsafe.class.getDeclaredField("theUnsafe");
             unsafeFile.setAccessible(true);
             //因为是静态属性
