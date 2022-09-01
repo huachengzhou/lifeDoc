@@ -813,6 +813,104 @@ public final void acquireShared(int arg) {
 + 先通过tryAcquireShared()尝试获取资源，成功则直接返回；
 + 失败则通过doAcquireShared()中的park()进入等待队列，直到被unpark()/interrupt()并成功获取到资源才返回(整个等待过程也是忽略中断响应)。
 
++ 共享模式获取资源-tryAcquireShared方法
+
++ tryAcquireShared()跟独占模式获取资源方法一样实现都是由自定义同步器去实现。但AQS规范中已定义好tryAcquireShared()的返回值：
+
+* 负值代表获取失败；
+* 0代表获取成功，但没有剩余资源；
++ 正数表示获取成功，还有剩余资源，其他线程还可以去获取。
+
+```java
+ protected int tryAcquireShared(int arg) {
+ throw new UnsupportedOperationException();
+ }
+```
+
++ 共享模式获取资源-doAcquireShared方法
+
++ doAcquireShared()用于将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己，自己成功拿到相应量的资源后才返回
+
+```java
+private void doAcquireShared(int arg) {
+ //加入队列尾部
+ final Node node = addWaiter(Node.SHARED);
+ //是否成功标志
+ boolean failed = true;
+ try {
+ //等待过程中是否被中断过的标志
+ boolean interrupted = false;
+ for (;;) {
+ final Node p = node.predecessor();//获取前驱节点
+ if (p == head) {//如果到head的下一个，因为head是拿到资源的线程，此时node被唤醒，很可能是head用完资源来唤醒自己的
+ int r = tryAcquireShared(arg);//尝试获取资源
+ if (r >= 0) {//成功
+ setHeadAndPropagate(node, r);//将head指向自己，还有剩余资源可以再唤醒之后的线程
+ p.next = null; // help GC
+ if (interrupted)//如果等待过程中被打断过，此时将中断补上。
+ selfInterrupt();
+ failed = false;
+ return;
+ }
+ }
+ 
+ //判断状态，队列寻找一个适合位置，进入waiting状态，等着被unpark()或interrupt()
+ if (shouldParkAfterFailedAcquire(p, node) &&
+ parkAndCheckInterrupt())
+ interrupted = true;
+ }
+ } finally {
+ if (failed)
+ cancelAcquire(node);
+ } 
+}
+```
+
++ 共享模式释放资源-releaseShared方法
+
++ releaseShared()用于共享模式下线程释放共享资源，释放指定量的资源，如果成功释放且允许唤醒等待线程，它会唤醒等待队列里的其他线程来获取资源
+
+```java
+public final boolean releaseShared(int arg) {
+ //尝试释放资源
+ if (tryReleaseShared(arg)) {
+ //唤醒后继结点
+ doReleaseShared();
+ return true;
+ }
+ return false;
+}
+```
+
+> 独占模式下的tryRelease()在完全释放掉资源（state=0）后，才会返回true去唤醒其他线程，这主要是基于独占下可重入的考量；而共享模式下的releaseShared()则没有这种要求，共享模式实质就是控制一定量的线程并发执行，那么拥有资源的线程在释放掉部分资源时就可以唤醒后继等待结点。
+
++ 共享模式释放资源-doReleaseShared方法
+
++ doReleaseShared()主要用于唤醒后继节点线程,当state为正数，去获取剩余共享资源；当state=0时去获取共享资源
+
+```java
+private void doReleaseShared() {
+ for (;;) {
+ Node h = head;
+ if (h != null && h != tail) {
+ int ws = h.waitStatus;
+ if (ws == Node.SIGNAL) {
+ if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
+ continue;
+ //唤醒后继
+ unparkSuccessor(h);
+ }
+ else if (ws == 0 &&
+ !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
+ continue;
+ }
+ // head发生变化
+ if (h == head)
+ break;
+ }
+}
+```
+
 
 
 # 其它

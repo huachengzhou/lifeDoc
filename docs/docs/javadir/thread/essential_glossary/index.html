@@ -59,7 +59,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.ee35fb8c0474e370a83ce16d152e6ae3ef221f2d17c582b8a7d5af0476ec811d.js"  ></script>
+<script defer src="./../../../../en.search.min.405b692228b7211b66a1e872c5547a36aafc77de92a9c56120823e84170ac21f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -333,6 +333,28 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-520770a3f5ea08f8358bcf92838812da" class="toggle"  />
+    <label for="section-520770a3f5ea08f8358bcf92838812da" class="flex justify-between">
+      <a href="./../../../../docs/c-plus/" class=""> c&#43;&#43;</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -1018,6 +1040,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/thread/essential_glossary/" class=" active">关键名词解释</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/thread/cas/" class="">cas</a>
   
 
         </li>
@@ -3854,8 +3889,112 @@ ReentrantLock 来进行加锁，所以每次需要加锁的操作锁住的是一
 <li>
 <p>失败则通过doAcquireShared()中的park()进入等待队列，直到被unpark()/interrupt()并成功获取到资源才返回(整个等待过程也是忽略中断响应)。</p>
 </li>
+<li>
+<p>共享模式获取资源-tryAcquireShared方法</p>
+</li>
+<li>
+<p>tryAcquireShared()跟独占模式获取资源方法一样实现都是由自定义同步器去实现。但AQS规范中已定义好tryAcquireShared()的返回值：</p>
+</li>
 </ul>
-<h1 id="其它">
+<ul>
+<li>负值代表获取失败；</li>
+<li>0代表获取成功，但没有剩余资源；</li>
+</ul>
+<ul>
+<li>正数表示获取成功，还有剩余资源，其他线程还可以去获取。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">tryAcquireShared</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> UnsupportedOperationException<span style="color:#f92672">();</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>共享模式获取资源-doAcquireShared方法</p>
+</li>
+<li>
+<p>doAcquireShared()用于将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己，自己成功拿到相应量的资源后才返回</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doAcquireShared</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//加入队列尾部
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">final</span> Node node <span style="color:#f92672">=</span> addWaiter<span style="color:#f92672">(</span>Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SHARED</span><span style="color:#f92672">);</span>
+ <span style="color:#75715e">//是否成功标志
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">boolean</span> failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//等待过程中是否被中断过的标志
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">boolean</span> interrupted <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">final</span> Node p <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">predecessor</span><span style="color:#f92672">();</span><span style="color:#75715e">//获取前驱节点
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>p <span style="color:#f92672">==</span> head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//如果到head的下一个，因为head是拿到资源的线程，此时node被唤醒，很可能是head用完资源来唤醒自己的
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> tryAcquireShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">);</span><span style="color:#75715e">//尝试获取资源
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>r <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//成功
+</span><span style="color:#75715e"></span> setHeadAndPropagate<span style="color:#f92672">(</span>node<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span><span style="color:#75715e">//将head指向自己，还有剩余资源可以再唤醒之后的线程
+</span><span style="color:#75715e"></span> p<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">// help GC
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>interrupted<span style="color:#f92672">)</span><span style="color:#75715e">//如果等待过程中被打断过，此时将中断补上。
+</span><span style="color:#75715e"></span> selfInterrupt<span style="color:#f92672">();</span>
+ failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#f92672">}</span>
+ 
+ <span style="color:#75715e">//判断状态，队列寻找一个适合位置，进入waiting状态，等着被unpark()或interrupt()
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>shouldParkAfterFailedAcquire<span style="color:#f92672">(</span>p<span style="color:#f92672">,</span> node<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span>
+ parkAndCheckInterrupt<span style="color:#f92672">())</span>
+ interrupted <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>failed<span style="color:#f92672">)</span>
+ cancelAcquire<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+ <span style="color:#f92672">}</span> 
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>
+<p>共享模式释放资源-releaseShared方法</p>
+</li>
+<li>
+<p>releaseShared()用于共享模式下线程释放共享资源，释放指定量的资源，如果成功释放且允许唤醒等待线程，它会唤醒等待队列里的其他线程来获取资源</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">releaseShared</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//尝试释放资源
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tryReleaseShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+ <span style="color:#75715e">//唤醒后继结点
+</span><span style="color:#75715e"></span> doReleaseShared<span style="color:#f92672">();</span>
+ <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><blockquote>
+<p>独占模式下的tryRelease()在完全释放掉资源（state=0）后，才会返回true去唤醒其他线程，这主要是基于独占下可重入的考量；而共享模式下的releaseShared()则没有这种要求，共享模式实质就是控制一定量的线程并发执行，那么拥有资源的线程在释放掉部分资源时就可以唤醒后继等待结点。</p>
+</blockquote>
+<ul>
+<li>
+<p>共享模式释放资源-doReleaseShared方法</p>
+</li>
+<li>
+<p>doReleaseShared()主要用于唤醒后继节点线程,当state为正数，去获取剩余共享资源；当state=0时去获取共享资源</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doReleaseShared</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+ Node h <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> h <span style="color:#f92672">!=</span> tail<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">int</span> ws <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span><span style="color:#f92672">;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ws <span style="color:#f92672">==</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SIGNAL</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>compareAndSetWaitStatus<span style="color:#f92672">(</span>h<span style="color:#f92672">,</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SIGNAL</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">))</span>
+ <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+ <span style="color:#75715e">//唤醒后继
+</span><span style="color:#75715e"></span> unparkSuccessor<span style="color:#f92672">(</span>h<span style="color:#f92672">);</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ws <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span>
+ <span style="color:#f92672">!</span>compareAndSetWaitStatus<span style="color:#f92672">(</span>h<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">PROPAGATE</span><span style="color:#f92672">))</span>
+ <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+ <span style="color:#75715e">// head发生变化
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">==</span> head<span style="color:#f92672">)</span>
+ <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="其它">
   其它
   <a class="anchor" href="#%e5%85%b6%e5%ae%83">#</a>
 </h1>

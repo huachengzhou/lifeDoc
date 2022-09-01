@@ -14,4 +14,6 @@ weight: 2
 
 * [名词解释](glossary)
 
+* [CAS简单模拟](cas)
+
 * [关键名词解释](essential_glossary)

@@ -5,7 +5,7 @@
     <link>https://huachengzhou.github.io/life/</link>
     <description>Recent content in Introduction on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ECMAScript 6</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/javascript/es6/</link>
@@ -328,7 +328,9 @@ sudo apt-get install synaptic</description>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/thread/glossary/</guid>
-      <description> FIFO队列 (先进先出队列)  </description>
+      <description>  FIFO队列 (先进先出队列)
+  jni 远程调用 编译器代码
+  </description>
     </item>
     
     <item>
@@ -510,6 +512,15 @@ sudo apt-get install synaptic</description>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>cas</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/cas/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/cas/</guid>
+      <description>概念# CAS即Compare and Swap，是基于硬件级别的指令实现的同步原语，Java并发包java.utile.concurrent许多同步类基于CAS构建，因此可见CAS的重要性  模拟# 有安全问题的一段code  public class Demo1 { public static void main(String[] args) throws Exception { long startTime = System.currentTimeMillis(); Demo_B demo_b = new Demo_B(); final int len = 10000000; Thread t1 = new Thread(() -&amp;gt; { for (int i = 0; i &amp;lt; len; i++) { demo_b.increase(); } }); t1.start(); for (int i = 0; i &amp;lt; len; i++) { demo_b.</description>
     </item>
     
     <item>

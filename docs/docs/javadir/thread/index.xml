@@ -12,7 +12,9 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/thread/glossary/</guid>
-      <description> FIFO队列 (先进先出队列)  </description>
+      <description>  FIFO队列 (先进先出队列)
+  jni 远程调用 编译器代码
+  </description>
     </item>
     
     <item>
@@ -25,6 +27,15 @@
  白话#在进入同步块之前JVM会在当前线程的&amp;#34;栈帧中申请并创建锁记录的空间,接着把对象头的标识符写到锁记录中&amp;#34; 然后使用CAS将当前线程的锁记录的地址(指针)替换掉锁对应的对象中的标识符,CAS操作成功表示获得锁CAS 操作失败尝试使用自旋(就是在当前进程并且执行代码块的线程内的时间片下空循环烧CPU反正现代计算机大多都是多核处理器在短时间内不会太影响其他任务处理)来获取锁 锁的撤销#要想撤销轻量级锁(解锁) 对象头中标识符必须设回为Displaced Mark Word 因此使用CAS操作将Displaced Mark Word替换回到对象头里面,成功那么撤销成功,失败说明有其它线程还在竞争此对象的锁这个时候 锁就会立即膨胀成重量级锁,后续的加锁和解锁都按照重量级锁的操作来 偏向锁# 当一个线程访问同步块(部分文档和解释说也包括同步方法)并获取锁时,会在对象头和栈帧中的锁记录里存在存储偏向锁的线程ID, 以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁,只需要简单测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁 .如果测试成功,表示已经获取到了锁。如果测试失败,则需要再测试一下Mark word中偏向锁的标识符是否设置成1:如果没有设置,则使用CAS竞争锁; 如果设置了,则尝试使用CAS将对象头的偏向锁指向当前线程(实际就是在对象头锁记录存入线程标识的数据,当然顺带栈帧记录也得存入有关的锁记录数据)
  白话#当只有一个线程或者多个线程中最先执行到同步块的时候 这个时候测试完没有偏向锁立即设置完对应的标识记录和锁记录就开始执行同步代码了, 假如下次再进入并且锁没有升级那么仅仅简单测试通过又继续执行了 在这最开始到结束全程没有各种加锁操作甚至连CAS都很有可能没有(是有可能有CASC操作的这涉及到偏向锁的撤销机制) 相比同步操作消耗很少 因此很划算的 当有多个线程竞争锁的时候 这个时候系统检测到了并且达到了锁升级的约束条件那么就会立即执行升级操作即便获得执行条件正在的线程 (当然必须等执行线程中的某个原子操作或者若干原子操作组成的原语)也要对锁记录进行升级然后才开始升级 优点: 把整个同步都消除掉，连CAS操作都不去做了，优于轻量级锁 缺点: 如果程序中大多数的锁都总是被多个不同的线程访问，那偏向锁就是多余的   偏向锁是JDK6时加入的一种锁优化机制
   锁的撤销</description>
+    </item>
+    
+    <item>
+      <title>cas</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/cas/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/cas/</guid>
+      <description>概念# CAS即Compare and Swap，是基于硬件级别的指令实现的同步原语，Java并发包java.utile.concurrent许多同步类基于CAS构建，因此可见CAS的重要性  模拟# 有安全问题的一段code  public class Demo1 { public static void main(String[] args) throws Exception { long startTime = System.currentTimeMillis(); Demo_B demo_b = new Demo_B(); final int len = 10000000; Thread t1 = new Thread(() -&amp;gt; { for (int i = 0; i &amp;lt; len; i++) { demo_b.increase(); } }); t1.start(); for (int i = 0; i &amp;lt; len; i++) { demo_b.</description>
     </item>
     
   </channel>
