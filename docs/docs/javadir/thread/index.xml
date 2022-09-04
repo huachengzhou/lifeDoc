@@ -38,5 +38,18 @@
       <description>概念# CAS即Compare and Swap，是基于硬件级别的指令实现的同步原语，Java并发包java.utile.concurrent许多同步类基于CAS构建，因此可见CAS的重要性  模拟# 有安全问题的一段code  public class Demo1 { public static void main(String[] args) throws Exception { long startTime = System.currentTimeMillis(); Demo_B demo_b = new Demo_B(); final int len = 10000000; Thread t1 = new Thread(() -&amp;gt; { for (int i = 0; i &amp;lt; len; i++) { demo_b.increase(); } }); t1.start(); for (int i = 0; i &amp;lt; len; i++) { demo_b.</description>
     </item>
     
+    <item>
+      <title>JOL工具 </title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/jol/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/jol/</guid>
+      <description>引入jol依赖#&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;org.openjdk.jol&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;jol-core&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;0.9&amp;lt;/version&amp;gt;&amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;&amp;lt;/dependency&amp;gt;相关方法#  1.使用jol计算对象的大小（单位为字节）：ClassLayout.parseInstance(obj).instanceSize()
+  2.使用jol查看对象内部的内存布局：ClassLayout.parseInstance(obj).toPrintable()
+  3.查看对象外部信息：包括引用的对象：GraphLayout.parseInstance(obj).toPrintable()
+  4.查看对象占用空间总大小：GraphLayout.parseInstance(obj).totalSize()
+  对象布局 空属性#import org.openjdk.jol.info.ClassLayout; public class Entity { public static void main(String[] args) { Entity entity = new Entity(); // 打印java 对象内存布局  System.out.println(ClassLayout.parseInstance(entity).toPrintable()); } } // 输出结果 com.brown.Entity object internals: // Entity对象内存布局  OFFSET SIZE TYPE DESCRIPTION VALUE 0 4 (object header) 01 00 00 00 (00000001 00000000 00000000 00000000) (1) 4 4 (object header) 00 00 00 00 (00000000 00000000 00000000 00000000) (0) 8 4 (object header) 05 c1 00 f8 (00000101 11000001 00000000 11111000) (-134168315) 12 4 (loss due to the next object alignment) Instance size: 16 bytes Space losses: 0 bytes internal + 4 bytes external = 4 bytes total OFFSET：偏移地址，单位字节 SIZE：占用的内存大小，单位为字节 TYPE DESCRIPTION： 类型描述，其中object header为对象头； object header：对象头 loss due to the next object alignment：由于下一个对象对齐而导致的丢失（有4Byte是对齐的字节（因为在64位虚拟机上对象的大小必须是8的倍数）,由于这个对象里面没有任何字段，故而对象的实例数据为0Byte）。 VALUE : 对应内存中当前存储的值； Instance size：实例字节数值大小（**此处一个空的java对象（不包含任意字段属性）实例，其实例大小为``16Byte**） 对象布局 有属性#/** * 带有属性的 实体类 */ public class Student { private String name; private Integer age; } public class DemoT1 { public static void main(String[] args) { Student o = new Student(); System.</description>
+    </item>
+    
   </channel>
 </rss>

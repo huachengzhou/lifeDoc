@@ -29,7 +29,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.8fe3111e0c9b41458b9284b270ef58dc3808d68c75d19f7490bf8f15938073ba.css"  >
-<script defer src="./../../../../en.search.min.405b692228b7211b66a1e872c5547a36aafc77de92a9c56120823e84170ac21f.js"  ></script>
+<script defer src="./../../../../en.search.min.3b1c6efe0b85958b5283849a9e68a18fc47c935a06a735be88522bd9978951e4.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1023,6 +1023,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/thread/cas/" class=" active">cas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/thread/jol/" class="">JOL工具 </a>
   
 
         </li>
@@ -3041,8 +3054,13 @@ time:605
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapInt</span><span style="color:#f92672">(</span>Object var1<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> var2<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> var4<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> var5<span style="color:#f92672">)</span>
  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapObject</span><span style="color:#f92672">(</span>Object var1<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> var2<span style="color:#f92672">,</span> Object var4<span style="color:#f92672">,</span> Object var5<span style="color:#f92672">)</span>
  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">compareAndSwapLong</span><span style="color:#f92672">(</span>Object var1<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> var2<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> var4<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> var6<span style="color:#f92672">)</span>
- 
-</code></pre></div><ul>
+ <span style="color:#75715e">//var1：要修改的对象起始地址 如：0x00000111
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//var2：需要修改的具体内存地址 如100 。0x0000011+100 = 0x0000111就是要修改的值的地址
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//注意没有var3
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//var4：期望内存中的值，拿这个值和0x0000111内存中的中值比较，如果为true，则修改，返回ture,否则返回false，等待下次修改。
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//var5：如果上一步比较为ture，则把var5更新到0x0000111其实的内存中。
+</span><span style="color:#75715e"></span> <span style="color:#75715e">//原子操作，直接操作内存。
+</span></code></pre></div><ul>
 <li>使用Unsafe 改造</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo_B2</span> <span style="color:#f92672">{</span>
@@ -3080,17 +3098,18 @@ time:605
     <span style="color:#75715e">//jdk级别代码才能这样  因为这个级别的会涉及到绕过jvm所以得另寻出路
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">static</span> Unsafe unsafe <span style="color:#f92672">=</span> UnsafeAccessor<span style="color:#f92672">.</span><span style="color:#a6e22e">getUnsafe</span><span style="color:#f92672">();</span>
     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> valueOffset <span style="color:#f92672">=</span> 0l<span style="color:#f92672">;</span>
+    <span style="color:#75715e">//内存偏移量地址(相对地址)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">long</span> valueOffset <span style="color:#f92672">=</span> 0l<span style="color:#f92672">;</span>
 
-    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            valueOffset <span style="color:#f92672">=</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">objectFieldOffset</span><span style="color:#f92672">(</span>Demo_B2<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">));</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchFieldException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">increase</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>valueOffset <span style="color:#f92672">==</span> 0l<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                valueOffset <span style="color:#f92672">=</span> unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">objectFieldOffset</span><span style="color:#f92672">(</span>Demo_B2<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">));</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchFieldException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
         <span style="color:#66d9ef">int</span> oldValue <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
         <span style="color:#66d9ef">do</span> <span style="color:#f92672">{</span>
             oldValue <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
@@ -3107,7 +3126,7 @@ time:605
 
     <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            <span style="color:#75715e">//这个名字是Unsafe 里面的不要随便写
+            <span style="color:#75715e">//这个名字是 theUnsafe 里面的不要随便写
 </span><span style="color:#75715e"></span>            Field unsafeFile <span style="color:#f92672">=</span> Unsafe<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;theUnsafe&#34;</span><span style="color:#f92672">);</span>
             unsafeFile<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
             <span style="color:#75715e">//因为是静态属性
