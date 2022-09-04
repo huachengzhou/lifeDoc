@@ -141,7 +141,12 @@ time:605
 public final native boolean compareAndSwapInt(Object var1, long var2, int var4, int var5)
  public final native boolean compareAndSwapObject(Object var1, long var2, Object var4, Object var5)
  public final native boolean compareAndSwapLong(Object var1, long var2, long var4, long var6)
- 
+ //var1：要修改的对象起始地址 如：0x00000111
+ //var2：需要修改的具体内存地址 如100 。0x0000011+100 = 0x0000111就是要修改的值的地址
+ //注意没有var3
+ //var4：期望内存中的值，拿这个值和0x0000111内存中的中值比较，如果为true，则修改，返回ture,否则返回false，等待下次修改。
+ //var5：如果上一步比较为ture，则把var5更新到0x0000111其实的内存中。
+ //原子操作，直接操作内存。
 ```
 
 + 使用Unsafe 改造
@@ -185,17 +190,18 @@ class Demo_B2 {
     //jdk级别代码才能这样  因为这个级别的会涉及到绕过jvm所以得另寻出路
     final static Unsafe unsafe = UnsafeAccessor.getUnsafe();
     private volatile int value = 0;
-    private static long valueOffset = 0l;
+    //内存偏移量地址(相对地址)
+    private long valueOffset = 0l;
 
-    static {
-        try {
-            valueOffset = unsafe.objectFieldOffset(Demo_B2.class.getDeclaredField("value"));
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void increase() {
+        if (valueOffset == 0l) {
+            try {
+                valueOffset = unsafe.objectFieldOffset(Demo_B2.class.getDeclaredField("value"));
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        }
         int oldValue = 0;
         do {
             oldValue = value;
@@ -212,7 +218,7 @@ final class UnsafeAccessor {
 
     static {
         try {
-            //这个名字是Unsafe 里面的不要随便写
+            //这个名字是 theUnsafe 里面的不要随便写
             Field unsafeFile = Unsafe.class.getDeclaredField("theUnsafe");
             unsafeFile.setAccessible(true);
             //因为是静态属性
