@@ -232,3 +232,66 @@ final class UnsafeAccessor {
     }
 }
 ```
+
+
++ 使用LongAdder 改造
+
+```java
+//分段处理
+ /**
+     * Adds the given value.
+     *
+     * @param x the value to add
+     */
+    public void add(long x) {
+        Cell[] as; long b, v; int m; Cell a;
+        if ((as = cells) != null || !casBase(b = base, b + x)) {
+            boolean uncontended = true;
+            if (as == null || (m = as.length - 1) < 0 ||
+                (a = as[getProbe() & m]) == null ||
+                !(uncontended = a.cas(v = a.value, v + x)))
+                longAccumulate(x, null, uncontended);
+        }
+    }
+```
+
+```java
+import java.util.concurrent.atomic.LongAdder;
+
+public class Demo3 {
+
+    public static void main(String[] args) throws Exception {
+        long startTime = System.currentTimeMillis();
+        Demo_B3 demo_b = new Demo_B3();
+        final int len = 10000000;
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < len; i++) {
+                demo_b.increase();
+            }
+        });
+
+        t1.start();
+        for (int i = 0; i < len; i++) {
+            demo_b.increase();
+        }
+        t1.join();
+        long endTime = System.currentTimeMillis();
+        System.out.println(demo_b.getNumber());
+        System.out.println(String.format("time:%s", (endTime - startTime)));
+    }
+}
+
+
+class Demo_B3 {
+    private volatile int value = 0;
+    private LongAdder longAdder = new LongAdder() ;
+
+    public void increase() {
+        longAdder.increment();
+    }
+
+    public int getNumber() {
+        return longAdder.intValue();
+    }
+}
+```

@@ -2,7 +2,6 @@ package com.tool.cas;
 
 import sun.misc.Unsafe;
 
-import java.lang.reflect.Field;
 
 public class Demo2 {
 
@@ -57,21 +56,3 @@ class Demo_B2 {
     }
 }
 
-final class UnsafeAccessor {
-    private static Unsafe unsafe;
-
-    static {
-        try {
-            //这个名字是 theUnsafe 里面的不要随便写
-            Field unsafeFile = Unsafe.class.getDeclaredField("theUnsafe");
-            unsafeFile.setAccessible(true);
-            //因为是静态属性
-            unsafe = (Unsafe) unsafeFile.get(null);
-        } catch (Exception e) {
-        }
-    }
-
-    public static Unsafe getUnsafe() {
-        return unsafe;
-    }
-}
