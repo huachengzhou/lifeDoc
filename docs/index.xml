@@ -5,7 +5,7 @@
     <link>https://huachengzhou.github.io/life/</link>
     <description>Recent content in Introduction on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ECMAScript 6</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/javascript/es6/</link>
@@ -330,6 +330,7 @@ sudo apt-get install synaptic</description>
       <guid>https://huachengzhou.github.io/life/docs/javadir/thread/glossary/</guid>
       <description>  FIFO队列 (先进先出队列)
   jni 远程调用 编译器代码
+  LongAdder
   </description>
     </item>
     
@@ -683,6 +684,15 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_4/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>unsafe</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/unsafe/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/unsafe/</guid>
+      <description>前言# Unsafe类位于sun.misc包下，它是java实现高并发的基础，通过它可以执行一些不安全的操作，如像C语言一样直接操作内存资源，它提供的这些方法增强了java对底层资源的操作能力，但同时也增加了程序出错的风险，所以对它的使用一定要慎重  核心功能介绍# Unsafe提供的API大致可分为内存操作、CAS、Class相关、对象操作、线程调度、系统信息获取、内存屏障相关、数组相关等。下面介绍几个方法的使用。  获取Unsafe对象#import sun.misc.Unsafe; import java.lang.reflect.Field; public final class UnsafeAccessor { private static Unsafe unsafe; //Unsafe提供的getUnsafe()方法只能被根类加载器加载的类所调用，也就是jdk内部的类。我们可以通过反射来获取Unsafe对象  static { try { //这个名字是 theUnsafe 里面的不要随便写  Field unsafeFile = Unsafe.class.getDeclaredField(&amp;#34;theUnsafe&amp;#34;); unsafeFile.setAccessible(true); //因为是静态属性  unsafe = (Unsafe) unsafeFile.get(null); } catch (Exception e) { } } public static Unsafe getUnsafe() { return unsafe; } } AtomicInteger实现# 在AtomicInteger的实现中，静态属性valueOffset即为属性value的内存偏移地址，在静态代码块中通过Unsafe的objectFieldOffset方法对valueOffset赋值。在AtomicInteger中提供的线程安全方法中，通过属性valueOffset可以定位到属性value的内存地址，从而可以根据CAS实现对value属性的原子操作。   上图为某个AtomicInteger对象自增操作前后的内存示意图，对象的基地址baseAddress=“0x110000”，通过baseAddress+valueOffset得到value的内存地址valueAddress=“0x11000c”；然后通过CAS进行原子性的更新操作，成功则返回，否则继续重试，直到更新成功为止。  CAS# CAS(compareAndSwap)即比较并替换，是实现并发算法时常用到的一种技术，CAS操作包含三个参数，要修改变量的内存位置、预期原值、要修改为的值，如果变量的值和预期原值相等，就修改为新值，否则不做处理。CAS底层为一条原子指令cmpxchg，可以保证原子性，Unsafe提供的CAS方法如compareAndSwapInt底层就是CPU指令cmpxchg  /** * CAS * @param o 包含要修改field的对象 * @param offset 对象中某field的偏移量 * @param expected 期望值 * @param update 更新值 * @return true | false */ public final native boolean compareAndSwapObject(Object o, long offset, Object expected, Object update); public final native boolean compareAndSwapInt(Object o, long offset, int expected,int update); public final native boolean compareAndSwapLong(Object o, long offset, long expected, long update);  compareAndSwapInt 使用 (AtomicInteger中也是使用这个)  public class Demo2 { public static void main(String[] args) throws Exception { long startTime = System.</description>
     </item>
     
     <item>
@@ -1090,6 +1100,16 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <guid>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</guid>
       <description>MySQL mysql存储过程概述# 存储过程是存储在数据库的一组SQL语句集，用户可以通过存储过程名和传参多次调用的程序模块。
  特点：# 使用灵活，可以使用流控制语句，自定义变量等完成复杂的业务逻辑。 提高数据安全性，屏蔽应用程序直接对表的操作，易于进行审计。 减少网络传输。 提高代码维护的复杂度，实际使用中要评估场景是否适合。  存储过程-基本语法： (非常重要)#CREATE[DEFINER = { user | CURRENT_USER }]PROCEDURE sp_name ([proc_parameter[,...]])[characteristic ...] routine_bodyproc_parameter:[ IN | OUT | INOUT ] param_name typetype:Any valid MySQL data typecharacteristic:COMMENT &#39;string&#39;| [NOT] DETERMINISTICroutine_body:Valid SQL routine statement-- $ 可以改为分号 假如你直接是在控制台那么建议用$delimiter $ --将sql语句结束符号修改为$,这样只有sql遇到$时才开始执行create procedure 存储过程名(参数列表)beginsql语句集合end$delimiter ; --将结束符修改为默认的分号 例子#-- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&amp;lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &amp;#39;@&amp;#39;, substring(UUID(),4,8) ,&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>小程序技术总结参考 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
+      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
+  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
     </item>
     
     <item>

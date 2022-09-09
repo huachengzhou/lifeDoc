@@ -151,6 +151,16 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
+      <title>小程序技术总结参考 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
+      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
+  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
+    </item>
+    
+    <item>
       <title>uniapp打包</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/packing/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
