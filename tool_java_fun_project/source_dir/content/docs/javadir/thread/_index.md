@@ -22,4 +22,6 @@ weight: 2
 
 * [Unsafe](unsafe)
 
+* [ReentrantLock](reentrantlock)
+
 
