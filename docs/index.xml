@@ -5,7 +5,7 @@
     <link>https://huachengzhou.github.io/life/</link>
     <description>Recent content in Introduction on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 06 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ECMAScript 6</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/javascript/es6/</link>
@@ -792,6 +792,20 @@ https://www.codenong.com/34288451/
     </item>
     
     <item>
+      <title>ReentrantLock</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/reentrantlock/</link>
+      <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/reentrantlock/</guid>
+      <description>ReentrantLock#ReentrantLock 介绍#  ReentrantLock是Java中常用的锁，属于乐观锁类型，多线程并发情况下。能保证共享数据安全性，线程间有序性
+  ReentrantLock通过原子操作和阻塞实现锁原理，一般使用lock获取锁，unlock释放锁，
+  下面说一下锁的基本使用和底层基本实现原理，lock和unlock底层
+  lock的时候可能被其他线程获得所，那么此线程会阻塞自己，关键原理底层用到Unsafe类的API: CAS和park
+  ReentrantLock是一个可重入的互斥锁，又被称为“独占锁”
+  简单模拟 ReentrantLock# 不安全的例子  public class ReentrantLockDemo1 { public static void main(String[] args) { new Thread(() -&amp;gt; { drawMoney() ; },&amp;#34;线程1&amp;#34;).start(); new Thread(() -&amp;gt; { drawMoney() ; },&amp;#34;线程2&amp;#34;).start(); } private static void drawMoney(){ System.out.println(Thread.currentThread().getName()+&amp;#34;......&amp;#34;+&amp;#34;正在取钱!&amp;#34;); try { Thread.sleep(3000); } catch (InterruptedException e) { e.</description>
+    </item>
+    
+    <item>
       <title>webpack </title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
@@ -904,6 +918,20 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
+      <title>java重复加锁</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/repeat_lock/</link>
+      <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/repeat_lock/</guid>
+      <description>可重入锁，从字面来理解，就是可以重复进入的锁
+   可重入锁，也叫做递归锁，指的是同一线程外层函数获得锁之后，内层递归函数仍然有获取该锁的代码，但不受影响
+  在java环境下reentrantlock和synchronized都是可重入锁
+  可重入锁的实现原理#  加锁时，需要判断锁是否已经被获取。如果已经被获取，则判断获取锁的线程是否是当前线程。如果是当前线程，则给获取次数加1。如果不是当前线程，则需要等待
+  释放锁时，需要给锁的获取次数减1，然后判断，次数是否为0了。如果次数为0了，则需要调用锁的唤醒方法，让锁上阻塞的其他线程得到执行的机会
+  模拟实现简单的可重入锁#public class RepeatLock { //private UnreentrantLock unreentrantLock = new UnreentrantLock();  private ReentrantLock reentrantLock = new ReentrantLock(); //加锁建议在try里面，解锁建议在finally  public void methodA() throws InterruptedException { try { reentrantLock.lock(); System.out.println(&amp;#34;methodA方法被调用&amp;#34;); methodB(); } finally { reentrantLock.unlock(); } } public void methodB() { try { reentrantLock.lock(); System.out.println(&amp;#34;methodB方法被调用&amp;#34;); } catch (InterruptedException e) { e.</description>
+    </item>
+    
+    <item>
       <title>webpack和nodejs关系 </title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
@@ -962,6 +990,15 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_2/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>park</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/park/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/park/</guid>
+      <description>参考1</description>
     </item>
     
     <item>
