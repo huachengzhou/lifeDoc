@@ -40,6 +40,8 @@ type: docs
 
 [面试书籍](../pdf/newIndex.html)
 
+[我的博客](https://www.cnblogs.com/noatnu/)
+
 [java基础知识参考1](https://javaguide.cn/)
 
 [java系统技能知识参考2](https://www.pdai.tech/)
