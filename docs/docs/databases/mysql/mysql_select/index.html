@@ -2,54 +2,23 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数
-#
-
- 聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算 流程函数  1:聚集函数 (聚合函数可以理解成多对一)
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数
-#
-
-   函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数
-#
-
-   函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.">
+<meta name="description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算 流程函数  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql新查询" />
-<meta property="og:description" content="一:创建计算字段
-#
-
--- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数
-#
-
- 聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算 流程函数  1:聚集函数 (聚合函数可以理解成多对一)
-#
-
- 什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
-  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数
-#
-
-   函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数
-#
-
-   函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
+<meta property="og:description" content="一:创建计算字段 #  -- 将 fruits.f_name 和 suppliers.s_city创建为了一个新字段连在一起来计算查询 select fruits.f_name as name ,suppliers.s_city as city from suppliers left join fruits on fruits.s_id = suppliers.s_id where 1=1 and CONCAT(fruits.f_name,&#39;-&#39;,suppliers.s_city) = &#39;apple-Tianjin&#39; ; -- 员工的部门和名称组合为新字段 select CONCAT_WS(&#39;-&#39;,dept.d_name,employee.e_name) as name from employee left join dept on dept.d_no = employee.dept_no 二:函数 #   聚集函数 预定义函数-字符串函数 预定义函数-时间处理函数 预定义函数-数字处理函数 算数、逻辑运算 流程函数  1:聚集函数 (聚合函数可以理解成多对一) #   什么是聚合函数   聚合函数作用于一组数据，并对一组数据返回一个值
+  常用聚合函数：     函数 描述     AVG() 返回列的平均值   COUNT(DISTINCT) 返回列去重后的行数   COUNT() 返回列的行数   MAX() 返回列的最大值   MIN() 返回列的最小值   SUM() 返回列的总和   GROUP_CONCAT() 返回一组值的连接字符串(MySQL独有)     例子一  -- 计算表中数量,最小值,最大值,平均值,平均值,累加值 select count(*) as count_value ,MIN(f_price) as min_value,MAX(f_price) as max_value,AVG(f_price) as avg_value ,SUM(f_price) as sum_value from fruits  例子二  SELECT c_name,GROUP_CONCAT(grade), sum(grade) as total_grade ,avg(grade) as avg_grade FROM score GROUP BY c_name 2:预定义函数-字符串函数 #     函数 描述     LENGTH() 返回列的字节数   CHAR_LENGTH() 返回列的字符数   TRIM()/RTRIM()/LTRIM() 去除两边空格/去除右边空格/去除左边空格   SUBSTRING(str, pos, [len]) 从pos位置截取字符串str，截取len长度   LOCATE(substr, str, [pos]) 返回substr在str字符串中的位置   REPLACE(str, from_str, to_str) 将str字符串中的from_str替换成to_str   LOWER(), UPPER() 字符串转换为小写/大写     例子  SELECT `USER_NAME`, LENGTH( `USER_NAME` ) AS name_length, CHAR_LENGTH( USER_NAME ) AS string_length, LOWER( USER_NAME ) AS LOWER_NAME, UPPER( USER_NAME ) AS UPPER_NAME, REPLACE ( USER_NAME, &#39;0&#39;, &#39;O&#39; ) AS REPLACE_NAME, SUBSTRING( USER_NAME, &#39;0&#39;, 5 ) AS SUBSTRING_NAME, TRIM( `USER_NAME` ) AS TRIM_NAME FROM `t_user` LIMIT 2,40 3:预定义函数-数字处理函数 #     函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql新查询 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.4ac1f4b15de86259fa8f550d03c3dc50879f4bf50fcd769b7310bcad051c2ee7.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.1889f8fbfe184b33b5f865f10ad4c0301d69ec4291dfcd2c8b2448af769145df.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -806,6 +775,46 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="toggle"  />
+    <label for="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="flex justify-between">
+      <a href="./../../../../docs/python/" class=""> python</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/" class="">python 基础学习</a>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -2963,7 +2972,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

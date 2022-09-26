@@ -2,25 +2,13 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="接口回调法
-#
-
-模拟输出监听事件
-#
-
-第一步先定义事件接口
-#
-
-public interface PrintListener {
+<meta name="description" content="接口回调法 #  模拟输出监听事件 #  第一步先定义事件接口 #  public interface PrintListener {
 public void print();
 }
-第二步自定义输出类
-#
-
-public class Out {
+第二步自定义输出类 #  public class Out {
 PrintListener listener=null;
 public Out() {
 }
@@ -34,40 +22,22 @@ listener.print();
 }
 }
 }
-第三步实现监听事件接口
-#
-
-public class PrintListenerDemo implements PrintListener {
+第三步实现监听事件接口 #  public class PrintListenerDemo implements PrintListener {
 @Override
 public void print() {
 System.out.println(&quot;监听到输出事件&quot;);
 }
 }
-测试
-#
-
-public class Test {
+测试 #  public class Test {
 public static void main(String[] args) {
 //新建一个默认输出类
 Out b=new Out();
 b.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="java_监听事件原理 " />
-<meta property="og:description" content="接口回调法
-#
-
-模拟输出监听事件
-#
-
-第一步先定义事件接口
-#
-
-public interface PrintListener {
+<meta property="og:description" content="接口回调法 #  模拟输出监听事件 #  第一步先定义事件接口 #  public interface PrintListener {
 public void print();
 }
-第二步自定义输出类
-#
-
-public class Out {
+第二步自定义输出类 #  public class Out {
 PrintListener listener=null;
 public Out() {
 }
@@ -81,33 +51,26 @@ listener.print();
 }
 }
 }
-第三步实现监听事件接口
-#
-
-public class PrintListenerDemo implements PrintListener {
+第三步实现监听事件接口 #  public class PrintListenerDemo implements PrintListener {
 @Override
 public void print() {
 System.out.println(&quot;监听到输出事件&quot;);
 }
 }
-测试
-#
-
-public class Test {
+测试 #  public class Test {
 public static void main(String[] args) {
 //新建一个默认输出类
 Out b=new Out();
 b." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
 <title>java_监听事件原理  | 所悟所想</title>
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.4ac1f4b15de86259fa8f550d03c3dc50879f4bf50fcd769b7310bcad051c2ee7.js"  ></script>
+<link rel="stylesheet" href="./../../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../../en.search.min.1889f8fbfe184b33b5f865f10ad4c0301d69ec4291dfcd2c8b2448af769145df.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -864,6 +827,46 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="toggle"  />
+    <label for="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="flex justify-between">
+      <a href="./../../../../../docs/python/" class=""> python</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/" class="">python 基础学习</a>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -3021,7 +3024,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
