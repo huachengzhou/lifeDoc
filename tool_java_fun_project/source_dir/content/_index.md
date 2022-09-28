@@ -38,6 +38,10 @@ type: docs
 
 + 每天冥想10分钟 之后反思10分钟
 
++ 学习尽量采用费曼学习方法(讲故事的方式将给自己听)
+
++ 一定要自律
+
 [面试书籍](../pdf/newIndex.html)
 
 [我的博客](https://www.cnblogs.com/noatnu/)
