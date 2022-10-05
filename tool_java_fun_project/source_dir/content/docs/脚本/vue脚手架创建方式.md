@@ -108,6 +108,7 @@ Documentation can be found at https://vuejs-templates.github.io/webpack
 
 ## 第二种方式
 
++ npm install vue @vue/cli -g or npm install  @vue/cli@5.0.3 -g
 
 ```shell
 D:\IdeaProjects\cycle\study\vuecli\demoC>vue create cli-test2
