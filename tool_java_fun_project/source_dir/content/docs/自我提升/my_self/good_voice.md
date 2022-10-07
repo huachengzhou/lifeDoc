@@ -2,6 +2,7 @@
 title: "如何说话好听"
 date: 2022-10-05
 draft: false
+weight: 2
 ---
 
 
@@ -20,6 +21,39 @@ draft: false
 第五说话时感觉字是竖起来的 不要咧嘴 要轻柔自然 
 
 第六 学好普通话....方言大多数会阻碍唱歌音色很容易改变 发声位置结构改变音色就一定会变
+
+
+### 视频 建立自信
+
+[众生皆自卑，所以不必为此烦恼，然而每个人都有自信面，找到它！点亮它！让](https://www.bilibili.com/video/BV11Y411V73A/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+
+[播音系师哥教你如何让“声音变得更加好听”，一学就会！一用就灵，不灵不要币](https://www.bilibili.com/video/BV1fJ411M7b6/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+
+[科学微笑训练法|面瘫患者的逆袭，我终于会笑了！3步教你一秒笑出自然阳光感](https://www.bilibili.com/video/BV1Vy4y1t7VB/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+[表情管理｜变美干货｜纵向微笑vs横向微笑｜如何拥有上镜显瘦的微笑｜播音生](https://www.bilibili.com/video/BV1H5411K7q3/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+[嘴角下垂？教你如何练成微笑唇|防衰抗下垂 |养成侧颜杀](https://www.bilibili.com/video/BV1xK411M72M/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+[浙大传媒大学专业练声方法，每天15分钟，30天让你口齿清晰](https://www.bilibili.com/video/BV1g54y1Z7NL/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+ 
+ 下面的最靠谱
+[30天让你拥有好声音（完结）](https://www.bilibili.com/video/BV1tb411u7EE/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+
+
+## 说话很累
+
+①憋气，气息不通当我们的气息不顺畅时，我们的传声就会收到阻碍，使得我们口腔里面的部位造成紧张，从而引发一些列的声音问题。
+
+②咬字器官紧张我们的咬字器官主要有唇、齿、舌、喉、牙等等...，当我们在咬字的时候，如果出现唇部紧张或者说是舌根紧张等情况，会对我们的发声造成压力，使得我们的声音就会变得僵硬。
+
+③喉咙没打开，捏着嗓子说话。我们的声带在喉咙里面，如果我们的声带没有合适的工作空间，那么会大大影响声带的振动发声哦！
+
+④声音虚弱无力，声音漏气。当我们的声带漏气，我们的气息就会没办法高效利用起来，从而浪费掉，产生气息不够用等情况。
+
 
 
 
