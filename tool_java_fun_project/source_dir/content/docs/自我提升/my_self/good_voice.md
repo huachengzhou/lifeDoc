@@ -25,19 +25,14 @@ weight: 2
 
 ### 视频 建立自信
 
-[众生皆自卑，所以不必为此烦恼，然而每个人都有自信面，找到它！点亮它！让](https://www.bilibili.com/video/BV11Y411V73A/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 
 [播音系师哥教你如何让“声音变得更加好听”，一学就会！一用就灵，不灵不要币](https://www.bilibili.com/video/BV1fJ411M7b6/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 
-[科学微笑训练法|面瘫患者的逆袭，我终于会笑了！3步教你一秒笑出自然阳光感](https://www.bilibili.com/video/BV1Vy4y1t7VB/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 [表情管理｜变美干货｜纵向微笑vs横向微笑｜如何拥有上镜显瘦的微笑｜播音生](https://www.bilibili.com/video/BV1H5411K7q3/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
-[嘴角下垂？教你如何练成微笑唇|防衰抗下垂 |养成侧颜杀](https://www.bilibili.com/video/BV1xK411M72M/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
-
-[浙大传媒大学专业练声方法，每天15分钟，30天让你口齿清晰](https://www.bilibili.com/video/BV1g54y1Z7NL/?spm_id_from=333.999.0.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
  
  下面的最靠谱
