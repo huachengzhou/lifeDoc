@@ -2,43 +2,116 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="groovy 使用场景 #  Groovy可以用于多种情况。比如 #    1、作为shell脚本语言完成数据处理和文件操作任务。
+<meta name="description" content="groovy 使用场景
+#
+
+Groovy可以用于多种情况。比如
+#
+
+  1、作为shell脚本语言完成数据处理和文件操作任务。
   2、在Java或者Java EE应用程序中嵌入Groovy，实现Java和Groovy的集成。（这样有助于编写和集中处理经常变化的业务逻辑，或者给应用程序架构提供可编程的配置管理能力。）
-  Groovy是增强Java平台的唯一的脚本语言。 #   它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言： #   脚本语言不会替代系统编程语言，两者是相互补充的。
- 系统编程语言的目的： #    开发复杂的算法或者数据结构
+  Groovy是增强Java平台的唯一的脚本语言。
+#
+
+ 它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言：
+#
+
+ 脚本语言不会替代系统编程语言，两者是相互补充的。
+ 系统编程语言的目的：
+#
+
+  开发复杂的算法或者数据结构
   实现计算密集型应用
   操作大型数据集
   实现定义良好的、变更缓慢的需求
-  脚本语言应用的目的： #    连接已有的组件
+  脚本语言应用的目的：
+#
+
+  连接已有的组件
   处理经常变化的多种类型的实体
   具有图形化用户界面
   拥有快速变化的功能
-  Java编译器会产生可以在Java虚拟机上运行的字节码。 #  Groovy类和Java是二进制兼容的。 #  Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。 #  ——对于JVM而言，Groovy和Java是完全一样的。 #  因此，Groovy能够完全使用各种Java API。 #  Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。 #  ">
+  Java编译器会产生可以在Java虚拟机上运行的字节码。
+#
+
+Groovy类和Java是二进制兼容的。
+#
+
+Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。
+#
+
+——对于JVM而言，Groovy和Java是完全一样的。
+#
+
+因此，Groovy能够完全使用各种Java API。
+#
+
+Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。
+#
+
+">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content=" groovy使用场景 " />
-<meta property="og:description" content="groovy 使用场景 #  Groovy可以用于多种情况。比如 #    1、作为shell脚本语言完成数据处理和文件操作任务。
+<meta property="og:description" content="groovy 使用场景
+#
+
+Groovy可以用于多种情况。比如
+#
+
+  1、作为shell脚本语言完成数据处理和文件操作任务。
   2、在Java或者Java EE应用程序中嵌入Groovy，实现Java和Groovy的集成。（这样有助于编写和集中处理经常变化的业务逻辑，或者给应用程序架构提供可编程的配置管理能力。）
-  Groovy是增强Java平台的唯一的脚本语言。 #   它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言： #   脚本语言不会替代系统编程语言，两者是相互补充的。
- 系统编程语言的目的： #    开发复杂的算法或者数据结构
+  Groovy是增强Java平台的唯一的脚本语言。
+#
+
+ 它提供了类似于Java的语法，内置映射（Map）、列表（List）、方法、类、闭包（closure）以及生成器。  脚本语言与系统编程语言：
+#
+
+ 脚本语言不会替代系统编程语言，两者是相互补充的。
+ 系统编程语言的目的：
+#
+
+  开发复杂的算法或者数据结构
   实现计算密集型应用
   操作大型数据集
   实现定义良好的、变更缓慢的需求
-  脚本语言应用的目的： #    连接已有的组件
+  脚本语言应用的目的：
+#
+
+  连接已有的组件
   处理经常变化的多种类型的实体
   具有图形化用户界面
   拥有快速变化的功能
-  Java编译器会产生可以在Java虚拟机上运行的字节码。 #  Groovy类和Java是二进制兼容的。 #  Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。 #  ——对于JVM而言，Groovy和Java是完全一样的。 #  因此，Groovy能够完全使用各种Java API。 #  Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。 #  " />
+  Java编译器会产生可以在Java虚拟机上运行的字节码。
+#
+
+Groovy类和Java是二进制兼容的。
+#
+
+Groovy编译器产生的字节码与Java编译器产生的字节码是完全一样的。
+#
+
+——对于JVM而言，Groovy和Java是完全一样的。
+#
+
+因此，Groovy能够完全使用各种Java API。
+#
+
+Groovy是一门面向对象的语言。也就是说，Groovy中每一个事物最终都会被当做某些类 的一个实例对象。
+#
+
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title> groovy使用场景  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.825a80018dfb3bfcdcbc2103da0b7f1ac75238123cb7393838c5b9341944179d.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.79930810c0ea2b1689b460dd0b2199479a4874a81061c9b5a7d8ca11afdc09cd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1302,6 +1375,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
   
 
@@ -1341,6 +1427,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
   
 
@@ -1368,19 +1467,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
   
 
         </li>
@@ -2684,6 +2770,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
   
 
@@ -3049,6 +3148,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
   
 
@@ -3184,7 +3296,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

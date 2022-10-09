@@ -2,22 +2,42 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="为什么要分层，分层要做什么 #   （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构 #   使用 协议 ，服务， 接口 来完成分层
- 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  ">
+<meta name="description" content="为什么要分层，分层要做什么
+#
+
+ （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构
+#
+
+ 使用 协议 ，服务， 接口 来完成分层
+ 总结
+#
+
+ 网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="分层结构" />
-<meta property="og:description" content="为什么要分层，分层要做什么 #   （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构 #   使用 协议 ，服务， 接口 来完成分层
- 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  " />
+<meta property="og:description" content="为什么要分层，分层要做什么
+#
+
+ （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构
+#
+
+ 使用 协议 ，服务， 接口 来完成分层
+ 总结
+#
+
+ 网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="docs" />
+
+
 
 <title>分层结构 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.825a80018dfb3bfcdcbc2103da0b7f1ac75238123cb7393838c5b9341944179d.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.79930810c0ea2b1689b460dd0b2199479a4874a81061c9b5a7d8ca11afdc09cd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1281,6 +1301,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
   
 
@@ -1320,6 +1353,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
   
 
@@ -1347,19 +1393,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
   
 
         </li>
@@ -2663,6 +2696,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
   
 
@@ -3028,6 +3074,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
   
 
@@ -3163,7 +3222,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

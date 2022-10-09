@@ -2,23 +2,96 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="运行机制 #  一: 知识总览 #  二: 预备知识：程序是如何运行的？ #  三:内核程序 v.s. 应用程序 #  四:特权指令 v.s. 非特权指令 #  五:内核态 v.s. 用户态 #  六:内核态、用户态 的切换 #  知识回顾与重要考点 #  体系结构 #  两种指令、两种处理器状态、两种程序 #  操作系统的内核 #   Yo~生活经验：我们安装完 Windows 操作系统后，会发现操作系统提供了多种多样的功能，比如“记事本”、 “任务管理器”。然而，这些功能并不是必不可少的。即使没有“任务管理器”，我们仍然可以使用计算机。
-  内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。实现操作系统内核功能的那些程序就是内核程序。   计算机系统的层次结构  知识回顾与重要考点 #  ">
+<meta name="description" content="运行机制
+#
+
+一: 知识总览
+#
+
+二: 预备知识：程序是如何运行的？
+#
+
+三:内核程序 v.s. 应用程序
+#
+
+四:特权指令 v.s. 非特权指令
+#
+
+五:内核态 v.s. 用户态
+#
+
+六:内核态、用户态 的切换
+#
+
+知识回顾与重要考点
+#
+
+体系结构
+#
+
+两种指令、两种处理器状态、两种程序
+#
+
+操作系统的内核
+#
+
+ Yo~生活经验：我们安装完 Windows 操作系统后，会发现操作系统提供了多种多样的功能，比如“记事本”、 “任务管理器”。然而，这些功能并不是必不可少的。即使没有“任务管理器”，我们仍然可以使用计算机。
+  内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。实现操作系统内核功能的那些程序就是内核程序。   计算机系统的层次结构  知识回顾与重要考点
+#
+
+">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content=" 操作系统的运行机制与体系结构 " />
-<meta property="og:description" content="运行机制 #  一: 知识总览 #  二: 预备知识：程序是如何运行的？ #  三:内核程序 v.s. 应用程序 #  四:特权指令 v.s. 非特权指令 #  五:内核态 v.s. 用户态 #  六:内核态、用户态 的切换 #  知识回顾与重要考点 #  体系结构 #  两种指令、两种处理器状态、两种程序 #  操作系统的内核 #   Yo~生活经验：我们安装完 Windows 操作系统后，会发现操作系统提供了多种多样的功能，比如“记事本”、 “任务管理器”。然而，这些功能并不是必不可少的。即使没有“任务管理器”，我们仍然可以使用计算机。
-  内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。实现操作系统内核功能的那些程序就是内核程序。   计算机系统的层次结构  知识回顾与重要考点 #  " />
+<meta property="og:description" content="运行机制
+#
+
+一: 知识总览
+#
+
+二: 预备知识：程序是如何运行的？
+#
+
+三:内核程序 v.s. 应用程序
+#
+
+四:特权指令 v.s. 非特权指令
+#
+
+五:内核态 v.s. 用户态
+#
+
+六:内核态、用户态 的切换
+#
+
+知识回顾与重要考点
+#
+
+体系结构
+#
+
+两种指令、两种处理器状态、两种程序
+#
+
+操作系统的内核
+#
+
+ Yo~生活经验：我们安装完 Windows 操作系统后，会发现操作系统提供了多种多样的功能，比如“记事本”、 “任务管理器”。然而，这些功能并不是必不可少的。即使没有“任务管理器”，我们仍然可以使用计算机。
+  内核是计算机上配置的底层软件，是操作系统最基本、最核心的部分。实现操作系统内核功能的那些程序就是内核程序。   计算机系统的层次结构  知识回顾与重要考点
+#
+
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_4_/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_4_/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title> 操作系统的运行机制与体系结构  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.825a80018dfb3bfcdcbc2103da0b7f1ac75238123cb7393838c5b9341944179d.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.79930810c0ea2b1689b460dd0b2199479a4874a81061c9b5a7d8ca11afdc09cd.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1282,6 +1355,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
   
 
@@ -1321,6 +1407,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
   
 
@@ -1348,19 +1447,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
   
 
         </li>
@@ -2664,6 +2750,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
   
 
@@ -3029,6 +3128,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
   
 
@@ -3164,7 +3276,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

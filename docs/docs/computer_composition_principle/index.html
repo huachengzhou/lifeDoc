@@ -2,36 +2,60 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一、计算机的组成及学习大纲 #  1. 计算机的组成 #  计算机的三大件 ：CPU、内存、主板 #  （1）CPU，中央处理器，计算机最核心的配件，负责所有的计算。
+<meta name="description" content="一、计算机的组成及学习大纲
+#
+
+1. 计算机的组成
+#
+
+计算机的三大件 ：CPU、内存、主板
+#
+
+（1）CPU，中央处理器，计算机最核心的配件，负责所有的计算。
 （2）内存，你编写的程序、运行的游戏、打开的浏览器都要加载到内存中才能运行，程序读取的数据、计算的结果也都在内存中，内存的大小决定了你能加载的东西的多少。
 （3）主板，存放在内存中数据需要被CPU读取，CPU计算完成后，还要把数据写入到内存中，然而CPU不能直接插在内存上，这就需要主板出马了，主板上很多个插槽，CPU和内存都是插在主板上，主板的芯片组和总线解决了CPU和内存之间的通讯问题，芯片组控制数据传输的流转，决定数据从哪里流向哪里，总线是实际数据传输的告诉公里，总线速度决定了数据的传输速度。
 （4）输入/输出设备，其实有了以上三大件之后，计算机就可以跑起来了。我们日常使用的话还需要键盘、鼠标、显示器等输入/输出设备，而很多云服务器通过SSH远程登录就可以访问，就不需要配显示器、鼠标、键盘这些东西，节省成本且方便维护。
 （5）硬盘，有了硬盘数据才能长久的保存下来，大部分还会给自己的机器配上机箱和风扇，解决灰尘和散热问题，不过这些也不是必须的，用纸板和电风扇替代也一样可以用。
 （6）显卡，显卡里有GPU图形处理器，主要负责图形渲染，使用图形界面操作系统的计算机，显卡是必不可少的。现在的主板都带了内置的显卡，如果想玩游戏、做图形渲染，一般需要一张单独的显卡，插在主板上。
-2. 冯·诺依曼体系 #  现代计算机的硬件基础架构都是依赖于冯诺依曼提出的冯诺依曼体系结构，现代计算机的核心架构可以抽象为五个基础组件：运算器、控制器、存储器、输入设备和输出设备。
+2. 冯·诺依曼体系
+#
+
+现代计算机的硬件基础架构都是依赖于冯诺依曼提出的冯诺依曼体系结构，现代计算机的核心架构可以抽象为五个基础组件：运算器、控制器、存储器、输入设备和输出设备。
 具体到现代计算机，运算器和控制器组成了现代计算机的CPU，存储器对应着内存和硬盘，主板控制着CPU、内存、硬盘、输出/输出设备之间的通讯。
 冯诺依曼体系结构也叫做存储程序计算机，即可编程、可存储的计算机。
 任何一台计算机的任何一个部件都可以归到运算器、控制器、存储器、输入设备和输出设备中，而所有的现代计算机也都是基于这个基础架构来设计开发的。
 冯诺依曼体系结构确立了我们现代计算机的硬件基础架构，学习计算机组成原理，就是学习和拆解冯诺依曼体系。
 学习组成原理，就是学习以下内容：
- CPU（运算器&#43;控制器）怎么工作，为什么这么设计； 内存和硬盘的工作原理； CPU是怎么和内存、硬盘、输入设备、输出设备通讯的； 从电路这样的硬件到最终开发给软件的接口是怎么运作的，为什么要这么设计，以及在软件开发层面怎么尽可能的用好它；  3. 计算机组成原理学习大纲 #  计算机组成原理知识地图
-学习大纲： #   计算机的基本组成：冯诺依曼体系结构的五大基本组件：运算器、控制器、存储器、输入设备和输出设备；计算机的两个核心指标：性能和功耗。 计算机的指令和计算：高级语言是怎么跑起来的，怎么通过编译器和汇编器变成机器指令的；操作系统怎么链接、装载、执行程序的；指令的执行是怎么控制的（控制器）。 运算器，数据在计算机中的表示（二进制和编码）；计算机是怎么实现加法、乘法等基本运算功能的。 CPU的设计：我们为什么需要CPU时钟；寄存器和内存怎么组成的；整个计算机的数据通路是如何构造的；CPU的流水线设计；数据和控制冒险；分支预测；CPU的异常和中断机制；指令的并行执行；CPU怎么通过SIMD来支持并行计算。 存储器的原理：CPU高速缓存、内存、SSD硬盘和机械硬盘的工作原理，及它们之间的性能差异；CPU和存储器之间怎么通讯的；什么是IO_WAIT；如何通过DMA提升程序性能；如何保证存储器里的数据不丢失；如何通过RAID、Erasure Code、ECC、HDFS，这些不同的技术来确保数据的完整性和访问性能。  总结：计算机组成原理是整个计算机科学的纲要，这门课程的很多知识点深挖下去都会变成一个核心课程。
+ CPU（运算器&#43;控制器）怎么工作，为什么这么设计； 内存和硬盘的工作原理； CPU是怎么和内存、硬盘、输入设备、输出设备通讯的； 从电路这样的硬件到最终开发给软件的接口是怎么运作的，为什么要这么设计，以及在软件开发层面怎么尽可能的用好它；  3. 计算机组成原理学习大纲
+#
+
+计算机组成原理知识地图
+学习大纲：
+#
+
+ 计算机的基本组成：冯诺依曼体系结构的五大基本组件：运算器、控制器、存储器、输入设备和输出设备；计算机的两个核心指标：性能和功耗。 计算机的指令和计算：高级语言是怎么跑起来的，怎么通过编译器和汇编器变成机器指令的；操作系统怎么链接、装载、执行程序的；指令的执行是怎么控制的（控制器）。 运算器，数据在计算机中的表示（二进制和编码）；计算机是怎么实现加法、乘法等基本运算功能的。 CPU的设计：我们为什么需要CPU时钟；寄存器和内存怎么组成的；整个计算机的数据通路是如何构造的；CPU的流水线设计；数据和控制冒险；分支预测；CPU的异常和中断机制；指令的并行执行；CPU怎么通过SIMD来支持并行计算。 存储器的原理：CPU高速缓存、内存、SSD硬盘和机械硬盘的工作原理，及它们之间的性能差异；CPU和存储器之间怎么通讯的；什么是IO_WAIT；如何通过DMA提升程序性能；如何保证存储器里的数据不丢失；如何通过RAID、Erasure Code、ECC、HDFS，这些不同的技术来确保数据的完整性和访问性能。  总结：计算机组成原理是整个计算机科学的纲要，这门课程的很多知识点深挖下去都会变成一个核心课程。
 例如：
- 计算是怎么实现的，对应着数字电路课程。 CPU和存储器系统的优化，对应着计算机体系结构课程。 程序通过编译器和汇编器变成机器指令的编译过程，对应着编译原理课程。 操作系统是怎么链接、装载、执行程序的，对应着操作系统课程。  二、下面我们根据课程大纲，大致过一遍组成原理 #  1. 性能 #  衡量计算机的性能，主要有两个指标：响应时间和吞吐率。
+ 计算是怎么实现的，对应着数字电路课程。 CPU和存储器系统的优化，对应着计算机体系结构课程。 程序通过编译器和汇编器变成机器指令的编译过程，对应着编译原理课程。 操作系统是怎么链接、装载、执行程序的，对应着操作系统课程。  二、下面我们根据课程大纲，大致过一遍组成原理
+#
+
+1. 性能
+#
+
+衡量计算机的性能，主要有两个指标：响应时间和吞吐率。
  响应时间，就是执行一个程序花费的时间，花的时间越短，性能就越好。 吞吐率，就是一定时间内，到底能处理多少数据和指令，处理的越多，性能就越好。  我们一般把性能定义为响应时间的倒数，也就是：性能 = 1 / 响应时间">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="计算机组成原理" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_composition_principle/" />
-<meta property="og:updated_time" content="2021-01-17T15:26:15+00:00" />
+
 <title>计算机组成原理 | 所悟所想</title>
 <link rel="manifest" href="./../../manifest.json">
 <link rel="icon" href="./../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../en.search.min.825a80018dfb3bfcdcbc2103da0b7f1ac75238123cb7393838c5b9341944179d.js"  ></script>
+<link rel="stylesheet" href="./../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../en.search.min.79930810c0ea2b1689b460dd0b2199479a4874a81061c9b5a7d8ca11afdc09cd.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../docs/computer_composition_principle/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -1296,6 +1320,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
   
 
@@ -1335,6 +1372,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
   
 
@@ -1362,19 +1412,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
   
 
         </li>
@@ -2678,6 +2715,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
   
 
@@ -3043,6 +3093,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
   
 
@@ -3178,7 +3241,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
