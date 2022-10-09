@@ -2,7 +2,7 @@
 title: "常用 Console 调试命令"
 date: 2020-01-17T15:26:15Z
 draft: false
-weight: 1
+weight: 7
 ---
 
 
