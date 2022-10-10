@@ -5,7 +5,7 @@
     <link>https://huachengzhou.github.io/life/</link>
     <description>Recent content in Introduction on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何提升自信</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/confident/</link>
@@ -79,6 +79,22 @@
 5，强化
 当你开始不自卑的时候，你想要获得真正的自信，那你就需要有拿得出手的东西。
 比如你通过努力了之后变得有点钱，或者说变得有点情商，有点阅历，口才有点好等等；</description>
+    </item>
+    
+    <item>
+      <title>跨域问题</title>
+      <link>https://huachengzhou.github.io/life/docs/http/teywty5qnc/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/http/teywty5qnc/</guid>
+      <description>跨域 #  介绍 #   跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
+  同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
+ 为什么会跨域 #  说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
+1.什么是源 #   Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
+  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构 #   URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
+   URL有如下结构组成：
+  Schme 或者 Protocol
+   Domain Name 也叫做host域名   port 端口号   Parameters参数   Anchor 锚点，一般用于定位位置  3.</description>
     </item>
     
     <item>
@@ -399,6 +415,15 @@ sudo apt-get install synaptic</description>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_1/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>nginx 学习与使用</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</link>
+      <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</guid>
+      <description>demo #  </description>
     </item>
     
     <item>

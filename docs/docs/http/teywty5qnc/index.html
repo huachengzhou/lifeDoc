@@ -1,0 +1,4201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="跨域 #  介绍 #   跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
+  同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
+ 为什么会跨域 #  说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
+1.什么是源 #   Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
+  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构 #   URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
+   URL有如下结构组成：
+  Schme 或者 Protocol
+   Domain Name 也叫做host域名   port 端口号   Parameters参数   Anchor 锚点，一般用于定位位置  3.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="跨域问题" />
+<meta property="og:description" content="跨域 #  介绍 #   跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
+  同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
+ 为什么会跨域 #  说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
+1.什么是源 #   Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
+  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构 #   URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
+   URL有如下结构组成：
+  Schme 或者 Protocol
+   Domain Name 也叫做host域名   port 端口号   Parameters参数   Anchor 锚点，一般用于定位位置  3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/http/teywty5qnc/" />
+<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
+<title>跨域问题 | 所悟所想</title>
+<link rel="manifest" href="./../../../manifest.json">
+<link rel="icon" href="./../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../en.search.min.1461ffab69b9f9373a841743762d4ddc2d63b9ebb243e68c1d17ab297731969b.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>数据链路层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>网络层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>传输层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>应用层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-520770a3f5ea08f8358bcf92838812da" class="toggle"  />
+    <label for="section-520770a3f5ea08f8358bcf92838812da" class="flex justify-between">
+      <a href="./../../../docs/c-plus/" class=""> c&#43;&#43;</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle"  />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install_more/" class="">Win10一台电脑安装多个版本的Mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_install_centos/" class="">centos7安装多个mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_procedure/" class="">mysql存储过程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_procedure_function/" class="">mysql存储函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_operation_maintenance/" class="">mysql运维</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_regexp/" class="">mysql正则表达式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysq_advanced_optimization/" class="">mysql优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_select/" class="">mysql新查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/mysql_view/" class="">mysql视图</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql/triggers/" class="">mysql触发器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="toggle"  />
+    <label for="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="flex justify-between">
+      <a href="./../../../docs/python/" class=""> python</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/" class="">python 基础学习</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle"  />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="toggle"  />
+    <label for="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="flex justify-between">
+      <a href="./../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9f37c30cbddfdede23d767e7034c30" class="toggle"  />
+    <label for="section-ba9f37c30cbddfdede23d767e7034c30" class="flex justify-between">
+      <a href="./../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/dw7668daxw/" class="">java类型转换,构造,重要语法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/java-basic-x-exception/" class="">异常机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/java-basic-x-reflection/" class="">反射机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/java-basic-x-annotation/" class="">注解机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/basedir/java-basic-x-generic/" class="">泛型机制详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e4f99824d06ea4abb1161f3046570d7f" class="toggle"  />
+    <label for="section-e4f99824d06ea4abb1161f3046570d7f" class="flex justify-between">
+      <a href="./../../../docs/javadir/thread/" class="">多线程与并发 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/glossary/" class="">名词解释</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/essential_glossary/" class="">关键名词解释</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/cas/" class="">cas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/jol/" class="">JOL工具 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/unsafe/" class="">unsafe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/reentrantlock/" class="">ReentrantLock</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/repeat_lock/" class="">java重复加锁</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/thread/park/" class="">park</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="toggle"  />
+    <label for="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="flex justify-between">
+      <a href="./../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c751f376602d063da318fd2ace31d1e" class="toggle"  />
+    <label for="section-3c751f376602d063da318fd2ace31d1e" class="flex justify-between">
+      <a href="./../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/javadir/middleware/nginx/" class="">nginx 学习与使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../docs/operating_system/" class="">操作系统 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-21040cf0ac2f33d55fbb5e091a34a3f0" class="toggle"  />
+    <label for="section-21040cf0ac2f33d55fbb5e091a34a3f0" class="flex justify-between">
+      <a href="./../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-806134514f2418a47efb34528bbe6d38" class="toggle"  />
+    <label for="section-806134514f2418a47efb34528bbe6d38" class="flex justify-between">
+      <a href="./../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/" class="">第一章 操作系统概述 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_1_/" class="">操作系统的概念、功能</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_2_/" class="">操作系统的特征</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_3_/" class=""> 操作系统的发展与分类 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_4_/" class=""> 操作系统的运行机制与体系结构 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_5_/" class=""> 中断和异常 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_6_/" class=""> 系统调用 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/one_chapter/1_7_/" class=""> 操作系统的体系结构 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/" class="">第二章 进程管理 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_1_1/" class="">进程的概念、组成、特征</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/three_chapter/" class="">第三章 内存管理 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/four_chapter/" class="">第四章 文件管理 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/operating_system/five_chapter/" class="">第五章 输入，输出（I,O） </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9caa6ae5221742cea46cb40ee3162cf1" class="toggle" checked />
+    <label for="section-9caa6ae5221742cea46cb40ee3162cf1" class="flex justify-between">
+      <a href="./../../../docs/http/" class="">http知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/http/teywty5qnc/" class=" active">跨域问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/" class="">小程序技术总结参考 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/" class="">vue脚手架创建方式 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-faf554f92b63c792eb1430dabc59780a" class="toggle"  />
+    <label for="section-faf554f92b63c792eb1430dabc59780a" class="flex justify-between">
+      <a href="./../../../docs/physics/" class="">physics</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a61b294d5fe4a63fddde070933328b8a" class="toggle"  />
+    <label for="section-a61b294d5fe4a63fddde070933328b8a" class="flex justify-between">
+      <a href="./../../../docs/about/" class="">关于程序员</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/car_study/one/" class="">科目一</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ae4278ffcaad5eddcb3add9757c83b1" class="toggle"  />
+    <label for="section-4ae4278ffcaad5eddcb3add9757c83b1" class="flex justify-between">
+      <a href="./../../../docs/compilation_principle/" class="">编译原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-75093b6572bead2615e3964d3a3f0832" class="toggle"  />
+    <label for="section-75093b6572bead2615e3964d3a3f0832" class="flex justify-between">
+      <a href="./../../../docs/computer_composition_principle/" class="">计算机组成原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/gsmgajphs7/" class="">看书看到大脑疲劳以后，应如何快速恢复大脑状态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/seiffjx8c7/" class="">和女孩聊天话题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/" class="">自信</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/confident/" class="">如何提升自信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/good_voice/" class="">如何说话好听</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hw2jindwcd/" class="">100篇锻炼口才表达能力的绕口令（精选版）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/2bm8trpqzx/" class="">发声 具体训练方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/idx4etcwwy/" class="">如何系统地训练口才</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awb8ggwzn2/" class="">生活中常用的客套话</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hweaprcifa/" class="">高情商的聊天技巧</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/we4ycwfxb7/" class="">我自己理解的口才练习技巧</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/" class="">我自己理解的聊天技巧</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>跨域问题</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#为什么会跨域">为什么会跨域</a>
+      <ul>
+        <li><a href="#1什么是源">1.什么是源</a></li>
+        <li><a href="#2-url结构">2. URL结构</a></li>
+        <li><a href="#3-同源不同源举例">3. 同源不同源举例</a></li>
+        <li><a href="#4-浏览器为什么需要同源策略">4. 浏览器为什么需要同源策略</a></li>
+        <li><a href="#5-常规前端请求跨域">5. 常规前端请求跨域</a></li>
+      </ul>
+    </li>
+    <li><a href="#二前端解决方案">二、前端解决方案</a>
+      <ul>
+        <li><a href="#jsonp原理">jsonp原理</a></li>
+        <li><a href="#代理方式">代理方式</a></li>
+        <li><a href="#documentdomain-方式">document.domain 方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#三服务端解决方案">三、服务端解决方案</a></li>
+    <li><a href="#四运维解决方案">四、运维解决方案</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+<ul class="ul_abc">
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/studyIndex.html" class="active" >自定义工具</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/index.html">blog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/about">关于程序员</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/newIndex.html">book</a></li>
+</ul>
+
+      
+  <article class="markdown"><h1 id="跨域">
+  跨域
+  <a class="anchor" href="#%e8%b7%a8%e5%9f%9f">#</a>
+</h1>
+<h2 id="介绍">
+  介绍
+  <a class="anchor" href="#%e4%bb%8b%e7%bb%8d">#</a>
+</h2>
+<blockquote>
+<p>跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。</p>
+</blockquote>
+<blockquote>
+<p>同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。</p>
+</blockquote>
+<h2 id="为什么会跨域">
+  为什么会跨域
+  <a class="anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bc%9a%e8%b7%a8%e5%9f%9f">#</a>
+</h2>
+<p>说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全</p>
+<h3 id="1什么是源">
+  1.什么是源
+  <a class="anchor" href="#1%e4%bb%80%e4%b9%88%e6%98%af%e6%ba%90">#</a>
+</h3>
+<blockquote>
+<p>Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。</p>
+</blockquote>
+<ul>
+<li>所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源）</li>
+<li>同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。
+下面认识下url 结构中的这三个部分</li>
+</ul>
+<h3 id="2-url结构">
+  2. URL结构
+  <a class="anchor" href="#2-url%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<blockquote>
+<p>URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。</p>
+</blockquote>
+<ul>
+<li>
+<p>URL有如下结构组成：</p>
+</li>
+<li>
+<p>Schme 或者 Protocol</p>
+</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/0e77be8cd17bacd69cbc78c781b09ccb.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/0e77be8cd17bacd69cbc78c781b09ccb.png" alt="" /></p>
+<ul>
+<li>Domain Name 也叫做host域名</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/eeedb23b713607ad72d8af90ca434317.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/eeedb23b713607ad72d8af90ca434317.png" alt="" /></p>
+<ul>
+<li>port 端口号</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/748d7f6b786d4bb54726c2e9035376bd.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/748d7f6b786d4bb54726c2e9035376bd.png" alt="" /></p>
+<ul>
+<li>Parameters参数</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/d0f7674fe11e3d29cb0609234239fbba.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/d0f7674fe11e3d29cb0609234239fbba.png" alt="" /></p>
+<ul>
+<li>Anchor 锚点，一般用于定位位置</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/0c5a3ffb784dd927e341fd2f58b710b2.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/0c5a3ffb784dd927e341fd2f58b710b2.png" alt="" /></p>
+<h3 id="3-同源不同源举例">
+  3. 同源不同源举例
+  <a class="anchor" href="#3-%e5%90%8c%e6%ba%90%e4%b8%8d%e5%90%8c%e6%ba%90%e4%b8%be%e4%be%8b">#</a>
+</h3>
+<p>举一下同源不同源的例子，便于理解</p>
+<ul>
+<li><strong>同源例子</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th style="text-align:center">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://example.com/app1/index.html">http://example.com/app1/index.html</a>  &lt;==&gt; <a href="http://example.com/app2/index.html">http://example.com/app2/index.html</a></td>
+<td style="text-align:center">相同的 scheme http 和host</td>
+</tr>
+<tr>
+<td><a href="http://Example.com">http://Example.com</a>:80  &lt;==&gt; <a href="http://example.com">http://example.com</a></td>
+<td style="text-align:center">http 默认80端口所以同源</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>不同源例子</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th style="text-align:center">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://example.com/app1">http://example.com/app1</a>  &lt;==&gt; <a href="https://example.com/app2">https://example.com/app2</a></td>
+<td style="text-align:center">不同的协议</td>
+</tr>
+<tr>
+<td><a href="http://example.com">http://example.com</a>  &lt;==&gt; <a href="http://myapp.example.com">http://myapp.example.com</a></td>
+<td style="text-align:center">不同的host</td>
+</tr>
+<tr>
+<td><a href="http://example.com">http://example.com</a>  &lt;==&gt; <a href="http://example.com">http://example.com</a>:8080</td>
+<td style="text-align:center">不同的端口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-浏览器为什么需要同源策略">
+  4. 浏览器为什么需要同源策略
+  <a class="anchor" href="#4-%e6%b5%8f%e8%a7%88%e5%99%a8%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e5%90%8c%e6%ba%90%e7%ad%96%e7%95%a5">#</a>
+</h3>
+<p>同源策略是一个重要的安全策略，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。</p>
+<h3 id="5-常规前端请求跨域">
+  5. 常规前端请求跨域
+  <a class="anchor" href="#5-%e5%b8%b8%e8%a7%84%e5%89%8d%e7%ab%af%e8%af%b7%e6%b1%82%e8%b7%a8%e5%9f%9f">#</a>
+</h3>
+<p>在没有前后端分离的时候，跨域问题往往是很少的。因为前后端都部署到一起。现在前后端分离不管vue /react 面临跨域请求的问题。</p>
+<p>下面是引用官网描述的一张图来解释跨域：</p>
+<p><img src="../.././imgs/suiji/teywty5qnc/b13e0820da2e8d09a9bca1b0e7cb8fda.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/b13e0820da2e8d09a9bca1b0e7cb8fda.png" alt="" /></p>
+<p>跨源域资源共享（CORS）机制允许 Web 应用服务器进行跨源访问控制，从而使跨源数据传输得以安全进行。现代浏览器支持在 API 容器中（例如 XMLHttpRequest 或 Fetch）使用 CORS，以降低跨源 HTTP 请求所带来的风险</p>
+<h2 id="二前端解决方案">
+  二、前端解决方案
+  <a class="anchor" href="#%e4%ba%8c%e5%89%8d%e7%ab%af%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88">#</a>
+</h2>
+<ul>
+<li><strong>jsonp</strong></li>
+</ul>
+<blockquote>
+<p>JSONP的原理非常简单，就是HTML标签中，很多带src属性的标签都可以跨域请求内容，比如我们熟悉的img图片标签。同理，script标签也可以，可以利用script标签来执行跨域的javascript代码。通过这些代码，我们就能实现前端跨域请求数据。</p>
+</blockquote>
+<blockquote>
+<p>jsonp 可以在前端解决跨域问题，但是只是针对于get请求。实现方式可以引用一些npm 第三方库实现，jquery 也是带的。</p>
+</blockquote>
+<blockquote>
+<p>可以在npm 搜下jsonp 库实现，非常简单。</p>
+</blockquote>
+<h3 id="jsonp原理">
+  jsonp原理
+  <a class="anchor" href="#jsonp%e5%8e%9f%e7%90%86">#</a>
+</h3>
+<blockquote>
+<p>我个人理解jsonp实际上是钻了空子然后利用这个空子来间接的实现了 get方式的跨域请求逻辑 以载入脚本方式去请求数据然后把脚本响应的数据包在回调脚本函数的参数里面  回调函数一执行就拿到了数据</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/chiangchou/p/jsonp.html">jsonp原理参考</a></p>
+<ul>
+<li>
+<p>首先我们需要明白，在页面上直接发起一个跨域的ajax请求是不可以的，但是，在页面上引入不同域上的js脚本却是可以的，就像你可以在自己的页面上使用<!-- raw HTML omitted --> 标签来随意显示某个域上的图片一样</p>
+</li>
+<li>
+<p>比如我在8080端口的页面上请求一个9090端口的图片：可以看到直接通过src跨域请求是可以的</p>
+</li>
+</ul>
+<p><img src="../.././imgs/suiji/teywty5qnc/856154-20170108232245691-1216530530.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/856154-20170108232245691-1216530530.png" alt="" /></p>
+<p>那么看下如何使用<!-- raw HTML omitted -->来完成一个跨域请求：</p>
+<p>当点击&quot;跨域获取数据&quot;的按钮时，添加一个<!-- raw HTML omitted -->标签，用于发起跨域请求；注意看请求地址后面带了一个callback=showData的参数；</p>
+<p>　　showData即是回调函数名称，传到后台，用于包裹数据。数据返回到前端后，就是showData(result)的形式，因为是script脚本，所以自动调用showData函数，而result就是showData的参数。</p>
+<p>　　至此，我们算是跨域把数据请求回来了，但是比较麻烦，需要自己写脚本发起请求，然后写个回调函数处理数据，不是很方便。</p>
+<p><strong>页面</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page pageEncoding=&#34;utf-8&#34; contentType=&#34;text/html;charset=UTF-8&#34;  language=&#34;java&#34; %&gt;
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;跨域测试&lt;/<span style="color:#f92672">title</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/jquery-1.7.2.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;<span style="color:#f92672">script</span>&gt;
+        <span style="color:#75715e">//回调函数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showData</span> (<span style="color:#a6e22e">result</span>) {
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">//json对象转成字符串
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#text&#34;</span>).<span style="color:#a6e22e">val</span>(<span style="color:#a6e22e">data</span>);
+        }
+
+        <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span> () {
+
+            <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#btn&#34;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span> () {
+                <span style="color:#75715e">//向头部输入一个脚本，该脚本发起一个跨域请求
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;head&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;&lt;script src=&#39;http://localhost:9090/student?callback=showData&#39;&gt;&lt;\/script&gt;&#34;</span>);
+            });
+
+        });
+    &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;跨域获取数据&#34;</span> /&gt;
+    &lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 400px; height: 100px;&#34;</span>&gt;&lt;/<span style="color:#f92672">textarea</span>&gt;
+
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p><strong>服务端</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doGet</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+    response<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">);</span>
+    response<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/html;charset=UTF-8&#34;</span><span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">//数据
+</span><span style="color:#75715e"></span>    List<span style="color:#f92672">&lt;</span>Student<span style="color:#f92672">&gt;</span> studentList <span style="color:#f92672">=</span> getStudentList<span style="color:#f92672">();</span>
+
+
+    JSONArray jsonArray <span style="color:#f92672">=</span> JSONArray<span style="color:#f92672">.</span><span style="color:#a6e22e">fromObject</span><span style="color:#f92672">(</span>studentList<span style="color:#f92672">);</span>
+    String result <span style="color:#f92672">=</span> jsonArray<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+
+    <span style="color:#75715e">//前端传过来的回调函数名称
+</span><span style="color:#75715e"></span>    String callback <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;callback&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">//用回调函数名称包裹返回数据，这样，返回数据就作为回调函数的参数传回去了
+</span><span style="color:#75715e"></span>    result <span style="color:#f92672">=</span> callback <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;(&#34;</span> <span style="color:#f92672">+</span> result <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;)&#34;</span><span style="color:#f92672">;</span>
+
+    response<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>结果</strong></p>
+<p><img src="../.././imgs/suiji/teywty5qnc/856154-20170109001005441-128129104.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/856154-20170109001005441-128129104.png" alt="" /></p>
+<p>再来看jquery的jsonp方式跨域请求：
+服务端代码不变，js代码如下：最简单的方式，只需配置一个dataType:&lsquo;jsonp&rsquo;，就可以发起一个跨域请求。jsonp指定服务器返回的数据类型为jsonp格式，可以看发起的请求路径，自动带了一个callback=xxx，xxx是jquery随机生成的一个回调函数名称。</p>
+<p>这里的success就跟上面的showData一样，如果有success函数则默认success()作为回调函数。
+说白了 jquery只不过也是按照那个空子然后做了中间处理</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page pageEncoding=&#34;utf-8&#34; contentType=&#34;text/html;charset=UTF-8&#34;  language=&#34;java&#34; %&gt;
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;跨域测试&lt;/<span style="color:#f92672">title</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/jquery-1.7.2.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;<span style="color:#f92672">script</span>&gt;
+
+        <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span> () {
+
+            <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#btn&#34;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span> () {
+
+                <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+                    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://localhost:9090/student&#34;</span>,
+                    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;GET&#34;</span>,
+                    <span style="color:#a6e22e">dataType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;jsonp&#34;</span>, <span style="color:#75715e">//指定服务器返回的数据类型
+</span><span style="color:#75715e"></span>                    <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">data</span>) {
+                        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>); <span style="color:#75715e">//json对象转成字符串
+</span><span style="color:#75715e"></span>                        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#text&#34;</span>).<span style="color:#a6e22e">val</span>(<span style="color:#a6e22e">result</span>);
+                    }
+                });
+            });
+        });
+    &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;跨域获取数据&#34;</span> /&gt;
+    &lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 400px; height: 100px;&#34;</span>&gt;&lt;/<span style="color:#f92672">textarea</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p><strong>结果</strong></p>
+<p><img src="../.././imgs/suiji/teywty5qnc/856154-20170109001005441-128129104.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/856154-20170109001005441-128129104.png" alt="" /></p>
+<h3 id="代理方式">
+  代理方式
+  <a class="anchor" href="#%e4%bb%a3%e7%90%86%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<h4 id="代理原理">
+  代理原理
+  <a class="anchor" href="#%e4%bb%a3%e7%90%86%e5%8e%9f%e7%90%86">#</a>
+</h4>
+<blockquote>
+<p>代理服务器是介于前端和后端之间的中间服务层，前端向代理服务器发送请求时，代理服务器是允许跨域请求的，而代理服务器在收到前端的ajax请求时，会通过changeOrigin的方式，将前端请求的接口，转发给target所指向的目标服务器，从而以相同的域向目标服务器发送请求，由于代理服务器和目标服务器之间的域是相同的，因此不会出现跨域问题，从而代理服务器会收到目标服务器的响应，再将响应转发给前端即可</p>
+</blockquote>
+<p>平常我们经常遇到的跨域问题就是，不同域名下的跨域。 那么问题来了，是怎么判断你与服务器不在一个域名下呢？</p>
+<p><img src="../.././imgs/suiji/teywty5qnc/20180904165430173.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/20180904165430173.png" alt="" /></p>
+<p>通过chrome，我们发现原来我们的地址跟数据来源都是浏览器告诉我们的，然后它会判断是否同源，同源就正常访问。那么我们想解决问题就要从此处入手
+<strong>代理解决跨域原理</strong>
+通过一些方法设置代理，在请求发送(接收)之前加入中间层，</p>
+<p>将不同的域名转换成相同的</p>
+<p>就解决了跨域的问题</p>
+<p>客户端发送请求时</p>
+<p>不直接到服务器</p>
+<p>而是先到代理的中间层</p>
+<p>在这里将localhost：8088的这个域名装换为192.168.0.67:8061，</p>
+<p>再将请求发送到服务器</p>
+<p>这样在服务器端收到的请求就是使用的192.168.0.67:8061域名</p>
+<p>同理，当服务器返回数据的时候，也是先到代理的中间层</p>
+<p>将192.168.0.67:8061转换成localhos：8088；</p>
+<p>这样在客户端也是在相同域名下访问的了</p>
+<h4 id="代理配置">
+  代理配置
+  <a class="anchor" href="#%e4%bb%a3%e7%90%86%e9%85%8d%e7%bd%ae">#</a>
+</h4>
+<p>如:webpack-dev-server 配置代理 (假如前端构建工具压根不是webpack你别傻乎乎的用这个来配置比如新一代的vite)
+前端无论是vue项目还是react 项目大多数都会以webpack-dev-server 来运行，webpack-dev-server 可以设置代理，前端可以在开发环境设置代理解决跨域问题。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"> <span style="color:#a6e22e">proxy</span><span style="color:#f92672">:</span> {
+      <span style="color:#e6db74">&#39;/api&#39;</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://localhost:3000&#39;</span>,
+        <span style="color:#a6e22e">pathRewrite</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;^/api&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span> },
+        <span style="color:#a6e22e">changeOrigin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+      },
+   }
+</code></pre></div><p>vue-cli、create-react-app、umi 等脚手架找到webpack devserver配置位置配上即可</p>
+<p>注意： 只限在开发环境，生产环境需要web 服务器同样原理代即可。 生产环境一般可以用nginx 大概是 前端请求 -&gt; nginx这 nginx -&gt; 具体的后端服务器 毕竟nginx可以做防盗链,负载均衡等 这些嘛</p>
+<h3 id="documentdomain-方式">
+  document.domain 方式
+  <a class="anchor" href="#documentdomain-%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<blockquote>
+<p>由于JavaScript同源策略的限制，脚本只能读取和所属文档来源相同的窗口和文档的属性。</p>
+</blockquote>
+<blockquote>
+<p>对于已经有成熟产品体系的公司来说，不同的页面可能放在不同的服务器上，这些服务器域名不同，但是拥有相同的上级域名，比如id.qq.com、www.qq.com、user.qzone.qq.com，它们都有公共的上级域名qq.com。这些服务器上的页面之间的跨域访问可以通过document.domain来进行。</p>
+</blockquote>
+<blockquote>
+<p>默认情况下，document.domain存放的是载入文档的服务器的主机名，可以手动设置这个属性，不过是有限制的，只能设置成当前域名或者上级的域名，并且必须要包含一个.号，也就是说不能直接设置成顶级域名。例如：id.qq.com，可以设置成qq.com，但是不能设置成com</p>
+</blockquote>
+<ul>
+<li><strong>访问同源页面例子</strong></li>
+</ul>
+<p>打开<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cookie">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cookie</a>
+，在f12控制台里window.open页面：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers</a>，访问返回的window对象的document属性，发现能够访问成功</p>
+<ul>
+<li>
+<p><strong>具体设置例子</strong></p>
+</li>
+<li>
+<p>www.a.com上的a.html 具有相同上级域名</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">document.<span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a.com&#39;</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ifr</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;iframe&#39;</span>);
+<span style="color:#a6e22e">ifr</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://script.a.com/b.html&#39;</span>;
+<span style="color:#a6e22e">ifr</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
+document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">ifr</span>);
+<span style="color:#a6e22e">ifr</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">doc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ifr</span>.<span style="color:#a6e22e">contentDocument</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ifr</span>.<span style="color:#a6e22e">contentWindow</span>.document;
+    <span style="color:#75715e">// 在这里操纵b.html
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">doc</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;h1&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">childNodes</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">nodeValue</span>);
+};
+</code></pre></div><ul>
+<li>script.a.com上的b.html 具有相同上级域名</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">document.<span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a.com&#39;</span>;
+</code></pre></div><h2 id="三服务端解决方案">
+  三、服务端解决方案
+  <a class="anchor" href="#%e4%b8%89%e6%9c%8d%e5%8a%a1%e7%ab%af%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88">#</a>
+</h2>
+<blockquote>
+<p>后端框架也很多，实现原理差不多，都是修改下相应http头。以常用的Java SpringCloud springMvc 和nodejs koa 框架为例。</p>
+</blockquote>
+<p><strong>Http 协议CORS头</strong></p>
+<p>跨域其实也是http层面上可以解决的问题，后端解决也是比较简单的，也是项目常见的解决手法</p>
+<p>CORS （Cross-Origin Resource Sharing，跨域资源共享）是一个系统，它由一系列传输的HTTP头组成，这些HTTP头决定浏览器是否阻止前端 JavaScript 代码获取跨域请求的响应。</p>
+<p>同源安全策略 默认阻止“跨域”获取资源。但是 CORS 给了web服务器这样的权限，即服务器可以选择，允许跨域请求访问到它们的资源。</p>
+<table>
+<thead>
+<tr>
+<th>代码字段</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access-Control-Allow-Origin</td>
+<td style="text-align:center">指示请求的资源能共享给哪些域</td>
+</tr>
+<tr>
+<td>Access-Control-Allow-Credentials</td>
+<td style="text-align:center">指示当请求的凭证标记为 true 时，是否响应该请求</td>
+</tr>
+<tr>
+<td>Access-Control-Allow-Headers</td>
+<td style="text-align:center">用在对预请求的响应中，指示实际的请求中可以使用哪些 HTTP 头</td>
+</tr>
+<tr>
+<td>Access-Control-Allow-Methods</td>
+<td style="text-align:center">指定对预请求的响应中，哪些 HTTP 方法允许访问请求的资源</td>
+</tr>
+<tr>
+<td>Access-Control-Expose-Headers</td>
+<td style="text-align:center">指示哪些 HTTP 头的名称能在响应中列出</td>
+</tr>
+<tr>
+<td>Access-Control-Max-Age</td>
+<td style="text-align:center">指示预请求的结果能被缓存多久</td>
+</tr>
+<tr>
+<td>Access-Control-Request-Headers</td>
+<td style="text-align:center">用于发起一个预请求，告知服务器正式请求会使用那些 HTTP 头</td>
+</tr>
+<tr>
+<td>Access-Control-Request-Method</td>
+<td style="text-align:center">用于发起一个预请求，告知服务器正式请求会使用哪一种 HTTP 请求方法</td>
+</tr>
+<tr>
+<td>Origin</td>
+<td style="text-align:center">指示获取资源的请求是从什么域发起的</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>SpringCloud设置跨域</strong>
+在跨域过滤器里配置一下跨域头部，* 是通配符即允许所有</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GatewayCorsConfiguation</span> <span style="color:#f92672">{</span>
+ 
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> CorsFilter <span style="color:#a6e22e">corsFilter</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">// 初始化cors配置对象
+</span><span style="color:#75715e"></span>        CorsConfiguration configuration <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CorsConfiguration<span style="color:#f92672">();</span>
+        configuration<span style="color:#f92672">.</span><span style="color:#a6e22e">setAllowCredentials</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span> <span style="color:#75715e">// 允许使用cookie，但是使用cookie是addAllowedOrigin必须是具体的地址，不能是*
+</span><span style="color:#75715e">//        configuration.addAllowedOrigin(&#34;*&#34;);
+</span><span style="color:#75715e"></span>        configuration<span style="color:#f92672">.</span><span style="color:#a6e22e">addAllowedOrigin</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http://manage.leyou.com&#34;</span><span style="color:#f92672">);</span>
+        configuration<span style="color:#f92672">.</span><span style="color:#a6e22e">addAllowedMethod</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">);</span>  <span style="color:#75715e">//允许的请求方式,get,put,post,delete
+</span><span style="color:#75715e"></span>        configuration<span style="color:#f92672">.</span><span style="color:#a6e22e">addAllowedHeader</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//允许的头信息
+</span><span style="color:#75715e"></span> 
+        <span style="color:#75715e">//初始化cors的源对象配置
+</span><span style="color:#75715e"></span>        UrlBasedCorsConfigurationSource corsConfigurationSource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UrlBasedCorsConfigurationSource<span style="color:#f92672">();</span>
+        corsConfigurationSource<span style="color:#f92672">.</span><span style="color:#a6e22e">registerCorsConfiguration</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/**&#34;</span><span style="color:#f92672">,</span>configuration<span style="color:#f92672">);</span>
+ 
+        <span style="color:#75715e">//3.返回新的CorsFilter.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CorsFilter<span style="color:#f92672">(</span>corsConfigurationSource<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li><strong>Koa设置跨域</strong></li>
+</ul>
+<p>koa 是插件机制，设置更简单，使用跨域插件即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">cors</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;koa2-cors&#34;</span>;
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>());
+</code></pre></div><ul>
+<li><strong>springmvc</strong></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> lombok.extern.log4j.Log4j<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.*<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/app.test&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@Log4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestController</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@CrossOrigin</span><span style="color:#f92672">(</span>origins <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@PostMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/test&#34;</span><span style="color:#f92672">,</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@CheckRequestSign</span>
+    <span style="color:#66d9ef">public</span> HttpResult <span style="color:#a6e22e">test</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@RequestBody</span> TestParam testParam<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> HttpResult<span style="color:#f92672">.</span><span style="color:#a6e22e">newCorrectResult</span><span style="color:#f92672">(</span>testParam<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;异常&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span> HttpResult<span style="color:#f92672">.</span><span style="color:#a6e22e">newErrorResult</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h2 id="四运维解决方案">
+  四、运维解决方案
+  <a class="anchor" href="#%e5%9b%9b%e8%bf%90%e7%bb%b4%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88">#</a>
+</h2>
+<blockquote>
+<p>还是利用代理方式解决,代理方式可选的方案非常之多</p>
+</blockquote>
+<ul>
+<li>
+<p>选择nginx</p>
+</li>
+<li>
+<p>我理解的步骤</p>
+</li>
+<li>
+<p>前端和运维商量好协议路径代理规则，比如/api 代表域名</p>
+</li>
+<li>
+<p>前端配置webpack -dev -server 代理 到nginx层</p>
+</li>
+<li>
+<p>利用ngnix 配置相同转发代理到真正的服务器</p>
+</li>
+</ul>
+<p>这里的webpack 服务器那似乎可以直接到真正的服务器  但是大多数都不是那么做的 我理解的是首先如果前端直接到后端服务器 那么后端必须要做负载均衡 防盗链等等  还不如前端直接到nginx层(这里的nginx层可能是集群或者单机假如是集群)去nginx可以做负载均衡等</p>
+<ul>
+<li>ngnix 配置代理解决跨域配置</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">...
+location /api <span style="color:#f92672">{</span>
+   proxy_pass https://b.test.com; <span style="color:#75715e"># 设置代理服务器的协议和地址</span>
+<span style="color:#f92672">}</span>       
+...
+</code></pre></div><p><img src="../.././imgs/suiji/teywty5qnc/73a40ca9987f72b20b45eff03b417115.png" alt="" />
+<img src="../../../imgs/suiji/teywty5qnc/73a40ca9987f72b20b45eff03b417115.png" alt="" /></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/CORS">CORS参考</a>
+<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Origin">Origin参考</a>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS">CORS参考</a></p>
+</article>
+ 
+      
+
+
+<p id="inspirational_statement_content" style="color: red"></p>
+<script>
+
+    
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    var inspirational_statement_array = [] ;
+
+    inspirational_statement_array.push('不奋斗，你的才华如何配得上你的任性。不奋斗，你的脚步如何赶得上父母老去的速度。不奋斗，世界这么大你靠什么去看看') ;
+    inspirational_statement_array.push('开挂的人生，不是天生就有持续不断的鸡血，而是后天获得了从痛苦中给自己充电的能力。') ;
+    inspirational_statement_array.push('如果你连工作挣钱都要别人开导你，都要人盯着，看着，哄着，鼓励着，劝你还是别干了，那你就应该穷！这是不是鸡汤，这是现实。') ;
+    inspirational_statement_array.push('趁着梦想还有温度，人生还有转机，抓紧时间去奋斗，不要等到中年时，只能叹息自己的碌碌无为') ;
+    inspirational_statement_array.push('世上所有的牛逼背后，都是一帮玩命的人') ;
+    inspirational_statement_array.push('你可以一辈子不登山，但你心中一定要有座山。它使你总往高处爬，它使你总有个奋斗的方向，它使你任何一刻抬起头，都能看到自己的希望') ;
+    inspirational_statement_array.push('我喜欢这个功利的世界，因为它承认每个人的努力，好看的姑娘能轻松几年，但会赚钱的姑娘才能过好一生') ;
+    inspirational_statement_array.push('影响我们人生的绝不仅仅是环境，其实是心态在控制个人的行动和思想。同时，心态也决定了一个人的视野、事业和成就，甚至一生') ;
+    inspirational_statement_array.push('第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由') ;
+    inspirational_statement_array.push('愿你能把梦想放在心底，化为最坚定的力量。不管一路上多么坎坷和不安，那份坚持一直在；不管一路上多么坦途或荆棘，那份努力一直在') ;
+    inspirational_statement_array.push('你所做的事情，也许暂时看不到成果，但不要灰心或焦虑，你不是没有成长，而是在扎根。') ;
+    inspirational_statement_array.push('生活教会我们的第一件事就是——没有人可以宠你一辈子，要想走得精彩又坦荡，唯有独立坚强。新的一天开始了，替未来的你抱抱现在努力奋斗的自己') ;
+    inspirational_statement_array.push('我终于相信，每一条走上来的路，都有它不得不那样跋涉的理由。每一条要走下去的路，都有它不得不那样选择的方向') ;
+    inspirational_statement_array.push('人生，就要活得漂亮，走得铿锵。无论你是谁，宁可做拼搏的失败者，也不要做安于现状的平凡人') ;
+    inspirational_statement_array.push('有梦想的人不做选择题，只做证明题，所以，年轻的你，可以犯错，可以跌倒，但千万不要怀疑自己，也不要放弃梦想。去想去的地方，做该做的事情，不迟疑，不徘徊') ;
+    inspirational_statement_array.push('能力不在脸上，本事不在嘴上。要踏踏实实做实事，生活不会因为某个节点而变得与众不同，未来的幸运都是过往努力的积攒') ;
+    inspirational_statement_array.push('当所有人都拿你当回事的时候，你不能太拿自己当回事；当所有人都不拿你当回事的时，你一定得瞧得上自己。这就是淡定，这就是从容') ;
+    inspirational_statement_array.push('生活给你的很多难堪，不是在跟你过不去，而是要你不断提高生存的技能。你看别人干什么好像都是轻而易举，很容易成功，那是因为别人背后可能比你多付出了百倍的努力!') ;
+    inspirational_statement_array.push('当一个人的心中有着更高的山峰想去攀登时，他就不会在意脚下的泥沼，他才可能用最平静的方式去面对一般人难以承受的痛苦。') ;
+    inspirational_statement_array.push('这世间从来没有所谓的逆袭。如果有的话，也不过是日复一日自律和努力的结果。') ;
+    inspirational_statement_array.push('人生就是一个磨练的过程，如果没有这些酸甜苦辣，你永远都不会成熟！所以，我们应该在阳光下灿烂，风雨中奔跑，泪水中成长，拼搏中展望，对自己说一声：昨天挺好，今天很好，明天会更好！') ;
+
+    inspirational_statement_array.push('人生要用简单的心境，对待复杂的人生，最无情的不是人，是时间；最珍贵的不是金钱，是情感；最可怕的不是失恋，是心身不全；最舒适的不是酒店，是家里；最难听的不是脏话，是无言；最美好的不是未来，是今天。') ;
+
+    inspirational_statement_array.push('在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来。有时候，选择快乐，更需要勇气。') ;
+    inspirational_statement_array.push('如果你的生活已处于低谷，那就，大胆走，因为你怎样走都是在向上。') ;
+    inspirational_statement_array.push('你可以哭但不能输，你可以难过但不可以落魄，你不努力怎么会知道自己可以赢得多少掌声?如果你能每天呐喊遍“我用不着为这一点小事而烦恼”，你会发现，你心里有一种不可思议的力量，试试看，很管用的。') ;
+    inspirational_statement_array.push('生活不是用来妥协的，你退缩得越多，能让你喘息的空间就越有限。日子不是用来将就的，你表现得越卑微，一些幸福的东西就会离你越远。') ;
+    inspirational_statement_array.push('过去的事，就让它过去吧，我们错过了昨日的日落，再也不能错过今日的日出，保持平衡的心态，以最美好的心情来对待每一天，每一天都会充满阳光，洋溢着希望。') ;
+    inspirational_statement_array.push('人生快不快乐看心情，幸不幸福看心态。漫长人生中，什么都不是一眼看到头的，一时的春风得意算不了什么，一时的失败也不能算数。') ;
+    inspirational_statement_array.push('成功没有快车道，幸福没有高速路。所有的成功，都来自不倦的努力和奔跑；所有幸福，都来自平凡的奋斗和坚持。') ;
+    inspirational_statement_array.push('每天都是一个起点，每天都有一点进步，每天都有一点收获!') ;
+    inspirational_statement_array.push('眼泪不是我们的答案，拼搏才是我们的选择。') ;
+    inspirational_statement_array.push('静下来，铸我实力；拼上去，亮我风采。') ;
+    inspirational_statement_array.push('霸气盈胸，高山有顶我为峰；豪情壮志，乾坤朗朗我称雄。') ;
+    inspirational_statement_array.push(' 宁可战死，不可吓死。今朝不搏，更待何时?') ;
+    inspirational_statement_array.push('不论在何时开始，重要的是开始之后就不要停止；不论在何时，重要的是之后就不要悔恨。') ;
+    inspirational_statement_array.push('明天是世上增值最快的一块土地，因它充满了希望。') ;
+    inspirational_statement_array.push('越接近考试，往往越要在坚实上下功夫。') ;
+    inspirational_statement_array.push('最弱的人，集中精力于单一目标，也能有所成就，最强的人，分心太多事务，可能一事无成。') ;
+    inspirational_statement_array.push('你想活得更有质量更有层次更有品位吗?那就努力改变你的现状!') ;
+    inspirational_statement_array.push('时间不等待，珍惜今天，把握现在!') ;
+    inspirational_statement_array.push('以阳光和微笑示人，在逆境中燃起斗志!') ;
+    inspirational_statement_array.push('苦想没盼头，苦干有奔头。') ;
+    inspirational_statement_array.push('人的才华就如海绵的水，没有外力的挤压，它是绝对流不出来的。流出来后，海绵才能吸收新的源泉。') ;
+    inspirational_statement_array.push('忍别人所不能忍的痛，吃别人所不能吃的苦，是为了收获得不到的收获。') ;
+    inspirational_statement_array.push('人生如梦，一切皆有可能，只要你能想。') ;
+    inspirational_statement_array.push('别想一下造出大海，必须先由小河川开始。') ;
+    inspirational_statement_array.push('悲观些看成功，乐观些看失败。轻松些看自己，宽容些看别人。理智些看问题，纯真些看人生。') ;
+    inspirational_statement_array.push('无须自卑，不要自负，坚持自信。') ;
+    inspirational_statement_array.push('身体常动，内心常静。') ;
+    inspirational_statement_array.push('学习与坐禅相似，须有一颗恒心。') ;
+
+    window.onload = function () {
+        var index = randomNum(0,inspirational_statement_array.length-1) ;
+        var oldText = "" ;
+        console.log(index);
+        document.getElementById('inspirational_statement_content').innerText = oldText+""+inspirational_statement_array[index] ;
+    } ;
+</script>
+<script>
+    function hous(x,y,r,h,context){
+
+        var gen3=Math.sqrt(3);
+        var rs=0.5*r;
+        switch(h)
+        {
+            case 1:
+                context.fillText("1",x+rs,y-rs*gen3);
+                break;
+            case 2:
+                context.fillText("2",x+gen3*rs,y-rs);
+                break;
+            case 3:
+                context.fillText("3",x+2*rs,y);
+                break;
+            case 4:
+                context.fillText("4",x+gen3*rs,y+rs);
+                break;
+            case 5:
+                context.fillText("5",x+rs,y+gen3*rs);
+                break;
+            case 6:
+                context.fillText("6",x,y+2*rs);
+                break;
+            case 7:
+                context.fillText("7",x-rs,y+gen3*rs);
+                break;
+            case 8:
+                context.fillText("8",x-gen3*rs,y+rs);
+                break;
+            case 9:
+                context.fillText("9",x-2*rs,y);
+                break;
+            case 10:
+                context.fillText("10",x-gen3*rs,y-rs);
+                break;
+            case 11:
+                context.fillText("11",x-rs,y-gen3*rs);
+                break;
+            case 12:
+                context.fillText("12",x,y-2*rs);
+                break;
+            default:
+                alert("请输入正确的时间刻度！");
+        }
+    }
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</script>
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#为什么会跨域">为什么会跨域</a>
+      <ul>
+        <li><a href="#1什么是源">1.什么是源</a></li>
+        <li><a href="#2-url结构">2. URL结构</a></li>
+        <li><a href="#3-同源不同源举例">3. 同源不同源举例</a></li>
+        <li><a href="#4-浏览器为什么需要同源策略">4. 浏览器为什么需要同源策略</a></li>
+        <li><a href="#5-常规前端请求跨域">5. 常规前端请求跨域</a></li>
+      </ul>
+    </li>
+    <li><a href="#二前端解决方案">二、前端解决方案</a>
+      <ul>
+        <li><a href="#jsonp原理">jsonp原理</a></li>
+        <li><a href="#代理方式">代理方式</a></li>
+        <li><a href="#documentdomain-方式">document.domain 方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#三服务端解决方案">三、服务端解决方案</a></li>
+    <li><a href="#四运维解决方案">四、运维解决方案</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
