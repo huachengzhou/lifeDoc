@@ -3,6 +3,7 @@ title: "Java公共库文档总结 "
 date: 2021-04-15
 draft: false
 weight: 20
+bookCollapseSection: true
 ---
 
 

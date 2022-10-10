@@ -2,78 +2,37 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一.Redis介绍
-#
-
-1.1引言
-#
-
- 1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
- #
-
-1.2 NOSQL
-#
-
- redis就是nosql
+<meta name="description" content="一.Redis介绍 #  1.1引言 #   1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
+ #  1.2 NOSQL #   redis就是nosql
   非关系数据库 &gt; not only sql
  1:key-value redis 2:文档型 solr,Mongodb,ElasticSearch 3:面向列 Hbase(一般大数据) 4:图形化 Neo4j
-  1.3 redis介绍
-#
-
- Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
+  1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装
-#
-
-redis 注册服务
-#
-
-C:\Users\noatn&gt;e:
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&gt;e:
 E:\&gt;cd E:\CS\Redis-x64-3.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Redis 学习与使用" />
-<meta property="og:description" content="一.Redis介绍
-#
-
-1.1引言
-#
-
- 1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
- #
-
-1.2 NOSQL
-#
-
- redis就是nosql
+<meta property="og:description" content="一.Redis介绍 #  1.1引言 #   1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
+ #  1.2 NOSQL #   redis就是nosql
   非关系数据库 &gt; not only sql
  1:key-value redis 2:文档型 solr,Mongodb,ElasticSearch 3:面向列 Hbase(一般大数据) 4:图形化 Neo4j
-  1.3 redis介绍
-#
-
- Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
+  1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装
-#
-
-redis 注册服务
-#
-
-C:\Users\noatn&gt;e:
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&gt;e:
 E:\&gt;cd E:\CS\Redis-x64-3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/redis/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/redis/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>Redis 学习与使用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.79930810c0ea2b1689b460dd0b2199479a4874a81061c9b5a7d8ca11afdc09cd.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.9f67f00708acbb1f99ed2c09f63f0d97f0f87bab417d0ddeb79e4f1707c0d007.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -966,7 +925,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+    <input type="checkbox" id="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="toggle"  />
+    <label for="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="flex justify-between">
+      <a href="./../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -979,7 +942,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+    <input type="checkbox" id="section-ba9f37c30cbddfdede23d767e7034c30" class="toggle"  />
+    <label for="section-ba9f37c30cbddfdede23d767e7034c30" class="flex justify-between">
+      <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -1055,6 +1022,71 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/dw7668daxw/" class="">java类型转换,构造,重要语法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-x-exception/" class="">异常机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-x-reflection/" class="">反射机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-x-annotation/" class="">注解机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-x-generic/" class="">泛型机制详解</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1067,7 +1099,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/javadir/thread/" class="">多线程与并发 </a>
+    <input type="checkbox" id="section-e4f99824d06ea4abb1161f3046570d7f" class="toggle"  />
+    <label for="section-e4f99824d06ea4abb1161f3046570d7f" class="flex justify-between">
+      <a href="./../../../../docs/javadir/thread/" class="">多线程与并发 </a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -1189,7 +1225,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+    <input type="checkbox" id="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="toggle"  />
+    <label for="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="flex justify-between">
+      <a href="./../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -1311,7 +1351,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+    <input type="checkbox" id="section-3c751f376602d063da318fd2ace31d1e" class="toggle"  />
+    <label for="section-3c751f376602d063da318fd2ace31d1e" class="flex justify-between">
+      <a href="./../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -3258,7 +3302,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -3312,7 +3356,6 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#32存储结构用处">3.2存储结构用处</a></li>
       </ul>
     </li>
-    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
   </ul>
 </nav>
 
@@ -3446,10 +3489,6 @@ E:\CS\Redis-x64-3.2.100&gt;
 <li>key-set: 交集、差集、并集操作</li>
 <li>key-zset : 排行榜,积分存储</li>
 </ul>
-<h2 id="回到上一级">
-  <a href="../">回到上一级</a>
-  <a class="anchor" href="#%e5%9b%9e%e5%88%b0%e4%b8%8a%e4%b8%80%e7%ba%a7">#</a>
-</h2>
 </article>
  
       
@@ -3716,7 +3755,6 @@ E:\CS\Redis-x64-3.2.100&gt;
         <li><a href="#32存储结构用处">3.2存储结构用处</a></li>
       </ul>
     </li>
-    <li><a href="#回到上一级"><a href="../">回到上一级</a></a></li>
   </ul>
 </nav>
 

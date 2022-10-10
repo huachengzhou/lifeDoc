@@ -6,5 +6,50 @@
     <description>Recent content in Java基础知识  on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/basedir/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java类型转换,构造,重要语法</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/</guid>
+      <description>基本类型 #  修饰符 #  接口 #  </description>
+    </item>
+    
+    <item>
+      <title>异常机制详解</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/</guid>
+      <description>demo #  </description>
+    </item>
+    
+    <item>
+      <title>反射机制详解</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/</guid>
+      <description>demo #  </description>
+    </item>
+    
+    <item>
+      <title>注解机制详解</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-annotation/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-annotation/</guid>
+      <description>demo #  </description>
+    </item>
+    
+    <item>
+      <title>泛型机制详解</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/</guid>
+      <description>demo #  </description>
+    </item>
+    
   </channel>
 </rss>

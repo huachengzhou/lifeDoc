@@ -12,8 +12,8 @@
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/nodejs/</guid>
-      <description>node js# Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时
- Linux 上安装 Node.js# 直接使用已编译好的包 Node 官网已经把 linux 下载版本更改为已编译好的版本了，我们可以直接下载解压后使用：  # wget https://nodejs.org/dist/v10.9.0/node-v10.9.0-linux-x64.tar.xz // 下载 # tar xf node-v10.9.0-linux-x64.tar.xz // 解压 # cd node-v10.9.0-linux-x64/ // 进入解压目录 # ./bin/node -v // 执行node命令 查看版本 v10.9.0  解压文件的 bin 目录底下包含了 node、npm 等命令，我们可以使用 ln 命令来设置软连接：  ln -s /usr/software/nodejs/bin/npm /usr/local/bin/ ln -s /usr/software/nodejs/bin/node /usr/local/bin/  Ubuntu 源码安装 Node.js   以下部分我们将介绍在 Ubuntu Linux 下使用源码安装 Node.</description>
+      <description>node js #   Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时
+ Linux 上安装 Node.js #   直接使用已编译好的包 Node 官网已经把 linux 下载版本更改为已编译好的版本了，我们可以直接下载解压后使用：  # wget https://nodejs.org/dist/v10.9.0/node-v10.9.0-linux-x64.tar.xz // 下载 # tar xf node-v10.9.0-linux-x64.tar.xz // 解压 # cd node-v10.9.0-linux-x64/ // 进入解压目录 # ./bin/node -v // 执行node命令 查看版本 v10.9.0  解压文件的 bin 目录底下包含了 node、npm 等命令，我们可以使用 ln 命令来设置软连接：  ln -s /usr/software/nodejs/bin/npm /usr/local/bin/ ln -s /usr/software/nodejs/bin/node /usr/local/bin/  Ubuntu 源码安装 Node.js   以下部分我们将介绍在 Ubuntu Linux 下使用源码安装 Node.</description>
     </item>
     
     <item>
@@ -23,9 +23,9 @@
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/</guid>
       <description>npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一
-  假如是nodejs 高版本 那么不需要再安装npm了因为node js已经包含了npm  一、从 npm install 说起# npm install 命令用来安装模块到node_modules目录。  $ npm install &amp;lt;packageName&amp;gt;   安装之前，npm install会先检查，node_modules目录之中是否已经存在指定模块。如果存在，就不再重新安装了，即使远程仓库已经有了一个新版本，也是如此。
+  假如是nodejs 高版本 那么不需要再安装npm了因为node js已经包含了npm  一、从 npm install 说起 #   npm install 命令用来安装模块到node_modules目录。  $ npm install &amp;lt;packageName&amp;gt;   安装之前，npm install会先检查，node_modules目录之中是否已经存在指定模块。如果存在，就不再重新安装了，即使远程仓库已经有了一个新版本，也是如此。
   如果你希望，一个模块不管是否安装过，npm 都要强制重新安装，可以使用-f 或 &amp;ndash;force 参数。
-  $ npm install &amp;lt;packageName&amp;gt; --force 二、npm update# 如果想更新已安装模块，就要用到npm update命令。  $ npm update &amp;lt;packageName&amp;gt;  它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本较新，就会安装。  三、registry#  npm update命令怎么知道每个模块的最新版本呢？
+  $ npm install &amp;lt;packageName&amp;gt; --force 二、npm update #   如果想更新已安装模块，就要用到npm update命令。  $ npm update &amp;lt;packageName&amp;gt;  它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本较新，就会安装。  三、registry #    npm update命令怎么知道每个模块的最新版本呢？
   答案是 npm 模块仓库提供了一个查询服务，叫做 registry 。以 npmjs.</description>
     </item>
     
@@ -35,21 +35,21 @@
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>uni-app的基本使用#课程介绍：
+      <description>uni-app的基本使用 #  课程介绍：
 基础部分：
  环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：xxxx
-uni-app介绍 官方网页#uni-app view uni-app view#uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
+uni-app介绍 官方网页 #  uni-app view uni-app view #  uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
 即使不跨端，uni-app同时也是更好的小程序开发框架。
 具有vue和微信小程序的开发经验，可快速上手uni-app
 为什么要去学习uni-app？
 相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。
-环境搭建#安装编辑器HbuilderX 下载地址
+环境搭建 #  安装编辑器HbuilderX 下载地址
 HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
 下载App开发版，可开箱即用
 安装微信开发者工具 下载地址
-利用HbuilderX初始化项目#  点击HbuilderX菜单栏文件&amp;gt;项目&amp;gt;新建
+利用HbuilderX初始化项目 #    点击HbuilderX菜单栏文件&amp;gt;项目&amp;gt;新建
   选择uni-app,填写项目名称，项目创建的目录
-  运行项目#在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
+  运行项目 #  在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&amp;gt; 运行到小程序模拟器 -&amp;gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&amp;gt; 运行到手机或模拟器 -&amp;gt; 选择调式的手机</description>
     </item>
@@ -60,7 +60,7 @@ HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/</guid>
-      <description>（十五）webpack#15.1	webpack起步#15.1.1	什么是webpack#webpack是一个JavaScript应用的静态模块打包工具。
+      <description>（十五）webpack #  15.1	webpack起步 #  15.1.1	什么是webpack #  webpack是一个JavaScript应用的静态模块打包工具。
 从这句话中有两个要点，模块和打包需要关注。grunt/gulp都可以打包，那有什么区别。
  模块化
  webpack可以支持前端模块化的一些方案，例如AMD、CMD、CommonJS、ES6。可以处理模块之间的依赖关系。不仅仅是js文件可以模块化，图片、css、json文件等等都可以模块化。
@@ -68,7 +68,7 @@ HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
  webpack可以将模块资源打包成一个或者多个包，并且在打包过程中可以处理资源，例如压缩图片，将scss转成css，ES6语法转成ES5语法，将TypeScript转成JavaScript等等操作。grunt/gulp也可以打包。
 和grunt/glup的对比
  grunt/glup的核心是Task  我们可以配置一系列的task，并且定义task要处理的事务（例如ES6/TS转化，图片压缩，scss转css） 之后可以让grunt/glup来执行依次这些任务，让整个流程自动化 所以grunt/glup也被称为前端自动化任务管理工具   看一个gulp例子  task将src下的js文件转化为ES5语法 并输入到dist文件夹中     什么时候使用grunt/gulp呢？  如果工程依赖简单，甚至没有模块化 只需要进行简单的合并/压缩 如果模块复杂，相互依赖性强，我们需要使用webpack   grunt/glup和webpack区别  grunt/glup更加强调的是前端自动化流程，模块化不是其核心 webpack加强模块化开发管理，而文件压缩/合并/预处理等功能，是附带功能    webpack就是前端模块化打包工具
-15.1.2	webpack的安装# webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
+15.1.2	webpack的安装 #   webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
 npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
@@ -78,7 +78,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/simple-webpack/</guid>
-      <description>webpack#一:卸载# 全局卸载  D:\IdeaProjects\cycle\docs\webc\web\webpack-study\one&amp;gt;npm uninstall webpack webpack-cli -g removed 73 packages in 0.726s  本地卸载  D:\IdeaProjects\cycle\docs\webc\web\webpack-study\one&amp;gt;npm uninstall webpack webpack-cli -D npm WARN saveError ENOENT: no such file or directory, open &amp;#39;D:\IdeaProjects\package.json&amp;#39; npm WARN enoent ENOENT: no such file or directory, open &amp;#39;D:\IdeaProjects\package.json&amp;#39; npm WARN IdeaProjects No description npm WARN IdeaProjects No repository field. npm WARN IdeaProjects No README data npm WARN IdeaProjects No license field.</description>
+      <description>webpack #  一:卸载 #   全局卸载  D:\IdeaProjects\cycle\docs\webc\web\webpack-study\one&amp;gt;npm uninstall webpack webpack-cli -g removed 73 packages in 0.726s  本地卸载  D:\IdeaProjects\cycle\docs\webc\web\webpack-study\one&amp;gt;npm uninstall webpack webpack-cli -D npm WARN saveError ENOENT: no such file or directory, open &amp;#39;D:\IdeaProjects\package.json&amp;#39; npm WARN enoent ENOENT: no such file or directory, open &amp;#39;D:\IdeaProjects\package.json&amp;#39; npm WARN IdeaProjects No description npm WARN IdeaProjects No repository field. npm WARN IdeaProjects No README data npm WARN IdeaProjects No license field.</description>
     </item>
     
     <item>
@@ -87,8 +87,8 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/</guid>
-      <description>webpack和nodejs关系# webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
-  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm#npm是什么#是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）为何产生？#当网站的依赖的js越来越多，程序员发现这是一件麻烦事：去JQuery官网下载JQuery，去 BootStrap 官网下载 BootStrap ，去 Underscore 官网下载 Underscore .......没完没了于是npm就出来了（全称 Node Package Manager 包管理工具），大家把自己写好的源码上传到npm官网上，如果要用某个或某些个，直接通过npm安装就可以了，并且模块A依赖B，B依赖C、D，此时只需安装A即可，因为此时npm会根据依赖关系，把所有依赖的包都下载下来并且管理起来；这一点和maven、gradle十分相似，只不过maven、gradle是用来管理java jar包的，而npm是用来管理js的。常用命令# npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node#node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。包含关系，nodejs中含有npm，比如说你安装好nodejs，你打开cmd输入npm -v会发现出啊线npm的版本号，说明npm已经安装好。webpack#Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。我们为什么使用webpack?#开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）本地代码的时候，要是调后端的接口不跨域就好了（代理服务）为了跟上时代，要是能用上ES678N就好了（翻译服务）项目要上线了，要是能一键压缩代码，图片什么的就好了（压缩打包服务）我们平时的静态资源都是放到CDN上的，要是能自动帮我把这些搞好的静态资源怼到CDN上就好了（自动上传服务）这么多服务，我们需要webpack帮我们去整合那么多的服务，而node的出现，赋予了我们操作系统的能力，要根据自己的需求来使用webpack，知道自己需要什么样的服务，webpack能不能提供这样的服务，如果可以，那么这个服务应该在构建中的呢个环节被处理。1.</description>
+      <description>webpack和nodejs关系 #   webpack可以将 .vue 文件转换为 .js 文件，而这个转换需要借助打包器vue-loader，这个打包器的下载是在node环境使用 npm 下载的（npm类似与一个应用商店，里面有很多包）；这样webpack在打包的时候是在node环境中运行的。
+  nodejs是js后端运行平台，可以把它看成java体系中对应的jdk，是三个里面最基础的。 npm是nodejs的包管理工具，可以把它看成maven中包依赖管理那部分。 webpack是前端工程化打包工具，可以把它看成maven中工程自动化那部分  npm #  npm是什么 #  是Node.js的包管理工具，是全球最大的开发库生态系统（注册表）为何产生？ #  当网站的依赖的js越来越多，程序员发现这是一件麻烦事：去JQuery官网下载JQuery，去 BootStrap 官网下载 BootStrap ，去 Underscore 官网下载 Underscore .......没完没了于是npm就出来了（全称 Node Package Manager 包管理工具），大家把自己写好的源码上传到npm官网上，如果要用某个或某些个，直接通过npm安装就可以了，并且模块A依赖B，B依赖C、D，此时只需安装A即可，因为此时npm会根据依赖关系，把所有依赖的包都下载下来并且管理起来；这一点和maven、gradle十分相似，只不过maven、gradle是用来管理java jar包的，而npm是用来管理js的。常用命令 #   npm init：初始化一个项目包，包含package.json文件 npm install：package.json的devDependencies字段里的插件全部安装到node_modules下  node #  node.js是javascript的一种运行环境，是对Google V8引擎进行的封装。是一个服务器端的javascript的解释器。包含关系，nodejs中含有npm，比如说你安装好nodejs，你打开cmd输入npm -v会发现出啊线npm的版本号，说明npm已经安装好。webpack #  Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将这些模块按照指定的规则生成对应的静态资源。我们为什么使用webpack? #  开发是时候需要一个开发环境，要是我们修改一下代码保存之后浏览器就自动展现最新的代码就好了（热更新服务）本地代码的时候，要是调后端的接口不跨域就好了（代理服务）为了跟上时代，要是能用上ES678N就好了（翻译服务）项目要上线了，要是能一键压缩代码，图片什么的就好了（压缩打包服务）我们平时的静态资源都是放到CDN上的，要是能自动帮我把这些搞好的静态资源怼到CDN上就好了（自动上传服务）这么多服务，我们需要webpack帮我们去整合那么多的服务，而node的出现，赋予了我们操作系统的能力，要根据自己的需求来使用webpack，知道自己需要什么样的服务，webpack能不能提供这样的服务，如果可以，那么这个服务应该在构建中的呢个环节被处理。1.</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack_loader/</guid>
-      <description>first css-loader# 文件目录  ▸\t1 ▸ \t1\dist ▸ \t1\dist\index.js ▸ \t1\node_modules ▸ \t1\node_modules\.bin //省略 ▸ \t1\node_modules\yocto-queue\readme.md ▸ \t1\package-lock.json ▸ \t1\package.json ▸ \t1\src ▸ \t1\src\index.css ▸ \t1\src\index.js ▸ \t1\webpack.config.js  webpack.config.js content  module.exports = { entry: { index :&amp;#34;./src/index.js&amp;#34; }, mode :&amp;#39;development&amp;#39; , module :{ rules:[ {test :/.css$/ ,use : &amp;#34;css-loader&amp;#34;} ] } }  package.json content  { &amp;#34;name&amp;#34;: &amp;#34;t1&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;webpack.config.js&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;test&amp;#34;: &amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;amp;&amp;amp; exit 1&amp;#34;, &amp;#34;build&amp;#34;: &amp;#34;webpack&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;css-loader&amp;#34;: &amp;#34;^5.</description>
+      <description>first css-loader #   文件目录  ▸\t1 ▸ \t1\dist ▸ \t1\dist\index.js ▸ \t1\node_modules ▸ \t1\node_modules\.bin //省略 ▸ \t1\node_modules\yocto-queue\readme.md ▸ \t1\package-lock.json ▸ \t1\package.json ▸ \t1\src ▸ \t1\src\index.css ▸ \t1\src\index.js ▸ \t1\webpack.config.js  webpack.config.js content  module.exports = { entry: { index :&amp;#34;./src/index.js&amp;#34; }, mode :&amp;#39;development&amp;#39; , module :{ rules:[ {test :/.css$/ ,use : &amp;#34;css-loader&amp;#34;} ] } }  package.json content  { &amp;#34;name&amp;#34;: &amp;#34;t1&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;webpack.config.js&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;test&amp;#34;: &amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;amp;&amp;amp; exit 1&amp;#34;, &amp;#34;build&amp;#34;: &amp;#34;webpack&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;css-loader&amp;#34;: &amp;#34;^5.</description>
     </item>
     
     <item>
@@ -106,12 +106,12 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/</guid>
-      <description>npm 包管理器查询网址# https://www.npmjs.com/ (和java的maven仓库差不多一个意思)  全局安装#  npm install less-loader@4.1.0
+      <description>npm 包管理器查询网址 #   https://www.npmjs.com/ (和java的maven仓库差不多一个意思)  全局安装 #    npm install less-loader@4.1.0
   npm install less-loader@4.1.0 &amp;ndash;save
-  本地安装命令#  npm install less-loader@3.0.0 &amp;ndash;save-dev
+  本地安装命令 #    npm install less-loader@3.0.0 &amp;ndash;save-dev
   npm add -D less-loader@3.0.0
    上面两条等价
- 升级到最高版本 , 更新npm到最新版本# npm i npm@latest -d npm i npm@latest -g  安装所有依赖 (package.json)# npm install request  删除包问题#  npm uninstall webpack webpack-cli -g 全局</description>
+ 升级到最高版本 , 更新npm到最新版本 #   npm i npm@latest -d npm i npm@latest -g  安装所有依赖 (package.json) #   npm install request  删除包问题 #    npm uninstall webpack webpack-cli -g 全局</description>
     </item>
     
     <item>
@@ -147,7 +147,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/</guid>
-      <description>url-loader file-loader# package.json  { &amp;#34;name&amp;#34;: &amp;#34;demo10&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;webpack.config.js&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;test&amp;#34;: &amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;amp;&amp;amp; exit 1&amp;#34;, &amp;#34;build&amp;#34;: &amp;#34;webpack&amp;#34;, &amp;#34;dev&amp;#34;: &amp;#34;webpack-dev-server&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;css-loader&amp;#34;: &amp;#34;^3.0.0&amp;#34;, &amp;#34;file-loader&amp;#34;: &amp;#34;^6.2.0&amp;#34;, &amp;#34;html-webpack-plugin&amp;#34;: &amp;#34;^5.3.2&amp;#34;, &amp;#34;less&amp;#34;: &amp;#34;^4.1.1&amp;#34;, &amp;#34;less-loader&amp;#34;: &amp;#34;^10.0.1&amp;#34;, &amp;#34;style-loader&amp;#34;: &amp;#34;^3.1.0&amp;#34;, &amp;#34;url-loader&amp;#34;: &amp;#34;^2.2.0&amp;#34;, &amp;#34;webpack&amp;#34;: &amp;#34;^5.45.1&amp;#34;, &amp;#34;webpack-cli&amp;#34;: &amp;#34;^3.3.12&amp;#34;, &amp;#34;webpack-dev-server&amp;#34;: &amp;#34;^3.11.2&amp;#34; } }  webpack.config.js  const path = require(&amp;#34;path&amp;#34;); const webpack = require(&amp;#34;webpack&amp;#34;); const HtmlWebpackPlugin = require(&amp;#39;html-webpack-plugin&amp;#39;); module.</description>
+      <description>url-loader file-loader #   package.json  { &amp;#34;name&amp;#34;: &amp;#34;demo10&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;webpack.config.js&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;test&amp;#34;: &amp;#34;echo \&amp;#34;Error: no test specified\&amp;#34; &amp;amp;&amp;amp; exit 1&amp;#34;, &amp;#34;build&amp;#34;: &amp;#34;webpack&amp;#34;, &amp;#34;dev&amp;#34;: &amp;#34;webpack-dev-server&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;css-loader&amp;#34;: &amp;#34;^3.0.0&amp;#34;, &amp;#34;file-loader&amp;#34;: &amp;#34;^6.2.0&amp;#34;, &amp;#34;html-webpack-plugin&amp;#34;: &amp;#34;^5.3.2&amp;#34;, &amp;#34;less&amp;#34;: &amp;#34;^4.1.1&amp;#34;, &amp;#34;less-loader&amp;#34;: &amp;#34;^10.0.1&amp;#34;, &amp;#34;style-loader&amp;#34;: &amp;#34;^3.1.0&amp;#34;, &amp;#34;url-loader&amp;#34;: &amp;#34;^2.2.0&amp;#34;, &amp;#34;webpack&amp;#34;: &amp;#34;^5.45.1&amp;#34;, &amp;#34;webpack-cli&amp;#34;: &amp;#34;^3.3.12&amp;#34;, &amp;#34;webpack-dev-server&amp;#34;: &amp;#34;^3.11.2&amp;#34; } }  webpack.config.js  const path = require(&amp;#34;path&amp;#34;); const webpack = require(&amp;#34;webpack&amp;#34;); const HtmlWebpackPlugin = require(&amp;#39;html-webpack-plugin&amp;#39;); module.</description>
     </item>
     
     <item>
@@ -156,8 +156,8 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
-      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
-  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
+      <description>多端比较 #     框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon #   CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
+  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp #   uni-app 是一个使用 Vue.</description>
     </item>
     
     <item>
@@ -166,7 +166,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/</guid>
-      <description>第一种方式#   npm i -g @vue/cli-init or npm install @vue/cli-init@5.0.8 -g    D:\IdeaProjects\cycle\study\vuecli\demoB&amp;gt;vue init webpack learnrouter ? Project name learnrouter ? Project description &amp;#39;这是一个vue路由器&amp;#39; ? Author zch ? Vue build runtime ? Install vue-router? Yes ? Use ESLint to lint your code? No ? Set up unit tests Yes ? Pick a test runner noTest ? Setup e2e tests with Nightwatch? Yes ? Should we run `npm install` for you after the project has been created?</description>
+      <description>第一种方式 #     npm i -g @vue/cli-init or npm install @vue/cli-init@5.0.8 -g    D:\IdeaProjects\cycle\study\vuecli\demoB&amp;gt;vue init webpack learnrouter ? Project name learnrouter ? Project description &amp;#39;这是一个vue路由器&amp;#39; ? Author zch ? Vue build runtime ? Install vue-router? Yes ? Use ESLint to lint your code? No ? Set up unit tests Yes ? Pick a test runner noTest ? Setup e2e tests with Nightwatch? Yes ? Should we run `npm install` for you after the project has been created?</description>
     </item>
     
     <item>
@@ -175,14 +175,14 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/packing/</guid>
-      <description>android本地打包#参考1 参考2 参考3
+      <description>android本地打包 #  参考1 参考2 参考3
 uniapp创建keystore jks 参考
- 这里是因为创建密匙文件有多种方式  第一步 下载 Android Studio 配置必要的数据#   配置 android sdk 选用google 可以官网下载也可以使用工具下载    配置 jdk ( java jdk建议)    假如你没有手机或者手机不在打包环境那么你需要配置模拟android平台    第二部(重要)# 我也是在网上找了下，发现网上的有残缺吧
+ 这里是因为创建密匙文件有多种方式  第一步 下载 Android Studio 配置必要的数据 #     配置 android sdk 选用google 可以官网下载也可以使用工具下载    配置 jdk ( java jdk建议)    假如你没有手机或者手机不在打包环境那么你需要配置模拟android平台    第二部(重要) #   我也是在网上找了下，发现网上的有残缺吧
   1:HBuilderX版本 必须和 sdk一致  uniapp本地打包下载地址
   2: Android Studio导入HBuilder-Integrate-AS
   3:删除 HBuilder-Integrate-AS_c\simpleDemo\src\main\assets\apps 下的 生成的包
   4: 生成签名
-  C:\Windows\system32&amp;gt;c:C:\Windows\system32&amp;gt;cd C:\Program Files\Java\jdk1.</description>
+  C:\Windows\system32&amp;gt;c: C:\Windows\system32&amp;gt;cd C:\Program Files\Java\jdk1.</description>
     </item>
     
   </channel>
