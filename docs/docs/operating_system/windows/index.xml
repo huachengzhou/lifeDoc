@@ -7,13 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/operating_system/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>DOS命令 基本介绍 </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_start/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_start/</guid>
+      <description>介绍# windows不区分大小写  C:\Users\noatn&amp;gt;echo &amp;#39;你好&amp;#39; &amp;#39;你好&amp;#39; C:\Users\noatn&amp;gt;ECHO &amp;#39;你好&amp;#39; &amp;#39;你好&amp;#39; 体验#  体验1
+  @echo off 关闭原始盘符
+  C:\Users\noatn&amp;gt;echo &amp;#39;你好&amp;#39; &amp;#39;你好&amp;#39; C:\Users\noatn&amp;gt; C:\Users\noatn&amp;gt;@echo off Echo &amp;#39;hello world&amp;#39; &amp;#39;hello world&amp;#39;  pause 暂停  @echo off Echo &amp;#39;hello world&amp;#39; pause  查看ip地址  C:\Users\noatn&amp;gt;ipconfig Windows IP 配置 以太网适配器 以太网 2: 媒体状态 . . . . . . . . . . . . : 媒体已断开连接 连接特定的 DNS 后缀 .</description>
+    </item>
+    
+    <item>
       <title>DOS基本命令 </title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_basic/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_basic/</guid>
-      <description>DOS基本命令 #   wing+r ==&amp;gt; cmd 进入dos控制台   打开屏幕键盘  C:\Users\noatn&amp;gt;osk; dos各种操作查看参数用法 command params ==? command /?  C:\Users\noatn&amp;gt;cd /?显示当前目录名或改变当前目录。CHDIR [/D] [drive:][path]CHDIR [..]CD [/D] [drive:][path]CD [..].. 指定要改成父目录。键入 CD drive: 显示指定驱动器中的当前目录。不带参数只键入 CD，则显示当前驱动器和目录。使用 /D 开关，除了改变驱动器的当前目录之外，还可改变当前驱动器。如果命令扩展被启用，CHDIR 会如下改变:当前的目录字符串会被转换成使用磁盘名上的大小写。所以，如果磁盘上的大小写如此，CD C:\TEMP 会将当前目录设为C:\Temp。CHDIR 命令不把空格当作分隔符，因此有可能将目录名改为一个带有空格但不带有引号的子目录名。例如:cd \winnt\profiles\username\programs\start menu与下列相同:cd &amp;quot;\winnt\profiles\username\programs\start menu&amp;quot;在扩展停用的情况下，你必须键入以上命令。  显示文件夹列表 dir
+      <description>DOS基本命令# wing+r ==&amp;gt; cmd 进入dos控制台   打开屏幕键盘  C:\Users\noatn&amp;gt;osk; dos各种操作查看参数用法 command params ==? command /?  C:\Users\noatn&amp;gt;cd /?显示当前目录名或改变当前目录。CHDIR [/D] [drive:][path]CHDIR [..]CD [/D] [drive:][path]CD [..].. 指定要改成父目录。键入 CD drive: 显示指定驱动器中的当前目录。不带参数只键入 CD，则显示当前驱动器和目录。使用 /D 开关，除了改变驱动器的当前目录之外，还可改变当前驱动器。如果命令扩展被启用，CHDIR 会如下改变:当前的目录字符串会被转换成使用磁盘名上的大小写。所以，如果磁盘上的大小写如此，CD C:\TEMP 会将当前目录设为C:\Temp。CHDIR 命令不把空格当作分隔符，因此有可能将目录名改为一个带有空格但不带有引号的子目录名。例如:cd \winnt\profiles\username\programs\start menu与下列相同:cd &amp;quot;\winnt\profiles\username\programs\start menu&amp;quot;在扩展停用的情况下，你必须键入以上命令。  显示文件夹列表 dir
   改变目录 cd</description>
+    </item>
+    
+    <item>
+      <title>DOS基本命令 (新) </title>
+      <link>https://huachengzhou.github.io/life/docs/operating_system/windows/hksdjahjra/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/hksdjahjra/</guid>
+      <description>命令格式#  命令 子命令 参数 操作 选项
+  /? /help 获取详细的帮助信息
+  D:\data\game\temp&amp;gt;net user /help 此命令的语法是: NET USER [username [password | *] [options]] [/DOMAIN] username {password | *} /ADD [options] [/DOMAIN] username [/DELETE] [/DOMAIN] username [/TIMES:{times | ALL}] username [/ACTIVE: {YES | NO}] NET USER 将创建并修改计算机上的用户帐户。在不使用命令开关的情况下， 将列出计算机的用户帐户。用户帐户信息存储在用户帐户数据库中。 username 为可添加、删除、修改或查看的用户帐户的名称。用户帐户名称 最多可以有 20 个字符。 password 指定或更改用户帐户的密码。密码的长度必须符合 NET ACCOUNTS 命令的 /MINPWLEN 选项所设置的最小长度。 最多可以有 14 个字符。 * 生成密码提示。在密码提示下键入密码时，将不会显示密码。 /DOMAIN 在当前域的域控制器上执行此操作。 /ADD 向用户帐户数据库添加用户帐户。 /DELETE 从用户帐户数据库删除用户帐户。 选项 如下所示: 选项 描述 -------------------------------------------------------------------- /ACTIVE:{YES | NO} 激活或取消激活帐户。如果该帐户处于非激活状态， 用户将无法访问服务器。默认设置为“YES”。 /COMMENT:&amp;#34;text&amp;#34; 提供有关用户帐户的描述性注释。请将文本用引号 括起来。 /COUNTRYCODE:nnn 使用操作系统国家/地区代码执行指定的语言文件， 以显示用户帮助和错误消息。值 0 表示使用默认 的国家/地区代码。 /EXPIRES:{date | NEVER} 如果设置了日期，可导致帐户过期。 NEVER 将帐户设置为无时间限制。 过期日期采用格式 mm/dd/yy(yy)。 月份可以是一个数字、完整字母拼写， 或使用三个字母的缩写。年份可以使用两位数字 或四位数字。使用斜线(/)(不留空格) 将日期的各个部分隔开。 /FULLNAME:&amp;#34;name&amp;#34; 用户的全名(而不是用户名)。请将该名称用引号 括起来。 /HOMEDIR:pathname 用户的主目录设置路径。该路径必须存在。 /PASSWORDCHG:{YES | NO} 指定用户是否可以更改其密码。默认设置 为“YES”。 /PASSWORDREQ:{YES | NO} 指定用户帐户是否必须拥有密码。 默认设置为“YES”。 /LOGONPASSWORDCHG:{YES|NO} 指定用户是否应在下次登录时更改其密码。 默认设置为“NO”。 /PROFILEPATH[:path] 为用户登录配置文件设置路径。 /SCRIPTPATH:pathname 用户登录脚本的位置。 /TIMES:{times | ALL} 登录小时数。TIMES 表示为 day[-day][,day[-day]],time[-time][,time [-time]]，增量限制为 1 小时。 日期可以是完整拼写，也可以是缩写。 小时可以是 12 或 24 小时表示法。对于 12 小时表示法，请使用 am、pm、a.</description>
     </item>
     
     <item>
@@ -22,7 +44,7 @@
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_file/</guid>
-      <description>DOS基本文件操作命令 #    wing+r ==&amp;gt; cmd 进入dos控制台
+      <description>DOS基本文件操作命令#  wing+r ==&amp;gt; cmd 进入dos控制台
   D:
   进入D盘 cd命令  CD命令是更改目录命令 如果要进入D盘不用这个命令直接输入 D: 回车 即可例如:C:\Users\HP&amp;gt;D:D:\&amp;gt;D:\&amp;gt;dir驱动器 D 中的卷是 新加卷卷的序列号是 DAB4-11FED:\ 的目录2019-10-10 14:15 &amp;lt;DIR&amp;gt; 360极速浏览器下载2020-01-13 13:47 &amp;lt;DIR&amp;gt; BaiduNetdiskDownload2020-01-20 13:59 &amp;lt;DIR&amp;gt; CS2019-12-13 16:53 &amp;lt;DIR&amp;gt; data2020-02-10 15:55 &amp;lt;DIR&amp;gt; IdeaProjects2019-12-06 15:01 &amp;lt;DIR&amp;gt; log2019-10-23 10:40 &amp;lt;DIR&amp;gt; MailMasterData2019-09-29 10:43 &amp;lt;DIR&amp;gt; output2020-01-13 13:40 &amp;lt;DIR&amp;gt; soft2020-02-04 17:43 &amp;lt;DIR&amp;gt; temp2020-01-15 18:05 &amp;lt;DIR&amp;gt; ultraeditWork2019-12-10 09:47 &amp;lt;DIR&amp;gt; workspace0 个文件 0 字节12 个目录 463,738,040,320 可用字节D:\&amp;gt;cd CSD:\CS&amp;gt; /*进入了CS目录**/ cd .</description>
     </item>
@@ -33,7 +55,7 @@
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_network/</guid>
-      <description>DOS网络操作命令 #   netstat -ano (列出所有端口的情况)  PS C:\Users\noatn&amp;gt; netstat -ano活动连接协议 本地地址 外部地址 状态 PIDTCP 0.0.0.0:135 0.0.0.0:0 LISTENING 1028TCP 0.0.0.0:445 0.0.0.0:0 LISTENING 4TCP 0.0.0.0:1024 0.0.0.0:0 LISTENING 852TCP 0.0.0.0:1025 0.0.0.0:0 LISTENING 2232TCP 0.0.0.0:3306 0.0.0.0:0 LISTENING 3672TCP 0.0.0.0:5040 0.0.0.0:0 LISTENING 5660TCP 0.0.0.0:7680 0.0.0.0:0 LISTENING 6628TCP 0.0.0.0:49664 0.0.0.0:0 LISTENING 868TCP 0.0.0.0:49665 0.0.0.0:0 LISTENING 784TCP 0.0.0.0:49666 0.0.0.0:0 LISTENING 1580TCP 0.0.0.0:49667 0.</description>
+      <description>DOS网络操作命令# netstat -ano (列出所有端口的情况)  PS C:\Users\noatn&amp;gt; netstat -ano活动连接协议 本地地址 外部地址 状态 PIDTCP 0.0.0.0:135 0.0.0.0:0 LISTENING 1028TCP 0.0.0.0:445 0.0.0.0:0 LISTENING 4TCP 0.0.0.0:1024 0.0.0.0:0 LISTENING 852TCP 0.0.0.0:1025 0.0.0.0:0 LISTENING 2232TCP 0.0.0.0:3306 0.0.0.0:0 LISTENING 3672TCP 0.0.0.0:5040 0.0.0.0:0 LISTENING 5660TCP 0.0.0.0:7680 0.0.0.0:0 LISTENING 6628TCP 0.0.0.0:49664 0.0.0.0:0 LISTENING 868TCP 0.0.0.0:49665 0.0.0.0:0 LISTENING 784TCP 0.0.0.0:49666 0.0.0.0:0 LISTENING 1580TCP 0.0.0.0:49667 0.</description>
     </item>
     
     <item>
@@ -42,7 +64,7 @@
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/windows/ftp/</guid>
-      <description>本地设置FTP服务器 #  步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。 #  步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。 #  第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定” #  第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改 #  步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开 #  步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&amp;hellip;” #  第8步：这里给FTP站点命名。 我将&amp;rsquo;sampleftp&amp;rsquo;赋予FTP站点名称。 现在单击“&amp;hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步” #  步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。 #   将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。 #   *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件 #   现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙 #   您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙” #  步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能” #  步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。 #    现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。</description>
+      <description>本地设置FTP服务器#步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。#步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。#第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定”#第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改#步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开#步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&amp;hellip;”#第8步：这里给FTP站点命名。 我将&amp;rsquo;sampleftp&amp;rsquo;赋予FTP站点名称。 现在单击“&amp;hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步”#步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。# 将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。# *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件# 现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙# 您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙”#步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能”#步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。#  现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。</description>
     </item>
     
     <item>
