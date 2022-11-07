@@ -2,7 +2,7 @@
 title: "我自己理解的聊天技巧"
 date: 2022-10-05
 draft: false
-weight: 8
+weight: 10
 ---
 
 + 1:要让对方觉得你在用心和她/他聊天
