@@ -1,0 +1,3 @@
+
+ipconfig
+start "call window"

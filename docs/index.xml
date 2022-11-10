@@ -489,6 +489,31 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
+      <title>零基础如何开始着手学习英语</title>
+      <link>https://huachengzhou.github.io/life/docs/english_study/jkdy8dwywm/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/english_study/jkdy8dwywm/</guid>
+      <description>只要你坚持学 哪怕不能一次性通过考试 但是你的成绩一定会进步的
+  观点1  心态要做好准备，单词是学英语的基础，学一门语言是循序渐进的过程），见效慢，不要总想着一夜之间就能背下所有单词、一个月就能把英语说成母语。保持平常心。我说汉语这么多年，有时候还是会写错别字呀~
+1.这个视频只适合真英语零基础的朋友，向他们提供一个可执行的自学英语。（零基础：不认识音标、看不进语法书，单词量很少）
+2.学习的次序：先背单词，有一定单词量后（两三个月即可），再学语法（看语法书的同时，通过练习题或阅读文章巩固能力）。也有人边阅读边学单词，但在我不认识单词的时候，阅读效率很低；在有单词基础后，阅读效率更高。
+3.是否看网课：可以先看着试试，如果发觉自己无法理解老师的话，还是回归到最基础的单词，先积累单词才能更好地理解课程讲解。（我在背完单词，看了一点点语法书后，再在B站看了一些语法视频，感觉效果更好）
+4.零基础的学生：以12月的四级/六级考试为目标，设定150-200个/天的单词，坚持到考前，如果有收获就继续下去。
+5.不要因为“害怕自己学不好、背单词总是记不住”的焦虑影响自己学习，记住一个单词都是收获。
+6.遵循记忆的客观规律：遗忘是正常的，短时记忆的内容要通过反复编码才能存入长时记忆，所以坚持复习，不要轻易终止。（背单词难的不是“单词”，难的是坚持）
+单词软件：扇贝单词（墨墨、百词斩都还可以）
+语法书：《赖世雄经典语法》（我在16年买的，现在封面换了。这本书讲得很细，起点很低，但“缺点”也是太厚啦！）
+文章阅读软件：扇贝系列的软件都不错（我也没用过别的）
+方法没有好坏，每个人的认知风格都不同，没有优劣之分，适合自己的才是最好的。但学习有一个原则：任何方法，必须执行、坚持执行才可以见效。
+  观点3
+  新概念英语1 和新概念2 也是重复学习反复复习
+  观点2
+   着重点：从音标&amp;amp;单词开始； - 每天学习1~2小时； - 学习时常：1～2个月。  音标怎么练？  网上找音标视频or app； 熟悉音标，熟悉到看到一个陌生单词就能把它念出来。   词汇怎么练？  1.单独时间专门背单词；碎片化时间反复温习； 2.使用UP推荐的词根词缀去背单词 or 使用app背单词； 3.背单词时，最好边念边背，根据音节进行记忆，有辅助效果； 4.高频背单词(如一天复习个56次)，而不是长时间死磕在一个单词上； 5.生活中碰到不会的单词，记下来，拿回去背。身边软件改成英文版的。 6.推荐使用阅读记忆法。即可以巩固语法，也可巩固单词。        自己总结
+  不管什么方法都尽量去围绕 语音 单词 语法 这三个方面(前期)</description>
+    </item>
+    
+    <item>
       <title>node js - npm </title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
@@ -1462,19 +1487,6 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
     </item>
     
     <item>
-      <title>我自己理解的聊天技巧</title>
-      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</link>
-      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</guid>
-      <description>  1:要让对方觉得你在用心和她/他聊天
-  2:要尽可能的照顾到对方的情绪因为聊天实际意义并不大共情的意义才是最大的 特别是情侣
-  3:聊天后 你如果在意这个人 应当复盘和做相应的记录比如 生日,爱好,兴趣
-  4:假如你以前不怎么会聊天 你最好每天总结聊天技巧
-  </description>
-    </item>
-    
-    <item>
       <title>park</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/thread/park/</link>
       <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
@@ -1526,7 +1538,8 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/</guid>
-      <description></description>
+      <description> 小技巧   到春熙路这些地方送玩具然后请求接受礼物的人答应帮自己一个忙那就是在一些祝福语中抽一个出来 然后我把它念出来 可以对此分类 比如孩子,妇女,男人,学生,中年妇女
+ </description>
     </item>
     
     <item>
@@ -1578,6 +1591,19 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
     </item>
     
     <item>
+      <title>我自己理解的聊天技巧</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</guid>
+      <description>  1:要让对方觉得你在用心和她/他聊天
+  2:要尽可能的照顾到对方的情绪因为聊天实际意义并不大共情的意义才是最大的 特别是情侣
+  3:聊天后 你如果在意这个人 应当复盘和做相应的记录比如 生日,爱好,兴趣
+  4:假如你以前不怎么会聊天 你最好每天总结聊天技巧
+  </description>
+    </item>
+    
+    <item>
       <title>npm部分插件安装问题 </title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
@@ -1602,6 +1628,20 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/</guid>
       <description>spring常用的工具类#内置的resouce类型#UrlResourceClassPathResourceFileSystemResourceServletContextResourceInputStreamResourceByteArrayResourceEncodedResource 也就是Resource加上encoding, 可以认为是有编码的资源VfsResource(在jboss里经常用到, 相应还有 工具类 VfsUtils)org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;amp;quot;classpath:&amp;amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类#org.springframework.core.annotation.AnnotationUtils 处理注解org.springframework.core.io.support.PathMatchingResourcePatternResolver 用 于处理 ant 匹配风格(com/*.jsp, com/**/*.jsp),找出所有的资源, 结合上面的resource的概念一起使用,对于遍历文件很有用. 具体请详细查看javadocorg.springframework.core.io.support.PropertiesLoaderUtils 加载Properties资源工具类,和Resource结合org.springframework.core.BridgeMethodResolver 桥接方法分析器. 关于桥接方法请参考: http://java.sun.com/docs/books/jls/third_edition/html/expressions.html#15.12.4.5org.springframework.core.GenericTypeResolver 范型分析器, 在用于对范型方法, 参数分析.org.springframework.core.NestedExceptionUtilsxml工具#org.springframework.util.xml.AbstractStaxContentHandlerorg.springframework.util.xml.AbstractStaxXMLReaderorg.springframework.util.xml.AbstractXMLReaderorg.springframework.util.xml.AbstractXMLStreamReaderorg.springframework.util.xml.DomUtilsorg.springframework.util.xml.SimpleNamespaceContextorg.springframework.util.xml.SimpleSaxErrorHandlerorg.springframework.util.xml.SimpleTransformErrorListenerorg.springframework.util.xml.StaxUtilsorg.springframework.util.xml.TransformerUtils其它工具集#org.springframework.util.xml.AntPathMatcherant风格的处理org.</description>
+    </item>
+    
+    <item>
+      <title>每天保持心情的5句话</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/</guid>
+      <description>每天保持好心情的5句话#  1:如果自己不伤害自己,这世界没有人能伤害我。面对一切外在风雨,我就对自己说一句话,我爱自己
+  2:身体和心灵是自己的,没有人能代替我照顾自己,往后余生,一定好好照顾自己,一心一意让自己快乐健康。
+  3:把时间浪费在美好的事情,比如读书 运动旅游。不要浪费在无聊的事情和人上。
+  4:允许自己做不到 做不好。完美不是苛责自己,而是接纳自己,然后,继续前行
+  5:不必讨好任何人,不要依赖任何人,自己和别人是平等的,抬起头生活。
+  假如你遇到难事 这个时候最应该做的就是什么都不做 这个时候要让自己内心平静下来 否则你会干出你事后后悔的事情来#</description>
     </item>
     
     <item>
