@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>并发工具  on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/</link>
+    <description>Recent content in 并发工具  on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/thread/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ThreadLocal</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/thread_local/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/thread_local/</guid>
+      <description>一:介绍# ThreadLocal直译为线程局部变量，或许将它命名为ThreadLocalVariable更为合适。其主要作用就是实现线程本地存储功能，通过线程本地资源隔离，解决多线程并发场景下线程安全问题
+  类ThreadLocal 主要解决的就是每个线程绑定自己的值,可以将ThreadLocal类比喻成全局存放数据的盒子,盒子中可以存放每个线程 的私有数据
+ 二:用法举例#public class ToolsThreadLocal { public static ThreadLocal t1 = new ThreadLocal(); } public class ThreadLocalA extends Thread { @Override public void run() { for (int i = 0; i &amp;lt; 50; i++) { ToolsThreadLocal.t1.set(&amp;#34;thread a &amp;#34;+i); System.out.println(ToolsThreadLocal.t1.get()); } } } public class ThreadLocalB extends Thread { @Override public void run() { for (int i = 0; i &amp;lt; 50; i++) { ToolsThreadLocal.</description>
+    </item>
+    
+    <item>
+      <title>Semaphore和Exchanger</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/</guid>
+      <description>Semaphore#Exchanger#</description>
+    </item>
+    
+    <item>
+      <title>CountDownLatch 和 CyclicBarrier</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</guid>
+      <description>CountDownLatch#CyclicBarrier#</description>
+    </item>
+    
+    <item>
+      <title>Phaser</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/phaser/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/phaser/</guid>
+      <description>Phaser#</description>
+    </item>
+    
+    <item>
+      <title>Executor</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executor/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executor/</guid>
+      <description>Executor#</description>
+    </item>
+    
+    <item>
+      <title>Future 和 callable</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/future_callable/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/future_callable/</guid>
+      <description>Future#callable#</description>
+    </item>
+    
+    <item>
+      <title>CompletionService</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/completionservice/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/completionservice/</guid>
+      <description>CompletionService#</description>
+    </item>
+    
+    <item>
+      <title>ExecutorService</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executorservice/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executorservice/</guid>
+      <description>ExecutorService#</description>
+    </item>
+    
+    <item>
+      <title>Fork-Join</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/fork_join/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/fork_join/</guid>
+      <description>Fork-Join#</description>
+    </item>
+    
+    <item>
+      <title>并发集合框架</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/collection/</link>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/collection/</guid>
+      <description>collection#</description>
+    </item>
+    
+  </channel>
+</rss>

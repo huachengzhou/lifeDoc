@@ -104,6 +104,9 @@
     <loc>https://huachengzhou.github.io/life/docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/ytaerczr7w/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</loc>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
@@ -127,6 +130,9 @@
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/c-plus/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/</loc>
@@ -198,10 +204,16 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/cas/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_file/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/computer_network/data_link_layer/</loc>
@@ -236,6 +248,9 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/2bm8trpqzx/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/phaser/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_network/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
@@ -276,6 +291,9 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/unsafe/</loc>
     <lastmod>2022-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executor/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
@@ -323,6 +341,9 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/reentrantlock/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/future_callable/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -369,6 +390,9 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/repeat_lock/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/completionservice/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -392,6 +416,9 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/park/</loc>
     <lastmod>2022-09-12T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executorservice/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack_loader/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -402,6 +429,9 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/fork_join/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
@@ -415,8 +445,14 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/practice/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/collection/</loc>
+    <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
@@ -438,6 +474,9 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtj6fgd6s/</loc>
+    <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
@@ -485,6 +524,9 @@
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</loc>
+    <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/dpa4wtnhf8/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</loc>
