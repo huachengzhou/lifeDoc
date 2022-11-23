@@ -283,9 +283,9 @@ semaphore.release();
 
 
 
-[img21]:../.././imgs/java/thread/微信截图_20221121221029.png
-[img21_]:../../../imgs/java/thread/微信截图_20221121221029.png
-[img22]:../.././imgs/java/thread/微信截图_20221121221344.png
-[img22_]:../../../imgs/java/thread/微信截图_20221121221344.png
-[img23]:../.././imgs/java/thread/微信截图_20221121221652.png
-[img23_]:../../../imgs/java/thread/微信截图_20221121221652.png
+[img21]:../../.././imgs/java/thread/微信截图_20221121221029.png
+[img21_]:../../../../imgs/java/thread/微信截图_20221121221029.png
+[img22]:../../.././imgs/java/thread/微信截图_20221121221344.png
+[img22_]:../../../../imgs/java/thread/微信截图_20221121221344.png
+[img23]:../../.././imgs/java/thread/微信截图_20221121221652.png
+[img23_]:../../../../imgs/java/thread/微信截图_20221121221652.png
