@@ -13,12 +13,12 @@ public class SemaphoreDemo1 {
                     System.out.println("令牌不足!");
                 }
                 try {
-                    semaphore.acquire(2);
+                    semaphore.acquire(3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println("SemaphoreDemo1.main"+(sumParam++));
-                semaphore.release(2);
+                semaphore.release(3);
             })).start();
         }
     }

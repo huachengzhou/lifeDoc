@@ -32,7 +32,7 @@ acquire()
 获取一个令牌，在获取到令牌、或者被其他线程调用中断之前线程一直处于阻塞状态。
 ​
 acquire(int permits)  
-获取一个令牌，在获取到令牌、或者被其他线程调用中断、或超时之前线程一直处于阻塞状态。
+从此信号量获取给定数目的令牌，在提供这些许可前一直将线程阻塞，或者线程已被中断。
     
 acquireUninterruptibly() 
 获取一个令牌，在获取到令牌之前线程一直处于阻塞状态（忽略中断）。
@@ -45,7 +45,8 @@ tryAcquire(long timeout, TimeUnit unit)
 ​
 release()
 释放一个令牌，唤醒一个获取令牌不成功的阻塞线程。
-​
+​release(int permits)
+ 释放给定数目的令牌，将其返回到信号量。
 hasQueuedThreads()
 等待队列里是否还存在等待线程。
 ​
@@ -283,6 +284,102 @@ semaphore.release();
 
 # Exchanger
 
+> 类 Exchanger的功能可以使2个线程之间传输数据,它比生产者/消费者模式使用的wait/notify要更加方便
+
+
+## 类定义
+
+```java
+public class Exchanger<V>
+```
+
+## 类继承
+
+```java
+java.lang.Object
+↳ java.util.concurrent.Exchanger<V>
+```
+
+## 当一个线程调用exchange方法后将进入等待状态，直到另外一个线程调用exchange方法，双方完成数据交换后继续执行
+
++ exchange(v x)：阻塞当前线程，直到另外一个线程调用exchange方法或者当前线程被中断
+
++ exchange(v x, long timeout, timeunit unit)：阻塞当前线程，直到另外一个线程调用exchange方法或者当前线程被中断或者等待超时
+
+
+
++ 举例
+
+```java
+import java.util.concurrent.Exchanger;
+
+public class ExchangerDemo {
+
+    public static void main(String[] args) {
+        Exchanger<String> stringExchanger = new Exchanger<>();
+        ThreadA threadA = new ThreadA(stringExchanger, "线程A");
+        ThreadB threadB = new ThreadB(stringExchanger, "线程B");
+        threadA.start();
+        threadB.start();
+    }
+
+    public static class ThreadA extends Thread {
+        private Exchanger<String> stringExchanger;
+
+        @Override
+        public void run() {
+            try {
+                System.out.println("当前线程" + getName() + "获取到" + stringExchanger.exchange("a"));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public Exchanger<String> getStringExchanger() {
+            return stringExchanger;
+        }
+
+        public void setStringExchanger(Exchanger<String> stringExchanger) {
+            this.stringExchanger = stringExchanger;
+        }
+
+        public ThreadA(Exchanger<String> stringExchanger, String name) {
+            this.stringExchanger = stringExchanger;
+            this.setName(name);
+        }
+    }
+
+    public static class ThreadB extends Thread {
+        private Exchanger<String> stringExchanger;
+
+        @Override
+        public void run() {
+            try {
+                System.out.println("当前线程" + getName() + "获取到" + stringExchanger.exchange("b"));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public Exchanger<String> getStringExchanger() {
+            return stringExchanger;
+        }
+
+        public void setStringExchanger(Exchanger<String> stringExchanger) {
+            this.stringExchanger = stringExchanger;
+        }
+
+        public ThreadB(Exchanger<String> stringExchanger, String name) {
+            this.stringExchanger = stringExchanger;
+            this.setName(name);
+        }
+    }
+}
+//当前线程线程B获取到a
+//当前线程线程A获取到b
+```
+
++ Exchanger在两个线程需要交换对象的时候非常好用
 
 
 [img21]:../../.././imgs/java/thread/微信截图_20221121221029.png
