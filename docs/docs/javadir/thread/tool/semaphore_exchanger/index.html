@@ -8,18 +8,48 @@
 <meta name="description" content="Semaphore
 #
 
-Exchanger
+1、Semaphore 是什么
 #
 
-">
+ Semaphore 通常我们叫它信号量， 可以用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用资源
+  可以把它简单的理解成我们停车场入口立着的那个显示屏，每有一辆车进入停车场显示屏就会显示剩余车位减1，每有一辆车从停车场出去，显示屏上显示的剩余车辆就会加1，当显示屏上的剩余车位为0时，停车场入口的栏杆就不会再打开，车辆就无法进入停车场了，直到有一辆车从停车场出去为止
+ 2、使用场景
+#
+
+ 通常用于那些资源有明确访问数量限制的场景，常用于限流
+  比如：数据库连接池，同时进行连接的线程有数量限制，连接不能超过一定的数量，当连接达到了限制数量后，后面的线程只能排队等前面的线程释放了数据库连接才能获得数据库连接。
+  比如：停车场场景，车位数量有限，同时只能容纳多少台车，车位满了之后只有等里面的车离开停车场外面的车才可以进入
+  20辆小轿车 3个车位 当车停入车位算抢占成功到释放出车位完成一个完整动作 锁定的位数 必然使用车位才合理 餐厅能够容纳16个人同时吃饭 但是吃饭的人总数有200个人 同意锁定的位数 也必然是16个餐位
+ 3、Semaphore常用方法说明
+#
+
+acquire() 获取一个令牌，在获取到令牌、或者被其他线程调用中断之前线程一直处于阻塞状态。 ​ acquire(int permits) 从此信号量获取给定数目的令牌，在提供这些许可前一直将线程阻塞，或者线程已被中断。 acquireUninterruptibly() 获取一个令牌，在获取到令牌之前线程一直处于阻塞状态（忽略中断）。 tryAcquire() 尝试获得令牌，返回获取令牌成功或失败，不阻塞线程。 ​ tryAcquire(long timeout, TimeUnit unit) 尝试获得令牌，在超时时间内循环尝试获取，直到尝试获取成功或超时返回，不阻塞线程。 ​ release() 释放一个令牌，唤醒一个获取令牌不成功的阻塞线程。 ​release(int permits) 释放给定数目的令牌，将其返回到信号量。 hasQueuedThreads() 等待队列里是否还存在等待线程。 ​ getQueueLength() 获取等待队列里阻塞的线程数。 ​ drainPermits() 清空令牌把可用令牌数置为0，返回清空令牌的数量。 ​ availablePermits() 返回可用的令牌数量。 4、用semaphore 实现停车场提示牌功能
+#
+
+ 每个停车场入口都有一个提示牌，上面显示着停车场的剩余车位还有多少，当剩余车位为0时，不允许车辆进入停车场，直到停车场里面有车离开停车场，这时提示牌上会显示新的剩余车位数">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Semaphore和Exchanger" />
 <meta property="og:description" content="Semaphore
 #
 
-Exchanger
+1、Semaphore 是什么
 #
 
-" />
+ Semaphore 通常我们叫它信号量， 可以用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用资源
+  可以把它简单的理解成我们停车场入口立着的那个显示屏，每有一辆车进入停车场显示屏就会显示剩余车位减1，每有一辆车从停车场出去，显示屏上显示的剩余车辆就会加1，当显示屏上的剩余车位为0时，停车场入口的栏杆就不会再打开，车辆就无法进入停车场了，直到有一辆车从停车场出去为止
+ 2、使用场景
+#
+
+ 通常用于那些资源有明确访问数量限制的场景，常用于限流
+  比如：数据库连接池，同时进行连接的线程有数量限制，连接不能超过一定的数量，当连接达到了限制数量后，后面的线程只能排队等前面的线程释放了数据库连接才能获得数据库连接。
+  比如：停车场场景，车位数量有限，同时只能容纳多少台车，车位满了之后只有等里面的车离开停车场外面的车才可以进入
+  20辆小轿车 3个车位 当车停入车位算抢占成功到释放出车位完成一个完整动作 锁定的位数 必然使用车位才合理 餐厅能够容纳16个人同时吃饭 但是吃饭的人总数有200个人 同意锁定的位数 也必然是16个餐位
+ 3、Semaphore常用方法说明
+#
+
+acquire() 获取一个令牌，在获取到令牌、或者被其他线程调用中断之前线程一直处于阻塞状态。 ​ acquire(int permits) 从此信号量获取给定数目的令牌，在提供这些许可前一直将线程阻塞，或者线程已被中断。 acquireUninterruptibly() 获取一个令牌，在获取到令牌之前线程一直处于阻塞状态（忽略中断）。 tryAcquire() 尝试获得令牌，返回获取令牌成功或失败，不阻塞线程。 ​ tryAcquire(long timeout, TimeUnit unit) 尝试获得令牌，在超时时间内循环尝试获取，直到尝试获取成功或超时返回，不阻塞线程。 ​ release() 释放一个令牌，唤醒一个获取令牌不成功的阻塞线程。 ​release(int permits) 释放给定数目的令牌，将其返回到信号量。 hasQueuedThreads() 等待队列里是否还存在等待线程。 ​ getQueueLength() 获取等待队列里阻塞的线程数。 ​ drainPermits() 清空令牌把可用令牌数置为0，返回清空令牌的数量。 ​ availablePermits() 返回可用的令牌数量。 4、用semaphore 实现停车场提示牌功能
+#
+
+ 每个停车场入口都有一个提示牌，上面显示着停车场的剩余车位还有多少，当剩余车位为0时，不允许车辆进入停车场，直到停车场里面有车离开停车场，这时提示牌上会显示新的剩余车位数" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-09-01T00:00:00&#43;00:00" />
@@ -29,7 +59,7 @@ Exchanger
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.0e3604b8a292cdcc718bc97a99a31bb570f74252d47ef009d322ee10f945d54c.js"  ></script>
+<script defer src="./../../../../../en.search.min.face348c90cb48c299212ffe6e6483d61c3e6767c20d2f8801651b30e010197d.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3273,7 +3303,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/" class="">每天保持心情的5句话</a>
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6ngdcha8bk/" class="">使自己成熟稳重</a>
   
 
         </li>
@@ -3287,6 +3317,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtj6fgd6s/" class="">复盘</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/8m3fmhf6t3/" class="">如何变得更加成熟</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/" class="">每天保持心情的5句话</a>
   
 
         </li>
@@ -3680,7 +3736,21 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1semaphore-是什么">1、Semaphore 是什么</a></li>
+    <li><a href="#2使用场景">2、使用场景</a></li>
+    <li><a href="#3semaphore常用方法说明">3、Semaphore常用方法说明</a></li>
+    <li><a href="#4用semaphore-实现停车场提示牌功能">4、用semaphore 实现停车场提示牌功能</a></li>
+    <li><a href="#5semaphore实现原理">5、Semaphore实现原理</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#类定义">类定义</a></li>
+    <li><a href="#类继承">类继承</a></li>
+    <li><a href="#当一个线程调用exchange方法后将进入等待状态直到另外一个线程调用exchange方法双方完成数据交换后继续执行">当一个线程调用exchange方法后将进入等待状态，直到另外一个线程调用exchange方法，双方完成数据交换后继续执行</a></li>
+  </ul>
+</nav>
 
 
 
@@ -3705,10 +3775,404 @@ https://github.com/alex-shpak/hugo-book
   Semaphore
   <a class="anchor" href="#semaphore">#</a>
 </h1>
+<h2 id="1semaphore-是什么">
+  1、Semaphore 是什么
+  <a class="anchor" href="#1semaphore-%e6%98%af%e4%bb%80%e4%b9%88">#</a>
+</h2>
+<blockquote>
+<p>Semaphore 通常我们叫它信号量， 可以用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用资源</p>
+</blockquote>
+<blockquote>
+<p>可以把它简单的理解成我们停车场入口立着的那个显示屏，每有一辆车进入停车场显示屏就会显示剩余车位减1，每有一辆车从停车场出去，显示屏上显示的剩余车辆就会加1，当显示屏上的剩余车位为0时，停车场入口的栏杆就不会再打开，车辆就无法进入停车场了，直到有一辆车从停车场出去为止</p>
+</blockquote>
+<h2 id="2使用场景">
+  2、使用场景
+  <a class="anchor" href="#2%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af">#</a>
+</h2>
+<blockquote>
+<p>通常用于那些资源有明确访问数量限制的场景，常用于限流</p>
+</blockquote>
+<blockquote>
+<p>比如：数据库连接池，同时进行连接的线程有数量限制，连接不能超过一定的数量，当连接达到了限制数量后，后面的线程只能排队等前面的线程释放了数据库连接才能获得数据库连接。</p>
+</blockquote>
+<blockquote>
+<p>比如：停车场场景，车位数量有限，同时只能容纳多少台车，车位满了之后只有等里面的车离开停车场外面的车才可以进入</p>
+</blockquote>
+<blockquote>
+<p>20辆小轿车 3个车位 当车停入车位算抢占成功到释放出车位完成一个完整动作 锁定的位数 必然使用车位才合理
+餐厅能够容纳16个人同时吃饭 但是吃饭的人总数有200个人 同意锁定的位数  也必然是16个餐位</p>
+</blockquote>
+<h2 id="3semaphore常用方法说明">
+  3、Semaphore常用方法说明
+  <a class="anchor" href="#3semaphore%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95%e8%af%b4%e6%98%8e">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">acquire<span style="color:#f92672">()</span>  
+获取一个令牌<span style="color:#960050;background-color:#1e0010">，</span>在获取到令牌<span style="color:#960050;background-color:#1e0010">、</span>或者被其他线程调用中断之前线程一直处于阻塞状态<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+acquire<span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> permits<span style="color:#f92672">)</span>  
+从此信号量获取给定数目的令牌<span style="color:#960050;background-color:#1e0010">，</span>在提供这些许可前一直将线程阻塞<span style="color:#960050;background-color:#1e0010">，</span>或者线程已被中断<span style="color:#960050;background-color:#1e0010">。</span>
+    
+acquireUninterruptibly<span style="color:#f92672">()</span> 
+获取一个令牌<span style="color:#960050;background-color:#1e0010">，</span>在获取到令牌之前线程一直处于阻塞状态<span style="color:#960050;background-color:#1e0010">（</span>忽略中断<span style="color:#960050;background-color:#1e0010">）。</span>
+    
+tryAcquire<span style="color:#f92672">()</span>
+尝试获得令牌<span style="color:#960050;background-color:#1e0010">，</span>返回获取令牌成功或失败<span style="color:#960050;background-color:#1e0010">，</span>不阻塞线程<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+tryAcquire<span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> timeout<span style="color:#f92672">,</span> TimeUnit unit<span style="color:#f92672">)</span>
+尝试获得令牌<span style="color:#960050;background-color:#1e0010">，</span>在超时时间内循环尝试获取<span style="color:#960050;background-color:#1e0010">，</span>直到尝试获取成功或超时返回<span style="color:#960050;background-color:#1e0010">，</span>不阻塞线程<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+release<span style="color:#f92672">()</span>
+释放一个令牌<span style="color:#960050;background-color:#1e0010">，</span>唤醒一个获取令牌不成功的阻塞线程<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>release<span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> permits<span style="color:#f92672">)</span>
+ 释放给定数目的令牌<span style="color:#960050;background-color:#1e0010">，</span>将其返回到信号量<span style="color:#960050;background-color:#1e0010">。</span>
+hasQueuedThreads<span style="color:#f92672">()</span>
+等待队列里是否还存在等待线程<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+getQueueLength<span style="color:#f92672">()</span>
+获取等待队列里阻塞的线程数<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+drainPermits<span style="color:#f92672">()</span>
+清空令牌把可用令牌数置为0<span style="color:#960050;background-color:#1e0010">，</span>返回清空令牌的数量<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+availablePermits<span style="color:#f92672">()</span>
+返回可用的令牌数量<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h2 id="4用semaphore-实现停车场提示牌功能">
+  4、用semaphore 实现停车场提示牌功能
+  <a class="anchor" href="#4%e7%94%a8semaphore-%e5%ae%9e%e7%8e%b0%e5%81%9c%e8%bd%a6%e5%9c%ba%e6%8f%90%e7%a4%ba%e7%89%8c%e5%8a%9f%e8%83%bd">#</a>
+</h2>
+<blockquote>
+<p>每个停车场入口都有一个提示牌，上面显示着停车场的剩余车位还有多少，当剩余车位为0时，不允许车辆进入停车场，直到停车场里面有车离开停车场，这时提示牌上会显示新的剩余车位数</p>
+</blockquote>
+<ul>
+<li>
+<p>业务场景 ：</p>
+</li>
+<li>
+<p>1、停车场容纳总停车量10。</p>
+</li>
+<li>
+<p>2、当一辆车进入停车场后，显示牌的剩余车位数响应的减1.</p>
+</li>
+<li>
+<p>3、每有一辆车驶出停车场后，显示牌的剩余车位数响应的加1。</p>
+</li>
+<li>
+<p>4、停车场剩余车位不足时，车辆只能在外面等待。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestCar</span> <span style="color:#f92672">{</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+    <span style="color:#75715e">//停车场同时容纳的车辆10
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span>  <span style="color:#66d9ef">static</span>  Semaphore semaphore<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Semaphore<span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+        <span style="color:#75715e">//模拟100辆车进入停车场
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>100<span style="color:#f92672">;</span>i<span style="color:#f92672">++){</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+            Thread thread<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Runnable<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;====&#34;</span><span style="color:#f92672">+</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;来到停车场&#34;</span><span style="color:#f92672">);</span>
+                        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>semaphore<span style="color:#f92672">.</span><span style="color:#a6e22e">availablePermits</span><span style="color:#f92672">()==</span>0<span style="color:#f92672">){</span>
+                            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;车位不足，请耐心等待&#34;</span><span style="color:#f92672">);</span>
+                        <span style="color:#f92672">}</span>
+                        semaphore<span style="color:#f92672">.</span><span style="color:#a6e22e">acquire</span><span style="color:#f92672">();</span><span style="color:#75715e">//获取令牌尝试进入停车场
+</span><span style="color:#75715e"></span>                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;成功进入停车场&#34;</span><span style="color:#f92672">);</span>
+                        Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Random<span style="color:#f92672">().</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>10000<span style="color:#f92672">));</span><span style="color:#75715e">//模拟车辆在停车场停留的时间
+</span><span style="color:#75715e"></span>                        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;驶出停车场&#34;</span><span style="color:#f92672">);</span>
+                        semaphore<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">();</span><span style="color:#75715e">//释放令牌，腾出停车场车位
+</span><span style="color:#75715e"></span>                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">},</span>i<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;号车&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+            thread<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+        <span style="color:#f92672">}</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#960050;background-color:#1e0010">​</span>
+</code></pre></div><h2 id="5semaphore实现原理">
+  5、Semaphore实现原理
+  <a class="anchor" href="#5semaphore%e5%ae%9e%e7%8e%b0%e5%8e%9f%e7%90%86">#</a>
+</h2>
+<ul>
+<li>
+<ol>
+<li>Semaphore初始化</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Semaphore semaphore<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Semaphore<span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+</code></pre></div><ul>
+<li>
+<p>1、当调用new Semaphore(2) 方法时，默认会创建一个非公平的锁的同步阻塞队列。</p>
+</li>
+<li>
+<p>2、把初始令牌数量赋值给同步队列的state状态，state的值就代表当前所剩余的令牌数量。</p>
+</li>
+<li>
+<p>初始化完成后同步队列信息如下图：</p>
+</li>
+</ul>
+<p><img src="../../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221029.png" alt="" />
+<img src="../../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221029.png" alt="" /></p>
+<ul>
+<li>
+<ol start="2">
+<li>获取令牌</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">semaphore<span style="color:#f92672">.</span><span style="color:#a6e22e">acquire</span><span style="color:#f92672">();</span>
+</code></pre></div><ul>
+<li>
+<p>1、当前线程会尝试去同步队列获取一个令牌，获取令牌的过程也就是使用原子的操作去修改同步队列的state ,获取一个令牌则修改为state=state-1。</p>
+</li>
+<li>
+<p>2、 当计算出来的state&lt;0，则代表令牌数量不足，此时会创建一个Node节点加入阻塞队列，挂起当前线程。</p>
+</li>
+<li>
+<p>3、当计算出来的state&gt;=0，则代表获取令牌成功。</p>
+</li>
+<li>
+<p>源码：</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     *  获取1个令牌
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acquire</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+        sync<span style="color:#f92672">.</span><span style="color:#a6e22e">acquireSharedInterruptibly</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 共享模式下获取令牌，获取成功则返回，失败则加入阻塞队列，挂起线程
+</span><span style="color:#75715e">     * @param arg
+</span><span style="color:#75715e">     * @throws InterruptedException
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acquireSharedInterruptibly</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">interrupted</span><span style="color:#f92672">())</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InterruptedException<span style="color:#f92672">();</span>
+        <span style="color:#75715e">//尝试获取令牌，arg为获取令牌个数，当可用令牌数减当前令牌数结果小于0,则创建一个节点加入阻塞队列，挂起当前线程。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tryAcquireShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span>
+            doAcquireSharedInterruptibly<span style="color:#f92672">(</span>arg<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 1、创建节点，加入阻塞队列，
+</span><span style="color:#75715e">     * 2、重双向链表的head，tail节点关系，清空无效节点
+</span><span style="color:#75715e">     * 3、挂起当前节点线程
+</span><span style="color:#75715e">     * @param arg
+</span><span style="color:#75715e">     * @throws InterruptedException
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doAcquireSharedInterruptibly</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//创建节点加入阻塞队列
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">final</span> Node node <span style="color:#f92672">=</span> addWaiter<span style="color:#f92672">(</span>Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SHARED</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">boolean</span> failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//获得当前节点pre节点
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">final</span> Node p <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">predecessor</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>p <span style="color:#f92672">==</span> head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> tryAcquireShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">);</span><span style="color:#75715e">//返回锁的state
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>r <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        setHeadAndPropagate<span style="color:#f92672">(</span>node<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
+                        p<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">// help GC
+</span><span style="color:#75715e"></span>                        failed <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+                        <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#75715e">//重组双向链表，清空无效节点，挂起当前线程
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>shouldParkAfterFailedAcquire<span style="color:#f92672">(</span>p<span style="color:#f92672">,</span> node<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span>
+                    parkAndCheckInterrupt<span style="color:#f92672">())</span>
+                    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InterruptedException<span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>failed<span style="color:#f92672">)</span>
+                cancelAcquire<span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>线程1、线程2、线程3、分别调用semaphore.acquire(),整个过程队列信息变化如下图：</li>
+</ul>
+<p><img src="../../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221344.png" alt="" />
+<img src="../../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221344.png" alt="" /></p>
+<ul>
+<li>
+<ol start="3">
+<li>释放令牌</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">semaphore<span style="color:#f92672">.</span><span style="color:#a6e22e">release</span><span style="color:#f92672">();</span>
+</code></pre></div><ul>
+<li>
+<p>当调用semaphore.release() 方法时</p>
+</li>
+<li>
+<p>1、线程会尝试释放一个令牌，释放令牌的过程也就是把同步队列的state修改为state=state+1的过程</p>
+</li>
+<li>
+<p>2、释放令牌成功之后，同时会唤醒同步队列中的一个线程。</p>
+</li>
+<li>
+<p>3、被唤醒的节点会重新尝试去修改state=state-1 的操作，如果state&gt;=0则获取令牌成功，否则重新进入阻塞队列，挂起线程。</p>
+</li>
+<li>
+<p>源码：</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 释放令牌
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">release</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        sync<span style="color:#f92672">.</span><span style="color:#a6e22e">releaseShared</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     *释放共享锁，同时会唤醒同步队列中的一个线程。
+</span><span style="color:#75715e">     * @param arg
+</span><span style="color:#75715e">     * @return
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">releaseShared</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arg<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//释放共享锁
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tryReleaseShared<span style="color:#f92672">(</span>arg<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//唤醒所有共享节点线程
+</span><span style="color:#75715e"></span>            doReleaseShared<span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 唤醒同步队列中的一个线程
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doReleaseShared</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(;;)</span> <span style="color:#f92672">{</span>
+            Node h <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> h <span style="color:#f92672">!=</span> tail<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">int</span> ws <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span><span style="color:#a6e22e">waitStatus</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ws <span style="color:#f92672">==</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SIGNAL</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//是否需要唤醒后继节点
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>compareAndSetWaitStatus<span style="color:#f92672">(</span>h<span style="color:#f92672">,</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">SIGNAL</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">))</span><span style="color:#75715e">//修改状态为初始0
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+                    unparkSuccessor<span style="color:#f92672">(</span>h<span style="color:#f92672">);</span><span style="color:#75715e">//唤醒h.nex节点线程
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">}</span>
+                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ws <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span>
+                         <span style="color:#f92672">!</span>compareAndSetWaitStatus<span style="color:#f92672">(</span>h<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> Node<span style="color:#f92672">.</span><span style="color:#a6e22e">PROPAGATE</span><span style="color:#f92672">));</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>h <span style="color:#f92672">==</span> head<span style="color:#f92672">)</span>                   <span style="color:#75715e">// loop if head changed
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>继上面的图，当我们线程1调用semaphore.release(); 时候整个流程如下图</li>
+</ul>
+<p><img src="../../.././imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221652.png" alt="" />
+<img src="../../../../imgs/java/thread/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20221121221652.png" alt="" /></p>
 <h1 id="exchanger">
   Exchanger
   <a class="anchor" href="#exchanger">#</a>
 </h1>
+<blockquote>
+<p>类 Exchanger的功能可以使2个线程之间传输数据,它比生产者/消费者模式使用的wait/notify要更加方便</p>
+</blockquote>
+<h2 id="类定义">
+  类定义
+  <a class="anchor" href="#%e7%b1%bb%e5%ae%9a%e4%b9%89">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Exchanger</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span>
+</code></pre></div><h2 id="类继承">
+  类继承
+  <a class="anchor" href="#%e7%b1%bb%e7%bb%a7%e6%89%bf">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Object</span>
+<span style="color:#960050;background-color:#1e0010">↳</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">concurrent</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Exchanger</span><span style="color:#f92672">&lt;</span>V<span style="color:#f92672">&gt;</span>
+</code></pre></div><h2 id="当一个线程调用exchange方法后将进入等待状态直到另外一个线程调用exchange方法双方完成数据交换后继续执行">
+  当一个线程调用exchange方法后将进入等待状态，直到另外一个线程调用exchange方法，双方完成数据交换后继续执行
+  <a class="anchor" href="#%e5%bd%93%e4%b8%80%e4%b8%aa%e7%ba%bf%e7%a8%8b%e8%b0%83%e7%94%a8exchange%e6%96%b9%e6%b3%95%e5%90%8e%e5%b0%86%e8%bf%9b%e5%85%a5%e7%ad%89%e5%be%85%e7%8a%b6%e6%80%81%e7%9b%b4%e5%88%b0%e5%8f%a6%e5%a4%96%e4%b8%80%e4%b8%aa%e7%ba%bf%e7%a8%8b%e8%b0%83%e7%94%a8exchange%e6%96%b9%e6%b3%95%e5%8f%8c%e6%96%b9%e5%ae%8c%e6%88%90%e6%95%b0%e6%8d%ae%e4%ba%a4%e6%8d%a2%e5%90%8e%e7%bb%a7%e7%bb%ad%e6%89%a7%e8%a1%8c">#</a>
+</h2>
+<ul>
+<li>
+<p>exchange(v x)：阻塞当前线程，直到另外一个线程调用exchange方法或者当前线程被中断</p>
+</li>
+<li>
+<p>exchange(v x, long timeout, timeunit unit)：阻塞当前线程，直到另外一个线程调用exchange方法或者当前线程被中断或者等待超时</p>
+</li>
+<li>
+<p>举例</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.concurrent.Exchanger<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExchangerDemo</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Exchanger<span style="color:#f92672">&lt;&gt;();</span>
+        ThreadA threadA <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadA<span style="color:#f92672">(</span>stringExchanger<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;线程A&#34;</span><span style="color:#f92672">);</span>
+        ThreadB threadB <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadB<span style="color:#f92672">(</span>stringExchanger<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;线程B&#34;</span><span style="color:#f92672">);</span>
+        threadA<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        threadB<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadA</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">;</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;当前线程&#34;</span> <span style="color:#f92672">+</span> getName<span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;获取到&#34;</span> <span style="color:#f92672">+</span> stringExchanger<span style="color:#f92672">.</span><span style="color:#a6e22e">exchange</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">));</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getStringExchanger</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> stringExchanger<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setStringExchanger</span><span style="color:#f92672">(</span>Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">stringExchanger</span> <span style="color:#f92672">=</span> stringExchanger<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ThreadA</span><span style="color:#f92672">(</span>Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">,</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">stringExchanger</span> <span style="color:#f92672">=</span> stringExchanger<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>name<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadB</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">;</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;当前线程&#34;</span> <span style="color:#f92672">+</span> getName<span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;获取到&#34;</span> <span style="color:#f92672">+</span> stringExchanger<span style="color:#f92672">.</span><span style="color:#a6e22e">exchange</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">));</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getStringExchanger</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> stringExchanger<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setStringExchanger</span><span style="color:#f92672">(</span>Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">stringExchanger</span> <span style="color:#f92672">=</span> stringExchanger<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ThreadB</span><span style="color:#f92672">(</span>Exchanger<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stringExchanger<span style="color:#f92672">,</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">stringExchanger</span> <span style="color:#f92672">=</span> stringExchanger<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>name<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">//当前线程线程B获取到a
+</span><span style="color:#75715e">//当前线程线程A获取到b
+</span></code></pre></div><ul>
+<li>Exchanger在两个线程需要交换对象的时候非常好用</li>
+</ul>
 </article>
  
       
@@ -3950,7 +4414,21 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1semaphore-是什么">1、Semaphore 是什么</a></li>
+    <li><a href="#2使用场景">2、使用场景</a></li>
+    <li><a href="#3semaphore常用方法说明">3、Semaphore常用方法说明</a></li>
+    <li><a href="#4用semaphore-实现停车场提示牌功能">4、用semaphore 实现停车场提示牌功能</a></li>
+    <li><a href="#5semaphore实现原理">5、Semaphore实现原理</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#类定义">类定义</a></li>
+    <li><a href="#类继承">类继承</a></li>
+    <li><a href="#当一个线程调用exchange方法后将进入等待状态直到另外一个线程调用exchange方法双方完成数据交换后继续执行">当一个线程调用exchange方法后将进入等待状态，直到另外一个线程调用exchange方法，双方完成数据交换后继续执行</a></li>
+  </ul>
+</nav>
 
 
  
