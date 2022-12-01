@@ -12,14 +12,14 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/redis/</guid>
-      <description>一.Redis介绍#1.1引言# 1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
- #1.2 NOSQL# redis就是nosql
+      <description>一.Redis介绍 #  1.1引言 #   1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
+ #  1.2 NOSQL #   redis就是nosql
   非关系数据库 &amp;gt; not only sql
  1:key-value redis 2:文档型 solr,Mongodb,ElasticSearch 3:面向列 Hbase(一般大数据) 4:图形化 Neo4j
-  1.3 redis介绍# Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
+  1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装#redis 注册服务#C:\Users\noatn&amp;gt;e:E:\&amp;gt;cd E:\CS\Redis-x64-3.</description>
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&amp;gt;e:E:\&amp;gt;cd E:\CS\Redis-x64-3.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
   </channel>
