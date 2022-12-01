@@ -2,35 +2,66 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="跨域 #  介绍 #   跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
+<meta name="description" content="跨域
+#
+
+介绍
+#
+
+ 跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
   同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
- 为什么会跨域 #  说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
-1.什么是源 #   Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
-  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构 #   URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
+ 为什么会跨域
+#
+
+说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
+1.什么是源
+#
+
+ Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
+  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构
+#
+
+ URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
    URL有如下结构组成：
   Schme 或者 Protocol
    Domain Name 也叫做host域名   port 端口号   Parameters参数   Anchor 锚点，一般用于定位位置  3.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="跨域问题" />
-<meta property="og:description" content="跨域 #  介绍 #   跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
+<meta property="og:description" content="跨域
+#
+
+介绍
+#
+
+ 跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
   同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
- 为什么会跨域 #  说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
-1.什么是源 #   Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
-  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构 #   URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
+ 为什么会跨域
+#
+
+说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
+1.什么是源
+#
+
+ Web内容的源由用于访问它的URL 的方案(协议)，主机(域名)和端口定义。只有当方案，主机和端口都匹配时，两个对象具有相同的起源。
+  所谓同源是指：域名，协议，端口相同，即两个资源具有相同的源。 只要三者之间有一个不同，就是跨域（跨源） 同源不同源一句话就可以判断：就是url中 scheme host port 都相同即为同源。 下面认识下url 结构中的这三个部分  2. URL结构
+#
+
+ URL 代表着是统一资源定位符（Uniform Resource Locator）。URL 无非就是一个给定的独特资源在 Web 上的地址。
    URL有如下结构组成：
   Schme 或者 Protocol
    Domain Name 也叫做host域名   port 端口号   Parameters参数   Anchor 锚点，一般用于定位位置  3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/http/teywty5qnc/" />
-<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/http/teywty5qnc/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00&#43;00:00" />
+
 <title>跨域问题 | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../en.search.min.b26fdf68cbf9e682a29f6984316dbf0ce53cde376c6134674f89190367641ccb.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../en.search.min.db2618b2e359eba2ad080ac64e93890a51c6fda7c47790233f7c677f218b45aa.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3332,6 +3363,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/h847ijsjzr/" class="">表达能力提高</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3691,7 +3735,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -3852,7 +3896,7 @@ https://github.com/alex-shpak/hugo-book
 <td style="text-align:center">相同的 scheme http 和host</td>
 </tr>
 <tr>
-<td><a href="http://Example.com">http://Example.com</a>:80  &lt;==&gt; <a href="http://example.com">http://example.com</a></td>
+<td><a href="http://Example.com:80">http://Example.com:80</a>  &lt;==&gt; <a href="http://example.com">http://example.com</a></td>
 <td style="text-align:center">http 默认80端口所以同源</td>
 </tr>
 </tbody>
@@ -3877,7 +3921,7 @@ https://github.com/alex-shpak/hugo-book
 <td style="text-align:center">不同的host</td>
 </tr>
 <tr>
-<td><a href="http://example.com">http://example.com</a>  &lt;==&gt; <a href="http://example.com">http://example.com</a>:8080</td>
+<td><a href="http://example.com">http://example.com</a>  &lt;==&gt; <a href="http://example.com:8080">http://example.com:8080</a></td>
 <td style="text-align:center">不同的端口</td>
 </tr>
 </tbody>
@@ -4087,7 +4131,7 @@ https://github.com/alex-shpak/hugo-book
 <p><strong>具体设置例子</strong></p>
 </li>
 <li>
-<p>www.a.com上的a.html 具有相同上级域名</p>
+<p><a href="http://www.a.com">www.a.com</a>上的a.html 具有相同上级域名</p>
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">document.<span style="color:#a6e22e">domain</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a.com&#39;</span>;

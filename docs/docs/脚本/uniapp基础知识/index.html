@@ -2,53 +2,90 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="uni-app的基本使用 #  课程介绍：
+<meta name="description" content="uni-app的基本使用
+#
+
+课程介绍：
 基础部分：
  环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：xxxx
-uni-app介绍 官方网页 #  uni-app view uni-app view #  uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
+uni-app介绍 官方网页
+#
+
+uni-app view uni-app view
+#
+
+uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
 即使不跨端，uni-app同时也是更好的小程序开发框架。
 具有vue和微信小程序的开发经验，可快速上手uni-app
 为什么要去学习uni-app？
 相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。
-环境搭建 #  安装编辑器HbuilderX 下载地址
+环境搭建
+#
+
+安装编辑器HbuilderX 下载地址
 HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
 下载App开发版，可开箱即用
 安装微信开发者工具 下载地址
-利用HbuilderX初始化项目 #    点击HbuilderX菜单栏文件&gt;项目&gt;新建
+利用HbuilderX初始化项目
+#
+
+  点击HbuilderX菜单栏文件&gt;项目&gt;新建
   选择uni-app,填写项目名称，项目创建的目录
-  运行项目 #  在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
+  运行项目
+#
+
+在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到手机或模拟器 -&gt; 选择调式的手机">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="uniapp基础知识 " />
-<meta property="og:description" content="uni-app的基本使用 #  课程介绍：
+<meta property="og:description" content="uni-app的基本使用
+#
+
+课程介绍：
 基础部分：
  环境搭建 页面外观配置 数据绑定 uni-app的生命周期 组件的使用 uni-app中样式学习 在uni-app中使用字体图标和开启scss 条件注释跨端兼容 uni中的事件 导航跳转 组件创建和通讯，及组件的生命周期 uni-app中使用uni-ui库  项目：xxxx
-uni-app介绍 官方网页 #  uni-app view uni-app view #  uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
+uni-app介绍 官方网页
+#
+
+uni-app view uni-app view
+#
+
+uni-app 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。
 即使不跨端，uni-app同时也是更好的小程序开发框架。
 具有vue和微信小程序的开发经验，可快速上手uni-app
 为什么要去学习uni-app？
 相对开发者来说，减少了学习成本，因为只学会uni-app之后，即可开发出iOS、Android、H5、以及各种小程序的应用，不需要再去学习开发其他应用的框架，相对公司而言，也大大减少了开发成本。
-环境搭建 #  安装编辑器HbuilderX 下载地址
+环境搭建
+#
+
+安装编辑器HbuilderX 下载地址
 HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
 下载App开发版，可开箱即用
 安装微信开发者工具 下载地址
-利用HbuilderX初始化项目 #    点击HbuilderX菜单栏文件&gt;项目&gt;新建
+利用HbuilderX初始化项目
+#
+
+  点击HbuilderX菜单栏文件&gt;项目&gt;新建
   选择uni-app,填写项目名称，项目创建的目录
-  运行项目 #  在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
+  运行项目
+#
+
+在菜单栏中点击运行，运行到浏览器，选择浏览器即可运行
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app
 在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到手机或模拟器 -&gt; 选择调式的手机" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
-<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-06-17T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00&#43;00:00" />
+
 <title>uniapp基础知识  | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../en.search.min.b26fdf68cbf9e682a29f6984316dbf0ce53cde376c6134674f89190367641ccb.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../en.search.min.db2618b2e359eba2ad080ac64e93890a51c6fda7c47790233f7c677f218b45aa.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3350,6 +3387,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/h847ijsjzr/" class="">表达能力提高</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3709,7 +3759,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -5211,9 +5261,9 @@ goMessage () {
 <li>
 <p>创建login组件，在component中创建login目录，然后新建login.vue文件</p>
 <pre><code>&lt;template&gt;
-  &lt;view&gt;
+	&lt;view&gt;
       这是一个自定义组件
-  &lt;/view&gt;
+	&lt;/view&gt;
 &lt;/template&gt;
 
 &lt;script&gt;
