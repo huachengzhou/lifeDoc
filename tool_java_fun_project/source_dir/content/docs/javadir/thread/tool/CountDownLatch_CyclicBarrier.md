@@ -287,33 +287,44 @@ Teenager已经到现场了
 + 第二个例子 有一些工人要去附件一家餐厅吃饭  但是餐厅不单独接待个人 至少需要4个人才能接待 因此 工人得互相凑对
 
 ```java
+import java.util.Arrays;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CyclicBarrierDemo2 {
+    private static ConcurrentLinkedQueue<String> linkedQueue = new ConcurrentLinkedQueue<>();
 
     public static void main(String[] args) {
-        String[] names = new String[]{"小罗伯特·唐尼", "艾玛·沃特森", "艾玛·斯通", "斯嘉丽·约翰逊", "艾薇儿", "阿兰·德龙", "布雷特·道顿", "莫蕾娜·巴卡林", "费尔南达·塔瓦雷", "杰夫·高布伦", "纳帅尼尔·布佐尼"};
+        String[] names = new String[]{"小罗伯特·唐尼", "艾玛·沃特森", "艾玛·斯通", "斯嘉丽·约翰逊", "艾薇儿", "阿兰·德龙", "布雷特·道顿", "莫蕾娜·巴卡林", "费尔南达·塔瓦雷", "杰夫·高布伦", "纳帅尼尔·布佐尼", "爱丽丝"};
         AtomicInteger atomicInteger = new AtomicInteger(0);
+
         CyclicBarrier cyclicBarrier = new CyclicBarrier(4, () -> {
-            System.out.println("接待" + atomicInteger.incrementAndGet() + "桌");
+            System.out.println("接待第" + atomicInteger.incrementAndGet() + "桌");
+            System.out.println("人员:"+Arrays.toString(linkedQueue.toArray()));
+            linkedQueue.clear();
         });
+
         for (String name : names) {
+//            try {
+//                //这里一定延迟一下
+//                Thread.sleep(1);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            new Worker(name, cyclicBarrier).start();
+
+            Worker worker = new Worker(name, cyclicBarrier);
+            worker.start();
             try {
-                //这里一定延迟一下
-                Thread.sleep(1);
+                worker.join(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            new Worker(name, cyclicBarrier).start();
 
-//            Worker worker = new Worker(name, cyclicBarrier);
-//            worker.start();
         }
     }
-
-
 
 
     public static class Worker extends Thread {
@@ -330,8 +341,10 @@ public class CyclicBarrierDemo2 {
         public void run() {
             try {
                 System.out.println(this.firstName + "就位");
+                linkedQueue.add(this.firstName);
+                //到达 屏障点
                 this.objKey.await();
-                System.out.println();
+                //屏障点 结束
                 System.out.println(this.firstName + "开始就餐");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -341,35 +354,57 @@ public class CyclicBarrierDemo2 {
         }
     }
 }
+
 /*
 小罗伯特·唐尼就位
 艾玛·沃特森就位
 艾玛·斯通就位
 斯嘉丽·约翰逊就位
-接待1桌
-
+接待第1桌
+人员:[小罗伯特·唐尼, 艾玛·沃特森, 艾玛·斯通, 斯嘉丽·约翰逊]
 斯嘉丽·约翰逊开始就餐
-
-
-
-艾玛·斯通开始就餐
-艾玛·沃特森开始就餐
 小罗伯特·唐尼开始就餐
+艾玛·沃特森开始就餐
+艾玛·斯通开始就餐
 艾薇儿就位
 阿兰·德龙就位
 布雷特·道顿就位
 莫蕾娜·巴卡林就位
-接待2桌
-
+接待第2桌
+人员:[艾薇儿, 阿兰·德龙, 布雷特·道顿, 莫蕾娜·巴卡林]
 莫蕾娜·巴卡林开始就餐
-
-布雷特·道顿开始就餐
-
-阿兰·德龙开始就餐
-
 艾薇儿开始就餐
+阿兰·德龙开始就餐
+布雷特·道顿开始就餐
 费尔南达·塔瓦雷就位
 杰夫·高布伦就位
 纳帅尼尔·布佐尼就位
+爱丽丝就位
+接待第3桌
+人员:[费尔南达·塔瓦雷, 杰夫·高布伦, 纳帅尼尔·布佐尼, 爱丽丝]
+爱丽丝开始就餐
+费尔南达·塔瓦雷开始就餐
+纳帅尼尔·布佐尼开始就餐
+杰夫·高布伦开始就餐
 * */
 ```
+
++ 重要解释
+
+```shell
+ Thread.sleep(1);
+ worker.join(10);
+ 是为了 让线程打印执行连续
+ 把上面的取消 你会发现就不再连续了
+ 但是每一个名字还是 会在屏障点 出现一次 并且 依然是4个线程执行后触发动作 只是名字出现不再连贯了
+```
+
+# CountDownLatch 和 CyclicBarrier 的比较
+
+CountDownLatch 是线程组之间的等待，即一个(或多个)线程等待N个线程完成某件事情之后再执行；而 CyclicBarrier 则是线程组内的等待，即每个线程相互等待，即N个线程都被拦截之后，然后依次执行。
+
+CountDownLatch 是减计数方式，而 CyclicBarrier 是加计数方式。
+
+CountDownLatch 计数为0无法重置，而 CyclicBarrier 计数达到初始值，则可以重置。
+
+CountDownLatch 不可以复用，而 CyclicBarrier 可以复用。
