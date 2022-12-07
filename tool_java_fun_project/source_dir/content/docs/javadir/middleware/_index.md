@@ -13,3 +13,4 @@ weight: 21
 
 
 * [Redis 学习与使用](redis)
+* [nginx 学习与使用](nginx)
