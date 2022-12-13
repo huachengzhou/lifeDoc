@@ -35,7 +35,7 @@
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.888c1ca4234e467b5b7e8a499795a547048c6dafc51a80d0742513caf2778ea2.js"  ></script>
+<script defer src="./../../../../../en.search.min.d5da47b8ecc842688d568b4059934dd15894f37d9bcfbb84e1cd9d0a817e0c70.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1685,6 +1685,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../../docs/javadir/middleware/nginx/" class="">nginx 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/testng/" class="">testng 学习与使用</a>
   
 
         </li>
@@ -4040,33 +4053,44 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><ul>
 <li>第二个例子 有一些工人要去附件一家餐厅吃饭  但是餐厅不单独接待个人 至少需要4个人才能接待 因此 工人得互相凑对</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.concurrent.BrokenBarrierException<span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.util.Arrays<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.concurrent.BrokenBarrierException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.concurrent.ConcurrentLinkedQueue<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> java.util.concurrent.CyclicBarrier<span style="color:#f92672">;</span>
 <span style="color:#f92672">import</span> java.util.concurrent.atomic.AtomicInteger<span style="color:#f92672">;</span>
 
 <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CyclicBarrierDemo2</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> ConcurrentLinkedQueue<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> linkedQueue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentLinkedQueue<span style="color:#f92672">&lt;&gt;();</span>
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        String<span style="color:#f92672">[]</span> names <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;小罗伯特·唐尼&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾玛·沃特森&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾玛·斯通&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;斯嘉丽·约翰逊&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾薇儿&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;阿兰·德龙&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;布雷特·道顿&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;莫蕾娜·巴卡林&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;费尔南达·塔瓦雷&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;杰夫·高布伦&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;纳帅尼尔·布佐尼&#34;</span><span style="color:#f92672">};</span>
+        String<span style="color:#f92672">[]</span> names <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]{</span><span style="color:#e6db74">&#34;小罗伯特·唐尼&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾玛·沃特森&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾玛·斯通&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;斯嘉丽·约翰逊&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;艾薇儿&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;阿兰·德龙&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;布雷特·道顿&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;莫蕾娜·巴卡林&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;费尔南达·塔瓦雷&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;杰夫·高布伦&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;纳帅尼尔·布佐尼&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;爱丽丝&#34;</span><span style="color:#f92672">};</span>
         AtomicInteger atomicInteger <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger<span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+
         CyclicBarrier cyclicBarrier <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CyclicBarrier<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> <span style="color:#f92672">()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
-            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;接待&#34;</span> <span style="color:#f92672">+</span> atomicInteger<span style="color:#f92672">.</span><span style="color:#a6e22e">incrementAndGet</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;桌&#34;</span><span style="color:#f92672">);</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;接待第&#34;</span> <span style="color:#f92672">+</span> atomicInteger<span style="color:#f92672">.</span><span style="color:#a6e22e">incrementAndGet</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;桌&#34;</span><span style="color:#f92672">);</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;人员:&#34;</span><span style="color:#f92672">+</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(</span>linkedQueue<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">()));</span>
+            linkedQueue<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
         <span style="color:#f92672">});</span>
+
         <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>String name <span style="color:#f92672">:</span> names<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#75715e">//            try {
+</span><span style="color:#75715e">//                //这里一定延迟一下
+</span><span style="color:#75715e">//                Thread.sleep(1);
+</span><span style="color:#75715e">//            } catch (InterruptedException e) {
+</span><span style="color:#75715e">//                e.printStackTrace();
+</span><span style="color:#75715e">//            }
+</span><span style="color:#75715e">//            new Worker(name, cyclicBarrier).start();
+</span><span style="color:#75715e"></span>
+            Worker worker <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Worker<span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> cyclicBarrier<span style="color:#f92672">);</span>
+            worker<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
             <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-                <span style="color:#75715e">//这里一定延迟一下
-</span><span style="color:#75715e"></span>                Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+                worker<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
             <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
                 e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
             <span style="color:#f92672">}</span>
-            <span style="color:#66d9ef">new</span> Worker<span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> cyclicBarrier<span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
 
-<span style="color:#75715e">//            Worker worker = new Worker(name, cyclicBarrier);
-</span><span style="color:#75715e">//            worker.start();
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
-
-
 
 
     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
@@ -4083,9 +4107,11 @@ https://github.com/alex-shpak/hugo-book
         <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
             <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
                 System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;就位&#34;</span><span style="color:#f92672">);</span>
-                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">objKey</span><span style="color:#f92672">.</span><span style="color:#a6e22e">await</span><span style="color:#f92672">();</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
-                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;开始就餐&#34;</span><span style="color:#f92672">);</span>
+                linkedQueue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">firstName</span><span style="color:#f92672">);</span>
+                <span style="color:#75715e">//到达 屏障点
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">objKey</span><span style="color:#f92672">.</span><span style="color:#a6e22e">await</span><span style="color:#f92672">();</span>
+                <span style="color:#75715e">//屏障点 结束
+</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">firstName</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;开始就餐&#34;</span><span style="color:#f92672">);</span>
             <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
                 e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
             <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>BrokenBarrierException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -4094,38 +4120,56 @@ https://github.com/alex-shpak/hugo-book
         <span style="color:#f92672">}</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
+
 <span style="color:#75715e">/*
 </span><span style="color:#75715e">小罗伯特·唐尼就位
 </span><span style="color:#75715e">艾玛·沃特森就位
 </span><span style="color:#75715e">艾玛·斯通就位
 </span><span style="color:#75715e">斯嘉丽·约翰逊就位
-</span><span style="color:#75715e">接待1桌
-</span><span style="color:#75715e">
+</span><span style="color:#75715e">接待第1桌
+</span><span style="color:#75715e">人员:[小罗伯特·唐尼, 艾玛·沃特森, 艾玛·斯通, 斯嘉丽·约翰逊]
 </span><span style="color:#75715e">斯嘉丽·约翰逊开始就餐
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">艾玛·斯通开始就餐
-</span><span style="color:#75715e">艾玛·沃特森开始就餐
 </span><span style="color:#75715e">小罗伯特·唐尼开始就餐
+</span><span style="color:#75715e">艾玛·沃特森开始就餐
+</span><span style="color:#75715e">艾玛·斯通开始就餐
 </span><span style="color:#75715e">艾薇儿就位
 </span><span style="color:#75715e">阿兰·德龙就位
 </span><span style="color:#75715e">布雷特·道顿就位
 </span><span style="color:#75715e">莫蕾娜·巴卡林就位
-</span><span style="color:#75715e">接待2桌
-</span><span style="color:#75715e">
+</span><span style="color:#75715e">接待第2桌
+</span><span style="color:#75715e">人员:[艾薇儿, 阿兰·德龙, 布雷特·道顿, 莫蕾娜·巴卡林]
 </span><span style="color:#75715e">莫蕾娜·巴卡林开始就餐
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">布雷特·道顿开始就餐
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">阿兰·德龙开始就餐
-</span><span style="color:#75715e">
 </span><span style="color:#75715e">艾薇儿开始就餐
+</span><span style="color:#75715e">阿兰·德龙开始就餐
+</span><span style="color:#75715e">布雷特·道顿开始就餐
 </span><span style="color:#75715e">费尔南达·塔瓦雷就位
 </span><span style="color:#75715e">杰夫·高布伦就位
 </span><span style="color:#75715e">纳帅尼尔·布佐尼就位
+</span><span style="color:#75715e">爱丽丝就位
+</span><span style="color:#75715e">接待第3桌
+</span><span style="color:#75715e">人员:[费尔南达·塔瓦雷, 杰夫·高布伦, 纳帅尼尔·布佐尼, 爱丽丝]
+</span><span style="color:#75715e">爱丽丝开始就餐
+</span><span style="color:#75715e">费尔南达·塔瓦雷开始就餐
+</span><span style="color:#75715e">纳帅尼尔·布佐尼开始就餐
+</span><span style="color:#75715e">杰夫·高布伦开始就餐
 </span><span style="color:#75715e">* */</span>
-</code></pre></div></article>
+</code></pre></div><ul>
+<li>重要解释</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> Thread.sleep<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>;
+ worker.join<span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>;
+ 是为了 让线程打印执行连续
+ 把上面的取消 你会发现就不再连续了
+ 但是每一个名字还是 会在屏障点 出现一次 并且 依然是4个线程执行后触发动作 只是名字出现不再连贯了
+</code></pre></div><h1 id="countdownlatch-和-cyclicbarrier-的比较">
+  CountDownLatch 和 CyclicBarrier 的比较
+  <a class="anchor" href="#countdownlatch-%e5%92%8c-cyclicbarrier-%e7%9a%84%e6%af%94%e8%be%83">#</a>
+</h1>
+<p>CountDownLatch 是线程组之间的等待，即一个(或多个)线程等待N个线程完成某件事情之后再执行；而 CyclicBarrier 则是线程组内的等待，即每个线程相互等待，即N个线程都被拦截之后，然后依次执行。</p>
+<p>CountDownLatch 是减计数方式，而 CyclicBarrier 是加计数方式。</p>
+<p>CountDownLatch 计数为0无法重置，而 CyclicBarrier 计数达到初始值，则可以重置。</p>
+<p>CountDownLatch 不可以复用，而 CyclicBarrier 可以复用。</p>
+</article>
  
       
 

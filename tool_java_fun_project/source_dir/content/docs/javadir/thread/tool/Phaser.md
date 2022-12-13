@@ -45,3 +45,43 @@ Phaser中是通过计数器来控制。在Phaser中计数器叫做parties， 我
 
 + case 1
 
+```java
+   final Phaser phaser = new Phaser(3) {
+            @Override
+            protected boolean onAdvance(int phase, int registeredParties) {
+                System.out.println(phase + "_" + registeredParties);
+                System.out.println(Thread.currentThread().getName() + " 调用了onAdvance方法");
+//                switch (phase) {
+//                    case 0:
+//                        System.out.println("第一阶段，买食材完成啦！总共参与人数：" + registeredParties);
+//                        return false;
+//                    case 1:
+//                        System.out.println("第二阶段，炒菜完成啦！总共参与人数：" + registeredParties);
+//                        return false;
+//                    case 2:
+//                        System.out.println("第三阶段，吃完饭啦！总共参与人数：" + registeredParties);
+//                        return false;
+//                    default:
+//                        return true;
+//                }
+                return super.onAdvance(phase, registeredParties);
+            }
+        };
+
+        for (int i = 1; i <= 1 * 3; i++) {
+            if (i >= 2 && i % 3 == 1) {
+                System.out.println("i:" + i);
+//                phaser.bulkRegister(3);
+            }
+            new Thread(String.valueOf(i)) {
+                public void run() {
+                    //注册
+//                    phaser.register();
+                    System.out.println(Thread.currentThread().getName()+"---------------------");
+                    //注册并释放
+                    phaser.arriveAndAwaitAdvance();
+                    System.out.println(Thread.currentThread().getName() + "....................");
+                }
+            }.start();
+        }
+```
