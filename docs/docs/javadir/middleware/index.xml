@@ -12,14 +12,14 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/redis/</guid>
-      <description>一.Redis介绍#1.1引言# 1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
- #1.2 NOSQL# redis就是nosql
+      <description>一.Redis介绍 #  1.1引言 #   1:由于用户量大，请求了随之增大，数据压力过大。 2:多台服务器之间数据不同步 3:多台服务器之间的锁已经不存在互斥性了
+ #  1.2 NOSQL #   redis就是nosql
   非关系数据库 &amp;gt; not only sql
  1:key-value redis 2:文档型 solr,Mongodb,ElasticSearch 3:面向列 Hbase(一般大数据) 4:图形化 Neo4j
-  1.3 redis介绍# Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
+  1.3 redis介绍 #   Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 Redis是一款基于Key-Value的NOSQL，而且Redis是基于内存存储数据的,Redis还提供了多种持久化机制，Redis还提供了主从、哨兵以及集群的搭建方式，可以更方便的横向扩展以及垂直扩展
   操作都是原子的
  所有 Redis 的操作都是原子的，从而确保当两个客户同时访问 Redis 服务器时，得到的是更新后的值（最新值）。在需要高并发的场合可以考虑使用 Redis 的事务，处理一些需要锁的业务。
-  二.Redis安装#redis 注册服务#C:\Users\noatn&amp;gt;e:E:\&amp;gt;cd E:\CS\Redis-x64-3.</description>
+  二.Redis安装 #  redis 注册服务 #  C:\Users\noatn&amp;gt;e:E:\&amp;gt;cd E:\CS\Redis-x64-3.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
     <item>
@@ -37,8 +37,8 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/testng/</guid>
-      <description>TestNG介绍# TestNG是Java中的一个测试框架， 类似于JUnit 和NUnit, 功能都差不多， 只是功能更加强大，使用也更方便Java中已经有一个JUnit的测试框架了。 TestNG比JUnit功能强大的多。 测试人员一般用TestNG来写自动化测试。 开发人员一般用JUnit写单元测试。
- TestNG的基本注解#   说明 示 例     @BeforeSuite 在该套件的所有测试都运行在注释的方法之前，仅运行一次。   @AfterSuite 在该套件的所有测试都运行在注释方法之后，仅运行一次。   @BeforeClass 在调用当前类的第一个测试方法之前运行，注释方法仅运行一次。   @AfterClass 在调用当前类的第一个测试方法之后运行，注释方法仅运行一次   @BeforeTest 注释的方法将在属于标签内的类的所有测试方法运行之前运行。   @AfterTest 注释的方法将在属于标签内的类的所有测试方法运行之后运行。   @BeforeGroups 配置方法将在之前运行组列表。 此方法保证在调用属于这些组中的任何一个的第一个测试方法之前不久运行。   @AfterGroups 此配置方法将在之后运行组列表。该方法保证在调用属于任何这些组的最后一个测试方法之后不久运行。   @BeforeMethod 注释方法将在每个测试方法之前运行。   @AfterMethod 注释方法将在每个测试方法之后运行。   @DataProvider 标记一种方法来提供测试方法的数据。 注释方法必须返回一个Object [] []，其中每个Object []可以被分配给测试方法的参数列表。 要从该DataProvider接收数据的@Test方法需要使用与此注释名称相等的dataProvider名称。   @Factory 将一个方法标记为工厂，返回TestNG将被用作测试类的对象。 该方法必须返回Object []。   @Listeners 定义测试类上的侦听器。   @Parameters 描述如何将参数传递给@Test方法。   @Test 将类或方法标记为测试的一部分。    Testng翻译# org.</description>
+      <description>TestNG介绍 #   TestNG是Java中的一个测试框架， 类似于JUnit 和NUnit, 功能都差不多， 只是功能更加强大，使用也更方便Java中已经有一个JUnit的测试框架了。 TestNG比JUnit功能强大的多。 测试人员一般用TestNG来写自动化测试。 开发人员一般用JUnit写单元测试。
+ TestNG的基本注解 #     说明 示 例     @BeforeSuite 在该套件的所有测试都运行在注释的方法之前，仅运行一次。   @AfterSuite 在该套件的所有测试都运行在注释方法之后，仅运行一次。   @BeforeClass 在调用当前类的第一个测试方法之前运行，注释方法仅运行一次。   @AfterClass 在调用当前类的第一个测试方法之后运行，注释方法仅运行一次   @BeforeTest 注释的方法将在属于标签内的类的所有测试方法运行之前运行。   @AfterTest 注释的方法将在属于标签内的类的所有测试方法运行之后运行。   @BeforeGroups 配置方法将在之前运行组列表。 此方法保证在调用属于这些组中的任何一个的第一个测试方法之前不久运行。   @AfterGroups 此配置方法将在之后运行组列表。该方法保证在调用属于任何这些组的最后一个测试方法之后不久运行。   @BeforeMethod 注释方法将在每个测试方法之前运行。   @AfterMethod 注释方法将在每个测试方法之后运行。   @DataProvider 标记一种方法来提供测试方法的数据。 注释方法必须返回一个Object [] []，其中每个Object []可以被分配给测试方法的参数列表。 要从该DataProvider接收数据的@Test方法需要使用与此注释名称相等的dataProvider名称。   @Factory 将一个方法标记为工厂，返回TestNG将被用作测试类的对象。 该方法必须返回Object []。   @Listeners 定义测试类上的侦听器。   @Parameters 描述如何将参数传递给@Test方法。   @Test 将类或方法标记为测试的一部分。    Testng翻译 #   org.</description>
     </item>
     
   </channel>
