@@ -146,15 +146,6 @@ ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定�
     </item>
     
     <item>
-      <title>2022-10-25计划</title>
-      <link>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</guid>
-      <description> 运动方面     星期一 星期二 星期三 星期四 星期五 星期六 星期天     在家做运动 在家做运动 在家做运动 在家做运动 外面跑步 外面跑步 外面跑步     朗读     星期一 星期二 星期三 星期四 星期五 星期六 星期天     每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟    </description>
-    </item>
-    
-    <item>
       <title>DOS命令 基本介绍 </title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_start/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
@@ -194,6 +185,15 @@ System.out.println(&amp;quot;It&#39;s a Groovy baby, yeah!&amp;quot;);def write
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/</guid>
       <description>接口回调法 #  模拟输出监听事件 #  第一步先定义事件接口 #  public interface PrintListener {public void print();}第二步自定义输出类 #  public class Out {PrintListener listener=null;public Out() {}public Out(PrintListener listener) {this.listener=listener;}public void printlen(String s) {System.out.println(s);if(listener!=null) {listener.print();}}}第三步实现监听事件接口 #  public class PrintListenerDemo implements PrintListener {@Overridepublic void print() {System.out.println(&amp;quot;监听到输出事件&amp;quot;);}}测试 #  public class Test {public static void main(String[] args) {//新建一个默认输出类Out b=new Out();b.</description>
+    </item>
+    
+    <item>
+      <title>任务分类法</title>
+      <link>https://huachengzhou.github.io/life/docs/plan/dir/jdkbatmmbr/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/plan/dir/jdkbatmmbr/</guid>
+      <description>任务分类法 #  </description>
     </item>
     
     <item>
@@ -573,6 +573,15 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
+      <title>2022-10-25计划</title>
+      <link>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</guid>
+      <description> 运动方面     星期一 星期二 星期三 星期四 星期五 星期六 星期天     在家做运动 在家做运动 在家做运动 在家做运动 外面跑步 外面跑步 外面跑步     朗读     星期一 星期二 星期三 星期四 星期五 星期六 星期天     每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟    </description>
+    </item>
+    
+    <item>
       <title>DOS基本命令 </title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_basic/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
@@ -839,6 +848,34 @@ sudo apt-get install synaptic</description>
    await()方法 一般是使用者或者主线程调用 countDown()方法 子任务线程组调用
   第一个例子
   import java.util.concurrent.CountDownLatch; public class CountDownLatchExample2 { public static class MyService { private CountDownLatch downLatch = new CountDownLatch(1) ; public void testMethod(){ try { System.out.println(&amp;#34;任务执行开始前!&amp;#34;); //await()方法则使调用该方法的线程处于等待状态，其一般是主线程调用  downLatch.await(); System.out.println(&amp;#34;任务执行结束!&amp;#34;); } catch (InterruptedException e) { e.printStackTrace(); } } public void downMethod(){ System.</description>
+    </item>
+    
+    <item>
+      <title>2023-01-18待处理任务清单</title>
+      <link>https://huachengzhou.github.io/life/docs/plan/dir/cahh4sbqzx/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/plan/dir/cahh4sbqzx/</guid>
+      <description>待处理任务清单 #    java类型转换,构造,重要语法
+  异常机制详解
+  反射机制详解
+  注解机制详解
+  泛型机制详解
+  nginx 学习
+  mycat学习
+  RocketMQ 学习
+  python学习
+  英语学习
+  c++学习
+  科目三学习
+  科目四学习
+  口才练习
+  锻炼身体
+  dos学习
+  linux shell centos安装软件学习
+  人际关系 剖析 笔记撰写
+  社哲讲堂 剖析 笔记撰写
+  计算机网络 笔记撰写</description>
     </item>
     
     <item>
@@ -2158,6 +2195,18 @@ case2 #  从小到大我就被长辈朋友说傻、呆、笨、二。一直以�
  6背诵法  背诵跟自己有共鸣的文字 慢慢的增加自己的素材储备
  7即兴演讲  就是每天你任选3个词 你把那三个词组成一段话或者一个故事 你表达出来
  8公开表达  你可以把自己录制的视频 给自己身边的朋友看 所谓&amp;quot;当局者迷,旁边者清&amp;quot; 这一点是让他们帮你挑出存在的问题,并且公开你的视频 也可以锻炼你自己的胆量 不要不好意识 不好意思的人是没有办法提高自己的自信的</description>
+    </item>
+    
+    <item>
+      <title>任务分类法</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ca7cqmh4j8/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ca7cqmh4j8/</guid>
+      <description>任务分类法 #    参考1
+  参考2
+  参考3
+  </description>
     </item>
     
     <item>
