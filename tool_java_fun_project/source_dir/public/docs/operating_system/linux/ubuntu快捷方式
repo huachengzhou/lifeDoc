@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=intellij　Ultimate
+Comment=Intellij IDE
+Exec=/home/zhou/ssh_java/INTELLIJ-Ultimate/idea-IU-173.3942.27/bin/idea.sh
+Icon=/home/zhou/ssh_java/INTELLIJ-Ultimate/idea-IU-173.3942.27/bin/idea.png
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Development;
+注意:
+sudo chmod u+x /home/zhou/ssh_java/INTELLIJ-Ultimate/intellij-Ultimate.desktop

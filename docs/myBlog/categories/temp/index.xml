@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Temp on NewBee</title>
+    <link>http://xxx.xxx/categories/temp/</link>
+    <description>Recent content in Temp on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/temp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DOS &gt; basic</title>
+      <link>http://xxx.xxx/posts/uuid_t_windows_dos_basic/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_windows_dos_basic/</guid>
+      <description>DOS基本命令 wing+r ==&amp;gt; cmd 进入dos控制台 打开屏幕键盘 C:\Users\noatn&amp;gt;osk; dos各种操作查看参数用法 command params ==? command /? C:\Users\noatn&amp;gt;cd /? 显示当前目</description>
+    </item>
+    
+    <item>
+      <title>DOS &gt; file</title>
+      <link>http://xxx.xxx/posts/uuid_t_windows_dos_file/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_windows_dos_file/</guid>
+      <description>DOS基本文件操作命令 wing+r ==&amp;gt; cmd 进入dos控制台 D: 进入D盘 cd命令 CD命令是更改目录命令 如果要进入D盘不</description>
+    </item>
+    
+    <item>
+      <title>DOS &gt; network</title>
+      <link>http://xxx.xxx/posts/uuid_t_windows_dos_network/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_windows_dos_network/</guid>
+      <description>DOS网络操作命令 netstat -ano (列出所有端口的情况) PS C:\Users\noatn&amp;gt; netstat -ano 活动连接 协议 本地地址 外部地址 状态 PID TCP 0.0.0.0:135 0.0.0.0:0 LISTENING 1028 TCP 0.0.0.0:445</description>
+    </item>
+    
+    <item>
+      <title>FTP</title>
+      <link>http://xxx.xxx/posts/uuid_t_windows_ftp/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_windows_ftp/</guid>
+      <description>本地设置FTP服务器 步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。 步骤2：在“程序和功</description>
+    </item>
+    
+    <item>
+      <title>GitHubPages绑定来自阿里云的域名</title>
+      <link>http://xxx.xxx/posts/uuid_t_problem_githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_problem_githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</guid>
+      <description>原教程但是由于他使用的github的用户名做的域名映射器,这样不好的地方是有可能你使用自定义的方式建</description>
+    </item>
+    
+    <item>
+      <title>host映射</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_host%E6%98%A0%E5%B0%84/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_host%E6%98%A0%E5%B0%84/</guid>
+      <description>sudo vi hosts 127.0.0.1 localhost 127.0.1.1 zhou-Lenovo-Z480 The following lines are desirable for IPv6 capable hosts ::1 ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters #pmcc dev 127.0.0.1 dev.pmcc.com</description>
+    </item>
+    
+    <item>
+      <title>java &gt; bitOperation</title>
+      <link>http://xxx.xxx/posts/uuid_t_java_java_bitoperation/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_java_java_bitoperation/</guid>
+      <description>位运算 十进制转二进制 正整数十进制转二进制 正整数转成二进制。要点一定一定要记住哈：除二取余，然后倒序排</description>
+    </item>
+    
+    <item>
+      <title>java &gt; java基础总结大全</title>
+      <link>http://xxx.xxx/posts/uuid_t_java_java_java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_java_java_java%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E5%A4%A7%E5%85%A8/</guid>
+      <description>﻿ 一、基础知识： 1、JVM、JRE和JDK的区别： JVM(Java Virtual Machine):java虚拟机，用于保证ja</description>
+    </item>
+    
+    <item>
+      <title>java &gt; programStructure</title>
+      <link>http://xxx.xxx/posts/uuid_t_java_java_programstructure/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_java_java_programstructure/</guid>
+      <description>Java的程序结构 public class HelloWorld { public static void main(String[] args) { System.out.println(&amp;quot;Hello World&amp;quot;); } } Java区分大小写 关键字public称为访问修饰符 (这</description>
+    </item>
+    
+    <item>
+      <title>javaReadme</title>
+      <link>http://xxx.xxx/posts/uuid_t_java_javareadme/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_java_javareadme/</guid>
+      <description>Java技术体系 消息队列,nosql,sql,dubbo,zookeeper,nginx,sprin</description>
+    </item>
+    
+    <item>
+      <title>Linux下设置和查看环境变量</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+      <description>&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;||&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，</description>
+    </item>
+    
+    <item>
+      <title>linux命令</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_linux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_linux%E5%91%BD%E4%BB%A4/</guid>
+      <description>linux命令 文件管理 文件基本操作 less命令 (Q退出less命令)([pagedown]： 向下翻动</description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_nginx/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_nginx/</guid>
+      <description>nginx学习 基础操作 start ./sbin/nginx stop ./sbin/nginx -s stop quite ./sbin/nginx -s quit 启动成功标志 Welcome to nginx! 默认监听的端口是80 也就是说访问此端口就</description>
+    </item>
+    
+    <item>
+      <title>Notepad&#43;&#43;安装</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_notepad&#43;&#43;%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_notepad&#43;&#43;%E5%AE%89%E8%A3%85/</guid>
+      <description>Notepad++是一套非常有特色的自由软件的纯文字编辑器(许可证:GPL)。有完整的中文化接口及支</description>
+    </item>
+    
+    <item>
+      <title>script</title>
+      <link>http://xxx.xxx/posts/uuid_t_study_script/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_study_script/</guid>
+      <description>脚本 dos,lua,sheel,python,js dos 可以使用VisualBat编辑器编写以及调试 lua 可以运行在redis ,dos,Java,c++</description>
+    </item>
+    
+    <item>
+      <title>study.web</title>
+      <link>http://xxx.xxx/posts/uuid_t_study_study.web/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_study_study.web/</guid>
+      <description>自己整理的日常开发参考网址 在线工具 链接 web工具 web工具 在线超级转换工具 在线超级转换工具 程序员在线</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 16.04修改hosts</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_ubuntu-16.04%E4%BF%AE%E6%94%B9hosts/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_ubuntu-16.04%E4%BF%AE%E6%94%B9hosts/</guid>
+      <description>IntelliJ IDE运行Tomcat报错解决办法的相关资料,出现“Unable to ping server at localhost:109</description>
+    </item>
+    
+    <item>
+      <title>ubuntu安装chmsee</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E5%AE%89%E8%A3%85chmsee/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E5%AE%89%E8%A3%85chmsee/</guid>
+      <description>垃圾的ubuntu 14.04 又一次去掉一些特别好用的软件, 官方给的解释是怕破坏他们系统. 只想说一句 我去年买了</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu清理系统垃圾</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/</guid>
+      <description>1，非常有用的清理命令： sudo apt-get autoclean &amp;ndash;清理旧版本的软件缓存 www.2cto.com sudo apt-get clean&amp;ndash;清理所</description>
+    </item>
+    
+    <item>
+      <title>ubuntu软件卸载</title>
+      <link>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_linux_ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/</guid>
+      <description>ubuntu软件卸载 安装Synaptic sudo apt-get install synaptic</description>
+    </item>
+    
+    <item>
+      <title>useMath</title>
+      <link>http://xxx.xxx/posts/uuid_t_java_usemath/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_java_usemath/</guid>
+      <description>计算机用到的数学公式 二进制十进制如何互相转换 https://jingyan.baidu.com/article/ac6a9a5e2cb17b2b653eac98.html</description>
+    </item>
+    
+    <item>
+      <title>windows &gt; question</title>
+      <link>http://xxx.xxx/posts/uuid_t_windows_windows_question/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_windows_windows_question/</guid>
+      <description>磁盘变为了动态磁盘解决办法 最好是找软件解决 如DiskGenius 或者 傲梅分区助手 暴力解决办法 1、di</description>
+    </item>
+    
+    <item>
+      <title>压缩算法</title>
+      <link>http://xxx.xxx/posts/uuid_t_algorithm_%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_algorithm_%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/</guid>
+      <description>﻿## 压缩算法 //https://baijiahao.baidu.com/s?id=1649449620464606133&amp;amp;wfr=spider&amp;amp;for=pc 哈夫曼算法</description>
+    </item>
+    
+  </channel>
+</rss>

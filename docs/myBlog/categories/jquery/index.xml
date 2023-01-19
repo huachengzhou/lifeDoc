@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jquery on NewBee</title>
+    <link>http://xxx.xxx/categories/jquery/</link>
+    <description>Recent content in jquery on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/jquery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CHANGELOG</title>
+      <link>http://xxx.xxx/posts/uuid_t_jquery-cookie_changelog/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_jquery-cookie_changelog/</guid>
+      <description>HEAD 1.4.0 Support for AMD. Removed deprecated method $.cookie(&#39;name&#39;, null) for deleting a cookie, use $.removeCookie(&#39;name&#39;). $.cookie(&#39;name&#39;) now returns undefined in case such cookie does not exist (was null). Because the return value is still falsy, testing for existence of a cookie like if ( $.cookie(&#39;foo&#39;) ) keeps working without</description>
+    </item>
+    
+    <item>
+      <title>CONTRIBUTING</title>
+      <link>http://xxx.xxx/posts/uuid_t_jquery-cookie_contributing/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_jquery-cookie_contributing/</guid>
+      <description>##Issues Report issues or feature requests on GitHub Issues. If reporting a bug, please add a simplified example. ##Pull requests Create a new topic branch for every separate change you make. Create a test case if you are fixing a bug or implementing an important feature. Make sure the build</description>
+    </item>
+    
+    <item>
+      <title>CONTRIBUTING</title>
+      <link>http://xxx.xxx/posts/uuid_t_select2_contributing/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_select2_contributing/</guid>
+      <description>Contributing to Select2 Looking to contribute something to Select2? Here&amp;rsquo;s how you can help. Please take a moment to review this document in order to make the contribution process easy and effective for everyone involved. Following these guidelines helps to communicate that you respect the time of the developers managing</description>
+    </item>
+    
+  </channel>
+</rss>

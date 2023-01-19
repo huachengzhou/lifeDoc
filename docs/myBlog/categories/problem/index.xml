@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>problem on NewBee</title>
+    <link>http://xxx.xxx/categories/problem/</link>
+    <description>Recent content in problem on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/problem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>http://xxx.xxx/posts/uuid_t_git_git/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_git_git/</guid>
+      <description>Push master to origin/master was rejected by remote 有三种原因 1:push的这个工程是其他人新建的，找她开通master权限后，再次pu</description>
+    </item>
+    
+    <item>
+      <title>idea</title>
+      <link>http://xxx.xxx/posts/uuid_t_idea_idea/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_idea_idea/</guid>
+      <description>idea 解决working directory 设置到 target test ng D:\IdeaProjects\java-se-study run config $MODULE_DIR$</description>
+    </item>
+    
+    <item>
+      <title>idea导入项目出现Unable &gt; to &gt; import &gt; maven &gt; project &gt; See &gt; logs &gt; for &gt; details提示</title>
+      <link>http://xxx.xxx/posts/uuid_t_maven_idea%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0unable_to_import_maven_project_see_logs_for_details%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_maven_idea%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%87%BA%E7%8E%B0unable_to_import_maven_project_see_logs_for_details%E6%8F%90%E7%A4%BA/</guid>
+      <description>idea导入项目出现Unable to import maven project: See logs for details提示 第一种解决办法 删除项目根目录下.id</description>
+    </item>
+    
+    <item>
+      <title>VisualStudioCode过滤文件不显示某些文件</title>
+      <link>http://xxx.xxx/posts/uuid_t_visual_studio_code_visualstudiocode%E8%BF%87%E6%BB%A4%E6%96%87%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E6%9F%90%E4%BA%9B%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_visual_studio_code_visualstudiocode%E8%BF%87%E6%BB%A4%E6%96%87%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E6%9F%90%E4%BA%9B%E6%96%87%E4%BB%B6/</guid>
+      <description>Visual Studio Code 过滤文件 不显示某些文件 效果 过滤工程中显示的文件 不显示某些类型的文件或文件夹 菜单 File/Preferences/ 搜索file exclude</description>
+    </item>
+    
+  </channel>
+</rss>

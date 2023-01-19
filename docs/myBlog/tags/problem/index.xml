@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>problem on NewBee</title>
+    <link>http://xxx.xxx/tags/problem/</link>
+    <description>Recent content in problem on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/tags/problem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHubPages绑定来自阿里云的域名</title>
+      <link>http://xxx.xxx/posts/uuid_t_problem_githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_problem_githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/</guid>
+      <description>原教程但是由于他使用的github的用户名做的域名映射器,这样不好的地方是有可能你使用自定义的方式建</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>study on NewBee</title>
+    <link>http://xxx.xxx/categories/study/</link>
+    <description>Recent content in study on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>info</title>
+      <link>http://xxx.xxx/posts/uuid_t_meditation_info/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_meditation_info/</guid>
+      <description>冥想 呼吸冥想法 1:坐好，后背挺直，然后闭上眼睛 2:关注你自己呼吸时的感觉,吸气，吸气，选择一个感受突</description>
+    </item>
+    
+    <item>
+      <title>memory</title>
+      <link>http://xxx.xxx/posts/uuid_t_memorypath_memory/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_memorypath_memory/</guid>
+      <description>记忆方法 提高记忆的关键，在于想象和创意 编故事有助于提高记忆力 通过编故事，再加上逻辑或地点（后者更多一</description>
+    </item>
+    
+    <item>
+      <title>number</title>
+      <link>http://xxx.xxx/posts/uuid_t_selfeducation_number/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_selfeducation_number/</guid>
+      <description>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ㉑ ㉒ ㉓ ㉔ ㉕ ㉖ ㉗ ㉘ ㉙ ㉚ ㉛ ㉜ ㉝ ㉞ ㉟ ㊱ ㊲ ㊳ ㊴ ㊵ ㊶ ㊷ ㊸ ㊹ ㊺ ㊻ ㊼ ㊽ ㊾ ㊿</description>
+    </item>
+    
+    <item>
+      <title>studyInfo</title>
+      <link>http://xxx.xxx/posts/uuid_t_method_studyinfo/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_method_studyinfo/</guid>
+      <description>学习方法</description>
+    </item>
+    
+  </channel>
+</rss>

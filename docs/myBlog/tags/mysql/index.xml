@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on NewBee</title>
+    <link>http://xxx.xxx/tags/mysql/</link>
+    <description>Recent content in MySQL on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql &gt; basis</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_basis/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_basis/</guid>
+      <description>停止命令：net stop mysql 启动命令：net start mysql 登陆 mysql -u 用户名 -p 查看数据库版本: mysql &amp;ndash;versio</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; data</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_data/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_data/</guid>
+      <description>数据准备 数据准备 drop datbase ch10; create database ch10; use ch10; CREATE TABLE fruits ( f_id char(10) NOT NULL, s_id INT NOT NULL, f_name char(255) NOT NULL, f_price decimal(8,2) NOT NULL, PRIMARY KEY(f_id) ); INSERT INTO fruits (f_id, s_id, f_name, f_price) VALUES(&#39;a1&#39;, 101,&#39;apple&#39;,5.2), (&#39;b1&#39;,101,&#39;blackberry&#39;, 10.2),</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; distinguish</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_distinguish/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_distinguish/</guid>
+      <description>前言 在互联网还未崛起的时代,我们的传统应用都有这样一个特点：访问量、数据量都比较小，单库单表都完全可</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; install</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_install/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_install/</guid>
+      <description>mysql安装 这里我们不再采用exe的安装的方式,我们使用压缩包的方式安装 地址 https://downloads.mysql.com/archives/community/ 将页面拉到最下面选择</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; install &gt; problem</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_install_problem/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_install_problem/</guid>
+      <description>windows下 Mysql安装的一些问题解决方法 1: The service already exists 在mysql安装的时候要执行 mysqld &amp;ndash;install 这个命令,</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; 开发规范</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
+      <description>数据库设计的规范 数据库表和字段都大写 表都要加业务后缀，例如_C客户表 _B基础表 _P权限表 必须有主键，</description>
+    </item>
+    
+    <item>
+      <title>mysql &gt; 数据库设计三范式</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/</guid>
+      <description>设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，</description>
+    </item>
+    
+    <item>
+      <title>mysql事务</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E4%BA%8B%E5%8A%A1/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E4%BA%8B%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql函数</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E5%87%BD%E6%95%B0/</guid>
+      <description>日期函数 返回当前日期，只包含年月日 select curdate() 返回当前时间，只包含时分秒 select curtime() 返回当前的日期和时间，年月日时分</description>
+    </item>
+    
+    <item>
+      <title>mysql存储引擎</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/</guid>
+      <description>MySQL 存储引擎概述 MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 E</description>
+    </item>
+    
+    <item>
+      <title>mysql查询</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E6%9F%A5%E8%AF%A2/</guid>
+      <description>mysql学习(下面所有都是针对mysql而言) sql排序语句 升序 (select f.* from fruits f WHERE s_id IN (101,102) order by f_name)==(select f.* from fruits f WHERE</description>
+    </item>
+    
+    <item>
+      <title>mysql用户与权限</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</guid>
+      <description>mysql.version=5.7 (必须注意版本) 创建用户 ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo;</description>
+    </item>
+    
+    <item>
+      <title>mysql索引</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_mysql%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_mysql%E7%B4%A2%E5%BC%95/</guid>
+      <description>索引 所有 MySQL 列类型都可以被索引，对相关列使用索引是提高 SELECT 操作性能的最佳途 径.根据存储引擎可以定义每个表</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL &gt; chapter1</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</guid>
+      <description>MySQL数据库基础 1.1-认识MySQL 什么是数据库 计算机处理和存储的一切信息都是数据。 计算机系统</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL &gt; chapter2</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</guid>
+      <description>MySQL数据库对象与应用 2.1-MySQL数据类型 Number不止一种 整形 浮点型 整形 INT SMALLINT MEDIUMINT BIGINT type Storage Minumun</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL &gt; chapter3</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</guid>
+      <description>MySQL事务与存储引擎 3.1-数据库事务 什么是事务 一系列有序的数据库操作： 要么全部成功 要么全部回退</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL &gt; chapter4</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</guid>
+      <description>MySQL应用优化 4.1-MySQL索引优化与设计 什么是索引 索引的意义 —— 快速定位要查找的数据 数据库</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL &gt; chapter5</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</guid>
+      <description>MySQL运维实践 5.1-MySQL日志系统 什么是日志 日志(log)是一种顺序记录事件流水的文件 记录</description>
+    </item>
+    
+    <item>
+      <title>网易云课堂MySQL微专业学习笔记</title>
+      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>NTES_MySQL_notes 网易云课堂MySQL微专业学习笔记 但愿可以不弃坑。 目录 数据库基础 1.1-认识MySQL 1.2-轻松</description>
+    </item>
+    
+  </channel>
+</rss>

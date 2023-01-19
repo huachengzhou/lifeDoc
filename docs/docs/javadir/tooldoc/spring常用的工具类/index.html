@@ -2,10 +2,16 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="spring常用的工具类 #  内置的resouce类型 #  UrlResource
+<meta name="description" content="spring常用的工具类
+#
+
+内置的resouce类型
+#
+
+UrlResource
 ClassPathResource
 FileSystemResource
 ServletContextResource
@@ -13,13 +19,19 @@ InputStreamResource
 ByteArrayResource
 EncodedResource 也就是Resource加上encoding, 可以认为是有编码的资源
 VfsResource(在jboss里经常用到, 相应还有 工具类 VfsUtils)
-org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;quot;classpath:&amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类 #  org.springframework.core.annotation.AnnotationUtils 处理注解
+org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;quot;classpath:&amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类
+#
+
+org.springframework.core.annotation.AnnotationUtils 处理注解
 org.springframework.core.io.support.PathMatchingResourcePatternResolver 用 于处理 ant 匹配风格(com/*.jsp, com/**/*.jsp),找出所有的资源, 结合上面的resource的概念一起使用,对于遍历文件很有用. 具体请详细查看javadoc
 org.springframework.core.io.support.PropertiesLoaderUtils 加载Properties资源工具类,和Resource结合
 org.springframework.core.BridgeMethodResolver 桥接方法分析器. 关于桥接方法请参考: http://java.sun.com/docs/books/jls/third_edition/html/expressions.html#15.12.4.5
 org.springframework.core.GenericTypeResolver 范型分析器, 在用于对范型方法, 参数分析.
 org.springframework.core.NestedExceptionUtils
-xml工具 #  org.springframework.util.xml.AbstractStaxContentHandler
+xml工具
+#
+
+org.springframework.util.xml.AbstractStaxContentHandler
 org.springframework.util.xml.AbstractStaxXMLReader
 org.springframework.util.xml.AbstractXMLReader
 org.springframework.util.xml.AbstractXMLStreamReader
@@ -29,10 +41,19 @@ org.springframework.util.xml.SimpleSaxErrorHandler
 org.springframework.util.xml.SimpleTransformErrorListener
 org.springframework.util.xml.StaxUtils
 org.springframework.util.xml.TransformerUtils
-其它工具集 #  org.springframework.util.xml.AntPathMatcherant风格的处理
+其它工具集
+#
+
+org.springframework.util.xml.AntPathMatcherant风格的处理
 org.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="spring常用的工具类" />
-<meta property="og:description" content="spring常用的工具类 #  内置的resouce类型 #  UrlResource
+<meta property="og:description" content="spring常用的工具类
+#
+
+内置的resouce类型
+#
+
+UrlResource
 ClassPathResource
 FileSystemResource
 ServletContextResource
@@ -40,13 +61,19 @@ InputStreamResource
 ByteArrayResource
 EncodedResource 也就是Resource加上encoding, 可以认为是有编码的资源
 VfsResource(在jboss里经常用到, 相应还有 工具类 VfsUtils)
-org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;quot;classpath:&amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类 #  org.springframework.core.annotation.AnnotationUtils 处理注解
+org.springframework.util.xml.ResourceUtils 用于处理表达资源字符串前缀描述资源的工具. 如: &amp;quot;classpath:&amp;quot;. 有 getURL, getFile, isFileURL, isJarURL, extractJarFileURL 工具类
+#
+
+org.springframework.core.annotation.AnnotationUtils 处理注解
 org.springframework.core.io.support.PathMatchingResourcePatternResolver 用 于处理 ant 匹配风格(com/*.jsp, com/**/*.jsp),找出所有的资源, 结合上面的resource的概念一起使用,对于遍历文件很有用. 具体请详细查看javadoc
 org.springframework.core.io.support.PropertiesLoaderUtils 加载Properties资源工具类,和Resource结合
 org.springframework.core.BridgeMethodResolver 桥接方法分析器. 关于桥接方法请参考: http://java.sun.com/docs/books/jls/third_edition/html/expressions.html#15.12.4.5
 org.springframework.core.GenericTypeResolver 范型分析器, 在用于对范型方法, 参数分析.
 org.springframework.core.NestedExceptionUtils
-xml工具 #  org.springframework.util.xml.AbstractStaxContentHandler
+xml工具
+#
+
+org.springframework.util.xml.AbstractStaxContentHandler
 org.springframework.util.xml.AbstractStaxXMLReader
 org.springframework.util.xml.AbstractXMLReader
 org.springframework.util.xml.AbstractXMLStreamReader
@@ -56,17 +83,21 @@ org.springframework.util.xml.SimpleSaxErrorHandler
 org.springframework.util.xml.SimpleTransformErrorListener
 org.springframework.util.xml.StaxUtils
 org.springframework.util.xml.TransformerUtils
-其它工具集 #  org.springframework.util.xml.AntPathMatcherant风格的处理
+其它工具集
+#
+
+org.springframework.util.xml.AntPathMatcherant风格的处理
 org." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>spring常用的工具类 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.3d06af1bbead22e0bd7253024ac29059f0d4b619eebb4a68b2f5901b7cbec5a2.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.dfa0d1828f1a26e5a97959cfaabaa5df353e61250ae89a864a6d69f59cc82b67.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3859,7 +3890,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -3908,7 +3939,7 @@ https://github.com/alex-shpak/hugo-book
       
 <ul class="ul_abc">
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/studyIndex.html" class="active" >自定义工具</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/index.html">blog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlog/index.html">blog</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/about">关于程序员</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>

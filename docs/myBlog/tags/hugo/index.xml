@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on NewBee</title>
+    <link>http://xxx.xxx/tags/hugo/</link>
+    <description>Recent content in hugo on NewBee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo &gt; tutorials1</title>
+      <link>http://xxx.xxx/posts/uuid_t_hugo_hugo_tutorials1/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_hugo_hugo_tutorials1/</guid>
+      <description>教程1 快速开始 步骤1：安装Hugo brew install hugo # or port install hugo 要验证新安装 hugo version 步骤2：建立新网站 hugo new site quickstart # 上面的</description>
+    </item>
+    
+    <item>
+      <title>hugo &gt; tutorials2</title>
+      <link>http://xxx.xxx/posts/uuid_t_hugo_hugo_tutorials2/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/uuid_t_hugo_hugo_tutorials2/</guid>
+      <description>教程2 1、 创建blog hugo new site myblog_pub cd myblog_pub/ git submodule add https://github.com/chinanf-boy/gohugo-theme-yinwang.git themes/yinwang 2、 修改配置 vi config.toml root@instance-x8rtph4n:/home/go/code/hugo_dir/myblog_pub/public# more ../config.toml baseURL = &amp;quot;http://ypbsyy.github.io/&amp;quot; languageCode = &amp;quot;en-us&amp;quot; title = &amp;quot;我是y</description>
+    </item>
+    
+    <item>
+      <title>开始使用Hugo</title>
+      <link>http://xxx.xxx/posts/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8hugo/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://xxx.xxx/posts/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8hugo/</guid>
+      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture. Save it somewhere specific as we will be using it in the next step. More complete instructions are available at installing hugo Step 2. Build the Docs Hugo has its own example site</description>
+    </item>
+    
+  </channel>
+</rss>
