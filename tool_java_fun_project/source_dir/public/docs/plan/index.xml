@@ -1,56 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>计划  on 所悟所想</title>
-    <link>https://huachengzhou.github.io/life/docs/plan/</link>
-    <description>Recent content in 计划  on 所悟所想</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/plan/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>任务分类法</title>
-      <link>https://huachengzhou.github.io/life/docs/plan/dir/jdkbatmmbr/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/plan/dir/jdkbatmmbr/</guid>
-      <description>任务分类法#</description>
-    </item>
-    
-    <item>
-      <title>2022-10-25计划</title>
-      <link>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</guid>
-      <description> 运动方面     星期一 星期二 星期三 星期四 星期五 星期六 星期天     在家做运动 在家做运动 在家做运动 在家做运动 外面跑步 外面跑步 外面跑步     朗读     星期一 星期二 星期三 星期四 星期五 星期六 星期天     每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟 每天十分钟    </description>
-    </item>
-    
-    <item>
-      <title>2023-01-18待处理任务清单</title>
-      <link>https://huachengzhou.github.io/life/docs/plan/dir/cahh4sbqzx/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/plan/dir/cahh4sbqzx/</guid>
-      <description>待处理任务清单#  java类型转换,构造,重要语法
-  异常机制详解
-  反射机制详解
-  注解机制详解
-  泛型机制详解
-  nginx 学习
-  mycat学习
-  RocketMQ 学习
-  python学习
-  英语学习
-  c++学习
-  科目三学习
-  科目四学习
-  口才练习
-  锻炼身体
-  dos学习
-  linux shell centos安装软件学习
-  人际关系 剖析 笔记撰写
-  社哲讲堂 剖析 笔记撰写
-  计算机网络 笔记撰写</description>
-    </item>
-    
-  </channel>
-</rss>

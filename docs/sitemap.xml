@@ -20,9 +20,6 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</loc>
-    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_start/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -45,6 +42,9 @@
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/plan/dir/jdkbatmmbr/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/</loc>
@@ -141,6 +141,9 @@
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/plan/dir/saxr6jwscz/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_basic/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -213,6 +216,9 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</loc>
     <lastmod>2022-09-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/plan/dir/cahh4sbqzx/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/dos_file/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -227,6 +233,12 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/three_chapter/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/math/</loc>
+    <lastmod>2021-01-17T15:26:15+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/</loc>
+    <lastmod>2021-01-17T15:26:15+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/car_study/three/</loc>
     <lastmod>2021-01-17T15:26:15+00:00</lastmod>
@@ -328,10 +340,10 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/operating_system/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/operating_system/five_chapter/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/operating_system/five_chapter/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/operating_system/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/think/criticalthinking/</loc>
@@ -554,6 +566,9 @@
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/h847ijsjzr/</loc>
+    <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ca7cqmh4j8/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</loc>

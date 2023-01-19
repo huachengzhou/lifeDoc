@@ -1,3 +1,0 @@
-
-ipconfig
-start "call window"

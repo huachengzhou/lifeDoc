@@ -1,60 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>网易云课堂MySQL微专业学习笔记 on 所悟所想</title>
-    <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/</link>
-    <description>Recent content in 网易云课堂MySQL微专业学习笔记 on 所悟所想</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MySQL数据库基础</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</guid>
-      <description>MySQL数据库基础#1.1-认识MySQL#什么是数据库# 计算机处理和存储的一切信息都是数据。 计算机系统中一种用于存取数据的程序。 一种：  计算机系统中有很多种能够存取数据的程序 它们各有特征和长处，有自己的适用范围。   存取：  能够保存数据避免丢失。 能够按照需求找到符合条件的数据。    为什么要使用数据库#数据库帮助我们解决一下数据存取难题：
- 较大数据量 网络控制 并发访问 高性能要求 事务控制 持久化和数据安全 查询数据需求逻辑复杂  数据库分类#  关系型数据库
- MySQL Oracle SQL Server PostgreSQL    非关系型数据库
- hadoop：存放大数据 mongoDB： 文档型数据库 redis：键值型数据库 Cassandra：分布式数据库    最显著的区别：是否使用结构化查询语句（SQL）
-为什么学习MySQL#MySQL：The world&amp;rsquo;s most popular open source database</description>
-    </item>
-    
-    <item>
-      <title>MySQL数据库对象与应用</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</guid>
-      <description>MySQL数据库对象与应用#2.1-MySQL数据类型#Number不止一种# 整形 浮点型  整形# INT SMALLINT MEDIUMINT BIGINT     type Storage Minumun Value Maximum Value      (Bytes) (Signed/Unsigned) (Signed/Unsigned)   TINYINT 1 -128 127     0 255   SMALLINT 2 -32768 32767     0 65535   MEDIUMINT 3 -8388608 8388607     0 16777215   INT 4 -2147483648 2147483647     0 4294967295   BIGINT 8 -9223372036854775808 9223372036854775807     0 18446744073709551615    老生常谈的问题#int(11) VS int(21) 存储空间，还是存储范围有区别？</description>
-    </item>
-    
-    <item>
-      <title>MySQL事务与存储引擎</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</guid>
-      <description>MySQL事务与存储引擎#3.1-数据库事务#什么是事务# 一系列有序的数据库操作：  要么全部成功 要么全部回退到操作前的状态 中间状态对其他连接不可见   事务的基本操作：    基本操作 说明     start transaction 开始事务   commit 提交(全部完成)   rollback 回滚(回到初始状态)      -- 开启一个事务 start transaction; -- 或者使用(非标准sql) begin; insert into t values (1, 1, 1); -- 事务结束，插入成功 commit; begin; insert into t values (2, 1, 1); insert into t values (3, 1, 1); insert into t values (4, 1, 1); -- 事务结束，没有插入数据 rollback; begin; insert into t values (1, 1, 1); savepoint a1; insert into t values (2, 1, 1); -- 回滚到指定的保存点 rollback to a1; commit; 自动提交# autocommit可以在session级别设置 每个DML操作都自动提交 DDL永远都是自动提交，无法通过rollback回滚  事务的四个基本属性(ACID)# 原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)  事务的原子性# 包含在事务中的操作要么全部被执行，要么都不执行 中途数据库或应用发生异常，未提交的事务都应该被回滚  事务的一致性# 数据的正确性，合理性，完整性 数据一致性应该符合应用需要规则：  余额不能是负数 交易对象必须先有账号 用户账号不能重复   事务的结果需要满足数据的一致性约束  事物的持久性# 提交完成的事务对数据库的影响必须是永久性的  数据库异常不会丢失事务更新 通常认为成功写入磁盘的数据即为持久化成功    事务的持久化的实现# 数据文件持久化  随机同步刷新(慢)   事务日志持久化与实例恢复  顺序同步刷新(快) -&amp;gt; 事务日志 随机异步刷新 -&amp;gt; 磁盘 事务日志 -&amp;gt; 磁盘(实例恢复)    事务的隔离性# 数据库事务在提交完成前，中间的任何数据变化对其他的事务都是不可见的。  数据库隔离现象#   隔离现象 描述     脏读(Dirty Read) 事务B读到事务A尚未提交的数据变更   不可重复读(NonRepeatable Read) 事务B读取前后两次读取一条记录之间该记录被事务A修改并提交，于是事务B读到了不一样的结果   幻读(Phantom Read) 事务B按条件匹配到了若干行记录并修改。但是由于修改过程中事务A新插入了符合条件记录，导致B更新完成后发现仍有符合条件却未被更新的记录。    数据库隔离等级#   隔离等级 脏读 不可重复读 幻读     未提交读 可能 可能 可能   已提交读 不可能 可能 可能   可重复读 不可能 不可能 可能   可串行化读 不可能 不可能 不可能    MySQL的事务隔离级别# InnoDB默认标记为可重复读 InnoDB并不是标准定义上的课重复读 InnoDB默认在可重复读的基础上避免幻读  MySQL事务隔离级别设置# 可在global/session/下个事务，级别分别进行设置 建议使用Read committed(同Oracle) 或者建议使用默认的Repeatable read  set tx_isolation = &amp;#39;&amp;#39; -- 设置隔离级别 事务与并发写# 某个正在更新的记录再提交或回滚前不能被其他事务同时更新  事务回滚的实现# 回滚段(rollback segment)与数据前像  3.</description>
-    </item>
-    
-    <item>
-      <title>MySQL应用优化</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</guid>
-      <description>MySQL应用优化#4.1-MySQL索引优化与设计#什么是索引# 索引的意义 —— 快速定位要查找的数据  数据库索引查找# 全表扫描 VS 索引查找  如何根据首字母找到所在行# 二分查找 B+tree  InnoDB表聚簇索引#索引中只放着排序字段和ID
-创建索引# 单列索引  create index idx_test1 on tb_student (name);  联合索引  create index idx_test2 on tb_student (name, age);  索引中先根据name排序，name相同的情况下，根据age排序  索引维护# 索引维护由数据库自动完成 插入/修改/删除每一个索引行都会变成一个内部封装的事务 索引越多，事务越长，代价越高 索引越多对表的插入和索引字段修改就越慢 控制表上索引的数量，切忌胡乱添加无用索引  如何使用索引# 依据WHERE查询条件建立索引  select a, b from tab_a where c=?</description>
-    </item>
-    
-    <item>
-      <title>MySQL运维实践</title>
-      <link>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</link>
-      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</guid>
-      <description>MySQL运维实践#5.1-MySQL日志系统#什么是日志# 日志(log)是一种顺序记录事件流水的文件 记录计算机程序运行过程中发生了什么 多种多样的用途  帮助分析程序问题 分析服务请求的特征、流量等 判断工作是否成功执行 等等……    MySQL日志的分类# 服务器日志  记录进程启动运行过程中的特殊事件，帮助分析MySQL服务遇到的问题 根据需求抓取特定的SQL语句，追踪性能可能存在的问题的业务SQL   事务日志  记录应用程序对数据的所有更改 可用于数据恢复 可用于实例间数据同步       分类 日志名称     服务器日志 服务错误日志   服务器日志 慢查询日志   服务器日志 综合查询日志   事务日志 存储引擎事务日志   事务日志 二进制日志    服务错误日志# 记录实例启动运行过程中重要消息 配置参数  log_error = /data/mysql_data/node-1/mysql.</description>
-    </item>
-    
-  </channel>
-</rss>
