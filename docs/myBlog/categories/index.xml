@@ -1,216 +1,216 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on NewBee</title>
-    <link>http://xxx.xxx/categories/</link>
-    <description>Recent content in Categories on NewBee</description>
+    <title>Categories on blog</title>
+    <link>https://huachengzhou.github.io/life/categories/</link>
+    <description>Recent content in Categories on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bootstrap</title>
-      <link>http://xxx.xxx/categories/bootstrap/</link>
+      <link>https://huachengzhou.github.io/life/categories/bootstrap/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/bootstrap/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/bootstrap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>databases</title>
-      <link>http://xxx.xxx/categories/databases/</link>
+      <link>https://huachengzhou.github.io/life/categories/databases/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/databases/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/databases/</guid>
       <description></description>
     </item>
     
     <item>
       <title>index</title>
-      <link>http://xxx.xxx/categories/index/</link>
+      <link>https://huachengzhou.github.io/life/categories/index/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/index/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/index/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>http://xxx.xxx/categories/java/</link>
+      <link>https://huachengzhou.github.io/life/categories/java/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/java/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jquery</title>
-      <link>http://xxx.xxx/categories/jquery/</link>
+      <link>https://huachengzhou.github.io/life/categories/jquery/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/jquery/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/jquery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jsp</title>
-      <link>http://xxx.xxx/categories/jsp/</link>
+      <link>https://huachengzhou.github.io/life/categories/jsp/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/jsp/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/jsp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://xxx.xxx/categories/linux/</link>
+      <link>https://huachengzhou.github.io/life/categories/linux/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/linux/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>http://xxx.xxx/categories/mysql/</link>
+      <link>https://huachengzhou.github.io/life/categories/mysql/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/mysql/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>problem</title>
-      <link>http://xxx.xxx/categories/problem/</link>
+      <link>https://huachengzhou.github.io/life/categories/problem/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/problem/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/problem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>resume</title>
-      <link>http://xxx.xxx/categories/resume/</link>
+      <link>https://huachengzhou.github.io/life/categories/resume/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/resume/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/resume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>selfEducation</title>
-      <link>http://xxx.xxx/categories/selfeducation/</link>
+      <link>https://huachengzhou.github.io/life/categories/selfeducation/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/selfeducation/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/selfeducation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>study</title>
-      <link>http://xxx.xxx/categories/study/</link>
+      <link>https://huachengzhou.github.io/life/categories/study/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/study/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/study/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Temp</title>
-      <link>http://xxx.xxx/categories/temp/</link>
+      <link>https://huachengzhou.github.io/life/categories/temp/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/temp/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/temp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thread</title>
-      <link>http://xxx.xxx/categories/thread/</link>
+      <link>https://huachengzhou.github.io/life/categories/thread/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/thread/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>web</title>
-      <link>http://xxx.xxx/categories/web/</link>
+      <link>https://huachengzhou.github.io/life/categories/web/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/web/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docs</title>
-      <link>http://xxx.xxx/categories/docs/</link>
+      <link>https://huachengzhou.github.io/life/categories/docs/</link>
       <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/docs/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/docs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>math</title>
-      <link>http://xxx.xxx/categories/math/</link>
+      <link>https://huachengzhou.github.io/life/categories/math/</link>
       <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/math/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shortcodes</title>
-      <link>http://xxx.xxx/categories/shortcodes/</link>
+      <link>https://huachengzhou.github.io/life/categories/shortcodes/</link>
       <pubDate>Tue, 06 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/shortcodes/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>English</title>
-      <link>http://xxx.xxx/categories/english/</link>
+      <link>https://huachengzhou.github.io/life/categories/english/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/english/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/english/</guid>
       <description></description>
     </item>
     
     <item>
       <title>test</title>
-      <link>http://xxx.xxx/categories/test/</link>
+      <link>https://huachengzhou.github.io/life/categories/test/</link>
       <pubDate>Wed, 30 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/test/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/test/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>http://xxx.xxx/categories/development/</link>
+      <link>https://huachengzhou.github.io/life/categories/development/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/development/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://xxx.xxx/categories/golang/</link>
+      <link>https://huachengzhou.github.io/life/categories/golang/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/categories/golang/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>http://xxx.xxx/categories/syntax-highlighting/</link>
+      <link>https://huachengzhou.github.io/life/categories/syntax-highlighting/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://xxx.xxx/categories/syntax-highlighting/</guid>
+      <guid>https://huachengzhou.github.io/life/categories/syntax-highlighting/</guid>
       <description></description>
     </item>
     

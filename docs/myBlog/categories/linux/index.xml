@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on NewBee</title>
-    <link>http://xxx.xxx/categories/linux/</link>
-    <description>Recent content in linux on NewBee</description>
+    <title>linux on blog</title>
+    <link>https://huachengzhou.github.io/life/categories/linux/</link>
+    <description>Recent content in linux on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gitIntroduction</title>
-      <link>http://xxx.xxx/posts/uuid_t_git_gitintroduction/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_git_gitintroduction/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_git_gitintroduction/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_git_gitintroduction/</guid>
       <description>git学习 git 区域概念 git分为工作区(我们自己的file)和版本库这其中版本库又包含暂存区(Stag</description>
     </item>
     
     <item>
       <title>gitub配置</title>
-      <link>http://xxx.xxx/posts/uuid_t_git_gitub%E9%85%8D%E7%BD%AE/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_git_gitub%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_git_gitub%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_git_gitub%E9%85%8D%E7%BD%AE/</guid>
       <description>zhou@zhou-Lenovo-Z480:~$ git version git version 2.7.4 zhou@zhou-Lenovo-Z480:~$ ssh -T git@github.com Warning: Permanently added the RSA host key for IP address &#39;192.30.255.112&#39; to the list of known hosts. Permission denied (publickey). zhou@zhou-Lenovo-Z480:~$ git config --global user.name &amp;quot;zhouchenhua&amp;quot; zhou@zhou-Lenovo-Z480:~$ git config --global user.email &amp;quot;noatnu@163.com&amp;quot; zhou@zhou-Lenovo-Z480:~$ git config --list user.name=zhouchenhua user.email=noatnu@163.com zhou@zhou-Lenovo-Z480:~$ ssh-keygen</description>
     </item>
     

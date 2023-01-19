@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on NewBee</title>
-    <link>http://xxx.xxx/series/</link>
-    <description>Recent content in Series on NewBee</description>
+    <title>Series on blog</title>
+    <link>https://huachengzhou.github.io/life/series/</link>
+    <description>Recent content in Series on blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://xxx.xxx/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://huachengzhou.github.io/life/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

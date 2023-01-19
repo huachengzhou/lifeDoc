@@ -1,9 +1,9 @@
-baseURL = 'http://xxx.xxx/'
+baseURL = 'https://huachengzhou.github.io/life'
 languageCode = 'en-us'
 
 # website title
 # 网站标题
-title = 'NewBee'
+title = 'blog'
 # theme
 # 主题
 theme = "NewBee"
@@ -28,7 +28,7 @@ hasCJKLanguage = true
     description = "Be Water, My Friend."
     # profile photo of author in author card
     # 作者头像
-    image = "/images/author.jpeg"
+    image = "/life/images/author.jpeg"
     # link of followme in author card and footer
     # 作者卡片里 followme 和页脚作者的链接
     link = "https://github.com/xioyito"
@@ -39,19 +39,19 @@ hasCJKLanguage = true
     category = "categories"
     tag = "tags"
     series = "series"
-    
+
 [params]
     [params.site]
         onlyOneLang = false
         # style of theme: auto, light, dark
         mode = 'auto'
     # page configuration
-    # 页面配置  
+    # 页面配置
     [params.page]
 
         # top image in home page, note that the "/" in path is necessary, the same applies below
         # 主页的顶部图，路径开头”/“是必需的。下同
-        homeTopImg = "/images/home.jpg"
+        homeTopImg = "/life/images/home.jpg"
         # title in home top image, support Markdown
         # 主页标题，支持Markdown语法
         homeTitle = "XIOYITO"
@@ -67,36 +67,36 @@ hasCJKLanguage = true
 
         # top image in categories terms page
         # 分类页面的顶部图
-        categoryTopImg = "/images/categories.jpg"
+        categoryTopImg = "/life/images/categories.jpg"
         # description of categories terms page
         # 子标题
         categoryDes = "description of categories page"
 
         # top image in tags terms page
         # 标签页面的顶部图
-        tagTopImg = "/images/tag.jpg"
+        tagTopImg = "/life/images/tag.jpg"
         # description of tags terms page
         # 子标题
         tagDes = "description of tags page"
 
         # top image in allosts page
         # 所有文章页面的顶部图
-        allPostsTopImg = "/images/allPosts.jpg"
+        allPostsTopImg = "/life/images/allPosts.jpg"
         # description of allposts page
         # 子标题
         allPostsDes = "description of allPosts page"
 
         # top image in about page
         # 关于页面的顶部图
-        aboutTopImg = "/images/about.jpg"
+        aboutTopImg = "/life/images/about.jpg"
         # description of about page
         # 子标题
         aboutDes = "description of about page"
 
         # default image for a post without "image" param
         # 当文章没有设置图片时，将用此图来替代
-        defaultPostImg = "/images/default.jpg"
-        
+        defaultPostImg = "/life/images/default.jpg"
+
         # 主页文章最大显示数量
         maxHomePostCount = 5
         # 相关文章最大显示数量
@@ -164,7 +164,7 @@ hasCJKLanguage = true
         name = "系列"
         url = "/tags"
         weight = 5
-        pre = "<i class='fa fa-tags'></i>"        
+        pre = "<i class='fa fa-tags'></i>"
     [[menus.main]]
         name = "关于"
         url = "/about"
@@ -253,4 +253,4 @@ hasCJKLanguage = true
     # [markup.goldmark]
     #     [markup.goldmark.renderer]
     #         unsafe = true
-  
+

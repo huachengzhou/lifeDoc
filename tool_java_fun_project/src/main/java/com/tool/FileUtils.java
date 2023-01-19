@@ -204,8 +204,12 @@ public class FileUtils {
         return newArr;
     }
 
+    public static void replaceNewContent(File file, List<LabelEntity> labelEntities, final String regex, StringBuilder stringBuilder){
+        replaceNewContent(file, labelEntities, regex, stringBuilder,"");
+    }
 
-    public static void replaceNewContent(File file, List<LabelEntity> labelEntities, final String regex, StringBuilder stringBuilder) {
+
+    public static void replaceNewContent(File file, List<LabelEntity> labelEntities, final String regex, StringBuilder stringBuilder,String lastText) {
         if (file.isFile()) {
             String[] customExtensions = getCustomExtensions();
             String extension = FilenameUtils.getExtension(file.getName());
@@ -231,7 +235,12 @@ public class FileUtils {
                                         }
                                     }
                                     if (size == 0) {
-                                        next = StringUtils.replace(next, regex, stringBuilder.toString());
+                                        String text = "" ;
+                                        text +=stringBuilder.toString();
+                                        if (StringUtils.isNotBlank(lastText)){
+                                            text += lastText;
+                                        }
+                                        next = StringUtils.replace(next, regex, text);
                                         break;
                                     }
                                 }
@@ -256,7 +265,7 @@ public class FileUtils {
                 } else {
                     builder.append("../");
                 }
-                replaceNewContent(f, labelEntities, regex, builder);
+                replaceNewContent(f, labelEntities, regex, builder,lastText);
             }
         }
     }

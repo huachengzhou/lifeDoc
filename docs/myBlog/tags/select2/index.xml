@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>select2 on NewBee</title>
-    <link>http://xxx.xxx/tags/select2/</link>
-    <description>Recent content in select2 on NewBee</description>
+    <title>select2 on blog</title>
+    <link>https://huachengzhou.github.io/life/tags/select2/</link>
+    <description>Recent content in select2 on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/tags/select2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/tags/select2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CONTRIBUTING</title>
-      <link>http://xxx.xxx/posts/uuid_t_select2_contributing/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_select2_contributing/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_select2_contributing/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_select2_contributing/</guid>
       <description>Contributing to Select2 Looking to contribute something to Select2? Here&amp;rsquo;s how you can help. Please take a moment to review this document in order to make the contribution process easy and effective for everyone involved. Following these guidelines helps to communicate that you respect the time of the developers managing</description>
     </item>
     

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>image on NewBee</title>
-    <link>http://xxx.xxx/tags/image/</link>
-    <description>Recent content in image on NewBee</description>
+    <title>image on blog</title>
+    <link>https://huachengzhou.github.io/life/tags/image/</link>
+    <description>Recent content in image on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Mar 2018 16:01:23 +0800</lastBuildDate><atom:link href="http://xxx.xxx/tags/image/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Mar 2018 16:01:23 +0800</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/tags/image/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>图片预览</title>
-      <link>http://xxx.xxx/posts/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/</link>
+      <link>https://huachengzhou.github.io/life/posts/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/</link>
       <pubDate>Sat, 03 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://xxx.xxx/posts/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/</guid>
       <description>&lt;p&gt;Thanks for &lt;a href=&#34;https://github.com/liwenyip/hugo-easy-gallery&#34;&gt;liwenyip/hugo-easy-gallery&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane/pull/48&#34;&gt;Zebradil · Pull Request #48&lt;/a&gt; .&lt;/p&gt;
 &lt;p&gt;Now, we could use &lt;code&gt;{{&amp;lt; gallery &amp;gt;}}&lt;/code&gt; shortcode in hugo-theme-jane.&lt;/p&gt;
 &lt;h2 id=&#34;normal-image&#34;&gt;Normal Image&lt;/h2&gt;

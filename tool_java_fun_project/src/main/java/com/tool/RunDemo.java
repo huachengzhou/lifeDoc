@@ -49,6 +49,70 @@ public class RunDemo {
         FileUtils.replaceContent(file, oldText, newText);
     }
 
+    @Test
+    public void myBlogThreeCompress() throws Exception {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(getDir());
+        stringBuilder.append(File.separator).append("tool_java_fun_project").append(File.separator).append("my-blog-source").append(File.separator).append("public");
+        List<LabelEntity> labelEntities = new ArrayList<>(4);
+        LabelEntity labelEntity = null;
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("img");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("src"));
+            labelEntities.add(labelEntity);
+        }
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("link");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("rel", "manifest"));
+            labelEntities.add(labelEntity);
+        }
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("link");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("rel", "icon"));
+            labelEntities.add(labelEntity);
+        }
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("link");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("rel", "stylesheet"));
+            labelEntities.add(labelEntity);
+        }
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("script");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("src"));
+            labelEntities.add(labelEntity);
+        }
+        File file = new File(stringBuilder.toString());
+        FileUtils.replaceNewContent(file, labelEntities, "/life/", new StringBuilder());
+
+        labelEntities.clear();
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("a");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("href"));
+            labelEntities.add(labelEntity);
+        }
+        {
+            labelEntity = new LabelEntity();
+            labelEntity.setEle("link");
+            labelEntity.getAttributeEntities().add(new AttributeEntity("rel", "alternate"));
+            labelEntity.getAttributeEntities().add(new AttributeEntity("type", "application/rss+xml"));
+            labelEntities.add(labelEntity);
+        }
+        FileUtils.replaceNewContent(file, labelEntities, "https://huachengzhou.github.io/life/", new StringBuilder());
+
+        FileUtils.replaceCustomContent(file, Pattern.compile("<a[\\s]*href=\"/life/posts"), "/life/", new StringBuilder());
+        FileUtils.replaceCustomContent(file, Pattern.compile("<a[\\s]*href=\"/life"), "/life", new StringBuilder());
+
+        //强行删除dns静态资源保护效果 ...sha256
+        FileUtils.replaceCustomContent(file, Pattern.compile("^<link[\\s\\S]+ integrity=\"[\\s\\S]+\""), Pattern.compile("integrity=\"[\\s\\S]+\""), " ");
+        FileUtils.replaceCustomContent(file, Pattern.compile("^<script[\\s\\S]+ integrity=\"[\\s\\S]+\""), Pattern.compile("integrity=\"[\\s\\S]+\""), " ");
+    }
+
 
     @Test
     public void threeCompress() throws Exception {

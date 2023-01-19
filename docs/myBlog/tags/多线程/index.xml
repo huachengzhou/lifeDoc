@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>多线程 on NewBee</title>
-    <link>http://xxx.xxx/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
-    <description>Recent content in 多线程 on NewBee</description>
+    <title>多线程 on blog</title>
+    <link>https://huachengzhou.github.io/life/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <description>Recent content in 多线程 on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>java &gt; 多线程 &gt; 线程中断问题</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E9%97%AE%E9%A2%98/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E9%97%AE%E9%A2%98/</guid>
       <description>结束线程的方式 1:Thread.stop() 不推荐使用了 thread.stop() 2:thread.setDaemon() 设置为守护线程,JVM退出自动终止 Thread thread = new Thread(() -&amp;gt; { },&amp;quot;T-1&amp;quot;) ; thread.setDaemon(true); thread.start(); 3:共享变量</description>
     </item>
     
     <item>
       <title>java &gt; 多线程 &gt; 线程状态</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/</guid>
       <description>线程状态 public enum State { /** 尚未启动的线程的线程状态 ,这个时候还没有在堆栈中分配内存等数据 */ NEW, /** 线程可能等待也</description>
     </item>
     
     <item>
       <title>java &gt; 多线程info</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Binfo/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Binfo/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Binfo/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Binfo/</guid>
       <description>1、在 java 中守护线程和本地线程区别？ java 中的线程分为两种：守护线程（Daemon）和用户线程（User）</description>
     </item>
     
     <item>
       <title>java &gt; 多线程synchronized</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized/</guid>
       <description>synchronized synchronized可以保证方法或者代码块在运行时，同一时刻只有一个方法可以进入到临界区，同时</description>
     </item>
     
     <item>
       <title>java &gt; 多线程synchronized.answer</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized.answer/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized.answer/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized.answer/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java_%E5%A4%9A%E7%BA%BF%E7%A8%8Bsynchronized.answer/</guid>
       <description>1 3 4 2 首先t1线程最先执行所以输出1没问题 输出t1后执行了object.wait(),当前执行线程</description>
     </item>
     
     <item>
       <title>java内存模型</title>
-      <link>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_%E5%A4%9A%E7%BA%BF%E7%A8%8B_java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
       <description>JMM(Java内存模型) 主要有三个特性:可见性,有序性,原子性 可见性 计算机内存模型 Java内存模型</description>
     </item>
     

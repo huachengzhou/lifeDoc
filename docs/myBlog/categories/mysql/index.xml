@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mysql on NewBee</title>
-    <link>http://xxx.xxx/categories/mysql/</link>
-    <description>Recent content in mysql on NewBee</description>
+    <title>mysql on blog</title>
+    <link>https://huachengzhou.github.io/life/categories/mysql/</link>
+    <description>Recent content in mysql on blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://xxx.xxx/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网易云课堂MySQL &gt; chapter1</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/</guid>
       <description>MySQL数据库基础 1.1-认识MySQL 什么是数据库 计算机处理和存储的一切信息都是数据。 计算机系统</description>
     </item>
     
     <item>
       <title>网易云课堂MySQL &gt; chapter2</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/</guid>
       <description>MySQL数据库对象与应用 2.1-MySQL数据类型 Number不止一种 整形 浮点型 整形 INT SMALLINT MEDIUMINT BIGINT type Storage Minumun</description>
     </item>
     
     <item>
       <title>网易云课堂MySQL &gt; chapter3</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/</guid>
       <description>MySQL事务与存储引擎 3.1-数据库事务 什么是事务 一系列有序的数据库操作： 要么全部成功 要么全部回退</description>
     </item>
     
     <item>
       <title>网易云课堂MySQL &gt; chapter4</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/</guid>
       <description>MySQL应用优化 4.1-MySQL索引优化与设计 什么是索引 索引的意义 —— 快速定位要查找的数据 数据库</description>
     </item>
     
     <item>
       <title>网易云课堂MySQL &gt; chapter5</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/</guid>
       <description>MySQL运维实践 5.1-MySQL日志系统 什么是日志 日志(log)是一种顺序记录事件流水的文件 记录</description>
     </item>
     
     <item>
       <title>网易云课堂MySQL微专业学习笔记</title>
-      <link>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://xxx.xxx/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://huachengzhou.github.io/life/posts/uuid_t_mysql_163%E8%AF%BE%E5%A0%82_%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql%E5%BE%AE%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>NTES_MySQL_notes 网易云课堂MySQL微专业学习笔记 但愿可以不弃坑。 目录 数据库基础 1.1-认识MySQL 1.2-轻松</description>
     </item>
     
