@@ -2,44 +2,31 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="可重入锁，从字面来理解，就是可以重复进入的锁
    可重入锁，也叫做递归锁，指的是同一线程外层函数获得锁之后，内层递归函数仍然有获取该锁的代码，但不受影响
   在java环境下reentrantlock和synchronized都是可重入锁
-  可重入锁的实现原理
-#
-
-  加锁时，需要判断锁是否已经被获取。如果已经被获取，则判断获取锁的线程是否是当前线程。如果是当前线程，则给获取次数加1。如果不是当前线程，则需要等待
+  可重入锁的实现原理 #    加锁时，需要判断锁是否已经被获取。如果已经被获取，则判断获取锁的线程是否是当前线程。如果是当前线程，则给获取次数加1。如果不是当前线程，则需要等待
   释放锁时，需要给锁的获取次数减1，然后判断，次数是否为0了。如果次数为0了，则需要调用锁的唤醒方法，让锁上阻塞的其他线程得到执行的机会
-  模拟实现简单的可重入锁
-#
-
-public class RepeatLock { //private UnreentrantLock unreentrantLock = new UnreentrantLock();  private ReentrantLock reentrantLock = new ReentrantLock(); //加锁建议在try里面，解锁建议在finally  public void methodA() throws InterruptedException { try { reentrantLock.lock(); System.out.println(&#34;methodA方法被调用&#34;); methodB(); } finally { reentrantLock.unlock(); } } public void methodB() { try { reentrantLock.lock(); System.out.println(&#34;methodB方法被调用&#34;); } catch (InterruptedException e) { e.">
+  模拟实现简单的可重入锁 #  public class RepeatLock { //private UnreentrantLock unreentrantLock = new UnreentrantLock();  private ReentrantLock reentrantLock = new ReentrantLock(); //加锁建议在try里面，解锁建议在finally  public void methodA() throws InterruptedException { try { reentrantLock.lock(); System.out.println(&#34;methodA方法被调用&#34;); methodB(); } finally { reentrantLock.unlock(); } } public void methodB() { try { reentrantLock.lock(); System.out.println(&#34;methodB方法被调用&#34;); } catch (InterruptedException e) { e.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="java重复加锁" />
 <meta property="og:description" content="可重入锁，从字面来理解，就是可以重复进入的锁
    可重入锁，也叫做递归锁，指的是同一线程外层函数获得锁之后，内层递归函数仍然有获取该锁的代码，但不受影响
   在java环境下reentrantlock和synchronized都是可重入锁
-  可重入锁的实现原理
-#
-
-  加锁时，需要判断锁是否已经被获取。如果已经被获取，则判断获取锁的线程是否是当前线程。如果是当前线程，则给获取次数加1。如果不是当前线程，则需要等待
+  可重入锁的实现原理 #    加锁时，需要判断锁是否已经被获取。如果已经被获取，则判断获取锁的线程是否是当前线程。如果是当前线程，则给获取次数加1。如果不是当前线程，则需要等待
   释放锁时，需要给锁的获取次数减1，然后判断，次数是否为0了。如果次数为0了，则需要调用锁的唤醒方法，让锁上阻塞的其他线程得到执行的机会
-  模拟实现简单的可重入锁
-#
-
-public class RepeatLock { //private UnreentrantLock unreentrantLock = new UnreentrantLock();  private ReentrantLock reentrantLock = new ReentrantLock(); //加锁建议在try里面，解锁建议在finally  public void methodA() throws InterruptedException { try { reentrantLock.lock(); System.out.println(&#34;methodA方法被调用&#34;); methodB(); } finally { reentrantLock.unlock(); } } public void methodB() { try { reentrantLock.lock(); System.out.println(&#34;methodB方法被调用&#34;); } catch (InterruptedException e) { e." />
+  模拟实现简单的可重入锁 #  public class RepeatLock { //private UnreentrantLock unreentrantLock = new UnreentrantLock();  private ReentrantLock reentrantLock = new ReentrantLock(); //加锁建议在try里面，解锁建议在finally  public void methodA() throws InterruptedException { try { reentrantLock.lock(); System.out.println(&#34;methodA方法被调用&#34;); methodB(); } finally { reentrantLock.unlock(); } } public void methodB() { try { reentrantLock.lock(); System.out.println(&#34;methodB方法被调用&#34;); } catch (InterruptedException e) { e." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/repeat_lock/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-09-11T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-09-11T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/repeat_lock/" />
+<meta property="article:published_time" content="2022-09-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-11T00:00:00+00:00" />
 <title>java重复加锁 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.39288a120c2102dfc5f5daf6b2af59eacbbb315efa5f79ed8436826cb1088ab6.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.ef4463e55570d3b13a88d7e89d63a3fe60f524cc7c86b647b1470f955a822be1.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3556,6 +3543,45 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/em24ppenbm/" class="">如何保持积极乐观的心态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/mm8cnxmzyz/" class="">社恐、性格闷、胆子小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnefbyyxgr/" class="">逻辑推导</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3915,7 +3941,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

@@ -2,84 +2,47 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Console 对象方法
-#
-
-  常用 Console 调试命令
+<meta name="description" content="Console 对象方法 #    常用 Console 调试命令
   console.log(&#39;hello&#39;);
 console.info(&#39;信息&#39;);
 console.error(&#39;错误&#39;);
 console.warn(&#39;警告&#39;);
-assert()
-#
-
- ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例
+assert() #   ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例
 console.assert(true === false, &quot;判断条件不成立&quot;)
 // Assertion failed: 判断条件不成立
-clear()
-#
-
- 清除当前控制台的所有输出，将光标回置到第一行。  console.clear()
-count()
-#
-
- 用于计数，输出它被调用了多少次。  (function() {
+clear() #   清除当前控制台的所有输出，将光标回置到第一行。  console.clear()
+count() #   用于计数，输出它被调用了多少次。  (function() {
 for (var i = 0; i &lt; 5; i&#43;&#43;) { console.count(&#39;count&#39;); }
 })()
-error()
-#
-
- 输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&quot;Error: %s (%i)&quot;, &quot;Server is not responding&quot;,500)
-group()
-#
-
- 用于将显示的信息分组，可以把信息进行折叠和展开。  console.">
+error() #   输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&quot;Error: %s (%i)&quot;, &quot;Server is not responding&quot;,500)
+group() #   用于将显示的信息分组，可以把信息进行折叠和展开。  console.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="常用 Console 调试命令" />
-<meta property="og:description" content="Console 对象方法
-#
-
-  常用 Console 调试命令
+<meta property="og:description" content="Console 对象方法 #    常用 Console 调试命令
   console.log(&#39;hello&#39;);
 console.info(&#39;信息&#39;);
 console.error(&#39;错误&#39;);
 console.warn(&#39;警告&#39;);
-assert()
-#
-
- ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例
+assert() #   ssert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。  // 实例
 console.assert(true === false, &quot;判断条件不成立&quot;)
 // Assertion failed: 判断条件不成立
-clear()
-#
-
- 清除当前控制台的所有输出，将光标回置到第一行。  console.clear()
-count()
-#
-
- 用于计数，输出它被调用了多少次。  (function() {
+clear() #   清除当前控制台的所有输出，将光标回置到第一行。  console.clear()
+count() #   用于计数，输出它被调用了多少次。  (function() {
 for (var i = 0; i &lt; 5; i&#43;&#43;) { console.count(&#39;count&#39;); }
 })()
-error()
-#
-
- 输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&quot;Error: %s (%i)&quot;, &quot;Server is not responding&quot;,500)
-group()
-#
-
- 用于将显示的信息分组，可以把信息进行折叠和展开。  console." />
+error() #   输出信息时，在最前面加一个红色的叉，表示出错，同时会显示错误发生的堆栈。  console.error(&quot;Error: %s (%i)&quot;, &quot;Server is not responding&quot;,500)
+group() #   用于将显示的信息分组，可以把信息进行折叠和展开。  console." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>常用 Console 调试命令 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.39288a120c2102dfc5f5daf6b2af59eacbbb315efa5f79ed8436826cb1088ab6.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.ef4463e55570d3b13a88d7e89d63a3fe60f524cc7c86b647b1470f955a822be1.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3596,6 +3559,45 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/em24ppenbm/" class="">如何保持积极乐观的心态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/mm8cnxmzyz/" class="">社恐、性格闷、胆子小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnefbyyxgr/" class="">逻辑推导</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3955,7 +3957,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
