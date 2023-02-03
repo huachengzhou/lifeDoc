@@ -23,12 +23,24 @@
     </item>
     
     <item>
-      <title>nginx 学习与使用</title>
+      <title>Nginx 学习与使用</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</link>
       <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</guid>
-      <description>demo #  </description>
+      <description>一、Nginx 简介 #  Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
+前辈总结 #    nginx 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；
+  同时也是一个 IMAP、POP3、SMTP 代理服务器；
+  nginx 可以作为一个 HTTP 服务器进行网站的发布处理，
+  另外 nginx 可以作为反向代理进行负载均衡的实现。
+  二、反向代理 #   反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器
+ 要解释反向代理，我们就不得不先说下什么是代理？
+那么什么是代理呢？
+举个例子：代理 就如同生活中的专卖店～客人到 adidas 专卖店买了一双鞋，这个专卖店就是代理，被代理角色就是 adidas 厂家，目标角色就是用户。
+那么什么是反向代理呢？
+我们很多人应该都用过淘宝，要知道每天同时连接到淘宝网站的访问人数已经爆表，单个服务器远远不能满足人民日益增长的购买欲望了，此时就出现了一个大家耳熟能详的名词：分布式部署；
+也就是通过部署多台服务器来解决访问人数限制的问题；淘宝网站中大部分功能也是直接使用 nginx 进行反向代理实现的，并且通过封装 nginx 和其他的组件之后起了个高大上的名字： Tengine
+然后我们一起看个图： 上图表示的是全国各地的用户在淘宝客户端发出请求，经过了 Nginx 反向代理服务器，nginx 服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理。</description>
     </item>
     
     <item>
@@ -39,6 +51,24 @@
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/testng/</guid>
       <description>TestNG介绍 #   TestNG是Java中的一个测试框架， 类似于JUnit 和NUnit, 功能都差不多， 只是功能更加强大，使用也更方便Java中已经有一个JUnit的测试框架了。 TestNG比JUnit功能强大的多。 测试人员一般用TestNG来写自动化测试。 开发人员一般用JUnit写单元测试。
  TestNG的基本注解 #     说明 示 例     @BeforeSuite 在该套件的所有测试都运行在注释的方法之前，仅运行一次。   @AfterSuite 在该套件的所有测试都运行在注释方法之后，仅运行一次。   @BeforeClass 在调用当前类的第一个测试方法之前运行，注释方法仅运行一次。   @AfterClass 在调用当前类的第一个测试方法之后运行，注释方法仅运行一次   @BeforeTest 注释的方法将在属于标签内的类的所有测试方法运行之前运行。   @AfterTest 注释的方法将在属于标签内的类的所有测试方法运行之后运行。   @BeforeGroups 配置方法将在之前运行组列表。 此方法保证在调用属于这些组中的任何一个的第一个测试方法之前不久运行。   @AfterGroups 此配置方法将在之后运行组列表。该方法保证在调用属于任何这些组的最后一个测试方法之后不久运行。   @BeforeMethod 注释方法将在每个测试方法之前运行。   @AfterMethod 注释方法将在每个测试方法之后运行。   @DataProvider 标记一种方法来提供测试方法的数据。 注释方法必须返回一个Object [] []，其中每个Object []可以被分配给测试方法的参数列表。 要从该DataProvider接收数据的@Test方法需要使用与此注释名称相等的dataProvider名称。   @Factory 将一个方法标记为工厂，返回TestNG将被用作测试类的对象。 该方法必须返回Object []。   @Listeners 定义测试类上的侦听器。   @Parameters 描述如何将参数传递给@Test方法。   @Test 将类或方法标记为测试的一部分。    Testng翻译 #   org.</description>
+    </item>
+    
+    <item>
+      <title>mycat 学习与使用</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/</guid>
+      <description>一:MyCat是什么 #  一个彻底开源的，面向企业应用开发的大数据库集群
+支持事务、ACID、可以替代MySQL的加强版数据库
+一个可以视为MySQL集群的企业级数据库，用来替代昂贵的Oracle集群
+一个融合内存缓存技术、NoSQL技术、HDFS大数据的新型SQL Server
+结合传统数据库和新型分布式数据仓库的新一代企业级数据库产品
+一个新颖的数据库中间件产品
+目前仅仅实现了mysql协议
+二:MyCat能做什么 #   1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理 #  Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
+这种方式把数据库的分布式从代码中解耦出来，程序员察觉不出来后台使用 Mycat 还是MySQL。
+四:MyCat实战 #  参考1 参考2</description>
     </item>
     
   </channel>

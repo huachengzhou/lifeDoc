@@ -543,12 +543,24 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
-      <title>nginx 学习与使用</title>
+      <title>Nginx 学习与使用</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</link>
       <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/</guid>
-      <description>demo #  </description>
+      <description>一、Nginx 简介 #  Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
+前辈总结 #    nginx 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；
+  同时也是一个 IMAP、POP3、SMTP 代理服务器；
+  nginx 可以作为一个 HTTP 服务器进行网站的发布处理，
+  另外 nginx 可以作为反向代理进行负载均衡的实现。
+  二、反向代理 #   反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器
+ 要解释反向代理，我们就不得不先说下什么是代理？
+那么什么是代理呢？
+举个例子：代理 就如同生活中的专卖店～客人到 adidas 专卖店买了一双鞋，这个专卖店就是代理，被代理角色就是 adidas 厂家，目标角色就是用户。
+那么什么是反向代理呢？
+我们很多人应该都用过淘宝，要知道每天同时连接到淘宝网站的访问人数已经爆表，单个服务器远远不能满足人民日益增长的购买欲望了，此时就出现了一个大家耳熟能详的名词：分布式部署；
+也就是通过部署多台服务器来解决访问人数限制的问题；淘宝网站中大部分功能也是直接使用 nginx 进行反向代理实现的，并且通过封装 nginx 和其他的组件之后起了个高大上的名字： Tengine
+然后我们一起看个图： 上图表示的是全国各地的用户在淘宝客户端发出请求，经过了 Nginx 反向代理服务器，nginx 服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理。</description>
     </item>
     
     <item>
@@ -775,7 +787,9 @@ sudo apt-get install synaptic</description>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/tbwyjex4gc/</guid>
       <description>从此你不再受伤害 #  一:痛苦的本质是什么 #  二:如何应对他人的攻击和批评 #  从此你的境界会永远高于那些骂你的人,而你不会被他们的言辞所伤害 这并不意味着我们不回击,我们可以和他们吵 ,但是我们回击是为了教会他人和我们相处的正确方式 也就是我们利用我们的愤怒 来让他人知道 他们和我们原先交流的方式是有问题的 但是并不意味着我们内心真正地破碎或者失控 在这个部分也会阐述所谓地“情商”
-三: #  </description>
+三:攻击与指责 #  当他人批评攻击我们 我们该怎样应对 首先百分之八十情况下 大部分都对我们构成不了实质伤害,而是我们自己加于自己的一些伤害 比如说有些人非常在意他人的看法,但是很多时候他人 对你的负面看法是你自己想象出来的 而他人实际上并没有那个意思,我唱歌唱得不好听我还上台去唱,那我就是丢人现眼 但是其实很多时候观众根本就不care,你唱得还不好 他们只是想被娱乐而已 好,就算有人不喜欢你 不喜欢 它其实是一种非常私人得、内心得想法 你是管不到这种事情 或者说你也没有权力去管 别人喜不喜欢你 如果他不喜欢你 导致他做出了对你伤害性得行为 这种事情我们另谈,但是你没有必要管得这么宽,管道别人心里 究竟是对你什么样的看法 因为他确实有这样的自由
+扮演角色 #  当一个人在攻击和批评你的时候,他到底攻击 批评的是什么
+在你的认知里一个封闭的高铁空间内,大家都是奔波的旅人 需要一个舒适的休息环境 在这个环境内 其实大家都需要扮演好&amp;quot;有素质的乘客&amp;quot; 这个角色,也就意味着你不能抽烟 不能在车厢内大声喧哗或者发出给其他乘客 带来困扰性的声音,当有人没有扮演好这个角色 你会感到生气 所以其实你的攻击并不上升到对那个人 本身的攻击 而只停留于对他这个角色的攻击 而你希望的 也仅仅是他扮演好他的角色 其实 放眼到其他所有的场景都是一样的 , 就是他人在攻击或者批评你的时候 他们都不是在攻击你的本人,而是在攻击你没有扮演好你的角色, 他们想要的也只是你扮演好你的角色 他们 攻击不到你 因为他们并不知道真正的你是谁 真正的你是你所有角色的总和 但是我们在不同人或者不同场景中 势必要扮演不同的角色</description>
     </item>
     
     <item>
@@ -1183,6 +1197,24 @@ Phaser中是通过计数器来控制。在Phaser中计数器叫做parties， 我
 返回session对象被创建的时间， 以毫秒为单位，从1970年1月1号凌晨开始算起     public long getLastAccessedTime()
 返回客户端最后访问的时间，以毫秒为单位，从1970年1月1号凌晨开始算起     public Object getAttribute(String name)
 返回session对象中与指定名称绑定的对象，如果不存在则返回null     public Object getAttribute(String name)</description>
+    </item>
+    
+    <item>
+      <title>mycat 学习与使用</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/</guid>
+      <description>一:MyCat是什么 #  一个彻底开源的，面向企业应用开发的大数据库集群
+支持事务、ACID、可以替代MySQL的加强版数据库
+一个可以视为MySQL集群的企业级数据库，用来替代昂贵的Oracle集群
+一个融合内存缓存技术、NoSQL技术、HDFS大数据的新型SQL Server
+结合传统数据库和新型分布式数据仓库的新一代企业级数据库产品
+一个新颖的数据库中间件产品
+目前仅仅实现了mysql协议
+二:MyCat能做什么 #   1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理 #  Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
+这种方式把数据库的分布式从代码中解耦出来，程序员察觉不出来后台使用 Mycat 还是MySQL。
+四:MyCat实战 #  参考1 参考2</description>
     </item>
     
     <item>
@@ -2321,7 +2353,19 @@ case2 #  从小到大我就被长辈朋友说傻、呆、笨、二。一直以�
       <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnefbyyxgr/</guid>
-      <description>逻辑推导 #  </description>
+      <description>逻辑推导 #  逻辑自洽 #   按照自身的逻辑推演的话，自己可以证明自己本身至少不是矛盾或者错误的
+  没有发现任何矛盾达到自我完备
+ 自圆其说 #   意思是指使自己的说法前后一致，没有自相矛盾的地方
+ 逻辑 #  通常所说的逻辑，是指我们从某些已知条件出发推出合理的结论的规律
+因此我们可以说，逻辑的可靠性受两个因素的影响：
+第一是：已知条件
+第二是：推导方式、过程
+“推导方式、过程” 决定着结论的可靠性
+在限定条件下，我们所熟知的各种公理、定理必然可导出正确的答案
+但必须注意这些公理、定理所适用的范围以及使用的限制条件。
+错误归因 #  客观的事情经过错误的归因,就极容易出现错误的推断 很多人分析问题时,喜欢结诸于间接论证, 由A推出B由B得出C,最后证明A可以推出C 这固然是一种正确的逻辑形式,但放到具体个例时常常由于错误归因 ,得出错误的结论 再以错误的结论进一步递推 当然最终的结论就是错误的
+错用诛心论的本质是诉诸动机,它其实也是错误归因的一种表现
+资料来源</description>
     </item>
     
     <item>
@@ -2384,6 +2428,15 @@ case2 #  从小到大我就被长辈朋友说傻、呆、笨、二。一直以�
   (自己理解)B+树每个节点都包含了指向其子节点的指针虽然没有直接包含子节点但是相当于间接包含了子节点
   因此B+树是大多数 MySQL 存储引擎的默认索引类型
   讨论hash结构 #   哈希索引能以 O(1) 时间进行查找，但是失去了有序性，它具有以下限制 无法用于排序与分组 只支持精确查找，无法用于部分查找和范围查找。 InnoDB 存储引擎有一个特殊的功能叫“自适应哈希索引”，当某个索引值被使用的非常频繁时，会在 B+Tree 索引之上再创建一个哈希索引，这样就让 B+Tree 索引具有哈希索引的一些优点，比如快速的哈希查找。   MySQL中，只有Memory存储引擎显示支持hash索引，是Memory表的默认索引类型，尽管Memory表也可以使用B-Tree索引 也就是我们从某种程度日常开发基本就接触BTREE数据结构了</description>
+    </item>
+    
+    <item>
+      <title>所有命运的馈赠，早已暗中标好了价格</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/x5xdewmh5e/</link>
+      <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/x5xdewmh5e/</guid>
+      <description>所有命运的馈赠，早已暗中标好了价格 #  好什么 最终要亡在什么上 #  以什么上台或者以什么为基本盘 盘么最终你的弱点就是你的基本盘 特别是高管或者大人物 #  </description>
     </item>
     
     <item>
@@ -2498,6 +2551,16 @@ case2 #  从小到大我就被长辈朋友说傻、呆、笨、二。一直以�
   2:关注你自己呼吸时的感觉,吸气，吸气，选择一个感受突出的地方，通常是你的鼻子或者耳朵、腹部然后集中注意力，关注你自己呼吸时的感觉。吸气，吸气，用嘴呼吸（最好关注腹部，因为我们大部分人都是腹部呼吸法）
   3:一旦你开始这样做了脑子会乱想,你需要关注你到什么时候走神的，那么走神后重新调整后重新开始集中注意力开始冥想。
   </description>
+    </item>
+    
+    <item>
+      <title>适合分享的段子和笑话</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/paragraph/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/paragraph/</guid>
+      <description>段子 #   王朔自嘲段子  王朔在酒馆喝的大醉，大吼一声:谁小说写的比我好？旁边王小波轻描淡写来一句:我写的比你好。
+王朔走过来揽住王小波的肩，继续张扬:谁能写小说比我们俩好？</description>
     </item>
     
     <item>
