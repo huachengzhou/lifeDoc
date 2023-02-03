@@ -38,7 +38,7 @@ public class RunDemoT {
     @Test
     public void transformImgToPNGTest() {
         String path = "D:\\myProjects\\lifeDoc\\tool_java_fun_project\\source_dir\\content";
-        String[] extensions = new String[]{"jpg", "jpeg", "gif", "bmp","jfif"};
+        String[] extensions = new String[]{"jpg", "jpeg", "gif", "bmp","jfif","webp"};
         transformImgToPNG(new File(path), extensions);
     }
 
