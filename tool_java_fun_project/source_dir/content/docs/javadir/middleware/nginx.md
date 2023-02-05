@@ -696,6 +696,90 @@ if ($request_method = 'POST') {
 
 接下来，在你的服务器中 include enable-cors.conf 来引入跨域配置： 
 
+
+## 七:其他
+
+### 反向代理
++ case1 基础
+```
+
+ #HTTP服务器
+   server {
+       #监听80端口，80端口是知名端口号，用于HTTP协议
+       listen       80;
+       #定义使用www.xx.com访问
+       server_name  www.test_hello.com;
+       #编码格式
+       charset utf-8;
+       #代理配置参数
+       proxy_connect_timeout 180;
+       proxy_send_timeout 180;
+       proxy_read_timeout 180;
+       proxy_set_header Host $host;
+       proxy_set_header X-Forwarder-For $remote_addr;
+       #反向代理的路径（和upstream绑定），location 后面设置映射的路径
+       location / {
+           proxy_pass  http://127.0.0.1:8080;
+       }
+   }
+   windows host修改
+   C:\Windows\System32\drivers\etc\hosts
+   127.0.0.1 www.test_hello.com
+   
+```
+
+浏览器中输入 www.test_hello.com 被映射为 127.0.0.1 并且被nginx监听到然后请求转发到了http://127.0.0.1:8080
+
++ case2 别名方式
+
+```
+    #设定实际的服务器列表
+	upstream zp_server1{
+		server 127.0.0.1:8080 ;
+	}
+	
+    #HTTP服务器
+   server {
+       #监听80端口，80端口是知名端口号，用于HTTP协议
+       listen       80;
+
+       #定义使用www.xx.com访问
+       server_name  www.test_hello.com;
+       #编码格式
+       charset utf-8;
+
+       #代理配置参数
+       proxy_connect_timeout 180;
+       proxy_send_timeout 180;
+       proxy_read_timeout 180;
+       proxy_set_header Host $host;
+       proxy_set_header X-Forwarder-For $remote_addr;
+
+       #反向代理的路径（和upstream绑定），location 后面设置映射的路径
+       location / {
+           proxy_pass  http://zp_server1;
+       }
+   }
+   
+    windows host修改
+     C:\Windows\System32\drivers\etc\hosts
+     127.0.0.1 www.test_hello.com
+```
+
++ case3 实现负载均衡
+
+```
+ upstream load_balance_server {
+        ip_hash;
+        #weigth参数表示权值，权值越高被分配到的几率越大
+        server 192.168.1.11:80   weight=5;
+        server 192.168.1.12:80   weight=1;
+        server 192.168.1.13:80   weight=6;
+    }
+```
+
+ip_hash 属于一种实际上有好几种类型
+
 [参考1](https://www.bilibili.com/read/cv9466960)
 
 [参考2](https://my.oschina.net/u/4391811/blog/3286199)
