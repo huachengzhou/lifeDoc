@@ -2,20 +2,38 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一、编码 #   如果还没想清楚，就用蛮力算法。——Ken Thompson 不要使用反正弦和反余弦函数——你总能用优美的恒等式，或者是计算向量点积来更好地解决问题。—— Jim Conyngham 在存储日期中的年份的时候，请使用四位数字。—— David Martin 避免使用不对称结构。—— Andy Huber 代码写的越急，程序跑得越慢。—— Roy Carlson 你用英语都写不出来的东西就别指望用代码写了。—— Peter Halpern 如果代码和注释不一致，那很可能两者都错了。—— Norm Schryer 如果你发现特殊情况太多，那你肯定是用错方法了。—— Carig Zerouni 先把数据结构搞清楚，程序的其余部分自现。—— David Jones  二、用户界面 #   尽可能让用户界面风格保持一致和可预测。—— 匿名用户 计算机生成的输入通常会让一个原本设计接受手工输入的程序不堪重负。—— Dennis Ritchie 手工填写的表单里有20%都包含坏数据。—— Vic Vyssotsky 80%的表单会要你回答没有必要的问题。—— Mike Garey 不要让用户提供那些系统已经知道的信息。—— Rick Lemons 所有数据集的80%中，有95%的信息量都可以用清晰的图表示。—— William Cleveland  三、调试 #   在我所有的程序错误中，80%是语法错误，剩下20%里，80%是简单的逻辑错误，在剩下4%里，80%是指针错误，只有余下的0.8%才是困难的问题。—— Marc Donner 在系统测试阶段找出并修正错误，要比开发者自己完成这一工作多付出2倍的努力。而当系统已经交付使用之后找出并修正错误，要比系统测试阶段多付出9倍的努力。因此，请坚持让开发者进行单元测试吧。—— Larry Bernstain 不要站着调试程序，那会使得你的耐心减半，你需要的是全神贯注。—— Dave Storer 别在注释里陷得太深——注释很可能会误导你，你要调试的只是代码。—— Dave Storer 测试只能证明程序有错误，而不能证明程序没有错误。—— Edsger Dijkstra 新系统的每一个新用户都可能发现一类新的错误。—— Brian Kernighan 东西没坏，就别乱修。 —— Ronald Reagan 如果我们没能力修好它，我们就会告诉你它根本没坏。—— Walt Weir 修正程序错误的第一步是要重现这个错误。—— Tom Duff  四、性能 #   程序优化第一法则：不要优化。程序优化第二法则：还是不要优化。—— Michael Jackson 对于那些快速算法，我们总是可以拿一些速度差不多但是更容易理解的算法来替代它们。—— Douglas Jones 在一些机器上，间接寻址比基址寻址要慢，所以请把结构体或者记录中最常用的成员放在最前面。—— Mike Morton 在一个非IO密集型程序中，超过一半的运行时间是花在不足4%的代码上的。—— Don Knuth 在优化一个程序之前，请先用性能监视工具找到程序的“热点”。—— Mike Morton 当你为了加速，把一页代码变成几条简单的指令时，请不要忘了增加注释，以使源码的行数保持为一个常量。—— Mike Morton 如果程序员自己模拟实现了一个构造比编译器本身实现的那个构造还要快，那编译器的作者也太失败了。—— Guy Steele 要加速一个IO密集型程序，请首先考虑所有的IO，消除那些不必要的或冗余的IO，并使余下的部分尽可能地块。—— David Martin 最快的IO就是不IO。—— Nils-Peter Nelson 那些最便宜、最快而且可靠性最高的计算机组件压根就不存在。—— Gordon Bell 把一个本来就错了的程序变得更糟糕绝不是你的错。—— Bill McKeeman Lisp程序员知道所有东西的值，却不知道那些东西的计算成本。—— Alan Perlis  五、文档 #   如果一句话反过来就必然不成立，那就根本没必要把这句话放进文档。—— Bob Martin 当你试图解释一条命令、一个语言特性或者是一种硬件的时候，请首先说明它要解决什么问题。 —— David Martin 一个 { 规格说明、设计、过程、测试计划 } 如果不能在一页A4纸上写明白，那么这个东西别人就没法理解。—— Mark Ardis 纸上的工作没结束，整个工作也就还没结束。—— 匿名  六、软件管理 #   系统的结构反映出构建该系统的组织的结构。—— Richard Fairley 别坚持做没用的事情。—— 匿名 前90%的代码占用了90%的预定开发时间，余下的10%代码又花费了90%的预定开发时间。——Tom Cargill 只有不到10%的代码用于完成这个程序表面上的目的，余下的都在处理输入输出、数据验证、数据结构维护等家务活。—— Mary Shaw 正确的判断来源于经验，然而经验来源于错误的判断。—— Fred Brooks 如果有人基本上做出了你想要的东西，你就没必要自己写一个新程序，就算你非写不可，也请尽可能地利用现有的代码。—— Richard Hill 代码能借用就借用。—— Tom Duff 与客户保持良好的关系可以使生产率加倍。—— Larry Bernstain 把一个现有成熟程序转移到一种新语言或者新平台，只需要原来开发的十分之一的时间、人力、成本。—— Douglas Jones 那些用手做就很快了的事情，就不要用计算机去做了。—— Richard Hill 那些能用计算机迅速解决的问题，就别用手做了。—— Tom Duff 我想写的不只是程序，而且是会写程序的程序。—— Dick Sites 计划好抛弃一个原型，这是迟早的事情。—— Fred Brooks 如果开始就打算抛弃一个原型，那恐怕你得抛弃两个。—— Craig Zerouni 原型方法可以将系统开发的工作量减少40%。—— Larry Bernstain 拼命干活无法取代理解。—— H William  ">
+<meta name="description" content="一、编码
+#
+
+ 如果还没想清楚，就用蛮力算法。——Ken Thompson 不要使用反正弦和反余弦函数——你总能用优美的恒等式，或者是计算向量点积来更好地解决问题。—— Jim Conyngham 在存储日期中的年份的时候，请使用四位数字。—— David Martin 避免使用不对称结构。—— Andy Huber 代码写的越急，程序跑得越慢。—— Roy Carlson 你用英语都写不出来的东西就别指望用代码写了。—— Peter Halpern 如果代码和注释不一致，那很可能两者都错了。—— Norm Schryer 如果你发现特殊情况太多，那你肯定是用错方法了。—— Carig Zerouni 先把数据结构搞清楚，程序的其余部分自现。—— David Jones  二、用户界面
+#
+
+ 尽可能让用户界面风格保持一致和可预测。—— 匿名用户 计算机生成的输入通常会让一个原本设计接受手工输入的程序不堪重负。—— Dennis Ritchie 手工填写的表单里有20%都包含坏数据。—— Vic Vyssotsky 80%的表单会要你回答没有必要的问题。—— Mike Garey 不要让用户提供那些系统已经知道的信息。—— Rick Lemons 所有数据集的80%中，有95%的信息量都可以用清晰的图表示。—— William Cleveland  三、调试
+#
+
+ 在我所有的程序错误中，80%是语法错误，剩下20%里，80%是简单的逻辑错误，在剩下4%里，80%是指针错误，只有余下的0.8%才是困难的问题。—— Marc Donner 在系统测试阶段找出并修正错误，要比开发者自己完成这一工作多付出2倍的努力。而当系统已经交付使用之后找出并修正错误，要比系统测试阶段多付出9倍的努力。因此，请坚持让开发者进行单元测试吧。—— Larry Bernstain 不要站着调试程序，那会使得你的耐心减半，你需要的是全神贯注。—— Dave Storer 别在注释里陷得太深——注释很可能会误导你，你要调试的只是代码。—— Dave Storer 测试只能证明程序有错误，而不能证明程序没有错误。—— Edsger Dijkstra 新系统的每一个新用户都可能发现一类新的错误。—— Brian Kernighan 东西没坏，就别乱修。 —— Ronald Reagan 如果我们没能力修好它，我们就会告诉你它根本没坏。—— Walt Weir 修正程序错误的第一步是要重现这个错误。—— Tom Duff  四、性能
+#
+
+ 程序优化第一法则：不要优化。程序优化第二法则：还是不要优化。—— Michael Jackson 对于那些快速算法，我们总是可以拿一些速度差不多但是更容易理解的算法来替代它们。—— Douglas Jones 在一些机器上，间接寻址比基址寻址要慢，所以请把结构体或者记录中最常用的成员放在最前面。—— Mike Morton 在一个非IO密集型程序中，超过一半的运行时间是花在不足4%的代码上的。—— Don Knuth 在优化一个程序之前，请先用性能监视工具找到程序的“热点”。—— Mike Morton 当你为了加速，把一页代码变成几条简单的指令时，请不要忘了增加注释，以使源码的行数保持为一个常量。—— Mike Morton 如果程序员自己模拟实现了一个构造比编译器本身实现的那个构造还要快，那编译器的作者也太失败了。—— Guy Steele 要加速一个IO密集型程序，请首先考虑所有的IO，消除那些不必要的或冗余的IO，并使余下的部分尽可能地块。—— David Martin 最快的IO就是不IO。—— Nils-Peter Nelson 那些最便宜、最快而且可靠性最高的计算机组件压根就不存在。—— Gordon Bell 把一个本来就错了的程序变得更糟糕绝不是你的错。—— Bill McKeeman Lisp程序员知道所有东西的值，却不知道那些东西的计算成本。—— Alan Perlis  五、文档
+#
+
+ 如果一句话反过来就必然不成立，那就根本没必要把这句话放进文档。—— Bob Martin 当你试图解释一条命令、一个语言特性或者是一种硬件的时候，请首先说明它要解决什么问题。 —— David Martin 一个 { 规格说明、设计、过程、测试计划 } 如果不能在一页A4纸上写明白，那么这个东西别人就没法理解。—— Mark Ardis 纸上的工作没结束，整个工作也就还没结束。—— 匿名  六、软件管理
+#
+
+ 系统的结构反映出构建该系统的组织的结构。—— Richard Fairley 别坚持做没用的事情。—— 匿名 前90%的代码占用了90%的预定开发时间，余下的10%代码又花费了90%的预定开发时间。——Tom Cargill 只有不到10%的代码用于完成这个程序表面上的目的，余下的都在处理输入输出、数据验证、数据结构维护等家务活。—— Mary Shaw 正确的判断来源于经验，然而经验来源于错误的判断。—— Fred Brooks 如果有人基本上做出了你想要的东西，你就没必要自己写一个新程序，就算你非写不可，也请尽可能地利用现有的代码。—— Richard Hill 代码能借用就借用。—— Tom Duff 与客户保持良好的关系可以使生产率加倍。—— Larry Bernstain 把一个现有成熟程序转移到一种新语言或者新平台，只需要原来开发的十分之一的时间、人力、成本。—— Douglas Jones 那些用手做就很快了的事情，就不要用计算机去做了。—— Richard Hill 那些能用计算机迅速解决的问题，就别用手做了。—— Tom Duff 我想写的不只是程序，而且是会写程序的程序。—— Dick Sites 计划好抛弃一个原型，这是迟早的事情。—— Fred Brooks 如果开始就打算抛弃一个原型，那恐怕你得抛弃两个。—— Craig Zerouni 原型方法可以将系统开发的工作量减少40%。—— Larry Bernstain 拼命干活无法取代理解。—— H William  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="关于程序员" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/about/" />
-<meta property="og:updated_time" content="2021-01-17T15:26:15+00:00" />
+
 <title>关于程序员 | 所悟所想</title>
 <link rel="manifest" href="./../../manifest.json">
 <link rel="icon" href="./../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../en.search.min.c1fb18dac040d05f18c3368b73ba21bcfb5769879d4dd9c3885552fd6271915b.js"  ></script>
+<link rel="stylesheet" href="./../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../en.search.min.c7f8557ef024a23edb1c51efd20637f06b9b593d7b89cdc625bc6351f317ca5f.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../docs/about/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -2379,6 +2397,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/http/cdn/" class="">cdn</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/http/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3983,7 +4027,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

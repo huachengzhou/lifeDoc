@@ -2,11 +2,26 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SQL触发器简介 #   SQL触发器是存储在数据库目录中的一组SQL语句。只要与表关联的事件发生，例如插入，更新或删除，就会执行或触发SQL触发器
- SQL触发器的优点 #   SQL触发器提供了另一种检查数据完整性的方法。 SQL触发器可以捕获数据库层中业务逻辑中的错误。 SQL触发器提供了另一种运行计划任务的方法。通过使用SQL触发器，您不必等待运行计划任务，因为在对表中的数据进行更改之前或之后会自动调用触发器。 SQL触发器对于审计表中数据的更改非常有用。  SQL触发器的缺点 #   SQL触发器只能提供扩展验证，并且不能替换所有验证。必须在应用程序层中完成一些简单的验证。例如，您可以使用JavaScript在客户端验证用户的输入，或者使用服务器端脚本语言（如JSP，PHP，ASP.NET，Perl）在服务器端验证用户的输入。 从客户端应用程序调用和执行SQL触发器是不可见的，因此很难弄清楚数据库层中发生了什么。 SQL触发器可能会增加数据库服务器的开销  MySQL 触发器的创建 #  MySQL触发语法 #  CREATE TRIGGER trigger_name trigger_time trigger_event ON table_name FOR EACH ROW BEGIN ... END;   触发器名称约定 [trigger time][table name][trigger event]，例如before_employees_update
+<meta name="description" content="SQL触发器简介
+#
+
+ SQL触发器是存储在数据库目录中的一组SQL语句。只要与表关联的事件发生，例如插入，更新或删除，就会执行或触发SQL触发器
+ SQL触发器的优点
+#
+
+ SQL触发器提供了另一种检查数据完整性的方法。 SQL触发器可以捕获数据库层中业务逻辑中的错误。 SQL触发器提供了另一种运行计划任务的方法。通过使用SQL触发器，您不必等待运行计划任务，因为在对表中的数据进行更改之前或之后会自动调用触发器。 SQL触发器对于审计表中数据的更改非常有用。  SQL触发器的缺点
+#
+
+ SQL触发器只能提供扩展验证，并且不能替换所有验证。必须在应用程序层中完成一些简单的验证。例如，您可以使用JavaScript在客户端验证用户的输入，或者使用服务器端脚本语言（如JSP，PHP，ASP.NET，Perl）在服务器端验证用户的输入。 从客户端应用程序调用和执行SQL触发器是不可见的，因此很难弄清楚数据库层中发生了什么。 SQL触发器可能会增加数据库服务器的开销  MySQL 触发器的创建
+#
+
+MySQL触发语法
+#
+
+CREATE TRIGGER trigger_name trigger_time trigger_event ON table_name FOR EACH ROW BEGIN ... END;   触发器名称约定 [trigger time][table name][trigger event]，例如before_employees_update
   触发激活时间可以是BEFORE或AFTER
   触发事件可以是INSERT，UPDATE或者DELETE事件导致触发器被调用
   触发器必须与特定表关联。如果没有表触发器将不存在，因此您必须在ON关键字后指定表名
@@ -14,8 +29,23 @@
   例子1
   -- create table CREATE TABLE employees_audit ( id INT AUTO_INCREMENT PRIMARY KEY, employeeNumber INT NOT NULL, lastname VARCHAR(50) NOT NULL, changedat DATETIME DEFAULT NULL, action VARCHAR(50) DEFAULT NULL ); ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql触发器" />
-<meta property="og:description" content="SQL触发器简介 #   SQL触发器是存储在数据库目录中的一组SQL语句。只要与表关联的事件发生，例如插入，更新或删除，就会执行或触发SQL触发器
- SQL触发器的优点 #   SQL触发器提供了另一种检查数据完整性的方法。 SQL触发器可以捕获数据库层中业务逻辑中的错误。 SQL触发器提供了另一种运行计划任务的方法。通过使用SQL触发器，您不必等待运行计划任务，因为在对表中的数据进行更改之前或之后会自动调用触发器。 SQL触发器对于审计表中数据的更改非常有用。  SQL触发器的缺点 #   SQL触发器只能提供扩展验证，并且不能替换所有验证。必须在应用程序层中完成一些简单的验证。例如，您可以使用JavaScript在客户端验证用户的输入，或者使用服务器端脚本语言（如JSP，PHP，ASP.NET，Perl）在服务器端验证用户的输入。 从客户端应用程序调用和执行SQL触发器是不可见的，因此很难弄清楚数据库层中发生了什么。 SQL触发器可能会增加数据库服务器的开销  MySQL 触发器的创建 #  MySQL触发语法 #  CREATE TRIGGER trigger_name trigger_time trigger_event ON table_name FOR EACH ROW BEGIN ... END;   触发器名称约定 [trigger time][table name][trigger event]，例如before_employees_update
+<meta property="og:description" content="SQL触发器简介
+#
+
+ SQL触发器是存储在数据库目录中的一组SQL语句。只要与表关联的事件发生，例如插入，更新或删除，就会执行或触发SQL触发器
+ SQL触发器的优点
+#
+
+ SQL触发器提供了另一种检查数据完整性的方法。 SQL触发器可以捕获数据库层中业务逻辑中的错误。 SQL触发器提供了另一种运行计划任务的方法。通过使用SQL触发器，您不必等待运行计划任务，因为在对表中的数据进行更改之前或之后会自动调用触发器。 SQL触发器对于审计表中数据的更改非常有用。  SQL触发器的缺点
+#
+
+ SQL触发器只能提供扩展验证，并且不能替换所有验证。必须在应用程序层中完成一些简单的验证。例如，您可以使用JavaScript在客户端验证用户的输入，或者使用服务器端脚本语言（如JSP，PHP，ASP.NET，Perl）在服务器端验证用户的输入。 从客户端应用程序调用和执行SQL触发器是不可见的，因此很难弄清楚数据库层中发生了什么。 SQL触发器可能会增加数据库服务器的开销  MySQL 触发器的创建
+#
+
+MySQL触发语法
+#
+
+CREATE TRIGGER trigger_name trigger_time trigger_event ON table_name FOR EACH ROW BEGIN ... END;   触发器名称约定 [trigger time][table name][trigger event]，例如before_employees_update
   触发激活时间可以是BEFORE或AFTER
   触发事件可以是INSERT，UPDATE或者DELETE事件导致触发器被调用
   触发器必须与特定表关联。如果没有表触发器将不存在，因此您必须在ON关键字后指定表名
@@ -23,14 +53,15 @@
   例子1
   -- create table CREATE TABLE employees_audit ( id INT AUTO_INCREMENT PRIMARY KEY, employeeNumber INT NOT NULL, lastname VARCHAR(50) NOT NULL, changedat DATETIME DEFAULT NULL, action VARCHAR(50) DEFAULT NULL ); " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/triggers/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/triggers/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mysql触发器 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.c1fb18dac040d05f18c3368b73ba21bcfb5769879d4dd9c3885552fd6271915b.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.c7f8557ef024a23edb1c51efd20637f06b9b593d7b89cdc625bc6351f317ca5f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2393,6 +2424,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/http/cdn/" class="">cdn</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/http/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -3997,7 +4054,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
