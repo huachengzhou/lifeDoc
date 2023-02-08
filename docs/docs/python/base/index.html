@@ -2,37 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="python 学习笔记
-#
-
-  学习之前注意python版本区别,因为目前很多都是3.x版本了
+<meta name="description" content="python 学习笔记 #    学习之前注意python版本区别,因为目前很多都是3.x版本了
   本学习笔记基于3.x&#43;
-  Python基础
-#
-
-输入和输出
-#
-
-输出
-#
-
- Python print() 函数  print(*objects, sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False) # objects -- 复数，表示可以一次输出多个对象。输出多个对象时，需要用 , 分隔 # sep -- 用来间隔多个对象，默认值是一个空格 # end -- 用来设定以什么结尾。默认值是换行符 \n，我们可以换成其他字符串 # file -- 要写入的文件对象 # flush -- 输出是否被缓存通常决定于 file，但如果 flush 关键字参数为 True，流会被强制刷新 # 返回值 无  用print()在括号中加上字符串，就可以向屏幕上输出指定的文字  print(&#39;hello world&#39;)  print()函数也可以接受多个字符串，用逗号“,”隔开，就可以连成一串输出  print(&#39;漫&#39;,&#39;步&#39;,&#39;人&#39;,&#39;生&#39;)  print()也可以打印整数，或者计算结果  print(12) print(12 &#43; 20)  设置间隔符  print(&#34;美丽&#34;,&#34;人生&#34;,sep=&#34;-&#34;) # 美丽-人生  多行内容  str = &#39;&#39;&#39; ab cd &#39;&#39;&#39; 输入
-#
-
- 用户从电脑输入一些字符 Python提供了一个input()，可以让用户输入字符串，并存放到一个变量里  print(&#34;请输入你的名字!">
+  Python基础 #  输入和输出 #  输出 #   Python print() 函数  print(*objects, sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False) # objects -- 复数，表示可以一次输出多个对象。输出多个对象时，需要用 , 分隔 # sep -- 用来间隔多个对象，默认值是一个空格 # end -- 用来设定以什么结尾。默认值是换行符 \n，我们可以换成其他字符串 # file -- 要写入的文件对象 # flush -- 输出是否被缓存通常决定于 file，但如果 flush 关键字参数为 True，流会被强制刷新 # 返回值 无  用print()在括号中加上字符串，就可以向屏幕上输出指定的文字  print(&#39;hello world&#39;)  print()函数也可以接受多个字符串，用逗号“,”隔开，就可以连成一串输出  print(&#39;漫&#39;,&#39;步&#39;,&#39;人&#39;,&#39;生&#39;)  print()也可以打印整数，或者计算结果  print(12) print(12 &#43; 20)  设置间隔符  print(&#34;美丽&#34;,&#34;人生&#34;,sep=&#34;-&#34;) # 美丽-人生  多行内容  str = &#39;&#39;&#39; ab cd &#39;&#39;&#39; 输入 #   用户从电脑输入一些字符 Python提供了一个input()，可以让用户输入字符串，并存放到一个变量里  print(&#34;请输入你的名字!">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python 基础学习" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/" />
-
+<meta property="og:updated_time" content="2021-04-15T00:00:00+00:00" />
 <title>python 基础学习 | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../en.search.min.c7f8557ef024a23edb1c51efd20637f06b9b593d7b89cdc625bc6351f317ca5f.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../en.search.min.4c00c9aad3dd3fb2bb47952c72d2967768f700f9330fc2d5fdda4a97914ae9d6.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/python/base/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -4026,7 +4011,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -4201,7 +4186,66 @@ n <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;dsdh&#39
 <span style="color:#75715e"># &lt;class &#39;int&#39;&gt;</span>
 <span style="color:#75715e"># &lt;class &#39;str&#39;&gt;</span>
 
-</code></pre></div></article>
+</code></pre></div><h4 id="基本类型">
+  基本类型
+  <a class="anchor" href="#%e5%9f%ba%e6%9c%ac%e7%b1%bb%e5%9e%8b">#</a>
+</h4>
+<ul>
+<li>布尔类型、整型、浮点型、字符串、列表、元组、集合、字典</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 数值</span>
+digital_value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># 字符串</span>
+str_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> 
+
+<span style="color:#75715e"># 列表</span>
+list_value <span style="color:#f92672">=</span> []
+
+<span style="color:#75715e"># 字典</span>
+ditc_value <span style="color:#f92672">=</span> {}
+
+<span style="color:#75715e"># 元组</span>
+tuple_value <span style="color:#f92672">=</span> ()
+
+<span style="color:#75715e"># Python中关于空类型的判断使用的内建函数any(),</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 列表 也是数组 奇怪吧</span>
+list_value <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>]
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;length&#39;</span>,len(list_value))
+
+
+<span style="color:#75715e"># 字典</span>
+ditc_value <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>:<span style="color:#e6db74">&#39;2&#39;</span>}
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;ditc_value&#34;</span>,ditc_value)
+
+
+<span style="color:#75715e"># 元组 相当于常量</span>
+tuple_value <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;b&#39;</span>)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;tuple_value&#39;</span>,tuple_value)
+</code></pre></div><h4 id="python-运算符">
+  Python 运算符
+  <a class="anchor" href="#python-%e8%bf%90%e7%ae%97%e7%ac%a6">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+<span style="color:#75715e"># 简单运算符</span>
+a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+b <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>)
+c <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>
+d <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span>
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, a)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, b)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, c)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, d)
+
+</code></pre></div><p><a href="https://www.runoob.com/python/python-numbers.html">参考1</a>
+<a href="http://c.biancheng.net/view/2171.html">参考2</a>
+<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017106984190464">参考3</a></p>
+</article>
  
       
 

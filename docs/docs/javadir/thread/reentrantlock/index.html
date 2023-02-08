@@ -2,50 +2,31 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ReentrantLock
-#
-
-ReentrantLock 介绍
-#
-
-  ReentrantLock是Java中常用的锁，属于乐观锁类型，多线程并发情况下。能保证共享数据安全性，线程间有序性
+<meta name="description" content="ReentrantLock #  ReentrantLock 介绍 #    ReentrantLock是Java中常用的锁，属于乐观锁类型，多线程并发情况下。能保证共享数据安全性，线程间有序性
   ReentrantLock通过原子操作和阻塞实现锁原理，一般使用lock获取锁，unlock释放锁，
   下面说一下锁的基本使用和底层基本实现原理，lock和unlock底层
   lock的时候可能被其他线程获得所，那么此线程会阻塞自己，关键原理底层用到Unsafe类的API: CAS和park
   ReentrantLock是一个可重入的互斥锁，又被称为“独占锁”
-  简单模拟 ReentrantLock
-#
-
- 不安全的例子  public class ReentrantLockDemo1 { public static void main(String[] args) { new Thread(() -&gt; { drawMoney() ; },&#34;线程1&#34;).start(); new Thread(() -&gt; { drawMoney() ; },&#34;线程2&#34;).start(); } private static void drawMoney(){ System.out.println(Thread.currentThread().getName()&#43;&#34;......&#34;&#43;&#34;正在取钱!&#34;); try { Thread.sleep(3000); } catch (InterruptedException e) { e.">
+  简单模拟 ReentrantLock #   不安全的例子  public class ReentrantLockDemo1 { public static void main(String[] args) { new Thread(() -&gt; { drawMoney() ; },&#34;线程1&#34;).start(); new Thread(() -&gt; { drawMoney() ; },&#34;线程2&#34;).start(); } private static void drawMoney(){ System.out.println(Thread.currentThread().getName()&#43;&#34;......&#34;&#43;&#34;正在取钱!&#34;); try { Thread.sleep(3000); } catch (InterruptedException e) { e.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="ReentrantLock" />
-<meta property="og:description" content="ReentrantLock
-#
-
-ReentrantLock 介绍
-#
-
-  ReentrantLock是Java中常用的锁，属于乐观锁类型，多线程并发情况下。能保证共享数据安全性，线程间有序性
+<meta property="og:description" content="ReentrantLock #  ReentrantLock 介绍 #    ReentrantLock是Java中常用的锁，属于乐观锁类型，多线程并发情况下。能保证共享数据安全性，线程间有序性
   ReentrantLock通过原子操作和阻塞实现锁原理，一般使用lock获取锁，unlock释放锁，
   下面说一下锁的基本使用和底层基本实现原理，lock和unlock底层
   lock的时候可能被其他线程获得所，那么此线程会阻塞自己，关键原理底层用到Unsafe类的API: CAS和park
   ReentrantLock是一个可重入的互斥锁，又被称为“独占锁”
-  简单模拟 ReentrantLock
-#
-
- 不安全的例子  public class ReentrantLockDemo1 { public static void main(String[] args) { new Thread(() -&gt; { drawMoney() ; },&#34;线程1&#34;).start(); new Thread(() -&gt; { drawMoney() ; },&#34;线程2&#34;).start(); } private static void drawMoney(){ System.out.println(Thread.currentThread().getName()&#43;&#34;......&#34;&#43;&#34;正在取钱!&#34;); try { Thread.sleep(3000); } catch (InterruptedException e) { e." />
+  简单模拟 ReentrantLock #   不安全的例子  public class ReentrantLockDemo1 { public static void main(String[] args) { new Thread(() -&gt; { drawMoney() ; },&#34;线程1&#34;).start(); new Thread(() -&gt; { drawMoney() ; },&#34;线程2&#34;).start(); } private static void drawMoney(){ System.out.println(Thread.currentThread().getName()&#43;&#34;......&#34;&#43;&#34;正在取钱!&#34;); try { Thread.sleep(3000); } catch (InterruptedException e) { e." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/reentrantlock/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-09-11T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-09-11T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/reentrantlock/" />
+<meta property="article:published_time" content="2022-09-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-11T00:00:00+00:00" />
 <title>ReentrantLock | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.c7f8557ef024a23edb1c51efd20637f06b9b593d7b89cdc625bc6351f317ca5f.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.4c00c9aad3dd3fb2bb47952c72d2967768f700f9330fc2d5fdda4a97914ae9d6.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4038,7 +4019,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
