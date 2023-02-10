@@ -17,7 +17,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../en.search.min.4c00c9aad3dd3fb2bb47952c72d2967768f700f9330fc2d5fdda4a97914ae9d6.js"  ></script>
+<script defer src="./../../../en.search.min.228a25615239c9dc7747744460e9ad762f88cdefbba9fa7751ad9a1ef61b043f.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/python/base/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -4046,8 +4046,10 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#输入和输出">输入和输出</a></li>
         <li><a href="#数据类型和变量">数据类型和变量</a></li>
+        <li><a href="#重要函数">重要函数</a></li>
       </ul>
     </li>
+    <li><a href="#模块">模块</a></li>
   </ul>
 </nav>
 
@@ -4236,12 +4238,347 @@ a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <sp
 b <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>)
 c <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>
 d <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span>
+<span style="color:#75715e"># 这里是12的2次方</span>
+e <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+<span style="color:#75715e"># 这里是9除以2 向下取整</span>
+f <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span> <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
+
+y1 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&gt;=</span> random<span style="color:#f92672">.</span>random()
+y2 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">==</span> random<span style="color:#f92672">.</span>random()
+y3 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;=</span> random<span style="color:#f92672">.</span>random()
+
+y4 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+y4 <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+
+y5 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+y5 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
 
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, a)
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, b)
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, c)
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, d)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, e)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, f)
 
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;y1&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, y1)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;y2&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, y2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;y3&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, y3)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;y4&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, y4)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;y5&#39;</span>, <span style="color:#e6db74">&#39;=&#39;</span>, y5)
+
+
+
+</code></pre></div><h4 id="条件语句">
+  条件语句
+  <a class="anchor" href="#%e6%9d%a1%e4%bb%b6%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+<span style="color:#75715e"># python 压根就不支持 switch</span>
+<span style="color:#75715e"># python三元运算符  也是没有的</span>
+a1 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random()
+a2 <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random()
+
+<span style="color:#66d9ef">if</span> (a1 <span style="color:#f92672">&gt;=</span> a2):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;a1大于a2&#34;</span>, a1, <span style="color:#e6db74">&#34; &#34;</span>, a2)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;结束&#34;</span>)
+
+b1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>random()
+b2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span> <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>random()
+
+<span style="color:#66d9ef">if</span> (b1 <span style="color:#f92672">==</span> b2):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;b1==b2&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;比较结束&#34;</span>)
+<span style="color:#66d9ef">elif</span> (b1 <span style="color:#f92672">&lt;</span> b2):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;b1&lt;b2&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;比较结束&#34;</span>)
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;不符合&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;比较结束&#34;</span>)
+
+</code></pre></div><h4 id="循环语句">
+  循环语句
+  <a class="anchor" href="#%e5%be%aa%e7%8e%af%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">10</span>):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x:&#34;</span>, x)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+
+maxValue <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+
+<span style="color:#66d9ef">while</span> (maxValue <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>):
+    maxValue <span style="color:#f92672">-=</span> random<span style="color:#f92672">.</span>random()
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;maxValue:&#34;</span>, maxValue)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+
+minValue <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#66d9ef">while</span> (minValue <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span>):
+    minValue <span style="color:#f92672">+=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;minValue:&#34;</span>, minValue)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34; &#34;</span>)
+
+
+
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">20</span>):
+    <span style="color:#66d9ef">if</span>(x <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;偶数:&#34;</span>,x)
+    <span style="color:#66d9ef">elif</span>(x <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;能被3整除:&#34;</span>, x)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;临时变量:&#34;</span>, x)
+
+
+
+<span style="color:#75715e">#</span>
+</code></pre></div><h4 id="break-语句">
+  break 语句
+  <a class="anchor" href="#break-%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+
+str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;人生五十年,如梦亦如幻。有生斯有死,壮士复何憾&#34;</span>
+
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> str1:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x:&#34;</span>,x)
+    <span style="color:#66d9ef">if</span>(x <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;,&#34;</span>):
+        <span style="color:#66d9ef">break</span>
+
+
+
+
+str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hubei couple opt for romantic, not lavish, wedding&#34;</span>
+
+<span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> str2:
+    <span style="color:#66d9ef">if</span>(y <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39; &#39;</span>):
+        <span style="color:#66d9ef">continue</span>
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(y)
+
+
+<span style="color:#75715e">#</span>
+</code></pre></div><h4 id="pass-语句">
+  pass 语句
+  <a class="anchor" href="#pass-%e8%af%ad%e5%8f%a5">#</a>
+</h4>
+<p>Python pass 是空语句，是为了保持程序结构的完整性。</p>
+<p>pass 不做任何事情，一般用做占位语句。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>), <span style="color:#ae81ff">3</span>):
+    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">3</span>):
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">print</span>(i)
+
+
+<span style="color:#66d9ef">pass</span>
+</code></pre></div><h4 id="字符串">
+  字符串
+  <a class="anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2">#</a>
+</h4>
+<p>字符串是 Python 中最常用的数据类型。我们可以使用引号 ( ' 或 &quot; ) 来创建字符串。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+
+str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;The Most Beautiful Swiss Books China Tour will be on exhibit in Shanghai from February 10 to 13 at Shanghai Ming Contemporary Art Museum&#39;</span>
+
+
+<span style="color:#66d9ef">print</span>(str1)
+<span style="color:#66d9ef">print</span>(str1[<span style="color:#ae81ff">0</span>])
+<span style="color:#66d9ef">print</span>(str1[<span style="color:#ae81ff">1</span>])
+<span style="color:#66d9ef">print</span>(max(str1))
+<span style="color:#66d9ef">print</span>(min(str1))
+<span style="color:#66d9ef">print</span>(str1<span style="color:#f92672">.</span>upper())
+
+</code></pre></div><h4 id="列表list">
+  列表(List)
+  <a class="anchor" href="#%e5%88%97%e8%a1%a8list">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+<span style="color:#75715e"># 自己定义一个字符串函数</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randomString</span>():
+    arr <span style="color:#f92672">=</span> []
+    str_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&#34;</span><span style="color:#75715e">#$%&amp;&#39;()*+,-./:;?@[\]^_`{|}~&#34;</span>
+    len_value <span style="color:#f92672">=</span> len(str_value)
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">10</span>):
+        index <span style="color:#f92672">=</span> int(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>,len_value))
+        arr<span style="color:#f92672">.</span>append(str_value[index])
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(arr)
+
+
+arr1 <span style="color:#f92672">=</span> [int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>)]
+<span style="color:#66d9ef">print</span>(arr1)
+
+<span style="color:#66d9ef">print</span>(arr1[<span style="color:#ae81ff">0</span>])
+
+<span style="color:#66d9ef">print</span>(arr1[<span style="color:#ae81ff">1</span>])
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;len&#34;</span>,len(arr1))
+
+arr1<span style="color:#f92672">.</span>reverse()
+<span style="color:#66d9ef">print</span>(arr1)
+
+arr1<span style="color:#f92672">.</span>sort()
+
+<span style="color:#66d9ef">print</span>(arr1)
+
+arr2 <span style="color:#f92672">=</span> []
+arr3 <span style="color:#f92672">=</span> []
+
+<span style="color:#66d9ef">print</span>(randomString())
+
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">5</span>):
+    arr2<span style="color:#f92672">.</span>append(randomString())
+    arr3<span style="color:#f92672">.</span>append(randomString())
+    <span style="color:#66d9ef">pass</span>
+
+
+
+<span style="color:#66d9ef">print</span>(arr2)
+<span style="color:#75715e"># 删除第一个元素</span>
+<span style="color:#66d9ef">del</span> arr2[<span style="color:#ae81ff">0</span>]
+<span style="color:#66d9ef">print</span>(arr2)
+
+
+arr2<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#39;a&#39;</span>)
+<span style="color:#66d9ef">print</span>(arr2)
+arr2<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">1</span>)
+<span style="color:#66d9ef">print</span>(arr2)
+arr2<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#34;a&#34;</span>)
+<span style="color:#66d9ef">print</span>(arr2)
+</code></pre></div><h4 id="函数">
+  函数
+  <a class="anchor" href="#%e5%87%bd%e6%95%b0">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 打印一下</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">printNew</span>(temp):
+    <span style="color:#66d9ef">print</span>(temp)
+    <span style="color:#66d9ef">pass</span>
+
+
+<span style="color:#75715e"># 加法</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+
+
+<span style="color:#75715e"># 减法</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sub</span>(x, y):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">-</span> y
+
+
+<span style="color:#75715e"># 除法</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">div</span>(x, y):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">/</span> y
+
+
+<span style="color:#75715e"># 取模</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">takingMold</span>(m, n):
+    <span style="color:#66d9ef">return</span> m <span style="color:#f92672">%</span> n
+
+
+<span style="color:#75715e"># 次方</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">runPower</span>(m, n):
+    <span style="color:#66d9ef">return</span> m <span style="color:#f92672">**</span> n
+
+
+a <span style="color:#f92672">=</span> runPower(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+
+<span style="color:#66d9ef">print</span>(a)
+
+</code></pre></div><h3 id="重要函数">
+  重要函数
+  <a class="anchor" href="#%e9%87%8d%e8%a6%81%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<h4 id="range">
+  range
+  <a class="anchor" href="#range">#</a>
+</h4>
+<p>range()的三种创建方式：</p>
+<p>第一种：只有一个参数（小括号中只给了一个数）即range(stop)</p>
+<p>第二种：range(start,stop) （给了两个参数，即小括号中给了两个数）</p>
+<p>第三种：range(start,stop,step)：创建一个在[start,stop)之间，步长为step;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">arr0 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">10</span>)
+
+<span style="color:#66d9ef">for</span> kk <span style="color:#f92672">in</span> arr0:
+    <span style="color:#66d9ef">print</span>(kk)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;--------------------------&#34;</span>)
+
+arr1 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>)
+
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> arr1:
+    <span style="color:#66d9ef">print</span>(i)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;..............................&#34;</span>)
+
+arr2 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>)
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> arr2:
+    <span style="color:#66d9ef">print</span>(k)
+
+</code></pre></div><h2 id="模块">
+  模块
+  <a class="anchor" href="#%e6%a8%a1%e5%9d%97">#</a>
+</h2>
+<blockquote>
+<p>Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句</p>
+</blockquote>
+<ul>
+<li>mathModule.py</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+
+<span style="color:#75715e"># 随机整数</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randomInt</span>():
+    temp <span style="color:#f92672">=</span> int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>)
+    temp <span style="color:#f92672">+=</span> int(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>))
+    <span style="color:#66d9ef">return</span> temp
+
+
+<span style="color:#75715e"># 随机浮点数</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randomFloat</span>():
+    temp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    temp <span style="color:#f92672">+=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>
+    temp <span style="color:#f92672">*=</span> random<span style="color:#f92672">.</span>random()
+    <span style="color:#66d9ef">return</span> temp
+
+
+<span style="color:#75715e"># 获取单独一个asii 字符</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getOneChar</span>():
+    <span style="color:#75715e"># 小写字母a-z：97-122</span>
+    arr1 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">122</span>)
+    <span style="color:#75715e"># 大写字母A-Z：65-90</span>
+    arr2 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">90</span>)
+    <span style="color:#75715e"># 数字0-9：48-57</span>
+    arr3 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">57</span>)
+    arr0 <span style="color:#f92672">=</span> []
+    arr0<span style="color:#f92672">.</span>extend(arr1)
+    arr0<span style="color:#f92672">.</span>extend(arr2)
+    arr0<span style="color:#f92672">.</span>extend(arr3)
+    index <span style="color:#f92672">=</span> int(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0</span>, len(arr0)))
+    tempNumber <span style="color:#f92672">=</span> arr0[index]
+    <span style="color:#66d9ef">return</span> chr(tempNumber)
+
+
+<span style="color:#75715e"># 获取随机字符串</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randomString</span>(tempLen):
+    temp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, tempLen):
+        temp <span style="color:#f92672">+=</span> getOneChar()
+    <span style="color:#66d9ef">return</span> temp
+
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> mathModule
+<span style="color:#75715e"># 只有同级目录才能这样</span>
+
+<span style="color:#66d9ef">print</span>(mathModule<span style="color:#f92672">.</span>randomInt())
+<span style="color:#66d9ef">print</span>(mathModule<span style="color:#f92672">.</span>randomFloat())
+<span style="color:#66d9ef">print</span>(mathModule<span style="color:#f92672">.</span>getOneChar())
+<span style="color:#66d9ef">print</span>(mathModule<span style="color:#f92672">.</span>randomString(<span style="color:#ae81ff">92</span>))
 </code></pre></div><p><a href="https://www.runoob.com/python/python-numbers.html">参考1</a>
 <a href="http://c.biancheng.net/view/2171.html">参考2</a>
 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017106984190464">参考3</a></p>
@@ -4492,8 +4829,10 @@ d <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <sp
       <ul>
         <li><a href="#输入和输出">输入和输出</a></li>
         <li><a href="#数据类型和变量">数据类型和变量</a></li>
+        <li><a href="#重要函数">重要函数</a></li>
       </ul>
     </li>
+    <li><a href="#模块">模块</a></li>
   </ul>
 </nav>
 
