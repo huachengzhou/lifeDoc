@@ -2,39 +2,64 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="一:MyCat是什么 #  一个彻底开源的，面向企业应用开发的大数据库集群
+<meta name="description" content="一:MyCat是什么
+#
+
+一个彻底开源的，面向企业应用开发的大数据库集群
 支持事务、ACID、可以替代MySQL的加强版数据库
 一个可以视为MySQL集群的企业级数据库，用来替代昂贵的Oracle集群
 一个融合内存缓存技术、NoSQL技术、HDFS大数据的新型SQL Server
 结合传统数据库和新型分布式数据仓库的新一代企业级数据库产品
 一个新颖的数据库中间件产品
 目前仅仅实现了mysql协议
-二:MyCat能做什么 #   1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理 #  Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
+二:MyCat能做什么
+#
+
+ 1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理
+#
+
+Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
 这种方式把数据库的分布式从代码中解耦出来，程序员察觉不出来后台使用 Mycat 还是MySQL。
-四:MyCat实战 #  参考1 参考2">
+四:MyCat实战
+#
+
+参考1 参考2">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mycat 学习与使用" />
-<meta property="og:description" content="一:MyCat是什么 #  一个彻底开源的，面向企业应用开发的大数据库集群
+<meta property="og:description" content="一:MyCat是什么
+#
+
+一个彻底开源的，面向企业应用开发的大数据库集群
 支持事务、ACID、可以替代MySQL的加强版数据库
 一个可以视为MySQL集群的企业级数据库，用来替代昂贵的Oracle集群
 一个融合内存缓存技术、NoSQL技术、HDFS大数据的新型SQL Server
 结合传统数据库和新型分布式数据仓库的新一代企业级数据库产品
 一个新颖的数据库中间件产品
 目前仅仅实现了mysql协议
-二:MyCat能做什么 #   1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理 #  Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
+二:MyCat能做什么
+#
+
+ 1:数据库读写分离   2:数据分片   3:多数据源整合  三:MyCat原理
+#
+
+Mycat 的原理中最重要的一个动词是“拦截”，它拦截了用户发送过来的 SQL 语句，首先对 SQL语句做了一些特定的分析：如分片分析、路由分析、读写分离分析、缓存分析等，然后将此 SQL 发往后端的真实数据库，并将返回的结果做适当的处理，最终再返回给用户。
 这种方式把数据库的分布式从代码中解耦出来，程序员察觉不出来后台使用 Mycat 还是MySQL。
-四:MyCat实战 #  参考1 参考2" />
+四:MyCat实战
+#
+
+参考1 参考2" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mycat 学习与使用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.4c00c9aad3dd3fb2bb47952c72d2967768f700f9330fc2d5fdda4a97914ae9d6.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.286588ae15532687363ccbf1dbbfd65ca3bd09e57e339a4ec86f36fb2ca29e5e.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4027,7 +4052,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

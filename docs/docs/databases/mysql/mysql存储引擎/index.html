@@ -2,33 +2,52 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MySQL 存储引擎概述 #   MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
-  查看当前引擎 show ENGINES  MyISAM存储引擎 #   不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
+<meta name="description" content="MySQL 存储引擎概述
+#
+
+ MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
+  查看当前引擎 show ENGINES  MyISAM存储引擎
+#
+
+ 不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
   支持3种不同的存储格式，分别是：静态表；动态表；压缩表   静态表：表中的字段都是非变长字段，这样每个记录都是固定长度的，优点存储非常迅速，容易缓存，出现故障容易恢复；缺点是占用的空间通常比动态表多（因为存储时会按照列的宽度定义补足空格）ps：在取数据的时候，默认会把字段后面的空格去掉，如果不注意会把数据本身带的空格也会忽略。 动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能 压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
   动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能
   压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
- InnoDB存储引擎 #   nnoDB 存储表和索引有两种方式
+ InnoDB存储引擎
+#
+
+ nnoDB 存储表和索引有两种方式
   使用共享表空间存储，这种方式创建的表的表结构保存在.frm 文件中，数据和索引 保存在 innodb_data_home_dir 和 innodb_data_file_path 定义的表空间中，可以是 多个文件。 使用多表空间存储，这种方式创建的表的表结构仍然保存在.frm 文件中，但是每个 表的数据和索引单独保存在.ibd 中。如果是个分区表，则每个分区对应单独的.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql存储引擎" />
-<meta property="og:description" content="MySQL 存储引擎概述 #   MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
-  查看当前引擎 show ENGINES  MyISAM存储引擎 #   不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
+<meta property="og:description" content="MySQL 存储引擎概述
+#
+
+ MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、 NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安 全表，其他存储引擎都是非事务安全表。
+  查看当前引擎 show ENGINES  MyISAM存储引擎
+#
+
+ 不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
   支持3种不同的存储格式，分别是：静态表；动态表；压缩表   静态表：表中的字段都是非变长字段，这样每个记录都是固定长度的，优点存储非常迅速，容易缓存，出现故障容易恢复；缺点是占用的空间通常比动态表多（因为存储时会按照列的宽度定义补足空格）ps：在取数据的时候，默认会把字段后面的空格去掉，如果不注意会把数据本身带的空格也会忽略。 动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能 压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
   动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能
   压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
- InnoDB存储引擎 #   nnoDB 存储表和索引有两种方式
+ InnoDB存储引擎
+#
+
+ nnoDB 存储表和索引有两种方式
   使用共享表空间存储，这种方式创建的表的表结构保存在.frm 文件中，数据和索引 保存在 innodb_data_home_dir 和 innodb_data_file_path 定义的表空间中，可以是 多个文件。 使用多表空间存储，这种方式创建的表的表结构仍然保存在.frm 文件中，但是每个 表的数据和索引单独保存在.ibd 中。如果是个分区表，则每个分区对应单独的." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mysql存储引擎 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.4c00c9aad3dd3fb2bb47952c72d2967768f700f9330fc2d5fdda4a97914ae9d6.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.286588ae15532687363ccbf1dbbfd65ca3bd09e57e339a4ec86f36fb2ca29e5e.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4021,7 +4040,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

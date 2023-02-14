@@ -12,8 +12,8 @@
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/</guid>
-      <description>权限 #   系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
- Pg权限分为两部分，一部分是“系统权限”或者数据库用户的属性，可以授予role或user（两者区别在于login权限）；一部分为数据库对象上的操作权限。对超级用户不做权限检查，其它走acl。对于数据库对象，开始只有所有者和超级用户可以做任何操作，其它走acl。在pg里，对acl模型做了简化，组和角色都是role，用户和角色的区别是角色没有login权限。超级权限 #   创建超级用户(create user alice with superuser password &amp;lsquo;123456&amp;rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限 #    (create role blake password &amp;lsquo;123456&amp;rsquo;;)(create user bob password &amp;lsquo;123456&amp;rsquo;;)(create database testdb;)
+      <description>权限# 系统权限 role和user都是用户,只不过role属性不能登录当然也可以指定 超级权限 不做权限检查(实际中是很危险的)
+ Pg权限分为两部分，一部分是“系统权限”或者数据库用户的属性，可以授予role或user（两者区别在于login权限）；一部分为数据库对象上的操作权限。对超级用户不做权限检查，其它走acl。对于数据库对象，开始只有所有者和超级用户可以做任何操作，其它走acl。在pg里，对acl模型做了简化，组和角色都是role，用户和角色的区别是角色没有login权限。超级权限# 创建超级用户(create user alice with superuser password &amp;lsquo;123456&amp;rsquo;;)系统不会做权限操作校验,仅仅是不能够创建用户与删除用户  系统权限#  (create role blake password &amp;lsquo;123456&amp;rsquo;;)(create user bob password &amp;lsquo;123456&amp;rsquo;;)(create database testdb;)
   (grant all on database testdb to bob;grant all on database testdb to blake;)
   测试如下 用户bob可以登录而blake不能登录直接抛出了FATL:role blake is not &amp;lsquo;permitted to log in&amp;rsquo;
   ( drop database testdb;drop role blake;drop user bob;)</description>
