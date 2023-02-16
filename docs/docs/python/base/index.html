@@ -32,7 +32,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../en.search.min.286588ae15532687363ccbf1dbbfd65ca3bd09e57e339a4ec86f36fb2ca29e5e.js"  ></script>
+<script defer src="./../../../en.search.min.0f22376b0b998d2791bbad88ae8c390336bc6ac9c113cb56bc83601e06d85772.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/python/base/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -830,6 +830,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/python-object/" class="">python 面向对象</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -4066,6 +4079,11 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#模块">模块</a></li>
     <li><a href="#文件">文件</a></li>
+    <li><a href="#面向对象">面向对象</a>
+      <ul>
+        <li><a href="#内置类属性">内置类属性</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -4881,6 +4899,95 @@ dir1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:</s
 <span style="color:#75715e"># fileF5()</span>
 
 fileF6()
+</code></pre></div><h2 id="面向对象">
+  面向对象
+  <a class="anchor" href="#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1">#</a>
+</h2>
+<ul>
+<li><code>类(Class):</code> 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</li>
+<li><code>类变量：</code>类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
+<li><code>数据成员：</code>类变量或者实例变量, 用于处理类及其实例对象的相关的数据。</li>
+<li><code>方法重写：</code>如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
+<li><code>局部变量：</code>定义在方法中的变量，只作用于当前实例的类。</li>
+<li><code>实例变量：</code>在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。</li>
+<li><code>继承：</code>即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&quot;是一个（is-a）&ldquo;关系（例图，Dog是一个Animal）。</li>
+<li><code>实例化：</code>创建一个类的实例，类的具体对象。</li>
+<li><code>方法：</code>类中定义的函数。</li>
+<li><code>对象：</code>通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span>:
+    <span style="color:#75715e"># 所有员工的基类 empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享</span>
+    empCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#75715e"># 类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法</span>
+    <span style="color:#66d9ef">def</span> __init__(self, name, salary):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+        self<span style="color:#f92672">.</span>salary <span style="color:#f92672">=</span> salary
+        Employee<span style="color:#f92672">.</span>empCount <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">displayCount</span>(self):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Total Employee&#34;</span>, Employee<span style="color:#f92672">.</span>empCount, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;  _&#34;</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">displayEmployee</span>(self):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;name:&#34;</span>, self<span style="color:#f92672">.</span>name, <span style="color:#e6db74">&#34; ;&#34;</span>, <span style="color:#e6db74">&#34;salary:&#34;</span>, self<span style="color:#f92672">.</span>salary)
+
+<span style="color:#75715e"># 定义实例 1</span>
+t1 <span style="color:#f92672">=</span> Employee(<span style="color:#e6db74">&#34;张三&#34;</span>, random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10000</span>)
+t1<span style="color:#f92672">.</span>displayCount()
+t1<span style="color:#f92672">.</span>displayEmployee()
+
+<span style="color:#75715e"># 定义实例 2</span>
+t2 <span style="color:#f92672">=</span> Employee(<span style="color:#e6db74">&#34;李四&#34;</span>, random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10000</span>)
+t2<span style="color:#f92672">.</span>displayCount()
+t2<span style="color:#f92672">.</span>displayEmployee()
+</code></pre></div><h3 id="内置类属性">
+  内置类属性
+  <a class="anchor" href="#%e5%86%85%e7%bd%ae%e7%b1%bb%e5%b1%9e%e6%80%a7">#</a>
+</h3>
+<ul>
+<li><strong>dict</strong> : 类的属性（包含一个字典，由类的数据属性组成）</li>
+<li><strong>doc</strong> :类的文档字符串</li>
+<li><strong>name</strong>: 类名</li>
+<li><strong>module</strong>: 类定义所在的模块（类的全名是'<strong>main</strong>.className'，如果类位于一个导入模块mymod中，那么className.<strong>module</strong> 等于 mymod）</li>
+<li><strong>bases</strong> : 类的所有父类构成元素（包含了一个由所有父类组成的元组）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>:
+    hand <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    footer <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    head <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+
+
+<span style="color:#75715e"># 这里是继承 Person</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Teacher</span>(Person) :
+    <span style="color:#75715e"># 静态类变量</span>
+    empCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self,name,position):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+        self<span style="color:#f92672">.</span>position <span style="color:#f92672">=</span> position
+
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print</span>(self):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;名字:&#34;</span>,self<span style="color:#f92672">.</span>name,<span style="color:#e6db74">&#34;  职位:&#34;</span>,self<span style="color:#f92672">.</span>position)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;__dict__ &#34;</span>,Teacher<span style="color:#f92672">.</span>__dict__ ,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;__doc__&#34;</span>,Teacher<span style="color:#f92672">.</span>__doc__,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;__name__&#34;</span>,Teacher<span style="color:#f92672">.</span>__name__,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;__module__&#34;</span>,Teacher<span style="color:#f92672">.</span>__module__,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:&#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;__bases__ &#34;</span>,Teacher<span style="color:#f92672">.</span>__bases__ ,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;:&#34;</span>)
+
+
+t1 <span style="color:#f92672">=</span> Teacher(<span style="color:#e6db74">&#39;张老师&#39;</span>,<span style="color:#e6db74">&#39;数学&#39;</span>)
+t1<span style="color:#f92672">.</span><span style="color:#66d9ef">print</span>()
+
+
+t2 <span style="color:#f92672">=</span> Teacher(<span style="color:#e6db74">&#39;李老师&#39;</span>,<span style="color:#e6db74">&#39;英语&#39;</span>)
+t2<span style="color:#f92672">.</span><span style="color:#66d9ef">print</span>()
+
 </code></pre></div><p><a href="https://www.runoob.com/python/python-numbers.html">参考1</a>
 <a href="http://c.biancheng.net/view/2171.html">参考2</a>
 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017106984190464">参考3</a>
@@ -5137,6 +5244,11 @@ fileF6()
     </li>
     <li><a href="#模块">模块</a></li>
     <li><a href="#文件">文件</a></li>
+    <li><a href="#面向对象">面向对象</a>
+      <ul>
+        <li><a href="#内置类属性">内置类属性</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
