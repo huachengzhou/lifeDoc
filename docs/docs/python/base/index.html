@@ -32,7 +32,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../en.search.min.0f22376b0b998d2791bbad88ae8c390336bc6ac9c113cb56bc83601e06d85772.js"  ></script>
+<script defer src="./../../../en.search.min.c5b44edf1d224152db8063220f52a0d22247a5f6fd8d81823aade576cf8e3ffc.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/python/base/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -839,6 +839,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../docs/python/base/python-object/" class="">python 面向对象</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/file/" class="">python 文件</a>
   
 
         </li>
@@ -4079,6 +4092,7 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#模块">模块</a></li>
     <li><a href="#文件">文件</a></li>
+    <li><a href="#os">OS</a></li>
     <li><a href="#面向对象">面向对象</a>
       <ul>
         <li><a href="#内置类属性">内置类属性</a></li>
@@ -4899,6 +4913,225 @@ dir1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:</s
 <span style="color:#75715e"># fileF5()</span>
 
 fileF6()
+</code></pre></div><h2 id="os">
+  OS
+  <a class="anchor" href="#os">#</a>
+</h2>
+<ul>
+<li>os.path 模块</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>os.getcwd()</td>
+<td>返回当前工作目录</td>
+</tr>
+<tr>
+<td>os.path.abspath(path)</td>
+<td>返回 path 的绝对路径。</td>
+</tr>
+<tr>
+<td>os.path.basename(path)</td>
+<td>获取 path 路径的基本名称，即 path 末尾到最后一个斜杠的位置之间的字符串。</td>
+</tr>
+<tr>
+<td>os.path.commonprefix(list)</td>
+<td>返回 list（多个路径）中，所有 path 共有的最长的路径。</td>
+</tr>
+<tr>
+<td>os.path.dirname(path)</td>
+<td>返回 path 路径中的目录部分。</td>
+</tr>
+<tr>
+<td>os.path.exists(path)</td>
+<td>判断 path 对应的文件是否存在，如果存在，返回 True；反之，返回 False。和 lexists() 的区别在于，exists()会自动判断失效的文件链接（类似 Windows 系统中文件的快捷方式），而 lexists() 却不会。</td>
+</tr>
+<tr>
+<td>os.path.lexists(path)</td>
+<td>判断路径是否存在，如果存在，则返回 True；反之，返回 False。</td>
+</tr>
+<tr>
+<td>os.path.expanduser(path)</td>
+<td>把 path 中包含的 &ldquo;~&rdquo; 和 &ldquo;~user&rdquo; 转换成用户目录。</td>
+</tr>
+<tr>
+<td>os.path.expandvars(path)</td>
+<td>根据环境变量的值替换 path 中包含的 &ldquo;$name&rdquo; 和 &ldquo;${name}&quot;。</td>
+</tr>
+<tr>
+<td>os.path.getatime(path)</td>
+<td>返回 path 所指文件的最近访问时间（浮点型秒数）。</td>
+</tr>
+<tr>
+<td>os.path.getmtime(path)</td>
+<td>返回文件的最近修改时间（单位为秒）。</td>
+</tr>
+<tr>
+<td>os.path.getctime(path)</td>
+<td>返回文件的创建时间（单位为秒，自 1970 年 1 月 1 日起（又称 Unix 时间））。</td>
+</tr>
+<tr>
+<td>os.path.getsize(path)</td>
+<td>返回文件大小，如果文件不存在就返回错误。</td>
+</tr>
+<tr>
+<td>os.path.isabs(path)</td>
+<td>判断是否为绝对路径。</td>
+</tr>
+<tr>
+<td>os.path.isfile(path)</td>
+<td>判断路径是否为文件。</td>
+</tr>
+<tr>
+<td>os.path.isdir(path)</td>
+<td>判断路径是否为目录。</td>
+</tr>
+<tr>
+<td>os.path.islink(path)</td>
+<td>判断路径是否为链接文件（类似 Windows 系统中的快捷方式）。</td>
+</tr>
+<tr>
+<td>os.path.ismount(path)</td>
+<td>判断路径是否为挂载点。</td>
+</tr>
+<tr>
+<td>os.path.join(path1[, path2[, &hellip;]])</td>
+<td>把目录和文件名合成一个路径。</td>
+</tr>
+<tr>
+<td>os.path.normcase(path)</td>
+<td>转换 path 的大小写和斜杠。</td>
+</tr>
+<tr>
+<td>os.path.normpath(path)</td>
+<td>规范 path 字符串形式。</td>
+</tr>
+<tr>
+<td>os.path.realpath(path)</td>
+<td>返回 path 的真实路径。</td>
+</tr>
+<tr>
+<td>os.path.relpath(path[, start])</td>
+<td>从 start 开始计算相对路径。</td>
+</tr>
+<tr>
+<td>os.path.samefile(path1, path2)</td>
+<td>判断目录或文件是否相同。</td>
+</tr>
+<tr>
+<td>os.path.sameopenfile(fp1, fp2)</td>
+<td>判断 fp1 和 fp2 是否指向同一文件。</td>
+</tr>
+<tr>
+<td>os.path.samestat(stat1, stat2)</td>
+<td>判断 stat1 和 stat2 是否指向同一个文件。</td>
+</tr>
+<tr>
+<td>os.path.split(path)</td>
+<td>把路径分割成 dirname 和 basename，返回一个元组。</td>
+</tr>
+<tr>
+<td>os.path.splitdrive(path)</td>
+<td>一般用在 windows 下，返回驱动器名和路径组成的元组。</td>
+</tr>
+<tr>
+<td>os.path.splitext(path)</td>
+<td>分割路径，返回路径名和文件扩展名的元组。</td>
+</tr>
+<tr>
+<td>os.path.splitunc(path)</td>
+<td>把路径分割为加载点与文件。</td>
+</tr>
+<tr>
+<td>os.path.walk(path, visit, arg)</td>
+<td>遍历path，进入每个目录都调用 visit 函数，visit 函数必须有 3 个参数(arg, dirname, names)，dirname 表示当前目录的目录名，names 代表当前目录下的所有文件名，args 则为 walk 的第三个参数。</td>
+</tr>
+<tr>
+<td>os.path.supports_unicode_filenames</td>
+<td>设置是否可以将任意 Unicode 字符串用作文件名。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+
+<span style="color:#f92672">import</span>  os
+
+<span style="color:#f92672">import</span>  time
+
+<span style="color:#75715e"># 返回当前工作目录</span>
+<span style="color:#66d9ef">print</span>(os<span style="color:#f92672">.</span>getcwd())
+
+<span style="color:#75715e"># 返回 path 的绝对路径</span>
+<span style="color:#66d9ef">print</span>(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>getcwd()))
+
+dir1x <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getcwd() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span>str(int(time<span style="color:#f92672">.</span>time()))
+
+<span style="color:#75715e"># 创建目录</span>
+os<span style="color:#f92672">.</span>mkdir(dir1x)
+<span style="color:#66d9ef">print</span>(dir1x)
+
+<span style="color:#75715e"># os.chdir(dir1x)</span>
+<span style="color:#75715e"># print(&#34;新目录&#34;,os.getcwd())</span>
+
+
+<span style="color:#75715e"># 获取 path 路径的基本名称，即 path 末尾到最后一个斜杠的位置之间的字符串 如 readme.md</span>
+<span style="color:#66d9ef">print</span>(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>basename(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">pythonProjects</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">t2</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">readme.md&#34;</span>))
+
+<span style="color:#75715e"># 判断路径是否为文件</span>
+<span style="color:#66d9ef">print</span>(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">pythonProjects</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">t2</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">readme.md&#34;</span>))
+
+<span style="color:#75715e"># 判断路径是否为目录</span>
+<span style="color:#66d9ef">print</span>(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">pythonProjects</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">t2&#34;</span>))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+
+<span style="color:#f92672">import</span> time
+
+<span style="color:#f92672">import</span> random
+
+str2 <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), os<span style="color:#f92672">.</span>pardir)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">file&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;_writelines.txt&#34;</span>
+strDir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), os<span style="color:#f92672">.</span>pardir)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">file&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> str(random<span style="color:#f92672">.</span>random())
+str21 <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>getcwd(), os<span style="color:#f92672">.</span>pardir)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">file&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;_zzx.txt&#34;</span>
+str3 <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(str2) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">_v0000.text&#34;</span>
+
+os1 <span style="color:#f92672">=</span> open(str2, <span style="color:#e6db74">&#34;w&#34;</span>)
+os2 <span style="color:#f92672">=</span> open(str21, <span style="color:#e6db74">&#34;w&#34;</span>)
+
+strList <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>):
+    strList<span style="color:#f92672">.</span>append(str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">*</span> time<span style="color:#f92672">.</span>time()) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+
+os1<span style="color:#f92672">.</span>writelines(strList)
+os1<span style="color:#f92672">.</span>flush()
+os1<span style="color:#f92672">.</span>close()
+
+os2<span style="color:#f92672">.</span>write(os<span style="color:#f92672">.</span>getcwd())
+os2<span style="color:#f92672">.</span>flush()
+os2<span style="color:#f92672">.</span>close()
+
+
+
+<span style="color:#66d9ef">print</span>(str3)
+<span style="color:#66d9ef">print</span>(str2)
+<span style="color:#75715e"># 重命名</span>
+os<span style="color:#f92672">.</span>rename(str2, str3)
+
+
+<span style="color:#66d9ef">print</span>(str21)
+
+<span style="color:#75715e"># 删除文件</span>
+os<span style="color:#f92672">.</span>remove(str21)
+
+os<span style="color:#f92672">.</span>mkdir(strDir)
+<span style="color:#66d9ef">print</span>(strDir)
+
+<span style="color:#75715e"># 删除文件夹</span>
+os<span style="color:#f92672">.</span>rmdir(strDir)
 </code></pre></div><h2 id="面向对象">
   面向对象
   <a class="anchor" href="#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1">#</a>
@@ -5244,6 +5477,7 @@ t2<span style="color:#f92672">.</span><span style="color:#66d9ef">print</span>()
     </li>
     <li><a href="#模块">模块</a></li>
     <li><a href="#文件">文件</a></li>
+    <li><a href="#os">OS</a></li>
     <li><a href="#面向对象">面向对象</a>
       <ul>
         <li><a href="#内置类属性">内置类属性</a></li>

@@ -765,6 +765,126 @@ def fileF6():
 fileF6()
 ```
 
+## OS
+
++ os.path 模块
+
+| 方法 | 说明 |
+| --- | --- |
+| os.getcwd()  | 返回当前工作目录 |
+| os.path.abspath(path) | 返回 path 的绝对路径。 |
+| os.path.basename(path) | 获取 path 路径的基本名称，即 path 末尾到最后一个斜杠的位置之间的字符串。 |
+| os.path.commonprefix(list) | 返回 list（多个路径）中，所有 path 共有的最长的路径。 |
+| os.path.dirname(path) | 返回 path 路径中的目录部分。 |
+| os.path.exists(path) | 判断 path 对应的文件是否存在，如果存在，返回 True；反之，返回 False。和 lexists() 的区别在于，exists()会自动判断失效的文件链接（类似 Windows 系统中文件的快捷方式），而 lexists() 却不会。 |
+| os.path.lexists(path) | 判断路径是否存在，如果存在，则返回 True；反之，返回 False。 |
+| os.path.expanduser(path) | 把 path 中包含的 "~" 和 "~user" 转换成用户目录。 |
+| os.path.expandvars(path) | 根据环境变量的值替换 path 中包含的 "$name" 和 "${name}"。 |
+| os.path.getatime(path) | 返回 path 所指文件的最近访问时间（浮点型秒数）。 |
+| os.path.getmtime(path) | 返回文件的最近修改时间（单位为秒）。 |
+| os.path.getctime(path) | 返回文件的创建时间（单位为秒，自 1970 年 1 月 1 日起（又称 Unix 时间））。 |
+| os.path.getsize(path) | 返回文件大小，如果文件不存在就返回错误。 |
+| os.path.isabs(path) | 判断是否为绝对路径。 |
+| os.path.isfile(path) | 判断路径是否为文件。 |
+| os.path.isdir(path) | 判断路径是否为目录。 |
+| os.path.islink(path) | 判断路径是否为链接文件（类似 Windows 系统中的快捷方式）。 |
+| os.path.ismount(path) | 判断路径是否为挂载点。 |
+| os.path.join(path1[, path2[, ...]]) | 把目录和文件名合成一个路径。 |
+| os.path.normcase(path) | 转换 path 的大小写和斜杠。 |
+| os.path.normpath(path) | 规范 path 字符串形式。 |
+| os.path.realpath(path) | 返回 path 的真实路径。 |
+| os.path.relpath(path[, start]) | 从 start 开始计算相对路径。 |
+| os.path.samefile(path1, path2) | 判断目录或文件是否相同。 |
+| os.path.sameopenfile(fp1, fp2) | 判断 fp1 和 fp2 是否指向同一文件。 |
+| os.path.samestat(stat1, stat2) | 判断 stat1 和 stat2 是否指向同一个文件。 |
+| os.path.split(path) | 把路径分割成 dirname 和 basename，返回一个元组。 |
+| os.path.splitdrive(path) | 一般用在 windows 下，返回驱动器名和路径组成的元组。 |
+| os.path.splitext(path) | 分割路径，返回路径名和文件扩展名的元组。 |
+| os.path.splitunc(path) | 把路径分割为加载点与文件。 |
+| os.path.walk(path, visit, arg) | 遍历path，进入每个目录都调用 visit 函数，visit 函数必须有 3 个参数(arg, dirname, names)，dirname 表示当前目录的目录名，names 代表当前目录下的所有文件名，args 则为 walk 的第三个参数。 |
+| os.path.supports_unicode_filenames | 设置是否可以将任意 Unicode 字符串用作文件名。 |
+
+
+```python
+
+
+import  os
+
+import  time
+
+# 返回当前工作目录
+print(os.getcwd())
+
+# 返回 path 的绝对路径
+print(os.path.abspath(os.getcwd()))
+
+dir1x = os.getcwd() + "\\"+str(int(time.time()))
+
+# 创建目录
+os.mkdir(dir1x)
+print(dir1x)
+
+# os.chdir(dir1x)
+# print("新目录",os.getcwd())
+
+
+# 获取 path 路径的基本名称，即 path 末尾到最后一个斜杠的位置之间的字符串 如 readme.md
+print(os.path.basename("D:\\pythonProjects\\t2\\readme.md"))
+
+# 判断路径是否为文件
+print(os.path.isfile("D:\\pythonProjects\\t2\\readme.md"))
+
+# 判断路径是否为目录
+print(os.path.isdir("D:\\pythonProjects\\t2"))
+```
+
+```python
+import os
+
+import time
+
+import random
+
+str2 = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + "\\file" + "\\" + "_writelines.txt"
+strDir = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + "\\file" + "\\" + str(random.random())
+str21 = os.path.abspath(os.path.join(os.getcwd(), os.pardir)) + "\\file" + "\\" + "_zzx.txt"
+str3 = os.path.dirname(str2) + "\\_v0000.text"
+
+os1 = open(str2, "w")
+os2 = open(str21, "w")
+
+strList = []
+for x in range(0, 100):
+    strList.append(str(time.time() * time.time()) + '\n')
+
+os1.writelines(strList)
+os1.flush()
+os1.close()
+
+os2.write(os.getcwd())
+os2.flush()
+os2.close()
+
+
+
+print(str3)
+print(str2)
+# 重命名
+os.rename(str2, str3)
+
+
+print(str21)
+
+# 删除文件
+os.remove(str21)
+
+os.mkdir(strDir)
+print(strDir)
+
+# 删除文件夹
+os.rmdir(strDir)
+```
+
 
 ## 面向对象
 
@@ -856,6 +976,8 @@ t2 = Teacher('李老师','英语')
 t2.print()
 
 ```
+
+
 
 [参考1](https://www.runoob.com/python/python-numbers.html)
 [参考2](http://c.biancheng.net/view/2171.html)
