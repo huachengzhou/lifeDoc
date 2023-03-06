@@ -105,3 +105,5 @@ print(pathlib.Path.cwd().parent.joinpath(*paths))  # /Users/路径拼接/真麻�
 [参考1](https://blog.csdn.net/m0_67155975/article/details/123189181)
 
 [参考2](https://zhuanlan.zhihu.com/p/475661402)
+
+[python常用第三方库、框架、工具 ](https://www.cnblogs.com/xfeiyun/p/16669105.html)
