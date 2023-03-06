@@ -44,6 +44,9 @@
     <loc>https://huachengzhou.github.io/life/docs/python/base/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python-object/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/windows/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -162,7 +165,7 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/python/base/python-object/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/file/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/</loc>
@@ -237,7 +240,10 @@
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/python/base/file/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/list/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/module/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/thread/tool/</loc>

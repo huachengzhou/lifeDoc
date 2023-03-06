@@ -2,7 +2,7 @@
 title: "python 面向对象"
 date: 2021-04-15
 draft: false
-weight: 2
+weight: 1
 ---
 
 

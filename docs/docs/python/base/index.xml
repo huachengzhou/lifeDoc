@@ -32,5 +32,24 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
      模式 意义 注意事项     r 只读模式打开文件，读文件内容的指针会放在文件的开头。 操作的文件必须存在。   rb 以二进制格式、采用只读模式打开文件，读文件内容的指针位于文件的开头，一般用于非文本文件，如图片文件、音频文件等。    r+ 打开文件后，既可以从头读取文件内容，也可以从开头向文件中写入新的内容，写入的新内容会覆盖文件中等长度的原有内容。    rb+ 以二进制格式、采用读写模式打开文件，读写文件的指针会放在文件的开头，通常针对非文本文件（如音频文件）。    w 以只写模式打开文件，若该文件存在，打开时会清空文件中原有的内容。 若文件存在，会清空其原有内容（覆盖文件）；反之，则创建新文件。   wb 以二进制格式、只写模式打开文件，一般用于非文本文件（如音频文件）    w+ 打开文件后，会对原有内容进行清空，并对该文件有读写权限。    wb+ 以二进制格式、读写模式打开文件，一般用于非文本文件    a 以追加模式打开一个文件，对文件只有写入权限，如果文件已经存在，文件指针将放在文件的末尾（即新写入内容会位于已有内容之后）；反之，则会创建新文件。     ab 以二进制格式打开文件，并采用追加模式，对文件只有写权限。如果该文件已存在，文件指针位于文件末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     a+ 以读写模式打开文件；如果文件存在，文件指针放在文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     ab+ 以二进制模式打开文件，并采用追加模式，对文件具有读写权限，如果文件存在，则文件指针位于文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。       File对象的属性     属性 描述     file.</description>
     </item>
     
+    <item>
+      <title>python list</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/list/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/list/</guid>
+      <description> 所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
+ </description>
+    </item>
+    
+    <item>
+      <title>python 模块介绍</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/module/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/module/</guid>
+      <description>模块介绍#time模块#datetime模块#random 模块#os 模块#sys 模块#json 和 pickle 模块#hashlib和hmac 模块#logging 模块#numpy 模块#pandas 模块#matplotlib 模块#re 模块#typing 模块#collections 模块#pathlib 模块#pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
+    </item>
+    
   </channel>
 </rss>
