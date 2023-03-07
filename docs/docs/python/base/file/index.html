@@ -2,13 +2,10 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="文件
-#
-
- open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
+<meta name="description" content="文件 #   open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
 file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]]])
 此格式中，用 [] 括起来的部分为可选参数，即可以使用也可以省略。其中，各个参数所代表的含义如下：
   file：表示要创建的文件对象。
@@ -19,10 +16,7 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
   open 函数支持的文件打开模式
      模式 意义 注意事项     r 只读模式打开文件，读文件内容的指针会放在文件的开头。 操作的文件必须存在。   rb 以二进制格式、采用只读模式打开文件，读文件内容的指针位于文件的开头，一般用于非文本文件，如图片文件、音频文件等。    r&#43; 打开文件后，既可以从头读取文件内容，也可以从开头向文件中写入新的内容，写入的新内容会覆盖文件中等长度的原有内容。    rb&#43; 以二进制格式、采用读写模式打开文件，读写文件的指针会放在文件的开头，通常针对非文本文件（如音频文件）。    w 以只写模式打开文件，若该文件存在，打开时会清空文件中原有的内容。 若文件存在，会清空其原有内容（覆盖文件）；反之，则创建新文件。   wb 以二进制格式、只写模式打开文件，一般用于非文本文件（如音频文件）    w&#43; 打开文件后，会对原有内容进行清空，并对该文件有读写权限。    wb&#43; 以二进制格式、读写模式打开文件，一般用于非文本文件    a 以追加模式打开一个文件，对文件只有写入权限，如果文件已经存在，文件指针将放在文件的末尾（即新写入内容会位于已有内容之后）；反之，则会创建新文件。     ab 以二进制格式打开文件，并采用追加模式，对文件只有写权限。如果该文件已存在，文件指针位于文件末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     a&#43; 以读写模式打开文件；如果文件存在，文件指针放在文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     ab&#43; 以二进制模式打开文件，并采用追加模式，对文件具有读写权限，如果文件存在，则文件指针位于文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。       File对象的属性     属性 描述     file.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python 文件" />
-<meta property="og:description" content="文件
-#
-
- open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
+<meta property="og:description" content="文件 #   open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
 file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]]])
 此格式中，用 [] 括起来的部分为可选参数，即可以使用也可以省略。其中，各个参数所代表的含义如下：
   file：表示要创建的文件对象。
@@ -33,15 +27,14 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
   open 函数支持的文件打开模式
      模式 意义 注意事项     r 只读模式打开文件，读文件内容的指针会放在文件的开头。 操作的文件必须存在。   rb 以二进制格式、采用只读模式打开文件，读文件内容的指针位于文件的开头，一般用于非文本文件，如图片文件、音频文件等。    r&#43; 打开文件后，既可以从头读取文件内容，也可以从开头向文件中写入新的内容，写入的新内容会覆盖文件中等长度的原有内容。    rb&#43; 以二进制格式、采用读写模式打开文件，读写文件的指针会放在文件的开头，通常针对非文本文件（如音频文件）。    w 以只写模式打开文件，若该文件存在，打开时会清空文件中原有的内容。 若文件存在，会清空其原有内容（覆盖文件）；反之，则创建新文件。   wb 以二进制格式、只写模式打开文件，一般用于非文本文件（如音频文件）    w&#43; 打开文件后，会对原有内容进行清空，并对该文件有读写权限。    wb&#43; 以二进制格式、读写模式打开文件，一般用于非文本文件    a 以追加模式打开一个文件，对文件只有写入权限，如果文件已经存在，文件指针将放在文件的末尾（即新写入内容会位于已有内容之后）；反之，则会创建新文件。     ab 以二进制格式打开文件，并采用追加模式，对文件只有写权限。如果该文件已存在，文件指针位于文件末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     a&#43; 以读写模式打开文件；如果文件存在，文件指针放在文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。     ab&#43; 以二进制模式打开文件，并采用追加模式，对文件具有读写权限，如果文件存在，则文件指针位于文件的末尾（新写入文件会位于已有内容之后）；反之，则创建新文件。       File对象的属性     属性 描述     file." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/file/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/file/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
 <title>python 文件 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.d2d4deca29ff1c8faf8a18e5a9ceea73d2735ea146d41dc5c1392b82bc110b0c.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.2d7d9b28972399b762da2dc35e8c6f38c5b747b0eba0a8c2a25797fab0fa31e4.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -846,6 +839,58 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/remark/" class="">python 说明</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/pip/" class="">python pip</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/module/" class="">python 模块介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/pipenv/" class="">python pipenv 包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/python-object/" class="">python 面向对象</a>
   
 
@@ -873,19 +918,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/base/list/" class="">python list</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/python/base/module/" class="">python 模块介绍</a>
   
 
         </li>
@@ -4086,7 +4118,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
