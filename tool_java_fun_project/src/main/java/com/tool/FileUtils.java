@@ -47,22 +47,14 @@ public class FileUtils {
 
     @Test
     public void printFileDir() {
-        String path = "E:\\myProjects\\lifeDoc\\docs\\pdf\\book";
+        String path = "D:\\CS\\python_venv\\my_venv";
 //        String path = "D:\\IdeaProjects\\lifeDoc\\book\\public";
         File file = new File(path);
         List<String> list = new ArrayList<>();
         print(file, 0, file.getParent(), list);
         List<String> stringList = new ArrayList<>();
         for (String s : list) {
-            String substringAfter = org.apache.commons.lang.StringUtils.substringAfter(s, "    \\book\\");
-            if (StringUtils.isNotBlank(substringAfter)) {
-                String book = " <li class=\"nav-item\">\n" +
-                        "    <a onclick=\"onReadBook($(this).text());\" class=\"nav-link active\" href=\"#\">{book}</a>\n" +
-                        "</li>";
-                String replace = StringUtils.replace(book, "{book}", substringAfter);
-                System.out.println(replace);
-                stringList.add(replace);
-            }
+            System.out.println(s);
         }
         if (CollectionUtils.isNotEmpty(stringList)) {
 

@@ -2,23 +2,60 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" 所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
- ">
+<meta name="description" content="所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
+ 创建
+#
+
+# 定义一个列表 aList = [] 添加新的元素 append , insert ,extend
+#
+
+# 定义一个列表 aList = [] aList.append(&#34;a&#34;) aList.insert(len(aList),&#34;insert&#34;) print(aList) list1 = [&#34;a&#34;, &#34;b&#34; , &#34;c&#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表
+#
+
+aList = [2,4,5] for x in aList: print(x) 索引问题
+#
+
+# 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在
+#
+
+aList = [2,4,5] if 1 in aList: print(&#39;1存在&#39;) else: print(&#39;1不存在&#39;) 删除元素
+#
+
+aList = [] aList.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python list" />
-<meta property="og:description" content=" 所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
- " />
+<meta property="og:description" content="所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
+ 创建
+#
+
+# 定义一个列表 aList = [] 添加新的元素 append , insert ,extend
+#
+
+# 定义一个列表 aList = [] aList.append(&#34;a&#34;) aList.insert(len(aList),&#34;insert&#34;) print(aList) list1 = [&#34;a&#34;, &#34;b&#34; , &#34;c&#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表
+#
+
+aList = [2,4,5] for x in aList: print(x) 索引问题
+#
+
+# 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在
+#
+
+aList = [2,4,5] if 1 in aList: print(&#39;1存在&#39;) else: print(&#39;1不存在&#39;) 删除元素
+#
+
+aList = [] aList." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/list/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/list/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title>python list | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.2d7d9b28972399b762da2dc35e8c6f38c5b747b0eba0a8c2a25797fab0fa31e4.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -862,6 +899,45 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/venv/" class="">python 环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/string/" class="">python string</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/pipenv/" class="">python pipenv 包管理</a>
   
 
@@ -902,6 +978,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/base/list/" class=" active">python list</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4102,7 +4191,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -4131,7 +4220,27 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建">创建</a></li>
+    <li><a href="#添加新的元素-append--insert-extend">添加新的元素 append , insert ,extend</a></li>
+    <li><a href="#遍历列表">遍历列表</a></li>
+    <li><a href="#索引问题">索引问题</a></li>
+    <li><a href="#检查元素是否存在">检查元素是否存在</a></li>
+    <li><a href="#删除元素">删除元素</a></li>
+    <li><a href="#合并列表">合并列表</a></li>
+    <li><a href="#清空列表--clear">清空列表  clear</a></li>
+    <li><a href="#修改列表">修改列表</a></li>
+    <li><a href="#构造函数-list-构造函数创建一个新列表-不会影响原来列表">构造函数 list() 构造函数创建一个新列表 不会影响原来列表</a></li>
+    <li><a href="#复制列表-copy-不会影响原来列表">复制列表 copy 不会影响原来列表</a></li>
+    <li><a href="#颠倒列表的顺序--reverse">颠倒列表的顺序  reverse</a></li>
+    <li><a href="#返回具有指定值的元素数量--count">返回具有指定值的元素数量  count</a></li>
+    <li><a href="#返回指定值首次出现的位置--index">返回指定值首次出现的位置  index</a></li>
+    <li><a href="#删除指定位置的元素--pop">删除指定位置的元素  pop</a></li>
+    <li><a href="#删除具有指定值的项目--remove">删除具有指定值的项目  remove</a></li>
+    <li><a href="#切片">切片</a></li>
+  </ul>
+</nav>
 
 
 
@@ -4155,7 +4264,184 @@ https://github.com/alex-shpak/hugo-book
   <article class="markdown"><blockquote>
 <p>所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们</p>
 </blockquote>
-</article>
+<h2 id="创建">
+  创建
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 定义一个列表</span>
+aList <span style="color:#f92672">=</span> []
+</code></pre></div><h2 id="添加新的元素-append--insert-extend">
+  添加新的元素 append , insert ,extend
+  <a class="anchor" href="#%e6%b7%bb%e5%8a%a0%e6%96%b0%e7%9a%84%e5%85%83%e7%b4%a0-append--insert-extend">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 定义一个列表</span>
+aList <span style="color:#f92672">=</span> []
+aList<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;a&#34;</span>)
+aList<span style="color:#f92672">.</span>insert(len(aList),<span style="color:#e6db74">&#34;insert&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(aList)
+
+list1 <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span> , <span style="color:#e6db74">&#34;c&#34;</span>]
+list2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+
+list1<span style="color:#f92672">.</span>extend(list2)
+<span style="color:#66d9ef">print</span>(list1)
+</code></pre></div><h2 id="遍历列表">
+  遍历列表
+  <a class="anchor" href="#%e9%81%8d%e5%8e%86%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">aList <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> aList:
+    <span style="color:#66d9ef">print</span>(x)
+</code></pre></div><h2 id="索引问题">
+  索引问题
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e9%97%ae%e9%a2%98">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 第一项的索引为 0</span>
+<span style="color:#75715e"># 末尾索引为 -1</span>
+<span style="color:#75715e"># 倒数第二索引为 -2</span>
+<span style="color:#960050;background-color:#1e0010">针对</span> <span style="color:#960050;background-color:#1e0010">删除</span> <span style="color:#66d9ef">del</span> <span style="color:#960050;background-color:#1e0010">和访问</span> ,<span style="color:#960050;background-color:#1e0010">以及</span>insert都有效
+</code></pre></div><h2 id="检查元素是否存在">
+  检查元素是否存在
+  <a class="anchor" href="#%e6%a3%80%e6%9f%a5%e5%85%83%e7%b4%a0%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">aList <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
+<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">in</span> aList:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;1存在&#39;</span>)
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;1不存在&#39;</span>)
+</code></pre></div><h2 id="删除元素">
+  删除元素
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e5%85%83%e7%b4%a0">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">aList <span style="color:#f92672">=</span> []
+aList<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;a&#34;</span>)
+aList<span style="color:#f92672">.</span>insert(len(aList),<span style="color:#e6db74">&#34;insert&#34;</span>)
+
+<span style="color:#66d9ef">del</span> aList[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+
+<span style="color:#66d9ef">print</span>(aList)
+
+thislist <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#e6db74">&#34;cherry&#34;</span>]
+thislist<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#34;banana&#34;</span>)
+<span style="color:#66d9ef">print</span>(thislist)
+</code></pre></div><h2 id="合并列表">
+  合并列表
+  <a class="anchor" href="#%e5%90%88%e5%b9%b6%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
+listb <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>]
+
+list3 <span style="color:#f92672">=</span> lista <span style="color:#f92672">+</span> listb
+<span style="color:#66d9ef">print</span>(list3)
+</code></pre></div><h2 id="清空列表--clear">
+  清空列表  clear
+  <a class="anchor" href="#%e6%b8%85%e7%a9%ba%e5%88%97%e8%a1%a8--clear">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+<span style="color:#66d9ef">print</span>(lista)
+lista<span style="color:#f92672">.</span>clear()
+<span style="color:#66d9ef">print</span>(lista)
+
+</code></pre></div><h2 id="修改列表">
+  修改列表
+  <a class="anchor" href="#%e4%bf%ae%e6%94%b9%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+<span style="color:#66d9ef">print</span>(lista)
+lista[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">print</span>(lista)
+</code></pre></div><h2 id="构造函数-list-构造函数创建一个新列表-不会影响原来列表">
+  构造函数 list() 构造函数创建一个新列表 不会影响原来列表
+  <a class="anchor" href="#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0-list-%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e6%96%b0%e5%88%97%e8%a1%a8-%e4%b8%8d%e4%bc%9a%e5%bd%b1%e5%93%8d%e5%8e%9f%e6%9d%a5%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+<span style="color:#66d9ef">print</span>(lista)
+listc <span style="color:#f92672">=</span> list(lista)
+<span style="color:#66d9ef">print</span>(listc)
+</code></pre></div><h2 id="复制列表-copy-不会影响原来列表">
+  复制列表 copy 不会影响原来列表
+  <a class="anchor" href="#%e5%a4%8d%e5%88%b6%e5%88%97%e8%a1%a8-copy-%e4%b8%8d%e4%bc%9a%e5%bd%b1%e5%93%8d%e5%8e%9f%e6%9d%a5%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>]
+<span style="color:#66d9ef">print</span>(lista)
+listc <span style="color:#f92672">=</span> lista<span style="color:#f92672">.</span>copy()
+<span style="color:#66d9ef">print</span>(listc)
+</code></pre></div><h2 id="颠倒列表的顺序--reverse">
+  颠倒列表的顺序  reverse
+  <a class="anchor" href="#%e9%a2%a0%e5%80%92%e5%88%97%e8%a1%a8%e7%9a%84%e9%a1%ba%e5%ba%8f--reverse">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>]
+<span style="color:#66d9ef">print</span>(lista)
+lista<span style="color:#f92672">.</span>reverse()
+<span style="color:#66d9ef">print</span>(lista)
+</code></pre></div><h2 id="返回具有指定值的元素数量--count">
+  返回具有指定值的元素数量  count
+  <a class="anchor" href="#%e8%bf%94%e5%9b%9e%e5%85%b7%e6%9c%89%e6%8c%87%e5%ae%9a%e5%80%bc%e7%9a%84%e5%85%83%e7%b4%a0%e6%95%b0%e9%87%8f--count">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>]
+<span style="color:#66d9ef">print</span>(lista<span style="color:#f92672">.</span>count(<span style="color:#e6db74">&#39;b&#39;</span>))
+</code></pre></div><h2 id="返回指定值首次出现的位置--index">
+  返回指定值首次出现的位置  index
+  <a class="anchor" href="#%e8%bf%94%e5%9b%9e%e6%8c%87%e5%ae%9a%e5%80%bc%e9%a6%96%e6%ac%a1%e5%87%ba%e7%8e%b0%e7%9a%84%e4%bd%8d%e7%bd%ae--index">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lista <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>]
+<span style="color:#66d9ef">print</span>(lista<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#39;a&#39;</span>))
+</code></pre></div><h2 id="删除指定位置的元素--pop">
+  删除指定位置的元素  pop
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e7%9a%84%e5%85%83%e7%b4%a0--pop">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fruits <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>]
+
+fruits<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">print</span>(fruits)
+</code></pre></div><h2 id="删除具有指定值的项目--remove">
+  删除具有指定值的项目  remove
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e5%85%b7%e6%9c%89%e6%8c%87%e5%ae%9a%e5%80%bc%e7%9a%84%e9%a1%b9%e7%9b%ae--remove">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fruits <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>]
+
+fruits<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#39;banana&#39;</span>)
+
+<span style="color:#66d9ef">print</span>(fruits)
+</code></pre></div><h2 id="切片">
+  切片
+  <a class="anchor" href="#%e5%88%87%e7%89%87">#</a>
+</h2>
+<pre><code>使用模式: [start:end:step]
+    其中start表示切片开始的位置,默认是0
+    end表示切片截止的位置(不包含),默认是列表长度
+    step表示切片的步长,默认是1
+    当start是0时,可以省略;当end是列表的长度时,可以省略.
+    当step是1时,也可以省略,并且省略步长时可以同时省略最后一个冒号.
+    此外,当step为负数时,表示反向切片,这时start值应该比end值大.
+    注意:切片操作创建了一个新的列表.
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fruits <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span>, <span style="color:#e6db74">&#39;cherry&#39;</span>, <span style="color:#e6db74">&#34;西红柿tomato&#34;</span>, <span style="color:#e6db74">&#34;菠萝pineapple&#34;</span>, <span style="color:#e6db74">&#34;西瓜watermelon&#34;</span>, <span style="color:#e6db74">&#34;香蕉banana&#34;</span>, <span style="color:#e6db74">&#34;柚子shaddock（pomelo）&#34;</span>,
+          <span style="color:#e6db74">&#34;橙子orange&#34;</span>, <span style="color:#e6db74">&#34;苹果apple&#34;</span>, <span style="color:#e6db74">&#34;柠檬lemon&#34;</span>, <span style="color:#e6db74">&#34;樱桃cherry&#34;</span>, <span style="color:#e6db74">&#34;桃子peach&#34;</span>, <span style="color:#e6db74">&#34;梨pear&#34;</span>, <span style="color:#e6db74">&#34;枣Chinese date（去核枣pitted date）&#34;</span>,
+          <span style="color:#e6db74">&#34;椰子coconut&#34;</span>, <span style="color:#e6db74">&#34;草莓strawberry&#34;</span>, <span style="color:#e6db74">&#34;树莓raspberry&#34;</span>, <span style="color:#e6db74">&#34;蓝莓blueberry&#34;</span>, <span style="color:#e6db74">&#34;黑莓blackberry&#34;</span>, <span style="color:#e6db74">&#34;葡萄grape&#34;</span>, <span style="color:#e6db74">&#34;甘蔗sugar cane&#34;</span>,
+          <span style="color:#e6db74">&#34;芒果mango&#34;</span>, <span style="color:#e6db74">&#34;木瓜pawpaw或者papaya&#34;</span>, <span style="color:#e6db74">&#34;杏子apricot&#34;</span>, <span style="color:#e6db74">&#34;油桃nectarine&#34;</span>, <span style="color:#e6db74">&#34;柿子persimmon&#34;</span>, <span style="color:#e6db74">&#34;石榴pomegranate&#34;</span>, <span style="color:#e6db74">&#34;榴莲jackfruit&#34;</span>,
+          <span style="color:#e6db74">&#34;槟榔果areca nut&#34;</span>, <span style="color:#e6db74">&#34;西班牙产苦橙bitter orange&#34;</span>, <span style="color:#e6db74">&#34;猕猴桃kiwi fruit or Chinese gooseberry&#34;</span>, <span style="color:#e6db74">&#34;金橘cumquat&#34;</span>, <span style="color:#e6db74">&#34;蟠桃flat peach&#34;</span>,
+          <span style="color:#e6db74">&#34;荔枝litchi&#34;</span>, <span style="color:#e6db74">&#34;青梅greengage&#34;</span>, <span style="color:#e6db74">&#34;山楂果haw&#34;</span>, <span style="color:#e6db74">&#34;水蜜桃honey peach&#34;</span>, <span style="color:#e6db74">&#34;香瓜、甜瓜musk melon&#34;</span>, <span style="color:#e6db74">&#34;李子plum&#34;</span>, <span style="color:#e6db74">&#34;杨梅waxberry red bayberry&#34;</span>,
+          <span style="color:#e6db74">&#34;桂圆longan&#34;</span>, <span style="color:#e6db74">&#34;沙果crab apple&#34;</span>, <span style="color:#e6db74">&#34;杨桃starfruit&#34;</span>, <span style="color:#e6db74">&#34;枇杷loquat&#34;</span>, <span style="color:#e6db74">&#34;柑橘tangerine&#34;</span>, <span style="color:#e6db74">&#34;莲雾wax-apple&#34;</span>, <span style="color:#e6db74">&#34;番石榴 guava肉、蔬菜类&#34;</span>]
+
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[::])  <span style="color:#75715e"># 返回包含原列表所有元素的新列表</span>
+
+<span style="color:#66d9ef">print</span>()
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])  <span style="color:#75715e"># 返回原列表的一个逆序列表</span>
+
+<span style="color:#66d9ef">print</span>()
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[::<span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># 取列表下标偶数位元素</span>
+
+<span style="color:#66d9ef">print</span>()
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[<span style="color:#ae81ff">1</span>::<span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># 取列表下标奇数位元素</span>
+
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">2</span>])  <span style="color:#75715e"># 取列表下标0-2的元素</span>
+<span style="color:#66d9ef">print</span>(fruits<span style="color:#f92672">.</span>copy()[<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])  <span style="color:#75715e"># 取列表下标倒数第四到倒数第一的元素</span>
+
+
+
+</code></pre></div></article>
  
       
 
@@ -4396,7 +4682,27 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建">创建</a></li>
+    <li><a href="#添加新的元素-append--insert-extend">添加新的元素 append , insert ,extend</a></li>
+    <li><a href="#遍历列表">遍历列表</a></li>
+    <li><a href="#索引问题">索引问题</a></li>
+    <li><a href="#检查元素是否存在">检查元素是否存在</a></li>
+    <li><a href="#删除元素">删除元素</a></li>
+    <li><a href="#合并列表">合并列表</a></li>
+    <li><a href="#清空列表--clear">清空列表  clear</a></li>
+    <li><a href="#修改列表">修改列表</a></li>
+    <li><a href="#构造函数-list-构造函数创建一个新列表-不会影响原来列表">构造函数 list() 构造函数创建一个新列表 不会影响原来列表</a></li>
+    <li><a href="#复制列表-copy-不会影响原来列表">复制列表 copy 不会影响原来列表</a></li>
+    <li><a href="#颠倒列表的顺序--reverse">颠倒列表的顺序  reverse</a></li>
+    <li><a href="#返回具有指定值的元素数量--count">返回具有指定值的元素数量  count</a></li>
+    <li><a href="#返回指定值首次出现的位置--index">返回指定值首次出现的位置  index</a></li>
+    <li><a href="#删除指定位置的元素--pop">删除指定位置的元素  pop</a></li>
+    <li><a href="#删除具有指定值的项目--remove">删除具有指定值的项目  remove</a></li>
+    <li><a href="#切片">切片</a></li>
+  </ul>
+</nav>
 
 
  

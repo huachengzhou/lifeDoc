@@ -2,22 +2,42 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="为什么要分层，分层要做什么 #   （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构 #   使用 协议 ，服务， 接口 来完成分层
- 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  ">
+<meta name="description" content="为什么要分层，分层要做什么
+#
+
+ （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构
+#
+
+ 使用 协议 ，服务， 接口 来完成分层
+ 总结
+#
+
+ 网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="分层结构" />
-<meta property="og:description" content="为什么要分层，分层要做什么 #   （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构 #   使用 协议 ，服务， 接口 来完成分层
- 总结 #   网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  " />
+<meta property="og:description" content="为什么要分层，分层要做什么
+#
+
+ （1）发起通信的计算机必须将数据通信的通路进行激活。 （2）要告诉网络如何识别目的主机。 （3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。 （4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。 （5）确保差错和意外可以解决。  正式认识分层结构
+#
+
+ 使用 协议 ，服务， 接口 来完成分层
+ 总结
+#
+
+ 网络体系结构是从功能上描述计算机网络结构 计算机网络体系结构简称网络体系结构是分层结构 每层遵循某个/多个网络协议以完成本层功能 计算机网络体系结构是计算机网络的各层及其协议的集合 上层要求服务 下层提供服务 实际是上层制定接口标准，下层实现接口标准  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="docs" />
+
+
 
 <title>分层结构 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.2d7d9b28972399b762da2dc35e8c6f38c5b747b0eba0a8c2a25797fab0fa31e4.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -861,6 +881,45 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/venv/" class="">python 环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/string/" class="">python string</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/pipenv/" class="">python pipenv 包管理</a>
   
 
@@ -901,6 +960,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/base/list/" class="">python list</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4101,7 +4173,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

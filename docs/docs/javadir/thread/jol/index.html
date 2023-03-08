@@ -2,41 +2,66 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="引入jol依赖 #  &lt;dependency&gt;
+<meta name="description" content="引入jol依赖
+#
+
+&lt;dependency&gt;
 &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt;
 &lt;artifactId&gt;jol-core&lt;/artifactId&gt;
 &lt;version&gt;0.9&lt;/version&gt;
 &lt;scope&gt;provided&lt;/scope&gt;
 &lt;/dependency&gt;
-相关方法 #    1.使用jol计算对象的大小（单位为字节）：ClassLayout.parseInstance(obj).instanceSize()
+相关方法
+#
+
+  1.使用jol计算对象的大小（单位为字节）：ClassLayout.parseInstance(obj).instanceSize()
   2.使用jol查看对象内部的内存布局：ClassLayout.parseInstance(obj).toPrintable()
   3.查看对象外部信息：包括引用的对象：GraphLayout.parseInstance(obj).toPrintable()
   4.查看对象占用空间总大小：GraphLayout.parseInstance(obj).totalSize()
-  对象布局 空属性 #  import org.openjdk.jol.info.ClassLayout; public class Entity { public static void main(String[] args) { Entity entity = new Entity(); // 打印java 对象内存布局  System.out.println(ClassLayout.parseInstance(entity).toPrintable()); } } // 输出结果 com.brown.Entity object internals: // Entity对象内存布局  OFFSET SIZE TYPE DESCRIPTION VALUE 0 4 (object header) 01 00 00 00 (00000001 00000000 00000000 00000000) (1) 4 4 (object header) 00 00 00 00 (00000000 00000000 00000000 00000000) (0) 8 4 (object header) 05 c1 00 f8 (00000101 11000001 00000000 11111000) (-134168315) 12 4 (loss due to the next object alignment) Instance size: 16 bytes Space losses: 0 bytes internal &#43; 4 bytes external = 4 bytes total OFFSET：偏移地址，单位字节 SIZE：占用的内存大小，单位为字节 TYPE DESCRIPTION： 类型描述，其中object header为对象头； object header：对象头 loss due to the next object alignment：由于下一个对象对齐而导致的丢失（有4Byte是对齐的字节（因为在64位虚拟机上对象的大小必须是8的倍数）,由于这个对象里面没有任何字段，故而对象的实例数据为0Byte）。 VALUE : 对应内存中当前存储的值； Instance size：实例字节数值大小（**此处一个空的java对象（不包含任意字段属性）实例，其实例大小为``16Byte**） 对象布局 有属性 #  /** * 带有属性的 实体类 */ public class Student { private String name; private Integer age; } public class DemoT1 { public static void main(String[] args) { Student o = new Student(); System.">
+  对象布局 空属性
+#
+
+import org.openjdk.jol.info.ClassLayout; public class Entity { public static void main(String[] args) { Entity entity = new Entity(); // 打印java 对象内存布局  System.out.println(ClassLayout.parseInstance(entity).toPrintable()); } } // 输出结果 com.brown.Entity object internals: // Entity对象内存布局  OFFSET SIZE TYPE DESCRIPTION VALUE 0 4 (object header) 01 00 00 00 (00000001 00000000 00000000 00000000) (1) 4 4 (object header) 00 00 00 00 (00000000 00000000 00000000 00000000) (0) 8 4 (object header) 05 c1 00 f8 (00000101 11000001 00000000 11111000) (-134168315) 12 4 (loss due to the next object alignment) Instance size: 16 bytes Space losses: 0 bytes internal &#43; 4 bytes external = 4 bytes total OFFSET：偏移地址，单位字节 SIZE：占用的内存大小，单位为字节 TYPE DESCRIPTION： 类型描述，其中object header为对象头； object header：对象头 loss due to the next object alignment：由于下一个对象对齐而导致的丢失（有4Byte是对齐的字节（因为在64位虚拟机上对象的大小必须是8的倍数）,由于这个对象里面没有任何字段，故而对象的实例数据为0Byte）。 VALUE : 对应内存中当前存储的值； Instance size：实例字节数值大小（**此处一个空的java对象（不包含任意字段属性）实例，其实例大小为``16Byte**） 对象布局 有属性
+#
+
+/** * 带有属性的 实体类 */ public class Student { private String name; private Integer age; } public class DemoT1 { public static void main(String[] args) { Student o = new Student(); System.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="JOL工具 " />
-<meta property="og:description" content="引入jol依赖 #  &lt;dependency&gt;
+<meta property="og:description" content="引入jol依赖
+#
+
+&lt;dependency&gt;
 &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt;
 &lt;artifactId&gt;jol-core&lt;/artifactId&gt;
 &lt;version&gt;0.9&lt;/version&gt;
 &lt;scope&gt;provided&lt;/scope&gt;
 &lt;/dependency&gt;
-相关方法 #    1.使用jol计算对象的大小（单位为字节）：ClassLayout.parseInstance(obj).instanceSize()
+相关方法
+#
+
+  1.使用jol计算对象的大小（单位为字节）：ClassLayout.parseInstance(obj).instanceSize()
   2.使用jol查看对象内部的内存布局：ClassLayout.parseInstance(obj).toPrintable()
   3.查看对象外部信息：包括引用的对象：GraphLayout.parseInstance(obj).toPrintable()
   4.查看对象占用空间总大小：GraphLayout.parseInstance(obj).totalSize()
-  对象布局 空属性 #  import org.openjdk.jol.info.ClassLayout; public class Entity { public static void main(String[] args) { Entity entity = new Entity(); // 打印java 对象内存布局  System.out.println(ClassLayout.parseInstance(entity).toPrintable()); } } // 输出结果 com.brown.Entity object internals: // Entity对象内存布局  OFFSET SIZE TYPE DESCRIPTION VALUE 0 4 (object header) 01 00 00 00 (00000001 00000000 00000000 00000000) (1) 4 4 (object header) 00 00 00 00 (00000000 00000000 00000000 00000000) (0) 8 4 (object header) 05 c1 00 f8 (00000101 11000001 00000000 11111000) (-134168315) 12 4 (loss due to the next object alignment) Instance size: 16 bytes Space losses: 0 bytes internal &#43; 4 bytes external = 4 bytes total OFFSET：偏移地址，单位字节 SIZE：占用的内存大小，单位为字节 TYPE DESCRIPTION： 类型描述，其中object header为对象头； object header：对象头 loss due to the next object alignment：由于下一个对象对齐而导致的丢失（有4Byte是对齐的字节（因为在64位虚拟机上对象的大小必须是8的倍数）,由于这个对象里面没有任何字段，故而对象的实例数据为0Byte）。 VALUE : 对应内存中当前存储的值； Instance size：实例字节数值大小（**此处一个空的java对象（不包含任意字段属性）实例，其实例大小为``16Byte**） 对象布局 有属性 #  /** * 带有属性的 实体类 */ public class Student { private String name; private Integer age; } public class DemoT1 { public static void main(String[] args) { Student o = new Student(); System." />
+  对象布局 空属性
+#
+
+import org.openjdk.jol.info.ClassLayout; public class Entity { public static void main(String[] args) { Entity entity = new Entity(); // 打印java 对象内存布局  System.out.println(ClassLayout.parseInstance(entity).toPrintable()); } } // 输出结果 com.brown.Entity object internals: // Entity对象内存布局  OFFSET SIZE TYPE DESCRIPTION VALUE 0 4 (object header) 01 00 00 00 (00000001 00000000 00000000 00000000) (1) 4 4 (object header) 00 00 00 00 (00000000 00000000 00000000 00000000) (0) 8 4 (object header) 05 c1 00 f8 (00000101 11000001 00000000 11111000) (-134168315) 12 4 (loss due to the next object alignment) Instance size: 16 bytes Space losses: 0 bytes internal &#43; 4 bytes external = 4 bytes total OFFSET：偏移地址，单位字节 SIZE：占用的内存大小，单位为字节 TYPE DESCRIPTION： 类型描述，其中object header为对象头； object header：对象头 loss due to the next object alignment：由于下一个对象对齐而导致的丢失（有4Byte是对齐的字节（因为在64位虚拟机上对象的大小必须是8的倍数）,由于这个对象里面没有任何字段，故而对象的实例数据为0Byte）。 VALUE : 对应内存中当前存储的值； Instance size：实例字节数值大小（**此处一个空的java对象（不包含任意字段属性）实例，其实例大小为``16Byte**） 对象布局 有属性
+#
+
+/** * 带有属性的 实体类 */ public class Student { private String name; private Integer age; } public class DemoT1 { public static void main(String[] args) { Student o = new Student(); System." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/jol/" />
-<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/jol/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
+
 <title>JOL工具  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.2d7d9b28972399b762da2dc35e8c6f38c5b747b0eba0a8c2a25797fab0fa31e4.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -880,6 +905,45 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/venv/" class="">python 环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/string/" class="">python string</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/pipenv/" class="">python pipenv 包管理</a>
   
 
@@ -920,6 +984,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/base/list/" class="">python list</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4120,7 +4197,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

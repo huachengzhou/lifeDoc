@@ -25,8 +25,11 @@ Python 的包管理工具常见的有：easy_install，setuptools，distribute�
 ![][img2_]
 
 
+## 文档
 
+[python3.6](https://docs.python.org/zh-cn/3.6/tutorial/index.html)
 
+[html转markdown](https://tooltt.com/html2markdown/)
 
 [img2]:../.././imgs/python3/caxm7ptkkz/1603920-20191003112142297-24255410.png
 [img2_]:../../../imgs/python3/caxm7ptkkz/1603920-20191003112142297-24255410.png

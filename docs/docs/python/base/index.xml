@@ -12,10 +12,12 @@
       <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/remark/</guid>
-      <description>版本问题 #  Python发行版通常与以前的版本向后兼容。 Python 2.7在很大程度上向后兼容Python 2.6
+      <description>版本问题#Python发行版通常与以前的版本向后兼容。 Python 2.7在很大程度上向后兼容Python 2.6
 在python3和python2之间有着一个特殊的版本叫做python2.6，这个版本是作为试验版本和过渡版本而存在的。它基本上采用的都是python2的库以及语法，但同时也可以使用python3的语法。虽然可以使用两个不同版本的python语法，但它还是不可以去运行python3的程序，因为本质上是不兼容的
-包管理问题 #   自己开发 可以使用pip 比较简单  Python 的包管理工具常见的有：easy_install，setuptools，distribute，pip
-他们之间的关系如下</description>
+包管理问题# 自己开发 可以使用pip 比较简单  Python 的包管理工具常见的有：easy_install，setuptools，distribute，pip
+他们之间的关系如下
+文档#python3.6
+html转markdown</description>
     </item>
     
     <item>
@@ -24,14 +26,14 @@
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/pip/</guid>
-      <description>安装 #  目前如果你在Python官网下载最新版本的安装包，都已经自带了该工具
+      <description>安装#目前如果你在Python官网下载最新版本的安装包，都已经自带了该工具
 Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。
  检测安装  C:\Users\noatn&amp;gt; pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.7) C:\Users\noatn&amp;gt;  下载安装  可以通过命令 pip &amp;ndash;version 来判断是否已安装： pip &amp;ndash;version
 如果你还未安装，则可以使用以下两种方法来安装：
 1、Python附带了一个ensurepip模块，可以在Python环境中安装pip。cmd输入以下命令
 py -m ensurepip --upgrade 2、还可以下载一个Python脚本，使用命令行引导逻辑来安装pip
 下载脚本 到你的Python文件夹下 win+cmd打开终端，切换至你脚本的目录 输入命令回车
-py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip  显示版本和路径  C:\Users\noatn&amp;gt;pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.</description>
+py get-pip.py 最常用命令# 升级pip  python -m pip install --upgrade pip  显示版本和路径  C:\Users\noatn&amp;gt;pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.</description>
     </item>
     
     <item>
@@ -40,7 +42,34 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/module/</guid>
-      <description>模块介绍 #  time模块 #  datetime模块 #  random 模块 #  os 模块 #  sys 模块 #  json 和 pickle 模块 #  hashlib和hmac 模块 #  logging 模块 #  numpy 模块 #  pandas 模块 #  matplotlib 模块 #  re 模块 #  typing 模块 #  collections 模块 #  pathlib 模块 #  pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
+      <description>模块介绍#time模块#datetime模块#random 模块#os 模块#sys 模块#json 和 pickle 模块#hashlib和hmac 模块#logging 模块#numpy 模块#pandas 模块#matplotlib 模块#re 模块#typing 模块#collections 模块#pathlib 模块#pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
+    </item>
+    
+    <item>
+      <title>python 环境变量</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/venv/</link>
+      <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/venv/</guid>
+      <description>创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv $ python -m venv my_venv  检查创建的环境变量  \my_venv\Lib\site-packages\easy_install.py \my_venv\Lib\site-packages\pip\_internal\build_env.py \my_venv\Lib\site-packages\pip\_internal\cache.py \my_venv\Lib\site-packages\pip\_internal\cli\autocompletion.py \my_venv\Lib\site-packages\pip\_internal\cli\base_command.py \my_venv\Lib\site-packages\pip\_internal\cli\cmdoptions.py \my_venv\Lib\site-packages\pip\_internal\cli\main_parser.py \my_venv\Lib\site-packages\pip\_internal\cli\parser.py \my_venv\Lib\site-packages\pip\_internal\cli\status_codes.py \my_venv\Lib\site-packages\pip\_internal\cli\__init__.py \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\autocompletion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\base_command.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\cmdoptions.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\main_parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\status_codes.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\check.py \my_venv\Lib\site-packages\pip\_internal\commands\completion.py \my_venv\Lib\site-packages\pip\_internal\commands\configuration.py \my_venv\Lib\site-packages\pip\_internal\commands\debug.py \my_venv\Lib\site-packages\pip\_internal\commands\download.py \my_venv\Lib\site-packages\pip\_internal\commands\freeze.py \my_venv\Lib\site-packages\pip\_internal\commands\hash.py \my_venv\Lib\site-packages\pip\_internal\commands\help.py \my_venv\Lib\site-packages\pip\_internal\commands\install.py \my_venv\Lib\site-packages\pip\_internal\commands\list.py \my_venv\Lib\site-packages\pip\_internal\commands\search.py \my_venv\Lib\site-packages\pip\_internal\commands\show.py \my_venv\Lib\site-packages\pip\_internal\commands\uninstall.py \my_venv\Lib\site-packages\pip\_internal\commands\wheel.py \my_venv\Lib\site-packages\pip\_internal\commands\__init__.py \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\check.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\completion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\configuration.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\debug.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\download.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\freeze.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\hash.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\help.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\install.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\list.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\search.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\show.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\uninstall.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\wheel.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\configuration.py \my_venv\Lib\site-packages\pip\_internal\distributions\base.py \my_venv\Lib\site-packages\pip\_internal\distributions\installed.py \my_venv\Lib\site-packages\pip\_internal\distributions\source.py \my_venv\Lib\site-packages\pip\_internal\distributions\wheel.</description>
+    </item>
+    
+    <item>
+      <title>python print</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/print/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/print/</guid>
+      <description>print用法# 简单使用  print(&amp;#39;hello world&amp;#39;)  表达式用法 print(f&amp;quot;{expression}&amp;quot;)  print(f&amp;#34;lista: {lista}&amp;#34;) print(f&amp;#34;1+1 : {1+1}&amp;#34;) </description>
+    </item>
+    
+    <item>
+      <title>python string</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/string/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/string/</guid>
+      <description>字符串用法#   方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &amp;#34;a,b&amp;#34; print(str1.</description>
     </item>
     
     <item>
@@ -50,7 +79,7 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/pipenv/</guid>
       <description>pipenv 是Kenneth Reitz大神的作品，提供Python的各个版本间的管理，各种包管理。个人觉得是virtualenv pip等工具的合体
- 安装pipenv #   本操作系统为windows10  pip install --user pipenv　# 安装失败 =&amp;gt; 升级一下默认安装的pip版本，因为默认会安装最新版的pipenv，pip的版本过低会导致安装失败.pip更新命令python -m pip install --upgrade pip更新完pip后，再次执行pipenv的安装命令pip install --user pipenv 失败的话 多半是你没能连接上世界真正网络 (自己找个梯子吧)  pipenv的简单使用 #  创建虚拟环境 #   (1)打开cmd窗口，首先切换到目标项目目录，输入以下命令：  # python 2环境pipenv --twopython 3环境pipenv --three （2）查看相关信息 　1） 查看项目位置：pipenv &amp;ndash;where 　2）查看虚拟环境位置：pipenv &amp;ndash;venv 　3）查看解释器信息：pipenv &amp;ndash;py  激活虚拟环境 #  （1）语法 pipenv shell</description>
+ 安装pipenv# 本操作系统为windows10  pip install --user pipenv　# 安装失败 =&amp;gt; 升级一下默认安装的pip版本，因为默认会安装最新版的pipenv，pip的版本过低会导致安装失败.pip更新命令python -m pip install --upgrade pip更新完pip后，再次执行pipenv的安装命令pip install --user pipenv 失败的话 多半是你没能连接上世界真正网络 (自己找个梯子吧)  pipenv的简单使用#创建虚拟环境# (1)打开cmd窗口，首先切换到目标项目目录，输入以下命令：  # python 2环境pipenv --twopython 3环境pipenv --three （2）查看相关信息 　1） 查看项目位置：pipenv &amp;ndash;where 　2）查看虚拟环境位置：pipenv &amp;ndash;venv 　3）查看解释器信息：pipenv &amp;ndash;py  激活虚拟环境#（1）语法 pipenv shell</description>
     </item>
     
     <item>
@@ -59,7 +88,7 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/python-object/</guid>
-      <description>面向对象 #   类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量, 用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。 局部变量：定义在方法中的变量，只作用于当前实例的类。 实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。 继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&amp;quot;是一个（is-a）&amp;ldquo;关系（例图，Dog是一个Animal）。 实例化：创建一个类的实例，类的具体对象。 方法：类中定义的函数。 对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。  import random class Employee: # 所有员工的基类 empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享 empCount = 0 # 类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法 def __init__(self, name, salary): self.name = name self.salary = salary Employee.empCount += 1 def displayCount(self): print(&amp;#34;Total Employee&amp;#34;, Employee.empCount, sep=&amp;#34; _&amp;#34;) def displayEmployee(self): print(&amp;#34;name:&amp;#34;, self.name, &amp;#34; ;&amp;#34;, &amp;#34;salary:&amp;#34;, self.salary) # 定义实例 1 t1 = Employee(&amp;#34;张三&amp;#34;, random.random() * random.random() * 10000) t1.</description>
+      <description>面向对象# 类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量, 用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。 局部变量：定义在方法中的变量，只作用于当前实例的类。 实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。 继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&amp;quot;是一个（is-a）&amp;ldquo;关系（例图，Dog是一个Animal）。 实例化：创建一个类的实例，类的具体对象。 方法：类中定义的函数。 对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。  import random class Employee: # 所有员工的基类 empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享 empCount = 0 # 类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法 def __init__(self, name, salary): self.name = name self.salary = salary Employee.empCount += 1 def displayCount(self): print(&amp;#34;Total Employee&amp;#34;, Employee.empCount, sep=&amp;#34; _&amp;#34;) def displayEmployee(self): print(&amp;#34;name:&amp;#34;, self.name, &amp;#34; ;&amp;#34;, &amp;#34;salary:&amp;#34;, self.salary) # 定义实例 1 t1 = Employee(&amp;#34;张三&amp;#34;, random.random() * random.random() * 10000) t1.</description>
     </item>
     
     <item>
@@ -68,7 +97,7 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/file/</guid>
-      <description>文件 #   open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
+      <description>文件# open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
 file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]]])此格式中，用 [] 括起来的部分为可选参数，即可以使用也可以省略。其中，各个参数所代表的含义如下：
   file：表示要创建的文件对象。
   file_name：要创建或打开文件的文件名称，该名称要用引号（单引号或双引号都可以）括起来。需要注意的是，如果要打开的文件和当前执行的代码文件位于同一目录，则直接写文件名即可；否则，此参数需要指定打开文件所在的完整路径。
@@ -85,8 +114,22 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/list/</guid>
-      <description> 所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
- </description>
+      <description>所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
+ 创建## 定义一个列表 aList = [] 添加新的元素 append , insert ,extend## 定义一个列表 aList = [] aList.append(&amp;#34;a&amp;#34;) aList.insert(len(aList),&amp;#34;insert&amp;#34;) print(aList) list1 = [&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34; , &amp;#34;c&amp;#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表#aList = [2,4,5] for x in aList: print(x) 索引问题## 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在#aList = [2,4,5] if 1 in aList: print(&amp;#39;1存在&amp;#39;) else: print(&amp;#39;1不存在&amp;#39;) 删除元素#aList = [] aList.</description>
+    </item>
+    
+    <item>
+      <title>python pyqt5</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/pyqt5/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/pyqt5/</guid>
+      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
+PyQt5类分为很多模块，主要模块有：
+ QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
+PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  pyqt5原文文档 pyqt5中文文档 pyqt5 github 文档出处 pyqt5 博客园</description>
     </item>
     
   </channel>
