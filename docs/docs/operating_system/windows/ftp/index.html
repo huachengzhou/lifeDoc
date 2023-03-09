@@ -2,112 +2,21 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="本地设置FTP服务器
-#
-
-步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。
-#
-
-步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。
-#
-
-第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定”
-#
-
-第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改
-#
-
-步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开
-#
-
-步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&hellip;”
-#
-
-第8步：这里给FTP站点命名。 我将&rsquo;sampleftp&rsquo;赋予FTP站点名称。 现在单击“&hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步”
-#
-
-步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。
-#
-
- 将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。
-#
-
- *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件
-#
-
- 现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙
-#
-
- 您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙”
-#
-
-步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能”
-#
-
-步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。
-#
-
-  现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。">
+<meta name="description" content="本地设置FTP服务器 #  步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。 #  步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。 #  第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定” #  第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改 #  步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开 #  步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&hellip;” #  第8步：这里给FTP站点命名。 我将&rsquo;sampleftp&rsquo;赋予FTP站点名称。 现在单击“&hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步” #  步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。 #   将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。 #   *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件 #   现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙 #   您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙” #  步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能” #  步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。 #    现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content=" FTP " />
-<meta property="og:description" content="本地设置FTP服务器
-#
-
-步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。
-#
-
-步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。
-#
-
-第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定”
-#
-
-第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改
-#
-
-步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开
-#
-
-步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&hellip;”
-#
-
-第8步：这里给FTP站点命名。 我将&rsquo;sampleftp&rsquo;赋予FTP站点名称。 现在单击“&hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步”
-#
-
-步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。
-#
-
- 将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。
-#
-
- *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件
-#
-
- 现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙
-#
-
- 您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙”
-#
-
-步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能”
-#
-
-步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。
-#
-
-  现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。" />
+<meta property="og:description" content="本地设置FTP服务器 #  步骤1：在计算机上打开“控制面板”，然后单击“程序和功能”。 #  步骤2：在“程序和功能”窗口中，单击“控制面板”窗口左侧的“打开或关闭Windows功能”。 #  第3步：现在等待一段时间并向下滚动以找出“Internet信息服务”。 只需展开它，打开“FTP服务器”，“Web管理工具”和“万维网服务”下的所有内容，与下面的屏幕截图相同。 完成所有服务后，单击“确定” #  第4步：应用更改需要一些时间，完成后，单击“立即重新启动”以重新启动计算机并应用所做的更改 #  步骤5：重新启动计算机后，再次打开“控制面板”，然后单击“管理工具”将其打开 #  步骤7：在IIS管理器窗口的左侧，展开窗口左侧的计算机名称，除非您找到“站点”。 只需右键单击“站点”，然后单击“添加FTP站点&hellip;” #  第8步：这里给FTP站点命名。 我将&rsquo;sampleftp&rsquo;赋予FTP站点名称。 现在单击“&hellip;”按钮以找到要通过FTP服务器访问的文件夹或驱动程序。 我为本教程选择了“C：FTP_Path”。 完成所有操作后，单击“下一步” #  步骤9：在下一个窗口中，单击与“IP Address：”对应的下拉菜单，然后在本地网络上选择计算机的IP地址。 #   将端口号保留为“21”，默认情况下是这样。  步骤10：选择“No SSL”并启用“自动启动FTP站点”，然后单击“下一步”。 #   *由于这是一个教程，我不允许使用SSL。 但是，如果您想通过FTP服务器访问敏感数据，我建议您使用SSL  步骤11：现在选择“基本”的身份验证方法，并向“所有用户”提供“授权”。 用户必须输入您的Windows用户名和密码才能使用此身份验证方法访问FTP服务器上的文件 #   现在，根据您要如何设置FTP服务器，将权限设置为“读取”和“写入”或仅设置为“读取”。 之后，单击“完成”以完成站点设置并在Windows计算机上启动FTP服务器  配置防火墙 #   您的FTP服务器已准备就绪并且正在运行 但是，您需要配置Windows防火墙以允许与您的计算机进行FTP通信的事务处理。  步骤12：打开“控制面板”并在Windows 10上单击“Windows Defender Firewall”或在Windows 7上单击“Windows防火墙” #  步骤13：单击窗口左侧的“允许通过Windows Defender防火墙的应用程序或功能” #  步骤14：在新窗口中，单击“更改设置”并标记“FTP服务器”的“公共”和“私人”对应的复选框，然后单击“确定”。 #    现在，您可以使用适当的应用程序轻松地从本地网络中的任何其他计算机或移动设备访问FTP服务器，或者只需从浏览器访问即可。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/windows/ftp/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/windows/ftp/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
 <title> FTP  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.aa3bd11cd1fcd2c6aeb2bdf8eb662aebe141af39fd6fa5d0c7d7e269a2d9c12f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -899,7 +808,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/base/" class="">python 基础学习</a>
+    <input type="checkbox" id="section-1eba4d3394916870dc9a66fd50843417" class="toggle"  />
+    <label for="section-1eba4d3394916870dc9a66fd50843417" class="flex justify-between">
+      <a href="./../../../../docs/python/base/" class="">python 基础学习</a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -938,6 +851,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/lambda_or_function/" class="">python 函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/set/" class="">python set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/module/" class="">python 模块介绍</a>
   
 
@@ -964,7 +903,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/dictionary/" class="">python 字典</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/casting/" class="">python 类型转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/tuple/" class="">python 元组</a>
   
 
         </li>
@@ -1035,6 +1013,11 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+  </ul>
+
+        </li>
+      
+    
       
         <li>
           
@@ -1042,7 +1025,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
+    <input type="checkbox" id="section-5edfb103a0f74ef3d489bca94178c238" class="toggle"  />
+    <label for="section-5edfb103a0f74ef3d489bca94178c238" class="flex justify-between">
+      <a href="./../../../../docs/python/install/" class="">python 插件学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4243,7 +4243,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

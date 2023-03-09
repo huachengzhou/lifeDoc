@@ -2,28 +2,21 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="字符串用法
-#
-
-   方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &#34;a,b&#34; print(str1.">
+<meta name="description" content="字符串用法 #     方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &#34;a,b&#34; print(str1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python string" />
-<meta property="og:description" content="字符串用法
-#
-
-   方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &#34;a,b&#34; print(str1." />
+<meta property="og:description" content="字符串用法 #     方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &#34;a,b&#34; print(str1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/string/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/string/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
 <title>python string | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.aa3bd11cd1fcd2c6aeb2bdf8eb662aebe141af39fd6fa5d0c7d7e269a2d9c12f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -815,7 +808,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/base/" class="">python 基础学习</a>
+    <input type="checkbox" id="section-1eba4d3394916870dc9a66fd50843417" class="toggle" checked />
+    <label for="section-1eba4d3394916870dc9a66fd50843417" class="flex justify-between">
+      <a href="./../../../../docs/python/base/" class="">python 基础学习</a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -854,6 +851,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/lambda_or_function/" class="">python 函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/set/" class="">python set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/module/" class="">python 模块介绍</a>
   
 
@@ -880,7 +903,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/dictionary/" class="">python 字典</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/casting/" class="">python 类型转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/tuple/" class="">python 元组</a>
   
 
         </li>
@@ -951,6 +1013,11 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+  </ul>
+
+        </li>
+      
+    
       
         <li>
           
@@ -958,7 +1025,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
+    <input type="checkbox" id="section-5edfb103a0f74ef3d489bca94178c238" class="toggle"  />
+    <label for="section-5edfb103a0f74ef3d489bca94178c238" class="flex justify-between">
+      <a href="./../../../../docs/python/install/" class="">python 插件学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4159,7 +4243,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

@@ -2,58 +2,33 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CDN
-#
-
- CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输得更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
+<meta name="description" content="CDN #   CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输得更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
   CDN的中文名字叫内容分发网络。字面理解就是用来做内容分发的一套网络体系，它是用来提升文件下载速度的一种机制。让用户能够从离自己最近的CDN服务器进行下载，减少路由次数，提升下载速度，缩短传输时间，提升用户使用体验
- CDN的好处
-#
-
-   不用担心自己网站访客，在任何时间，任何地点，任何网络运营商，都能快速打开网站。    各种服务器虚拟主机带宽等采购成本，包括后期运维成本都会大大减少。    给网站直接带来的好处就是：流量，咨询量，客户量，成单量，都会得到大幅度提升。    CDN的价格
-#
-
-提起CDN，一般人都会望而却步，因为CDN太贵，都是大企业才能用得起的贵族式服务，而如今面对中小企业的CDN技术开发已经实现，并进入市场开始运营。
+ CDN的好处 #     不用担心自己网站访客，在任何时间，任何地点，任何网络运营商，都能快速打开网站。    各种服务器虚拟主机带宽等采购成本，包括后期运维成本都会大大减少。    给网站直接带来的好处就是：流量，咨询量，客户量，成单量，都会得到大幅度提升。    CDN的价格 #  提起CDN，一般人都会望而却步，因为CDN太贵，都是大企业才能用得起的贵族式服务，而如今面对中小企业的CDN技术开发已经实现，并进入市场开始运营。
 市面上CDN提供商计费方式多样，有按每月最低消费的，有按带宽收费的，有按请求数收费的，有包月包季包年限制的，还有些大多人看不懂的技术指标收费的，总之比较复杂，CDN服务在所有计费方式中，中小企业一致认为按流量收费最为合理，另外大多按流量计费方式中会有时间限制，规定时间内用不完就会全部作废，对于流量把握不好的中小企业，存在相当一部分浪费。
-技术原理
-#
-
-CDN服务只可以用于静态数据的加速，动态接口不能使用CDN服务。
+技术原理 #  CDN服务只可以用于静态数据的加速，动态接口不能使用CDN服务。
 CDN的基本原理为反向代理，反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个节点服务器。通过部署更多的反向代理服务器，来达到实现多节点CDN的效果。 在描述CDN的实现原理，让我们先看传统的未加缓存服务的访问过程，以便了解CDN缓存访问方式与未加缓存访问方式的差别： [1] 用户提交域名→浏览器对域名进行解析→得到目的主机的IP地址→根据IP地址访问发出请求→得到请求数据并回复 由上可见，用户访问未使用CDN缓存网站的过程为: 1)、用户向浏览器提供要访问的域名； 2)、浏览器调用域名解析函数库对域名进行解析，以得到此域名对应的IP地址； 3)、浏览器使用所得到的IP地址，向域名的服务主机发出数据访问请求； 4)、浏览器根据域名主机返回的数据显示网页的内容。 通过以上四个步骤，浏览器完成从用户处接收用户要访问的域名到从域名服务主机处获取数据的整个过程。CDN网络是在用户和服务器之间增加Cache层，如何将用户的请求引导到Cache上获得源服务器的数据，主要是通过接管DNS实现，下面让我们看看访问使用CDN缓存后的网站的过程：
 通过上图，我们可以了解到，使用了CDN缓存后的网站的访问过程变为： 1)、用户向浏览器提供要访问的域名； 2)、浏览器调用域名解析库对域名进行解析，由于CDN对域名解析过程进行了调整，所以解析函数库一般得到的是该域名对应的CNAME记录，为了得到实际IP地址，浏览器需要再次对获得的CNAME域名进行解析以得到实际的IP地址；在此过程中，使用的全局负载均衡DNS解析，如根据地理位置信息解析对应的IP地址，使得用户能就近访问。 3)、此次解析得到CDN缓存服务器的IP地址，浏览器在得到实际的IP地址以后，向缓存服务器发出访问请求； 4)、缓存服务器根据浏览器提供的要访问的域名，通过Cache内部专用DNS解析得到此域名的实际IP地址，再由缓存服务器向此实际IP地址提交访问请求； 5)、缓存服务器从实际IP地址得得到内容以后，一方面在本地进行保存，以备以后使用，另一方面把获取的数据返回给客户端，完成数据服务过程； 6)、客户端得到由缓存服务器返回的数据以后显示出来并完成整个浏览的数据请求过程。 通过以上的分析我们可以得到，为了实现既要对普通用户透明(即加入缓存以后用户客户端无需进行任何设置，直接使用被加速网站原有的域名即可访问，又要在为指定的网站提供加速服务的同时降低对ICP的影响，只要修改整个访问过程中的域名解析部分，以实现透明的加速服务，下面是CDN网络实现的具体操作过程。 1)、作为ICP，只需要把域名解释权交给CDN运营商，其他方面不需要进行任何的修改；操作时，ICP修改自己域名的解析记录，一般用cname方式指向CDN网络Cache服务器的地址。 2)、作为CDN运营商，首先需要为ICP的域名提供公开的解析，为了实现sortlist，一般是把ICP的域名解释结果指向一个CNAME记录； 3)、当需要进行sortlist时，CDN运营商可以利用DNS对CNAME指向的域名解析过程进行特殊处理，使DNS服务器在接收到客户端请求时可以根据客户端的IP地址，返回相同域名的不同IP地址； 4)、由于从cname获得的IP地址，并且带有hostname信息，请求到达Cache之后，Cache必须知道源服务器的IP地址，所以在CDN运营商内部维护一个内部DNS服务器，用于解释用户所访问的域名的真实IP地址； 5)、在维护内部DNS服务器时，还需要维护一台授权服务器，控制哪些域名可以进行缓存，而哪些又不进行缓存，以免发生开放代理的情况。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="cdn" />
-<meta property="og:description" content="CDN
-#
-
- CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输得更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
+<meta property="og:description" content="CDN #   CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输得更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。
   CDN的中文名字叫内容分发网络。字面理解就是用来做内容分发的一套网络体系，它是用来提升文件下载速度的一种机制。让用户能够从离自己最近的CDN服务器进行下载，减少路由次数，提升下载速度，缩短传输时间，提升用户使用体验
- CDN的好处
-#
-
-   不用担心自己网站访客，在任何时间，任何地点，任何网络运营商，都能快速打开网站。    各种服务器虚拟主机带宽等采购成本，包括后期运维成本都会大大减少。    给网站直接带来的好处就是：流量，咨询量，客户量，成单量，都会得到大幅度提升。    CDN的价格
-#
-
-提起CDN，一般人都会望而却步，因为CDN太贵，都是大企业才能用得起的贵族式服务，而如今面对中小企业的CDN技术开发已经实现，并进入市场开始运营。
+ CDN的好处 #     不用担心自己网站访客，在任何时间，任何地点，任何网络运营商，都能快速打开网站。    各种服务器虚拟主机带宽等采购成本，包括后期运维成本都会大大减少。    给网站直接带来的好处就是：流量，咨询量，客户量，成单量，都会得到大幅度提升。    CDN的价格 #  提起CDN，一般人都会望而却步，因为CDN太贵，都是大企业才能用得起的贵族式服务，而如今面对中小企业的CDN技术开发已经实现，并进入市场开始运营。
 市面上CDN提供商计费方式多样，有按每月最低消费的，有按带宽收费的，有按请求数收费的，有包月包季包年限制的，还有些大多人看不懂的技术指标收费的，总之比较复杂，CDN服务在所有计费方式中，中小企业一致认为按流量收费最为合理，另外大多按流量计费方式中会有时间限制，规定时间内用不完就会全部作废，对于流量把握不好的中小企业，存在相当一部分浪费。
-技术原理
-#
-
-CDN服务只可以用于静态数据的加速，动态接口不能使用CDN服务。
+技术原理 #  CDN服务只可以用于静态数据的加速，动态接口不能使用CDN服务。
 CDN的基本原理为反向代理，反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个节点服务器。通过部署更多的反向代理服务器，来达到实现多节点CDN的效果。 在描述CDN的实现原理，让我们先看传统的未加缓存服务的访问过程，以便了解CDN缓存访问方式与未加缓存访问方式的差别： [1] 用户提交域名→浏览器对域名进行解析→得到目的主机的IP地址→根据IP地址访问发出请求→得到请求数据并回复 由上可见，用户访问未使用CDN缓存网站的过程为: 1)、用户向浏览器提供要访问的域名； 2)、浏览器调用域名解析函数库对域名进行解析，以得到此域名对应的IP地址； 3)、浏览器使用所得到的IP地址，向域名的服务主机发出数据访问请求； 4)、浏览器根据域名主机返回的数据显示网页的内容。 通过以上四个步骤，浏览器完成从用户处接收用户要访问的域名到从域名服务主机处获取数据的整个过程。CDN网络是在用户和服务器之间增加Cache层，如何将用户的请求引导到Cache上获得源服务器的数据，主要是通过接管DNS实现，下面让我们看看访问使用CDN缓存后的网站的过程：
 通过上图，我们可以了解到，使用了CDN缓存后的网站的访问过程变为： 1)、用户向浏览器提供要访问的域名； 2)、浏览器调用域名解析库对域名进行解析，由于CDN对域名解析过程进行了调整，所以解析函数库一般得到的是该域名对应的CNAME记录，为了得到实际IP地址，浏览器需要再次对获得的CNAME域名进行解析以得到实际的IP地址；在此过程中，使用的全局负载均衡DNS解析，如根据地理位置信息解析对应的IP地址，使得用户能就近访问。 3)、此次解析得到CDN缓存服务器的IP地址，浏览器在得到实际的IP地址以后，向缓存服务器发出访问请求； 4)、缓存服务器根据浏览器提供的要访问的域名，通过Cache内部专用DNS解析得到此域名的实际IP地址，再由缓存服务器向此实际IP地址提交访问请求； 5)、缓存服务器从实际IP地址得得到内容以后，一方面在本地进行保存，以备以后使用，另一方面把获取的数据返回给客户端，完成数据服务过程； 6)、客户端得到由缓存服务器返回的数据以后显示出来并完成整个浏览的数据请求过程。 通过以上的分析我们可以得到，为了实现既要对普通用户透明(即加入缓存以后用户客户端无需进行任何设置，直接使用被加速网站原有的域名即可访问，又要在为指定的网站提供加速服务的同时降低对ICP的影响，只要修改整个访问过程中的域名解析部分，以实现透明的加速服务，下面是CDN网络实现的具体操作过程。 1)、作为ICP，只需要把域名解释权交给CDN运营商，其他方面不需要进行任何的修改；操作时，ICP修改自己域名的解析记录，一般用cname方式指向CDN网络Cache服务器的地址。 2)、作为CDN运营商，首先需要为ICP的域名提供公开的解析，为了实现sortlist，一般是把ICP的域名解释结果指向一个CNAME记录； 3)、当需要进行sortlist时，CDN运营商可以利用DNS对CNAME指向的域名解析过程进行特殊处理，使DNS服务器在接收到客户端请求时可以根据客户端的IP地址，返回相同域名的不同IP地址； 4)、由于从cname获得的IP地址，并且带有hostname信息，请求到达Cache之后，Cache必须知道源服务器的IP地址，所以在CDN运营商内部维护一个内部DNS服务器，用于解释用户所访问的域名的真实IP地址； 5)、在维护内部DNS服务器时，还需要维护一台授权服务器，控制哪些域名可以进行缓存，而哪些又不进行缓存，以免发生开放代理的情况。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/http/cdn/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-05T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/http/cdn/" />
+<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
 <title>cdn | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../en.search.min.a815d2dcca5aaa2d70857affe9e45f38e63fcc8a544758d222650f5bd96aa433.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../en.search.min.aa3bd11cd1fcd2c6aeb2bdf8eb662aebe141af39fd6fa5d0c7d7e269a2d9c12f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -845,7 +820,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/python/base/" class="">python 基础学习</a>
+    <input type="checkbox" id="section-1eba4d3394916870dc9a66fd50843417" class="toggle"  />
+    <label for="section-1eba4d3394916870dc9a66fd50843417" class="flex justify-between">
+      <a href="./../../../docs/python/base/" class="">python 基础学习</a>
+      <span>▾</span>
+    </label>
   
 
           
@@ -884,6 +863,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../docs/python/base/lambda_or_function/" class="">python 函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/set/" class="">python set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../docs/python/base/module/" class="">python 模块介绍</a>
   
 
@@ -910,7 +915,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../docs/python/base/dictionary/" class="">python 字典</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/casting/" class="">python 类型转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/base/tuple/" class="">python 元组</a>
   
 
         </li>
@@ -981,6 +1025,11 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+  </ul>
+
+        </li>
+      
+    
       
         <li>
           
@@ -988,7 +1037,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/python/base/pyqt5/" class="">python pyqt5</a>
+    <input type="checkbox" id="section-5edfb103a0f74ef3d489bca94178c238" class="toggle"  />
+    <label for="section-5edfb103a0f74ef3d489bca94178c238" class="flex justify-between">
+      <a href="./../../../docs/python/install/" class="">python 插件学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
   
 
         </li>
@@ -4189,7 +4255,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

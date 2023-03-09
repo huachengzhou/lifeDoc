@@ -2,7 +2,7 @@
 title: "python print"
 date: 2021-04-15
 draft: false
-weight: 7
+weight: 6
 ---
 
 ## print用法

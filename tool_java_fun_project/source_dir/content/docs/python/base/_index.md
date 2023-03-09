@@ -3,6 +3,7 @@ title: "python 基础学习"
 date: 2021-04-15
 draft: false
 weight: 1
+bookCollapseSection: true
 ---
 
 # python 学习笔记

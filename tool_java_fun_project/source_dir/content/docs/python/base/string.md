@@ -2,7 +2,7 @@
 title: "python string"
 date: 2021-04-15
 draft: false
-weight: 7
+weight: 8
 ---
 
 ## 字符串用法
