@@ -40,6 +40,17 @@ QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包�
 * 废弃了SINGAL\(\)和SLOT\(\)的调用方式，使用了新的信号和xx处理方式。
 * 不再支持被标记为废弃的或不建议使用的API。
 
+
+
+
+## 安装
+
+```cmd
+pip3 install PyQt5 -i https://pypi.douban.com/simple
+
+pip3 install PyQt5-tools -i https://pypi.douban.com/simple
+```
+
 [pyqt5原文文档](https://zetcode.com/gui/pyqt5/)
 [pyqt5中文文档](https://maicss.gitbook.io/pyqt-chinese-tutoral/)
 [pyqt5 github 文档出处](https://github.com/maicss/PyQt-Chinese-tutorial)
