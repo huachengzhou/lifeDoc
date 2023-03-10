@@ -5,9 +5,19 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="function #  Lambda #  ">
+<meta name="description" content="function #   函数是一种仅在调用时运行的代码块
+  创建函数  在 Python 中，使用 def 关键字定义函数
+def fun1(): print(&#34;这是一个函数&#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &#39;zkdsh&#39;): print(a) funX()  返回值  def addFun(x,y): return x &#43; y print(f&#34;addFun 调用 {addFun(2,3)}&#34;) Lambda #  lambda 函数是一种小的匿名函数。
+lambda 函数可接受任意数量的参数，但只能有一个表达式
+ 语法  lambda arguments : expression
+ 简单尝试  import random import math fun1 = lambda a, b: print(a &#43; b) fun1(random.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python 函数" />
-<meta property="og:description" content="function #  Lambda #  " />
+<meta property="og:description" content="function #   函数是一种仅在调用时运行的代码块
+  创建函数  在 Python 中，使用 def 关键字定义函数
+def fun1(): print(&#34;这是一个函数&#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &#39;zkdsh&#39;): print(a) funX()  返回值  def addFun(x,y): return x &#43; y print(f&#34;addFun 调用 {addFun(2,3)}&#34;) Lambda #  lambda 函数是一种小的匿名函数。
+lambda 函数可接受任意数量的参数，但只能有一个表达式
+ 语法  lambda arguments : expression
+ 简单尝试  import random import math fun1 = lambda a, b: print(a &#43; b) fun1(random." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/" />
 <meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
@@ -16,7 +26,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aa3bd11cd1fcd2c6aeb2bdf8eb662aebe141af39fd6fa5d0c7d7e269a2d9c12f.js"  ></script>
+<script defer src="./../../../../en.search.min.fb67759754f9bfe92021ab49453e16219ebf807abaae7e6cf74da2b2ac3dc68f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1013,6 +1023,110 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_datetime/" class="">python datetime</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_try_except/" class="">Python Try Except</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_regex/" class="">Python RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_json/" class="">Python JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_string_formatting/" class="">Python 字符串格式化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_cmd_input/" class="">Python 命令行输入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/math/" class="">python math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/container/" class="">Python 容器问题</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1043,6 +1157,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyinstaller/" class="">python pyinstaller </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/numpy/" class="">python NumPy  </a>
   
 
         </li>
@@ -4302,11 +4442,89 @@ https://github.com/alex-shpak/hugo-book
   function
   <a class="anchor" href="#function">#</a>
 </h2>
-<h2 id="lambda">
+<blockquote>
+<p>函数是一种仅在调用时运行的代码块</p>
+</blockquote>
+<ul>
+<li>创建函数</li>
+</ul>
+<p>在 Python 中，使用 def 关键字定义函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun1</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;这是一个函数&#34;</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun2</span> ():
+    <span style="color:#66d9ef">pass</span>
+
+
+fun2()
+fun1()
+</code></pre></div><ul>
+<li>默认参数值</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">funX</span>(a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;zkdsh&#39;</span>):
+    <span style="color:#66d9ef">print</span>(a)
+
+
+funX()
+</code></pre></div><ul>
+<li>返回值</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">addFun</span>(x,y):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
+
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;addFun 调用 {addFun(2,3)}&#34;</span>)
+</code></pre></div><h2 id="lambda">
   Lambda
   <a class="anchor" href="#lambda">#</a>
 </h2>
-</article>
+<p>lambda 函数是一种小的匿名函数。</p>
+<p>lambda 函数可接受任意数量的参数，但只能有一个表达式</p>
+<ul>
+<li>语法</li>
+</ul>
+<pre><code>lambda arguments : expression
+</code></pre><ul>
+<li>简单尝试</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> math
+
+fun1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> a, b: <span style="color:#66d9ef">print</span>(a <span style="color:#f92672">+</span> b)
+
+fun1(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>), random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>))
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fun</span> (x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>):
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">lambda</span> :  math<span style="color:#f92672">.</span>pow(x,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span>math<span style="color:#f92672">.</span>pow(y,<span style="color:#ae81ff">2</span>)
+
+
+<span style="color:#75715e"># 函数</span>
+value1 <span style="color:#f92672">=</span> fun(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>)
+
+<span style="color:#66d9ef">print</span>(value1)
+
+
+<span style="color:#75715e"># 再次调用函数</span>
+<span style="color:#66d9ef">print</span>(value1())
+
+
+<span style="color:#66d9ef">print</span>(math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span>math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>))
+<span style="color:#75715e"># 开平方</span>
+<span style="color:#66d9ef">print</span>(math<span style="color:#f92672">.</span>pow(math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span>math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">0.5</span>))
+<span style="color:#75715e"># 开平方</span>
+<span style="color:#66d9ef">print</span>(math<span style="color:#f92672">.</span>sqrt(math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span>math<span style="color:#f92672">.</span>pow(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>)))
+</code></pre></div><ul>
+<li>lambad 妙用</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">myfunc</span>(n):
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">lambda</span> a : a <span style="color:#f92672">*</span> n
+
+mytripler <span style="color:#f92672">=</span> myfunc(<span style="color:#ae81ff">3</span>)
+
+
+<span style="color:#66d9ef">print</span>(mytripler(<span style="color:#ae81ff">11</span>))
+</code></pre></div></article>
  
       
 

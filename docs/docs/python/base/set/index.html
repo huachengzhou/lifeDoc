@@ -5,9 +5,17 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="集合（Set） #  ">
+<meta name="description" content="集合（Set） #   集合是无序和无索引的集合。在 Python 中，集合用花括号编写
+  无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
+  集合一旦创建，无法更改项目，但是可以添加新项目
+ import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&#34;set1:{set1}&#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个 #   集合不能空 否则add会出问题的
+ import datetime import random nowDate = datetime.datetime.now() set2 = {nowDate.year, nowDate.month, nowDate.day} print(set2) set2.add(&#34;kk&#34;) print(set2) set3 = {random.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python set" />
-<meta property="og:description" content="集合（Set） #  " />
+<meta property="og:description" content="集合（Set） #   集合是无序和无索引的集合。在 Python 中，集合用花括号编写
+  无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
+  集合一旦创建，无法更改项目，但是可以添加新项目
+ import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&#34;set1:{set1}&#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个 #   集合不能空 否则add会出问题的
+ import datetime import random nowDate = datetime.datetime.now() set2 = {nowDate.year, nowDate.month, nowDate.day} print(set2) set2.add(&#34;kk&#34;) print(set2) set3 = {random." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/set/" />
 <meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
@@ -16,7 +24,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aa3bd11cd1fcd2c6aeb2bdf8eb662aebe141af39fd6fa5d0c7d7e269a2d9c12f.js"  ></script>
+<script defer src="./../../../../en.search.min.fb67759754f9bfe92021ab49453e16219ebf807abaae7e6cf74da2b2ac3dc68f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1013,6 +1021,110 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_datetime/" class="">python datetime</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_try_except/" class="">Python Try Except</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_regex/" class="">Python RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_json/" class="">Python JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_string_formatting/" class="">Python 字符串格式化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/python_cmd_input/" class="">Python 命令行输入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/math/" class="">python math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/base/container/" class="">Python 容器问题</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1043,6 +1155,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyinstaller/" class="">python pyinstaller </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/numpy/" class="">python NumPy  </a>
   
 
         </li>
@@ -4274,7 +4412,19 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#集合set">集合（Set）</a></li>
+    <li><a href="#集合set">集合（Set）</a>
+      <ul>
+        <li><a href="#添加--添加多个">添加 / 添加多个</a></li>
+        <li><a href="#pop-随机删除">pop-随机删除</a></li>
+        <li><a href="#remove-指定删除">remove-指定删除</a></li>
+        <li><a href="#discard-指定删除">discard-指定删除</a></li>
+        <li><a href="#clear-清空集合">clear-清空集合</a></li>
+        <li><a href="#in-元素判断">in-元素判断</a></li>
+        <li><a href="#union-并集">union-并集</a></li>
+        <li><a href="#difference-差集补集">difference-差集、补集</a></li>
+        <li><a href="#intersection-交集">intersection-交集</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -4301,6 +4451,181 @@ https://github.com/alex-shpak/hugo-book
   集合（Set）
   <a class="anchor" href="#%e9%9b%86%e5%90%88set">#</a>
 </h2>
+<blockquote>
+<p>集合是无序和无索引的集合。在 Python 中，集合用花括号编写</p>
+</blockquote>
+<blockquote>
+<p>无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引</p>
+</blockquote>
+<blockquote>
+<p>集合一旦创建，无法更改项目，但是可以添加新项目</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> datetime
+
+set1 <span style="color:#f92672">=</span> {random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, time<span style="color:#f92672">.</span>time_ns(), datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>year, datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>month, datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>day}
+
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;set1:{set1}&#34;</span>)
+
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> set1:
+    <span style="color:#66d9ef">print</span>(x)
+
+
+<span style="color:#75715e"># print(set1[0])</span>
+<span style="color:#75715e"># del set1[0]</span>
+</code></pre></div><h3 id="添加--添加多个">
+  添加 / 添加多个
+  <a class="anchor" href="#%e6%b7%bb%e5%8a%a0--%e6%b7%bb%e5%8a%a0%e5%a4%9a%e4%b8%aa">#</a>
+</h3>
+<blockquote>
+<p>集合不能空 否则add会出问题的</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">import</span> random
+
+nowDate <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+
+set2 <span style="color:#f92672">=</span> {nowDate<span style="color:#f92672">.</span>year, nowDate<span style="color:#f92672">.</span>month, nowDate<span style="color:#f92672">.</span>day}
+
+<span style="color:#66d9ef">print</span>(set2)
+set2<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#34;kk&#34;</span>)
+<span style="color:#66d9ef">print</span>(set2)
+
+set3 <span style="color:#f92672">=</span> {random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>, <span style="color:#e6db74">&#34;vvv&#34;</span>}
+set2<span style="color:#f92672">.</span>update(set3)
+
+<span style="color:#66d9ef">print</span>(set2)
+
+</code></pre></div><h3 id="pop-随机删除">
+  pop-随机删除
+  <a class="anchor" href="#pop-%e9%9a%8f%e6%9c%ba%e5%88%a0%e9%99%a4">#</a>
+</h3>
+<blockquote>
+<p>随机删除一个元素，并且返回删除的结果。pop不能指定参数，也就是不能指定想要删除的元素</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">import</span> random
+
+nowDate <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+
+setX <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;0&#34;</span>}
+
+<span style="color:#75715e"># 集合不能空 否则add会出问题的</span>
+setX<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#34;hh&#34;</span>)
+
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>random())
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">99</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">98</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">97</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">96</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">95</span>), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+
+<span style="color:#66d9ef">print</span>(setX)
+<span style="color:#66d9ef">print</span>(setX<span style="color:#f92672">.</span>pop())
+
+
+<span style="color:#66d9ef">print</span>(setX)
+
+</code></pre></div><h3 id="remove-指定删除">
+  remove-指定删除
+  <a class="anchor" href="#remove-%e6%8c%87%e5%ae%9a%e5%88%a0%e9%99%a4">#</a>
+</h3>
+<blockquote>
+<p>删除的元素必须在集合中。如果不存在，则会报错</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">import</span> random
+
+
+setX <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;0&#34;</span>,<span style="color:#e6db74">&#34;a&#34;</span>}
+
+
+<span style="color:#66d9ef">for</span> xx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">5</span>):
+    setX<span style="color:#f92672">.</span>add(random<span style="color:#f92672">.</span>randrange(int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> xx), int(random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> xx<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">100</span>))
+
+setX<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#34;v&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(setX)
+
+setX<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#34;v&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(setX)
+</code></pre></div><h3 id="discard-指定删除">
+  discard-指定删除
+  <a class="anchor" href="#discard-%e6%8c%87%e5%ae%9a%e5%88%a0%e9%99%a4">#</a>
+</h3>
+<blockquote>
+<p>指定删除某个元素，如果元素不存在，也不会报错</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;java&#39;</span>, <span style="color:#e6db74">&#39;javascript&#39;</span>, <span style="color:#e6db74">&#39;python&#39;</span>}
+<span style="color:#66d9ef">print</span>(set1)
+set1<span style="color:#f92672">.</span>discard(<span style="color:#e6db74">&#34;1&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(set1)
+</code></pre></div><h3 id="clear-清空集合">
+  clear-清空集合
+  <a class="anchor" href="#clear-%e6%b8%85%e7%a9%ba%e9%9b%86%e5%90%88">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;html&#39;</span>, <span style="color:#e6db74">&#39;java&#39;</span>, <span style="color:#e6db74">&#39;javascript&#39;</span>, <span style="color:#e6db74">&#39;python&#39;</span>}
+<span style="color:#66d9ef">print</span>(set1)
+set1<span style="color:#f92672">.</span>discard(<span style="color:#e6db74">&#34;1&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(set1)
+
+set1<span style="color:#f92672">.</span>clear()
+<span style="color:#66d9ef">print</span>(set1)
+
+</code></pre></div><h3 id="in-元素判断">
+  in-元素判断
+  <a class="anchor" href="#in-%e5%85%83%e7%b4%a0%e5%88%a4%e6%96%ad">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set2 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34; in的用法:{1 in set2}&#34;</span>)
+</code></pre></div><h3 id="union-并集">
+  union-并集
+  <a class="anchor" href="#union-%e5%b9%b6%e9%9b%86">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set1 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>}
+
+set2 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>}
+
+set3 <span style="color:#f92672">=</span> set1<span style="color:#f92672">.</span>union(set2)
+
+<span style="color:#66d9ef">print</span>(set3)
+
+
+</code></pre></div><h3 id="difference-差集补集">
+  difference-差集、补集
+  <a class="anchor" href="#difference-%e5%b7%ae%e9%9b%86%e8%a1%a5%e9%9b%86">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+set1 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+
+set2 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+
+set3 <span style="color:#f92672">=</span> set1<span style="color:#f92672">.</span>difference(set2)
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;set1: {set1}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;set2: {set2}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;set3: {set3}&#34;</span>)
+</code></pre></div><h3 id="intersection-交集">
+  intersection-交集
+  <a class="anchor" href="#intersection-%e4%ba%a4%e9%9b%86">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set1 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+
+set2 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>}
+
+set3 <span style="color:#f92672">=</span> set1<span style="color:#f92672">.</span>intersection(set2)
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;set3: {set3}&#34;</span>)
+
+
+</code></pre></div><p><a href="https://zhuanlan.zhihu.com/p/404175485">参考</a></p>
 </article>
  
       
@@ -4544,7 +4869,19 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#集合set">集合（Set）</a></li>
+    <li><a href="#集合set">集合（Set）</a>
+      <ul>
+        <li><a href="#添加--添加多个">添加 / 添加多个</a></li>
+        <li><a href="#pop-随机删除">pop-随机删除</a></li>
+        <li><a href="#remove-指定删除">remove-指定删除</a></li>
+        <li><a href="#discard-指定删除">discard-指定删除</a></li>
+        <li><a href="#clear-清空集合">clear-清空集合</a></li>
+        <li><a href="#in-元素判断">in-元素判断</a></li>
+        <li><a href="#union-并集">union-并集</a></li>
+        <li><a href="#difference-差集补集">difference-差集、补集</a></li>
+        <li><a href="#intersection-交集">intersection-交集</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

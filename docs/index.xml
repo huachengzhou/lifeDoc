@@ -21,6 +21,20 @@ html转markdown</description>
     </item>
     
     <item>
+      <title>python pyqt5</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
+      <description>关于 PyQt5 #  PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
+PyQt5类分为很多模块，主要模块有：
+ QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
+PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
+    </item>
+    
+    <item>
       <title>什么叫魅力</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/fdhcmhstpw/</link>
       <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
@@ -523,6 +537,19 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
+      <title>python pyinstaller </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
+      <description>pyinstaller #  安装 #   安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包 #  打包为单文件 #   平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹 #  # 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析 #  .spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+  Analysis：主要是分析py文件的依赖信息</description>
+    </item>
+    
+    <item>
       <title>python pip</title>
       <link>https://huachengzhou.github.io/life/docs/python/base/pip/</link>
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
@@ -749,7 +776,11 @@ CDN的基本原理为反向代理，反向代理（Reverse Proxy）方式是指�
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/</guid>
-      <description>function #  Lambda #  </description>
+      <description>function #   函数是一种仅在调用时运行的代码块
+  创建函数  在 Python 中，使用 def 关键字定义函数
+def fun1(): print(&amp;#34;这是一个函数&amp;#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &amp;#39;zkdsh&amp;#39;): print(a) funX()  返回值  def addFun(x,y): return x + y print(f&amp;#34;addFun 调用 {addFun(2,3)}&amp;#34;) Lambda #  lambda 函数是一种小的匿名函数。
+lambda 函数可接受任意数量的参数，但只能有一个表达式
+ 语法  lambda arguments : expression 简单尝试  import random import math fun1 = lambda a, b: print(a + b) fun1(random.</description>
     </item>
     
     <item>
@@ -832,6 +863,23 @@ CDN的基本原理为反向代理，反向代理（Reverse Proxy）方式是指�
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>python NumPy  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/numpy/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
+      <description>NumPy #  什么是 NumPy #  NumPy 是用于处理数组的 python 库。
+它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
+NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。
+NumPy 指的是数值 Python（Numerical Python）
+为何使用 NumPy？ #  在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
+NumPy 旨在提供一个比传统 Python 列表快 50 倍的数组对象。
+NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得利用 ndarray 非常容易。
+数组在数据科学中非常常用，因为速度和资源非常重要。
+数据科学：计算机科学的一个分支，研究如何存储、使用和分析数据以从中获取信息。</description>
     </item>
     
     <item>
@@ -1060,7 +1108,11 @@ $ dig math.stackexchange.com DNS大全 #   公共DNS服务器地址大全     �
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/set/</guid>
-      <description>集合（Set） #  </description>
+      <description>集合（Set） #   集合是无序和无索引的集合。在 Python 中，集合用花括号编写
+  无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
+  集合一旦创建，无法更改项目，但是可以添加新项目
+ import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&amp;#34;set1:{set1}&amp;#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个 #   集合不能空 否则add会出问题的
+ import datetime import random nowDate = datetime.datetime.now() set2 = {nowDate.year, nowDate.month, nowDate.day} print(set2) set2.add(&amp;#34;kk&amp;#34;) print(set2) set3 = {random.</description>
     </item>
     
     <item>
@@ -1304,7 +1356,8 @@ Phaser中是通过计数器来控制。在Phaser中计数器叫做parties， 我
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/dictionary/</guid>
-      <description>字典（Dictionary） #  </description>
+      <description>字典（Dictionary） #   字典有点像一个json对象 且不是json数组对象
+  简单举例  dic1 = {&amp;#39;a&amp;#39;: &amp;#39;dsgs&amp;#39;} print(dic1) print(dic1.get(&amp;#34;a&amp;#34;)) 创建并打印字典 #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.randrange(int(&amp;#34;10&amp;#34;) , int(&amp;#34;10&amp;#34;+str(x))) print(dicX) 检查键是否存在 #  import random dic1 = {&amp;#39;x&amp;#39;:random.randrange(1,3000),&amp;#39;y&amp;#39;:random.randrange(1,3000)} print(dic1) print(f&amp;#34;x in dic1 :{&amp;#39;x&amp;#39; in dic1}&amp;#34;) 访问字典 #  dic20 = {&amp;#39;a&amp;#39;:&amp;#39;zxc&amp;#39;} print(dic20[&amp;#39;a&amp;#39;]) print(dic20.get(&amp;#34;a&amp;#34;)) 更改值 #  set2 = {&amp;#34;x&amp;#34;:1,&amp;#39;y&amp;#39;:2000} print(set2) set2[&amp;#39;x&amp;#39;] = 2 print(set2) values() #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.</description>
     </item>
     
     <item>
@@ -2351,6 +2404,31 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
     </item>
     
     <item>
+      <title>python datetime</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</guid>
+      <description>datetime #  构造函数 #   创建日期对象  import datetime import time time1 = datetime.datetime(year=2008,month=4,day=12) time2 = datetime.datetime(2027,6,23) print(time1) print(time2) 日期对象格式化为可读字符串 #   格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 +0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime.</description>
+    </item>
+    
+    <item>
+      <title>Python Try Except</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</guid>
+      <description>try 块允许您测试代码块以查找错误。
+except 块允许您处理错误。
+finally 块允许您执行代码，无论 try 和 except 块的结果如何
+异常处理 #  当我们调用 Python 并发生错误或异常时，通常会停止并生成错误消息。
+可以使用 try 语句处理这些异常：
+try: print(x) except: print(&amp;#34;x没有定义&amp;#34;) 多个异常 #  try: print(x) except NameError: print(&amp;#34;参数 x 没有定义&amp;#34;) except: print(&amp;#34;Something else went wrong&amp;#34;) Else #  如果没有引发错误，那么您可以使用 else 关键字来定义要执行的代码块：
+try: print(&amp;#34;你好啊!&amp;#34;) except: print(&amp;#34;抛出错误了&amp;#34;) else: print(&amp;#34;继续执行&amp;#34;) Finally #  如果指定了 finally 块，则无论 try 块是否引发错误，都会执行 finally 块
+try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: print(&amp;#34;不管抛出异常与否都会执行&amp;#34;) 引发异常 #  抛出（引发）异常，请使用 raise 关键词</description>
+    </item>
+    
+    <item>
       <title>mysql存储函数</title>
       <link>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure_function/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -2378,12 +2456,83 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
     </item>
     
     <item>
+      <title>Python RegEx</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_regex/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_regex/</guid>
+      <description>RegEx 或正则表达式是形成搜索模式的字符序列。
+RegEx 可用于检查字符串是否包含指定的搜索模式
+RegEx 模块 #  导入 re 模块后，就可以开始使用正则表达式了
+RegEx 函数 #  re 模块提供了一组函数，允许我们检索字符串以进行匹配：
+   函数 描述     findall 返回包含所有匹配项的列表   search 如果字符串中的任意位置存在匹配，则返回 Match 对象   split 返回在每次匹配时拆分字符串的列表   sub 用字符串替换一个或多个匹配项    元字符 #  元字符是具有特殊含义的字符：
+   字符 描述 示例 TIY     [] 一组字符 &amp;ldquo;[a-m]&amp;rdquo; 试一试   \ 示意特殊序列（也可用于转义特殊字符） &amp;ldquo;\d&amp;rdquo; 试一试   .</description>
+    </item>
+    
+    <item>
+      <title>Python JSON</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_json/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_json/</guid>
+      <description>JSON 是用于存储和交换数据的语法。
+JSON 是用 JavaScript 对象表示法（JavaScript object notation）编写的文本
+解析 JSON - 把 JSON 转换为 Python #  import json # 一些 JSON: x = &amp;#39;{ &amp;#34;name&amp;#34;:&amp;#34;Bill&amp;#34;, &amp;#34;age&amp;#34;:63, &amp;#34;city&amp;#34;:&amp;#34;Seatle&amp;#34;}&amp;#39; # 解析 x: y = json.loads(x) print(f&amp;#34;json 类型 {type(y)}&amp;#34;) print(y) 把 Python 转换为 JSON #  import json dict2 = {&amp;#39;name&amp;#39;:&amp;#39;李世民&amp;#39;,&amp;#39;age&amp;#39;:18} json1 = json.dumps(dict2) print(json1) </description>
+    </item>
+    
+    <item>
+      <title>Python 字符串格式化</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</guid>
+      <description>字符串 format() #  format() 方法允许您格式化字符串的选定部分。
+有时文本的一部分是你无法控制的，也许它们来自数据库或用户输入？
+要控制此类值，请在文本中添加占位符（花括号 {}），然后通过 format() 方法运行值：
+  {} 占位符好
+  简单例子
+  woollenSweater = &amp;#34;这件毛衣{}块钱!&amp;#34; print(woollenSweater.format(52)) # 这件毛衣52块钱! print(&amp;#34;这件毛衣{:.2f}块钱!&amp;#34;.format(52.34)) # 这件毛衣52.34块钱!  多个值  text1 = &amp;#34;{}创立了这个公司,一共花了{}年,是一个享誉世界的人&amp;#34; print(f&amp;#34;参数 李世民_4: {text1.format(&amp;#39;李世民&amp;#39;,4)}&amp;#34;) print(f&amp;#34;参数 朱元璋_22: {text1.format(&amp;#39;朱元璋&amp;#39;,22)}&amp;#34;) #参数 李世民_4: 李世民创立了这个公司,一共花了4年,是一个享誉世界的人 #参数 朱元璋_22: 朱元璋创立了这个公司,一共花了22年,是一个享誉世界的人 </description>
+    </item>
+    
+    <item>
+      <title>Python 命令行输入</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_cmd_input/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_cmd_input/</guid>
+      <description>命令行输入 Python 允许命令行输入。
+这意味着我们能够要求用户输入。
+Python 3.6 中的方法与 Python 2.7 略有不同。
+Python 3.6 使用 input() 方法。
+Python 2.7 使用 raw_input() 方法
+ 例子  # Python 3.6 print(&amp;#34;请输入您的姓名&amp;#34;) name = input() print(&amp;#34;请输入您的年龄&amp;#34;) age = input() print(f&amp;#34;您的姓名:{name} ; 您的年龄:{age}&amp;#34;) # 请输入您的姓名 # 张三 # 请输入您的年龄 # 25 # 您的姓名:张三 ; 您的年龄:25 </description>
+    </item>
+    
+    <item>
       <title>vue脚手架创建方式 </title>
       <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/</guid>
       <description>第一种方式 #     npm i -g @vue/cli-init or npm install @vue/cli-init@5.0.8 -g    D:\IdeaProjects\cycle\study\vuecli\demoB&amp;gt;vue init webpack learnrouter ? Project name learnrouter ? Project description &amp;#39;这是一个vue路由器&amp;#39; ? Author zch ? Vue build runtime ? Install vue-router? Yes ? Use ESLint to lint your code? No ? Set up unit tests Yes ? Pick a test runner noTest ? Setup e2e tests with Nightwatch? Yes ? Should we run `npm install` for you after the project has been created?</description>
+    </item>
+    
+    <item>
+      <title>python math</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/math/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/math/</guid>
+      <description>math #  math 模块常量 #     常量 描述     math.e 返回欧拉数 (2.7182&amp;hellip;)   math.inf 返回正无穷大浮点数   math.nan 返回一个浮点值 NaN (not a number)   math.pi π 一般指圆周率。 圆周率 PI (3.1415&amp;hellip;)   math.tau 数学常数 τ = 6.283185&amp;hellip;，精确到可用精度。Tau 是一个圆周常数，等于 2π，圆的周长与半径之比。    math 模块方法 #     方法 描述     math.acos(x) 返回 x 的反余弦，结果范围在 0 到 pi 之间。   math.</description>
+    </item>
+    
+    <item>
+      <title>Python 容器问题</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/container/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/container/</guid>
+      <description>容器 #  各个容器相互转换 #  容器通用用法 #  </description>
     </item>
     
     <item>
@@ -2721,20 +2870,6 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
   将SQL语句放在BEGIN和END阻止之间
   例子1
   -- create table CREATE TABLE employees_audit ( id INT AUTO_INCREMENT PRIMARY KEY, employeeNumber INT NOT NULL, lastname VARCHAR(50) NOT NULL, changedat DATETIME DEFAULT NULL, action VARCHAR(50) DEFAULT NULL ); </description>
-    </item>
-    
-    <item>
-      <title>python pyqt5</title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
-      <description>关于 PyQt5 #  PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
-PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
-PyQt5类分为很多模块，主要模块有：
- QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
     </item>
     
     <item>

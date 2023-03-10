@@ -42,7 +42,11 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/</guid>
-      <description>function #  Lambda #  </description>
+      <description>function #   函数是一种仅在调用时运行的代码块
+  创建函数  在 Python 中，使用 def 关键字定义函数
+def fun1(): print(&amp;#34;这是一个函数&amp;#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &amp;#39;zkdsh&amp;#39;): print(a) funX()  返回值  def addFun(x,y): return x + y print(f&amp;#34;addFun 调用 {addFun(2,3)}&amp;#34;) Lambda #  lambda 函数是一种小的匿名函数。
+lambda 函数可接受任意数量的参数，但只能有一个表达式
+ 语法  lambda arguments : expression 简单尝试  import random import math fun1 = lambda a, b: print(a + b) fun1(random.</description>
     </item>
     
     <item>
@@ -51,7 +55,11 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/set/</guid>
-      <description>集合（Set） #  </description>
+      <description>集合（Set） #   集合是无序和无索引的集合。在 Python 中，集合用花括号编写
+  无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
+  集合一旦创建，无法更改项目，但是可以添加新项目
+ import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&amp;#34;set1:{set1}&amp;#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个 #   集合不能空 否则add会出问题的
+ import datetime import random nowDate = datetime.datetime.now() set2 = {nowDate.year, nowDate.month, nowDate.day} print(set2) set2.add(&amp;#34;kk&amp;#34;) print(set2) set3 = {random.</description>
     </item>
     
     <item>
@@ -78,7 +86,8 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/dictionary/</guid>
-      <description>字典（Dictionary） #  </description>
+      <description>字典（Dictionary） #   字典有点像一个json对象 且不是json数组对象
+  简单举例  dic1 = {&amp;#39;a&amp;#39;: &amp;#39;dsgs&amp;#39;} print(dic1) print(dic1.get(&amp;#34;a&amp;#34;)) 创建并打印字典 #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.randrange(int(&amp;#34;10&amp;#34;) , int(&amp;#34;10&amp;#34;+str(x))) print(dicX) 检查键是否存在 #  import random dic1 = {&amp;#39;x&amp;#39;:random.randrange(1,3000),&amp;#39;y&amp;#39;:random.randrange(1,3000)} print(dic1) print(f&amp;#34;x in dic1 :{&amp;#39;x&amp;#39; in dic1}&amp;#34;) 访问字典 #  dic20 = {&amp;#39;a&amp;#39;:&amp;#39;zxc&amp;#39;} print(dic20[&amp;#39;a&amp;#39;]) print(dic20.get(&amp;#34;a&amp;#34;)) 更改值 #  set2 = {&amp;#34;x&amp;#34;:1,&amp;#39;y&amp;#39;:2000} print(set2) set2[&amp;#39;x&amp;#39;] = 2 print(set2) values() #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.</description>
     </item>
     
     <item>
@@ -164,6 +173,102 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
       <guid>https://huachengzhou.github.io/life/docs/python/base/list/</guid>
       <description>所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
  创建 #  # 定义一个列表 aList = [] 添加新的元素 append , insert ,extend #  # 定义一个列表 aList = [] aList.append(&amp;#34;a&amp;#34;) aList.insert(len(aList),&amp;#34;insert&amp;#34;) print(aList) list1 = [&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34; , &amp;#34;c&amp;#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表 #  aList = [2,4,5] for x in aList: print(x) 索引问题 #  # 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在 #  aList = [2,4,5] if 1 in aList: print(&amp;#39;1存在&amp;#39;) else: print(&amp;#39;1不存在&amp;#39;) 删除元素 #  aList = [] aList.</description>
+    </item>
+    
+    <item>
+      <title>python datetime</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</guid>
+      <description>datetime #  构造函数 #   创建日期对象  import datetime import time time1 = datetime.datetime(year=2008,month=4,day=12) time2 = datetime.datetime(2027,6,23) print(time1) print(time2) 日期对象格式化为可读字符串 #   格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 +0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime.</description>
+    </item>
+    
+    <item>
+      <title>Python Try Except</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</guid>
+      <description>try 块允许您测试代码块以查找错误。
+except 块允许您处理错误。
+finally 块允许您执行代码，无论 try 和 except 块的结果如何
+异常处理 #  当我们调用 Python 并发生错误或异常时，通常会停止并生成错误消息。
+可以使用 try 语句处理这些异常：
+try: print(x) except: print(&amp;#34;x没有定义&amp;#34;) 多个异常 #  try: print(x) except NameError: print(&amp;#34;参数 x 没有定义&amp;#34;) except: print(&amp;#34;Something else went wrong&amp;#34;) Else #  如果没有引发错误，那么您可以使用 else 关键字来定义要执行的代码块：
+try: print(&amp;#34;你好啊!&amp;#34;) except: print(&amp;#34;抛出错误了&amp;#34;) else: print(&amp;#34;继续执行&amp;#34;) Finally #  如果指定了 finally 块，则无论 try 块是否引发错误，都会执行 finally 块
+try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: print(&amp;#34;不管抛出异常与否都会执行&amp;#34;) 引发异常 #  抛出（引发）异常，请使用 raise 关键词</description>
+    </item>
+    
+    <item>
+      <title>Python RegEx</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_regex/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_regex/</guid>
+      <description>RegEx 或正则表达式是形成搜索模式的字符序列。
+RegEx 可用于检查字符串是否包含指定的搜索模式
+RegEx 模块 #  导入 re 模块后，就可以开始使用正则表达式了
+RegEx 函数 #  re 模块提供了一组函数，允许我们检索字符串以进行匹配：
+   函数 描述     findall 返回包含所有匹配项的列表   search 如果字符串中的任意位置存在匹配，则返回 Match 对象   split 返回在每次匹配时拆分字符串的列表   sub 用字符串替换一个或多个匹配项    元字符 #  元字符是具有特殊含义的字符：
+   字符 描述 示例 TIY     [] 一组字符 &amp;ldquo;[a-m]&amp;rdquo; 试一试   \ 示意特殊序列（也可用于转义特殊字符） &amp;ldquo;\d&amp;rdquo; 试一试   .</description>
+    </item>
+    
+    <item>
+      <title>Python JSON</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_json/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_json/</guid>
+      <description>JSON 是用于存储和交换数据的语法。
+JSON 是用 JavaScript 对象表示法（JavaScript object notation）编写的文本
+解析 JSON - 把 JSON 转换为 Python #  import json # 一些 JSON: x = &amp;#39;{ &amp;#34;name&amp;#34;:&amp;#34;Bill&amp;#34;, &amp;#34;age&amp;#34;:63, &amp;#34;city&amp;#34;:&amp;#34;Seatle&amp;#34;}&amp;#39; # 解析 x: y = json.loads(x) print(f&amp;#34;json 类型 {type(y)}&amp;#34;) print(y) 把 Python 转换为 JSON #  import json dict2 = {&amp;#39;name&amp;#39;:&amp;#39;李世民&amp;#39;,&amp;#39;age&amp;#39;:18} json1 = json.dumps(dict2) print(json1) </description>
+    </item>
+    
+    <item>
+      <title>Python 字符串格式化</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</guid>
+      <description>字符串 format() #  format() 方法允许您格式化字符串的选定部分。
+有时文本的一部分是你无法控制的，也许它们来自数据库或用户输入？
+要控制此类值，请在文本中添加占位符（花括号 {}），然后通过 format() 方法运行值：
+  {} 占位符好
+  简单例子
+  woollenSweater = &amp;#34;这件毛衣{}块钱!&amp;#34; print(woollenSweater.format(52)) # 这件毛衣52块钱! print(&amp;#34;这件毛衣{:.2f}块钱!&amp;#34;.format(52.34)) # 这件毛衣52.34块钱!  多个值  text1 = &amp;#34;{}创立了这个公司,一共花了{}年,是一个享誉世界的人&amp;#34; print(f&amp;#34;参数 李世民_4: {text1.format(&amp;#39;李世民&amp;#39;,4)}&amp;#34;) print(f&amp;#34;参数 朱元璋_22: {text1.format(&amp;#39;朱元璋&amp;#39;,22)}&amp;#34;) #参数 李世民_4: 李世民创立了这个公司,一共花了4年,是一个享誉世界的人 #参数 朱元璋_22: 朱元璋创立了这个公司,一共花了22年,是一个享誉世界的人 </description>
+    </item>
+    
+    <item>
+      <title>Python 命令行输入</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/python_cmd_input/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/python_cmd_input/</guid>
+      <description>命令行输入 Python 允许命令行输入。
+这意味着我们能够要求用户输入。
+Python 3.6 中的方法与 Python 2.7 略有不同。
+Python 3.6 使用 input() 方法。
+Python 2.7 使用 raw_input() 方法
+ 例子  # Python 3.6 print(&amp;#34;请输入您的姓名&amp;#34;) name = input() print(&amp;#34;请输入您的年龄&amp;#34;) age = input() print(f&amp;#34;您的姓名:{name} ; 您的年龄:{age}&amp;#34;) # 请输入您的姓名 # 张三 # 请输入您的年龄 # 25 # 您的姓名:张三 ; 您的年龄:25 </description>
+    </item>
+    
+    <item>
+      <title>python math</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/math/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/math/</guid>
+      <description>math #  math 模块常量 #     常量 描述     math.e 返回欧拉数 (2.7182&amp;hellip;)   math.inf 返回正无穷大浮点数   math.nan 返回一个浮点值 NaN (not a number)   math.pi π 一般指圆周率。 圆周率 PI (3.1415&amp;hellip;)   math.tau 数学常数 τ = 6.283185&amp;hellip;，精确到可用精度。Tau 是一个圆周常数，等于 2π，圆的周长与半径之比。    math 模块方法 #     方法 描述     math.acos(x) 返回 x 的反余弦，结果范围在 0 到 pi 之间。   math.</description>
+    </item>
+    
+    <item>
+      <title>Python 容器问题</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/container/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/container/</guid>
+      <description>容器 #  各个容器相互转换 #  容器通用用法 #  </description>
     </item>
     
   </channel>

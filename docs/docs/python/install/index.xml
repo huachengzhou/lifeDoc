@@ -20,5 +20,35 @@ PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
  重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
     </item>
     
+    <item>
+      <title>python pyinstaller </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
+      <description>pyinstaller #  安装 #   安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包 #  打包为单文件 #   平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹 #  # 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析 #  .spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+  Analysis：主要是分析py文件的依赖信息</description>
+    </item>
+    
+    <item>
+      <title>python NumPy  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/numpy/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
+      <description>NumPy #  什么是 NumPy #  NumPy 是用于处理数组的 python 库。
+它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
+NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。
+NumPy 指的是数值 Python（Numerical Python）
+为何使用 NumPy？ #  在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
+NumPy 旨在提供一个比传统 Python 列表快 50 倍的数组对象。
+NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得利用 ndarray 非常容易。
+数组在数据科学中非常常用，因为速度和资源非常重要。
+数据科学：计算机科学的一个分支，研究如何存储、使用和分析数据以从中获取信息。</description>
+    </item>
+    
   </channel>
 </rss>

@@ -2,7 +2,7 @@
 title: "python pyqt5"
 date: 2023-03-02
 draft: false
-weight: 101
+weight: 1
 ---
 
 # 关于 PyQt5

@@ -143,4 +143,60 @@ print(set1)
 ```
 
 
+### in-元素判断
+
+
+```python
+set2 = {1,2,3}
+
+print(f" in的用法:{1 in set2}")
+```
+
+### union-并集
+
+```python
+set1 = {2,3,4}
+
+set2 = {4,5,6}
+
+set3 = set1.union(set2)
+
+print(set3)
+
+
+```
+
+
+### difference-差集、补集
+
+```python
+
+set1 = {1,2,3}
+
+set2 = {2,3}
+
+set3 = set1.difference(set2)
+
+print(f"set1: {set1}")
+print(f"set2: {set2}")
+print(f"set3: {set3}")
+```
+
+### intersection-交集
+
+```python
+set1 = {1,2,3}
+
+set2 = {1,2}
+
+set3 = set1.intersection(set2)
+
+print(f"set3: {set3}")
+
+
+```
+
+
+
+
 [参考](https://zhuanlan.zhihu.com/p/404175485)

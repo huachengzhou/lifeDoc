@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/fdhcmhstpw/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url>
@@ -208,6 +213,11 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/python/base/pip/</loc>
     <lastmod>2023-02-15T00:00:00+00:00</lastmod>
   </url>
@@ -357,6 +367,11 @@
   
   <url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/numpy/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -989,6 +1004,16 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure_function/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url>
@@ -999,8 +1024,38 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_regex/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_json/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/python_cmd_input/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2021-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/math/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/base/container/</loc>
+    <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -1201,11 +1256,6 @@
   <url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/triggers/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</loc>
-    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
