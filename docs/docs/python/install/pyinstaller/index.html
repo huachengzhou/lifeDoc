@@ -24,7 +24,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.fb67759754f9bfe92021ab49453e16219ebf807abaae7e6cf74da2b2ac3dc68f.js"  ></script>
+<script defer src="./../../../../en.search.min.071e46737a4e84da8abb8a51f0bd0860ab908bcf9ab600db590241d3877879b5.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1482,6 +1482,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/basedir/java-basic-x-generic/" class="">泛型机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-jdk8-stream/" class="">Java8 流式数据处理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/java-basic-jdk8-stream_base/" class="">Java8 流式数据处理 短介绍</a>
   
 
         </li>
@@ -4421,6 +4447,7 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#去掉命令行窗口">去掉命令行窗口</a></li>
     <li><a href="#给程序增加图标">给程序增加图标</a></li>
+    <li><a href="#pyinstaller-支持的常用选项">PyInstaller 支持的常用选项</a></li>
   </ul>
 </nav>
 
@@ -4557,7 +4584,57 @@ pyinstaller -w xxx.py
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 添加 -i 参数，后加 图标路径
 pyinstaller -i x:\xx\xx.ico xx.py
-</code></pre></div></article>
+</code></pre></div><h2 id="pyinstaller-支持的常用选项">
+  PyInstaller 支持的常用选项
+  <a class="anchor" href="#pyinstaller-%e6%94%af%e6%8c%81%e7%9a%84%e5%b8%b8%e7%94%a8%e9%80%89%e9%a1%b9">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>-h，&ndash;help</th>
+<th>查看该模块的帮助信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-F，-onefile</td>
+<td>产生单个的可执行文件</td>
+</tr>
+<tr>
+<td>-D，&ndash;onedir</td>
+<td>产生一个目录（包含多个文件）作为可执行程序</td>
+</tr>
+<tr>
+<td>-a，&ndash;ascii</td>
+<td>不包含 Unicode 字符集支持</td>
+</tr>
+<tr>
+<td>-d，&ndash;debug</td>
+<td>产生 debug 版本的可执行文件</td>
+</tr>
+<tr>
+<td>-w，&ndash;windowed，&ndash;noconsolc</td>
+<td>指定程序运行时不显示命令行窗口（仅对 Windows 有效）</td>
+</tr>
+<tr>
+<td>-c，&ndash;nowindowed，&ndash;console</td>
+<td>指定使用命令行窗口运行程序（仅对 Windows 有效）</td>
+</tr>
+<tr>
+<td>-o DIR，&ndash;out=DIR</td>
+<td>指定 spec 文件的生成目录。如果没有指定，则默认使用当前目录来生成 spec 文件</td>
+</tr>
+<tr>
+<td>-p DIR，&ndash;path=DIR</td>
+<td>设置 Python 导入模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径</td>
+</tr>
+<tr>
+<td>-n NAME，&ndash;name=NAME</td>
+<td>指定项目（产生的 spec）名字。如果省略该选项，那么第一个脚本的主文件名将作为 spec 的名字</td>
+</tr>
+</tbody>
+</table>
+</article>
  
       
 
@@ -4809,6 +4886,7 @@ pyinstaller -i x:\xx\xx.ico xx.py
     </li>
     <li><a href="#去掉命令行窗口">去掉命令行窗口</a></li>
     <li><a href="#给程序增加图标">给程序增加图标</a></li>
+    <li><a href="#pyinstaller-支持的常用选项">PyInstaller 支持的常用选项</a></li>
   </ul>
 </nav>
 
