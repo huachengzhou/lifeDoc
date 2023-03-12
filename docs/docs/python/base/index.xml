@@ -12,11 +12,11 @@
       <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/remark/</guid>
-      <description>版本问题 #  Python发行版通常与以前的版本向后兼容。 Python 2.7在很大程度上向后兼容Python 2.6
+      <description>版本问题#Python发行版通常与以前的版本向后兼容。 Python 2.7在很大程度上向后兼容Python 2.6
 在python3和python2之间有着一个特殊的版本叫做python2.6，这个版本是作为试验版本和过渡版本而存在的。它基本上采用的都是python2的库以及语法，但同时也可以使用python3的语法。虽然可以使用两个不同版本的python语法，但它还是不可以去运行python3的程序，因为本质上是不兼容的
-包管理问题 #   自己开发 可以使用pip 比较简单  Python 的包管理工具常见的有：easy_install，setuptools，distribute，pip
+包管理问题# 自己开发 可以使用pip 比较简单  Python 的包管理工具常见的有：easy_install，setuptools，distribute，pip
 他们之间的关系如下
-文档 #  python3.6 python w3school
+文档#python3.6 python w3school
 html转markdown</description>
     </item>
     
@@ -26,14 +26,14 @@ html转markdown</description>
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/pip/</guid>
-      <description>安装 #  目前如果你在Python官网下载最新版本的安装包，都已经自带了该工具
+      <description>安装#目前如果你在Python官网下载最新版本的安装包，都已经自带了该工具
 Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。
  检测安装  C:\Users\noatn&amp;gt; pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.7) C:\Users\noatn&amp;gt;  下载安装  可以通过命令 pip &amp;ndash;version 来判断是否已安装： pip &amp;ndash;version
 如果你还未安装，则可以使用以下两种方法来安装：
 1、Python附带了一个ensurepip模块，可以在Python环境中安装pip。cmd输入以下命令
 py -m ensurepip --upgrade 2、还可以下载一个Python脚本，使用命令行引导逻辑来安装pip
 下载脚本 到你的Python文件夹下 win+cmd打开终端，切换至你脚本的目录 输入命令回车
-py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip  显示版本和路径  C:\Users\noatn&amp;gt;pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.</description>
+py get-pip.py 最常用命令# 升级pip  python -m pip install --upgrade pip  显示版本和路径  C:\Users\noatn&amp;gt;pip --version pip 23.0.1 from c:\soft\python\lib\site-packages\pip (python 3.</description>
     </item>
     
     <item>
@@ -42,9 +42,9 @@ py get-pip.py 最常用命令 #   升级pip  python -m pip install --upgrade pip
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/</guid>
-      <description>function #   函数是一种仅在调用时运行的代码块
+      <description>function# 函数是一种仅在调用时运行的代码块
   创建函数  在 Python 中，使用 def 关键字定义函数
-def fun1(): print(&amp;#34;这是一个函数&amp;#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &amp;#39;zkdsh&amp;#39;): print(a) funX()  返回值  def addFun(x,y): return x + y print(f&amp;#34;addFun 调用 {addFun(2,3)}&amp;#34;) Lambda #  lambda 函数是一种小的匿名函数。
+def fun1(): print(&amp;#34;这是一个函数&amp;#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &amp;#39;zkdsh&amp;#39;): print(a) funX()  返回值  def addFun(x,y): return x + y print(f&amp;#34;addFun 调用 {addFun(2,3)}&amp;#34;) Lambda#lambda 函数是一种小的匿名函数。
 lambda 函数可接受任意数量的参数，但只能有一个表达式
  语法  lambda arguments : expression 简单尝试  import random import math fun1 = lambda a, b: print(a + b) fun1(random.</description>
     </item>
@@ -55,10 +55,10 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/set/</guid>
-      <description>集合（Set） #   集合是无序和无索引的集合。在 Python 中，集合用花括号编写
+      <description>集合（Set）# 集合是无序和无索引的集合。在 Python 中，集合用花括号编写
   无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
   集合一旦创建，无法更改项目，但是可以添加新项目
- import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&amp;#34;set1:{set1}&amp;#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个 #   集合不能空 否则add会出问题的
+ import random import time import datetime set1 = {random.random() * 100, time.time_ns(), datetime.datetime.year, datetime.datetime.month, datetime.datetime.day} print(f&amp;#34;set1:{set1}&amp;#34;) for x in set1: print(x) # print(set1[0]) # del set1[0] 添加 / 添加多个# 集合不能空 否则add会出问题的
  import datetime import random nowDate = datetime.datetime.now() set2 = {nowDate.year, nowDate.month, nowDate.day} print(set2) set2.add(&amp;#34;kk&amp;#34;) print(set2) set3 = {random.</description>
     </item>
     
@@ -68,7 +68,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/module/</guid>
-      <description>模块介绍 #  time模块 #  datetime模块 #  random 模块 #  os 模块 #  sys 模块 #  json 和 pickle 模块 #  hashlib和hmac 模块 #  logging 模块 #  numpy 模块 #  pandas 模块 #  matplotlib 模块 #  re 模块 #  typing 模块 #  collections 模块 #  pathlib 模块 #  pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
+      <description>模块介绍#time模块#datetime模块#random 模块#os 模块#sys 模块#json 和 pickle 模块#hashlib和hmac 模块#logging 模块#numpy 模块#pandas 模块#matplotlib 模块#re 模块#typing 模块#collections 模块#pathlib 模块#pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
     </item>
     
     <item>
@@ -86,8 +86,8 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/dictionary/</guid>
-      <description>字典（Dictionary） #   字典有点像一个json对象 且不是json数组对象
-  简单举例  dic1 = {&amp;#39;a&amp;#39;: &amp;#39;dsgs&amp;#39;} print(dic1) print(dic1.get(&amp;#34;a&amp;#34;)) 创建并打印字典 #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.randrange(int(&amp;#34;10&amp;#34;) , int(&amp;#34;10&amp;#34;+str(x))) print(dicX) 检查键是否存在 #  import random dic1 = {&amp;#39;x&amp;#39;:random.randrange(1,3000),&amp;#39;y&amp;#39;:random.randrange(1,3000)} print(dic1) print(f&amp;#34;x in dic1 :{&amp;#39;x&amp;#39; in dic1}&amp;#34;) 访问字典 #  dic20 = {&amp;#39;a&amp;#39;:&amp;#39;zxc&amp;#39;} print(dic20[&amp;#39;a&amp;#39;]) print(dic20.get(&amp;#34;a&amp;#34;)) 更改值 #  set2 = {&amp;#34;x&amp;#34;:1,&amp;#39;y&amp;#39;:2000} print(set2) set2[&amp;#39;x&amp;#39;] = 2 print(set2) values() #  import random dicX = {} for x in range(1,10): dicX[str(x)] = random.</description>
+      <description>字典（Dictionary）# 字典有点像一个json对象 且不是json数组对象
+  简单举例  dic1 = {&amp;#39;a&amp;#39;: &amp;#39;dsgs&amp;#39;} print(dic1) print(dic1.get(&amp;#34;a&amp;#34;)) 创建并打印字典#import random dicX = {} for x in range(1,10): dicX[str(x)] = random.randrange(int(&amp;#34;10&amp;#34;) , int(&amp;#34;10&amp;#34;+str(x))) print(dicX) 检查键是否存在#import random dic1 = {&amp;#39;x&amp;#39;:random.randrange(1,3000),&amp;#39;y&amp;#39;:random.randrange(1,3000)} print(dic1) print(f&amp;#34;x in dic1 :{&amp;#39;x&amp;#39; in dic1}&amp;#34;) 访问字典#dic20 = {&amp;#39;a&amp;#39;:&amp;#39;zxc&amp;#39;} print(dic20[&amp;#39;a&amp;#39;]) print(dic20.get(&amp;#34;a&amp;#34;)) 更改值#set2 = {&amp;#34;x&amp;#34;:1,&amp;#39;y&amp;#39;:2000} print(set2) set2[&amp;#39;x&amp;#39;] = 2 print(set2) values()#import random dicX = {} for x in range(1,10): dicX[str(x)] = random.</description>
     </item>
     
     <item>
@@ -96,7 +96,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/casting/</guid>
-      <description>Casting #   int() - 用整数字面量、浮点字面量构造整数（通过对数进行下舍入），或者用表示完整数字的字符串字面量 float() - 用整数字面量、浮点字面量，或字符串字面量构造浮点数（提供表示浮点数或整数的字符串） str() - 用各种数据类型构造字符串，包括字符串，整数字面量和浮点字面量  import random import time str1 = str(random.random() * 100) print(f&amp;#34;str1 类型: {type(str1)}&amp;#34;,str1) int1 = int(random.random() * 100) print(f&amp;#34;int1 类型: {type(int1)}&amp;#34;,int1) float1 = float(random.random() * 100) print(f&amp;#34;float1 类型: {type(float1)}&amp;#34;,float1) </description>
+      <description>Casting# int() - 用整数字面量、浮点字面量构造整数（通过对数进行下舍入），或者用表示完整数字的字符串字面量 float() - 用整数字面量、浮点字面量，或字符串字面量构造浮点数（提供表示浮点数或整数的字符串） str() - 用各种数据类型构造字符串，包括字符串，整数字面量和浮点字面量  import random import time str1 = str(random.random() * 100) print(f&amp;#34;str1 类型: {type(str1)}&amp;#34;,str1) int1 = int(random.random() * 100) print(f&amp;#34;int1 类型: {type(int1)}&amp;#34;,int1) float1 = float(random.random() * 100) print(f&amp;#34;float1 类型: {type(float1)}&amp;#34;,float1) </description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/print/</guid>
-      <description>print用法 #   简单使用  print(&amp;#39;hello world&amp;#39;)  表达式用法 print(f&amp;quot;{expression}&amp;quot;)  print(f&amp;#34;lista: {lista}&amp;#34;) print(f&amp;#34;1+1 : {1+1}&amp;#34;) </description>
+      <description>print用法# 简单使用  print(&amp;#39;hello world&amp;#39;)  表达式用法 print(f&amp;quot;{expression}&amp;quot;)  print(f&amp;#34;lista: {lista}&amp;#34;) print(f&amp;#34;1+1 : {1+1}&amp;#34;) </description>
     </item>
     
     <item>
@@ -114,7 +114,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/tuple/</guid>
-      <description>元组 #   元组（Tuple）   元组是有序且不可更改的集合。在 Python 中，元组是用圆括号编写的
+      <description>元组# 元组（Tuple）   元组是有序且不可更改的集合。在 Python 中，元组是用圆括号编写的
  import time tupleX = (time.time(),time.time_ns()) print(tupleX)  访问元组项目  tupleIndex = (2, 3, &amp;#39;a&amp;#39;, &amp;#39;c&amp;#39;) print(f&amp;#34;倒数第一项:{tupleIndex[-1]}&amp;#34;) print(f&amp;#34;倒数第二项:{tupleIndex[-2]}&amp;#34;) print(f&amp;#34;第一项:{tupleIndex[0]}&amp;#34;)   关于索引范围 -1就说倒数第一项 -2就是倒数第二项 0就第一项
   检查项目是否存在
   betweenTuple = (&amp;#39;a&amp;#39;,&amp;#39;k&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;7&amp;#39;) print(f&amp;#34;a属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;b不属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;)  元组长度  betweenTuple = (&amp;#39;a&amp;#39;,&amp;#39;k&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;7&amp;#39;) print(f&amp;#34;a属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;b不属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;元组长度:{len(betweenTuple)}&amp;#34;) </description>
@@ -126,7 +126,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/string/</guid>
-      <description>字符串用法 #     方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &amp;#34;a,b&amp;#34; print(str1.</description>
+      <description>字符串用法#   方法 描述     capitalize() 把首字符转换为大写。   casefold() 把字符串转换为小写。   center() 返回居中的字符串。   count() 返回指定值在字符串中出现的次数。   encode() 返回字符串的编码版本。   endswith() 如果字符串以指定值结尾，则返回 true。   expandtabs() 设置字符串的 tab 尺寸。   find() 在字符串中搜索指定的值并返回它被找到的位置。   format() 格式化字符串中的指定值。   format_map() 格式化字符串中的指定值。   index() 在字符串中搜索指定的值并返回它被找到的位置。   isalnum() 如果字符串中的所有字符都是字母数字，则返回 True。   isalpha() 如果字符串中的所有字符都在字母表中，则返回 True。   isdecimal() 如果字符串中的所有字符都是小数，则返回 True。   isdigit() 如果字符串中的所有字符都是数字，则返回 True。   isidentifier() 如果字符串是标识符，则返回 True。   islower() 如果字符串中的所有字符都是小写，则返回 True。   isnumeric() 如果字符串中的所有字符都是数，则返回 True。   isprintable() 如果字符串中的所有字符都是可打印的，则返回 True。   isspace() 如果字符串中的所有字符都是空白字符，则返回 True。   istitle() 如果字符串遵循标题规则，则返回 True。   isupper() 如果字符串中的所有字符都是大写，则返回 True。   join() 把可迭代对象的元素连接到字符串的末尾。   ljust() 返回字符串的左对齐版本。   lower() 把字符串转换为小写。   lstrip() 返回字符串的左修剪版本。   maketrans() 返回在转换中使用的转换表。   partition() 返回元组，其中的字符串被分为三部分。   replace() 返回字符串，其中指定的值被替换为指定的值。   rfind() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rindex() 在字符串中搜索指定的值，并返回它被找到的最后位置。   rjust() 返回字符串的右对齐版本。   rpartition() 返回元组，其中字符串分为三部分。   rsplit() 在指定的分隔符处拆分字符串，并返回列表。   rstrip() 返回字符串的右边修剪版本。   split() 在指定的分隔符处拆分字符串，并返回列表。   splitlines() 在换行符处拆分字符串并返回列表。   startswith() 如果以指定值开头的字符串，则返回 true。   strip() 返回字符串的剪裁版本。   swapcase() 切换大小写，小写成为大写，反之亦然。   title() 把每个单词的首字符转换为大写。   translate() 返回被转换的字符串。   upper() 把字符串转换为大写。   zfill() 在字符串的开头填充指定数量的 0 值。    str1 = &amp;#34;a,b&amp;#34; print(str1.</description>
     </item>
     
     <item>
@@ -136,7 +136,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/pipenv/</guid>
       <description>pipenv 是Kenneth Reitz大神的作品，提供Python的各个版本间的管理，各种包管理。个人觉得是virtualenv pip等工具的合体
- 安装pipenv #   本操作系统为windows10  pip install --user pipenv　# 安装失败 =&amp;gt; 升级一下默认安装的pip版本，因为默认会安装最新版的pipenv，pip的版本过低会导致安装失败.pip更新命令python -m pip install --upgrade pip更新完pip后，再次执行pipenv的安装命令pip install --user pipenv 失败的话 多半是你没能连接上世界真正网络 (自己找个梯子吧)  pipenv的简单使用 #  创建虚拟环境 #   (1)打开cmd窗口，首先切换到目标项目目录，输入以下命令：  # python 2环境pipenv --twopython 3环境pipenv --three （2）查看相关信息 　1） 查看项目位置：pipenv &amp;ndash;where 　2）查看虚拟环境位置：pipenv &amp;ndash;venv 　3）查看解释器信息：pipenv &amp;ndash;py  激活虚拟环境 #  （1）语法 pipenv shell</description>
+ 安装pipenv# 本操作系统为windows10  pip install --user pipenv　# 安装失败 =&amp;gt; 升级一下默认安装的pip版本，因为默认会安装最新版的pipenv，pip的版本过低会导致安装失败.pip更新命令python -m pip install --upgrade pip更新完pip后，再次执行pipenv的安装命令pip install --user pipenv 失败的话 多半是你没能连接上世界真正网络 (自己找个梯子吧)  pipenv的简单使用#创建虚拟环境# (1)打开cmd窗口，首先切换到目标项目目录，输入以下命令：  # python 2环境pipenv --twopython 3环境pipenv --three （2）查看相关信息 　1） 查看项目位置：pipenv &amp;ndash;where 　2）查看虚拟环境位置：pipenv &amp;ndash;venv 　3）查看解释器信息：pipenv &amp;ndash;py  激活虚拟环境#（1）语法 pipenv shell</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/python-object/</guid>
-      <description>面向对象 #   类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量, 用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。 局部变量：定义在方法中的变量，只作用于当前实例的类。 实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。 继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&amp;quot;是一个（is-a）&amp;ldquo;关系（例图，Dog是一个Animal）。 实例化：创建一个类的实例，类的具体对象。 方法：类中定义的函数。 对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。  import random class Employee: # 所有员工的基类 empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享 empCount = 0 # 类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法 def __init__(self, name, salary): self.name = name self.salary = salary Employee.empCount += 1 def displayCount(self): print(&amp;#34;Total Employee&amp;#34;, Employee.empCount, sep=&amp;#34; _&amp;#34;) def displayEmployee(self): print(&amp;#34;name:&amp;#34;, self.name, &amp;#34; ;&amp;#34;, &amp;#34;salary:&amp;#34;, self.salary) # 定义实例 1 t1 = Employee(&amp;#34;张三&amp;#34;, random.random() * random.random() * 10000) t1.</description>
+      <description>面向对象# 类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。 数据成员：类变量或者实例变量, 用于处理类及其实例对象的相关的数据。 方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。 局部变量：定义在方法中的变量，只作用于当前实例的类。 实例变量：在类的声明中，属性是用变量来表示的。这种变量就称为实例变量，是在类声明的内部但是在类的其他成员方法之外声明的。 继承：即一个派生类（derived class）继承基类（base class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟&amp;quot;是一个（is-a）&amp;ldquo;关系（例图，Dog是一个Animal）。 实例化：创建一个类的实例，类的具体对象。 方法：类中定义的函数。 对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。  import random class Employee: # 所有员工的基类 empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享 empCount = 0 # 类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法 def __init__(self, name, salary): self.name = name self.salary = salary Employee.empCount += 1 def displayCount(self): print(&amp;#34;Total Employee&amp;#34;, Employee.empCount, sep=&amp;#34; _&amp;#34;) def displayEmployee(self): print(&amp;#34;name:&amp;#34;, self.name, &amp;#34; ;&amp;#34;, &amp;#34;salary:&amp;#34;, self.salary) # 定义实例 1 t1 = Employee(&amp;#34;张三&amp;#34;, random.random() * random.random() * 10000) t1.</description>
     </item>
     
     <item>
@@ -154,7 +154,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/file/</guid>
-      <description>文件 #   open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
+      <description>文件# open()  open() 函数用于创建或打开指定文件，该函数的常用语法格式如下：
 file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]]])此格式中，用 [] 括起来的部分为可选参数，即可以使用也可以省略。其中，各个参数所代表的含义如下：
   file：表示要创建的文件对象。
   file_name：要创建或打开文件的文件名称，该名称要用引号（单引号或双引号都可以）括起来。需要注意的是，如果要打开的文件和当前执行的代码文件位于同一目录，则直接写文件名即可；否则，此参数需要指定打开文件所在的完整路径。
@@ -172,7 +172,7 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/list/</guid>
       <description>所谓序列，指的是一块可存放多个值的连续内存空间，这些值按一定顺序排列，可通过每个值所在位置的编号（称为索引）访问它们
- 创建 #  # 定义一个列表 aList = [] 添加新的元素 append , insert ,extend #  # 定义一个列表 aList = [] aList.append(&amp;#34;a&amp;#34;) aList.insert(len(aList),&amp;#34;insert&amp;#34;) print(aList) list1 = [&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34; , &amp;#34;c&amp;#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表 #  aList = [2,4,5] for x in aList: print(x) 索引问题 #  # 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在 #  aList = [2,4,5] if 1 in aList: print(&amp;#39;1存在&amp;#39;) else: print(&amp;#39;1不存在&amp;#39;) 删除元素 #  aList = [] aList.</description>
+ 创建## 定义一个列表 aList = [] 添加新的元素 append , insert ,extend## 定义一个列表 aList = [] aList.append(&amp;#34;a&amp;#34;) aList.insert(len(aList),&amp;#34;insert&amp;#34;) print(aList) list1 = [&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34; , &amp;#34;c&amp;#34;] list2 = [1, 2, 3] list1.extend(list2) print(list1) 遍历列表#aList = [2,4,5] for x in aList: print(x) 索引问题## 第一项的索引为 0 # 末尾索引为 -1 # 倒数第二索引为 -2 针对 删除 del 和访问 ,以及insert都有效 检查元素是否存在#aList = [2,4,5] if 1 in aList: print(&amp;#39;1存在&amp;#39;) else: print(&amp;#39;1不存在&amp;#39;) 删除元素#aList = [] aList.</description>
     </item>
     
     <item>
@@ -181,7 +181,7 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</guid>
-      <description>datetime #  构造函数 #   创建日期对象  import datetime import time time1 = datetime.datetime(year=2008,month=4,day=12) time2 = datetime.datetime(2027,6,23) print(time1) print(time2) 日期对象格式化为可读字符串 #   格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 +0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime.</description>
+      <description>datetime#构造函数# 创建日期对象  import datetime import time time1 = datetime.datetime(year=2008,month=4,day=12) time2 = datetime.datetime(2027,6,23) print(time1) print(time2) 日期对象格式化为可读字符串# 格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 +0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime.</description>
     </item>
     
     <item>
@@ -193,11 +193,11 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
       <description>try 块允许您测试代码块以查找错误。
 except 块允许您处理错误。
 finally 块允许您执行代码，无论 try 和 except 块的结果如何
-异常处理 #  当我们调用 Python 并发生错误或异常时，通常会停止并生成错误消息。
+异常处理#当我们调用 Python 并发生错误或异常时，通常会停止并生成错误消息。
 可以使用 try 语句处理这些异常：
-try: print(x) except: print(&amp;#34;x没有定义&amp;#34;) 多个异常 #  try: print(x) except NameError: print(&amp;#34;参数 x 没有定义&amp;#34;) except: print(&amp;#34;Something else went wrong&amp;#34;) Else #  如果没有引发错误，那么您可以使用 else 关键字来定义要执行的代码块：
-try: print(&amp;#34;你好啊!&amp;#34;) except: print(&amp;#34;抛出错误了&amp;#34;) else: print(&amp;#34;继续执行&amp;#34;) Finally #  如果指定了 finally 块，则无论 try 块是否引发错误，都会执行 finally 块
-try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: print(&amp;#34;不管抛出异常与否都会执行&amp;#34;) 引发异常 #  抛出（引发）异常，请使用 raise 关键词</description>
+try: print(x) except: print(&amp;#34;x没有定义&amp;#34;) 多个异常#try: print(x) except NameError: print(&amp;#34;参数 x 没有定义&amp;#34;) except: print(&amp;#34;Something else went wrong&amp;#34;) Else#如果没有引发错误，那么您可以使用 else 关键字来定义要执行的代码块：
+try: print(&amp;#34;你好啊!&amp;#34;) except: print(&amp;#34;抛出错误了&amp;#34;) else: print(&amp;#34;继续执行&amp;#34;) Finally#如果指定了 finally 块，则无论 try 块是否引发错误，都会执行 finally 块
+try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: print(&amp;#34;不管抛出异常与否都会执行&amp;#34;) 引发异常#抛出（引发）异常，请使用 raise 关键词</description>
     </item>
     
     <item>
@@ -208,9 +208,9 @@ try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: prin
       <guid>https://huachengzhou.github.io/life/docs/python/base/python_regex/</guid>
       <description>RegEx 或正则表达式是形成搜索模式的字符序列。
 RegEx 可用于检查字符串是否包含指定的搜索模式
-RegEx 模块 #  导入 re 模块后，就可以开始使用正则表达式了
-RegEx 函数 #  re 模块提供了一组函数，允许我们检索字符串以进行匹配：
-   函数 描述     findall 返回包含所有匹配项的列表   search 如果字符串中的任意位置存在匹配，则返回 Match 对象   split 返回在每次匹配时拆分字符串的列表   sub 用字符串替换一个或多个匹配项    元字符 #  元字符是具有特殊含义的字符：
+RegEx 模块#导入 re 模块后，就可以开始使用正则表达式了
+RegEx 函数#re 模块提供了一组函数，允许我们检索字符串以进行匹配：
+   函数 描述     findall 返回包含所有匹配项的列表   search 如果字符串中的任意位置存在匹配，则返回 Match 对象   split 返回在每次匹配时拆分字符串的列表   sub 用字符串替换一个或多个匹配项    元字符#元字符是具有特殊含义的字符：
    字符 描述 示例 TIY     [] 一组字符 &amp;ldquo;[a-m]&amp;rdquo; 试一试   \ 示意特殊序列（也可用于转义特殊字符） &amp;ldquo;\d&amp;rdquo; 试一试   .</description>
     </item>
     
@@ -222,7 +222,7 @@ RegEx 函数 #  re 模块提供了一组函数，允许我们检索字符串以�
       <guid>https://huachengzhou.github.io/life/docs/python/base/python_json/</guid>
       <description>JSON 是用于存储和交换数据的语法。
 JSON 是用 JavaScript 对象表示法（JavaScript object notation）编写的文本
-解析 JSON - 把 JSON 转换为 Python #  import json # 一些 JSON: x = &amp;#39;{ &amp;#34;name&amp;#34;:&amp;#34;Bill&amp;#34;, &amp;#34;age&amp;#34;:63, &amp;#34;city&amp;#34;:&amp;#34;Seatle&amp;#34;}&amp;#39; # 解析 x: y = json.loads(x) print(f&amp;#34;json 类型 {type(y)}&amp;#34;) print(y) 把 Python 转换为 JSON #  import json dict2 = {&amp;#39;name&amp;#39;:&amp;#39;李世民&amp;#39;,&amp;#39;age&amp;#39;:18} json1 = json.dumps(dict2) print(json1) </description>
+解析 JSON - 把 JSON 转换为 Python#import json # 一些 JSON: x = &amp;#39;{ &amp;#34;name&amp;#34;:&amp;#34;Bill&amp;#34;, &amp;#34;age&amp;#34;:63, &amp;#34;city&amp;#34;:&amp;#34;Seatle&amp;#34;}&amp;#39; # 解析 x: y = json.loads(x) print(f&amp;#34;json 类型 {type(y)}&amp;#34;) print(y) 把 Python 转换为 JSON#import json dict2 = {&amp;#39;name&amp;#39;:&amp;#39;李世民&amp;#39;,&amp;#39;age&amp;#39;:18} json1 = json.dumps(dict2) print(json1) </description>
     </item>
     
     <item>
@@ -231,7 +231,7 @@ JSON 是用 JavaScript 对象表示法（JavaScript object notation）编写的�
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/python_string_formatting/</guid>
-      <description>字符串 format() #  format() 方法允许您格式化字符串的选定部分。
+      <description>字符串 format()#format() 方法允许您格式化字符串的选定部分。
 有时文本的一部分是你无法控制的，也许它们来自数据库或用户输入？
 要控制此类值，请在文本中添加占位符（花括号 {}），然后通过 format() 方法运行值：
   {} 占位符好
@@ -259,7 +259,7 @@ Python 2.7 使用 raw_input() 方法
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/math/</guid>
-      <description>math #  math 模块常量 #     常量 描述     math.e 返回欧拉数 (2.7182&amp;hellip;)   math.inf 返回正无穷大浮点数   math.nan 返回一个浮点值 NaN (not a number)   math.pi π 一般指圆周率。 圆周率 PI (3.1415&amp;hellip;)   math.tau 数学常数 τ = 6.283185&amp;hellip;，精确到可用精度。Tau 是一个圆周常数，等于 2π，圆的周长与半径之比。    math 模块方法 #     方法 描述     math.acos(x) 返回 x 的反余弦，结果范围在 0 到 pi 之间。   math.</description>
+      <description>math#math 模块常量#   常量 描述     math.e 返回欧拉数 (2.7182&amp;hellip;)   math.inf 返回正无穷大浮点数   math.nan 返回一个浮点值 NaN (not a number)   math.pi π 一般指圆周率。 圆周率 PI (3.1415&amp;hellip;)   math.tau 数学常数 τ = 6.283185&amp;hellip;，精确到可用精度。Tau 是一个圆周常数，等于 2π，圆的周长与半径之比。    math 模块方法#   方法 描述     math.acos(x) 返回 x 的反余弦，结果范围在 0 到 pi 之间。   math.</description>
     </item>
     
     <item>
@@ -268,7 +268,7 @@ Python 2.7 使用 raw_input() 方法
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/container/</guid>
-      <description>容器 #  各个容器相互转换 #  容器通用用法 #  </description>
+      <description>容器#各个容器相互转换#容器通用用法#</description>
     </item>
     
   </channel>

@@ -2,11 +2,14 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="CountDownLatch是减法操作 CyclicBarrier具有CountDownLatch的所有功能
- CountDownLatch #    CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓,所以当门打开时,N个人是不能进屋的,也就是N个线程是不能继续向下运行的,支持这样的特性可以控制线程执行任务的时机,使线程以 &ldquo;组团&quot;的方式一起执行任务
+ CountDownLatch
+#
+
+  CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓,所以当门打开时,N个人是不能进屋的,也就是N个线程是不能继续向下运行的,支持这样的特性可以控制线程执行任务的时机,使线程以 &ldquo;组团&quot;的方式一起执行任务
    CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓，似乎有一点“三二一，芝麻开门”的感觉。CountDownLatch的作用也是如此，在构造CountDownLatch的时候需要传入一个整数n，在这个整数“倒数”到0之前，主线程需要等待在门口，而这个“倒数”过程则是由各个执行线程驱动的，每个线程执行完一个任务“倒数”一次。总结来说，CountDownLatch的作用就是等待其他的线程都执行完任务，必要时可以对各个任务的执行结果进行汇总，然后主线程才继续往下执行
    CountDownLatch主要有两个方法：countDown()和await()。countDown()方法用于使计数器减一，其一般是执行任务的线程调用，await()方法则使调用该方法的线程处于等待状态，其一般是主线程调用。这里需要注意的是，countDown()方法并没有规定一个线程只能调用一次，当同一个线程调用多次countDown()方法时，每次都会使计数器减一；另外，await()方法也并没有规定只能有一个线程执行该方法，如果多个线程同时执行await()方法，那么这几个线程都将处于等待状态，并且以共享模式享有同一个锁。
    await()方法 一般是使用者或者主线程调用 countDown()方法 子任务线程组调用
@@ -14,21 +17,25 @@
   import java.util.concurrent.CountDownLatch; public class CountDownLatchExample2 { public static class MyService { private CountDownLatch downLatch = new CountDownLatch(1) ; public void testMethod(){ try { System.out.println(&#34;任务执行开始前!&#34;); //await()方法则使调用该方法的线程处于等待状态，其一般是主线程调用  downLatch.await(); System.out.println(&#34;任务执行结束!&#34;); } catch (InterruptedException e) { e.printStackTrace(); } } public void downMethod(){ System.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="CountDownLatch 和 CyclicBarrier" />
 <meta property="og:description" content="CountDownLatch是减法操作 CyclicBarrier具有CountDownLatch的所有功能
- CountDownLatch #    CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓,所以当门打开时,N个人是不能进屋的,也就是N个线程是不能继续向下运行的,支持这样的特性可以控制线程执行任务的时机,使线程以 &ldquo;组团&quot;的方式一起执行任务
+ CountDownLatch
+#
+
+  CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓,所以当门打开时,N个人是不能进屋的,也就是N个线程是不能继续向下运行的,支持这样的特性可以控制线程执行任务的时机,使线程以 &ldquo;组团&quot;的方式一起执行任务
    CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓，似乎有一点“三二一，芝麻开门”的感觉。CountDownLatch的作用也是如此，在构造CountDownLatch的时候需要传入一个整数n，在这个整数“倒数”到0之前，主线程需要等待在门口，而这个“倒数”过程则是由各个执行线程驱动的，每个线程执行完一个任务“倒数”一次。总结来说，CountDownLatch的作用就是等待其他的线程都执行完任务，必要时可以对各个任务的执行结果进行汇总，然后主线程才继续往下执行
    CountDownLatch主要有两个方法：countDown()和await()。countDown()方法用于使计数器减一，其一般是执行任务的线程调用，await()方法则使调用该方法的线程处于等待状态，其一般是主线程调用。这里需要注意的是，countDown()方法并没有规定一个线程只能调用一次，当同一个线程调用多次countDown()方法时，每次都会使计数器减一；另外，await()方法也并没有规定只能有一个线程执行该方法，如果多个线程同时执行await()方法，那么这几个线程都将处于等待状态，并且以共享模式享有同一个锁。
    await()方法 一般是使用者或者主线程调用 countDown()方法 子任务线程组调用
   第一个例子
   import java.util.concurrent.CountDownLatch; public class CountDownLatchExample2 { public static class MyService { private CountDownLatch downLatch = new CountDownLatch(1) ; public void testMethod(){ try { System.out.println(&#34;任务执行开始前!&#34;); //await()方法则使调用该方法的线程处于等待状态，其一般是主线程调用  downLatch.await(); System.out.println(&#34;任务执行结束!&#34;); } catch (InterruptedException e) { e.printStackTrace(); } } public void downMethod(){ System." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/" />
-<meta property="article:published_time" content="2022-09-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-09-01T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-09-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-09-01T00:00:00&#43;00:00" />
+
 <title>CountDownLatch 和 CyclicBarrier | 所悟所想</title>
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../../en.search.min.071e46737a4e84da8abb8a51f0bd0860ab908bcf9ab600db590241d3877879b5.js"  ></script>
+<link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../../en.search.min.11d7b367ca07781dd4aecd3fca11d72164f3d265ccabea66a9a6682a289e01e1.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4411,7 +4418,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
