@@ -5,11 +5,17 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="命令格式 #    命令 子命令 参数 操作 选项
+<meta name="description" content="命令格式
+#
+
+  命令 子命令 参数 操作 选项
   /? /help 获取详细的帮助信息
   D:\data\game\temp&gt;net user /help 此命令的语法是: NET USER [username [password | *] [options]] [/DOMAIN] username {password | *} /ADD [options] [/DOMAIN] username [/DELETE] [/DOMAIN] username [/TIMES:{times | ALL}] username [/ACTIVE: {YES | NO}] NET USER 将创建并修改计算机上的用户帐户。在不使用命令开关的情况下， 将列出计算机的用户帐户。用户帐户信息存储在用户帐户数据库中。 username 为可添加、删除、修改或查看的用户帐户的名称。用户帐户名称 最多可以有 20 个字符。 password 指定或更改用户帐户的密码。密码的长度必须符合 NET ACCOUNTS 命令的 /MINPWLEN 选项所设置的最小长度。 最多可以有 14 个字符。 * 生成密码提示。在密码提示下键入密码时，将不会显示密码。 /DOMAIN 在当前域的域控制器上执行此操作。 /ADD 向用户帐户数据库添加用户帐户。 /DELETE 从用户帐户数据库删除用户帐户。 选项 如下所示: 选项 描述 -------------------------------------------------------------------- /ACTIVE:{YES | NO} 激活或取消激活帐户。如果该帐户处于非激活状态， 用户将无法访问服务器。默认设置为“YES”。 /COMMENT:&#34;text&#34; 提供有关用户帐户的描述性注释。请将文本用引号 括起来。 /COUNTRYCODE:nnn 使用操作系统国家/地区代码执行指定的语言文件， 以显示用户帮助和错误消息。值 0 表示使用默认 的国家/地区代码。 /EXPIRES:{date | NEVER} 如果设置了日期，可导致帐户过期。 NEVER 将帐户设置为无时间限制。 过期日期采用格式 mm/dd/yy(yy)。 月份可以是一个数字、完整字母拼写， 或使用三个字母的缩写。年份可以使用两位数字 或四位数字。使用斜线(/)(不留空格) 将日期的各个部分隔开。 /FULLNAME:&#34;name&#34; 用户的全名(而不是用户名)。请将该名称用引号 括起来。 /HOMEDIR:pathname 用户的主目录设置路径。该路径必须存在。 /PASSWORDCHG:{YES | NO} 指定用户是否可以更改其密码。默认设置 为“YES”。 /PASSWORDREQ:{YES | NO} 指定用户帐户是否必须拥有密码。 默认设置为“YES”。 /LOGONPASSWORDCHG:{YES|NO} 指定用户是否应在下次登录时更改其密码。 默认设置为“NO”。 /PROFILEPATH[:path] 为用户登录配置文件设置路径。 /SCRIPTPATH:pathname 用户登录脚本的位置。 /TIMES:{times | ALL} 登录小时数。TIMES 表示为 day[-day][,day[-day]],time[-time][,time [-time]]，增量限制为 1 小时。 日期可以是完整拼写，也可以是缩写。 小时可以是 12 或 24 小时表示法。对于 12 小时表示法，请使用 am、pm、a.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="DOS基本命令 (新) " />
-<meta property="og:description" content="命令格式 #    命令 子命令 参数 操作 选项
+<meta property="og:description" content="命令格式
+#
+
+  命令 子命令 参数 操作 选项
   /? /help 获取详细的帮助信息
   D:\data\game\temp&gt;net user /help 此命令的语法是: NET USER [username [password | *] [options]] [/DOMAIN] username {password | *} /ADD [options] [/DOMAIN] username [/DELETE] [/DOMAIN] username [/TIMES:{times | ALL}] username [/ACTIVE: {YES | NO}] NET USER 将创建并修改计算机上的用户帐户。在不使用命令开关的情况下， 将列出计算机的用户帐户。用户帐户信息存储在用户帐户数据库中。 username 为可添加、删除、修改或查看的用户帐户的名称。用户帐户名称 最多可以有 20 个字符。 password 指定或更改用户帐户的密码。密码的长度必须符合 NET ACCOUNTS 命令的 /MINPWLEN 选项所设置的最小长度。 最多可以有 14 个字符。 * 生成密码提示。在密码提示下键入密码时，将不会显示密码。 /DOMAIN 在当前域的域控制器上执行此操作。 /ADD 向用户帐户数据库添加用户帐户。 /DELETE 从用户帐户数据库删除用户帐户。 选项 如下所示: 选项 描述 -------------------------------------------------------------------- /ACTIVE:{YES | NO} 激活或取消激活帐户。如果该帐户处于非激活状态， 用户将无法访问服务器。默认设置为“YES”。 /COMMENT:&#34;text&#34; 提供有关用户帐户的描述性注释。请将文本用引号 括起来。 /COUNTRYCODE:nnn 使用操作系统国家/地区代码执行指定的语言文件， 以显示用户帮助和错误消息。值 0 表示使用默认 的国家/地区代码。 /EXPIRES:{date | NEVER} 如果设置了日期，可导致帐户过期。 NEVER 将帐户设置为无时间限制。 过期日期采用格式 mm/dd/yy(yy)。 月份可以是一个数字、完整字母拼写， 或使用三个字母的缩写。年份可以使用两位数字 或四位数字。使用斜线(/)(不留空格) 将日期的各个部分隔开。 /FULLNAME:&#34;name&#34; 用户的全名(而不是用户名)。请将该名称用引号 括起来。 /HOMEDIR:pathname 用户的主目录设置路径。该路径必须存在。 /PASSWORDCHG:{YES | NO} 指定用户是否可以更改其密码。默认设置 为“YES”。 /PASSWORDREQ:{YES | NO} 指定用户帐户是否必须拥有密码。 默认设置为“YES”。 /LOGONPASSWORDCHG:{YES|NO} 指定用户是否应在下次登录时更改其密码。 默认设置为“NO”。 /PROFILEPATH[:path] 为用户登录配置文件设置路径。 /SCRIPTPATH:pathname 用户登录脚本的位置。 /TIMES:{times | ALL} 登录小时数。TIMES 表示为 day[-day][,day[-day]],time[-time][,time [-time]]，增量限制为 1 小时。 日期可以是完整拼写，也可以是缩写。 小时可以是 12 或 24 小时表示法。对于 12 小时表示法，请使用 am、pm、a." />
 <meta property="og:type" content="article" />
@@ -20,7 +26,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
+<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4277,6 +4283,93 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
   
 
         </li>

@@ -7,7 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，变量永久生效。 2 临时的：使用export命令声明即可，变量在关闭shell时失效。
 设置变量的三种方法 1 在/etc/profile文件中添加变量【对所有用户生效(永久的)】 用VI在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。 例如：编辑/etc/profile文件，添加CLASSPATH变量
-vi /etc/profile #  export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+vi /etc/profile
+#
+
+export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
 注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
 2 在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】 用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。 例如：编辑guok用户目录(/home/guok)下的.bash_profile $ vi /home/guok/.bash.profile 添加如下内容： export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib 注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
 3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，
@@ -19,7 +22,10 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Linux下设置和查看环境变量" />
 <meta property="og:description" content="Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，变量永久生效。 2 临时的：使用export命令声明即可，变量在关闭shell时失效。
 设置变量的三种方法 1 在/etc/profile文件中添加变量【对所有用户生效(永久的)】 用VI在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。 例如：编辑/etc/profile文件，添加CLASSPATH变量
-vi /etc/profile #  export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+vi /etc/profile
+#
+
+export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
 注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
 2 在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】 用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。 例如：编辑guok用户目录(/home/guok)下的.bash_profile $ vi /home/guok/.bash.profile 添加如下内容： export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib 注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
 3 直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】 在shell的命令行下直接使用[export 变量名=变量值] 定义变量，
@@ -36,7 +42,7 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
+<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4293,6 +4299,93 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
   
 
         </li>

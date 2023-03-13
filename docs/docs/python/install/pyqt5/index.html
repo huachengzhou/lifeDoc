@@ -5,19 +5,37 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="关于 PyQt5 #  PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+<meta name="description" content="关于 PyQt5
+#
+
+PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
 PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
 PyQt5类分为很多模块，主要模块有：
  QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.">
+PyQt4和PyQt5的区别
+#
+
+PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装
+#
+
+pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pyqt5" />
-<meta property="og:description" content="关于 PyQt5 #  PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+<meta property="og:description" content="关于 PyQt5
+#
+
+PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
 PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
 PyQt5类分为很多模块，主要模块有：
  QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi." />
+PyQt4和PyQt5的区别
+#
+
+PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装
+#
+
+pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyqt5/" />
 <meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
@@ -26,7 +44,7 @@ PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
+<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4283,6 +4301,93 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
   
 
         </li>

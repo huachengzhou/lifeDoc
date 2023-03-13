@@ -6,23 +6,41 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="centos7单机安装多个mysql8.0
- 一:上传 #  下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
+ 一:上传
+#
+
+下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
 上传mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz到服务器指定文件夹，如：/home/mysql
-二:解压 #  cd /home/mysql
+二:解压
+#
+
+cd /home/mysql
 tar -xvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
-三:重命名文件夹 #  mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306
-四:新建mysql用户、mysql用户组 #  cd /home/mysql/mysql3306
+三:重命名文件夹
+#
+
+mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306
+四:新建mysql用户、mysql用户组
+#
+
+cd /home/mysql/mysql3306
 #新建mysql用户、mysql用户组，如果之前已经建立过，就不用建立了
 groupadd mysql
 #给mysql添加用户为 mysql
 useradd mysql -g mysql
-五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用 #  cd /home/mysql/mysql3306
+五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用
+#
+
+cd /home/mysql/mysql3306
 mkdir data var tmp binlogs logs
 chmod 777 ./tmp
 chmod 777 ./logs
 cd /home/mysql/mysql3306/logs
 touch error.log
-六:在/home/mysql/mysql3306/etc下创建数据库配置文件 #  cd /home/mysql/mysql3306
+六:在/home/mysql/mysql3306/etc下创建数据库配置文件
+#
+
+cd /home/mysql/mysql3306
 mkdir etc
 cd /home/mysql/mysql3306/etc
 touch my.cnf
@@ -30,23 +48,41 @@ vim my.cnf
 # my.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="centos7安装多个mysql" />
 <meta property="og:description" content="centos7单机安装多个mysql8.0
- 一:上传 #  下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
+ 一:上传
+#
+
+下载地址：https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
 上传mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz到服务器指定文件夹，如：/home/mysql
-二:解压 #  cd /home/mysql
+二:解压
+#
+
+cd /home/mysql
 tar -xvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz
-三:重命名文件夹 #  mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306
-四:新建mysql用户、mysql用户组 #  cd /home/mysql/mysql3306
+三:重命名文件夹
+#
+
+mv mysql-8.0.21-linux-glibc2.12-x86_64 mysql3306
+四:新建mysql用户、mysql用户组
+#
+
+cd /home/mysql/mysql3306
 #新建mysql用户、mysql用户组，如果之前已经建立过，就不用建立了
 groupadd mysql
 #给mysql添加用户为 mysql
 useradd mysql -g mysql
-五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用 #  cd /home/mysql/mysql3306
+五:在mysql3306下新增文件夹data，var，tmp，binlogs，logs备用
+#
+
+cd /home/mysql/mysql3306
 mkdir data var tmp binlogs logs
 chmod 777 ./tmp
 chmod 777 ./logs
 cd /home/mysql/mysql3306/logs
 touch error.log
-六:在/home/mysql/mysql3306/etc下创建数据库配置文件 #  cd /home/mysql/mysql3306
+六:在/home/mysql/mysql3306/etc下创建数据库配置文件
+#
+
+cd /home/mysql/mysql3306
 mkdir etc
 cd /home/mysql/mysql3306/etc
 touch my.cnf
@@ -60,7 +96,7 @@ vim my.cnf
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
+<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4317,6 +4353,93 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
   
 
         </li>

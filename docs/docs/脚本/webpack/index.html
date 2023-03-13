@@ -5,7 +5,16 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="（十五）webpack #  15.1	webpack起步 #  15.1.1	什么是webpack #  webpack是一个JavaScript应用的静态模块打包工具。
+<meta name="description" content="（十五）webpack
+#
+
+15.1	webpack起步
+#
+
+15.1.1	什么是webpack
+#
+
+webpack是一个JavaScript应用的静态模块打包工具。
 从这句话中有两个要点，模块和打包需要关注。grunt/gulp都可以打包，那有什么区别。
  模块化
  webpack可以支持前端模块化的一些方案，例如AMD、CMD、CommonJS、ES6。可以处理模块之间的依赖关系。不仅仅是js文件可以模块化，图片、css、json文件等等都可以模块化。
@@ -13,10 +22,22 @@
  webpack可以将模块资源打包成一个或者多个包，并且在打包过程中可以处理资源，例如压缩图片，将scss转成css，ES6语法转成ES5语法，将TypeScript转成JavaScript等等操作。grunt/gulp也可以打包。
 和grunt/glup的对比
  grunt/glup的核心是Task  我们可以配置一系列的task，并且定义task要处理的事务（例如ES6/TS转化，图片压缩，scss转css） 之后可以让grunt/glup来执行依次这些任务，让整个流程自动化 所以grunt/glup也被称为前端自动化任务管理工具   看一个gulp例子  task将src下的js文件转化为ES5语法 并输入到dist文件夹中     什么时候使用grunt/gulp呢？  如果工程依赖简单，甚至没有模块化 只需要进行简单的合并/压缩 如果模块复杂，相互依赖性强，我们需要使用webpack   grunt/glup和webpack区别  grunt/glup更加强调的是前端自动化流程，模块化不是其核心 webpack加强模块化开发管理，而文件压缩/合并/预处理等功能，是附带功能    webpack就是前端模块化打包工具
-15.1.2	webpack的安装 #   webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
+15.1.2	webpack的安装
+#
+
+ webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
 npm install webpack -g //指定版本安装 npm install webpack@3.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="webpack " />
-<meta property="og:description" content="（十五）webpack #  15.1	webpack起步 #  15.1.1	什么是webpack #  webpack是一个JavaScript应用的静态模块打包工具。
+<meta property="og:description" content="（十五）webpack
+#
+
+15.1	webpack起步
+#
+
+15.1.1	什么是webpack
+#
+
+webpack是一个JavaScript应用的静态模块打包工具。
 从这句话中有两个要点，模块和打包需要关注。grunt/gulp都可以打包，那有什么区别。
  模块化
  webpack可以支持前端模块化的一些方案，例如AMD、CMD、CommonJS、ES6。可以处理模块之间的依赖关系。不仅仅是js文件可以模块化，图片、css、json文件等等都可以模块化。
@@ -24,7 +45,10 @@ npm install webpack -g //指定版本安装 npm install webpack@3.">
  webpack可以将模块资源打包成一个或者多个包，并且在打包过程中可以处理资源，例如压缩图片，将scss转成css，ES6语法转成ES5语法，将TypeScript转成JavaScript等等操作。grunt/gulp也可以打包。
 和grunt/glup的对比
  grunt/glup的核心是Task  我们可以配置一系列的task，并且定义task要处理的事务（例如ES6/TS转化，图片压缩，scss转css） 之后可以让grunt/glup来执行依次这些任务，让整个流程自动化 所以grunt/glup也被称为前端自动化任务管理工具   看一个gulp例子  task将src下的js文件转化为ES5语法 并输入到dist文件夹中     什么时候使用grunt/gulp呢？  如果工程依赖简单，甚至没有模块化 只需要进行简单的合并/压缩 如果模块复杂，相互依赖性强，我们需要使用webpack   grunt/glup和webpack区别  grunt/glup更加强调的是前端自动化流程，模块化不是其核心 webpack加强模块化开发管理，而文件压缩/合并/预处理等功能，是附带功能    webpack就是前端模块化打包工具
-15.1.2	webpack的安装 #   webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
+15.1.2	webpack的安装
+#
+
+ webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
 npm install webpack -g //指定版本安装 npm install webpack@3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/" />
@@ -34,7 +58,7 @@ npm install webpack -g //指定版本安装 npm install webpack@3." />
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
+<script defer src="./../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4291,6 +4315,93 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
   
 
         </li>

@@ -12,12 +12,12 @@
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
-      <description>关于 PyQt5 #  PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
 PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
 PyQt5类分为很多模块，主要模块有：
  QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装 #  pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
+PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装#pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@ PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</guid>
-      <description>layout (布局管理) #  QLayout #  QBoxLayout #  QHNoxLayout #  QVBoxLayout #  QGridLayout #  QStackedLayout #  QFormLayout #  参考1</description>
+      <description>layout (布局管理)#QLayout#QBoxLayout#QHNoxLayout#QVBoxLayout#QGridLayout#QStackedLayout#QFormLayout#参考1</description>
     </item>
     
     <item>
@@ -35,10 +35,10 @@ PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
-      <description>pyinstaller #  安装 #   安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
- pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包 #  打包为单文件 #   平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹 #  # 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析 #  .spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+      <description>pyinstaller#安装# 安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包#打包为单文件# 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析#.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
   Analysis：主要是分析py文件的依赖信息</description>
     </item>
     
@@ -48,11 +48,11 @@ PyQt4和PyQt5的区别 #  PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
-      <description>NumPy #  什么是 NumPy #  NumPy 是用于处理数组的 python 库。
+      <description>NumPy#什么是 NumPy#NumPy 是用于处理数组的 python 库。
 它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
 NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。
 NumPy 指的是数值 Python（Numerical Python）
-为何使用 NumPy？ #  在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
+为何使用 NumPy？#在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
 NumPy 旨在提供一个比传统 Python 列表快 50 倍的数组对象。
 NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得利用 ndarray 非常容易。
 数组在数据科学中非常常用，因为速度和资源非常重要。
@@ -65,7 +65,7 @@ NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</guid>
-      <description>pyecharts #   Python可视化神器之pyechart
+      <description>pyecharts# Python可视化神器之pyechart
  参考1 参考2</description>
     </item>
     
@@ -75,7 +75,7 @@ NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</guid>
-      <description>机器学习 #  </description>
+      <description>机器学习#</description>
     </item>
     
   </channel>
