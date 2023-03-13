@@ -232,3 +232,11 @@ $ git push origin master // 将当前分支提交到远端origin/master分支
 push到GitHub的文件要求小于100M
 ```
 
+
+# git移除文件夹 (-f去掉那么需要 将变更提交到仓库)
+
+git rm -r -f  .idea
+
+# git移除文件
+git rm  -f  a.txt
+
