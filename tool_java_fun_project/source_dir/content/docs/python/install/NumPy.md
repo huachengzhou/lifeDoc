@@ -2,7 +2,7 @@
 title: "python NumPy  "
 date: 2023-03-02
 draft: false
-weight: 3
+weight: 6
 ---
 
 

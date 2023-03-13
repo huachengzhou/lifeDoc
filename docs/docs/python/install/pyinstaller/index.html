@@ -2,66 +2,29 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="pyinstaller
-#
-
-安装
-#
-
- 安装  pip install pyinstaller  验证安装  C:\Users\noatn&gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
- pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包
-#
-
-打包为单文件
-#
-
- 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹
-#
-
-# 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析
-#
-
-.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+<meta name="description" content="pyinstaller #  安装 #   安装  pip install pyinstaller  验证安装  C:\Users\noatn&gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包 #  打包为单文件 #   平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹 #  # 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析 #  .spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
   Analysis：主要是分析py文件的依赖信息">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pyinstaller " />
-<meta property="og:description" content="pyinstaller
-#
-
-安装
-#
-
- 安装  pip install pyinstaller  验证安装  C:\Users\noatn&gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
- pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包
-#
-
-打包为单文件
-#
-
- 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹
-#
-
-# 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析
-#
-
-.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+<meta property="og:description" content="pyinstaller #  安装 #   安装  pip install pyinstaller  验证安装  C:\Users\noatn&gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包 #  打包为单文件 #   平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹 #  # 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析 #  .spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
   Analysis：主要是分析py文件的依赖信息" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyinstaller/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-02T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2023-03-02T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyinstaller/" />
+<meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" />
 <title>python pyinstaller  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.11d7b367ca07781dd4aecd3fca11d72164f3d265ccabea66a9a6682a289e01e1.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.aeb993655595576cde45ee210a1704d507b44535fe916b5a4131b09c4fa2de9a.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1039,6 +1002,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/base/pathlib/" class="">python pathlib</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/base/file/" class="">python 文件</a>
   
 
@@ -1204,6 +1180,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/python/install/pyqt_layout/" class="">python pyqt5 layout</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/python/install/pyinstaller/" class=" active">python pyinstaller </a>
   
 
@@ -1218,6 +1207,32 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/python/install/numpy/" class="">python NumPy  </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyecharts/" class="">python pyecharts  </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/python_ml_getting_started/" class="">python 机器学习  </a>
   
 
         </li>
@@ -4444,7 +4459,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

@@ -12,7 +12,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/</guid>
-      <description>基本类型# 八个基本类型:     基本类型 位数 字节 默认值 取值范围     byte 8 1 0 -128 ~ 127   short 16 2 0 -32768 ~ 32767   int 32 4 0 -2147483648 ~ 2147483647   long 64 8 0l -9223372036854775808 ~ 9223372036854775807   char 16 2 &amp;lsquo;u0000&amp;rsquo; 0 ~ 65535   float 32 4 0f 1.4E-45 ~ 3.4028235E38   double 64 8 0d 4.</description>
+      <description>基本类型 #   八个基本类型:     基本类型 位数 字节 默认值 取值范围     byte 8 1 0 -128 ~ 127   short 16 2 0 -32768 ~ 32767   int 32 4 0 -2147483648 ~ 2147483647   long 64 8 0l -9223372036854775808 ~ 9223372036854775807   char 16 2 &amp;lsquo;u0000&amp;rsquo; 0 ~ 65535   float 32 4 0f 1.4E-45 ~ 3.4028235E38   double 64 8 0d 4.</description>
     </item>
     
     <item>
@@ -21,7 +21,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
     <item>
@@ -30,7 +30,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-annotation/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/</guid>
-      <description>demo#</description>
+      <description>demo #  </description>
     </item>
     
     <item>
@@ -57,7 +57,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream/</guid>
-      <description>Java8 新特性之流式数据处理#一:流式处理简介# 在我接触到java8流式处理的时候，我的第一感觉是流式处理让集合操作变得简洁了许多，通常我们需要多行代码才能完成的操作，借助于流式处理可以在一行中实现。比如我们希望对一个包含整数的集合中筛选出所有的偶数，并将其封装成为一个新的List返回，那么在java8之前，我们需要通过如下代码实现：
+      <description>Java8 新特性之流式数据处理 #  一:流式处理简介 #   在我接触到java8流式处理的时候，我的第一感觉是流式处理让集合操作变得简洁了许多，通常我们需要多行代码才能完成的操作，借助于流式处理可以在一行中实现。比如我们希望对一个包含整数的集合中筛选出所有的偶数，并将其封装成为一个新的List返回，那么在java8之前，我们需要通过如下代码实现：
  List&amp;lt;Integer&amp;gt; numS = Lists.newArrayList();for (int i = 0; i &amp;lt; 20; i++) {numS.add(Zhou_StdRandom.uniform(1, 674));}List&amp;lt;Integer&amp;gt; evens = new ArrayList&amp;lt;&amp;gt;();for (final Integer num : numS) {if (num % 2 == 0) {evens.add(num);}}evens.stream().sorted().filter(integer -&amp;gt; true).forEach(integer -&amp;gt; System.out.println(integer)); 通过java8的流式处理，我们可以将代码简化为：
  List&amp;lt;Integer&amp;gt; evens = numS.stream().filter(integer -&amp;gt; integer % 2 == 0).collect(Collectors.toList()); 先简单解释一下上面这行语句的含义，stream()操作将集合转换成一个流，filter()执行我们自定义的筛选处理，这里是通过lambda表达式筛选出所有偶数，最后我们通过collect()对结果进行封装处理，并通过Collectors.toList()指定其封装成为一个List集合返回。
   由上面的例子可以看出，java8的流式处理极大的简化了对于集合的操作，实际上不光是集合，包括数组、文件等，只要是可以转换成流，我们都可以借助流式处理，类似于我们写SQL语句一样对其进行操作。java8通过内部迭代来实现对流的处理，一个流式处理可以分为三个部分：转换成流、中间操作、终端操作。如下图：</description>
@@ -69,7 +69,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream_base/</guid>
-      <description>一:流介绍# 流表面上看起来和集合很类似，都可以让我们转换和获取数据。但是，它们之间存在着显著的差异; 1:流并不能存储元素，这些元素可能存储在底层的集合中,或者是按需生成的 2:流的操作不会修改其数据源。例如filter方法不会从新的流移除元素，而是会生成一个新的流，其中不包含被过滤掉的元素。 3:流的操作是尽可能的惰性的。这意味着直至需要其结果时，操作才会执行。  流机器（动画来自 Tagir Valeev）Stream的效果就像上图展示的它可以先把数据变成符合要求的样子（map），吃掉不需要的东西（filter）然后得到需要的东西（collect）。 流API UML  二:流创建#   说明 示 例     创建不包括任何元素的流 Stream stream = Stream.empty()   of方法具有可变长参数,因此我们可以构建具有任意数量引元的流 Streamsong = Stream.of(&amp;ldquo;gently&amp;rdquo; ,&amp;ldquo;down&amp;rdquo;,&amp;ldquo;the&amp;rdquo;,&amp;ldquo;stream&amp;rdquo;);或者Streamsong = Stream.of(&amp;ldquo;stream&amp;rdquo;);   Stream一共有2个创建无限流的静态方法 generate()和iterate()   generate方法会接受一个不包含任何引元的函数 Streamstream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString())或者Streamstream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString()).limit(20);//20个    </description>
+      <description>一:流介绍 #   流表面上看起来和集合很类似，都可以让我们转换和获取数据。但是，它们之间存在着显著的差异; 1:流并不能存储元素，这些元素可能存储在底层的集合中,或者是按需生成的 2:流的操作不会修改其数据源。例如filter方法不会从新的流移除元素，而是会生成一个新的流，其中不包含被过滤掉的元素。 3:流的操作是尽可能的惰性的。这意味着直至需要其结果时，操作才会执行。  流机器（动画来自 Tagir Valeev）Stream的效果就像上图展示的它可以先把数据变成符合要求的样子（map），吃掉不需要的东西（filter）然后得到需要的东西（collect）。 流API UML  二:流创建 #     说明 示 例     创建不包括任何元素的流 Stream stream = Stream.empty()   of方法具有可变长参数,因此我们可以构建具有任意数量引元的流 Streamsong = Stream.of(&amp;ldquo;gently&amp;rdquo; ,&amp;ldquo;down&amp;rdquo;,&amp;ldquo;the&amp;rdquo;,&amp;ldquo;stream&amp;rdquo;);或者Streamsong = Stream.of(&amp;ldquo;stream&amp;rdquo;);   Stream一共有2个创建无限流的静态方法 generate()和iterate()   generate方法会接受一个不包含任何引元的函数 Streamstream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString())或者Streamstream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString()).limit(20);//20个    </description>
     </item>
     
   </channel>
