@@ -17,7 +17,7 @@
 import pathlib as pathLib paths = (&#39;file&#39;, &#39;f.txt&#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&#34;r&#43;&#34;, encoding=&#34;UTF-8&#34;) list1 = file1.readlines() for x in list1: print(x) file1.close() 写
 #
 
-import pathlib as pathLib import random import time import hashlib fileName1 = str(random.randrange(100, 100000) &#43; random.randrange(100, 100000) &#43; random.randrange(100, 100000)) paths = (&#39;file&#39;, fileName1 &#43; &#39;.txt&#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&#34;w&#34;, encoding=&#34;UTF-8&#34;) strList = [] for x in range(1, 100, 2): strX = str(time.">
+import pathlib as pathLib import random import time import hashlib # 写文件 fileName1 = str(random.randrange(100, 100000) &#43; random.randrange(100, 100000) &#43; random.randrange(100, 100000)) paths = (&#39;file&#39;, fileName1 &#43; &#39;.txt&#39;) # 判断文件夹是否存在 if pathLib.Path(pathLib.Path.cwd().joinpath(&#39;file&#39;)).exists(): pass else: #不存在则建立文件夹 pathLib.Path.mkdir(pathLib.Path(pathLib.Path.cwd().joinpath(&#39;file&#39;))) file1 = pathLib.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pathlib" />
 <meta property="og:description" content="pathlib
 #
@@ -31,7 +31,7 @@ import pathlib as pathLib import random import time import hashlib fileName1 = s
 import pathlib as pathLib paths = (&#39;file&#39;, &#39;f.txt&#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&#34;r&#43;&#34;, encoding=&#34;UTF-8&#34;) list1 = file1.readlines() for x in list1: print(x) file1.close() 写
 #
 
-import pathlib as pathLib import random import time import hashlib fileName1 = str(random.randrange(100, 100000) &#43; random.randrange(100, 100000) &#43; random.randrange(100, 100000)) paths = (&#39;file&#39;, fileName1 &#43; &#39;.txt&#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&#34;w&#34;, encoding=&#34;UTF-8&#34;) strList = [] for x in range(1, 100, 2): strX = str(time." />
+import pathlib as pathLib import random import time import hashlib # 写文件 fileName1 = str(random.randrange(100, 100000) &#43; random.randrange(100, 100000) &#43; random.randrange(100, 100000)) paths = (&#39;file&#39;, fileName1 &#43; &#39;.txt&#39;) # 判断文件夹是否存在 if pathLib.Path(pathLib.Path.cwd().joinpath(&#39;file&#39;)).exists(): pass else: #不存在则建立文件夹 pathLib.Path.mkdir(pathLib.Path(pathLib.Path.cwd().joinpath(&#39;file&#39;))) file1 = pathLib." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/pathlib/" />
 <meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
@@ -40,7 +40,7 @@ import pathlib as pathLib import random import time import hashlib fileName1 = s
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
+<script defer src="./../../../../en.search.min.e4da539ada4a363b1777dfc469e4ed8bacd1626faf18c1b15adfaab46605ce0c.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4597,6 +4597,12 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#读">读</a></li>
         <li><a href="#写">写</a></li>
+        <li><a href="#写文件-复杂">写文件 (复杂)</a></li>
+        <li><a href="#文件夹压缩-zip">文件夹压缩 zip</a></li>
+        <li><a href="#文件夹复杂压缩-zip">文件夹复杂压缩 zip</a></li>
+        <li><a href="#文件夹解压-zip">文件夹解压 zip</a></li>
+        <li><a href="#简单属性">简单属性</a></li>
+        <li><a href="#pathlib和os常用操作对比">pathlib和os常用操作对比</a></li>
       </ul>
     </li>
   </ul>
@@ -4652,9 +4658,19 @@ file1<span style="color:#f92672">.</span>close()
 <span style="color:#f92672">import</span> time
 <span style="color:#f92672">import</span> hashlib
 
+
+<span style="color:#75715e"># 写文件</span>
+
 fileName1 <span style="color:#f92672">=</span> str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>) <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>) <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>))
 
 paths <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;file&#39;</span>, fileName1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.txt&#39;</span>)
+
+<span style="color:#75715e"># 判断文件夹是否存在</span>
+<span style="color:#66d9ef">if</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file&#39;</span>))<span style="color:#f92672">.</span>exists():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e">#不存在则建立文件夹</span>
+    pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file&#39;</span>)))
 
 file1 <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>open(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>paths), mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>)
 
@@ -4666,6 +4682,50 @@ strList <span style="color:#f92672">=</span> []
 
 <span style="color:#66d9ef">print</span>(strList)
 file1<span style="color:#f92672">.</span>writelines(strList)
+file1<span style="color:#f92672">.</span>close()
+
+</code></pre></div><h3 id="写文件-复杂">
+  写文件 (复杂)
+  <a class="anchor" href="#%e5%86%99%e6%96%87%e4%bb%b6-%e5%a4%8d%e6%9d%82">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+<span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> hashlib
+
+<span style="color:#75715e"># 判断文件夹是否存在</span>
+<span style="color:#66d9ef">if</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file&#39;</span>))<span style="color:#f92672">.</span>exists():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e"># 不存在则建立文件夹</span>
+    pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file&#39;</span>)))
+
+<span style="color:#66d9ef">for</span> dir <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>]:
+    <span style="color:#66d9ef">if</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>(<span style="color:#e6db74">&#39;file&#39;</span>, dir)))<span style="color:#f92672">.</span>exists():
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#75715e"># 不存在则建立文件夹</span>
+        pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>(<span style="color:#e6db74">&#39;file&#39;</span>, dir))))
+    <span style="color:#66d9ef">pass</span>
+    <span style="color:#75715e"># 写文件</span>
+
+    fileName1 <span style="color:#f92672">=</span> str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>) <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>) <span style="color:#f92672">+</span> random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>))
+
+    paths <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;file&#39;</span>, dir, fileName1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.txt&#39;</span>)
+
+    file1 <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>open(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>paths), mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>)
+
+    strList <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>):
+        strX <span style="color:#f92672">=</span> str(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">*</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">*</span> x)
+        mn <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(strX<span style="color:#f92672">.</span>encode(encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>))
+        strList<span style="color:#f92672">.</span>append(mn<span style="color:#f92672">.</span>hexdigest() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+
+    <span style="color:#66d9ef">print</span>(strList)
+    file1<span style="color:#f92672">.</span>writelines(strList)
+    file1<span style="color:#f92672">.</span>close()
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;所有写入完毕!&#34;</span>)
 
 </code></pre></div><ul>
 <li>获取文件列表</li>
@@ -4677,11 +4737,268 @@ paths <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;fil
 <span style="color:#75715e">#读取所有文件夹下的文件</span>
 fileList <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>iterdir(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(paths))
 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ergodicFile</span>(f):
+    <span style="color:#66d9ef">if</span> f<span style="color:#f92672">.</span>is_dir():
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;文件夹:{f.absolute()}&#34;</span>)
+        <span style="color:#66d9ef">for</span> ff <span style="color:#f92672">in</span> f<span style="color:#f92672">.</span>iterdir():
+            ergodicFile(ff)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(f<span style="color:#f92672">.</span>name)
+        <span style="color:#66d9ef">print</span>(f<span style="color:#f92672">.</span>absolute())
+
+<span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> fileList:
+    ergodicFile(f)
+</code></pre></div><h3 id="文件夹压缩-zip">
+  文件夹压缩 zip
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%a4%b9%e5%8e%8b%e7%bc%a9-zip">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> zipfile <span style="color:#f92672">as</span> zipUtils
+<span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+<span style="color:#f92672">import</span> random
+
+<span style="color:#75715e"># 判断文件夹是否存在</span>
+<span style="color:#66d9ef">if</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file_zip&#39;</span>))<span style="color:#f92672">.</span>exists():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e">#不存在则建立文件夹</span>
+    pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file_zip&#39;</span>)))
+
+<span style="color:#75715e"># 压缩文件路径</span>
+zip_file_path <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath((<span style="color:#e6db74">&#34;file_zip&#34;</span>), str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100000</span>)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;srmdir_all.zip&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(zip_file_path)
+zipFile <span style="color:#f92672">=</span> zipUtils<span style="color:#f92672">.</span>ZipFile(zip_file_path, <span style="color:#e6db74">&#39;w&#39;</span>, zipUtils<span style="color:#f92672">.</span>ZIP_DEFLATED)
+
+fileList <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>iterdir(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath((<span style="color:#e6db74">&#39;file&#39;</span>)))
+
 <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> fileList:
     <span style="color:#66d9ef">if</span> f<span style="color:#f92672">.</span>is_file():
-        <span style="color:#66d9ef">print</span>(f<span style="color:#f92672">.</span>read_text(encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>))
-        <span style="color:#66d9ef">print</span>(f<span style="color:#f92672">.</span>name)
-</code></pre></div></article>
+      <span style="color:#66d9ef">pass</span>
+    <span style="color:#75715e"># 目标地址path  源地址path</span>
+    zipFile<span style="color:#f92672">.</span>write(f<span style="color:#f92672">.</span>absolute(), f<span style="color:#f92672">.</span>name)
+    <span style="color:#66d9ef">pass</span>
+
+zipFile<span style="color:#f92672">.</span>close()
+</code></pre></div><h3 id="文件夹复杂压缩-zip">
+  文件夹复杂压缩 zip
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%a4%b9%e5%a4%8d%e6%9d%82%e5%8e%8b%e7%bc%a9-zip">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">import</span> zipfile <span style="color:#f92672">as</span> zipUtils
+<span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+<span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> os <span style="color:#f92672">as</span> osUtils
+
+<span style="color:#75715e"># 压缩文件</span>
+zip_file_path <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;file_zip&#39;</span>))
+
+<span style="color:#75715e"># 压缩文件路径</span>
+sourceFileDir <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath((<span style="color:#e6db74">&#39;file&#39;</span>)))
+
+<span style="color:#75715e"># 判断文件夹是否存在</span>
+<span style="color:#66d9ef">if</span> zip_file_path<span style="color:#f92672">.</span>exists():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e"># 不存在则建立文件夹</span>
+    pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(zip_file_path)
+
+zip_file_path <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>joinpath(zip_file_path, str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100000</span>)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;srmdir_all.zip&#34;</span>)
+<span style="color:#66d9ef">print</span>(zip_file_path)
+<span style="color:#66d9ef">print</span>(sourceFileDir)
+zipFile <span style="color:#f92672">=</span> zipUtils<span style="color:#f92672">.</span>ZipFile(zip_file_path, <span style="color:#e6db74">&#39;w&#39;</span>, zipUtils<span style="color:#f92672">.</span>ZIP_DEFLATED)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">zipFileFun</span>(sourceFileDir, zipFile):
+    <span style="color:#66d9ef">for</span> dirpath, dirnames, filenames <span style="color:#f92672">in</span> osUtils<span style="color:#f92672">.</span>walk(sourceFileDir):
+        <span style="color:#75715e"># 这一句很重要，不replace的话，就从根目录开始复制</span>
+        fpath <span style="color:#f92672">=</span> dirpath<span style="color:#f92672">.</span>replace(str(sourceFileDir), <span style="color:#e6db74">&#39;&#39;</span>)
+        <span style="color:#75715e"># 这句话理解我也点郁闷，实现当前文件夹以及包含的所有文件的压缩</span>
+        fpath <span style="color:#f92672">=</span> fpath <span style="color:#f92672">and</span> fpath <span style="color:#f92672">+</span> osUtils<span style="color:#f92672">.</span>sep <span style="color:#f92672">or</span> <span style="color:#e6db74">&#39;&#39;</span>
+        <span style="color:#66d9ef">for</span> filename <span style="color:#f92672">in</span> filenames:
+            zipFile<span style="color:#f92672">.</span>write(osUtils<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(dirpath, filename), fpath <span style="color:#f92672">+</span> filename)
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;压缩成功&#39;</span>, osUtils<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(dirpath, filename), fpath <span style="color:#f92672">+</span> filename)
+
+
+zipFileFun(sourceFileDir, zipFile)
+
+zipFile<span style="color:#f92672">.</span>close()
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;复杂压缩结束!&#34;</span>)
+
+</code></pre></div><h3 id="文件夹解压-zip">
+  文件夹解压 zip
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e5%a4%b9%e8%a7%a3%e5%8e%8b-zip">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> zipfile <span style="color:#f92672">as</span> zipUtils
+<span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+<span style="color:#f92672">import</span> random
+<span style="color:#f92672">import</span> os <span style="color:#f92672">as</span> osUtils
+
+
+<span style="color:#75715e"># 解压文件路径</span>
+extracta_file_path <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#e6db74">&#39;extracta&#39;</span>))
+
+<span style="color:#75715e"># 压缩文件路径</span>
+sourceFileDir <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>(<span style="color:#e6db74">&#39;file_zip&#39;</span>,<span style="color:#e6db74">&#39;69134srmdir_all.zip&#39;</span>)))
+
+<span style="color:#75715e"># 判断文件夹是否存在</span>
+<span style="color:#66d9ef">if</span> extracta_file_path<span style="color:#f92672">.</span>exists():
+    <span style="color:#66d9ef">pass</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e"># 不存在则建立文件夹</span>
+    pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>mkdir(extracta_file_path)
+
+
+zip_file <span style="color:#f92672">=</span> zipUtils<span style="color:#f92672">.</span>ZipFile(sourceFileDir)
+<span style="color:#75715e"># 解压</span>
+
+zip_extract <span style="color:#f92672">=</span> zip_file<span style="color:#f92672">.</span>extractall(extracta_file_path)
+zip_file<span style="color:#f92672">.</span>close()
+</code></pre></div><h3 id="简单属性">
+  简单属性
+  <a class="anchor" href="#%e7%ae%80%e5%8d%95%e5%b1%9e%e6%80%a7">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+<span style="color:#f92672">import</span> os <span style="color:#f92672">as</span> osUtils
+
+fileDir <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath((<span style="color:#e6db74">&#39;DemoOther.py&#39;</span>))
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回电脑用户的目录: {fileDir.home()}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回文件当前所在目录: {fileDir.cwd()}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回文件: {fileDir.parts}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回根目录: {fileDir.anchor}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回根目录: {fileDir.root}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回父级目录: {fileDir.parent}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回所有上级目录的列表: {fileDir.parents}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;后缀: {fileDir.suffix}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回文件后缀列表: {fileDir.suffixes}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;获得文件属性: {fileDir.stat()}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回文件名+文件后缀: {fileDir.name}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;返回文件名: {fileDir.stem}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;获得文件路径: {str(fileDir)}&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;获得文件路径base: {str(fileDir).replace(osUtils.sep + fileDir.name, &#39;&#39;)}&#34;</span>)
+
+</code></pre></div><h3 id="pathlib和os常用操作对比">
+  pathlib和os常用操作对比
+  <a class="anchor" href="#pathlib%e5%92%8cos%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c%e5%af%b9%e6%af%94">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>pathlib操作</th>
+<th>os及os.path操作</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Path.resolve()</td>
+<td>os.path.abspath()</td>
+<td>获得绝对路径</td>
+</tr>
+<tr>
+<td>Path.chmod()</td>
+<td>os.chmod()</td>
+<td>修改文件权限和时间戳</td>
+</tr>
+<tr>
+<td>Path.mkdir()</td>
+<td>os.mkdir()</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>Path.rename()</td>
+<td>os.rename()</td>
+<td>文件或文件夹重命名，如果路径不同，会移动并重新命名</td>
+</tr>
+<tr>
+<td>Path.replace()</td>
+<td>os.replace()</td>
+<td>文件或文件夹重命名，如果路径不同，会移动并重新命名，如果存在，则破坏现有目标。</td>
+</tr>
+<tr>
+<td>Path.rmdir()</td>
+<td>os.rmdir()</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>Path.unlink()</td>
+<td>os.remove()</td>
+<td>删除一个文件</td>
+</tr>
+<tr>
+<td>Path.unlink()</td>
+<td>os.unlink()</td>
+<td>删除一个文件</td>
+</tr>
+<tr>
+<td>Path.cwd()</td>
+<td>os.getcwd()</td>
+<td>获得当前工作目录</td>
+</tr>
+<tr>
+<td>Path.exists()</td>
+<td>os.path.exists()</td>
+<td>判断是否存在文件或目录name</td>
+</tr>
+<tr>
+<td>Path.home()</td>
+<td>os.path.expanduser()</td>
+<td>返回电脑的用户目录</td>
+</tr>
+<tr>
+<td>Path.is_dir()</td>
+<td>os.path.isdir()</td>
+<td>检验给出的路径是一个文件</td>
+</tr>
+<tr>
+<td>Path.is_file()</td>
+<td>os.path.isfile()</td>
+<td>检验给出的路径是一个目录</td>
+</tr>
+<tr>
+<td>Path.is_symlink()</td>
+<td>os.path.islink()</td>
+<td>检验给出的路径是一个符号链接</td>
+</tr>
+<tr>
+<td>Path.stat()</td>
+<td>os.stat()</td>
+<td>获得文件属性</td>
+</tr>
+<tr>
+<td>PurePath.is_absolute()</td>
+<td>os.path.isabs()</td>
+<td>判断是否为绝对路径</td>
+</tr>
+<tr>
+<td>PurePath.joinpath()</td>
+<td>os.path.join()</td>
+<td>连接目录与文件名或目录</td>
+</tr>
+<tr>
+<td>PurePath.name</td>
+<td>os.path.basename()</td>
+<td>返回文件名</td>
+</tr>
+<tr>
+<td>PurePath.parent</td>
+<td>os.path.dirname()</td>
+<td>返回文件路径</td>
+</tr>
+<tr>
+<td>Path.samefile()</td>
+<td>os.path.samefile()</td>
+<td>判断两个路径是否相同</td>
+</tr>
+<tr>
+<td>PurePath.suffix</td>
+<td>os.path.splitext()</td>
+<td>分离文件名和扩展名</td>
+</tr>
+</tbody>
+</table>
+</article>
  
       
 
@@ -4928,6 +5245,12 @@ fileList <span style="color:#f92672">=</span> pathLib<span style="color:#f92672"
       <ul>
         <li><a href="#读">读</a></li>
         <li><a href="#写">写</a></li>
+        <li><a href="#写文件-复杂">写文件 (复杂)</a></li>
+        <li><a href="#文件夹压缩-zip">文件夹压缩 zip</a></li>
+        <li><a href="#文件夹复杂压缩-zip">文件夹复杂压缩 zip</a></li>
+        <li><a href="#文件夹解压-zip">文件夹解压 zip</a></li>
+        <li><a href="#简单属性">简单属性</a></li>
+        <li><a href="#pathlib和os常用操作对比">pathlib和os常用操作对比</a></li>
       </ul>
     </li>
   </ul>

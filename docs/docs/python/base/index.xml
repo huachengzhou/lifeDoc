@@ -154,7 +154,7 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/pathlib/</guid>
-      <description>pathlib#文件读写#读#import pathlib as pathLib paths = (&amp;#39;file&amp;#39;, &amp;#39;f.txt&amp;#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&amp;#34;r+&amp;#34;, encoding=&amp;#34;UTF-8&amp;#34;) list1 = file1.readlines() for x in list1: print(x) file1.close() 写#import pathlib as pathLib import random import time import hashlib fileName1 = str(random.randrange(100, 100000) + random.randrange(100, 100000) + random.randrange(100, 100000)) paths = (&amp;#39;file&amp;#39;, fileName1 + &amp;#39;.txt&amp;#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&amp;#34;w&amp;#34;, encoding=&amp;#34;UTF-8&amp;#34;) strList = [] for x in range(1, 100, 2): strX = str(time.</description>
+      <description>pathlib#文件读写#读#import pathlib as pathLib paths = (&amp;#39;file&amp;#39;, &amp;#39;f.txt&amp;#39;) file1 = pathLib.Path.open(pathLib.Path.cwd().joinpath(*paths), mode=&amp;#34;r+&amp;#34;, encoding=&amp;#34;UTF-8&amp;#34;) list1 = file1.readlines() for x in list1: print(x) file1.close() 写#import pathlib as pathLib import random import time import hashlib # 写文件 fileName1 = str(random.randrange(100, 100000) + random.randrange(100, 100000) + random.randrange(100, 100000)) paths = (&amp;#39;file&amp;#39;, fileName1 + &amp;#39;.txt&amp;#39;) # 判断文件夹是否存在 if pathLib.Path(pathLib.Path.cwd().joinpath(&amp;#39;file&amp;#39;)).exists(): pass else: #不存在则建立文件夹 pathLib.Path.mkdir(pathLib.Path(pathLib.Path.cwd().joinpath(&amp;#39;file&amp;#39;))) file1 = pathLib.</description>
     </item>
     
     <item>
@@ -277,7 +277,7 @@ Python 2.7 使用 raw_input() 方法
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/container/</guid>
-      <description>容器#各个容器相互转换#容器通用用法#</description>
+      <description>容器#各个容器相互转换# 字典数据容器转为其他几种容器时  my_dict = {&amp;#39;key1&amp;#39;: 1, &amp;#39;key2&amp;#39;: 2, &amp;#39;key3&amp;#39;: 3} # 先写一组字典类型的数据 print(str(my_dict)) # 字典转字符串是保留了value 字典仅仅在转为字符串的时候是保留了value值 print(list(my_dict)) # 字典转列表没有保留value print(tuple(my_dict)) # 字典转元组没有保留value print(set(my_dict)) # 字典转集合没有保留value # 结果 &amp;#34;&amp;#34;&amp;#34; {&amp;#39;key1&amp;#39;: 1, &amp;#39;key2&amp;#39;: 2, &amp;#39;key3&amp;#39;: 3} [&amp;#39;key1&amp;#39;, &amp;#39;key2&amp;#39;, &amp;#39;key3&amp;#39;] (&amp;#39;key1&amp;#39;, &amp;#39;key2&amp;#39;, &amp;#39;key3&amp;#39;) {&amp;#39;key2&amp;#39;, &amp;#39;key1&amp;#39;, &amp;#39;key3&amp;#39;} &amp;#34;&amp;#34;&amp;#34;  元组转换为集合  容器通用用法#</description>
     </item>
     
   </channel>

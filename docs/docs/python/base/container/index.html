@@ -11,7 +11,7 @@
 各个容器相互转换
 #
 
-容器通用用法
+ 字典数据容器转为其他几种容器时  my_dict = {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3} # 先写一组字典类型的数据 print(str(my_dict)) # 字典转字符串是保留了value 字典仅仅在转为字符串的时候是保留了value值 print(list(my_dict)) # 字典转列表没有保留value print(tuple(my_dict)) # 字典转元组没有保留value print(set(my_dict)) # 字典转集合没有保留value # 结果 &#34;&#34;&#34; {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3} [&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;] (&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;) {&#39;key2&#39;, &#39;key1&#39;, &#39;key3&#39;} &#34;&#34;&#34;  元组转换为集合  容器通用用法
 #
 
 ">
@@ -22,7 +22,7 @@
 各个容器相互转换
 #
 
-容器通用用法
+ 字典数据容器转为其他几种容器时  my_dict = {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3} # 先写一组字典类型的数据 print(str(my_dict)) # 字典转字符串是保留了value 字典仅仅在转为字符串的时候是保留了value值 print(list(my_dict)) # 字典转列表没有保留value print(tuple(my_dict)) # 字典转元组没有保留value print(set(my_dict)) # 字典转集合没有保留value # 结果 &#34;&#34;&#34; {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3} [&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;] (&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;) {&#39;key2&#39;, &#39;key1&#39;, &#39;key3&#39;} &#34;&#34;&#34;  元组转换为集合  容器通用用法
 #
 
 " />
@@ -34,7 +34,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.5e951686eb114e76a918475ca6c47faaac1b62d2d14d0983cb0094b7150cdc78.js"  ></script>
+<script defer src="./../../../../en.search.min.e4da539ada4a363b1777dfc469e4ed8bacd1626faf18c1b15adfaab46605ce0c.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4623,6 +4623,30 @@ https://github.com/alex-shpak/hugo-book
   各个容器相互转换
   <a class="anchor" href="#%e5%90%84%e4%b8%aa%e5%ae%b9%e5%99%a8%e7%9b%b8%e4%ba%92%e8%bd%ac%e6%8d%a2">#</a>
 </h3>
+<ul>
+<li>字典数据容器转为其他几种容器时</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">my_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;key1&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;key2&#39;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;key3&#39;</span>: <span style="color:#ae81ff">3</span>}  <span style="color:#75715e"># 先写一组字典类型的数据</span>
+
+<span style="color:#66d9ef">print</span>(str(my_dict))  <span style="color:#75715e"># 字典转字符串是保留了value  字典仅仅在转为字符串的时候是保留了value值</span>
+
+<span style="color:#66d9ef">print</span>(list(my_dict))  <span style="color:#75715e"># 字典转列表没有保留value</span>
+
+<span style="color:#66d9ef">print</span>(tuple(my_dict))  <span style="color:#75715e"># 字典转元组没有保留value</span>
+
+<span style="color:#66d9ef">print</span>(set(my_dict))  <span style="color:#75715e"># 字典转集合没有保留value</span>
+
+<span style="color:#75715e"># 结果</span>
+
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">{&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3}
+</span><span style="color:#e6db74">[&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;]
+</span><span style="color:#e6db74">(&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;)
+</span><span style="color:#e6db74">{&#39;key2&#39;, &#39;key1&#39;, &#39;key3&#39;}
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div><ul>
+<li>元组转换为集合</li>
+</ul>
 <h3 id="容器通用用法">
   容器通用用法
   <a class="anchor" href="#%e5%ae%b9%e5%99%a8%e9%80%9a%e7%94%a8%e7%94%a8%e6%b3%95">#</a>

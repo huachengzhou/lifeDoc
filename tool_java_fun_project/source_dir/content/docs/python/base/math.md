@@ -82,3 +82,23 @@ print(math.pow(3,2)+math.pow(4,2))
 print(math.pow(math.pow(3,2)+math.pow(4,2),0.5))
 print(math.sqrt(math.pow(3,2)+math.pow(4,2)))
 ```
+
+
+## statistics --- 数学统计函数
+
+| 方法 | 描述 |
+| --- | --- |
+| statistics.harmonic_mean() | 计算给定数据的调和平均值（中心位置） |
+| statistics.mean() | 计算给定数据的平均值（平均值） |
+| statistics.median() | 计算给定数据的中位数（中间值） |
+| statistics.median_grouped() | 计算分组连续数据的中位数 |
+| statistics.median_high() | 计算给定数据的高中位数 |
+| statistics.median_low() | 计算给定数据的低中位数 |
+| statistics.mode() | 计算给定数值或名义数据的众数（集中趋势） |
+| statistics.pstdev() | 计算整个总体的标准差 |
+| statistics.stdev() | 计算数据样本的标准差 |
+| statistics.pvariance() | 计算整个总体的方差 |
+| statistics.variance() | 根据数据样本计算方差 |
+
+
+
