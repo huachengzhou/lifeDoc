@@ -272,6 +272,16 @@ Python 2.7 使用 raw_input() 方法
     </item>
     
     <item>
+      <title>Python 注解</title>
+      <link>https://huachengzhou.github.io/life/docs/python/base/annotation/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/base/annotation/</guid>
+      <description>Python 注解# 注解是Python3.5引入的，通过注解可以提高我们代码的可读性，编译器会通过注解帮你做类型检查，避免一些错误
+ </description>
+    </item>
+    
+    <item>
       <title>Python 容器问题</title>
       <link>https://huachengzhou.github.io/life/docs/python/base/container/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
