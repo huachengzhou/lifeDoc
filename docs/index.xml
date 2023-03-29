@@ -21,17 +21,16 @@ html转markdown</description>
     </item>
     
     <item>
-      <title>python pyqt5</title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
+      <title>python pyinstaller </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
-      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
-PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
-PyQt5类分为很多模块，主要模块有：
- QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装#pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
+      <description>pyinstaller#安装# 安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
+ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包#打包为单文件# 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
+ Spec文件分析#.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
+  Analysis：主要是分析py文件的依赖信息</description>
     </item>
     
     <item>
@@ -577,12 +576,13 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
-      <title>python pyqt5 layout</title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</link>
+      <title>python pyecharts  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</guid>
-      <description>layout (布局管理)#QLayout#QBoxLayout#QHNoxLayout#QVBoxLayout#QGridLayout#QStackedLayout#QFormLayout#参考1</description>
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</guid>
+      <description>pyecharts# Python可视化神器之pyechart
+ 参考1 参考2</description>
     </item>
     
     <item>
@@ -920,6 +920,23 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>python NumPy  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/numpy/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
+      <description>NumPy#什么是 NumPy#NumPy 是用于处理数组的 python 库。
+它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
+NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。
+NumPy 指的是数值 Python（Numerical Python）
+为何使用 NumPy？#在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
+NumPy 旨在提供一个比传统 Python 列表快 50 倍的数组对象。
+NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得利用 ndarray 非常容易。
+数组在数据科学中非常常用，因为速度和资源非常重要。
+数据科学：计算机科学的一个分支，研究如何存储、使用和分析数据以从中获取信息。</description>
     </item>
     
     <item>
@@ -1491,19 +1508,6 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
     </item>
     
     <item>
-      <title>python pyinstaller </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
-      <description>pyinstaller#安装# 安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
- pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包#打包为单文件# 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析#.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
-  Analysis：主要是分析py文件的依赖信息</description>
-    </item>
-    
-    <item>
       <title>程序员如何向同事说明自己的问题</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/</link>
       <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
@@ -1738,23 +1742,6 @@ startUML#一:什么是UML# UML是Unified Model Language的缩写，中文�
     </item>
     
     <item>
-      <title>python NumPy  </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/numpy/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
-      <description>NumPy#什么是 NumPy#NumPy 是用于处理数组的 python 库。
-它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
-NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。
-NumPy 指的是数值 Python（Numerical Python）
-为何使用 NumPy？#在 Python 中，我们有满足数组功能的列表，但是处理起来很慢。
-NumPy 旨在提供一个比传统 Python 列表快 50 倍的数组对象。
-NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得利用 ndarray 非常容易。
-数组在数据科学中非常常用，因为速度和资源非常重要。
-数据科学：计算机科学的一个分支，研究如何存储、使用和分析数据以从中获取信息。</description>
-    </item>
-    
-    <item>
       <title>泛型机制详解</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
@@ -1949,16 +1936,6 @@ npm install webpack -g //指定版本安装 npm install webpack@3.</description>
  import time tupleX = (time.time(),time.time_ns()) print(tupleX)  访问元组项目  tupleIndex = (2, 3, &amp;#39;a&amp;#39;, &amp;#39;c&amp;#39;) print(f&amp;#34;倒数第一项:{tupleIndex[-1]}&amp;#34;) print(f&amp;#34;倒数第二项:{tupleIndex[-2]}&amp;#34;) print(f&amp;#34;第一项:{tupleIndex[0]}&amp;#34;)   关于索引范围 -1就说倒数第一项 -2就是倒数第二项 0就第一项
   检查项目是否存在
   betweenTuple = (&amp;#39;a&amp;#39;,&amp;#39;k&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;7&amp;#39;) print(f&amp;#34;a属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;b不属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;)  元组长度  betweenTuple = (&amp;#39;a&amp;#39;,&amp;#39;k&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;7&amp;#39;) print(f&amp;#34;a属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;b不属于元组:{&amp;#39;a&amp;#39; in betweenTuple}&amp;#34;) print(f&amp;#34;元组长度:{len(betweenTuple)}&amp;#34;) </description>
-    </item>
-    
-    <item>
-      <title>python pyecharts  </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</guid>
-      <description>pyecharts# Python可视化神器之pyechart
- 参考1 参考2</description>
     </item>
     
     <item>
@@ -2212,6 +2189,15 @@ org.jsouporg.jsoup.examplesorg.jsoup.helperorg.jsoup.nodesorg.jsoup.parsero
     </item>
     
     <item>
+      <title>python pyqt5</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
+      <description>pyqt5#基本结构## 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &amp;#34;燕雀安知鸿鹄之志哉&amp;#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &amp;#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&amp;#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习# 有相当一部分语法和css相同 labelB.</description>
+    </item>
+    
+    <item>
       <title>自信相关理论</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
@@ -2300,12 +2286,17 @@ ForkJoinTask#ForkJoinTask代表运行在ForkJoinPool中的任务。
     </item>
     
     <item>
-      <title>python 机器学习  </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</link>
+      <title>python pyqt5 介绍</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</guid>
-      <description>机器学习#</description>
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</guid>
+      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
+PyQt5类分为很多模块，主要模块有：
+ QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
+PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装#pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
     </item>
     
     <item>
@@ -2367,6 +2358,15 @@ ForkJoinTask#ForkJoinTask代表运行在ForkJoinPool中的任务。
     </item>
     
     <item>
+      <title>python pyqt5 layout</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</guid>
+      <description>layout (布局管理)#QLayout#QBoxLayout#QHNoxLayout#QVBoxLayout#QGridLayout#QStackedLayout#QFormLayout#参考1</description>
+    </item>
+    
+    <item>
       <title>使自己成熟稳重</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6ngdcha8bk/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
@@ -2416,6 +2416,17 @@ case2#从小到大我就被长辈朋友说傻、呆、笨、二。一直以�
   返回当前时间，只包含时分秒 select curtime()
   返回当前的日期和时间，年月日时分秒全都包含 select now()
   提取具体日期类型# year() yearweek() ,hour(),month()等等   select year(now()) as &amp;lsquo;年&amp;rsquo;,yearweek(now()) as &amp;lsquo;年,周&amp;rsquo;,hour(now()) as &amp;lsquo;周&amp;rsquo;,minute(now()) as &amp;lsquo;小时&amp;rsquo;,month(now()) &amp;lsquo;月&amp;rsquo;,monthname(now()) &amp;lsquo;月名字&amp;rsquo;,dayofmonth(now()) as &amp;lsquo;当月多少日&amp;rsquo;   EXTRACT() 函数用于返回日期/时间的单独部分，比如年、月、日、小时、分钟等等。   (select extract(year from now()),extract(month from now()),extract(day from now()),extract(hour from now()),extract(minute from now()))  日期格式# DATE_FORMAT(date,fmt)函数：按字符串 fmt 格式化日期 date 值 (select date_format(now(),&#39;%Y-%m-%d&#39;))  日期运算#  date_add(date,interval number dateType) example (select date_add(now(),interval 2 year) as &amp;lsquo;add 2 year date&amp;rsquo;) (select date_add(now(),interval -2 hour) as &amp;lsquo;add 2&amp;rsquo;)也可以传入负数即回到过去某个时间</description>
+    </item>
+    
+    <item>
+      <title>python pyqt5 皮肤和图标</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</guid>
+      <description>皮肤选择#QDarkStyleSheet# 最完整的深色/浅色Qt主题
+ pip install qdarkstyle  例子  # PyQt5 使用例子 import sys import qdarkstyle from PyQt5 import QtWidgets # create the application and the main window app = QtWidgets.QApplication(sys.argv) window = QtWidgets.QMainWindow() # setup stylesheet app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5()) # or in new API app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=&amp;#39;pyqt5&amp;#39;)) # run window.show() app.exec_() Qt-Material# 一个仿Material的样式，适用于PySide6, PySide2以及PyQt5
+ pip install qt-material  例子  # 使用例子 import sys # from PySide6 import QtWidgets # from PySide2 import QtWidgets from PyQt5 import QtWidgets from qt_material import apply_stylesheet # create the application and the main window app = QtWidgets.</description>
     </item>
     
     <item>
@@ -3041,6 +3052,15 @@ Python 2.7 使用 raw_input() 方法
   将SQL语句放在BEGIN和END阻止之间
   例子1
   -- create table CREATE TABLE employees_audit ( id INT AUTO_INCREMENT PRIMARY KEY, employeeNumber INT NOT NULL, lastname VARCHAR(50) NOT NULL, changedat DATETIME DEFAULT NULL, action VARCHAR(50) DEFAULT NULL ); </description>
+    </item>
+    
+    <item>
+      <title>python 机器学习  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</guid>
+      <description>机器学习#</description>
     </item>
     
     <item>

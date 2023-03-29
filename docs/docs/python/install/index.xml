@@ -7,29 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/python/install/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>python pyqt5</title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
-      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
-PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
-PyQt5类分为很多模块，主要模块有：
- QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装#pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
-    </item>
-    
-    <item>
-      <title>python pyqt5 layout</title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</link>
-      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</guid>
-      <description>layout (布局管理)#QLayout#QBoxLayout#QHNoxLayout#QVBoxLayout#QGridLayout#QStackedLayout#QFormLayout#参考1</description>
-    </item>
-    
-    <item>
       <title>python pyinstaller </title>
       <link>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
@@ -40,6 +17,16 @@ PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。
  # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
  Spec文件分析#.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
   Analysis：主要是分析py文件的依赖信息</description>
+    </item>
+    
+    <item>
+      <title>python pyecharts  </title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</guid>
+      <description>pyecharts# Python可视化神器之pyechart
+ 参考1 参考2</description>
     </item>
     
     <item>
@@ -60,13 +47,46 @@ NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得
     </item>
     
     <item>
-      <title>python pyecharts  </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</link>
+      <title>python pyqt5</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</guid>
-      <description>pyecharts# Python可视化神器之pyechart
- 参考1 参考2</description>
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
+      <description>pyqt5#基本结构## 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &amp;#34;燕雀安知鸿鹄之志哉&amp;#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &amp;#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&amp;#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习# 有相当一部分语法和css相同 labelB.</description>
+    </item>
+    
+    <item>
+      <title>python pyqt5 介绍</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</guid>
+      <description>关于 PyQt5#PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
+PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
+PyQt5类分为很多模块，主要模块有：
+ QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
+PyQt4和PyQt5的区别#PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
+ 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装#pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.</description>
+    </item>
+    
+    <item>
+      <title>python pyqt5 layout</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</guid>
+      <description>layout (布局管理)#QLayout#QBoxLayout#QHNoxLayout#QVBoxLayout#QGridLayout#QStackedLayout#QFormLayout#参考1</description>
+    </item>
+    
+    <item>
+      <title>python pyqt5 皮肤和图标</title>
+      <link>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</guid>
+      <description>皮肤选择#QDarkStyleSheet# 最完整的深色/浅色Qt主题
+ pip install qdarkstyle  例子  # PyQt5 使用例子 import sys import qdarkstyle from PyQt5 import QtWidgets # create the application and the main window app = QtWidgets.QApplication(sys.argv) window = QtWidgets.QMainWindow() # setup stylesheet app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5()) # or in new API app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=&amp;#39;pyqt5&amp;#39;)) # run window.show() app.exec_() Qt-Material# 一个仿Material的样式，适用于PySide6, PySide2以及PyQt5
+ pip install qt-material  例子  # 使用例子 import sys # from PySide6 import QtWidgets # from PySide2 import QtWidgets from PyQt5 import QtWidgets from qt_material import apply_stylesheet # create the application and the main window app = QtWidgets.</description>
     </item>
     
     <item>

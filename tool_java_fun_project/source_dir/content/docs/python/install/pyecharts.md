@@ -2,7 +2,7 @@
 title: "python pyecharts  "
 date: 2023-03-02
 draft: false
-weight: 7
+weight: 2
 ---
 
 

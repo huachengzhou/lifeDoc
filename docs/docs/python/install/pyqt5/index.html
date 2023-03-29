@@ -5,37 +5,27 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="关于 PyQt5
+<meta name="description" content="pyqt5
 #
 
-PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
-PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
-PyQt5类分为很多模块，主要模块有：
- QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别
+基本结构
 #
 
-PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装
+# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习
 #
 
-pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi.">
+ 有相当一部分语法和css相同 labelB.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pyqt5" />
-<meta property="og:description" content="关于 PyQt5
+<meta property="og:description" content="pyqt5
 #
 
-PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。
-PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。
-PyQt5类分为很多模块，主要模块有：
- QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。 QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。 QtWidgets QtMultimedia QtBluetooth QtNetwork QtPositioning Enginio QtWebSockets QtWebKit QtWebKitWidgets QtXml QtSvg QtSql QtTest  QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。
-PyQt4和PyQt5的区别
+基本结构
 #
 
-PyQt5不兼容PyQt4。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：
- 重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。 添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。 废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。 不再支持被标记为废弃的或不建议使用的API。  安装
+# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习
 #
 
-pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i https://pypi." />
+ 有相当一部分语法和css相同 labelB." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyqt5/" />
 <meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
@@ -44,7 +34,7 @@ pip3 install PyQt5 -i https://pypi.douban.com/simple pip3 install PyQt5-tools -i
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.e4da539ada4a363b1777dfc469e4ed8bacd1626faf18c1b15adfaab46605ce0c.js"  ></script>
+<script defer src="./../../../../en.search.min.c1469a08bac83c9d4e3274d198827081dc14edddb9a79aa9affbe80f16f3af08.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1187,33 +1177,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/install/pyqt5/" class=" active">python pyqt5</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="./../../../../docs/python/install/pyqt_layout/" class="">python pyqt5 layout</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <a href="./../../../../docs/python/install/pyinstaller/" class="">python pyinstaller </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyecharts/" class="">python pyecharts  </a>
   
 
         </li>
@@ -1239,7 +1216,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/python/install/pyecharts/" class="">python pyecharts  </a>
+    <a href="./../../../../docs/python/install/pyqt5/" class=" active">python pyqt5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyqt5_note/" class="">python pyqt5 介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyqt_layout/" class="">python pyqt5 layout</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/python/install/pyqt_resources/" class="">python pyqt5 皮肤和图标</a>
   
 
         </li>
@@ -4597,8 +4613,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#pyqt4和pyqt5的区别">PyQt4和PyQt5的区别</a></li>
-    <li><a href="#安装">安装</a></li>
+    <li><a href="#基本结构">基本结构</a></li>
+    <li><a href="#qcss学习">qcss学习</a></li>
+    <li><a href="#信号-机制-简单学习">信号 机制 简单学习</a></li>
   </ul>
 </nav>
 
@@ -4621,54 +4638,306 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h1 id="关于-pyqt5">
-  关于 PyQt5
-  <a class="anchor" href="#%e5%85%b3%e4%ba%8e-pyqt5">#</a>
+  <article class="markdown"><h1 id="pyqt5">
+  pyqt5
+  <a class="anchor" href="#pyqt5">#</a>
 </h1>
-<p>PyQt5 是Digia的一套Qt5应用框架与python的结合，同时支持2.x和3.x。本教程使用的是3.x。Qt库由Riverbank Computing开发，是最强大的GUI库之一 ，官方网站：www.riverbankcomputing.co.uk/news。</p>
-<p>PyQt5是由一系列Python模块组成。超过620个类，6000函数和方法。能在诸如Unix、Windows和Mac OS等主流操作系统上运行。PyQt5有两种证书，GPL和商业证书。</p>
-<p>PyQt5类分为很多模块，主要模块有：</p>
-<ul>
-<li>QtCore 包含了核心的非GUI的功能。主要和时间、文件与文件夹、各种数据、流、URLs、mime类文件、进程与线程一起使用。</li>
-<li>QtGui 包含了窗口系统、事件处理、2D图像、基本绘画、字体和文字类。</li>
-<li>QtWidgets</li>
-<li>QtMultimedia</li>
-<li>QtBluetooth</li>
-<li>QtNetwork</li>
-<li>QtPositioning</li>
-<li>Enginio</li>
-<li>QtWebSockets</li>
-<li>QtWebKit</li>
-<li>QtWebKitWidgets</li>
-<li>QtXml</li>
-<li>QtSvg</li>
-<li>QtSql</li>
-<li>QtTest</li>
-</ul>
-<p>QtWidgets类包含了一系列创建桌面应用的UI元素。 QtMultimedia包含了处理多媒体的内容和调用摄像头API的类。 QtBluetooth模块包含了查找和连接蓝牙的类。 QtNetwork包含了网络编程的类，这些工具能让TCP/IP和UDP开发变得更加方便和可靠。 QtPositioning包含了定位的类，可以使用卫星、WiFi甚至文本。 Engine包含了通过客户端进入和管理Qt Cloud的类。 QtWebSockets包含了WebSocket协议的类。 QtWebKit包含了一个基WebKit2的web浏览器。 QtWebKitWidgets包含了基于QtWidgets的WebKit1的类。 QtXml包含了处理xml的类，提供了SAX和DOM API的工具。 QtSvg提供了显示SVG内容的类，Scalable Vector Graphics (SVG)是一种是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式（这句话来自于维基百科）。 QtSql提供了处理数据库的工具。 QtTest提供了测试PyQt5应用的工具。</p>
-<h2 id="pyqt4和pyqt5的区别">
-  PyQt4和PyQt5的区别
-  <a class="anchor" href="#pyqt4%e5%92%8cpyqt5%e7%9a%84%e5%8c%ba%e5%88%ab">#</a>
+<h2 id="基本结构">
+  基本结构
+  <a class="anchor" href="#%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84">#</a>
 </h2>
-<p><strong>PyQt5不兼容PyQt4</strong>。PyQt5有一些巨大的改进。但是，迁移并不是很难，两者的区别如下：</p>
-<ul>
-<li>重新组合模块，一些模块已经被废弃(QtScript)，有些被分为两个子模块(QtGui, QtWebKit)。</li>
-<li>添加了新的模块，比如QtBluetooth, QtPositioning，和Enginio。</li>
-<li>废弃了SINGAL()和SLOT()的调用方式，使用了新的信号和xx处理方式。</li>
-<li>不再支持被标记为废弃的或不建议使用的API。</li>
-</ul>
-<h2 id="安装">
-  安装
-  <a class="anchor" href="#%e5%ae%89%e8%a3%85">#</a>
-</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pip3 install PyQt5 -i https://pypi.douban.com/simple
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#75715e"># 导入需要的包</span>
+<span style="color:#f92672">from</span> PyQt5.QtWidgets <span style="color:#f92672">import</span> (QApplication, QWidget, QLabel, QPushButton)
+<span style="color:#f92672">import</span> sys <span style="color:#f92672">as</span> sysUtils
 
-pip3 install PyQt5-tools -i https://pypi.douban.com/simple
-</code></pre></div><p><a href="https://zetcode.com/gui/pyqt5/">pyqt5原文文档</a>
-<a href="https://maicss.gitbook.io/pyqt-chinese-tutoral/">pyqt5中文文档</a>
-<a href="https://github.com/maicss/PyQt-Chinese-tutorial">pyqt5 github 文档出处</a>
-<a href="https://www.cnblogs.com/dalishusheng/category/1791377.html">pyqt5 博客园</a></p>
-</article>
+<span style="color:#75715e"># 创建一个应用程序</span>
+app <span style="color:#f92672">=</span> QApplication(sysUtils<span style="color:#f92672">.</span>argv)
+
+
+<span style="color:#75715e"># 控件也可以作为一个容器(承载其他的控件)</span>
+<span style="color:#75715e"># 控件操作 start</span>
+window <span style="color:#f92672">=</span> QWidget()
+window<span style="color:#f92672">.</span>setWindowTitle( <span style="color:#e6db74">&#34;燕雀安知鸿鹄之志哉&#34;</span>)
+window<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">600</span>, <span style="color:#ae81ff">600</span>)
+window<span style="color:#f92672">.</span>move(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">200</span>)
+
+<span style="color:#75715e"># window 相当于是构建器</span>
+label <span style="color:#f92672">=</span> QLabel(window)
+
+label<span style="color:#f92672">.</span>setText(
+    <span style="color:#e6db74">&#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;</span>)
+
+label<span style="color:#f92672">.</span>move(<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>)
+
+<span style="color:#75715e"># show方法 不要放在前面了</span>
+window<span style="color:#f92672">.</span>show()
+
+<span style="color:#75715e"># 控件操作 end</span>
+
+
+<span style="color:#75715e"># 开始执行应用程序，并进入消息循环</span>
+<span style="color:#75715e"># 让整个程序开始执行,并且进入到消息循环(无限循环)</span>
+<span style="color:#75715e"># 检测整个程序所接收到的用户的交互信息</span>
+<span style="color:#75715e"># sysUtils.exit(app.exec())</span>
+sysUtils<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+<span style="color:#75715e"># sysUtils.exit(1)</span>
+<span style="color:#75715e"># while True:</span>
+<span style="color:#75715e">#     pass</span>
+</code></pre></div><h2 id="qcss学习">
+  qcss学习
+  <a class="anchor" href="#qcss%e5%ad%a6%e4%b9%a0">#</a>
+</h2>
+<blockquote>
+<p>有相当一部分语法和css相同
+labelB.setObjectName(&ldquo;b&rdquo;) 表示 QLabel设置id=b选择器  labelB_1.setProperty(&ldquo;level&rdquo;, &ldquo;1&rdquo;) 表示设置了属性level=&ldquo;1&rdquo;</p>
+</blockquote>
+<ul>
+<li>qcss</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">QPushButton</span>{
+    <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#6496c8</span>;
+    <span style="color:#66d9ef">border</span>: <span style="color:#66d9ef">none</span>;
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#fff</span>;
+    <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+    <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">none</span>;
+    <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">inline</span><span style="color:#f92672">-</span><span style="color:#66d9ef">block</span>;
+    <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+    <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">9</span><span style="color:#66d9ef">px</span>;
+    <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span> rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.2</span>), <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span> rgba(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.19</span>);
+}
+
+<span style="color:#f92672">QLabel</span> {
+    <span style="color:#66d9ef">border</span>:<span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">blue</span>; <span style="color:#66d9ef">border-radius</span>:<span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>
+
+}
+
+<span style="color:#f92672">QLabel</span>#b{
+    <span style="color:#66d9ef">border</span>:<span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">red</span>; <span style="color:#66d9ef">border-radius</span>:<span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>
+
+}
+
+<span style="color:#f92672">QLabel</span>#b<span style="color:#f92672">[</span><span style="color:#f92672">level</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">]</span>{
+    <span style="color:#66d9ef">border</span>:<span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#0000CD</span>; <span style="color:#66d9ef">border-radius</span>:<span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>
+}
+
+<span style="color:#f92672">QLabel</span>#b<span style="color:#f92672">[</span><span style="color:#f92672">level</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">]</span>{
+    <span style="color:#66d9ef">border</span>:<span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#000000</span>; <span style="color:#66d9ef">border-radius</span>:<span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>
+}
+</code></pre></div><ul>
+<li>例子</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PyQt5.Qt <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> sys <span style="color:#f92672">as</span> sysUtils
+<span style="color:#f92672">import</span> pathlib <span style="color:#f92672">as</span> pathLib
+
+<span style="color:#75715e"># 导入文件 qcss</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QSSLoader</span>:
+    <span style="color:#66d9ef">def</span> __init__(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 注解表示本方法是静态方法 不需要创建对象就可以调用 注意这个是高版本python语法</span>
+    <span style="color:#a6e22e">@staticmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_qss_file</span>(qss_file_name):
+        <span style="color:#e6db74">&#34;&#34;&#34;从文件中读取qss的静态方法&#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">with</span> open(qss_file_name, <span style="color:#e6db74">&#34;r&#34;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>) <span style="color:#66d9ef">as</span> file:
+            <span style="color:#66d9ef">return</span> file<span style="color:#f92672">.</span>read()
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyWindow1</span>(QWidget):
+
+    <span style="color:#66d9ef">def</span> __init__(self, title):
+        super()<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>setWindowTitle(title)
+        self<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>)
+        self<span style="color:#f92672">.</span>move(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>)
+        self<span style="color:#f92672">.</span>setupUi()
+        self<span style="color:#f92672">.</span>show()
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupUi</span>(self):
+        <span style="color:#75715e"># 定义一个主容器</span>
+        parentQWidget <span style="color:#f92672">=</span> QWidget()
+        parentQWidget<span style="color:#f92672">.</span>setParent(self)
+        doubleX <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+        doubleY <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+
+        btnA <span style="color:#f92672">=</span> QPushButton(parentQWidget)
+        btnA<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;按钮&#34;</span>)
+        btnA<span style="color:#f92672">.</span>move(doubleX, doubleY)
+        btnA<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+
+        labelA <span style="color:#f92672">=</span> QLabel()
+        labelA<span style="color:#f92672">.</span>setParent(parentQWidget)
+        labelA<span style="color:#f92672">.</span>move(doubleX <span style="color:#f92672">+</span> <span style="color:#ae81ff">70</span>, doubleY <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span>)
+        labelA<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;标签A&#34;</span>)
+        labelA<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+
+        labelB <span style="color:#f92672">=</span> QLabel()
+        labelB<span style="color:#f92672">.</span>setParent(parentQWidget)
+        labelB<span style="color:#f92672">.</span>move(doubleX <span style="color:#f92672">+</span> <span style="color:#ae81ff">70</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span><span style="color:#f92672">+</span><span style="color:#ae81ff">20</span>, doubleY <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span>)
+        <span style="color:#75715e"># 设置 id选择器</span>
+        labelB<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;b&#34;</span>)
+        labelB<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;标签B&#34;</span>)
+        labelB<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+
+        labelB_1 <span style="color:#f92672">=</span> QLabel()
+        labelB_1<span style="color:#f92672">.</span>setParent(parentQWidget)
+        labelB_1<span style="color:#f92672">.</span>move(doubleX <span style="color:#f92672">+</span> <span style="color:#ae81ff">70</span>, doubleY <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span>)
+        <span style="color:#75715e"># 设置 id选择器</span>
+        labelB_1<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;b&#34;</span>)
+        <span style="color:#75715e"># 设置属性</span>
+        labelB_1<span style="color:#f92672">.</span>setProperty(<span style="color:#e6db74">&#34;level&#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>)
+        labelB_1<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;标签B1&#34;</span>)
+        labelB_1<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+
+        labelB_2 <span style="color:#f92672">=</span> QLabel()
+        labelB_2<span style="color:#f92672">.</span>setParent(parentQWidget)
+        labelB_2<span style="color:#f92672">.</span>move(doubleX <span style="color:#f92672">+</span> <span style="color:#ae81ff">70</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span><span style="color:#f92672">+</span><span style="color:#ae81ff">20</span>, doubleY <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span>)
+        <span style="color:#75715e"># 设置 id选择器</span>
+        labelB_2<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;b&#34;</span>)
+        <span style="color:#75715e"># 设置属性</span>
+        labelB_2<span style="color:#f92672">.</span>setProperty(<span style="color:#e6db74">&#34;level&#34;</span>, <span style="color:#e6db74">&#34;2&#34;</span>)
+        labelB_2<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;标签B2&#34;</span>)
+        labelB_2<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+
+    <span style="color:#66d9ef">pass</span>
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    dirCss <span style="color:#f92672">=</span> pathLib<span style="color:#f92672">.</span>Path(pathLib<span style="color:#f92672">.</span>Path<span style="color:#f92672">.</span>cwd()<span style="color:#f92672">.</span>joinpath(<span style="color:#f92672">*</span>(<span style="color:#e6db74">&#39;resources&#39;</span>, <span style="color:#e6db74">&#34;d.qcss&#34;</span>)))
+    style_sheet <span style="color:#f92672">=</span> QSSLoader<span style="color:#f92672">.</span>read_qss_file(str(dirCss))
+    app <span style="color:#f92672">=</span> QApplication(sysUtils<span style="color:#f92672">.</span>argv)
+
+    myWindow <span style="color:#f92672">=</span> MyWindow1(<span style="color:#e6db74">&#34;qcss学习&#34;</span>)
+    <span style="color:#75715e"># 注入 css 样式</span>
+    myWindow<span style="color:#f92672">.</span>setStyleSheet(style_sheet)
+    <span style="color:#66d9ef">print</span>(style_sheet)
+
+    sysUtils<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+</code></pre></div><h2 id="信号-机制-简单学习">
+  信号 机制 简单学习
+  <a class="anchor" href="#%e4%bf%a1%e5%8f%b7-%e6%9c%ba%e5%88%b6-%e7%ae%80%e5%8d%95%e5%ad%a6%e4%b9%a0">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> PyQt5 <span style="color:#f92672">import</span> QtCore
+<span style="color:#f92672">from</span> PyQt5.Qt <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> sys <span style="color:#f92672">as</span> sysUtils
+<span style="color:#f92672">import</span> uuid <span style="color:#f92672">as</span> uuidUtils
+<span style="color:#f92672">import</span> datetime <span style="color:#f92672">as</span> datetimeUtils
+<span style="color:#f92672">import</span> random
+
+<span style="color:#75715e"># 简单 信号 机制 学习</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyWindow</span>(QWidget):
+
+    <span style="color:#66d9ef">def</span> __init__(self, title):
+        super()<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>setWindowTitle(title)
+        self<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>)
+        self<span style="color:#f92672">.</span>move(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">200</span>)
+        self<span style="color:#f92672">.</span>setupUi()
+
+        self<span style="color:#f92672">.</span>setupQObject1()
+        self<span style="color:#f92672">.</span>setupQObject2()
+        self<span style="color:#f92672">.</span>setupObject3()
+        self<span style="color:#f92672">.</span>setupObject4()
+        self<span style="color:#f92672">.</span>setupObject5()
+        self<span style="color:#f92672">.</span>setupObject6()
+
+        self<span style="color:#f92672">.</span>show()
+
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupUi</span>(self):
+        labelA <span style="color:#f92672">=</span> QLabel(self)
+        labelA<span style="color:#f92672">.</span>resize(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+        labelA<span style="color:#f92672">.</span>setText(<span style="color:#e6db74">&#34;label&#34;</span>)
+        labelA<span style="color:#f92672">.</span>move(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+        labelA<span style="color:#f92672">.</span>setStyleSheet(<span style="color:#e6db74">&#34;font-weight: bold;background-color:gold;&#34;</span>)
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 简单设置一下name 看什么效果</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupQObject1</span>(self):
+        obj <span style="color:#f92672">=</span> QObject()
+        str1 <span style="color:#f92672">=</span> str(datetimeUtils<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now())
+
+        <span style="color:#66d9ef">print</span>(obj<span style="color:#f92672">.</span>objectName(), str1)
+
+        <span style="color:#75715e"># 对象名称发生改变时发射此信号 connect 后面写触发后要调用的函数</span>
+        obj<span style="color:#f92672">.</span>objectNameChanged<span style="color:#f92672">.</span>connect(self<span style="color:#f92672">.</span>changeQObjectNameEvent)
+
+        obj<span style="color:#f92672">.</span>setObjectName(str(uuidUtils<span style="color:#f92672">.</span>uuid3(uuidUtils<span style="color:#f92672">.</span>NAMESPACE_DNS, str1)))
+
+        <span style="color:#75715e"># 断开 信号与槽的连接</span>
+        obj<span style="color:#f92672">.</span>objectNameChanged<span style="color:#f92672">.</span>disconnect()
+
+        obj<span style="color:#f92672">.</span>setObjectName(str(uuidUtils<span style="color:#f92672">.</span>uuid3(uuidUtils<span style="color:#f92672">.</span>NAMESPACE_DNS, str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10000</span>)))))
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 连续改变 name 监听状态</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupQObject2</span>(self):
+        objX <span style="color:#f92672">=</span> QObject()
+        <span style="color:#75715e"># 使用匿名函数</span>
+        objX<span style="color:#f92672">.</span>objectNameChanged<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> e: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupQObject2 name 改变&#34;</span>, e))
+        <span style="color:#75715e"># 连续设置 名称改变</span>
+        objX<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;x&#34;</span>)
+        objX<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;y&#34;</span>)
+        objX<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;z&#34;</span>)
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 阻断信号 之 disconnect</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupObject3</span>(self):
+        objX <span style="color:#f92672">=</span> QObject()
+        <span style="color:#75715e"># 使用匿名函数</span>
+        objX<span style="color:#f92672">.</span>objectNameChanged<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> e: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupQObject3 name 改变&#34;</span>, e))
+        objX<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;x&#34;</span>)
+
+        <span style="color:#75715e"># 阻断连接</span>
+        <span style="color:#75715e"># objX.objectNameChanged.disconnect()</span>
+        objX<span style="color:#f92672">.</span>setObjectName(<span style="color:#e6db74">&#34;y&#34;</span>)
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 阻断信号 之 blockSignals</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupObject4</span>(self):
+        objX <span style="color:#f92672">=</span> QObject()
+        <span style="color:#75715e"># 使用匿名函数</span>
+        objX<span style="color:#f92672">.</span>objectNameChanged<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> e: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupQObject4 name 改变&#34;</span>, e))
+        objX<span style="color:#f92672">.</span>setObjectName(str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>)))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;信号状态 False就表示没有被阻断,True表示阻断:&#34;</span>, objX<span style="color:#f92672">.</span>signalsBlocked())
+        <span style="color:#75715e"># 注释下面的代码 本方法会打印两次</span>
+        objX<span style="color:#f92672">.</span>blockSignals(True)
+
+        objX<span style="color:#f92672">.</span>setObjectName(str(random<span style="color:#f92672">.</span>randrange(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100000</span>)))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;信号状态 False就表示没有被阻断,True表示阻断:&#34;</span>, objX<span style="color:#f92672">.</span>signalsBlocked())
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># destroyed 信号 销毁事件</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupObject5</span>(self):
+        objX <span style="color:#f92672">=</span> QObject()
+        objX<span style="color:#f92672">.</span>destroyed<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> e: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupObject5 对象被销毁 &#34;</span>, e))
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#75715e"># 获取某个对象信号 到底有多少连接槽</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setupObject6</span>(self):
+        objX <span style="color:#f92672">=</span> QObject()
+        changeEd <span style="color:#f92672">=</span> objX<span style="color:#f92672">.</span>objectNameChanged
+        changeEd<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> x: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupObject6 连接槽1:&#34;</span>, x))
+        changeEd<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> x: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupObject6 连接槽2:&#34;</span>, x))
+        changeEd<span style="color:#f92672">.</span>connect(<span style="color:#66d9ef">lambda</span> x: <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupObject6 连接槽3:&#34;</span>, x))
+
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;setupObject6 连接槽数量:&#34;</span>,objX<span style="color:#f92672">.</span>receivers(changeEd))
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">changeQObjectNameEvent</span>(self, e):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;QObject Name 改变&#34;</span>, e)
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    app <span style="color:#f92672">=</span> QApplication(sysUtils<span style="color:#f92672">.</span>argv)
+    myW <span style="color:#f92672">=</span> MyWindow(<span style="color:#e6db74">&#34;QObject 学习&#34;</span>)
+
+    sysUtils<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">.</span>exec_())
+    <span style="color:#66d9ef">pass</span>
+</code></pre></div></article>
  
       
 
@@ -4911,8 +5180,9 @@ pip3 install PyQt5-tools -i https://pypi.douban.com/simple
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#pyqt4和pyqt5的区别">PyQt4和PyQt5的区别</a></li>
-    <li><a href="#安装">安装</a></li>
+    <li><a href="#基本结构">基本结构</a></li>
+    <li><a href="#qcss学习">qcss学习</a></li>
+    <li><a href="#信号-机制-简单学习">信号 机制 简单学习</a></li>
   </ul>
 </nav>
 

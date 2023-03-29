@@ -8,7 +8,7 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -218,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -377,6 +377,11 @@
   
   <url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/numpy/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -610,11 +615,6 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</loc>
-    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url>
@@ -710,11 +710,6 @@
   
   <url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_5/</loc>
-  </url>
-  
-  <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/numpy/</loc>
-    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -816,11 +811,6 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/pyecharts/</loc>
-    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url>
@@ -914,6 +904,11 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url>
@@ -949,7 +944,7 @@
   </url>
   
   <url>
-    <loc>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -989,6 +984,11 @@
   </url>
   
   <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt_layout/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6ngdcha8bk/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
   </url>
@@ -1001,6 +1001,11 @@
   <url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -1316,6 +1321,11 @@
   <url>
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/triggers/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://huachengzhou.github.io/life/docs/python/install/python_ml_getting_started/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
