@@ -2,21 +2,48 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv $ python -m venv my_venv  检查创建的环境变量  \my_venv\Lib\site-packages\easy_install.py \my_venv\Lib\site-packages\pip\_internal\build_env.py \my_venv\Lib\site-packages\pip\_internal\cache.py \my_venv\Lib\site-packages\pip\_internal\cli\autocompletion.py \my_venv\Lib\site-packages\pip\_internal\cli\base_command.py \my_venv\Lib\site-packages\pip\_internal\cli\cmdoptions.py \my_venv\Lib\site-packages\pip\_internal\cli\main_parser.py \my_venv\Lib\site-packages\pip\_internal\cli\parser.py \my_venv\Lib\site-packages\pip\_internal\cli\status_codes.py \my_venv\Lib\site-packages\pip\_internal\cli\__init__.py \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\autocompletion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\base_command.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\cmdoptions.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\main_parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\status_codes.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\check.py \my_venv\Lib\site-packages\pip\_internal\commands\completion.py \my_venv\Lib\site-packages\pip\_internal\commands\configuration.py \my_venv\Lib\site-packages\pip\_internal\commands\debug.py \my_venv\Lib\site-packages\pip\_internal\commands\download.py \my_venv\Lib\site-packages\pip\_internal\commands\freeze.py \my_venv\Lib\site-packages\pip\_internal\commands\hash.py \my_venv\Lib\site-packages\pip\_internal\commands\help.py \my_venv\Lib\site-packages\pip\_internal\commands\install.py \my_venv\Lib\site-packages\pip\_internal\commands\list.py \my_venv\Lib\site-packages\pip\_internal\commands\search.py \my_venv\Lib\site-packages\pip\_internal\commands\show.py \my_venv\Lib\site-packages\pip\_internal\commands\uninstall.py \my_venv\Lib\site-packages\pip\_internal\commands\wheel.py \my_venv\Lib\site-packages\pip\_internal\commands\__init__.py \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\check.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\completion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\configuration.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\debug.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\download.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\freeze.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\hash.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\help.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\install.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\list.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\search.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\show.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\uninstall.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\wheel.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\configuration.py \my_venv\Lib\site-packages\pip\_internal\distributions\base.py \my_venv\Lib\site-packages\pip\_internal\distributions\installed.py \my_venv\Lib\site-packages\pip\_internal\distributions\source.py \my_venv\Lib\site-packages\pip\_internal\distributions\wheel.">
+<meta name="description" content="虚拟环境常用有三种 pipenv,virtualenv,conda
+#
+
+更改 Python 的 pip install 默认安装路径
+#
+
+查看site.py 文件的位置(一般在python安装目录的\Lib下），可使用指令查询：
+python -m site -help
+打开site.py文件，更改里面 USER_BASE 和USER_SITE即可。其中 USER_BASE 和USER_SITE其实就是用户自定义的启用Python脚本和依赖安装包的基础路径
+实在不行 重新安装 pip python -m pip install -U pip
+pipenv
+#
+
+ 创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv $ python -m venv my_venv  检查创建的环境变量  \my_venv\Lib\site-packages\easy_install.py \my_venv\Lib\site-packages\pip\_internal\build_env.py \my_venv\Lib\site-packages\pip\_internal\cache.py \my_venv\Lib\site-packages\pip\_internal\cli\autocompletion.py \my_venv\Lib\site-packages\pip\_internal\cli\base_command.py \my_venv\Lib\site-packages\pip\_internal\cli\cmdoptions.py \my_venv\Lib\site-packages\pip\_internal\cli\main_parser.py \my_venv\Lib\site-packages\pip\_internal\cli\parser.py \my_venv\Lib\site-packages\pip\_internal\cli\status_codes.py \my_venv\Lib\site-packages\pip\_internal\cli\__init__.py \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\autocompletion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\base_command.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\cmdoptions.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\main_parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\status_codes.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\__init__.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python 环境变量" />
-<meta property="og:description" content="创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv $ python -m venv my_venv  检查创建的环境变量  \my_venv\Lib\site-packages\easy_install.py \my_venv\Lib\site-packages\pip\_internal\build_env.py \my_venv\Lib\site-packages\pip\_internal\cache.py \my_venv\Lib\site-packages\pip\_internal\cli\autocompletion.py \my_venv\Lib\site-packages\pip\_internal\cli\base_command.py \my_venv\Lib\site-packages\pip\_internal\cli\cmdoptions.py \my_venv\Lib\site-packages\pip\_internal\cli\main_parser.py \my_venv\Lib\site-packages\pip\_internal\cli\parser.py \my_venv\Lib\site-packages\pip\_internal\cli\status_codes.py \my_venv\Lib\site-packages\pip\_internal\cli\__init__.py \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\autocompletion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\base_command.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\cmdoptions.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\main_parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\status_codes.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\check.py \my_venv\Lib\site-packages\pip\_internal\commands\completion.py \my_venv\Lib\site-packages\pip\_internal\commands\configuration.py \my_venv\Lib\site-packages\pip\_internal\commands\debug.py \my_venv\Lib\site-packages\pip\_internal\commands\download.py \my_venv\Lib\site-packages\pip\_internal\commands\freeze.py \my_venv\Lib\site-packages\pip\_internal\commands\hash.py \my_venv\Lib\site-packages\pip\_internal\commands\help.py \my_venv\Lib\site-packages\pip\_internal\commands\install.py \my_venv\Lib\site-packages\pip\_internal\commands\list.py \my_venv\Lib\site-packages\pip\_internal\commands\search.py \my_venv\Lib\site-packages\pip\_internal\commands\show.py \my_venv\Lib\site-packages\pip\_internal\commands\uninstall.py \my_venv\Lib\site-packages\pip\_internal\commands\wheel.py \my_venv\Lib\site-packages\pip\_internal\commands\__init__.py \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\check.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\completion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\configuration.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\debug.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\download.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\freeze.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\hash.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\help.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\install.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\list.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\search.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\show.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\uninstall.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\wheel.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\commands\__pycache__\__init__.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\configuration.py \my_venv\Lib\site-packages\pip\_internal\distributions\base.py \my_venv\Lib\site-packages\pip\_internal\distributions\installed.py \my_venv\Lib\site-packages\pip\_internal\distributions\source.py \my_venv\Lib\site-packages\pip\_internal\distributions\wheel." />
+<meta property="og:description" content="虚拟环境常用有三种 pipenv,virtualenv,conda
+#
+
+更改 Python 的 pip install 默认安装路径
+#
+
+查看site.py 文件的位置(一般在python安装目录的\Lib下），可使用指令查询：
+python -m site -help
+打开site.py文件，更改里面 USER_BASE 和USER_SITE即可。其中 USER_BASE 和USER_SITE其实就是用户自定义的启用Python脚本和依赖安装包的基础路径
+实在不行 重新安装 pip python -m pip install -U pip
+pipenv
+#
+
+ 创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv $ python -m venv my_venv  检查创建的环境变量  \my_venv\Lib\site-packages\easy_install.py \my_venv\Lib\site-packages\pip\_internal\build_env.py \my_venv\Lib\site-packages\pip\_internal\cache.py \my_venv\Lib\site-packages\pip\_internal\cli\autocompletion.py \my_venv\Lib\site-packages\pip\_internal\cli\base_command.py \my_venv\Lib\site-packages\pip\_internal\cli\cmdoptions.py \my_venv\Lib\site-packages\pip\_internal\cli\main_parser.py \my_venv\Lib\site-packages\pip\_internal\cli\parser.py \my_venv\Lib\site-packages\pip\_internal\cli\status_codes.py \my_venv\Lib\site-packages\pip\_internal\cli\__init__.py \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\autocompletion.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\base_command.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\cmdoptions.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\main_parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\parser.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\status_codes.cpython-38.pyc \my_venv\Lib\site-packages\pip\_internal\cli\__pycache__\__init__." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/venv/" />
-<meta property="article:published_time" content="2023-02-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-02-15T00:00:00+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/venv/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-02-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-02-15T00:00:00&#43;00:00" />
+
 <title>python 环境变量 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.1cbc1de3b64d3fdc33edeb61110cc43a65f3af1ce7731a8df120ae5c37351a79.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.5183e37bb890e079886789d989dd65eadab0d86be6d17d75fabf3cfae5d3c5ba.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4577,7 +4604,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -4606,7 +4633,13 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#更改-python-的-pip-install-默认安装路径">更改 Python 的 pip install 默认安装路径</a></li>
+    <li><a href="#pipenv">pipenv</a></li>
+    <li><a href="#virtualenv">virtualenv</a></li>
+  </ul>
+</nav>
 
 
 
@@ -4627,7 +4660,24 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><ul>
+  <article class="markdown"><h1 id="虚拟环境常用有三种-pipenvvirtualenvconda">
+  虚拟环境常用有三种 pipenv,virtualenv,conda
+  <a class="anchor" href="#%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83%e5%b8%b8%e7%94%a8%e6%9c%89%e4%b8%89%e7%a7%8d-pipenvvirtualenvconda">#</a>
+</h1>
+<h2 id="更改-python-的-pip-install-默认安装路径">
+  更改 Python 的 pip install 默认安装路径
+  <a class="anchor" href="#%e6%9b%b4%e6%94%b9-python-%e7%9a%84-pip-install-%e9%bb%98%e8%ae%a4%e5%ae%89%e8%a3%85%e8%b7%af%e5%be%84">#</a>
+</h2>
+<p>查看site.py 文件的位置(一般在python安装目录的\Lib下），可使用指令查询：</p>
+<p>python -m site -help</p>
+<p>打开site.py文件，更改里面 USER_BASE 和USER_SITE即可。其中 USER_BASE 和USER_SITE其实就是用户自定义的启用Python脚本和依赖安装包的基础路径</p>
+<p>实在不行 重新安装 pip 
+python -m pip install -U pip</p>
+<h2 id="pipenv">
+  pipenv
+  <a class="anchor" href="#pipenv">#</a>
+</h2>
+<ul>
 <li>创建虚拟环境 : python -m venv 项目名</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">noatn@DESKTOP-CCD057N MINGW64 /d/CS/python_venv
@@ -5521,6 +5571,40 @@ D:\<span style="color:#75715e">&gt;cd D:\CS\python_venv\my_venv\Scripts</span>
 D:\CS\python_venv\my_venv\Scripts<span style="color:#75715e">&gt;</span>
 activate.bat
 (my_venv) D:\CS\python_venv\my_venv\Scripts&gt;
+</code></pre></div><ul>
+<li>超时</li>
+</ul>
+<p>export PIPENV_TIMEOUT=9999</p>
+<ul>
+<li>安装包</li>
+</ul>
+<p>注意 Pipfile 配置了 豆瓣开源地址别再添加了呢</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pipenv install requests 
+pipenv install PyQt5 -i https://pypi.douban.com/simple
+</code></pre></div><ul>
+<li>卸载包</li>
+</ul>
+<p>pipenv uninstall requests</p>
+<ul>
+<li>pipenv install 的虚拟环境文件夹路径</li>
+</ul>
+<p><img src="../.././imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144544.png" alt="" />
+<img src="../../../imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144544.png" alt="" /></p>
+<p><img src="../.././imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144641.png" alt="" />
+<img src="../../../imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144641.png" alt="" /></p>
+<p><img src="../.././imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144608.png" alt="" />
+<img src="../../../imgs/python3/caxm7ptkkz/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230401144608.png" alt="" /></p>
+<h2 id="virtualenv">
+  virtualenv
+  <a class="anchor" href="#virtualenv">#</a>
+</h2>
+<blockquote>
+<p>C:\Users\noatn.virtualenvs</p>
+</blockquote>
+<ul>
+<li>pip安装virtualenv</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pip3 install virtualenv
 </code></pre></div></article>
  
       
@@ -5762,7 +5846,13 @@ activate.bat
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#更改-python-的-pip-install-默认安装路径">更改 Python 的 pip install 默认安装路径</a></li>
+    <li><a href="#pipenv">pipenv</a></li>
+    <li><a href="#virtualenv">virtualenv</a></li>
+  </ul>
+</nav>
 
 
  

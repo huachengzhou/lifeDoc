@@ -5,6 +5,20 @@ draft: false
 weight: 4
 ---
 
+# 虚拟环境常用有三种 pipenv,virtualenv,conda
+
+## 更改 Python 的 pip install 默认安装路径
+
+查看site.py 文件的位置(一般在python安装目录的\Lib下），可使用指令查询：
+
+python -m site -help
+
+打开site.py文件，更改里面 USER_BASE 和USER_SITE即可。其中 USER_BASE 和USER_SITE其实就是用户自定义的启用Python脚本和依赖安装包的基础路径
+
+实在不行 重新安装 pip 
+python -m pip install -U pip
+
+## pipenv
 
 + 创建虚拟环境 : python -m venv 项目名
 
@@ -905,3 +919,53 @@ D:\CS\python_venv\my_venv\Scripts>
 activate.bat
 (my_venv) D:\CS\python_venv\my_venv\Scripts>
 ```
+
++ 超时
+
+export PIPENV_TIMEOUT=9999
+
++ 安装包
+
+
+ 注意 Pipfile 配置了 豆瓣开源地址别再添加了呢
+
+```cmd
+pipenv install requests 
+pipenv install PyQt5 -i https://pypi.douban.com/simple
+```
++  卸载包
+
+pipenv uninstall requests
+
++ pipenv install 的虚拟环境文件夹路径
+
+
+![][img8]
+![][img8_]
+
+![][img10]
+![][img10_]
+
+![][img9]
+![][img9_]
+
+## virtualenv
+
+> C:\Users\noatn\.virtualenvs
+
++ pip安装virtualenv
+
+```cmd
+pip3 install virtualenv
+```
+
+
+
+
+[img8]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144544.png
+[img8_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144544.png
+
+[img9]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144608.png
+[img9_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144608.png
+[img10]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144641.png
+[img10_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144641.png

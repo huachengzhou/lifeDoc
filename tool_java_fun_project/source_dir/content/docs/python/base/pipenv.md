@@ -120,10 +120,17 @@ pipenv uninstall 包名
 
 
 
+## pipenv install 的虚拟环境文件夹路径
 
 
+![][img8]
+![][img8_]
 
+![][img10]
+![][img10_]
 
+![][img9]
+![][img9_]
 
 
 [img2]:../.././imgs/python3/caxm7ptkkz/微信截图_20230307143135.png
@@ -139,3 +146,11 @@ pipenv uninstall 包名
 [img6_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230307143523.png
 [img7]:../.././imgs/python3/caxm7ptkkz/微信截图_20230307143551.png
 [img7_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230307143551.png
+
+[img8]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144544.png
+[img8_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144544.png
+
+[img9]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144608.png
+[img9_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144608.png
+[img10]:../.././imgs/python3/caxm7ptkkz/微信截图_20230401144641.png
+[img10_]:../../../imgs/python3/caxm7ptkkz/微信截图_20230401144641.png
