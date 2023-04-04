@@ -50,6 +50,77 @@ sysUtils.exit(app.exec_())
 #     pass
 ```
 
+## 表格
+
++ QTableWidget常用方法
+
+| 方法 | 描述 |
+| --- | --- |
+| setRowCount(rows) | 设置QTableWidget表格控件的行数 |
+| setColumnCount(columns) | 设置QTableWidget表格控件的列数 |
+| setHorizontalHeaderLabels(labels) | 设置QTableWidget表格控件的水平标签 |
+| setVerticalHeaderLabels(labels) | 设置QTableWidget表格控件的垂直标签 |
+| setRowHeight(row) | 设置单元格行的高度 |
+| setColumnWidth(column) | 设置单元格列的宽度 |
+| setItem(row,column,item) | 设置QTableWidgetItem给指定的行和列 |
+| insertRow(row) | 在行索引处插入行 |
+| insertColumn(column) | 在列索引处插入列 |
+| removeRow(row) | 在行索引处删除行 |
+| removeColumn(column) | 在列索引处删除列 |
+| findItems(text,flags) | 使用给定的标志查找文本与字符串文本匹配的项目 |
+| setCellWidget(row,column,widget) | 给指定行和列的单元格设置组件 |
+| removeCellWidget(row,column) | 删除指定行和列的单元格的组件 |
+| item(row,column) | 返回给定行和列的项目（如果已设置）；否则返回None |
+| row(item) | 返回该表格项的行索引 |
+| column(item) | 返回该表格项的列索引 |
+| rowCount() | 返回表格的所有行数 |
+| columnCount() | 返回表格的所有列数 |
+| currentItem() | 返回当前的表格项 |
+| currentRow() | 返回当前表格项的行索引 |
+| currentColumn() | 返回当前表格项的列索引 |
+| selectedItems() | 返回所有选定表格项的列表 |
+| horizontalHeader().hide() | 隐藏水平表头 |
+| verticalHeader().hide() | 隐藏垂直表头 |
+| clear() | 清除表格内容和表头 |
+| clearContents() | 清除表格内容 |
+| setEditTriggers(triggers) | 设置编辑规则  QAbstractItemView.NoEditTriggers0No：不能对表格内容进行修改  QAbstractItemView.CurrentChanged1Editing：任何时候都能对单元格进行修改  QAbstractItemView.DoubleClicked2Editing：双击单元格  QAbstractItemView.SelectedClicked4Editing：单击已经选中的内容  QAbstractItemView.EditKeyPressed8Editing：当修改键按下时修改单元格  QAbstractItemView.AnyKeyPressed16Editing：按任意键修改单元格  QAbstractItemView.AllEditTriggers31Editing：包括以上所有条件 |
+| setSelectionBehavior(behavior) | 设置表格选择行为  QAbstractItemView.SelectItems0Selecting：选中单个单元格  QAbstractItemView.SelectRows1Selecting：选中一行  QAbstractItemView.SelectColumns2Selecting：选中一列 |
+
++ QTableWidgetItem常用方法
+
+| 方法 | 描述 |
+| --- | --- |
+| checkState() | 返回复选状态 |
+| setCheckState(state) | 设置复选框的勾选状态  Qt.Checked：选中状态  Qt.PartiallyChecked：半选中状态  Qt.Unchecked：没有被选中 |
+| icon() | 返回列表项的图标 |
+| setIcon(icon) | 设置列表项的图标 |
+| isHidden() | 返回列表项是否隐藏，如果隐藏返回True;不隐藏返回False |
+| setHidden(hide) | 设置列表项是否隐藏，如果True则隐藏;False则不隐藏 |
+| text() | 返回列表项的文本 |
+| setText(text) | 设置列表项的文本 |
+| flags() | 返回列表项的项目标志 |
+| setForeground(brush) | 设置前景色 |
+| setBackground(brush) | 设置背景色 |
+| setFlags(flags) | 设置列表项的项目标志设置为flags |
+| setTextAlignment(alignment) | 单元格文本对齐方式        Qt.AlignLeft：将单元格内的内容沿单元格的左边缘对齐          Qt.AlignRight：将单元格内的内容沿单元格的右边缘对齐  Qt.AlignHCenter：在可用空间中，居中显示在水平方向上  Qt.AlignJustify：将文本在可用空间内对齐，默认从左到右  Qt.AlignTop：与顶部对齐  Qt.AlignBottom：与底部对齐  Qt.AlignVCenter：在可用空间中，居中显示在垂直方向上  Qt.AlignBaseline：与基线对齐 |
+
++ QTableWidget常用信号
+
+| 信号 | 描述 |
+| --- | --- |
+| itemClicked(item) | 当单击表格中单元格时，发射此信号 |
+| itemDoubleClicked(item) | 当双击表格中单元格时，发射此信号 |
+| itemChanged(item) | 当改变表格中单元格时，发射此信号 |
+| itemEntered(item) | 当鼠标光标进入表格的单元格时，发射此信号 |
+| itemPressed(item) | 当鼠标在表格的单元格上按下时，发射此信号 |
+| itemSelectionChanged() | 当选择的单元格发生改变时，发射此信号 |
+| cellClicked(row,column) | 当单击表格中单元格时，发射此信号 |
+| cellDoubleClicked(row,column) | 当双击表格中单元格时，发射此信号 |
+| cellEntered(row,column) | 当鼠标光标进入表格的单元格时，发射此信号 |
+| cellPressed(row,column) | 当鼠标在表格的单元格上按下时，发射此信号 |
+
+
+
 ## qcss学习
 > 有相当一部分语法和css相同
 >  labelB.setObjectName("b") 表示 QLabel设置id=b选择器  labelB_1.setProperty("level", "1") 表示设置了属性level="1"

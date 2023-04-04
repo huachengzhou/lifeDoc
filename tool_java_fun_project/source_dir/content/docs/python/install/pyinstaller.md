@@ -51,7 +51,12 @@ pip install https://github.com/pyinstaller/pyinstaller/tarball/develop
 # 将 xx.py 打包为 xx.exe
 pyinstaller -F xx.py
 ```
+### 打包为单文件 并且去掉命令行界面
 
+```cmd
+# 将 xx.py 打包为 xx.exe
+pyinstaller -F -w xx.py
+```
 
 ### 打包资源文件夹
 

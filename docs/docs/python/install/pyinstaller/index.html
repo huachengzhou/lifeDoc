@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="pyinstaller
@@ -19,15 +19,13 @@
 #
 
  平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包为单文件 并且去掉命令行界面
 #
 
-# 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析
+# 将 xx.py 打包为 xx.exe pyinstaller -F -w xx.py 打包资源文件夹
 #
 
-.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
-  Analysis：主要是分析py文件的依赖信息">
+# 将 xx.py 打包 pyinstaller xx.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pyinstaller " />
 <meta property="og:description" content="pyinstaller
 #
@@ -43,25 +41,22 @@
 #
 
  平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包为单文件 并且去掉命令行界面
 #
 
-# 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析
+# 将 xx.py 打包为 xx.exe pyinstaller -F -w xx.py 打包资源文件夹
 #
 
-.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
-  Analysis：主要是分析py文件的依赖信息" />
+# 将 xx.py 打包 pyinstaller xx." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyinstaller/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-02T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2023-03-02T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyinstaller/" />
+<meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" />
 <title>python pyinstaller  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.5183e37bb890e079886789d989dd65eadab0d86be6d17d75fabf3cfae5d3c5ba.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.f804ab0fe1a2d809006a97795241d532e86ac9fa42630b84918cd3e564d589b3.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4622,7 +4617,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -4657,6 +4652,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#打包">打包</a>
       <ul>
         <li><a href="#打包为单文件">打包为单文件</a></li>
+        <li><a href="#打包为单文件-并且去掉命令行界面">打包为单文件 并且去掉命令行界面</a></li>
         <li><a href="#打包资源文件夹">打包资源文件夹</a></li>
       </ul>
     </li>
@@ -4726,6 +4722,12 @@ https://github.com/alex-shpak/hugo-book
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 将 xx.py 打包为 xx.exe
 pyinstaller -F xx.py
+</code></pre></div><h3 id="打包为单文件-并且去掉命令行界面">
+  打包为单文件 并且去掉命令行界面
+  <a class="anchor" href="#%e6%89%93%e5%8c%85%e4%b8%ba%e5%8d%95%e6%96%87%e4%bb%b6-%e5%b9%b6%e4%b8%94%e5%8e%bb%e6%8e%89%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%95%8c%e9%9d%a2">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 将 xx.py 打包为 xx.exe
+pyinstaller -F -w xx.py
 </code></pre></div><h3 id="打包资源文件夹">
   打包资源文件夹
   <a class="anchor" href="#%e6%89%93%e5%8c%85%e8%b5%84%e6%ba%90%e6%96%87%e4%bb%b6%e5%a4%b9">#</a>
@@ -5096,6 +5098,7 @@ pyinstaller -i x:\xx\xx.ico xx.py
     <li><a href="#打包">打包</a>
       <ul>
         <li><a href="#打包为单文件">打包为单文件</a></li>
+        <li><a href="#打包为单文件-并且去掉命令行界面">打包为单文件 并且去掉命令行界面</a></li>
         <li><a href="#打包资源文件夹">打包资源文件夹</a></li>
       </ul>
     </li>

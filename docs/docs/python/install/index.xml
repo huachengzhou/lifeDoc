@@ -14,9 +14,7 @@
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyinstaller/</guid>
       <description>pyinstaller#安装# 安装  pip install pyinstaller  验证安装  C:\Users\noatn&amp;gt;pyinstaller -v 5.8.0  更新PyInstaller  pip install --upgrade pyinstaller  下载PyInstaller开发版本   如果你认为当前发行版本无法满足你的要求，或者你发现了bug的话，可以尝试用一下最新的开发版本
  pip install https://github.com/pyinstaller/pyinstaller/tarball/develop 打包#打包为单文件# 平时我们见到很多便携的单文件程序，假如我们写了一个小脚本，寥寥数行代码，打包成一个文件夹显然不合适，这就可使用Pyinstaller打包成一个exe
- # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.py  打包的时候，程序同路径下会生成一个同名的.spec文件，这个文件是打包的 “中间文件”，我们可以通过修改这个文件来添加我们需要添加资源的文件
- Spec文件分析#.spec文件中主要包含4部分：Analysis、PYZ、EXE、COLLECT
-  Analysis：主要是分析py文件的依赖信息</description>
+ # 将 xx.py 打包为 xx.exe pyinstaller -F xx.py 打包为单文件 并且去掉命令行界面## 将 xx.py 打包为 xx.exe pyinstaller -F -w xx.py 打包资源文件夹## 将 xx.py 打包 pyinstaller xx.</description>
     </item>
     
     <item>
@@ -52,7 +50,7 @@ NumPy 中的数组对象称为 ndarray，它提供了许多支持函数，使得
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</guid>
-      <description>pyqt5#基本结构## 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &amp;#34;燕雀安知鸿鹄之志哉&amp;#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &amp;#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&amp;#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习# 有相当一部分语法和css相同 labelB.</description>
+      <description>pyqt5#基本结构## 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &amp;#34;燕雀安知鸿鹄之志哉&amp;#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &amp;#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&amp;#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass 表格# QTableWidget常用方法     方法 描述     setRowCount(rows) 设置QTableWidget表格控件的行数   setColumnCount(columns) 设置QTableWidget表格控件的列数   setHorizontalHeaderLabels(labels) 设置QTableWidget表格控件的水平标签   setVerticalHeaderLabels(labels) 设置QTableWidget表格控件的垂直标签   setRowHeight(row) 设置单元格行的高度   setColumnWidth(column) 设置单元格列的宽度   setItem(row,column,item) 设置QTableWidgetItem给指定的行和列   insertRow(row) 在行索引处插入行   insertColumn(column) 在列索引处插入列   removeRow(row) 在行索引处删除行   removeColumn(column) 在列索引处删除列   findItems(text,flags) 使用给定的标志查找文本与字符串文本匹配的项目   setCellWidget(row,column,widget) 给指定行和列的单元格设置组件   removeCellWidget(row,column) 删除指定行和列的单元格的组件   item(row,column) 返回给定行和列的项目（如果已设置）；否则返回None   row(item) 返回该表格项的行索引   column(item) 返回该表格项的列索引   rowCount() 返回表格的所有行数   columnCount() 返回表格的所有列数   currentItem() 返回当前的表格项   currentRow() 返回当前表格项的行索引   currentColumn() 返回当前表格项的列索引   selectedItems() 返回所有选定表格项的列表   horizontalHeader().</description>
     </item>
     
     <item>

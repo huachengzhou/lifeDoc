@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="pyqt5
@@ -11,10 +11,10 @@
 基本结构
 #
 
-# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习
+# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass 表格
 #
 
- 有相当一部分语法和css相同 labelB.">
+ QTableWidget常用方法     方法 描述     setRowCount(rows) 设置QTableWidget表格控件的行数   setColumnCount(columns) 设置QTableWidget表格控件的列数   setHorizontalHeaderLabels(labels) 设置QTableWidget表格控件的水平标签   setVerticalHeaderLabels(labels) 设置QTableWidget表格控件的垂直标签   setRowHeight(row) 设置单元格行的高度   setColumnWidth(column) 设置单元格列的宽度   setItem(row,column,item) 设置QTableWidgetItem给指定的行和列   insertRow(row) 在行索引处插入行   insertColumn(column) 在列索引处插入列   removeRow(row) 在行索引处删除行   removeColumn(column) 在列索引处删除列   findItems(text,flags) 使用给定的标志查找文本与字符串文本匹配的项目   setCellWidget(row,column,widget) 给指定行和列的单元格设置组件   removeCellWidget(row,column) 删除指定行和列的单元格的组件   item(row,column) 返回给定行和列的项目（如果已设置）；否则返回None   row(item) 返回该表格项的行索引   column(item) 返回该表格项的列索引   rowCount() 返回表格的所有行数   columnCount() 返回表格的所有列数   currentItem() 返回当前的表格项   currentRow() 返回当前表格项的行索引   currentColumn() 返回当前表格项的列索引   selectedItems() 返回所有选定表格项的列表   horizontalHeader().">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="python pyqt5" />
 <meta property="og:description" content="pyqt5
 #
@@ -22,20 +22,19 @@
 基本结构
 #
 
-# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass qcss学习
+# 导入需要的包 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton) import sys as sysUtils # 创建一个应用程序 app = QApplication(sysUtils.argv) # 控件也可以作为一个容器(承载其他的控件) # 控件操作 start window = QWidget() window.setWindowTitle( &#34;燕雀安知鸿鹄之志哉&#34;) window.resize(600, 600) window.move(200, 200) # window 相当于是构建器 label = QLabel(window) label.setText( &#34;第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由&#34;) label.move(100,100) # show方法 不要放在前面了 window.show() # 控件操作 end # 开始执行应用程序，并进入消息循环 # 让整个程序开始执行,并且进入到消息循环(无限循环) # 检测整个程序所接收到的用户的交互信息 # sysUtils.exit(app.exec()) sysUtils.exit(app.exec_()) # sysUtils.exit(1) # while True: # pass 表格
 #
 
- 有相当一部分语法和css相同 labelB." />
+ QTableWidget常用方法     方法 描述     setRowCount(rows) 设置QTableWidget表格控件的行数   setColumnCount(columns) 设置QTableWidget表格控件的列数   setHorizontalHeaderLabels(labels) 设置QTableWidget表格控件的水平标签   setVerticalHeaderLabels(labels) 设置QTableWidget表格控件的垂直标签   setRowHeight(row) 设置单元格行的高度   setColumnWidth(column) 设置单元格列的宽度   setItem(row,column,item) 设置QTableWidgetItem给指定的行和列   insertRow(row) 在行索引处插入行   insertColumn(column) 在列索引处插入列   removeRow(row) 在行索引处删除行   removeColumn(column) 在列索引处删除列   findItems(text,flags) 使用给定的标志查找文本与字符串文本匹配的项目   setCellWidget(row,column,widget) 给指定行和列的单元格设置组件   removeCellWidget(row,column) 删除指定行和列的单元格的组件   item(row,column) 返回给定行和列的项目（如果已设置）；否则返回None   row(item) 返回该表格项的行索引   column(item) 返回该表格项的列索引   rowCount() 返回表格的所有行数   columnCount() 返回表格的所有列数   currentItem() 返回当前的表格项   currentRow() 返回当前表格项的行索引   currentColumn() 返回当前表格项的列索引   selectedItems() 返回所有选定表格项的列表   horizontalHeader()." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyqt5/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-02T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2023-03-02T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/install/pyqt5/" />
+<meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" />
 <title>python pyqt5 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.5183e37bb890e079886789d989dd65eadab0d86be6d17d75fabf3cfae5d3c5ba.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.f804ab0fe1a2d809006a97795241d532e86ac9fa42630b84918cd3e564d589b3.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -4596,7 +4595,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -4628,6 +4627,7 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#基本结构">基本结构</a></li>
+    <li><a href="#表格">表格</a></li>
     <li><a href="#qcss学习">qcss学习</a></li>
     <li><a href="#信号-机制-简单学习">信号 机制 简单学习</a></li>
   </ul>
@@ -4698,7 +4698,258 @@ sysUtils<span style="color:#f92672">.</span>exit(app<span style="color:#f92672">
 <span style="color:#75715e"># sysUtils.exit(1)</span>
 <span style="color:#75715e"># while True:</span>
 <span style="color:#75715e">#     pass</span>
-</code></pre></div><h2 id="qcss学习">
+</code></pre></div><h2 id="表格">
+  表格
+  <a class="anchor" href="#%e8%a1%a8%e6%a0%bc">#</a>
+</h2>
+<ul>
+<li>QTableWidget常用方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setRowCount(rows)</td>
+<td>设置QTableWidget表格控件的行数</td>
+</tr>
+<tr>
+<td>setColumnCount(columns)</td>
+<td>设置QTableWidget表格控件的列数</td>
+</tr>
+<tr>
+<td>setHorizontalHeaderLabels(labels)</td>
+<td>设置QTableWidget表格控件的水平标签</td>
+</tr>
+<tr>
+<td>setVerticalHeaderLabels(labels)</td>
+<td>设置QTableWidget表格控件的垂直标签</td>
+</tr>
+<tr>
+<td>setRowHeight(row)</td>
+<td>设置单元格行的高度</td>
+</tr>
+<tr>
+<td>setColumnWidth(column)</td>
+<td>设置单元格列的宽度</td>
+</tr>
+<tr>
+<td>setItem(row,column,item)</td>
+<td>设置QTableWidgetItem给指定的行和列</td>
+</tr>
+<tr>
+<td>insertRow(row)</td>
+<td>在行索引处插入行</td>
+</tr>
+<tr>
+<td>insertColumn(column)</td>
+<td>在列索引处插入列</td>
+</tr>
+<tr>
+<td>removeRow(row)</td>
+<td>在行索引处删除行</td>
+</tr>
+<tr>
+<td>removeColumn(column)</td>
+<td>在列索引处删除列</td>
+</tr>
+<tr>
+<td>findItems(text,flags)</td>
+<td>使用给定的标志查找文本与字符串文本匹配的项目</td>
+</tr>
+<tr>
+<td>setCellWidget(row,column,widget)</td>
+<td>给指定行和列的单元格设置组件</td>
+</tr>
+<tr>
+<td>removeCellWidget(row,column)</td>
+<td>删除指定行和列的单元格的组件</td>
+</tr>
+<tr>
+<td>item(row,column)</td>
+<td>返回给定行和列的项目（如果已设置）；否则返回None</td>
+</tr>
+<tr>
+<td>row(item)</td>
+<td>返回该表格项的行索引</td>
+</tr>
+<tr>
+<td>column(item)</td>
+<td>返回该表格项的列索引</td>
+</tr>
+<tr>
+<td>rowCount()</td>
+<td>返回表格的所有行数</td>
+</tr>
+<tr>
+<td>columnCount()</td>
+<td>返回表格的所有列数</td>
+</tr>
+<tr>
+<td>currentItem()</td>
+<td>返回当前的表格项</td>
+</tr>
+<tr>
+<td>currentRow()</td>
+<td>返回当前表格项的行索引</td>
+</tr>
+<tr>
+<td>currentColumn()</td>
+<td>返回当前表格项的列索引</td>
+</tr>
+<tr>
+<td>selectedItems()</td>
+<td>返回所有选定表格项的列表</td>
+</tr>
+<tr>
+<td>horizontalHeader().hide()</td>
+<td>隐藏水平表头</td>
+</tr>
+<tr>
+<td>verticalHeader().hide()</td>
+<td>隐藏垂直表头</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清除表格内容和表头</td>
+</tr>
+<tr>
+<td>clearContents()</td>
+<td>清除表格内容</td>
+</tr>
+<tr>
+<td>setEditTriggers(triggers)</td>
+<td>设置编辑规则  QAbstractItemView.NoEditTriggers0No：不能对表格内容进行修改  QAbstractItemView.CurrentChanged1Editing：任何时候都能对单元格进行修改  QAbstractItemView.DoubleClicked2Editing：双击单元格  QAbstractItemView.SelectedClicked4Editing：单击已经选中的内容  QAbstractItemView.EditKeyPressed8Editing：当修改键按下时修改单元格  QAbstractItemView.AnyKeyPressed16Editing：按任意键修改单元格  QAbstractItemView.AllEditTriggers31Editing：包括以上所有条件</td>
+</tr>
+<tr>
+<td>setSelectionBehavior(behavior)</td>
+<td>设置表格选择行为  QAbstractItemView.SelectItems0Selecting：选中单个单元格  QAbstractItemView.SelectRows1Selecting：选中一行  QAbstractItemView.SelectColumns2Selecting：选中一列</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>QTableWidgetItem常用方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checkState()</td>
+<td>返回复选状态</td>
+</tr>
+<tr>
+<td>setCheckState(state)</td>
+<td>设置复选框的勾选状态  Qt.Checked：选中状态  Qt.PartiallyChecked：半选中状态  Qt.Unchecked：没有被选中</td>
+</tr>
+<tr>
+<td>icon()</td>
+<td>返回列表项的图标</td>
+</tr>
+<tr>
+<td>setIcon(icon)</td>
+<td>设置列表项的图标</td>
+</tr>
+<tr>
+<td>isHidden()</td>
+<td>返回列表项是否隐藏，如果隐藏返回True;不隐藏返回False</td>
+</tr>
+<tr>
+<td>setHidden(hide)</td>
+<td>设置列表项是否隐藏，如果True则隐藏;False则不隐藏</td>
+</tr>
+<tr>
+<td>text()</td>
+<td>返回列表项的文本</td>
+</tr>
+<tr>
+<td>setText(text)</td>
+<td>设置列表项的文本</td>
+</tr>
+<tr>
+<td>flags()</td>
+<td>返回列表项的项目标志</td>
+</tr>
+<tr>
+<td>setForeground(brush)</td>
+<td>设置前景色</td>
+</tr>
+<tr>
+<td>setBackground(brush)</td>
+<td>设置背景色</td>
+</tr>
+<tr>
+<td>setFlags(flags)</td>
+<td>设置列表项的项目标志设置为flags</td>
+</tr>
+<tr>
+<td>setTextAlignment(alignment)</td>
+<td>单元格文本对齐方式        Qt.AlignLeft：将单元格内的内容沿单元格的左边缘对齐          Qt.AlignRight：将单元格内的内容沿单元格的右边缘对齐  Qt.AlignHCenter：在可用空间中，居中显示在水平方向上  Qt.AlignJustify：将文本在可用空间内对齐，默认从左到右  Qt.AlignTop：与顶部对齐  Qt.AlignBottom：与底部对齐  Qt.AlignVCenter：在可用空间中，居中显示在垂直方向上  Qt.AlignBaseline：与基线对齐</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>QTableWidget常用信号</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>itemClicked(item)</td>
+<td>当单击表格中单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>itemDoubleClicked(item)</td>
+<td>当双击表格中单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>itemChanged(item)</td>
+<td>当改变表格中单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>itemEntered(item)</td>
+<td>当鼠标光标进入表格的单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>itemPressed(item)</td>
+<td>当鼠标在表格的单元格上按下时，发射此信号</td>
+</tr>
+<tr>
+<td>itemSelectionChanged()</td>
+<td>当选择的单元格发生改变时，发射此信号</td>
+</tr>
+<tr>
+<td>cellClicked(row,column)</td>
+<td>当单击表格中单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>cellDoubleClicked(row,column)</td>
+<td>当双击表格中单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>cellEntered(row,column)</td>
+<td>当鼠标光标进入表格的单元格时，发射此信号</td>
+</tr>
+<tr>
+<td>cellPressed(row,column)</td>
+<td>当鼠标在表格的单元格上按下时，发射此信号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qcss学习">
   qcss学习
   <a class="anchor" href="#qcss%e5%ad%a6%e4%b9%a0">#</a>
 </h2>
@@ -5195,6 +5446,7 @@ labelB.setObjectName(&ldquo;b&rdquo;) 表示 QLabel设置id=b选择器  labelB_1
 <nav id="TableOfContents">
   <ul>
     <li><a href="#基本结构">基本结构</a></li>
+    <li><a href="#表格">表格</a></li>
     <li><a href="#qcss学习">qcss学习</a></li>
     <li><a href="#信号-机制-简单学习">信号 机制 简单学习</a></li>
   </ul>
