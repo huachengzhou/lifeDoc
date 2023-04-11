@@ -5,8 +5,71 @@
   <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" 数学是所有自然科学的灵魂
- ">
+<meta name="description" content="MarkDown数学公式
+#
+
+ 数学是所有自然科学的灵魂
+ 一、常用符号
+#
+
+ 内联公式  在MarkDown语法中可以书写数学公式，书写数学公式必须要有一个入口——内联公式。
+{{&lt; katex display &gt;}} 数学公式 {{&lt; /katex &gt;}} 常用符号
+#
+
+   名称 实例 预览 注释     上下标 a^n_m  上标^用于指数，下标用于角标   正负号（±） a \pm b a±b    乘 \times ×    除 \dlv ÷    根号 \sqrt  根号下(a-b)   大于 \gt ＞    小于 \lt ＜    大于等于 \ge ≥    小于等于 \le ≤    正无穷 \infty ∞    负无穷 -\infty -∞    分数 \dfrac{a}  a分之b   省略号 \cdots &hellip;     三角函数
+#
+
+   数学表达式 代码     sinθ \sin   cosθ \cos   tanθ \tan   cotθ \cot    矢量、累加累乘、极限
+#
+
+   数学表达式 代码     矢量 \vec{}   累加（求和∑） \sum_{}^{}   累乘（求积∏） \prod_{}^{}   极限 \lim_{}    希腊字母表
+#
+
+   代码 预览 代码 预览     \alpha α \pi π   \beta β \rho ρ   \gamma γ \xi ξ   \delta δ \nu ν   \epsilon  \upsilon υ   \varepsilon ε \varphi φ   \eta η \chi χ   \theta θ \psi ψ   \kappa κ \omega ω   \iota ι \Omega Ω   \zeta  \Gamma Γ   \lambda λ \Delta Δ   \mu μ     \phi φ \Phi Φ    方程组、表达条件式
+#
+
+方程组
+#
+
+
+
+\[
+\begin{cases}
+3x &#43; 5y &#43; z \\
+7x - 2y &#43; 4z \\
+-6x &#43; 3y &#43; 2z
+\end{cases}
+\]
+
+表达条件式
+#
+
+
+\[
+f(n) =
+\begin{cases} n/2, &amp; \text{if }n\text{ is even} \\
+3n&#43;1, &amp; \text{if }n\text{ is odd}
+\end{cases}
+\]
+
+   property description     border-bottom-right-radius Defines the shape of the bottom-right    格式
+#
+
+代码块内多行代码对齐
+#
+
+
+\[
+\begin{aligned}
+a &amp;= b &#43; c \\
+&amp;= d &#43; e &#43; f
+\end{aligned}
+\]
+
+间隔（空格、跟随）
+#
+
+跟随 \!">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="数学" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -16,7 +79,7 @@
 <link rel="manifest" href="./../../manifest.json">
 <link rel="icon" href="./../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../en.search.min.f804ab0fe1a2d809006a97795241d532e86ac9fa42630b84918cd3e564d589b3.js"  ></script>
+<script defer src="./../../en.search.min.0ea08a37db9477c90a44fb57e5bee16ca99145163a0e6f60edd5ea8ad2d4edb0.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../docs/math/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -852,7 +915,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/lambda_or_function/" class="">python 函数</a>
+    <a href="./../../docs/python/base/Lambda_or_function/" class="">python 函数</a>
   
 
         </li>
@@ -865,7 +928,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/set/" class="">python set</a>
+    <a href="./../../docs/python/base/Set/" class="">python set</a>
   
 
         </li>
@@ -904,7 +967,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/dictionary/" class="">python 字典</a>
+    <a href="./../../docs/python/base/Dictionary/" class="">python 字典</a>
   
 
         </li>
@@ -917,7 +980,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/casting/" class="">python 类型转换</a>
+    <a href="./../../docs/python/base/Casting/" class="">python 类型转换</a>
   
 
         </li>
@@ -943,7 +1006,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/tuple/" class="">python 元组</a>
+    <a href="./../../docs/python/base/Tuple/" class="">python 元组</a>
   
 
         </li>
@@ -1125,7 +1188,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/base/annotation/" class="">Python 注解</a>
+    <a href="./../../docs/python/base/Annotation/" class="">Python 注解</a>
   
 
         </li>
@@ -1199,7 +1262,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/python/install/numpy/" class="">python NumPy  </a>
+    <a href="./../../docs/python/install/NumPy/" class="">python NumPy  </a>
   
 
         </li>
@@ -1297,6 +1360,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/math/KaTeX/" class="">KaTeX 使用指南</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1348,7 +1424,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+    <a href="./../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_Faile_-to_get_JSON/" class="">hugo教程 hugo server Failed to get JSON</a>
   
 
         </li>
@@ -1513,7 +1589,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/basedir/dw7668daxw/" class="">java类型转换,构造,重要语法</a>
+    <a href="./../../docs/javadir/basedir/dw7668daXw/" class="">java类型转换,构造,重要语法</a>
   
 
         </li>
@@ -1695,7 +1771,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/semaphore_exchanger/" class="">Semaphore和Exchanger</a>
+    <a href="./../../docs/javadir/thread/tool/Semaphore_Exchanger/" class="">Semaphore和Exchanger</a>
   
 
         </li>
@@ -1708,7 +1784,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/countdownlatch_cyclicbarrier/" class="">CountDownLatch 和 CyclicBarrier</a>
+    <a href="./../../docs/javadir/thread/tool/CountDownLatch_CyclicBarrier/" class="">CountDownLatch 和 CyclicBarrier</a>
   
 
         </li>
@@ -1721,7 +1797,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/phaser/" class="">Phaser</a>
+    <a href="./../../docs/javadir/thread/tool/Phaser/" class="">Phaser</a>
   
 
         </li>
@@ -1734,7 +1810,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/executor/" class="">Executor</a>
+    <a href="./../../docs/javadir/thread/tool/Executor/" class="">Executor</a>
   
 
         </li>
@@ -1747,7 +1823,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/future_callable/" class="">Future 和 callable</a>
+    <a href="./../../docs/javadir/thread/tool/Future_callable/" class="">Future 和 callable</a>
   
 
         </li>
@@ -1760,7 +1836,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/completionservice/" class="">CompletionService</a>
+    <a href="./../../docs/javadir/thread/tool/CompletionService/" class="">CompletionService</a>
   
 
         </li>
@@ -1773,7 +1849,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/executorservice/" class="">ExecutorService</a>
+    <a href="./../../docs/javadir/thread/tool/ExecutorService/" class="">ExecutorService</a>
   
 
         </li>
@@ -1786,7 +1862,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/thread/tool/fork_join/" class="">Fork-Join</a>
+    <a href="./../../docs/javadir/thread/tool/Fork_Join/" class="">Fork-Join</a>
   
 
         </li>
@@ -2028,7 +2104,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-3c751f376602d063da318fd2ace31d1e" class="toggle"  />
     <label for="section-3c751f376602d063da318fd2ace31d1e" class="flex justify-between">
-      <a href="./../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+      <a href="./../../docs/javadir/toolDoc/" class="">Java公共库文档总结 </a>
       <span>▾</span>
     </label>
   
@@ -2043,7 +2119,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+    <a href="./../../docs/javadir/toolDoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
   
 
         </li>
@@ -2056,7 +2132,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+    <a href="./../../docs/javadir/toolDoc/aspose/" class="">Aspose</a>
   
 
         </li>
@@ -2069,7 +2145,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+    <a href="./../../docs/javadir/toolDoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
   
 
         </li>
@@ -2082,7 +2158,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+    <a href="./../../docs/javadir/toolDoc/dom4j/" class="">dom4j</a>
   
 
         </li>
@@ -2095,7 +2171,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+    <a href="./../../docs/javadir/toolDoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
   
 
         </li>
@@ -2108,7 +2184,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+    <a href="./../../docs/javadir/toolDoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
   
 
         </li>
@@ -2121,7 +2197,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+    <a href="./../../docs/javadir/toolDoc/jsoup/" class="">jsoup学习文档</a>
   
 
         </li>
@@ -2134,7 +2210,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+    <a href="./../../docs/javadir/toolDoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
   
 
         </li>
@@ -2147,7 +2223,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+    <a href="./../../docs/javadir/toolDoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
   
 
         </li>
@@ -2478,7 +2554,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/operating_system/windows/hksdjahjra/" class="">DOS基本命令 (新) </a>
+    <a href="./../../docs/operating_system/windows/hkSdjAHjRA/" class="">DOS基本命令 (新) </a>
   
 
         </li>
@@ -2855,7 +2931,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/http/teywty5qnc/" class="">跨域问题</a>
+    <a href="./../../docs/http/TeYwtY5QNC/" class="">跨域问题</a>
   
 
         </li>
@@ -2881,7 +2957,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/http/dns/" class="">DNS</a>
+    <a href="./../../docs/http/DNS/" class="">DNS</a>
   
 
         </li>
@@ -3188,7 +3264,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/plan/dir/jdkbatmmbr/" class="">任务分类法</a>
+    <a href="./../../docs/plan/dir/jdKBAtmMbR/" class="">任务分类法</a>
   
 
         </li>
@@ -3201,7 +3277,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/plan/dir/saxr6jwscz/" class="">2022-10-25计划</a>
+    <a href="./../../docs/plan/dir/saxr6JWsCz/" class="">2022-10-25计划</a>
   
 
         </li>
@@ -3214,7 +3290,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/plan/dir/cahh4sbqzx/" class="">2023-01-18待处理任务清单</a>
+    <a href="./../../docs/plan/dir/CAhH4sbQZx/" class="">2023-01-18待处理任务清单</a>
   
 
         </li>
@@ -3249,7 +3325,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/english_study/jkdy8dwywm/" class="">零基础如何开始着手学习英语</a>
+    <a href="./../../docs/english_study/jKDY8DWYWM/" class="">零基础如何开始着手学习英语</a>
   
 
         </li>
@@ -3669,7 +3745,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/gsmgajphs7/" class="">看书看到大脑疲劳以后，应如何快速恢复大脑状态</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/gsmGAJPhS7/" class="">看书看到大脑疲劳以后，应如何快速恢复大脑状态</a>
   
 
         </li>
@@ -3682,7 +3758,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/X5ws5Dsp8a/" class="">男生 穿着 和 仪态</a>
   
 
         </li>
@@ -3713,7 +3789,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/" class="">人际剖析</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iQCS36RGjy/" class="">人际剖析</a>
   
 
           
@@ -3726,7 +3802,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/fdhcmhstpw/" class="">什么叫魅力</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iQCS36RGjy/fDHcmHSTpw/" class="">什么叫魅力</a>
   
 
         </li>
@@ -3739,7 +3815,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/j74dbsrtzw/" class="">我无所畏惧，因为</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iQCS36RGjy/j74dbsRtZw/" class="">我无所畏惧，因为</a>
   
 
         </li>
@@ -3752,7 +3828,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/tbwyjex4gc/" class="">从此你不再受伤害</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iQCS36RGjy/TBwYjEx4GC/" class="">从此你不再受伤害</a>
   
 
         </li>
@@ -3765,7 +3841,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/x8benctsak/" class="">关于爱情令人不解的一切</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iQCS36RGjy/X8BenCtSAk/" class="">关于爱情令人不解的一切</a>
   
 
         </li>
@@ -3796,7 +3872,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/ytaerczr7w/" class="">追女生</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/YTaERCzR7W/" class="">追女生</a>
   
 
         </li>
@@ -3822,7 +3898,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/dpa4wtnhf8/" class="">耍朋友</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/dpA4wtNhf8/" class="">耍朋友</a>
   
 
         </li>
@@ -3879,7 +3955,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hw2jindwcd/" class="">100篇锻炼口才表达能力的绕口令（精选版）</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hw2jindWCD/" class="">100篇锻炼口才表达能力的绕口令（精选版）</a>
   
 
         </li>
@@ -3892,7 +3968,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/2bm8trpqzx/" class="">发声 具体训练方法</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/2Bm8TrpQZx/" class="">发声 具体训练方法</a>
   
 
         </li>
@@ -3905,7 +3981,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/idx4etcwwy/" class="">如何系统地训练口才</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/idX4eTcwwY/" class="">如何系统地训练口才</a>
   
 
         </li>
@@ -3918,7 +3994,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awb8ggwzn2/" class="">生活中常用的客套话</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awB8GGWZN2/" class="">生活中常用的客套话</a>
   
 
         </li>
@@ -3931,7 +4007,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hweaprcifa/" class="">高情商的聊天技巧</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hweaPrcifa/" class="">高情商的聊天技巧</a>
   
 
         </li>
@@ -3944,7 +4020,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/we4ycwfxb7/" class="">我自己理解的口才练习技巧</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wE4ycwFXb7/" class="">我自己理解的口才练习技巧</a>
   
 
         </li>
@@ -3957,7 +4033,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/" class="">自信相关理论</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/WwnRFNFjmb/" class="">自信相关理论</a>
   
 
         </li>
@@ -3983,7 +4059,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6ngdcha8bk/" class="">使自己成熟稳重</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6NGDcHa8bK/" class="">使自己成熟稳重</a>
   
 
         </li>
@@ -3996,7 +4072,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtj6fgd6s/" class="">复盘</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtJ6FGd6S/" class="">复盘</a>
   
 
         </li>
@@ -4009,7 +4085,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/8m3fmhf6t3/" class="">如何变得更加成熟</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/8M3fmHf6t3/" class="">如何变得更加成熟</a>
   
 
         </li>
@@ -4022,7 +4098,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/" class="">每天保持心情的5句话</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pQpYs8SPEb/" class="">每天保持心情的5句话</a>
   
 
         </li>
@@ -4035,7 +4111,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/esxjjecmn5/" class="">PDCA循环工作法</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/EsXJJeCMN5/" class="">PDCA循环工作法</a>
   
 
         </li>
@@ -4048,7 +4124,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/h847ijsjzr/" class="">表达能力提高</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/H847ijsJzR/" class="">表达能力提高</a>
   
 
         </li>
@@ -4061,7 +4137,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ca7cqmh4j8/" class="">任务分类法</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/Ca7cQMh4j8/" class="">任务分类法</a>
   
 
         </li>
@@ -4074,7 +4150,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/em24ppenbm/" class="">如何保持积极乐观的心态</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/eM24PpeNbm/" class="">如何保持积极乐观的心态</a>
   
 
         </li>
@@ -4087,7 +4163,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/mm8cnxmzyz/" class="">社恐、性格闷、胆子小</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/mM8cnxMZyz/" class="">社恐、性格闷、胆子小</a>
   
 
         </li>
@@ -4100,7 +4176,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnefbyyxgr/" class="">逻辑推导</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnEfbYYxGR/" class="">逻辑推导</a>
   
 
         </li>
@@ -4113,7 +4189,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/x5xdewmh5e/" class="">所有命运的馈赠，早已暗中标好了价格</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/X5xdewMH5E/" class="">所有命运的馈赠，早已暗中标好了价格</a>
   
 
         </li>
@@ -4144,7 +4220,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1YouTube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
   
 
         </li>
@@ -4281,7 +4357,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/VisualStudioCode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
   
 
         </li>
@@ -4312,7 +4388,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/GitHubPages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
   
 
         </li>
@@ -4417,7 +4493,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+    <a href="./../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/R2XcF5nXJQ/" class="">国内咨询平台</a>
   
 
         </li>
@@ -4545,6 +4621,176 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/katex/" class="">Katex</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/mermaid/" class="">Mermaid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="./../../docs/shortcodes/section/" class="">Section</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/section/page1/" class="">Page1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/section/page2/" class="">Page2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
 
@@ -4607,7 +4853,40 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#markdown数学公式">MarkDown数学公式</a>
+      <ul>
+        <li><a href="#一常用符号">一、常用符号</a>
+          <ul>
+            <li><a href="#常用符号">常用符号</a></li>
+            <li><a href="#三角函数">三角函数</a></li>
+            <li><a href="#矢量累加累乘极限">矢量、累加累乘、极限</a></li>
+            <li><a href="#希腊字母表">希腊字母表</a></li>
+          </ul>
+        </li>
+        <li><a href="#方程组表达条件式">方程组、表达条件式</a>
+          <ul>
+            <li><a href="#方程组">方程组</a></li>
+            <li><a href="#表达条件式">表达条件式</a></li>
+          </ul>
+        </li>
+        <li><a href="#格式">格式</a>
+          <ul>
+            <li><a href="#代码块内多行代码对齐">代码块内多行代码对齐</a></li>
+            <li><a href="#间隔空格跟随">间隔（空格、跟随）</a></li>
+          </ul>
+        </li>
+        <li><a href="#矩阵">矩阵</a>
+          <ul>
+            <li><a href="#简单矩阵">简单矩阵</a></li>
+          </ul>
+        </li>
+        <li><a href="#表格">表格</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -4628,9 +4907,515 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><blockquote>
+  <article class="markdown"><h1 id="markdown数学公式">
+  MarkDown数学公式
+  <a class="anchor" href="#markdown%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f">#</a>
+</h1>
+<blockquote>
 <p>数学是所有自然科学的灵魂</p>
 </blockquote>
+<h2 id="一常用符号">
+  一、常用符号
+  <a class="anchor" href="#%e4%b8%80%e5%b8%b8%e7%94%a8%e7%ac%a6%e5%8f%b7">#</a>
+</h2>
+<ul>
+<li><strong>内联公式</strong></li>
+</ul>
+<p>在MarkDown语法中可以书写数学公式，书写数学公式必须要有一个入口——内联公式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">{{&lt; katex display  &gt;}}
+数学公式
+{{&lt; /katex &gt;}}
+</code></pre></div><h3 id="常用符号">
+  常用符号
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e7%ac%a6%e5%8f%b7">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>实例</th>
+<th>预览</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上下标</td>
+<td>a^n_m</td>
+<td></td>
+<td>上标^用于指数，下标用于角标</td>
+</tr>
+<tr>
+<td>正负号（±）</td>
+<td>a \pm b</td>
+<td>a±b</td>
+<td></td>
+</tr>
+<tr>
+<td>乘</td>
+<td>\times</td>
+<td>×</td>
+<td></td>
+</tr>
+<tr>
+<td>除</td>
+<td>\dlv</td>
+<td>÷</td>
+<td></td>
+</tr>
+<tr>
+<td>根号</td>
+<td>\sqrt</td>
+<td></td>
+<td>根号下(a-b)</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>\gt</td>
+<td>＞</td>
+<td></td>
+</tr>
+<tr>
+<td>小于</td>
+<td>\lt</td>
+<td>＜</td>
+<td></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td>\ge</td>
+<td>≥</td>
+<td></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td>\le</td>
+<td>≤</td>
+<td></td>
+</tr>
+<tr>
+<td>正无穷</td>
+<td>\infty</td>
+<td>∞</td>
+<td></td>
+</tr>
+<tr>
+<td>负无穷</td>
+<td>-\infty</td>
+<td>-∞</td>
+<td></td>
+</tr>
+<tr>
+<td>分数</td>
+<td>\dfrac{a}</td>
+<td></td>
+<td>a分之b</td>
+</tr>
+<tr>
+<td>省略号</td>
+<td>\cdots</td>
+<td>&hellip;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="三角函数">
+  三角函数
+  <a class="anchor" href="#%e4%b8%89%e8%a7%92%e5%87%bd%e6%95%b0">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>数学表达式</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sinθ</td>
+<td>\sin</td>
+</tr>
+<tr>
+<td>cosθ</td>
+<td>\cos</td>
+</tr>
+<tr>
+<td>tanθ</td>
+<td>\tan</td>
+</tr>
+<tr>
+<td>cotθ</td>
+<td>\cot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="矢量累加累乘极限">
+  矢量、累加累乘、极限
+  <a class="anchor" href="#%e7%9f%a2%e9%87%8f%e7%b4%af%e5%8a%a0%e7%b4%af%e4%b9%98%e6%9e%81%e9%99%90">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>数学表达式</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>矢量</td>
+<td>\vec{}</td>
+</tr>
+<tr>
+<td>累加（求和∑）</td>
+<td>\sum_{}^{}</td>
+</tr>
+<tr>
+<td>累乘（求积∏）</td>
+<td>\prod_{}^{}</td>
+</tr>
+<tr>
+<td>极限</td>
+<td>\lim_{}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="希腊字母表">
+  希腊字母表
+  <a class="anchor" href="#%e5%b8%8c%e8%85%8a%e5%ad%97%e6%af%8d%e8%a1%a8">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>预览</th>
+<th>代码</th>
+<th>预览</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\alpha</td>
+<td>α</td>
+<td>\pi</td>
+<td>π</td>
+</tr>
+<tr>
+<td>\beta</td>
+<td>β</td>
+<td>\rho</td>
+<td>ρ</td>
+</tr>
+<tr>
+<td>\gamma</td>
+<td>γ</td>
+<td>\xi</td>
+<td>ξ</td>
+</tr>
+<tr>
+<td>\delta</td>
+<td>δ</td>
+<td>\nu</td>
+<td>ν</td>
+</tr>
+<tr>
+<td>\epsilon</td>
+<td></td>
+<td>\upsilon</td>
+<td>υ</td>
+</tr>
+<tr>
+<td>\varepsilon</td>
+<td>ε</td>
+<td>\varphi</td>
+<td>φ</td>
+</tr>
+<tr>
+<td>\eta</td>
+<td>η</td>
+<td>\chi</td>
+<td>χ</td>
+</tr>
+<tr>
+<td>\theta</td>
+<td>θ</td>
+<td>\psi</td>
+<td>ψ</td>
+</tr>
+<tr>
+<td>\kappa</td>
+<td>κ</td>
+<td>\omega</td>
+<td>ω</td>
+</tr>
+<tr>
+<td>\iota</td>
+<td>ι</td>
+<td>\Omega</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>\zeta</td>
+<td></td>
+<td>\Gamma</td>
+<td>Γ</td>
+</tr>
+<tr>
+<td>\lambda</td>
+<td>λ</td>
+<td>\Delta</td>
+<td>Δ</td>
+</tr>
+<tr>
+<td>\mu</td>
+<td>μ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\phi</td>
+<td>φ</td>
+<td>\Phi</td>
+<td>Φ</td>
+</tr>
+</tbody>
+</table>
+<h2 id="方程组表达条件式">
+  方程组、表达条件式
+  <a class="anchor" href="#%e6%96%b9%e7%a8%8b%e7%bb%84%e8%a1%a8%e8%be%be%e6%9d%a1%e4%bb%b6%e5%bc%8f">#</a>
+</h2>
+<h3 id="方程组">
+  方程组
+  <a class="anchor" href="#%e6%96%b9%e7%a8%8b%e7%bb%84">#</a>
+</h3>
+
+<link rel="stylesheet" href="./../../katex/katex.min.css" />
+<script defer src="./../../katex/katex.min.js"></script>
+<script defer src="./../../katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[
+
+\begin{cases}
+3x &#43; 5y &#43;  z \\
+7x - 2y &#43; 4z \\
+-6x &#43; 3y &#43; 2z
+\end{cases}
+
+\]
+</span>
+
+<h3 id="表达条件式">
+  表达条件式
+  <a class="anchor" href="#%e8%a1%a8%e8%be%be%e6%9d%a1%e4%bb%b6%e5%bc%8f">#</a>
+</h3>
+<span>
+  \[
+
+f(n) =
+\begin{cases} 
+n/2,  &amp; \text{if }n\text{ is even} \\
+3n&#43;1, &amp; \text{if }n\text{ is odd}
+\end{cases}
+
+\]
+</span>
+
+<table>
+<thead>
+<tr>
+<th><div style="width:290px">property</div></th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>border-bottom-right-radius</code></td>
+<td>Defines the shape of the bottom-right</td>
+</tr>
+</tbody>
+</table>
+<h2 id="格式">
+  格式
+  <a class="anchor" href="#%e6%a0%bc%e5%bc%8f">#</a>
+</h2>
+<h3 id="代码块内多行代码对齐">
+  代码块内多行代码对齐
+  <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e5%9d%97%e5%86%85%e5%a4%9a%e8%a1%8c%e4%bb%a3%e7%a0%81%e5%af%b9%e9%bd%90">#</a>
+</h3>
+<span>
+  \[
+
+\begin{aligned}
+a &amp;= b &#43; c \\
+  &amp;= d &#43; e &#43; f
+\end{aligned}
+
+\]
+</span>
+
+<h3 id="间隔空格跟随">
+  间隔（空格、跟随）
+  <a class="anchor" href="#%e9%97%b4%e9%9a%94%e7%a9%ba%e6%a0%bc%e8%b7%9f%e9%9a%8f">#</a>
+</h3>
+<p>跟随 <code>\!</code></p>
+<p>无空格 小空格<code>\,</code> 中空格<code>\;</code> 大空格<code>\</code></p>
+<p>真空格<code>\quad</code> 双真空格 <code>\qquad</code></p>
+<span>
+  \[
+
+a\!b &#43; ab &#43; a\,b &#43; a\;b &#43; a\ b &#43; a\quad b &#43; a\qquad b
+
+\]
+</span>
+
+<h2 id="矩阵">
+  矩阵
+  <a class="anchor" href="#%e7%9f%a9%e9%98%b5">#</a>
+</h2>
+<h3 id="简单矩阵">
+  简单矩阵
+  <a class="anchor" href="#%e7%ae%80%e5%8d%95%e7%9f%a9%e9%98%b5">#</a>
+</h3>
+<ul>
+<li>简单矩阵事例1</li>
+</ul>
+<p>使用 <code>\begin{matrix} ... \end{matrix}</code> 生成，每一行以 <code>\\</code> 结尾表示换行，各元素间以 <code>&amp;</code> 隔开，右边的数学公式代码块序号用 <code>\tag{n}</code> 表示。</p>
+<span>
+  \[
+
+\begin{matrix}
+1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9\\
+\end{matrix}
+\tag{简单矩阵 - 事例1}
+
+\]
+</span>
+
+<ul>
+<li>简单矩阵事例二（带括号）</li>
+</ul>
+<span>
+  \[
+
+\left\{
+\begin{matrix}
+1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6\\
+7 &amp; 8 &amp; 9\\
+\end{matrix}
+\right\}
+\tag{带有大括号的矩阵}
+
+\]
+</span>
+
+<p>or</p>
+<span>
+  \[
+
+\begin{Bmatrix}
+   1 &amp; 2 &amp; 3 \\
+   4 &amp; 5 &amp; 6 \\
+   7 &amp; 8 &amp; 9
+  \end{Bmatrix} \tag{6}
+
+\]
+</span>
+
+<p>中括号</p>
+<span>
+  \[
+
+ \left[
+ \begin{matrix}
+   1 &amp; 2 &amp; 3 \\
+   4 &amp; 5 &amp; 6 \\
+   7 &amp; 8 &amp; 9
+  \end{matrix}
+  \right]
+  \tag{中括号}
+
+\]
+</span>
+
+<p>或</p>
+<span>
+  \[
+
+ \begin{bmatrix}
+   1 &amp; 2 &amp; 3 \\
+   4 &amp; 5 &amp; 6 \\
+   7 &amp; 8 &amp; 9
+  \end{bmatrix} \tag{6}
+
+\]
+</span>
+
+<p>小括号</p>
+<span>
+  \[
+
+\left(
+ \begin{matrix}
+   1 &amp; 2 &amp; 3 \\
+   4 &amp; 5 &amp; 6 \\
+   7 &amp; 8 &amp; 9
+  \end{matrix}
+  \right)
+  \tag{小括号}
+
+\]
+</span>
+
+<p>包含省略号和希腊字母</p>
+<p>行省略号 <code>\cdots</code>，列省略号<code>\vdots</code>，斜向省略号（左上至右下）<code>\ddots</code></p>
+<span>
+  \(
+
+ \left\{
+ \begin{matrix}
+ 1      &amp; 2        &amp; \cdots &amp; 5        \\
+ 6      &amp; 7        &amp; \cdots &amp; 10       \\
+ \vdots &amp; \vdots   &amp; \ddots &amp; \vdots   \\
+ \alpha &amp; \alpha&#43;1 &amp; \cdots &amp; \alpha&#43;4 
+ \end{matrix}
+ \right\}
+
+\)
+</span>
+
+<h2 id="表格">
+  表格
+  <a class="anchor" href="#%e8%a1%a8%e6%a0%bc">#</a>
+</h2>
+<span>
+  \(
+
+\begin{array}{|c|c|c|}
+	\hline 2&amp;9&amp;4\\
+	\hline 7&amp;5&amp;3\\
+	\hline 6&amp;1&amp;8\\
+	\hline
+\end{array}
+
+\)
+</span>
+
+<span>
+  \(
+
+\begin{array}{cc|c}
+	       A&amp;B&amp;F\\
+	\hline 0&amp;0&amp;0\\
+	       0&amp;1&amp;1\\
+	       1&amp;0&amp;1\\
+	       1&amp;1&amp;1\\
+\end{array}
+
+\)
+</span>
+
+<p><a href="https://www.cnblogs.com/Lo3prs/p/14021997.html#">参考</a></p>
 </article>
  
       
@@ -4872,7 +5657,40 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#markdown数学公式">MarkDown数学公式</a>
+      <ul>
+        <li><a href="#一常用符号">一、常用符号</a>
+          <ul>
+            <li><a href="#常用符号">常用符号</a></li>
+            <li><a href="#三角函数">三角函数</a></li>
+            <li><a href="#矢量累加累乘极限">矢量、累加累乘、极限</a></li>
+            <li><a href="#希腊字母表">希腊字母表</a></li>
+          </ul>
+        </li>
+        <li><a href="#方程组表达条件式">方程组、表达条件式</a>
+          <ul>
+            <li><a href="#方程组">方程组</a></li>
+            <li><a href="#表达条件式">表达条件式</a></li>
+          </ul>
+        </li>
+        <li><a href="#格式">格式</a>
+          <ul>
+            <li><a href="#代码块内多行代码对齐">代码块内多行代码对齐</a></li>
+            <li><a href="#间隔空格跟随">间隔（空格、跟随）</a></li>
+          </ul>
+        </li>
+        <li><a href="#矩阵">矩阵</a>
+          <ul>
+            <li><a href="#简单矩阵">简单矩阵</a></li>
+          </ul>
+        </li>
+        <li><a href="#表格">表格</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

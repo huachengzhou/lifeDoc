@@ -67,9 +67,8 @@ HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
  打包
  webpack可以将模块资源打包成一个或者多个包，并且在打包过程中可以处理资源，例如压缩图片，将scss转成css，ES6语法转成ES5语法，将TypeScript转成JavaScript等等操作。grunt/gulp也可以打包。
 和grunt/glup的对比
- grunt/glup的核心是Task  我们可以配置一系列的task，并且定义task要处理的事务（例如ES6/TS转化，图片压缩，scss转css） 之后可以让grunt/glup来执行依次这些任务，让整个流程自动化 所以grunt/glup也被称为前端自动化任务管理工具   看一个gulp例子  task将src下的js文件转化为ES5语法 并输入到dist文件夹中     什么时候使用grunt/gulp呢？  如果工程依赖简单，甚至没有模块化 只需要进行简单的合并/压缩 如果模块复杂，相互依赖性强，我们需要使用webpack   grunt/glup和webpack区别  grunt/glup更加强调的是前端自动化流程，模块化不是其核心 webpack加强模块化开发管理，而文件压缩/合并/预处理等功能，是附带功能    webpack就是前端模块化打包工具
-15.1.2	webpack的安装# webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack
-npm install webpack -g //指定版本安装 npm install webpack@3.</description>
+ grunt/glup的核心是Task  我们可以配置一系列的task，并且定义task要处理的事务（例如ES6/TS转化，图片压缩，scss转css） 之后可以让grunt/glup来执行依次这些任务，让整个流程自动化 所以grunt/glup也被称为前端自动化任务管理工具   看一个gulp例子  task将src下的js文件转化为ES5语法 并输入到dist文件夹中    const gulp = require(&#39;gulp&#39;)const babel = require(&#39;gulp-babel&#39;)gulp.task(&#39;js&#39;()=gulp.src(&#39;src/*.js&#39;).pipe(babel({presets:[&#39;es2015&#39;]})).pipe(gulp.dest(&#39;dist&#39;))); 什么时候使用grunt/gulp呢？  如果工程依赖简单，甚至没有模块化 只需要进行简单的合并/压缩 如果模块复杂，相互依赖性强，我们需要使用webpack   grunt/glup和webpack区别  grunt/glup更加强调的是前端自动化流程，模块化不是其核心 webpack加强模块化开发管理，而文件压缩/合并/预处理等功能，是附带功能    webpack就是前端模块化打包工具
+15.1.2	webpack的安装# webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack</description>
     </item>
     
     <item>

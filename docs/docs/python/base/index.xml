@@ -38,10 +38,10 @@ py get-pip.py 最常用命令# 升级pip  python -m pip install --upgrade pip
     
     <item>
       <title>python 函数</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Lambda_or_function/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/lambda_or_function/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Lambda_or_function/</guid>
       <description>function# 函数是一种仅在调用时运行的代码块
   创建函数  在 Python 中，使用 def 关键字定义函数
 def fun1(): print(&amp;#34;这是一个函数&amp;#34;) def fun2 (): pass fun2() fun1()  默认参数值  def funX(a = &amp;#39;zkdsh&amp;#39;): print(a) funX()  返回值  def addFun(x,y): return x + y print(f&amp;#34;addFun 调用 {addFun(2,3)}&amp;#34;) Lambda#lambda 函数是一种小的匿名函数。
@@ -51,10 +51,10 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
     
     <item>
       <title>python set</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/set/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Set/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/set/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Set/</guid>
       <description>集合（Set）# 集合是无序和无索引的集合。在 Python 中，集合用花括号编写
   无法通过引用索引来访问 set 中的项目，因为 set 是无序的，项目没有索引
   集合一旦创建，无法更改项目，但是可以添加新项目
@@ -86,20 +86,20 @@ pipenv# 创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N 
     
     <item>
       <title>python 字典</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/dictionary/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Dictionary/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/dictionary/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Dictionary/</guid>
       <description>字典（Dictionary）# 字典有点像一个json对象 且不是json数组对象
   简单举例  dic1 = {&amp;#39;a&amp;#39;: &amp;#39;dsgs&amp;#39;} print(dic1) print(dic1.get(&amp;#34;a&amp;#34;)) 创建并打印字典#import random dicX = {} for x in range(1,10): dicX[str(x)] = random.randrange(int(&amp;#34;10&amp;#34;) , int(&amp;#34;10&amp;#34;+str(x))) print(dicX) 检查键是否存在#import random dic1 = {&amp;#39;x&amp;#39;:random.randrange(1,3000),&amp;#39;y&amp;#39;:random.randrange(1,3000)} print(dic1) print(f&amp;#34;x in dic1 :{&amp;#39;x&amp;#39; in dic1}&amp;#34;) 访问字典#dic20 = {&amp;#39;a&amp;#39;:&amp;#39;zxc&amp;#39;} print(dic20[&amp;#39;a&amp;#39;]) print(dic20.get(&amp;#34;a&amp;#34;)) 更改值#set2 = {&amp;#34;x&amp;#34;:1,&amp;#39;y&amp;#39;:2000} print(set2) set2[&amp;#39;x&amp;#39;] = 2 print(set2) values()#import random dicX = {} for x in range(1,10): dicX[str(x)] = random.</description>
     </item>
     
     <item>
       <title>python 类型转换</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/casting/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Casting/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/casting/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Casting/</guid>
       <description>Casting# int() - 用整数字面量、浮点字面量构造整数（通过对数进行下舍入），或者用表示完整数字的字符串字面量 float() - 用整数字面量、浮点字面量，或字符串字面量构造浮点数（提供表示浮点数或整数的字符串） str() - 用各种数据类型构造字符串，包括字符串，整数字面量和浮点字面量  import random import time str1 = str(random.random() * 100) print(f&amp;#34;str1 类型: {type(str1)}&amp;#34;,str1) int1 = int(random.random() * 100) print(f&amp;#34;int1 类型: {type(int1)}&amp;#34;,int1) float1 = float(random.random() * 100) print(f&amp;#34;float1 类型: {type(float1)}&amp;#34;,float1) </description>
     </item>
     
@@ -114,10 +114,10 @@ pipenv# 创建虚拟环境 : python -m venv 项目名  noatn@DESKTOP-CCD057N 
     
     <item>
       <title>python 元组</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/tuple/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Tuple/</link>
       <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/tuple/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Tuple/</guid>
       <description>元组# 元组（Tuple）   元组是有序且不可更改的集合。在 Python 中，元组是用圆括号编写的
  import time tupleX = (time.time(),time.time_ns()) print(tupleX)  访问元组项目  tupleIndex = (2, 3, &amp;#39;a&amp;#39;, &amp;#39;c&amp;#39;) print(f&amp;#34;倒数第一项:{tupleIndex[-1]}&amp;#34;) print(f&amp;#34;倒数第二项:{tupleIndex[-2]}&amp;#34;) print(f&amp;#34;第一项:{tupleIndex[0]}&amp;#34;)   关于索引范围 -1就说倒数第一项 -2就是倒数第二项 0就第一项
   检查项目是否存在
@@ -277,10 +277,10 @@ Python 2.7 使用 raw_input() 方法
     
     <item>
       <title>Python 注解</title>
-      <link>https://huachengzhou.github.io/life/docs/python/base/annotation/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/base/Annotation/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/base/annotation/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/base/Annotation/</guid>
       <description>Python 注解# 注解是Python3.5引入的，通过注解可以提高我们代码的可读性，编译器会通过注解帮你做类型检查，避免一些错误
  </description>
     </item>

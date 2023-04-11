@@ -8,10 +8,10 @@
     <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跨域问题</title>
-      <link>https://huachengzhou.github.io/life/docs/http/teywty5qnc/</link>
+      <link>https://huachengzhou.github.io/life/docs/http/TeYwtY5QNC/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/http/teywty5qnc/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/http/TeYwtY5QNC/</guid>
       <description>跨域#介绍# 跨域，指的是从一个域名去请求另外一个域名的资源，即跨域名请求。跨域时，浏览器不能执行其他域名网站的脚本，这是由浏览器的同源策略造成的，是浏览器施加的安全限制， 跨域限制访问，其实是浏览器的限制。
   同源策略是浏览器最核心也最基本的安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源 ，这是一个用于隔离潜在恶意文件的重要安全机制。所以跨域问题只在浏览器中出现，如果客户端是APP的话，那跨域问题就不存在了。 PS：IE端口除外，IE对同源策略的定义有略微的不同，具体可以查看文末给出的同源策略的链接。
  为什么会跨域#说到跨域不得不谈的就是浏览器的同源策略，跨域也是因为浏览器这个机制引起的，这个机制的存在还是在于安全
@@ -39,10 +39,10 @@ CDN的基本原理为反向代理，反向代理（Reverse Proxy）方式是指�
     
     <item>
       <title>DNS</title>
-      <link>https://huachengzhou.github.io/life/docs/http/dns/</link>
+      <link>https://huachengzhou.github.io/life/docs/http/DNS/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/http/dns/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/http/DNS/</guid>
       <description>DNS#DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。
 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS
 一、DNS 是什么？#DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。

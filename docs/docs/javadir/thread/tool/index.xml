@@ -19,10 +19,10 @@
     
     <item>
       <title>Semaphore和Exchanger</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Semaphore_Exchanger/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/semaphore_exchanger/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Semaphore_Exchanger/</guid>
       <description>Semaphore#1、Semaphore 是什么# Semaphore 通常我们叫它信号量， 可以用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用资源
   可以把它简单的理解成我们停车场入口立着的那个显示屏，每有一辆车进入停车场显示屏就会显示剩余车位减1，每有一辆车从停车场出去，显示屏上显示的剩余车辆就会加1，当显示屏上的剩余车位为0时，停车场入口的栏杆就不会再打开，车辆就无法进入停车场了，直到有一辆车从停车场出去为止
  2、使用场景# 通常用于那些资源有明确访问数量限制的场景，常用于限流
@@ -34,10 +34,10 @@
     
     <item>
       <title>CountDownLatch 和 CyclicBarrier</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/CountDownLatch_CyclicBarrier/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/countdownlatch_cyclicbarrier/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/CountDownLatch_CyclicBarrier/</guid>
       <description>CountDownLatch是减法操作 CyclicBarrier具有CountDownLatch的所有功能
  CountDownLatch#  CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓,所以当门打开时,N个人是不能进屋的,也就是N个线程是不能继续向下运行的,支持这样的特性可以控制线程执行任务的时机,使线程以 &amp;ldquo;组团&amp;quot;的方式一起执行任务
    CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓，似乎有一点“三二一，芝麻开门”的感觉。CountDownLatch的作用也是如此，在构造CountDownLatch的时候需要传入一个整数n，在这个整数“倒数”到0之前，主线程需要等待在门口，而这个“倒数”过程则是由各个执行线程驱动的，每个线程执行完一个任务“倒数”一次。总结来说，CountDownLatch的作用就是等待其他的线程都执行完任务，必要时可以对各个任务的执行结果进行汇总，然后主线程才继续往下执行
@@ -49,10 +49,10 @@
     
     <item>
       <title>Phaser</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/phaser/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Phaser/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/phaser/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Phaser/</guid>
       <description>Phaser#java7中引入了一种新的可重复使用的同步屏障,称为移相器Phaser
 Phaser拥有与CyclicBarrier和CountDownLatch类似的功劳.但是这个类提供了更加灵活的应用.CountDownLatch和CyclicBarrier都是只适用于固定数量的参与者.移相器适用于可变数目的屏障,在这个意义上,可以在任何时间注册新的参与者.并且在抵达屏障是可以注销已经注册的参与者.因此,注册到同步移相器的参与者的数目可能会随着时间的推移而变化
 如CyclicBarrier一样,移相器可以重复使用,这意味着当前参与者到达移相器后,可以再一次注册自己并等待另一次到达.因此,移相器会有多代.一旦为某个特定相位注册的所有参与者都到达移相器,就增加相数.相数从零开始,在达到Integer.MAX_VALUE后,再次绕回0.当移相器发生变化时,通过重写onAdvance方法,可以自行可选操作.这个方法也可用于终止移相器.移相器一旦被终止,所有的同步方法就会立即返回,并尝试注册新的失败的参与者
@@ -76,46 +76,46 @@ Phaser中是通过计数器来控制。在Phaser中计数器叫做parties， 我
     
     <item>
       <title>Executor</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executor/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Executor/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executor/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Executor/</guid>
       <description>Executor#</description>
     </item>
     
     <item>
       <title>Future 和 callable</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/future_callable/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Future_callable/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/future_callable/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Future_callable/</guid>
       <description>Future#callable#</description>
     </item>
     
     <item>
       <title>CompletionService</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/completionservice/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/CompletionService/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/completionservice/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/CompletionService/</guid>
       <description>CompletionService#</description>
     </item>
     
     <item>
       <title>ExecutorService</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executorservice/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/ExecutorService/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/executorservice/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/ExecutorService/</guid>
       <description>ExecutorService#</description>
     </item>
     
     <item>
       <title>Fork-Join</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/fork_join/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Fork_Join/</link>
       <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/fork_join/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/thread/tool/Fork_Join/</guid>
       <description>Fork-Join#简介#从JDK1.7开始，Java提供Fork/Join框架用于并行执行任务，它的思想就是讲一个大任务分割成若干小任务，最终汇总每个小任务的结果得到这个大任务的结果。
 这种思想和MapReduce很像（input &amp;ndash;&amp;gt; split &amp;ndash;&amp;gt; map &amp;ndash;&amp;gt; reduce &amp;ndash;&amp;gt; output）
  主要有两步：   第一、任务切分； 第二、结果合并  它的模型大致是这样的：线程池中的每个线程都有自己的工作队列（PS：这一点和ThreadPoolExecutor不同，ThreadPoolExecutor是所有线程公用一个工作队列， 所有线程都从这个工作队列中取任务），当自己队列中的任务都完成以后，会从其它线程的工作队列中偷一个任务执行，这样可以充分利用资源。
