@@ -8,10 +8,10 @@
     <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>KaTeX 使用指南</title>
-      <link>https://huachengzhou.github.io/life/docs/math/KaTeX/</link>
+      <link>https://huachengzhou.github.io/life/docs/math/katex/</link>
       <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/math/KaTeX/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/math/katex/</guid>
       <description>网络数学排版库# KaTeX快捷代码可以让您在markdown文档中呈现数学排版。参见KaTeX
  \[f(n)=\begin{cases} 1 &amp;amp; n = 1 \cr \sum_{i=1}^{n-1} f(i) &amp;amp; \text{Otherwise.}\end{cases}f(n)=\begin{dcases} 1 &amp;amp; n = 1 \cr \sum_{i=1}^{n-1} f(i) &amp;amp; \text{Otherwise.}\end{dcases}\]简单的 API，没有依赖性——但在所有主流浏览器上都非常快。# 快速： KaTeX 同步呈现它的数学并且不需要重排页面。 打印质量： KaTeX 的布局基于 Donald Knuth 的 TeX，这是数学排版的黄金标准。 自包含： KaTeX 没有依赖性，可以很容易地与您的网站资源捆绑在一起。 服务器端渲染：无论浏览器或环境如何，KaTeX 都会产生相同的输出，因此您可以使用 Node.js 预渲染表达式并将它们作为纯 HTML 发送。  例子# code  {{&amp;lt; katex display &amp;gt;}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{&amp;lt; /katex &amp;gt;}}  展示  \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\] 矩阵  \[\left(\begin{matrix}1 &amp;amp; 2 &amp;amp; 3 \\4 &amp;amp; 5 &amp;amp; 6 \\7 &amp;amp; 8 &amp;amp; 9\end{matrix}\right)\tag{小括号}\]括号/上下箭头#\[\lparen\rparen \lbrack\rbrack \lbrace\rbrace \langle\rangle \vert\vert \Vert\Vert \lVert\rVert\]矩阵类#\[\begin{matrix}a &amp;amp; b \crc &amp;amp; d\end{matrix}\]排板类#\[\begin{aligned}a&amp;amp;=b&amp;#43;c \crd&amp;#43;e&amp;amp;=f\end{aligned}\begin{gathered}a=b \cre=b&amp;#43;c\end{gathered}\begin{alignedat}{2}10&amp;amp;x&amp;#43; &amp;amp;3&amp;amp;y = 2 \cr3&amp;amp;x&amp;#43;&amp;amp;13&amp;amp;y = 4\end{alignedat}\]情况分类#\[x = \begin{cases}a &amp;amp;\text{if } b \crc &amp;amp;\text{if } d\end{cases}\]数组#\[\begin{array}{cc}a &amp;amp; b \crc &amp;amp; d\end{array}\def\arraystretch{1.</description>
     </item>

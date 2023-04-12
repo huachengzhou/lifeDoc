@@ -29,10 +29,10 @@
     
     <item>
       <title>python NumPy  </title>
-      <link>https://huachengzhou.github.io/life/docs/python/install/NumPy/</link>
+      <link>https://huachengzhou.github.io/life/docs/python/install/numpy/</link>
       <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/python/install/NumPy/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/python/install/numpy/</guid>
       <description>NumPy#什么是 NumPy#NumPy 是用于处理数组的 python 库。
 它还拥有在线性代数、傅立叶变换和矩阵领域中工作的函数。
 NumPy 由 Travis Oliphant 于 2005 年创建。它是一个开源项目，您可以自由使用它。

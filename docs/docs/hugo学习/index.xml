@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 17 Oct 2017 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo教程 hugo server Failed to get JSON</title>
-      <link>https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_Faile_-to_get_JSON/</link>
+      <link>https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_Faile_-to_get_JSON/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/</guid>
       <description>今天尝试了一下静态博客 hugo , hugo的官网本身也是使用 hugo 制作的网站。安装和运行非常简单。只有两个步骤安装和运行。运行的时候出现了一个小问题，就是由于网络的原因不能启动成功。
  粗暴的禁用网络连接相关的操作# 就是两个 短代码 给删除了 instagram, tweet。  find . -name &amp;amp;quot;*.md&amp;amp;quot; | xargs sed -i &amp;amp;#x27;/{{&amp;amp;lt; instagram/cinstagram content&amp;amp;#x27;find . -name &amp;amp;quot;*.md&amp;amp;quot; | xargs sed -i &amp;amp;#x27;/{{&amp;amp;lt; tweet/ctwitter content&amp;amp;#x27;hugo server --bind &amp;amp;#x27;0.0.0.0&amp;amp;#x27; print code  ERROR 2021/03/06 09:55:20 Failed to get JSON resource &amp;quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;amp;dnt=false&amp;quot;: Get &amp;quot;https://api.twitter.com/1/statuses/oembed.json?id=877500564405444608&amp;amp;dnt=false&amp;quot;: dial tcp 31.13.91.33:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.</description>
     </item>

@@ -8,7 +8,7 @@ title = '所悟所想'
 theme = 'hugo-book'
 
 # Book configuration
-disablePathToLower = true
+disablePathToLower = false
 enableGitInfo = false
 
 # Needed for mermaid/katex shortcodes

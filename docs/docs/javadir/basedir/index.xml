@@ -8,10 +8,10 @@
     <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/basedir/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>java类型转换,构造,重要语法</title>
-      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daXw/</link>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daXw/</guid>
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/</guid>
       <description>基本类型# 八个基本类型:     基本类型 位数 字节 默认值 取值范围     byte 8 1 0 -128 ~ 127   short 16 2 0 -32768 ~ 32767   int 32 4 0 -2147483648 ~ 2147483647   long 64 8 0l -9223372036854775808 ~ 9223372036854775807   char 16 2 &amp;lsquo;u0000&amp;rsquo; 0 ~ 65535   float 32 4 0f 1.4E-45 ~ 3.4028235E38   double 64 8 0d 4.</description>
     </item>
     
