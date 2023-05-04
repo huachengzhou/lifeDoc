@@ -21,7 +21,10 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/</guid>
-      <description>demo#</description>
+      <description>异常介绍# Java异常是Java提供的一种识别及响应错误的一致性机制，java异常机制可以使程序中异常处理代码和正常业务代码分离，保证程序代码更加优雅，并提高程序健壮性。本文综合多篇文章后，总结了Java 异常的相关知识，希望可以提升你对Java中异常的认知效率
+ mermaid.initialize({&#34;flowchart&#34;: {&#34;useMaxWidth&#34;:true},&#34;theme&#34;: &#34;default&#34;})graph LRThrowable -- ExceptionThrowable -- Exception -- RuntimeExceptionThrowable -- Exception -- 非运行时异常Throwable -- Error -- IOErrorThrowable -- Error -- ThreadDeathThrowable -- Error -- AssertionErrorThrowable
+Throwable 是 Java 语言中所有错误与异常的超类。Throwable 包含两个子类：Error（错误）和 Exception（异常），它们通常用于指示发生了异常情况。T hrowable 包含了其线程创建时线程执行堆栈的快照，它提供了 printStackTrace() 等接口用于获取堆栈跟踪数据等信息Error（错误）
+Error 类及其子类：程序中无法处理的错误，表示运行应用程序中出现了严重的错误。此类错误一般表示代码运行时 JVM 出现问题。 通常有 Virtual MachineError（虚拟机运行错误）、NoClassDefFoundError（类定义错误）等。 比如 OutOfMemoryError：内存不足错误；StackOverflowError：栈溢出错误。此类错误发生时，JVM 将终止线程。 这些错误是不受检异常，非代码性错误。因此，当此类错误发生时，应用程序不应该去处理此类错误。按照Java惯例，我们是不应该实现任何新的Error子类的！Exception（异常）# 程序本身可以捕获并且可以处理的异常。Exception 这种异常又分为两类：运行时异常和编译时异常</description>
     </item>
     
     <item>
@@ -39,7 +42,14 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-annotation/</guid>
-      <description>demo#</description>
+      <description>注解# 注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。它是框架学习和设计者必须掌握的基础
+ 注解基础#注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。它主要的作用有以下四方面：
+ 生成文档，通过代码里标识的元数据生成javadoc文档。 编译检查，通过代码里标识的元数据让编译器在编译期间进行检查验证。 编译时动态处理，编译时通过代码里标识的元数据动态处理，例如动态生成代码。 运行时动态处理，运行时通过代码里标识的元数据动态处理，例如使用反射注入实例。  注解的常见分类：
+  Java自带的标准注解，包括 @Override、@Deprecated和**@SuppressWarnings**，分别用于标明重写某个方法、标明某个类或方法过时、标明要忽略的警告，用这些注解标明后编译器就会进行检查。
+  元注解，元注解是用于定义注解的注解，包括 @Retention 、@Target、@Inherited、@Documented，@Retention用于标明注解被保留的阶段，@Target用于标明注解使用的范围，@Inherited用于标明注解可继承，@Documented用于标明是否生成javadoc文档。
+  自定义注解，可以根据自己的需求定义注解，并可用元注解对自定义注解进行注解。
+  Java内置注解#我们从最为常见的Java内置的注解开始说起，先看下下面的代码：
+class A{ public void test() { } } class B extends A{ /** * 重载父类的test方法 */ @Override public void test() { } /** * 被弃用的方法 */ @Deprecated public void oldMethod() { } /** * 忽略告警 * * @return */ @SuppressWarnings(&amp;#34;rawtypes&amp;#34;) public List processList() { List list = new ArrayList(); return list; } } Java 1.</description>
     </item>
     
     <item>
@@ -70,6 +80,16 @@
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream_base/</guid>
       <description>一:流介绍# 流表面上看起来和集合很类似，都可以让我们转换和获取数据。但是，它们之间存在着显著的差异; 1:流并不能存储元素，这些元素可能存储在底层的集合中,或者是按需生成的 2:流的操作不会修改其数据源。例如filter方法不会从新的流移除元素，而是会生成一个新的流，其中不包含被过滤掉的元素。 3:流的操作是尽可能的惰性的。这意味着直至需要其结果时，操作才会执行。  流机器（动画来自 Tagir Valeev）Stream的效果就像上图展示的它可以先把数据变成符合要求的样子（map），吃掉不需要的东西（filter）然后得到需要的东西（collect）。 流API UML  二:流创建#   说明 示 例     创建不包括任何元素的流 Stream stream = Stream.empty()   of方法具有可变长参数,因此我们可以构建具有任意数量引元的流 Stream song = Stream.of(&amp;ldquo;gently&amp;rdquo; ,&amp;ldquo;down&amp;rdquo;,&amp;ldquo;the&amp;rdquo;,&amp;ldquo;stream&amp;rdquo;);或者Stream song = Stream.of(&amp;ldquo;stream&amp;rdquo;);   Stream一共有2个创建无限流的静态方法 generate()和iterate()   generate方法会接受一个不包含任何引元的函数 Stream stream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString())或者Stream stream = Stream.generate(() -&amp;gt; UUID.randomUUID().toString()).limit(20);//20个    </description>
+    </item>
+    
+    <item>
+      <title>Java SPI机制详解</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-spi/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-spi/</guid>
+      <description>SPI# SPI（Service Provider Interface），是JDK内置的一种 服务提供发现机制，可以用来启用框架扩展和替换组件，主要是被框架的开发人员使用。
+ </description>
     </item>
     
   </channel>
