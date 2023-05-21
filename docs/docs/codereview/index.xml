@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编码 on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/codereview/</link>
+    <description>Recent content in 编码 on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/codereview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code review</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification1/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification1/</guid>
+      <description>Code Review目的#Code Review是一种用来确认方案设计和代码实现的质量保证机制，通过这个机制我们 可以对代码、测试过程和注释进行检查。 Code Review主要用来在软件工程过程中改进代码质量，通过Code Review可以达到 如下目的：
+ 在项目早期就能够发现代码中的bug，将bug扼杀在摇篮中。 帮助初级开发人员学习高级开发人员的经验，达到知识共享。 避免开发人员犯一些很常见，很普通的错误。 保证项目组人员的良好沟通。 项目或产品的代码更容易维护。 提升代码质量，提高团队开发效率。  Code Review前提条件#代码提交审核前，开发者必须确保代码符合如下条件，审核者需要确保所有前提条件 都已满足方可开始审查，同时也是审查的主要检查点。
+ 所有代码注释清晰，语法正确，编译通过。 日志代码完整，中文描述，脱敏处理，状态变更，全部清晰明确。 测试代码覆盖全部分支和流程，暂时统一使用工具Alibaba Java Coding Guidelines(idea 插件）进行代码检查。PS： 使用Alibaba Java Coding Guidelines插件扫描代码后，不符合规范的代码按Blocker（崩溃）/Critical（关键）/Major（重要）分为三个等级，前两个级别必须处理。  Code Review审查范围#代码的一致性、编码风格、代码的安全问题、脱敏问题、代码冗余、是否正确设计以符 合设计要求(性能、功能)与设计文档相同等。
+ 完整性检查（功能点、业务日志、异常日志等） 一致性检查（代码逻辑是否符合设计文档，代码风格是否统一等） 正确性检查（编码规范，注释准确，变量定义和使用等） 可修改性检查（如字典值123，使用专门的常量类等） 可预测性检查（死循环、无穷递归、数组越界、空指针等） 可理解性检查（命名规则、注释是否清晰、gitlab修订记录描述清晰等） 代码逻辑检查（如实现过于复杂、代码可读性、扩展性等） PS：优先级从上到下  Code Review的步骤#  (1)Code Review由项目负责人发起，代码编写者、代码评审人和项目负责人参与。
+  (2)代码编写者按照设计文档中的用例（或流程图）依次讲解自己所写的代码和相关逻辑，可采用从前端到后台的方式，例如从Web层-&amp;gt;DAO层。
+  (3)代码评审人在此过程中可以随时提出自己的疑问，同时积极发现隐藏的bug ;
+  项目负责人对这些bug记录在案。</description>
+    </item>
+    
+    <item>
+      <title>编码规范</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification2/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification2/</guid>
+      <description>编码规范#空格空行:# 1.代码中禁止出现无意义空行. 2.尽量使用注释来代替空行,实在不需要注释的地方,并且与上文逻辑有明显区分的可使用空行分隔 3.在该打空格的地方必须打空格,比如运算符前后,等号前后,for循环中的分号后,if或者for等关键字后可以不打空格. 4.空格和缩进格式可使用Ctrl+K+F让VS使用默认的格式进行调整.  命名规范:# 1.类名命名单词首字母大写. 2.类成员变量以m开头,后面的单词首字母大写,必须保证单词拼写正确. 3.函数中的临时变量以小写开头,后面的单词首字母大写. 4.函数名首字母小写. 5.部分情况下使用缩写时允许以大写字母开头,但是仍需要尽量避免这种情况. 6.回调函数以on开头,非回调函数禁止以on开头.且回调函数权限为protected. 7.以set开头的函数应该只用于根据参数设置成员变量的值,而不能做其他的事情. 8.以get开头的函数尽量不要在函数内对成员变量有修改. 9.明确is,if,can此类单词的含义,is是否,if如果,can能否,一般用于获取一个bool状态时尽量使用is 10.枚举名为全大写,单词之间以下划线分隔. 11.枚举值为全大写,单词之间以下划线分隔,可以不使用枚举名首字母为前缀.  代码结构:# 1.类成员变量写在类的开头,并且访问权限为保护. 2.不允许在函数之间插入成员变量定义. 3.类函数写在成员变量之后,先写公有函数,然后加分割线,再写保护的函数. 4.不允许出现不同访问权限的函数混合排布. 5.如果一个函数的代码只有一行,则可以将整个函数写成一行,比如简单的的get和set函数 6.if下必须添加大括号,即使只有一行也需要添加大括号.  常量:# 1.禁止在代码中出现意义不明的数字,需要定义常量或者枚举来代替. 2.非显示类的字符串必须定义为常量.比如某个资源的名字等 3.不需要使用readonly标识运行时常量,一般只使用编译时常量即可  注释:# 1.提交的代码中禁止出现被注释的代码. 2.禁止使用除了双斜杠以外的注释形式.比如/**/局部注释,///注释 3.行注释双斜杠后需要加一个空格. 4.在代码逻辑不是非常浅显易懂的地方应该添加相应的注释,提高代码阅读效率. 5.尽量在成员变量后添加注释,用于说明此变量用处,以及使用方式等等. 6.成员变量注释或者枚举类型的注释需要对齐.  其他:#</description>
+    </item>
+    
+    <item>
+      <title>编码规范3</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification3/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification3/</guid>
+      <description>编码规范3#1.把事情想明白，说清楚，跟别人商量好
+2.写代码，注意边界条件和编码规范，写单测，基本做到无bug提测
+3.工作中做好计划和进度跟踪，沟通和汇报，不把问题遗留到变成事故
+4.思考和分析，如何优化目前的工作流程，引入工具和方法，提升生产效率
+5.把自己工作中用到的技术用熟，搞清楚原理，优点短处，适用场景
+6.不断接触新技术思想和工具，完善自身知识体系结构
+7.深入学习至少一个常用开源项目，源码层面系统掌握这项技术
+8.持续坚持学习和技术内容输出，每个星期产出2篇原创技术文章</description>
+    </item>
+    
+  </channel>
+</rss>

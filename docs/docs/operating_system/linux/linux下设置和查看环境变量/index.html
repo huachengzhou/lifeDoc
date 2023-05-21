@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Linux的变量种类 按变量的生存周期来划分，Linux变量可分为两类： 1 永久的：需要修改配置文件，变量永久生效。 2 临时的：使用export命令声明即可，变量在关闭shell时失效。
@@ -35,14 +35,15 @@ shell关闭了，变量也就失效了，再打开新shell时就没有这个变�
 使用unset删除指定的环境变量 set可以设置某个环境变量的值。清除环境变量的值用unset命令。如果未指定值，则该变量值将被设为NULL。示例如下： $ export TEST=&ldquo;Test&hellip;&rdquo; #增加一个环境变量TEST $ env|grep TEST #此命令有输入，证明环境变量TEST已经存在了 TEST=Test&hellip; unset TEST #删除环境变量TEST $ env|grep TEST #此命令没有输出，证明环境变量TEST已经删除
 常用的环境变量 PATH 决定了shell将到哪些目录中寻找命令或程序 HOME 当前用户主目录 HISTSIZE　历史记录数 LOGNAME 当前用户的登录名 HOSTNAME　指主机的名称 SHELL 当前用户Shell类型 LANGUGE 语言相关的环境变量，多语言可以修改此环境变量 MAIL　当前用户的邮件存放目录 PS1　基本提示符，对于root用户是#，对于普通用户是$" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>Linux下设置和查看环境变量 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.989163b828e3c1fa8a618cce1ff34cb02dac09300ba4de70c26b1bdb3e38e97f.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.76483060ba3f2223723e3923e66c7e48ab074a827e700f316d8c689583191c63.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3372,28 +3373,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a61b294d5fe4a63fddde070933328b8a" class="toggle"  />
-    <label for="section-a61b294d5fe4a63fddde070933328b8a" class="flex justify-between">
-      <a href="./../../../../docs/about/" class="">关于程序员</a>
-      <span>▾</span>
-    </label>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
     <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
       <a href="./../../../../docs/car_study/" class="">汽车教学</a>
@@ -3454,6 +3433,67 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     
   </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e7f05afbbf08a18bae4c61de4451b8c" class="toggle"  />
+    <label for="section-0e7f05afbbf08a18bae4c61de4451b8c" class="flex justify-between">
+      <a href="./../../../../docs/codereview/" class="">编码</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/codereview/specification1/" class="">Code review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/codereview/specification2/" class="">编码规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/codereview/specification3/" class="">编码规范3</a>
+  
 
         </li>
       
@@ -4799,7 +4839,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

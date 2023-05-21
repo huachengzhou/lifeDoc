@@ -51,23 +51,5 @@
       <description></description>
     </item>
     
-    <item>
-      <title>manage</title>
-      <link>https://huachengzhou.github.io/life/categories/manage/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/categories/manage/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>uml</title>
-      <link>https://huachengzhou.github.io/life/categories/uml/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/categories/uml/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

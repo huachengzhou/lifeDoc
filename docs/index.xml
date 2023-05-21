@@ -300,6 +300,21 @@ System.out.println(&amp;quot;It&#39;s a Groovy baby, yeah!&amp;quot;);def write
     </item>
     
     <item>
+      <title>Code review</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification1/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification1/</guid>
+      <description>Code Review目的#Code Review是一种用来确认方案设计和代码实现的质量保证机制，通过这个机制我们 可以对代码、测试过程和注释进行检查。 Code Review主要用来在软件工程过程中改进代码质量，通过Code Review可以达到 如下目的：
+ 在项目早期就能够发现代码中的bug，将bug扼杀在摇篮中。 帮助初级开发人员学习高级开发人员的经验，达到知识共享。 避免开发人员犯一些很常见，很普通的错误。 保证项目组人员的良好沟通。 项目或产品的代码更容易维护。 提升代码质量，提高团队开发效率。  Code Review前提条件#代码提交审核前，开发者必须确保代码符合如下条件，审核者需要确保所有前提条件 都已满足方可开始审查，同时也是审查的主要检查点。
+ 所有代码注释清晰，语法正确，编译通过。 日志代码完整，中文描述，脱敏处理，状态变更，全部清晰明确。 测试代码覆盖全部分支和流程，暂时统一使用工具Alibaba Java Coding Guidelines(idea 插件）进行代码检查。PS： 使用Alibaba Java Coding Guidelines插件扫描代码后，不符合规范的代码按Blocker（崩溃）/Critical（关键）/Major（重要）分为三个等级，前两个级别必须处理。  Code Review审查范围#代码的一致性、编码风格、代码的安全问题、脱敏问题、代码冗余、是否正确设计以符 合设计要求(性能、功能)与设计文档相同等。
+ 完整性检查（功能点、业务日志、异常日志等） 一致性检查（代码逻辑是否符合设计文档，代码风格是否统一等） 正确性检查（编码规范，注释准确，变量定义和使用等） 可修改性检查（如字典值123，使用专门的常量类等） 可预测性检查（死循环、无穷递归、数组越界、空指针等） 可理解性检查（命名规则、注释是否清晰、gitlab修订记录描述清晰等） 代码逻辑检查（如实现过于复杂、代码可读性、扩展性等） PS：优先级从上到下  Code Review的步骤#  (1)Code Review由项目负责人发起，代码编写者、代码评审人和项目负责人参与。
+  (2)代码编写者按照设计文档中的用例（或流程图）依次讲解自己所写的代码和相关逻辑，可采用从前端到后台的方式，例如从Web层-&amp;gt;DAO层。
+  (3)代码评审人在此过程中可以随时提出自己的疑问，同时积极发现隐藏的bug ;
+  项目负责人对这些bug记录在案。</description>
+    </item>
+    
+    <item>
       <title>Apache Commons 工具类介绍及简单使用</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -855,6 +870,15 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
     </item>
     
     <item>
+      <title>编码规范</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification2/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification2/</guid>
+      <description>编码规范#空格空行:# 1.代码中禁止出现无意义空行. 2.尽量使用注释来代替空行,实在不需要注释的地方,并且与上文逻辑有明显区分的可使用空行分隔 3.在该打空格的地方必须打空格,比如运算符前后,等号前后,for循环中的分号后,if或者for等关键字后可以不打空格. 4.空格和缩进格式可使用Ctrl+K+F让VS使用默认的格式进行调整.  命名规范:# 1.类名命名单词首字母大写. 2.类成员变量以m开头,后面的单词首字母大写,必须保证单词拼写正确. 3.函数中的临时变量以小写开头,后面的单词首字母大写. 4.函数名首字母小写. 5.部分情况下使用缩写时允许以大写字母开头,但是仍需要尽量避免这种情况. 6.回调函数以on开头,非回调函数禁止以on开头.且回调函数权限为protected. 7.以set开头的函数应该只用于根据参数设置成员变量的值,而不能做其他的事情. 8.以get开头的函数尽量不要在函数内对成员变量有修改. 9.明确is,if,can此类单词的含义,is是否,if如果,can能否,一般用于获取一个bool状态时尽量使用is 10.枚举名为全大写,单词之间以下划线分隔. 11.枚举值为全大写,单词之间以下划线分隔,可以不使用枚举名首字母为前缀.  代码结构:# 1.类成员变量写在类的开头,并且访问权限为保护. 2.不允许在函数之间插入成员变量定义. 3.类函数写在成员变量之后,先写公有函数,然后加分割线,再写保护的函数. 4.不允许出现不同访问权限的函数混合排布. 5.如果一个函数的代码只有一行,则可以将整个函数写成一行,比如简单的的get和set函数 6.if下必须添加大括号,即使只有一行也需要添加大括号.  常量:# 1.禁止在代码中出现意义不明的数字,需要定义常量或者枚举来代替. 2.非显示类的字符串必须定义为常量.比如某个资源的名字等 3.不需要使用readonly标识运行时常量,一般只使用编译时常量即可  注释:# 1.提交的代码中禁止出现被注释的代码. 2.禁止使用除了双斜杠以外的注释形式.比如/**/局部注释,///注释 3.行注释双斜杠后需要加一个空格. 4.在代码逻辑不是非常浅显易懂的地方应该添加相应的注释,提高代码阅读效率. 5.尽量在成员变量后添加注释,用于说明此变量用处,以及使用方式等等. 6.成员变量注释或者枚举类型的注释需要对齐.  其他:#</description>
+    </item>
+    
+    <item>
       <title>Aspose</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/tooldoc/aspose/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -1210,6 +1234,22 @@ Error 类及其子类：程序中无法处理的错误，表示运行应用程�
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/module/</guid>
       <description>模块介绍#time模块#datetime模块#random 模块#os 模块#sys 模块#json 和 pickle 模块#hashlib和hmac 模块#logging 模块#numpy 模块#pandas 模块#matplotlib 模块#re 模块#typing 模块#collections 模块#pathlib 模块#pathlib 是 Python 内置库，Python 文档给它的定义是 Object-oriented filesystem paths（面向对象的文件系统路径）。pathlib 提供表示文件系统路径的类，其语义适用于不同的操作系统。路径类在纯路径之间划分，纯路径提供纯粹的计算操作而没有 I / O，以及具体路径，它继承纯路径但也提供 I / O 操作。</description>
+    </item>
+    
+    <item>
+      <title>编码规范3</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/specification3/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/specification3/</guid>
+      <description>编码规范3#1.把事情想明白，说清楚，跟别人商量好
+2.写代码，注意边界条件和编码规范，写单测，基本做到无bug提测
+3.工作中做好计划和进度跟踪，沟通和汇报，不把问题遗留到变成事故
+4.思考和分析，如何优化目前的工作流程，引入工具和方法，提升生产效率
+5.把自己工作中用到的技术用熟，搞清楚原理，优点短处，适用场景
+6.不断接触新技术思想和工具，完善自身知识体系结构
+7.深入学习至少一个常用开源项目，源码层面系统掌握这项技术
+8.持续坚持学习和技术内容输出，每个星期产出2篇原创技术文章</description>
     </item>
     
     <item>
@@ -3334,25 +3374,6 @@ uniapp创建keystore jks 参考
       <description>教程2# 1、	创建blog  hugo new site myblog_pubcd myblog_pub/git submodule add https://github.com/chinanf-boy/gohugo-theme-yinwang.git themes/yinwang  2、	修改配置
   vi config.toml
   root@instance-x8rtph4n:/home/go/code/hugo_dir/myblog_pub/public# more ../config.toml baseURL = &amp;quot;http://ypbsyy.github.io/&amp;quot;languageCode = &amp;quot;en-us&amp;quot;title = &amp;quot;我是yaopeng&amp;quot;theme = &amp;quot;yinwang&amp;quot;#pygmentsCodeFences = true#pygmentsCodefencesGuessSyntax = false#pygmentsStyle = &amp;quot;dracula&amp;quot;#pygmentsOptions = [&#39;linenos&#39;]# 代码高亮/chroma，hugo默认自带[params]author = &amp;quot;yaopeng&amp;quot;github = &amp;quot;yaopeng&amp;quot;# gitlab = &amp;quot;yobrave&amp;quot;#googleAnalytics = &amp;quot;****&amp;quot;# 谷歌统计gtaghighlight = &amp;quot;dracula&amp;quot; # 默认样式 `github`langs = [&amp;quot;go&amp;quot;]# 默认加载 highlight.</description>
-    </item>
-    
-    <item>
-      <title>统一建模语言</title>
-      <link>https://huachengzhou.github.io/life/posts/uml/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/posts/uml/</guid>
-      <description> 统一建模语言(Unified Modeling Language，UML)是一种为面向对象系统的产品进行说明、可视化和编制文档的一种标准语言，是非专利的第三代建模和规约语言。UML是面向对象设计的建模工具，独立于任何具体程序设计语言。
- UML作为一种统一的软件建模语言具有广泛的建模能力。UML是在消化、吸收、提炼至今存在的所有软件建模语言的基础上提出的，集百家之所长，它是软件建模语言的集大成者。UML还突破了软件的限制，广泛吸收了其他领域的建模方法，并根据建模的一般原理，结合了软件的特点，因此具有坚实的理论基础和广泛性。UML不仅可以用于软件建模，还可以用于其他领域的建模工作。 [1]#UML立足于对事物的实体、性质、关系、结构、状态和动态变化过程的全程描述和反映。UML可以从不同角度描述人们所观察到的软件视图，也可以描述在不同开发阶段中的软件的形态。UML可以建立需求模型、逻辑模型、设计模型和实现模型等，但UML在建立领域模型方面存在不足，需要进行补充。 [1]#作为一种建模语言，UML有严格的语法和语义规范。UML建立在元模型理论基础上，包括4层元模型结构，分别是基元模型、元模型、模型和用户对象。4层结构层层抽象，下一层是上一层的实例。UML中的所有概念和要素均有严格的语义规范。 [1]#UML采用一组图形符号来描述软件模型，这些图形符号具有简单、直观和规范的特点，开发人员学习和掌握起来比较简单。所描述的软件模型，可以直观地理解和阅读，由于具有规范性，所以能够保证模型的准确、一致。#</description>
-    </item>
-    
-    <item>
-      <title>项目管理</title>
-      <link>https://huachengzhou.github.io/life/posts/project-management/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/posts/project-management/</guid>
-      <description>项目管理（Project Management,PM/Management by Projects,MBP）#项目管理概述#项目管理是项目的管理者，在有限的资源约束下，运用系统的观点、方法和理论，对项目涉及的全部工作进行有效地管理。即从项目的投资决策开始到项目结束的全过程进行计划、组织、指挥、协调、控制和评价，以实现项目的目标。#按照传统的做法，当企业设定了一个项目后，参与这个项目的至少会有好几个部门，包括财务部门、市场部门、行政部门等等，而不同部门在运作项目过程中不可避免地会产生摩擦，须进行协调，而这些无疑会增加项目的成本，影响项目实施的效率。#而项目管理的做法则不同。不同职能部门的成员因为某一个项目而组成团队，项目经理则是项目团队的领导者，他们所肩负的责任就是领导他的团队准时、优质地完成全部工作，在不超出预算的情况下实现项目目标。项目的管理者不仅仅是项目执行者，他参与项目的需求确定、项目选择、计划直至收尾的全过程，并在时间、成本、质量、风险、合同、采购、人力资源等各个方面对项目进行全方位的管理，因此项目管理可以帮助企业处理需要跨领域解决的复杂问题，并实现更高的运营效率。#项目管理的应用从80年代仅限于建筑、国防、航天等行业迅速发展到今天的计算机、电子通讯、金融业甚至政府机关等众多领域。#人们通常认为，项目管理是第二次世界大战的产物（如：曼哈顿计划）。在1950年至1980年期间，应用项目管理的主要是国防建设部门和建筑公司。传统的观点认为，项目管理者的工作就是单纯地完成既定的任务。#从本世纪八十年代开始，项目管理的应用扩展到其他工业领域（行业），如制药行业、电信部门、软件开发业等。项目管理者也不再被认为仅仅是项目的执行者，要求他们能胜任其它各个领域的更为广泛的工作，同时具有一定的经营技巧。美国项目管理学会（PMI）已提出了关于一个有效的专业项目管理者必须具备的几个方面的基本能力：# 项目范围管理 项目时间管理 项目费用管理 项目质量管理 项目人力资源管理 项目沟通管理 项目风险管理 项目采购管理 项目综合管理  </description>
     </item>
     
     <item>
