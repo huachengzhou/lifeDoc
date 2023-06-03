@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/</link>
+    <description>Recent content in 设计模式 on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 17 Jan 2021 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/codereview/design_pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创建型 - 单例模式(Singleton pattern)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/singleton_pattern/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/singleton_pattern/</guid>
+      <description>单例模式#</description>
+    </item>
+    
+    <item>
+      <title>创建型 - 简单工厂(Simple Factory)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/simple_factory/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/simple_factory/</guid>
+      <description>简单工厂#</description>
+    </item>
+    
+    <item>
+      <title>创建型 - 工厂方法(Factory Method)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/factory_method/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/factory_method/</guid>
+      <description>工厂方法#</description>
+    </item>
+    
+    <item>
+      <title>创建型 - 抽象工厂(Abstract Factory)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/abstract_factory/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/abstract_factory/</guid>
+      <description>抽象工厂#</description>
+    </item>
+    
+    <item>
+      <title>创建型 - 生成器(Builder)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/builder/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/builder/</guid>
+      <description>生成器#</description>
+    </item>
+    
+    <item>
+      <title>创建型 - 原型模式(Prototype)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/prototype/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/prototype/</guid>
+      <description>原型模式#</description>
+    </item>
+    
+  </channel>
+</rss>

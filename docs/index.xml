@@ -315,6 +315,15 @@ System.out.println(&amp;quot;It&#39;s a Groovy baby, yeah!&amp;quot;);def write
     </item>
     
     <item>
+      <title>创建型 - 单例模式(Singleton pattern)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/singleton_pattern/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/singleton_pattern/</guid>
+      <description>单例模式#</description>
+    </item>
+    
+    <item>
       <title>Apache Commons 工具类介绍及简单使用</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -854,6 +863,15 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
     </item>
     
     <item>
+      <title>创建型 - 简单工厂(Simple Factory)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/simple_factory/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/simple_factory/</guid>
+      <description>简单工厂#</description>
+    </item>
+    
+    <item>
       <title>学习计划</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
@@ -1237,6 +1255,15 @@ Error 类及其子类：程序中无法处理的错误，表示运行应用程�
     </item>
     
     <item>
+      <title>创建型 - 工厂方法(Factory Method)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/factory_method/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/factory_method/</guid>
+      <description>工厂方法#</description>
+    </item>
+    
+    <item>
       <title>编码规范3</title>
       <link>https://huachengzhou.github.io/life/docs/codereview/specification3/</link>
       <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
@@ -1506,6 +1533,15 @@ Phaser中是通过计数器来控制。在Phaser中计数器叫做parties， 我
     </item>
     
     <item>
+      <title>创建型 - 抽象工厂(Abstract Factory)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/abstract_factory/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/abstract_factory/</guid>
+      <description>抽象工厂#</description>
+    </item>
+    
+    <item>
       <title>mycat 学习与使用</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/middleware/mycat/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -1714,6 +1750,15 @@ https://www.codenong.com/34288451/
     </item>
     
     <item>
+      <title>创建型 - 生成器(Builder)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/builder/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/builder/</guid>
+      <description>生成器#</description>
+    </item>
+    
+    <item>
       <title>dom4j</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/tooldoc/dom4j/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -1913,6 +1958,15 @@ startUML#一:什么是UML# UML是Unified Model Language的缩写，中文�
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/print/</guid>
       <description>print用法# 简单使用  print(&amp;#39;hello world&amp;#39;)  表达式用法 print(f&amp;quot;{expression}&amp;quot;)  print(f&amp;#34;lista: {lista}&amp;#34;) print(f&amp;#34;1+1 : {1+1}&amp;#34;) </description>
+    </item>
+    
+    <item>
+      <title>创建型 - 原型模式(Prototype)</title>
+      <link>https://huachengzhou.github.io/life/docs/codereview/design_pattern/prototype/</link>
+      <pubDate>Sun, 17 Jan 2021 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/codereview/design_pattern/prototype/</guid>
+      <description>原型模式#</description>
     </item>
     
     <item>
