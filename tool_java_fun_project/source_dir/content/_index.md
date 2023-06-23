@@ -39,3 +39,12 @@ type: docs
 [java基础知识参考1](https://javaguide.cn/)
 
 [java系统技能知识参考2](https://www.pdai.tech/)
+
+
++ 学习 junit
++ 学习 测试饱满性，完整性
++ 先学习设计模式
++ 学习java 常用工具类,以及基础语法
++ 学习 idea快捷方式 debug
+
+(学英语、考公、换工作)
