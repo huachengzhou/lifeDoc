@@ -198,6 +198,9 @@ alter table tb_project_plan_details add   `bis_mobile` bit(1) DEFAULT b'0' COMME
 
 
 
+
+
+
 -- 一:处理 清单版本
 
 -- bom_dir_gbq_2003 转移到  tb_base_cost_norm_qdxm_items 中
@@ -363,7 +366,7 @@ WHERE
 	
 -- 处理材料	
 
-INSERT INTO tb_base_cost_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
 'LdRmHFky',
 MD5( UUID( ) ),
 m_name,
@@ -384,7 +387,7 @@ WHERE
 
 	
 	
-	INSERT INTO tb_base_costs_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
 MD5( UUID( ) ),
 quota_code,
 m_code,
@@ -394,7 +397,7 @@ FROM
 	
 	-- 更新  dezm_uuid
 	
-	UPDATE tb_base_costs_material_consume a_table
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
 INNER JOIN tb_base_cost_norm_dezm_items b_table ON a_table.quota_code = b_table.serial_number 
 SET a_table.dezm_uuid = b_table.uuid 
 WHERE
@@ -402,8 +405,8 @@ WHERE
 	AND a_table.dezm_uuid IS NULL ;
 
 -- 更新  cl_uuid
-UPDATE tb_base_costs_material_consume a_table
-INNER JOIN tb_base_cost_material b_table ON a_table.m_code = b_table.ggxh 
+UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_material b_table ON a_table.m_code = b_table.ggxh 
 SET a_table.cl_uuid = b_table.uuid 
 WHERE
 	1 = 1 
@@ -442,7 +445,7 @@ WHERE
 	
 -- 处理材料	
 
-INSERT INTO tb_base_cost_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
 'TuXavbSi',
 MD5( UUID( ) ),
 m_name,
@@ -461,7 +464,7 @@ WHERE
 	-- 处理关联表
 	
 	
-	INSERT INTO tb_base_costs_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
 MD5( UUID( ) ),
 quota_code,
 m_code,
@@ -504,7 +507,7 @@ WHERE
 	
 -- 处理材料	
 
-INSERT INTO tb_base_cost_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
 'tQYJwqlO',
 MD5( UUID( ) ),
 m_name,
@@ -523,7 +526,7 @@ WHERE
 	
 	
 	
-	INSERT INTO tb_base_costs_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
 MD5( UUID( ) ),
 quota_code,
 m_code,
@@ -536,7 +539,7 @@ FROM
 	
 	
 	
-	UPDATE tb_base_costs_material_consume a_table
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
 INNER JOIN tb_base_cost_norm_dezm_items b_table ON a_table.quota_code = b_table.serial_number 
 SET a_table.dezm_uuid = b_table.uuid 
 WHERE
@@ -545,10 +548,10 @@ WHERE
 	
 	
 	
-	UPDATE tb_base_costs_material_consume a_table
-INNER JOIN tb_base_cost_material b_table ON a_table.m_code = b_table.ggxh 
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_material b_table ON a_table.m_code = b_table.ggxh 
 SET a_table.cl_uuid = b_table.uuid 
 WHERE
 	1 = 1 
-	AND a_table.cl_uuid IS NULL
+	AND a_table.cl_uuid IS NULL ;
 ```
