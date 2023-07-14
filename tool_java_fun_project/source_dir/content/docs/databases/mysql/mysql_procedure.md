@@ -1126,7 +1126,7 @@ create procedure pro_cursor_base_cost_norm_dezm_material_consume()
     declare m_code_value VARCHAR(255);
 		declare v_finished INTEGER DEFAULT 0;
     -- 定义光标
-    declare get_user_data_list cursor for  select quota_code,m_code from tb_base_cost_norm_dezm_material_consume where 1=1 and quota_code is not null and m_code is not null;
+    declare get_user_data_list cursor for  select quota_code,m_code from tb_base_cost_norm_dezm_material_consume where 1=1 and quota_code is not null and m_code is not null GROUP BY quota_code,m_code ;
 		DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
     -- 打开光标
     open get_user_data_list;
@@ -1145,7 +1145,7 @@ quota_value,
 m_code_value,
 MD5( UUID( ) ),
 tb_base_cost_norm_dezm_items.uuid 
-from tb_base_cost_norm_dezm_material_consume right join tb_base_cost_norm_dezm_items on  tb_base_cost_norm_dezm_items.serial_number = tb_base_cost_norm_dezm_material_consume.quota_code where 1=1 and tb_base_cost_norm_dezm_material_consume.quota_code = quota_value ;
+from tb_base_cost_norm_dezm_material_consume right join tb_base_cost_norm_dezm_items on  tb_base_cost_norm_dezm_items.serial_number = tb_base_cost_norm_dezm_material_consume.quota_code where 1=1 and tb_base_cost_norm_dezm_material_consume.quota_code = quota_value and  tb_base_cost_norm_dezm_material_consume.m_code = m_code_value;
 		
 		
     -- 打印 获取到的数据
