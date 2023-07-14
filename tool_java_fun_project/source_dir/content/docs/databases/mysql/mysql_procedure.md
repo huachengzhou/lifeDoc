@@ -1156,6 +1156,10 @@ from tb_base_cost_norm_dezm_material_consume right join tb_base_cost_norm_dezm_i
   end;
 
 call pro_cursor_base_cost_norm_dezm_material_consume();
+
+
+SELECT serial_number, count(serial_number) as count from tb_base_cost_norm_dezm_items WHERE 1=1  GROUP BY serial_number HAVING count > 1 ;
+
 ```
 
 [参考1(重点)](https://www.jb51.net/article/70677.htm)
