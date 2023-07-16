@@ -29,7 +29,9 @@ run config $MODULE_DIR$
 
 
 
++ You aren‘t using a compiler supported by lombok, so lombok will not work and has been disabled
 
+Compiler Shared build process Vm options 加上 -Djps.track.ap.dependencies=false
 
 
 
