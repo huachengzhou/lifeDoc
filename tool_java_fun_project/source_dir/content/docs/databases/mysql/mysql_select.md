@@ -329,11 +329,47 @@ select customers.cust_id,orders.order_num from customers left outer join orders 
 
 ### 使用带聚集函数的联结
 
-## 四:分组查询、过滤
+## 四:分组查询、过滤、EXISTS
 
 ```mysql
 select count(id)as count,age,birthday from temp_date group by age ;
 select count(id)as count,age,birthday from temp_date group by age having age > 20 and count > 10 ;
+```
++ exists (里面一定是返回布尔值)
+exists (expression)  sql 返回结果集为真
+not  exists (expression)  sql 不返回结果集为真
+
+```mysql
+
+-- 取满足条件的
+
+SELECT
+	* 
+FROM
+	tb_school_fraction_info 
+WHERE
+	1 = 1 
+	AND EXISTS ( SELECT * FROM tb_school_fraction_info_base WHERE tb_school_fraction_info_base.school = tb_school_fraction_info.school ) 
+GROUP BY
+	school 
+ORDER BY
+	school 
+	LIMIT 100;
+	
+-- 取不满足条件的数据	
+	
+SELECT
+	* 
+FROM
+	tb_school_fraction_info 
+WHERE
+	1 = 1 
+	AND NOT EXISTS ( SELECT * FROM tb_school_fraction_info_base WHERE tb_school_fraction_info_base.school = tb_school_fraction_info.school AND tb_school_fraction_info_base.id > 2000 ) 
+GROUP BY
+	school 
+ORDER BY
+	school 
+	LIMIT 100;
 ```
 
 

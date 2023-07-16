@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="一:创建计算字段
@@ -41,14 +41,15 @@
 
    函数 描述     ABS() 返回数值的绝对值   CEIL() 对小数向上取整 CEIL(1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_select/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mysql新查询 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.b0aff4b9fcd65866f72b23e4d244894e4f160dd76c539774d742f6ace9c281ca.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.d518604aad265ce2c8962a38561b43d6fea81c8f24c730999a8387eb9a1c9644.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5050,7 +5051,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -5102,7 +5103,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#使用带聚集函数的联结">使用带聚集函数的联结</a></li>
           </ul>
         </li>
-        <li><a href="#四分组查询过滤">四:分组查询、过滤</a></li>
+        <li><a href="#四分组查询过滤exists">四:分组查询、过滤、EXISTS</a></li>
         <li><a href="#五全文搜索">五:全文搜索</a>
           <ul>
             <li><a href="#ngram全文解析器">ngram全文解析器</a></li>
@@ -5615,12 +5616,47 @@ END ;
   使用带聚集函数的联结
   <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%b8%a6%e8%81%9a%e9%9b%86%e5%87%bd%e6%95%b0%e7%9a%84%e8%81%94%e7%bb%93">#</a>
 </h3>
-<h2 id="四分组查询过滤">
-  四:分组查询、过滤
-  <a class="anchor" href="#%e5%9b%9b%e5%88%86%e7%bb%84%e6%9f%a5%e8%af%a2%e8%bf%87%e6%bb%a4">#</a>
+<h2 id="四分组查询过滤exists">
+  四:分组查询、过滤、EXISTS
+  <a class="anchor" href="#%e5%9b%9b%e5%88%86%e7%bb%84%e6%9f%a5%e8%af%a2%e8%bf%87%e6%bb%a4exists">#</a>
 </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">select</span> <span style="color:#a6e22e">count</span>(id)<span style="color:#66d9ef">as</span> count,age,birthday <span style="color:#66d9ef">from</span> temp_date <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> age ;
 <span style="color:#66d9ef">select</span> <span style="color:#a6e22e">count</span>(id)<span style="color:#66d9ef">as</span> count,age,birthday <span style="color:#66d9ef">from</span> temp_date <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> age <span style="color:#66d9ef">having</span> age <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20</span> <span style="color:#66d9ef">and</span> count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span> ;
+</code></pre></div><ul>
+<li>exists (里面一定是返回布尔值)
+exists (expression)  sql 返回结果集为真
+not  exists (expression)  sql 不返回结果集为真</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 取满足条件的
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span>
+	<span style="color:#f92672">*</span> 
+<span style="color:#66d9ef">FROM</span>
+	tb_school_fraction_info 
+<span style="color:#66d9ef">WHERE</span>
+	<span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+	<span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">EXISTS</span> ( <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> tb_school_fraction_info_base <span style="color:#66d9ef">WHERE</span> tb_school_fraction_info_base.school <span style="color:#f92672">=</span> tb_school_fraction_info.school ) 
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span>
+	school 
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+	school 
+	<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">100</span>;
+	
+<span style="color:#75715e">-- 取不满足条件的数据	
+</span><span style="color:#75715e"></span>	
+<span style="color:#66d9ef">SELECT</span>
+	<span style="color:#f92672">*</span> 
+<span style="color:#66d9ef">FROM</span>
+	tb_school_fraction_info 
+<span style="color:#66d9ef">WHERE</span>
+	<span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+	<span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> ( <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> tb_school_fraction_info_base <span style="color:#66d9ef">WHERE</span> tb_school_fraction_info_base.school <span style="color:#f92672">=</span> tb_school_fraction_info.school <span style="color:#66d9ef">AND</span> tb_school_fraction_info_base.id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2000</span> ) 
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span>
+	school 
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+	school 
+	<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">100</span>;
 </code></pre></div><h2 id="五全文搜索">
   五:全文搜索
   <a class="anchor" href="#%e4%ba%94%e5%85%a8%e6%96%87%e6%90%9c%e7%b4%a2">#</a>
@@ -6919,7 +6955,7 @@ Innodb引擎的表用count(*),count(1)直接读行数，复杂度是O(n)，因�
             <li><a href="#使用带聚集函数的联结">使用带聚集函数的联结</a></li>
           </ul>
         </li>
-        <li><a href="#四分组查询过滤">四:分组查询、过滤</a></li>
+        <li><a href="#四分组查询过滤exists">四:分组查询、过滤、EXISTS</a></li>
         <li><a href="#五全文搜索">五:全文搜索</a>
           <ul>
             <li><a href="#ngram全文解析器">ngram全文解析器</a></li>

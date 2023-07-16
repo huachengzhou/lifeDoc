@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="锁分类
@@ -51,14 +51,15 @@
 当只有一个线程或者多个线程中最先执行到同步块的时候 这个时候测试完没有偏向锁立即设置完对应的标识记录和锁记录就开始执行同步代码了, 假如下次再进入并且锁没有升级那么仅仅简单测试通过又继续执行了 在这最开始到结束全程没有各种加锁操作甚至连CAS都很有可能没有(是有可能有CASC操作的这涉及到偏向锁的撤销机制) 相比同步操作消耗很少 因此很划算的 当有多个线程竞争锁的时候 这个时候系统检测到了并且达到了锁升级的约束条件那么就会立即执行升级操作即便获得执行条件正在的线程 (当然必须等执行线程中的某个原子操作或者若干原子操作组成的原语)也要对锁记录进行升级然后才开始升级 优点: 把整个同步都消除掉，连CAS操作都不去做了，优于轻量级锁 缺点: 如果程序中大多数的锁都总是被多个不同的线程访问，那偏向锁就是多余的   偏向锁是JDK6时加入的一种锁优化机制
   锁的撤销" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/essential_glossary/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/essential_glossary/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>关键名词解释 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.b0aff4b9fcd65866f72b23e4d244894e4f160dd76c539774d742f6ace9c281ca.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.d518604aad265ce2c8962a38561b43d6fea81c8f24c730999a8387eb9a1c9644.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5060,7 +5061,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
