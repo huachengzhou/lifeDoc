@@ -190,3 +190,368 @@ ORDER BY
 alter table tb_project_plan_details add   `bis_mobile` bit(1) DEFAULT b'0' COMMENT '是否为移动端创建';
 
 ```
+
+
+## 查询插入
+
+```mysql
+
+
+
+
+
+
+-- 一:处理 清单版本
+
+-- bom_dir_gbq_2003 转移到  tb_base_cost_norm_qdxm_items 中
+
+
+-- 2003版本 tb_base_cost_norm_dezm uuid = 'ZQF8pnF4'
+
+
+-- 删除2003版本的数据
+
+delete  from tb_base_cost_norm_qdxm_items  WHERE version = 'ZQF8pnF4';
+
+-- 批量插入数据
+
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'ZQF8pnF4',
+MD5( UUID( ) ),
+dir_code,
+dir_name,
+dir_name,
+class_tag,
+CONCAT( start_quota_code, '-', end_quota_code ) 
+FROM
+	pmcc_costs.bom_dir_gbq_2003 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_dir_gbq_2003.dir_code is not null  ;
+	
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'ZQF8pnF4',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+project_feature,
+project_content
+
+FROM
+	pmcc_costs.bom_quota_gbq_2003 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_gbq_2003.quota_code is not null  ;
+
+	
+	
+
+-- bom_dir_gbq_2008 转移到  tb_base_cost_norm_qdxm_items 中
+
+
+-- 2008版本 tb_base_cost_norm_dezm uuid = 'N1BryK2L'
+
+
+-- 删除2008版本的数据
+
+delete  from tb_base_cost_norm_qdxm_items  WHERE version = 'N1BryK2L';
+
+-- 批量插入数据
+
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'N1BryK2L',
+MD5( UUID( ) ),
+dir_code,
+dir_name,
+dir_name,
+class_tag,
+CONCAT( start_quota_code, '-', end_quota_code ) 
+FROM
+	pmcc_costs.bom_dir_gbq_2008 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_dir_gbq_2008.dir_code is not null  ;
+	
+	
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'N1BryK2L',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+project_feature,
+project_content 
+FROM
+	pmcc_costs.bom_quota_gbq_2008 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_gbq_2008.quota_code IS NOT NULL;
+	
+	
+	
+
+-- bom_dir_gbq_qg 转移到  tb_base_cost_norm_qdxm_items 中
+
+
+-- qg版本 tb_base_cost_norm_dezm uuid = 'J1fdFWPW'
+
+
+-- 删除(全国)qg版本的数据
+
+delete  from tb_base_cost_norm_qdxm_items  WHERE version = 'J1fdFWPW';
+
+-- 批量插入数据
+
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'J1fdFWPW',
+MD5( UUID( ) ),
+dir_code,
+dir_name,
+dir_name,
+class_tag,
+CONCAT( start_quota_code, '-', end_quota_code ) 
+FROM
+	pmcc_costs.bom_dir_gbq_qg 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_dir_gbq_qg.dir_code is not null  ;
+
+
+INSERT INTO tb_base_cost_norm_qdxm_items ( version, uuid, serial_number, NAME, units_name, project_feature, project_content ) SELECT
+'J1fdFWPW',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+project_feature,
+calculation_rules
+FROM
+	pmcc_costs.bom_quota_gbq_qg 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_gbq_qg.quota_code is not null  ;
+	
+	
+	
+-- 二:开始处理定额版本
+
+ -- 2009
+ 
+ delete  from tb_base_cost_norm_dezm_items  WHERE version = 'LdRmHFky';
+
+
+-- 处理定额版本详细
+
+INSERT INTO tb_base_cost_norm_dezm_items ( version, uuid, serial_number, name,units_name, base_price,rgf,clf,jxf,zhf,project_feature,project_content ) SELECT
+'LdRmHFky',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+base_price,
+cost_of_labor,
+cost_of_raw_materials,
+cost_of_mechanical,
+cost_of_comprehensive,
+project_feature,
+project_content
+
+
+FROM
+	pmcc_costs.bom_quota_sc_2009 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_sc_2009.quota_code is not null  ;
+	
+-- 处理材料	
+
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+'LdRmHFky',
+MD5( UUID( ) ),
+m_name,
+m_code,
+m_price,
+m_units
+
+FROM
+	pmcc_costs.bom_material_sc_2009 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_material_sc_2009.m_code is not null  ;
+	
+	
+	
+-- 处理关联表
+
+
+	
+	
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+MD5( UUID( ) ),
+quota_code,
+m_code,
+m_consume 
+FROM
+	pmcc_costs.bom_material_consume_sc_2009;
+	
+	-- 更新  dezm_uuid
+	
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_items b_table ON a_table.quota_code = b_table.serial_number 
+SET a_table.dezm_uuid = b_table.uuid 
+WHERE
+	1 = 1 
+	AND a_table.dezm_uuid IS NULL ;
+
+-- 更新  cl_uuid
+UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_material b_table ON a_table.m_code = b_table.ggxh 
+SET a_table.cl_uuid = b_table.uuid 
+WHERE
+	1 = 1 
+	AND a_table.cl_uuid IS NULL 
+	AND b_table.version = 'LdRmHFky' ;
+-- 处理 2015 
+
+
+ delete  from tb_base_cost_norm_dezm_items  WHERE version = 'TuXavbSi';
+ 
+ 
+ -- 处理定额版本详细
+ 
+ INSERT INTO tb_base_cost_norm_dezm_items ( version, uuid, serial_number, name,units_name, base_price,rgf,clf,jxf,zhf,project_feature,project_content ) SELECT
+'TuXavbSi',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+base_price,
+cost_of_labor,
+cost_of_raw_materials,
+cost_of_mechanical,
+cost_of_comprehensive,
+project_feature,
+project_content
+
+
+FROM
+	pmcc_costs.bom_quota_sc_2015 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_sc_2015.quota_code is not null  ;
+	
+	
+	
+-- 处理材料	
+
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+'TuXavbSi',
+MD5( UUID( ) ),
+m_name,
+m_code,
+m_price,
+m_units
+
+FROM
+	pmcc_costs.bom_material_sc_2015 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_material_sc_2015.m_code is not null  ;
+	
+	
+	
+	-- 处理关联表
+	
+	
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+MD5( UUID( ) ),
+quota_code,
+m_code,
+m_consume 
+FROM
+	pmcc_costs.bom_material_consume_sc_2015;
+	
+	
+	
+-- 处理2020 
+
+
+ delete  from tb_base_cost_norm_dezm_items  WHERE version = 'tQYJwqlO';
+ 
+ 
+  -- 处理定额版本详细
+ 
+ INSERT INTO tb_base_cost_norm_dezm_items ( version, uuid, serial_number, name,units_name, base_price,rgf,clf,jxf,zhf,project_feature,project_content ) SELECT
+'tQYJwqlO',
+MD5( UUID( ) ),
+quota_code,
+quota_name,
+units,
+base_price,
+cost_of_labor,
+cost_of_raw_materials,
+cost_of_mechanical,
+cost_of_comprehensive,
+project_feature,
+project_content
+
+
+FROM
+	pmcc_costs.bom_quota_sc_2020 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_quota_sc_2020.quota_code is not null  ;
+	
+	
+	
+-- 处理材料	
+
+INSERT INTO tb_base_cost_norm_dezm_material ( version, uuid, name, ggxh,unit_price, units_name ) SELECT
+'tQYJwqlO',
+MD5( UUID( ) ),
+m_name,
+m_code,
+m_price,
+m_units
+
+FROM
+	pmcc_costs.bom_material_sc_2020 
+WHERE
+	1 = 1 
+	AND pmcc_costs.bom_material_sc_2020.m_code is not null  ;
+	
+	
+	-- 处理关联表
+	
+	
+	
+	INSERT INTO tb_base_cost_norm_dezm_material_consume ( uuid, quota_code, m_code, cl_consume ) SELECT
+MD5( UUID( ) ),
+quota_code,
+m_code,
+m_consume 
+FROM
+	pmcc_costs.bom_material_consume_sc_2020;
+	
+	
+	-- 更新关联表 id
+	
+	
+	
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_items b_table ON a_table.quota_code = b_table.serial_number 
+SET a_table.dezm_uuid = b_table.uuid 
+WHERE
+	1 = 1 
+	AND a_table.dezm_uuid IS NULL ;
+	
+	
+	
+	UPDATE tb_base_cost_norm_dezm_material_consume a_table
+INNER JOIN tb_base_cost_norm_dezm_material b_table ON a_table.m_code = b_table.ggxh 
+SET a_table.cl_uuid = b_table.uuid 
+WHERE
+	1 = 1 
+	AND a_table.cl_uuid IS NULL ;
+```

@@ -1063,7 +1063,104 @@ CREATE TEMPORARY TABLE temp_table_name
 SELECT * FROM original_table
 LIMIT 0;
 ```
++ 公司实际例子 1
 
+
+```mysql
+
+drop procedure if exists pro_cursor_base_cost_norm_dezm_material;
+
+delimiter ;
+create procedure pro_cursor_base_cost_norm_dezm_material(in custom_year int(20) , in custom_version VARCHAR(255))
+  begin
+    declare uuid_value VARCHAR(255);
+    declare code_value VARCHAR(255);
+		declare v_finished INTEGER DEFAULT 0;
+    -- 定义光标
+    declare get_user_data_list cursor for  select `uuid`,`code`	from `tb_base_cost_norm_dezm` where year = custom_year and speciality_number is not null  GROUP BY speciality_number;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+    -- 打开光标
+    open get_user_data_list;
+		while v_finished != 1 
+		do 
+		  -- 获取光标
+    fetch get_user_data_list   into uuid_value, code_value;
+		
+		
+		INSERT INTO tb_base_cost_norm_dezm_material_copy1 ( version, version_code,uuid, name, m_code,ggxh, unit_price,units_name ) SELECT
+uuid_value,
+code_value,
+MD5( UUID( ) ),
+name,
+m_code,
+ggxh,
+unit_price,
+units_name
+FROM
+	tb_base_cost_norm_dezm_material_copy1 
+WHERE
+	1 = 1 
+	AND tb_base_cost_norm_dezm_material_copy1.version =  custom_version ;
+		
+		
+    -- 打印 获取到的数据
+    select concat('uuid: ',uuid_value,' code: ',code_value) as print_data;
+		end while ;
+    -- 关闭光标
+    close get_user_data_list;
+  end;
+
+call pro_cursor_base_cost_norm_dezm_material(2015,'TuXavbSi');
+```
+
+
++ 公司实际例子2
+
+```mysql
+drop procedure if exists pro_cursor_base_cost_norm_dezm_material_consume;
+
+delimiter ;
+create procedure pro_cursor_base_cost_norm_dezm_material_consume()
+  begin
+    declare quota_value VARCHAR(255);
+    declare m_code_value VARCHAR(255);
+		declare v_finished INTEGER DEFAULT 0;
+    -- 定义光标
+    declare get_user_data_list cursor for  select quota_code,m_code from tb_base_cost_norm_dezm_material_consume where 1=1 and quota_code is not null and m_code is not null GROUP BY quota_code,m_code ;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+    -- 打开光标
+    open get_user_data_list;
+		while v_finished != 1 
+		do 
+		  -- 获取光标
+    fetch get_user_data_list   into quota_value, m_code_value;
+		
+		
+		
+		
+		
+		
+		INSERT INTO tb_base_cost_norm_dezm_material_consume_copy1 ( quota_code, m_code,uuid, dezm_uuid ) SELECT
+quota_value,
+m_code_value,
+MD5( UUID( ) ),
+tb_base_cost_norm_dezm_items.uuid 
+from tb_base_cost_norm_dezm_material_consume right join tb_base_cost_norm_dezm_items on  tb_base_cost_norm_dezm_items.serial_number = tb_base_cost_norm_dezm_material_consume.quota_code where 1=1 and tb_base_cost_norm_dezm_material_consume.quota_code = quota_value and  tb_base_cost_norm_dezm_material_consume.m_code = m_code_value;
+		
+		
+    -- 打印 获取到的数据
+    select concat('quota_code: ',quota_value,' m_code: ',m_code_value) as print_data;
+		end while ;
+    -- 关闭光标
+    close get_user_data_list;
+  end;
+
+call pro_cursor_base_cost_norm_dezm_material_consume();
+
+
+SELECT serial_number, count(serial_number) as count from tb_base_cost_norm_dezm_items WHERE 1=1  GROUP BY serial_number HAVING count > 1 ;
+
+```
 
 [参考1(重点)](https://www.jb51.net/article/70677.htm)
 
