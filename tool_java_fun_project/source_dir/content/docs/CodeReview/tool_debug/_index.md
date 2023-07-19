@@ -11,6 +11,11 @@ bookCollapseSection: true
 
 + debug 调试
 
+```idea
+ projectFormDataChangeLogService.deleteProjectFormDataChangeLogByBusinessUuid(deleteItemUuids) ;
+\w+.deleteProjectFormDataChangeLogByBusinessUuid\(\w+\);
+```
+
 # chrome
 
 + debug 调试
