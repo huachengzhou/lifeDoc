@@ -4,6 +4,30 @@
     <title>所悟所想</title>
     <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/</link>
     <description>Recent content on 所悟所想</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 17 Jan 2020 15:26:15 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ik分词器(analysis)</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/ik/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/ik/</guid>
+      <description>分词器#什么是 Analysis#顾名思义，文本分析就是把全文本转换成一系列单词（term/token）的过程，也叫分词。在 ES 中，Analysis 是通过分词器（Analyzer） 来实现的，可使用 ES 内置的分析器或者按需定制化分析器。
+举一个分词简单的例子：比如你输入 Mastering Elasticsearch，会自动帮你分成两个单词，一个是 mastering，另一个是 elasticsearch，可以看出单词也被转化成了小写的。
+分词器的组成# 分词器是专门处理分词的组件，分词器由以下三部分组成：
+  Character Filters：针对原始文本处理，比如去除 html 标签 Tokenizer：按照规则切分为单词，比如按照空格切分 Token Filters：将切分的单词进行加工，比如大写转小写，删除 stopwords，增加同义语  同时 Analyzer 三个部分也是有顺序的，从图中可以看出，从上到下依次经过 Character Filters，Tokenizer 以及 Token Filters，这个顺序比较好理解，一个文本进来肯定要先对文本数据进行处理，再去分词，最后对分词的结果进行过滤。
+ES 分词器#默认分词器 (Stamdard Analyzer)#var myHeaders = new Headers(); myHeaders.append(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;); var raw = JSON.stringify({ &amp;#34;analyzer&amp;#34;: &amp;#34;standard&amp;#34;, &amp;#34;text&amp;#34;: &amp;#34;In 2020, Java is the best language in the world.</description>
+    </item>
+    
+    <item>
+      <title>(集群)</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/</guid>
+      <description>elasticsearch-cluster#配置# 约定 配三台服务器
+ 第一个节点## ======================== Elasticsearch Configuration =========================## NOTE: Elasticsearch comes with reasonable defaults for most settings.# Before you set out to tweak and tune the configuration, make sure you# understand what are you trying to accomplish and the consequences.## The primary way of configuring a node is via this file. This template lists# the most important settings you may want to configure for a production cluster.</description>
+    </item>
+    
   </channel>
 </rss>

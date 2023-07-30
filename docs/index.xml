@@ -372,6 +372,19 @@ The following lines are desirable for IPv6 capable hosts#::1 ip6-localhost ip
     </item>
     
     <item>
+      <title>ik分词器(analysis)</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/ik/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/ik/</guid>
+      <description>分词器#什么是 Analysis#顾名思义，文本分析就是把全文本转换成一系列单词（term/token）的过程，也叫分词。在 ES 中，Analysis 是通过分词器（Analyzer） 来实现的，可使用 ES 内置的分析器或者按需定制化分析器。
+举一个分词简单的例子：比如你输入 Mastering Elasticsearch，会自动帮你分成两个单词，一个是 mastering，另一个是 elasticsearch，可以看出单词也被转化成了小写的。
+分词器的组成# 分词器是专门处理分词的组件，分词器由以下三部分组成：
+  Character Filters：针对原始文本处理，比如去除 html 标签 Tokenizer：按照规则切分为单词，比如按照空格切分 Token Filters：将切分的单词进行加工，比如大写转小写，删除 stopwords，增加同义语  同时 Analyzer 三个部分也是有顺序的，从图中可以看出，从上到下依次经过 Character Filters，Tokenizer 以及 Token Filters，这个顺序比较好理解，一个文本进来肯定要先对文本数据进行处理，再去分词，最后对分词的结果进行过滤。
+ES 分词器#默认分词器 (Stamdard Analyzer)#var myHeaders = new Headers(); myHeaders.append(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;); var raw = JSON.stringify({ &amp;#34;analyzer&amp;#34;: &amp;#34;standard&amp;#34;, &amp;#34;text&amp;#34;: &amp;#34;In 2020, Java is the best language in the world.</description>
+    </item>
+    
+    <item>
       <title>Linux下设置和查看环境变量</title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
@@ -894,6 +907,16 @@ lambda 函数可接受任意数量的参数，但只能有一个表达式
       
       <guid>https://huachengzhou.github.io/life/docs/codereview/specification2/</guid>
       <description>编码规范#空格空行:# 1.代码中禁止出现无意义空行. 2.尽量使用注释来代替空行,实在不需要注释的地方,并且与上文逻辑有明显区分的可使用空行分隔 3.在该打空格的地方必须打空格,比如运算符前后,等号前后,for循环中的分号后,if或者for等关键字后可以不打空格. 4.空格和缩进格式可使用Ctrl+K+F让VS使用默认的格式进行调整.  命名规范:# 1.类名命名单词首字母大写. 2.类成员变量以m开头,后面的单词首字母大写,必须保证单词拼写正确. 3.函数中的临时变量以小写开头,后面的单词首字母大写. 4.函数名首字母小写. 5.部分情况下使用缩写时允许以大写字母开头,但是仍需要尽量避免这种情况. 6.回调函数以on开头,非回调函数禁止以on开头.且回调函数权限为protected. 7.以set开头的函数应该只用于根据参数设置成员变量的值,而不能做其他的事情. 8.以get开头的函数尽量不要在函数内对成员变量有修改. 9.明确is,if,can此类单词的含义,is是否,if如果,can能否,一般用于获取一个bool状态时尽量使用is 10.枚举名为全大写,单词之间以下划线分隔. 11.枚举值为全大写,单词之间以下划线分隔,可以不使用枚举名首字母为前缀.  代码结构:# 1.类成员变量写在类的开头,并且访问权限为保护. 2.不允许在函数之间插入成员变量定义. 3.类函数写在成员变量之后,先写公有函数,然后加分割线,再写保护的函数. 4.不允许出现不同访问权限的函数混合排布. 5.如果一个函数的代码只有一行,则可以将整个函数写成一行,比如简单的的get和set函数 6.if下必须添加大括号,即使只有一行也需要添加大括号.  常量:# 1.禁止在代码中出现意义不明的数字,需要定义常量或者枚举来代替. 2.非显示类的字符串必须定义为常量.比如某个资源的名字等 3.不需要使用readonly标识运行时常量,一般只使用编译时常量即可  注释:# 1.提交的代码中禁止出现被注释的代码. 2.禁止使用除了双斜杠以外的注释形式.比如/**/局部注释,///注释 3.行注释双斜杠后需要加一个空格. 4.在代码逻辑不是非常浅显易懂的地方应该添加相应的注释,提高代码阅读效率. 5.尽量在成员变量后添加注释,用于说明此变量用处,以及使用方式等等. 6.成员变量注释或者枚举类型的注释需要对齐.  其他:#</description>
+    </item>
+    
+    <item>
+      <title>(集群)</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/</guid>
+      <description>elasticsearch-cluster#配置# 约定 配三台服务器
+ 第一个节点## ======================== Elasticsearch Configuration =========================## NOTE: Elasticsearch comes with reasonable defaults for most settings.# Before you set out to tweak and tune the configuration, make sure you# understand what are you trying to accomplish and the consequences.## The primary way of configuring a node is via this file. This template lists# the most important settings you may want to configure for a production cluster.</description>
     </item>
     
     <item>
