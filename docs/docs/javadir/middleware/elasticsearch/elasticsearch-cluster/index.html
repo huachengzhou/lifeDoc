@@ -51,7 +51,7 @@
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.1b5135a43cb39a0b7df46526b5ee7d3e613522e9551262f904353aa845818d15.js"  ></script>
+<script defer src="./../../../../../en.search.min.ad50b8cd85f2629fd9ffdec58bc9ce7476cc9168f38990cada37b6d01f5cc5ba.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5120,6 +5120,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#kibana">Kibana</a></li>
           </ul>
         </li>
+        <li><a href="#其它">其它</a></li>
       </ul>
     </li>
   </ul>
@@ -5522,6 +5523,21 @@ http.cors.allow-credentials: true
   Kibana
   <a class="anchor" href="#kibana">#</a>
 </h3>
+<ul>
+<li>Kibana是一个Web应用程序，你可以通过5601来访问它。</li>
+<li>7.x的版本已经是极简风格了，左侧的菜单栏也都是极简的图标风格，但是主要的功能如下：</li>
+<li>Kibana可视化管理页面详细使用说明</li>
+<li>使用浏览器访问例如：localhost:5601 默认端口，进入首页</li>
+<li>Discover：日志管理视图 主要进行搜索和查询</li>
+<li>Visualize：统计视图 构建可视化的图表</li>
+<li>Dashboard：仪表视图 将构建的图表组合形成图表盘</li>
+<li>Timelion：时间轴视图 随着时间流逝的数据</li>
+<li>APM：性能管理视图 应用程序的性能管理系统</li>
+<li>Canvas：大屏展示图</li>
+<li>Dev Tools： 开发者命令视图 开发工具</li>
+<li>Monitoring：健康视图 请求访问性能预警</li>
+<li>Management：管理视图 管理工具</li>
+</ul>
 <pre><code class="language-conf" data-lang="conf"># Kibana is served by a back end server. This setting specifies the port to use.
 #server.port: 5601
 
@@ -5638,9 +5654,123 @@ elasticsearch.hosts: [&quot;http://127.0.0.1:9200&quot;, &quot;http://127.0.0.1:
 
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
-#i18n.locale: &quot;en&quot;
+i18n.locale: &quot;zh-CN&quot;
 
-</code></pre><p><a href="https://www.cnblogs.com/chenyanbin/p/13493920.html#%E9%85%8D%E7%BD%AEkibana">参考1</a></p>
+
+</code></pre><ul>
+<li>
+<p>索引模式</p>
+<blockquote>
+<p>添加索引</p>
+</blockquote>
+</li>
+<li>
+<p>Discover 中</p>
+<blockquote>
+<p>利用添加的索引模式 查看数据</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="其它">
+  其它
+  <a class="anchor" href="#%e5%85%b6%e5%ae%83">#</a>
+</h2>
+<ul>
+<li>检查集群健康状态</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestOptions</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
+  <span style="color:#a6e22e">redirect</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;follow&#39;</span>
+};
+
+<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:9200/_cat/health?v&#34;</span>, <span style="color:#a6e22e">requestOptions</span>)
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>())
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>))
+  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">error</span>));
+
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">epoch      timestamp cluster      status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
+</span><span style="color:#75715e">1690721429 12:50:29  my-bootstrap green           3         3     20  10    0    0        0             0                  -                100.0%
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">  */</span>
+</code></pre></div><ul>
+<li>获取集群中节点的列表</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestOptions</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
+  <span style="color:#a6e22e">redirect</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;follow&#39;</span>
+};
+
+<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:9200/_cat/nodes?v&#34;</span>, <span style="color:#a6e22e">requestOptions</span>)
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>())
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>))
+  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">error</span>));
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+</span><span style="color:#75715e">127.0.0.1           29          68  20                          dilmrt    -      node-1
+</span><span style="color:#75715e">127.0.0.1           16          68  12                          dilmrt    -      node-3
+</span><span style="color:#75715e">127.0.0.1           31          68  17                          dilmrt    *      node-2
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">*/</span>
+</code></pre></div><ul>
+<li>获取所有分片的信息参数</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestOptions</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
+  <span style="color:#a6e22e">redirect</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;follow&#39;</span>
+};
+
+<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:9200/_cat/indices?v&#34;</span>, <span style="color:#a6e22e">requestOptions</span>)
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>())
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>))
+  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">error</span>));
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  health status index                          uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+</span><span style="color:#75715e">green  open   .kibana-event-log-7.8.0-000001 leckoQnzTWycaQi_rIvmoQ   1   1          1            0     10.6kb          5.3kb
+</span><span style="color:#75715e">green  open   book2                          KRexSOorR1it17bSClzGSg   1   1          0            0       416b           208b
+</span><span style="color:#75715e">green  open   cars                           8wWe-fscTLO9VYEi_fNm-Q   1   1          8            0     10.4kb          5.2kb
+</span><span style="color:#75715e">green  open   .apm-custom-link               IZVh3QEtTb-QDl5go8UP8g   1   1          0            0       416b           208b
+</span><span style="color:#75715e">green  open   .kibana_task_manager_1         wxKwqAHySzOXSPL3f-DHlA   1   1          5            0       29kb         14.5kb
+</span><span style="color:#75715e">green  open   .apm-agent-configuration       Hb1HIqQLSoOaj_Ke50JThQ   1   1          0            0       416b           208b
+</span><span style="color:#75715e">green  open   .kibana_1                      BpEJkkh2RCKpWKMfBgBaBw   1   1         26            7      138kb           69kb
+</span><span style="color:#75715e">green  open   user                           pawJ4cqlRlqZd2xNWe4ppw   1   1          4            0     10.1kb            5kb
+</span><span style="color:#75715e">green  open   shopping                       KLV8BfnjR1awSNnTXiWrJg   1   1          1            0     16.5kb          8.2kb
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">  */</span>
+</code></pre></div><ul>
+<li>单个节点信息</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">requestOptions</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>,
+  <span style="color:#a6e22e">redirect</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;follow&#39;</span>
+};
+
+<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:9200?pretty&#34;</span>, <span style="color:#a6e22e">requestOptions</span>)
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>())
+  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>))
+  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">error</span>));
+
+  <span style="color:#75715e">/*
+</span><span style="color:#75715e">  {
+</span><span style="color:#75715e">    &#34;name&#34;: &#34;node-1&#34;,
+</span><span style="color:#75715e">    &#34;cluster_name&#34;: &#34;my-bootstrap&#34;,
+</span><span style="color:#75715e">    &#34;cluster_uuid&#34;: &#34;uS-eNJGZRYaxbZoB0AAxZQ&#34;,
+</span><span style="color:#75715e">    &#34;version&#34;: {
+</span><span style="color:#75715e">        &#34;number&#34;: &#34;7.8.0&#34;,
+</span><span style="color:#75715e">        &#34;build_flavor&#34;: &#34;default&#34;,
+</span><span style="color:#75715e">        &#34;build_type&#34;: &#34;zip&#34;,
+</span><span style="color:#75715e">        &#34;build_hash&#34;: &#34;757314695644ea9a1dc2fecd26d1a43856725e65&#34;,
+</span><span style="color:#75715e">        &#34;build_date&#34;: &#34;2020-06-14T19:35:50.234439Z&#34;,
+</span><span style="color:#75715e">        &#34;build_snapshot&#34;: false,
+</span><span style="color:#75715e">        &#34;lucene_version&#34;: &#34;8.5.1&#34;,
+</span><span style="color:#75715e">        &#34;minimum_wire_compatibility_version&#34;: &#34;6.8.0&#34;,
+</span><span style="color:#75715e">        &#34;minimum_index_compatibility_version&#34;: &#34;6.0.0-beta1&#34;
+</span><span style="color:#75715e">    },
+</span><span style="color:#75715e">    &#34;tagline&#34;: &#34;You Know, for Search&#34;
+</span><span style="color:#75715e">}
+</span><span style="color:#75715e">  */</span>
+</code></pre></div><p><a href="https://www.cnblogs.com/chenyanbin/p/13493920.html#%E9%85%8D%E7%BD%AEkibana">参考1</a></p>
 </article>
  
       
@@ -5894,6 +6024,7 @@ elasticsearch.hosts: [&quot;http://127.0.0.1:9200&quot;, &quot;http://127.0.0.1:
             <li><a href="#kibana">Kibana</a></li>
           </ul>
         </li>
+        <li><a href="#其它">其它</a></li>
       </ul>
     </li>
   </ul>

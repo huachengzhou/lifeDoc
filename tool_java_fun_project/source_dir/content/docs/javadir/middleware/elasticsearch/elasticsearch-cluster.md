@@ -8,7 +8,55 @@ weight: 2
 # elasticsearch-cluster
 
 
+## Cluster集群
 
+> 一个ElasticSearch集群由一个或多个节点(Node)组成，每个集群都有一个共同的集群名称作为标识。
+
+
+## Node节点
+
+一个ElasticSearch实例即一个Node，一台机器可以有多个实例，正常使用下每个实例应该会部署在不同机器上。ElasticSearch的配置文件中可以通过node.master、node.data来设置节点类型。
+
+　　node.master：表示节点是否具有称为主节点的资格
+
+　　　　true代表的是有资格竞选主节点
+
+　　　　false代表的是没有资格竞选主节点
+
+　　node.data：表示节点是否存储数据
+
+## Node节点组合
+
+### 主节点+数据节点(master+data)
+
+> 节点即有称为主节点的资格，又存储数据
+
+```dos
+node.master: true
+node.data: true
+```
+
+### 数据节点(data)
+
+> 节点没有成为主节点的资格，不参与选举，只会存储数据
+
+```dos
+node.master: false
+node.data: true
+```
+
+### 客户端节点(client)
+
+> 不会成为主节点，也不会存储数据，主要是针对海量请求的时候，可以进行负载均衡
+
+```dos
+node.master: false
+node.data: false
+```
+
+### 分片
+
+每个索引有一个或多个分片，每个分片存储不同的数据。分片可分为主分片(primary shard)和复制分片(replica shard)，复制分片是主分片的拷贝。默认每个主分片有一个复制分片，一个索引的复制分片的数量可以动态地调整，复制分片匆匆不与它的主分片在同一个节点上。
 
 
 ## 配置
@@ -397,6 +445,21 @@ http.cors.allow-credentials: true
 
 ### Kibana
 
++ Kibana是一个Web应用程序，你可以通过5601来访问它。
++ 7.x的版本已经是极简风格了，左侧的菜单栏也都是极简的图标风格，但是主要的功能如下：
++ Kibana可视化管理页面详细使用说明
++ 使用浏览器访问例如：localhost:5601 默认端口，进入首页
++ Discover：日志管理视图 主要进行搜索和查询
++ Visualize：统计视图 构建可视化的图表
++ Dashboard：仪表视图 将构建的图表组合形成图表盘
++ Timelion：时间轴视图 随着时间流逝的数据
++ APM：性能管理视图 应用程序的性能管理系统
++ Canvas：大屏展示图
++ Dev Tools： 开发者命令视图 开发工具
++ Monitoring：健康视图 请求访问性能预警
++ Management：管理视图 管理工具
+
+
 
 ```conf
 # Kibana is served by a back end server. This setting specifies the port to use.
@@ -515,8 +578,120 @@ elasticsearch.hosts: ["http://127.0.0.1:9200", "http://127.0.0.1:9201", "http://
 
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
-#i18n.locale: "en"
+i18n.locale: "zh-CN"
 
+
+```
+
++ 索引模式 
+  > 添加索引
+
++ Discover 中
+  > 利用添加的索引模式 查看数据
+
+## 其它
+
++ 检查集群健康状态
+
+```js
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://localhost:9200/_cat/health?v", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+  /*
+epoch      timestamp cluster      status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
+1690721429 12:50:29  my-bootstrap green           3         3     20  10    0    0        0             0                  -                100.0%
+
+  */
+```
+
++ 获取集群中节点的列表
+
+```js
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://localhost:9200/_cat/nodes?v", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+/*
+ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+127.0.0.1           29          68  20                          dilmrt    -      node-1
+127.0.0.1           16          68  12                          dilmrt    -      node-3
+127.0.0.1           31          68  17                          dilmrt    *      node-2
+
+*/
+```
+
++ 获取所有分片的信息参数
+
+```js
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://localhost:9200/_cat/indices?v", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+  /*
+  health status index                          uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .kibana-event-log-7.8.0-000001 leckoQnzTWycaQi_rIvmoQ   1   1          1            0     10.6kb          5.3kb
+green  open   book2                          KRexSOorR1it17bSClzGSg   1   1          0            0       416b           208b
+green  open   cars                           8wWe-fscTLO9VYEi_fNm-Q   1   1          8            0     10.4kb          5.2kb
+green  open   .apm-custom-link               IZVh3QEtTb-QDl5go8UP8g   1   1          0            0       416b           208b
+green  open   .kibana_task_manager_1         wxKwqAHySzOXSPL3f-DHlA   1   1          5            0       29kb         14.5kb
+green  open   .apm-agent-configuration       Hb1HIqQLSoOaj_Ke50JThQ   1   1          0            0       416b           208b
+green  open   .kibana_1                      BpEJkkh2RCKpWKMfBgBaBw   1   1         26            7      138kb           69kb
+green  open   user                           pawJ4cqlRlqZd2xNWe4ppw   1   1          4            0     10.1kb            5kb
+green  open   shopping                       KLV8BfnjR1awSNnTXiWrJg   1   1          1            0     16.5kb          8.2kb
+
+  */
+```
+
++ 单个节点信息
+
+```js
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://localhost:9200?pretty", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+  /*
+  {
+    "name": "node-1",
+    "cluster_name": "my-bootstrap",
+    "cluster_uuid": "uS-eNJGZRYaxbZoB0AAxZQ",
+    "version": {
+        "number": "7.8.0",
+        "build_flavor": "default",
+        "build_type": "zip",
+        "build_hash": "757314695644ea9a1dc2fecd26d1a43856725e65",
+        "build_date": "2020-06-14T19:35:50.234439Z",
+        "build_snapshot": false,
+        "lucene_version": "8.5.1",
+        "minimum_wire_compatibility_version": "6.8.0",
+        "minimum_index_compatibility_version": "6.0.0-beta1"
+    },
+    "tagline": "You Know, for Search"
+}
+  */
 ```
 
 
