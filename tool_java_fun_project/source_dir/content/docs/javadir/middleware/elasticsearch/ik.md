@@ -141,8 +141,8 @@ var result = {
 
 > 中文轻量级分词器
 
-+ [下载7.8](https://github.com/medcl/elasticsearch-analysis-ik/archive/refs/tags/v7.8.0.zip)
-+ [下载其它版本](https://github.com/medcl/elasticsearch-analysis-ik/tags)
++ [下载7.8](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.8.0/elasticsearch-analysis-ik-7.8.0.zipp)
++ [下载其它版本](https://github.com/medcl/elasticsearch-analysis-ik/releases)
 
 + 解压
 
