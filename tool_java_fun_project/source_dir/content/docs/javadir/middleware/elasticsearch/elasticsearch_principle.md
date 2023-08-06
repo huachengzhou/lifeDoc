@@ -324,9 +324,29 @@ green  open   shopping                        KLV8BfnjR1awSNnTXiWrJg   1   1    
 
 ```
 
-> 我们可以发现每个节点下面都有其它节点的索引 当不是本节点创建的索引  那么这个索引就是副本,并且 副本具体再哪些节点去创建副本也是es根据规则计算出来的
+> 我们可以发现每个节点下面都有其它节点的索引 当不是本节点创建的索引  那么这个索引就是分片索引,并且 分片索引具体再哪些节点去创建也是es根据规则计算出来的
 
+```
+http://127.0.0.1:9202/index_node3x post
 
+{
+    "settings": {
+        "index": {
+            "number_of_shards": 1,
+            "number_of_replicas": 1
+        }
+    },
+    "mappings": {
+        "properties": {
+            "title": {
+                "type": "text"
+            }
+        }
+    }
+}
+
+创建完毕实际我们再node3和node2分别找到了index_node3x的索引  所以number_of_shards虽然设置了1  但实际还是分片=2
+```
 ### 分片
 
 ES支持PB级全文搜索，通常我们数据量很大的时候，查询性能都会越来越慢，
