@@ -2067,6 +2067,15 @@ startUML#一:什么是UML# UML是Unified Model Language的缩写，中文�
     </item>
     
     <item>
+      <title>ElasticSearch API</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-api/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-api/</guid>
+      <description>数据准备#-- mysqlCREATE TABLE `goods` (`id` bigint(20) NOT NULL AUTO_INCREMENT,`title` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`price` decimal(22, 0) NULL DEFAULT NULL,`stock` double NULL DEFAULT NULL,`saleNum` double NULL DEFAULT NULL,`createTime` datetime(0) NULL DEFAULT NULL,`categoryName` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`brandName` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`spec` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`status` int(255) NULL DEFAULT NULL,PRIMARY KEY (`id`) USING BTREE) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;-- sqlserverCREATE TABLE goods (id int identity(1,1) not null primary key,title varchar(300) DEFAULT NULL,price decimal(22,0) DEFAULT NULL,stock int DEFAULT NULL,saleNum int DEFAULT NULL,createTime datetime DEFAULT NULL,categoryName varchar(600) DEFAULT NULL,brandName varchar(300) DEFAULT NULL,spec varchar(600) DEFAULT NULL,status int DEFAULT NULL);-- jpaimport com.</description>
+    </item>
+    
+    <item>
       <title>Guava 基于java1.6的类库集合的扩展项目</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/tooldoc/guava-common/</link>
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>

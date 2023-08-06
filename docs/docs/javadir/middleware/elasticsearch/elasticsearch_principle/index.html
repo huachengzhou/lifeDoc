@@ -45,7 +45,7 @@ node.master: true/false node.data: true/false 集群中单个节点既可以是�
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.ef622e322d3b4435850927edbf46127230748ed98c73010a6c9608ed413e638d.js"  ></script>
+<script defer src="./../../../../../en.search.min.55009b1fa38ad74df41e9237ca3f0c6f343b482fc17d10492ce6a78c6efdedb8.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -2376,6 +2376,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch_architecture/" class="">ElasticSearch进阶篇集群&#43;原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch-api/" class="">ElasticSearch API</a>
   
 
         </li>
@@ -5488,9 +5501,28 @@ green  open   user                            pawJ4cqlRlqZd2xNWe4ppw   1   1    
 green  open   shopping                        KLV8BfnjR1awSNnTXiWrJg   1   1          1            0     16.5kb          8.2kb
 
 </code></pre><blockquote>
-<p>我们可以发现每个节点下面都有其它节点的索引 当不是本节点创建的索引  那么这个索引就是副本,并且 副本具体再哪些节点去创建副本也是es根据规则计算出来的</p>
+<p>我们可以发现每个节点下面都有其它节点的索引 当不是本节点创建的索引  那么这个索引就是分片索引,并且 分片索引具体再哪些节点去创建也是es根据规则计算出来的</p>
 </blockquote>
-<h3 id="分片">
+<pre><code>http://127.0.0.1:9202/index_node3x post
+
+{
+    &quot;settings&quot;: {
+        &quot;index&quot;: {
+            &quot;number_of_shards&quot;: 1,
+            &quot;number_of_replicas&quot;: 1
+        }
+    },
+    &quot;mappings&quot;: {
+        &quot;properties&quot;: {
+            &quot;title&quot;: {
+                &quot;type&quot;: &quot;text&quot;
+            }
+        }
+    }
+}
+
+创建完毕实际我们再node3和node2分别找到了index_node3x的索引  所以number_of_shards虽然设置了1  但实际还是分片=2
+</code></pre><h3 id="分片">
   分片
   <a class="anchor" href="#%e5%88%86%e7%89%87">#</a>
 </h3>

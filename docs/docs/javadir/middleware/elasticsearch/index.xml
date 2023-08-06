@@ -103,5 +103,14 @@ lucene基本概念#  segment : lucene内部的数据是由一个个segment组
 2.4ES写入数据的过程#2.4.1简单流程:# 1:客户端选择一个node发送请求过去，这个node就是coordinating node (协调节点) 2:coordinating node，对document进行路由，将请求转发给对应的node 3: 实际上的node上的primary shard处理请求，然后将数据同步到replica node 4:coordinating node，如果发现primary node和所有的replica node都搞定之后，就会返回请求到客户端 这个路由简单的说就是取模算法,比如说现在有3太服务器,这个时候传过来的id是5,那么5%3=2,就放在第2太服务器  2.</description>
     </item>
     
+    <item>
+      <title>ElasticSearch API</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-api/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-api/</guid>
+      <description>数据准备#-- mysqlCREATE TABLE `goods` (`id` bigint(20) NOT NULL AUTO_INCREMENT,`title` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`price` decimal(22, 0) NULL DEFAULT NULL,`stock` double NULL DEFAULT NULL,`saleNum` double NULL DEFAULT NULL,`createTime` datetime(0) NULL DEFAULT NULL,`categoryName` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`brandName` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`spec` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`status` int(255) NULL DEFAULT NULL,PRIMARY KEY (`id`) USING BTREE) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;-- sqlserverCREATE TABLE goods (id int identity(1,1) not null primary key,title varchar(300) DEFAULT NULL,price decimal(22,0) DEFAULT NULL,stock int DEFAULT NULL,saleNum int DEFAULT NULL,createTime datetime DEFAULT NULL,categoryName varchar(600) DEFAULT NULL,brandName varchar(300) DEFAULT NULL,spec varchar(600) DEFAULT NULL,status int DEFAULT NULL);-- jpaimport com.</description>
+    </item>
+    
   </channel>
 </rss>
