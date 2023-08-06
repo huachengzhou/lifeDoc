@@ -1,0 +1,5872 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="elasticsearch 原理
+#
+
+集群
+#
+
+ 一个ES集群可以有多个节点构成，一个节点就是一个ES服务实例，通过配置集群名称cluster.name加入集群。
+ ES中节点有角色的区分的，通过配置文件conf/elasticsearch.yml中配置以下配置进行角色的设定。
+node.master: true/false node.data: true/false 集群中单个节点既可以是候选主节点也可以是数据节点，通过上面的配置可以进行两两组合形成四大分类：
+ （1）仅为候选主节点 （2）既是候选主节点也是数据节点 （3）仅为数据节点 （4）既不是候选主节点也不是数据节点    集群 有多个node节点(master node,data node,replica node) 主节点和副节点 每个节点可能存储数据也可能只是作为我单独的Lucene 索引实例
+  主节点
+  主节点只有一个(es集群中只使用一个masterNode) 主节点可以提前确定某一个节点为主节点,后面版本是配置候选主节点 然后用一套算法推举出主节点 一个节点宕机以后 后面的候选节点从算法中重新产生一个
+ 当一个节点被选举成为 主 节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点
+  协调节点  用户的请求可以随机发往任何一个节点，并由该节点负责分发请求、收集结果等操作，而不需要主节点转发。这种节点可称之为协调节点，集群中的任何节点都可以充当协调节点的角色。每个节点之间都会保持联系
+ 例子1  #集群名称，三台集群，要配置相同的集群名称！！！ #cluster.name: my-application cluster.name: my-bootstrap # ------------------------------------ Node ------------------------------------ #node.name: node-1 #节点名称 node.name: node-3 #是不是有资格主节点 node.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="elasticsearch 原理" />
+<meta property="og:description" content="elasticsearch 原理
+#
+
+集群
+#
+
+ 一个ES集群可以有多个节点构成，一个节点就是一个ES服务实例，通过配置集群名称cluster.name加入集群。
+ ES中节点有角色的区分的，通过配置文件conf/elasticsearch.yml中配置以下配置进行角色的设定。
+node.master: true/false node.data: true/false 集群中单个节点既可以是候选主节点也可以是数据节点，通过上面的配置可以进行两两组合形成四大分类：
+ （1）仅为候选主节点 （2）既是候选主节点也是数据节点 （3）仅为数据节点 （4）既不是候选主节点也不是数据节点    集群 有多个node节点(master node,data node,replica node) 主节点和副节点 每个节点可能存储数据也可能只是作为我单独的Lucene 索引实例
+  主节点
+  主节点只有一个(es集群中只使用一个masterNode) 主节点可以提前确定某一个节点为主节点,后面版本是配置候选主节点 然后用一套算法推举出主节点 一个节点宕机以后 后面的候选节点从算法中重新产生一个
+ 当一个节点被选举成为 主 节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点
+  协调节点  用户的请求可以随机发往任何一个节点，并由该节点负责分发请求、收集结果等操作，而不需要主节点转发。这种节点可称之为协调节点，集群中的任何节点都可以充当协调节点的角色。每个节点之间都会保持联系
+ 例子1  #集群名称，三台集群，要配置相同的集群名称！！！ #cluster.name: my-application cluster.name: my-bootstrap # ------------------------------------ Node ------------------------------------ #node.name: node-1 #节点名称 node.name: node-3 #是不是有资格主节点 node." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch_principle/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
+<title>elasticsearch 原理 | 所悟所想</title>
+<link rel="manifest" href="./../../../../../manifest.json">
+<link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../../en.search.min.ef622e322d3b4435850927edbf46127230748ed98c73010a6c9608ed413e638d.js"  ></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="./../../../../../"><span>所悟所想</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dc4b37c6c16a6986655cb8a0614c536b" class="toggle"  />
+    <label for="section-dc4b37c6c16a6986655cb8a0614c536b" class="flex justify-between">
+      <a href="./../../../../../docs/computer_network/" class="">计算机网络 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/" class="">网络体系结构</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/1.1.1%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E5%BF%B5-%E7%BB%84%E6%88%90-%E5%8A%9F%E8%83%BD-%E5%88%86%E7%B1%BB/" class="">计算机概念 组成 功能 分类 * </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/1.1.2%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%BB%84%E7%BB%87/" class="">标准的分类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/1.1.3%E9%80%9F%E7%8E%87%E7%9B%B8%E5%85%B3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="">速率</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="">分层结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/%E5%88%86%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/" class="">分层参考模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/network_architecture/%E6%A8%A1%E5%9E%8B%E5%B1%82%E6%AC%A1%E8%AF%A6%E8%A7%A3/" class="">模型层次详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/physical_layer/" class="">物理层 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">数据通信基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/computer_network/physical_layer/%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">物理层基本概念 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>数据链路层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>网络层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>传输层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>应用层 </span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-520770a3f5ea08f8358bcf92838812da" class="toggle"  />
+    <label for="section-520770a3f5ea08f8358bcf92838812da" class="flex justify-between">
+      <a href="./../../../../../docs/c-plus/" class=""> c&#43;&#43;</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc49ad6722ad822609d4f02b81f6358" class="toggle"  />
+    <label for="section-6fc49ad6722ad822609d4f02b81f6358" class="flex justify-between">
+      <a href="./../../../../../docs/databases/" class=""> 数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/" class="">mysql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_basis/" class="">基本命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_data/" class="">数据准备</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_distinguish/" class="">MySQL分库分表原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_install/" class="">mysql安装</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_install_more/" class="">Win10一台电脑安装多个版本的Mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_install_problem/" class="">windows下 Mysql安装的一些问题解决方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_install_centos/" class="">centos7安装多个mysql</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F/" class="">mysql_数据库设计三范式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" class="">mysql事务</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E5%87%BD%E6%95%B0/" class="">mysql函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="">mysql存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_procedure/" class="">mysql存储过程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_procedure_function/" class="">mysql存储函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_operation_maintenance/" class="">mysql运维</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="">数据库设计的规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E6%9F%A5%E8%AF%A2/" class="">mysql查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_regexp/" class="">mysql正则表达式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">mysql用户与权限</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E7%B4%A2%E5%BC%95/" class="">mysql索引</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql%E6%95%B4%E7%90%86/" class="">mysql整理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysq_advanced_optimization/" class="">mysql优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_select/" class="">mysql新查询</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/mysql_view/" class="">mysql视图</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql/triggers/" class="">mysql触发器</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/postgresql/" class="">postgresql学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/postgresql/postgresql_create%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" class="">权限</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/" class="">网易云课堂MySQL微专业学习笔记</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" class="">MySQL数据库基础</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" class="">MySQL数据库对象与应用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter3/" class="">MySQL事务与存储引擎</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" class="">MySQL应用优化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" class="">MySQL运维实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="toggle"  />
+    <label for="section-dbec22d72f9c0b4ccf9d173e77fe928c" class="flex justify-between">
+      <a href="./../../../../../docs/python/" class=""> python</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1eba4d3394916870dc9a66fd50843417" class="toggle"  />
+    <label for="section-1eba4d3394916870dc9a66fd50843417" class="flex justify-between">
+      <a href="./../../../../../docs/python/base/" class="">python 基础学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/remark/" class="">python 说明</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/pip/" class="">python pip</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/lambda_or_function/" class="">python 函数</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/set/" class="">python set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/module/" class="">python 模块介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/venv/" class="">python 环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/dictionary/" class="">python 字典</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/casting/" class="">python 类型转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/print/" class="">python print</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/tuple/" class="">python 元组</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/string/" class="">python string</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/pipenv/" class="">python pipenv 包管理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python-object/" class="">python 面向对象</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/pathlib/" class="">python pathlib</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/file/" class="">python 文件</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/list/" class="">python list</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_datetime/" class="">python datetime</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_try_except/" class="">Python Try Except</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_regex/" class="">Python RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_json/" class="">Python JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_string_formatting/" class="">Python 字符串格式化</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/python_cmd_input/" class="">Python 命令行输入</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/math/" class="">python math</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/annotation/" class="">Python 注解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/base/container/" class="">Python 容器问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5edfb103a0f74ef3d489bca94178c238" class="toggle"  />
+    <label for="section-5edfb103a0f74ef3d489bca94178c238" class="flex justify-between">
+      <a href="./../../../../../docs/python/install/" class="">python 插件学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyinstaller/" class="">python pyinstaller </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyecharts/" class="">python pyecharts  </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/numpy/" class="">python NumPy  </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyqt5/" class="">python pyqt5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyqt5_note/" class="">python pyqt5 介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyqt_layout/" class="">python pyqt5 layout</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/pyqt_resources/" class="">python pyqt5 皮肤和图标</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/python/install/python_ml_getting_started/" class="">python 机器学习  </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-426c24f586a1a31f40b6adbe7793c4e5" class="toggle"  />
+    <label for="section-426c24f586a1a31f40b6adbe7793c4e5" class="flex justify-between">
+      <a href="./../../../../../docs/math/" class="">数学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/math/katex/" class="">KaTeX 使用指南</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-353f7a5578fa41dbc42c73ea30fe2255" class="toggle"  />
+    <label for="section-353f7a5578fa41dbc42c73ea30fe2255" class="flex justify-between">
+      <a href="./../../../../../docs/algorithm/" class="">数据结构与算法</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45dc11ee6178b60df0469def110149c5" class="toggle"  />
+    <label for="section-45dc11ee6178b60df0469def110149c5" class="flex justify-between">
+      <a href="./../../../../../docs/hugo%E5%AD%A6%E4%B9%A0/" class="">hugo教程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_server_faile_-to_get_json/" class="">hugo教程 hugo server Failed to get JSON</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials1/" class="">hugo教程1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/hugo%E5%AD%A6%E4%B9%A0/hugo_tutorials2/" class="">hugo教程2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b4fdb949c68d1e40afa99db9f2025c" class="toggle" checked />
+    <label for="section-63b4fdb949c68d1e40afa99db9f2025c" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/" class=""> Java技术栈</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="toggle"  />
+    <label for="section-f59b4d30ba46bb091d0f0aa7c3266e10" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/basedir/" class="">Java基础知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9f37c30cbddfdede23d767e7034c30" class="toggle"  />
+    <label for="section-ba9f37c30cbddfdede23d767e7034c30" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/jsp_dir/java_%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%8E%9F%E7%90%86/" class="">java_监听事件原理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/jsp_dir/jsp_el%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" class="">EL基础教程 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_core%E6%A0%87%E7%AD%BE%E5%BA%93/" class="">jsp jstl core 标签库 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/jsp_dir/jsp_jstl_session/" class="">jsp jstl session </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/jsp_dir/jsp_%E5%AD%97%E7%AC%A6%E4%B8%B2el%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="">字符串el表达式 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/dw7668daxw/" class="">java类型转换,构造,重要语法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-x-exception/" class="">异常机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-x-reflection/" class="">反射机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-x-annotation/" class="">注解机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-x-generic/" class="">泛型机制详解</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-jdk8-stream/" class="">Java8 流式数据处理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-jdk8-stream_base/" class="">Java8 流式数据处理 短介绍</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/basedir/java-basic-x-spi/" class="">Java SPI机制详解</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e4f99824d06ea4abb1161f3046570d7f" class="toggle"  />
+    <label for="section-e4f99824d06ea4abb1161f3046570d7f" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/thread/" class="">多线程与并发 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/glossary/" class="">名词解释</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/essential_glossary/" class="">关键名词解释</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/cas/" class="">cas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a04d0f5c62b5bf3efb9caef3d57e52c6" class="toggle"  />
+    <label for="section-a04d0f5c62b5bf3efb9caef3d57e52c6" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/thread/tool/" class="">并发工具 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/thread_local/" class="">ThreadLocal</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/semaphore_exchanger/" class="">Semaphore和Exchanger</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/countdownlatch_cyclicbarrier/" class="">CountDownLatch 和 CyclicBarrier</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/phaser/" class="">Phaser</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/executor/" class="">Executor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/future_callable/" class="">Future 和 callable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/completionservice/" class="">CompletionService</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/executorservice/" class="">ExecutorService</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/fork_join/" class="">Fork-Join</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/tool/collection/" class="">并发集合框架</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/jol/" class="">JOL工具 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/unsafe/" class="">unsafe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/reentrantlock/" class="">ReentrantLock</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/repeat_lock/" class="">java重复加锁</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/park/" class="">park</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/thread/practice/" class="">线程最佳实践</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="toggle"  />
+    <label for="section-d2bb26ee293a9741ecef2fb6f7d20b43" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/groovy/" class="">groovy 学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E5%AD%A6%E4%B9%A0/" class=""> Groovy 概述 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="">groovy 基本概念 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="">groovy 数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8A%A0%E5%BC%BA/" class=""> groovy变量和数据类型 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/%E5%A6%82%E4%BD%95%E5%9C%A8groovy%E4%B8%AD%E8%8E%B7%E5%8F%96%E4%BB%A5%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/" class=""> groovy变量值获取 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83%E4%BB%A5%E5%8F%8A%E9%9D%9E%E7%A9%BA%E5%88%A4%E6%96%AD/" class=""> groovy对象比较以及空判断 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class=""> groovy使用场景 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/groovy/groovy%E5%8F%98%E9%87%8F/" class="">Groovy变量</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3c751f376602d063da318fd2ace31d1e" class="toggle"  />
+    <label for="section-3c751f376602d063da318fd2ace31d1e" class="flex justify-between">
+      <a href="./../../../../../docs/javadir/tooldoc/" class="">Java公共库文档总结 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/apache-common%E5%B7%A5%E5%85%B7%E5%8C%85/" class="">Apache Commons 工具类介绍及简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/aspose/" class="">Aspose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/commons_io/" class="">apache FilenameUtils 文件名称操作</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/dom4j/" class="">dom4j</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/guava-common/" class="">Guava 基于java1.6的类库集合的扩展项目</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/js_console%E7%94%A8%E6%B3%95/" class="">常用 Console 调试命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/jsoup/" class="">jsoup学习文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/spring%E5%B7%A5%E5%85%B7/" class="">spring工具类</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/tooldoc/spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="">spring常用的工具类</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/" class="">中间件 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/redis/" class="">Redis 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/nginx/" class="">Nginx 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/testng/" class="">testng 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/mycat/" class="">mycat 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/uml/" class="">uml 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/" class="">Elasticsearch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/ik/" class="">ik分词器(analysis)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch-cluster/" class="">(集群)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch_principle/" class=" active">elasticsearch 原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/lucene-data/" class="">lucene数据存储</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch_architecture/" class="">ElasticSearch进阶篇集群&#43;原理</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bbe16af0cda0a52165d4874f0cea4ee0" class="toggle"  />
+    <label for="section-bbe16af0cda0a52165d4874f0cea4ee0" class="flex justify-between">
+      <a href="./../../../../../docs/operating_system/" class="">计算机操作系统</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-21040cf0ac2f33d55fbb5e091a34a3f0" class="toggle"  />
+    <label for="section-21040cf0ac2f33d55fbb5e091a34a3f0" class="flex justify-between">
+      <a href="./../../../../../docs/operating_system/linux/" class="">linux学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/git_introduction/" class="">git学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/gitub_config/" class="">git配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/host%E6%98%A0%E5%B0%84/" class="">host映射</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/linux%E4%B8%8B%E8%AE%BE%E7%BD%AE%E5%92%8C%E6%9F%A5%E7%9C%8B%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="">Linux下设置和查看环境变量</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/linux%E5%91%BD%E4%BB%A4/" class="">linux命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/nginx/" class="">nginx学习</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/notepad&#43;&#43;%E5%AE%89%E8%A3%85/" class="">Notepad&#43;&#43; 学习与使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/ubuntu16.04%E4%BF%AE%E6%94%B9hosts/" class="">Ubuntu 16.04修改hosts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/ubuntu%E5%AE%89%E8%A3%85chmsee/" class="">ubuntu安装chmsee</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/ubuntu%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E5%9E%83%E5%9C%BE/" class="">Ubuntu清理系统垃圾</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/linux/ubuntu%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="">ubuntu软件卸载</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-806134514f2418a47efb34528bbe6d38" class="toggle"  />
+    <label for="section-806134514f2418a47efb34528bbe6d38" class="flex justify-between">
+      <a href="./../../../../../docs/operating_system/windows/" class="">windows学习与使用 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/dos_start/" class="">DOS命令 基本介绍 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/dos_basic/" class="">DOS基本命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/hksdjahjra/" class="">DOS基本命令 (新) </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/dos_file/" class="">DOS基本文件操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/dos_network/" class=""> DOS网络操作命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/ftp/" class=""> FTP </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/windows/windows_question/" class=""> windows 问题 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/" class="">第一章 操作系统概述 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_1_/" class="">操作系统的概念、功能</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_2_/" class="">操作系统的特征</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_3_/" class=""> 操作系统的发展与分类 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_4_/" class=""> 操作系统的运行机制与体系结构 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_5_/" class=""> 中断和异常 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_6_/" class=""> 系统调用 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/one_chapter/1_7_/" class=""> 操作系统的体系结构 </a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/" class="">第二章 进程管理 </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_1/" class="">进程的概念、组成、特征</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_2/" class="">进程的状态与转换</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_3/" class="">进程控制</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_4/" class="">进程通信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_1_5/" class="">线程概念与多线程模型</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_1/" class="">处理机调度的概念、层次</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_2/" class="">进程调度的时机、切换与过程、方式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/two_chapter/2_2_3/" class="">调度算法的评价指标</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/three_chapter/" class="">第三章 内存管理 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/four_chapter/" class="">第四章 文件管理 </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/operating_system/five_chapter/" class="">第五章 输入，输出（I,O） </a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9caa6ae5221742cea46cb40ee3162cf1" class="toggle"  />
+    <label for="section-9caa6ae5221742cea46cb40ee3162cf1" class="flex justify-between">
+      <a href="./../../../../../docs/http/" class="">http知识 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/http/teywty5qnc/" class="">跨域问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/http/cdn/" class="">cdn</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/http/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-350a13706fbef206280ee93f4ba7f7ab" class="toggle"  />
+    <label for="section-350a13706fbef206280ee93f4ba7f7ab" class="flex justify-between">
+      <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/" class="">脚本</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/nodejs/" class="">node js </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B/" class="">node js - npm </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/uniapp%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="">uniapp基础知识 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/webpack/" class="">webpack </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/simple-webpack/" class="">webpack simple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E5%92%8Cnodejs%E5%85%B3%E7%B3%BB/" class="">webpack和nodejs关系 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/webpack_loader/" class="">webpack loader</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%87%8D%E8%A6%81%E5%91%BD%E4%BB%A4/" class="">node js - npm 重要命令 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/npm%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" class="">npm部分插件安装问题 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/my-plugins/" class="">webpack 应用自己插件 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/webpack%E7%83%AD%E6%9B%B4%E6%96%B0/" class="">webpack 热更新 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/webpack-other-loader/" class="">webpack 其他 loader </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/" class="">小程序技术总结参考 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/" class="">vue脚手架创建方式 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/javascript/" class="">javascript </a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/javascript/es6/" class="">ECMAScript 6</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%84%9A%E6%9C%AC/packing/" class="">uniapp打包</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-faf554f92b63c792eb1430dabc59780a" class="toggle"  />
+    <label for="section-faf554f92b63c792eb1430dabc59780a" class="flex justify-between">
+      <a href="./../../../../../docs/physics/" class="">physics</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9557cdd8ab7d0e4af192310fb091049c" class="toggle"  />
+    <label for="section-9557cdd8ab7d0e4af192310fb091049c" class="flex justify-between">
+      <a href="./../../../../../docs/plan/" class="">计划 </a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/plan/dir/jdkbatmmbr/" class="">任务分类法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/plan/dir/saxr6jwscz/" class="">2022-10-25计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/plan/dir/cahh4sbqzx/" class="">2023-01-18待处理任务清单</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67ac8dc39af58fa098ad94e784195ce8" class="toggle"  />
+    <label for="section-67ac8dc39af58fa098ad94e784195ce8" class="flex justify-between">
+      <a href="./../../../../../docs/english_study/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/english_study/jkdy8dwywm/" class="">零基础如何开始着手学习英语</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/english_study/word/" class="">单词记忆技巧</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/english_study/maimemo/" class="">墨墨背单词</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/english_study/plan/" class="">英语学习计划</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2832180921bf769c2911c287eaf83c57" class="toggle"  />
+    <label for="section-2832180921bf769c2911c287eaf83c57" class="flex justify-between">
+      <a href="./../../../../../docs/car_study/" class="">汽车教学</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/car_study/one/" class="">科目一</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>科目二</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/car_study/three/" class="">科目三</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e7f05afbbf08a18bae4c61de4451b8c" class="toggle"  />
+    <label for="section-0e7f05afbbf08a18bae4c61de4451b8c" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/" class="">编码</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/specification1/" class="">Code review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/specification2/" class="">编码规范</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/specification3/" class="">编码规范3</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d9f4d4a59bf3da3f9cd63e830886c0db" class="toggle"  />
+    <label for="section-d9f4d4a59bf3da3f9cd63e830886c0db" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/unit_test/" class="">单元测试</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3045abd0d0a9e601a62e500261c27583" class="toggle"  />
+    <label for="section-3045abd0d0a9e601a62e500261c27583" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/tool_debug/" class="">开发工具调试</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7aeee6a584f60c55a36eb024eb3b6e4d" class="toggle"  />
+    <label for="section-7aeee6a584f60c55a36eb024eb3b6e4d" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/hsxkx5kbbp/" class="">编写可读代码的艺术</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1f139500688be553cf5b773cffee3b71" class="toggle"  />
+    <label for="section-1f139500688be553cf5b773cffee3b71" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/design_pattern/" class="">设计模式</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/singleton_pattern/" class="">创建型 - 单例模式(Singleton pattern)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/simple_factory/" class="">创建型 - 简单工厂(Simple Factory)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/factory_method/" class="">创建型 - 工厂方法(Factory Method)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/abstract_factory/" class="">创建型 - 抽象工厂(Abstract Factory)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/builder/" class="">创建型 - 生成器(Builder)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/codereview/design_pattern/prototype/" class="">创建型 - 原型模式(Prototype)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a023bf2e3ec39bd7c5b2c0195d2fbe3a" class="toggle"  />
+    <label for="section-a023bf2e3ec39bd7c5b2c0195d2fbe3a" class="flex justify-between">
+      <a href="./../../../../../docs/codereview/kedswrgngf/" class="">重构: 改善既有代码的设计</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ae4278ffcaad5eddcb3add9757c83b1" class="toggle"  />
+    <label for="section-4ae4278ffcaad5eddcb3add9757c83b1" class="flex justify-between">
+      <a href="./../../../../../docs/compilation_principle/" class="">编译原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-75093b6572bead2615e3964d3a3f0832" class="toggle"  />
+    <label for="section-75093b6572bead2615e3964d3a3f0832" class="flex justify-between">
+      <a href="./../../../../../docs/computer_composition_principle/" class="">计算机组成原理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f756f4cd712e8961a854d8f8077f32db" class="toggle"  />
+    <label for="section-f756f4cd712e8961a854d8f8077f32db" class="flex justify-between">
+      <a href="./../../../../../docs/life_and_life/" class="">生活就是生活</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5b73161d05cd7b2df2340845e1aedf" class="toggle"  />
+    <label for="section-2f5b73161d05cd7b2df2340845e1aedf" class="flex justify-between">
+      <a href="./../../../../../docs/memory/" class="">记忆技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="toggle"  />
+    <label for="section-8dd86dd3ec154af9a3d0b2799e6c0025" class="flex justify-between">
+      <a href="./../../../../../docs/reduce_fat/" class="">减肥减脂技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="toggle"  />
+    <label for="section-f18f7ebc1771c05dd41d9cebd3fc8a34" class="flex justify-between">
+      <a href="./../../../../../docs/reduce_fat/%E6%97%A0%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">无氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2f7e0d471b6591276e406b821a17fc1" class="toggle"  />
+    <label for="section-c2f7e0d471b6591276e406b821a17fc1" class="flex justify-between">
+      <a href="./../../../../../docs/reduce_fat/%E6%9C%89%E6%B0%A7%E8%BF%90%E5%8A%A8/" class="">有氧运动</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdc0af4527c0abd9c5603b6e44774fa8" class="toggle"  />
+    <label for="section-bdc0af4527c0abd9c5603b6e44774fa8" class="flex justify-between">
+      <a href="./../../../../../docs/reduce_fat/%E8%85%B0%E9%83%A8%E5%87%8F%E8%82%A5/" class="">腰部减肥</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="toggle"  />
+    <label for="section-850fe52dc88ed9f8f6a9ad0ad0cd5784" class="flex justify-between">
+      <a href="./../../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/" class="">电视剧整理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63739512f503c4ce8199d3b5d0c27b9d" class="toggle"  />
+    <label for="section-63739512f503c4ce8199d3b5d0c27b9d" class="flex justify-between">
+      <a href="./../../../../../docs/%E7%94%B5%E8%A7%86%E5%89%A7%E6%95%B4%E7%90%86/%E9%81%A5%E8%BF%9C%E7%9A%84%E6%95%91%E4%B8%96%E4%B8%BB/" class="">遥远的救世主</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39658318a58e1bb764fe7a9650dde553" class="toggle"  />
+    <label for="section-39658318a58e1bb764fe7a9650dde553" class="flex justify-between">
+      <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/" class="">自我提升</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/2021-04%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" class="">学习计划</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/gsmgajphs7/" class="">看书看到大脑疲劳以后，应如何快速恢复大脑状态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/" class="">男生 穿着 和 仪态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/sstzyfd5je/" class="">社哲讲堂</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/" class="">人际剖析</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/fdhcmhstpw/" class="">什么叫魅力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/j74dbsrtzw/" class="">我无所畏惧，因为</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/tbwyjex4gc/" class="">从此你不再受伤害</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/iqcs36rgjy/x8benctsak/" class="">关于爱情令人不解的一切</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/" class="">聊天话题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/ytaerczr7w/" class="">追女生</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/seiffjx8c7/" class="">和女孩聊天话题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/talk_theme/girl/dpa4wtnhf8/" class="">耍朋友</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/" class="">自信</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/confident/" class="">如何提升自信</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/good_voice/" class="">如何说话好听</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hw2jindwcd/" class="">100篇锻炼口才表达能力的绕口令（精选版）</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/2bm8trpqzx/" class="">发声 具体训练方法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/idx4etcwwy/" class="">如何系统地训练口才</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awb8ggwzn2/" class="">生活中常用的客套话</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/hweaprcifa/" class="">高情商的聊天技巧</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/we4ycwfxb7/" class="">我自己理解的口才练习技巧</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/wwnrfnfjmb/" class="">自信相关理论</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/" class="">我自己理解的聊天技巧</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/6ngdcha8bk/" class="">使自己成熟稳重</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtj6fgd6s/" class="">复盘</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/8m3fmhf6t3/" class="">如何变得更加成熟</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/pqpys8speb/" class="">每天保持心情的5句话</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/esxjjecmn5/" class="">PDCA循环工作法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/h847ijsjzr/" class="">表达能力提高</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ca7cqmh4j8/" class="">任务分类法</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/em24ppenbm/" class="">如何保持积极乐观的心态</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/mm8cnxmzyz/" class="">社恐、性格闷、胆子小</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/nnefbyyxgr/" class="">逻辑推导</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/x5xdewmh5e/" class="">所有命运的馈赠，早已暗中标好了价格</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>获取金钱</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%8E%B7%E5%8F%96%E9%87%91%E9%92%B1/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B2%B9%E7%AE%A1youtube%E5%BC%80%E9%80%9A%E6%94%B6%E7%9B%8A%E8%B5%9A%E9%92%B1/" class="">如何在油管YouTube开通收益赚钱</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="">解决问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/" class="">git出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/git_andsower/git%E5%A4%84%E7%90%86/" class="">git处理网络和权限问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/" class="">idea出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/idea/idea/" class="">idea 解决working directory 设置到 target</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/" class="">maven出现的问题</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/maven/idea%E8%A7%A3%E5%86%B3/" class="">idea 问题解决</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/" class="">visual_studio_code</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/visual_studio_code/visualstudiocode%E9%97%AE%E9%A2%98/" class="">Visual Studio Code 问题解决方案</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/dns%E6%B1%A1%E6%9F%93/" class="">DNS 污染</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/githubpages%E7%BB%91%E5%AE%9A%E6%9D%A5%E8%87%AA%E9%98%BF%E9%87%8C%E4%BA%91%E7%9A%84%E5%9F%9F%E5%90%8D/" class="">GitHubPages绑定来自阿里云的域名</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51de35a74b957edd5bb9b26e3e2b8f41" class="toggle"  />
+    <label for="section-51de35a74b957edd5bb9b26e3e2b8f41" class="flex justify-between">
+      <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="">沟通技巧</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case1/" class="">不羞不怯，直切要点</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case2/" class="">如何清晰明了的向他人介绍清楚这个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case3/" class="">怎样把事情说清楚，清晰表达的能力</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/" class="">回复领导的问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case5/" class="">程序员如何向同事说明自己的问题</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/" class="">国内咨询平台</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%AE%B0%E5%BF%86/" class="">记忆方法</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E5%86%A5%E6%83%B3/" class="">冥想</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/paragraph/" class="">适合分享的段子和笑话</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0dee305346a3ca3ab28150dce8272da0" class="toggle"  />
+    <label for="section-0dee305346a3ca3ab28150dce8272da0" class="flex justify-between">
+      <a href="./../../../../../docs/think/" class="">思维</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/think/criticalthinking/" class="">批判性思维</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/think/jinzita/" class="">金字塔原理</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/think/not_control/" class="">失控</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Shortcodes</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/buttons/" class="">Buttons</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/columns/" class="">Columns</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/details/" class="">Details</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/expand/" class="">Expand</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/hints/" class="">Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/katex/" class="">Katex</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/mermaid/" class="">Mermaid</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="toggle"  />
+    <label for="section-d3fc1bf6d66cd84b896a0af9f40cb1d5" class="flex justify-between">
+      <a href="./../../../../../docs/shortcodes/section/" class="">Section</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/section/page1/" class="">Page1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/section/page2/" class="">Page2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/shortcodes/tabs/" class="">Tabs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="./../../../../../posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="./../../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>elasticsearch 原理</strong>
+
+  <label for="toc-control">
+    
+    <img src="./../../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#elasticsearch-原理">elasticsearch 原理</a>
+      <ul>
+        <li><a href="#集群">集群</a></li>
+        <li><a href="#倒排索引">倒排索引</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#分段">分段</a></li>
+        <li><a href="#节点">节点</a></li>
+        <li><a href="#分片和副本">分片和副本</a>
+          <ul>
+            <li><a href="#分片">分片</a></li>
+            <li><a href="#副本">副本</a></li>
+            <li><a href="#elasticsearch-的写索引流程">Elasticsearch 的写索引流程</a></li>
+            <li><a href="#存储原理">存储原理</a></li>
+            <li><a href="#索引文件分段存储并且不可修改那么新增更新和删除如何处理呢">索引文件分段存储并且不可修改，那么新增、更新和删除如何处理呢？</a></li>
+            <li><a href="#段合并">段合并</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+<ul class="ul_abc">
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/studyIndex.html" class="active" >自定义工具</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlog/index.html">blog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/about">关于程序员</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/newIndex.html">book</a></li>
+</ul>
+
+      
+  <article class="markdown"><h1 id="elasticsearch-原理">
+  elasticsearch 原理
+  <a class="anchor" href="#elasticsearch-%e5%8e%9f%e7%90%86">#</a>
+</h1>
+<h2 id="集群">
+  集群
+  <a class="anchor" href="#%e9%9b%86%e7%be%a4">#</a>
+</h2>
+<blockquote>
+<p>一个ES集群可以有多个节点构成，一个节点就是一个ES服务实例，通过配置集群名称cluster.name加入集群。</p>
+</blockquote>
+<p>ES中节点有角色的区分的，通过配置文件conf/elasticsearch.yml中配置以下配置进行角色的设定。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">node.master</span>: <span style="color:#66d9ef">true</span><span style="color:#ae81ff">/false</span>
+<span style="color:#f92672">node.data</span>: <span style="color:#66d9ef">true</span><span style="color:#ae81ff">/false</span>
+</code></pre></div><p>集群中单个节点既可以是候选主节点也可以是数据节点，通过上面的配置可以进行两两组合形成四大分类：</p>
+<ul>
+<li>（1）仅为候选主节点</li>
+<li>（2）既是候选主节点也是数据节点</li>
+<li>（3）仅为数据节点</li>
+<li>（4）既不是候选主节点也不是数据节点</li>
+</ul>
+<ul>
+<li>
+<p>集群 有多个node节点(master node,data node,replica node) 主节点和副节点 每个节点可能存储数据也可能只是作为我单独的Lucene 索引实例</p>
+</li>
+<li>
+<p>主节点</p>
+</li>
+</ul>
+<p>主节点只有一个(es集群中只使用一个masterNode)
+主节点可以提前确定某一个节点为主节点,后面版本是配置候选主节点  然后用一套算法推举出主节点 一个节点宕机以后 后面的候选节点从算法中重新产生一个</p>
+<p><img src="../../.././imgs/elasticsearch/image/20230806082958.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/20230806082958.png" alt="" /></p>
+<p><img src="../../.././imgs/elasticsearch/image/v2-a5272b335bc7d2b9ee5cf60f4a4ce215_720w.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/v2-a5272b335bc7d2b9ee5cf60f4a4ce215_720w.png" alt="" /></p>
+<blockquote>
+<p>当一个节点被选举成为 主 节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点</p>
+</blockquote>
+<ul>
+<li>协调节点</li>
+</ul>
+<p>用户的请求可以随机发往任何一个节点，并由该节点负责分发请求、收集结果等操作，而不需要主节点转发。这种节点可称之为协调节点，集群中的任何节点都可以充当协调节点的角色。每个节点之间都会保持联系</p>
+<ul>
+<li>例子1</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#75715e">#集群名称，三台集群，要配置相同的集群名称！！！</span>
+<span style="color:#75715e">#cluster.name: my-application</span>
+<span style="color:#f92672">cluster.name</span>: <span style="color:#ae81ff">my-bootstrap</span>
+<span style="color:#75715e"># ------------------------------------ Node ------------------------------------</span>
+<span style="color:#75715e">#node.name: node-1</span>
+<span style="color:#75715e">#节点名称</span>
+<span style="color:#f92672">node.name</span>: <span style="color:#ae81ff">node-3</span>
+<span style="color:#75715e">#是不是有资格主节点</span>
+<span style="color:#f92672">node.master</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">#是否存储数据</span>
+<span style="color:#f92672">node.data</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#75715e">#最⼤集群节点数</span>
+<span style="color:#f92672">node.max_local_storage_nodes</span>: <span style="color:#ae81ff">3</span> 
+<span style="color:#75715e">#网关地址</span>
+<span style="color:#f92672">network.host</span>: <span style="color:#ae81ff">localhost</span>
+<span style="color:#75715e">#http.port: 9200</span>
+<span style="color:#75715e"># http端口 (对外端口)</span>
+<span style="color:#f92672">http.port</span>: <span style="color:#ae81ff">9202</span>
+<span style="color:#75715e">#内部节点之间沟通端⼝</span>
+<span style="color:#f92672">transport.tcp.port</span>: <span style="color:#ae81ff">9302</span>
+<span style="color:#75715e">#discovery.seed_hosts: [&#34;host1&#34;, &#34;host2&#34;]</span>
+<span style="color:#75715e"># es7.x之后新增的配置，写入候选主节点的设备地址，在开启服务后可以被选为主节点</span>
+<span style="color:#f92672">discovery.seed_hosts</span>: [<span style="color:#e6db74">&#34;127.0.0.1:9300&#34;</span>, <span style="color:#e6db74">&#34;127.0.0.1:9301&#34;</span>, <span style="color:#e6db74">&#34;127.0.0.1:9302&#34;</span>]
+<span style="color:#75715e"># Bootstrap the cluster using an initial set of master-eligible nodes:</span>
+<span style="color:#75715e">#cluster.initial_master_nodes: [&#34;node-1&#34;, &#34;node-2&#34;]</span>
+<span style="color:#75715e"># es7.x之后新增的配置，初始化一个新的集群时需要此配置来选举master</span>
+<span style="color:#f92672">cluster.initial_master_nodes</span>: [<span style="color:#e6db74">&#34;node-1&#34;</span>, <span style="color:#e6db74">&#34;node-2&#34;</span>, <span style="color:#e6db74">&#34;node-3&#34;</span>]
+<span style="color:#f92672">bootstrap.system_call_filter</span>: <span style="color:#66d9ef">false</span>
+<span style="color:#f92672">http.cors.allow-origin</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+<span style="color:#f92672">http.cors.enabled</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">http.cors.allow-headers </span>: <span style="color:#ae81ff">X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization</span>
+<span style="color:#f92672">http.cors.allow-credentials</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>master node [&ldquo;node-1&rdquo;, &ldquo;node-2&rdquo;, &ldquo;node-3&rdquo;]</p>
+<p>假如刚好算法推举出node-1 那么此时此刻node-1就是主节点</p>
+<p>客户端请求任一个node 那么该node就是<strong>协调节点</strong> 比如正好是node-2 那么node-2就是<strong>协调节点</strong></p>
+<p>候选主节点主节点有1和2 从initial_master_nodes中推举出来主节点 主节点：负责索引的添加、删除，跟踪哪些节点是群集的一部分，对分片进行分配、收集集群中各节点的状态等，稳定的主节点对集群的健康是非常重要。
+进来后由负载均衡判断  假如主节点请求1节点处理 那么1节点就作为了<strong>协调节点</strong>,然后1节点将请求发给各个分节点;  分节点再向各个分片发送检索请求; 分片检索结果在节点合并; 各个节点结果在协调节点合并; 协调节点合并并且<strong>后续操作</strong>完成以后才把结果响应给客服端。</p>
+<h2 id="倒排索引">
+  倒排索引
+  <a class="anchor" href="#%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95">#</a>
+</h2>
+<p>要讲明白什么是倒排索引，首先我们先梳理下什么索引，比如一本书，书的目录页，有章节，章节名称，我们想看哪个章节，我们通过目录页，查到对应章节和页码，就能定位到具体的章节内容，通过目录页的章节名称查到章节的页码，进而看到章节内容，这个过程就是一个索引的过程，那么什么是倒排索引呢？</p>
+<p>比如查询《java编程思想》这本书的文章，翻开书本可以看到目录页，记录这个章节名字和章节地址页码，通过查询章节名字“继承”可以定位到“继承”这篇章节的具体地址，查看到文章的内容，我们可以看到文章内容中包含很多“对象”这个词。</p>
+<p>那么如果我们要在这本书中查询所有包含有“对象”这个词的文章，那该怎么办呢？</p>
+<p>按照现在的索引方式无疑大海捞针，假设我们有一个“对象”&ndash;→文章的映射关系，不就可以了吗？类似这样的反向建立映射关系的就叫倒排索引。</p>
+<p>如图所示，将文章进行分词后得到关键词，在根据关键词建立倒排索引，关键词构建成一个词典，词典中存放着一个个词条（关键词），每个关键词都有一个列表与其对应，这个列表就是倒排表，存放的是章节文档编号和词频等信息，倒排列表中的每个元素就是一个倒排项，最后可以看到，整个倒排索引就像一本新华字典，所有单词的倒排列表往往顺序地存储在磁盘的某个文件里，这个文件被称之为倒排文件。</p>
+<p><img src="../../.././imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806082935.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806082935.png" alt="" /></p>
+<h2 id="索引">
+  索引
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95">#</a>
+</h2>
+<ul>
+<li>
+<p>ES将数据存储于一个或多个索引中，索引是具有类似特性的文档的集合</p>
+</li>
+<li>
+<p>primary shard(主分片)  每个主分片都有一个复制分片 因此一个主分片的副分片是大于等于1</p>
+</li>
+<li>
+<p>一个分片(shard)是一个最小级别“工作单元(worker unit)”，它只是保存了索引中所有数据的一部分。</p>
+</li>
+<li>
+<p>索引中的每个文档属于一个单独的主分片，所以主分片的数量决定了索引最多能存储多少数据</p>
+</li>
+<li>
+<p>索引 [ {id:&ldquo;1&rdquo;,name:&ldquo;张三&rdquo;} , {id:&ldquo;2&rdquo;,name:&ldquo;李四&rdquo;} ,{id:&ldquo;3&rdquo;,name:&ldquo;王麻子&rdquo;} ]</p>
+</li>
+<li>
+<p>分片1 [{id:&ldquo;1&rdquo;,name:&ldquo;张三&rdquo;} , {id:&ldquo;2&rdquo;,name:&ldquo;李四&rdquo;}]</p>
+</li>
+<li>
+<p>分片2 [{id:&ldquo;3&rdquo;,name:&ldquo;王麻子&rdquo;} ]</p>
+</li>
+</ul>
+<h2 id="分段">
+  分段
+  <a class="anchor" href="#%e5%88%86%e6%ae%b5">#</a>
+</h2>
+<p>实际上分段也是一个索引  一个索引下面有很多分段 分段下包含了文档和文档索引等</p>
+<h2 id="节点">
+  节点
+  <a class="anchor" href="#%e8%8a%82%e7%82%b9">#</a>
+</h2>
+<h2 id="分片和副本">
+  分片和副本
+  <a class="anchor" href="#%e5%88%86%e7%89%87%e5%92%8c%e5%89%af%e6%9c%ac">#</a>
+</h2>
+<ul>
+<li>准备数据</li>
+</ul>
+<pre><code>http://127.0.0.1:9200/index_node1
+
+{
+    &quot;settings&quot;: {
+        &quot;index&quot;: {
+            &quot;number_of_shards&quot;: 2,
+            &quot;number_of_replicas&quot;: 1
+        }
+    },
+    &quot;mappings&quot;: {
+        &quot;properties&quot;: {
+            &quot;title&quot;: {
+                &quot;type&quot;: &quot;text&quot;
+            }
+        }
+    }
+}
+
+http://127.0.0.1:9201/index_node2
+
+{
+    &quot;settings&quot;: {
+        &quot;index&quot;: {
+            &quot;number_of_shards&quot;: 2,
+            &quot;number_of_replicas&quot;: 1
+        }
+    },
+    &quot;mappings&quot;: {
+        &quot;properties&quot;: {
+            &quot;title&quot;: {
+                &quot;type&quot;: &quot;text&quot;
+            }
+        }
+    }
+}
+
+http://127.0.0.1:9202/index_node3
+
+
+{
+    &quot;settings&quot;: {
+        &quot;index&quot;: {
+            &quot;number_of_shards&quot;: 2,
+            &quot;number_of_replicas&quot;: 1
+        }
+    },
+    &quot;mappings&quot;: {
+        &quot;properties&quot;: {
+            &quot;title&quot;: {
+                &quot;type&quot;: &quot;text&quot;
+            }
+        }
+    }
+}
+
+
+</code></pre><ul>
+<li>
+<p>先看数据</p>
+</li>
+<li>
+<p>elasticsearch-cluster\elasticsearch-node-1\data\nodes\0\indices 索引</p>
+</li>
+</ul>
+<pre><code>-6jNd3ADSB-h8ezjctJynw
+0eZnn7K1Q8aC9DMWAXQEoQ
+1n88hWQ6RIiBdkl4T_UkZQ
+8wWe-fscTLO9VYEi_fNm-Q
+9sIkQ5C6Sy2tchu9QoeZGg
+AAdjmcQ-S_Ca0DtAqwDbqg
+BpEJkkh2RCKpWKMfBgBaBw
+cWxPFZ81TqKJWTq_EdOsEA
+FcDp0ujtTU63x6u8YTuWTw
+IZVh3QEtTb-QDl5go8UP8g
+KEEQFdt3RxCDicSCl0eg0g
+KLV8BfnjR1awSNnTXiWrJg
+KRexSOorR1it17bSClzGSg
+LSO_rZUkTT-UODXoQo8Gxw
+pawJ4cqlRlqZd2xNWe4ppw
+RZA-jjbuTGKI9VPQD6nvHA
+wxKwqAHySzOXSPL3f-DHlA
+yjt6OOuES56ihJmrt0-EHA
+
+</code></pre><ul>
+<li>elasticsearch-cluster\elasticsearch-node-2\data\nodes\0\indices 索引</li>
+</ul>
+<pre><code>-6jNd3ADSB-h8ezjctJynw
+0eZnn7K1Q8aC9DMWAXQEoQ
+9sIkQ5C6Sy2tchu9QoeZGg
+AAdjmcQ-S_Ca0DtAqwDbqg
+cWxPFZ81TqKJWTq_EdOsEA
+FcDp0ujtTU63x6u8YTuWTw
+Hb1HIqQLSoOaj_Ke50JThQ
+IZVh3QEtTb-QDl5go8UP8g
+Jz9F8MFNT7mT8s7tkbRqzg
+KLV8BfnjR1awSNnTXiWrJg
+KRexSOorR1it17bSClzGSg
+leckoQnzTWycaQi_rIvmoQ
+LSO_rZUkTT-UODXoQo8Gxw
+nBIHE-LcRtiF0VQ_8tpItg
+RmepfbFFStyOM4IwialfBw
+RVnE2XYeQhyYTO1qQq3SYw
+UgwFKXBLRKu2Tu_UJWfZow
+wNdmgVw2SIujPhZuKV3kGA
+</code></pre><ul>
+<li>elasticsearch-cluster\elasticsearch-node-3\data\nodes\0\indices 索引</li>
+</ul>
+<pre><code>-6jNd3ADSB-h8ezjctJynw
+1n88hWQ6RIiBdkl4T_UkZQ
+8wWe-fscTLO9VYEi_fNm-Q
+AAdjmcQ-S_Ca0DtAqwDbqg
+BpEJkkh2RCKpWKMfBgBaBw
+cWxPFZ81TqKJWTq_EdOsEA
+FcDp0ujtTU63x6u8YTuWTw
+Hb1HIqQLSoOaj_Ke50JThQ
+Jz9F8MFNT7mT8s7tkbRqzg
+KEEQFdt3RxCDicSCl0eg0g
+leckoQnzTWycaQi_rIvmoQ
+nBIHE-LcRtiF0VQ_8tpItg
+pawJ4cqlRlqZd2xNWe4ppw
+RmepfbFFStyOM4IwialfBw
+RVnE2XYeQhyYTO1qQq3SYw
+RZA-jjbuTGKI9VPQD6nvHA
+UgwFKXBLRKu2Tu_UJWfZow
+wNdmgVw2SIujPhZuKV3kGA
+wxKwqAHySzOXSPL3f-DHlA
+yjt6OOuES56ihJmrt0-EHA
+</code></pre><ul>
+<li>http://localhost:9200/_cat/indices?v&amp;pretty 查看集群所有索引</li>
+</ul>
+<pre><code>health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .monitoring-es-7-2023.07.30     0eZnn7K1Q8aC9DMWAXQEoQ   1   1       4969         3378      6.6mb          3.2mb
+green  open   .triggered_watches              RZA-jjbuTGKI9VPQD6nvHA   1   1          3            0     31.7kb         28.1kb
+green  open   movie                           RVnE2XYeQhyYTO1qQq3SYw   1   1        100            0     78.8kb         39.4kb
+green  open   .apm-agent-configuration        Hb1HIqQLSoOaj_Ke50JThQ   1   1          0            0       416b           208b
+green  open   .monitoring-es-7-2023.08.05     UgwFKXBLRKu2Tu_UJWfZow   1   1      21760        10800     39.1mb         19.5mb
+green  open   index_node                      cWxPFZ81TqKJWTq_EdOsEA   2   1          1            0      7.3kb          3.6kb
+green  open   .monitoring-es-7-2023.08.04     9sIkQ5C6Sy2tchu9QoeZGg   1   1      35954        51828     41.8mb         20.9mb
+green  open   .kibana_1                       BpEJkkh2RCKpWKMfBgBaBw   1   1        106           18    177.5kb         88.7kb
+green  open   .kibana-event-log-7.8.0-000001  leckoQnzTWycaQi_rIvmoQ   1   1          4            0     41.2kb         20.6kb
+green  open   book2                           KRexSOorR1it17bSClzGSg   1   1          0            0       416b           208b
+green  open   cars                            8wWe-fscTLO9VYEi_fNm-Q   1   1          8            0     10.4kb          5.2kb
+green  open   .monitoring-kibana-7-2023.08.05 yjt6OOuES56ihJmrt0-EHA   1   1        111            0    156.7kb         78.2kb
+green  open   .apm-custom-link                IZVh3QEtTb-QDl5go8UP8g   1   1          0            0       416b           208b
+green  open   .kibana_task_manager_1          wxKwqAHySzOXSPL3f-DHlA   1   1          5            5     21.3kb         10.6kb
+green  open   .monitoring-kibana-7-2023.07.30 KEEQFdt3RxCDicSCl0eg0g   1   1        188            0    271.8kb        135.9kb
+green  open   .monitoring-alerts-7            wNdmgVw2SIujPhZuKV3kGA   1   1          6            0     74.5kb         37.2kb
+green  open   index_node1                     -6jNd3ADSB-h8ezjctJynw   2   1          1            0      7.3kb          3.6kb
+green  open   index_node2                     AAdjmcQ-S_Ca0DtAqwDbqg   2   1          1            0     15.9kb          7.9kb
+green  open   index_node3                     FcDp0ujtTU63x6u8YTuWTw   2   1          0            0       832b           416b
+green  open   .watches                        Jz9F8MFNT7mT8s7tkbRqzg   1   1          6          183    769.1kb        487.1kb
+green  open   user                            pawJ4cqlRlqZd2xNWe4ppw   1   1          4            0     10.1kb            5kb
+green  open   shopping                        KLV8BfnjR1awSNnTXiWrJg   1   1          1            0     16.5kb          8.2kb
+
+</code></pre><blockquote>
+<p>我们可以发现每个节点下面都有其它节点的索引 当不是本节点创建的索引  那么这个索引就是副本,并且 副本具体再哪些节点去创建副本也是es根据规则计算出来的</p>
+</blockquote>
+<h3 id="分片">
+  分片
+  <a class="anchor" href="#%e5%88%86%e7%89%87">#</a>
+</h3>
+<p>ES支持PB级全文搜索，通常我们数据量很大的时候，查询性能都会越来越慢，
+我们能想到的一个方式的将数据分散到不同的地方存储，ES也是如此，
+ES通过水平拆分的方式将一个索引上的数据拆分出来分配到不同的数据块上，拆分出来的数据库块称之为一个分片Shard，很像MySQL的分库分表。</p>
+<p>不同的主分片分布在不同的节点上，那么在多分片的索引中数据应该被写入哪里？
+肯定不能随机写，否则查询的时候就无法快速检索到对应的数据了，
+这需要有一个路由策略来确定具体写入哪一个分片中，怎么路由我们下文会介绍。
+在创建索引的时候需要指定分片的数量，并且分片的数量一旦确定就不能修改。</p>
+<h3 id="副本">
+  副本
+  <a class="anchor" href="#%e5%89%af%e6%9c%ac">#</a>
+</h3>
+<p>副本就是对分片的复制，每个主分片都有一个或多个副本分片，当主分片异常时，副本可以提供数据的查询等操作。主分片和对应的副本分片是不会在同一个节点上的，避免数据的丢失，当一个节点宕机的时候，还可以通过副本查询到数据，副本分片数的最大值是 N-1（其中 N 为节点数）。</p>
+<p>对doc的新建、索引和删除请求都是写操作，这些写操作是必须在主分片上完成，然后才能被复制到对应的副本上。ES为了提高写入的能力这个过程是并发写的，同时为了解决并发写的过程中数据冲突的问题，ES通过乐观锁的方式控制，每个文档都有一个 _version号，当文档被修改时版本号递增。</p>
+<p>一旦所有的副本分片都报告写成功才会向协调节点报告成功，协调节点向客户端报告成功。</p>
+<p><img src="../../.././imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083318.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083318.png" alt="" /></p>
+<h3 id="elasticsearch-的写索引流程">
+  Elasticsearch 的写索引流程
+  <a class="anchor" href="#elasticsearch-%e7%9a%84%e5%86%99%e7%b4%a2%e5%bc%95%e6%b5%81%e7%a8%8b">#</a>
+</h3>
+<p>上面提到了写索引是只能写在主分片上，然后同步到副本分片，那么如上图所示，这里有四个主分片分别是S0、S1、S2、S3，一条数据是根据什么策略写到指定的分片上呢？这条索引数据为什么被写到S0上而不写到 S1 或 S2 上？这个过程是根据下面这个公式决定的。</p>
+<pre><code>shard = hash(routing) % number_of_primary_shards
+</code></pre><p>以上公式的值是在0到number_of_primary_shards-1之间的余数，也就是数据文档所在分片的位置。routing通过Hash函数生成一个数字，然后这个数字再除以number_of_primary_shards（主分片的数量）后得到余数。routing是一个可变值，默认是文档的_id ，也可以设置成一个自定义的值。</p>
+<p>在一个写请求被发送到某个节点后，该节点按照前文所述，会充当协调节点，会根据路由公式计算出写哪个分片，当前节点有所有其他节点的分片信息，如果发现对应的分片是在其他节点上，再将请求转发到该分片的主分片节点上。</p>
+<p>在ES集群中每个节点都通过上面的公式知道数据的在集群中的存放位置，所以每个节点都有接收读写请求的能力。</p>
+<p>那么为什么在创建索引的时候就确定好主分片的数量，并且不可修改？因为如果数量变化了，那么所有之前路由计算的值都会无效，数据也就再也找不到了。</p>
+<p><img src="../../.././imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083341.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083341.png" alt="" /></p>
+<p>如上图所示，当前一个数据通过路由计算公式得到的值是 shard=hash(routing)%4=0，则具体流程如下：</p>
+<ul>
+<li>（1）数据写请求发送到 node1 节点，通过路由计算得到值为1，那么对应的数据会应该在主分片S1上。</li>
+<li>（2）node1节点将请求转发到 S1 主分片所在的节点node2，node2 接受请求并写入到磁盘。</li>
+<li>（3）并发将数据复制到三个副本分片R1上，其中通过乐观并发控制数据的冲突。一旦所有的副本分片都报告成功，则节点 node2将向node1节点报告成功，然后node1节点向客户端报告成功。</li>
+</ul>
+<p>这种模式下，只要有副本在，写入延时最小也是两次单分片的写入耗时总和，效率会较低，但是这样的好处也很明显，避免写入后单个机器硬件故障导致数据丢失，在数据完整性和性能方面，一般都是优先选择数据，除非一些允许丢数据的特殊场景。</p>
+<p>在ES里为了减少磁盘IO保证读写性能，一般是每隔一段时间（比如30分钟）才会把数据写入磁盘持久化，对于写入内存，但还未flush到磁盘的数据，如果发生机器宕机或者掉电，那么内存中的数据也会丢失，这时候如何保证？</p>
+<p>对于这种问题，ES借鉴数据库中的处理方式，增加CommitLog模块，在ES中叫transLog，在下面的ES存储原理中会介绍。</p>
+<h3 id="存储原理">
+  存储原理
+  <a class="anchor" href="#%e5%ad%98%e5%82%a8%e5%8e%9f%e7%90%86">#</a>
+</h3>
+<p>上面介绍了在ES内部的写索引处理流程，数据在写入到分片和副本上后，目前数据在内存中，要确保数据在断电后不丢失，还需要持久化到磁盘上。</p>
+<p>我们知道ES是基于Lucene实现的，内部是通过Lucene完成的索引的创建写入和搜索查询，Lucene 工作原理如下图所示，当新添加一片文档时，Lucene进行分词等预处理，然后将文档索引写入内存中，并将本次操作写入事务日志（transLog），transLog类似于mysql的binlog，用于宕机后内存数据的恢复，保存未持久化数据的操作日志。</p>
+<p>默认情况下，Lucene每隔1s(refresh_interval配置项)将内存中的数据刷新到文件系统缓存中，称为一个segment（段）。一旦刷入文件系统缓存，segment才可以被用于检索，在这之前是无法被检索的。</p>
+<p>因此refresh_interval决定了ES数据的实时性，因此说ES是一个准实时的系统。segment 在磁盘中是不可修改的，因此避免了磁盘的随机写，所有的随机写都在内存中进行。随着时间的推移，segment越来越多，默认情况下，Lucene每隔30min或segment 空间大于512M，将缓存中的segment持久化落盘，称为一个commit point，此时删掉对应的transLog。</p>
+<p>当我们在进行写操作的测试的时候，可以通过手动刷新来保障数据能够被及时检索到，但是不要在生产环境下每次索引一个文档都去手动刷新，刷新操作会有一定的性能开销。一般业务场景中并不都需要每秒刷新。</p>
+<p>可以通过在 Settings 中调大 refresh_interval = &ldquo;30s&rdquo; 的值，来降低每个索引的刷新频率，设值时需要注意后面带上时间单位，否则默认是毫秒。当 refresh_interval=-1 时表示关闭索引的自动刷新。</p>
+<p><img src="../../.././imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083415.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083415.png" alt="" /></p>
+<h3 id="索引文件分段存储并且不可修改那么新增更新和删除如何处理呢">
+  索引文件分段存储并且不可修改，那么新增、更新和删除如何处理呢？
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95%e6%96%87%e4%bb%b6%e5%88%86%e6%ae%b5%e5%ad%98%e5%82%a8%e5%b9%b6%e4%b8%94%e4%b8%8d%e5%8f%af%e4%bf%ae%e6%94%b9%e9%82%a3%e4%b9%88%e6%96%b0%e5%a2%9e%e6%9b%b4%e6%96%b0%e5%92%8c%e5%88%a0%e9%99%a4%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e5%91%a2">#</a>
+</h3>
+<ul>
+<li>新增，新增很好处理，由于数据是新的，所以只需要对当前文档新增一个段就可以了。</li>
+<li>删除，由于不可修改，所以对于删除操作，不会把文档从旧的段中移除而是通过新增一个 .del 文件，文件中会列出这些被删除文档的段信息，这个被标记删除的文档仍然可以被查询匹配到， 但它会在最终结果被返回前从结果集中移除。</li>
+<li>更新，不能修改旧的段来进行文档的更新，其实更新相当于是删除和新增这两个动作组成。会将旧的文档在 .del 文件中标记删除，然后文档的新版本中被索引到一个新的段。可能两个版本的文档都会被一个查询匹配到，但被删除的那个旧版本文档在结果集返回前就会被移除。</li>
+</ul>
+<p>segment被设定为不可修改具有一定的优势也有一定的缺点。</p>
+<p>优点：</p>
+<ul>
+<li>不需要锁。如果你从来不更新索引，你就不需要担心多进程同时修改数据的问题。</li>
+<li>一旦索引被读入内核的文件系统缓存，便会留在哪里，由于其不变性。只要文件系统缓存中还有足够的空间，那么大部分读请求会直接请求内存，而不会命中磁盘。这提供了很大的性能提升.</li>
+<li>其它缓存(像 Filter 缓存)，在索引的生命周期内始终有效。它们不需要在每次数据改变时被重建，因为数据不会变化。</li>
+<li>写入单个大的倒排索引允许数据被压缩，减少磁盘 I/O 和需要被缓存到内存的索引的使用量。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>当对旧数据进行删除时，旧数据不会马上被删除，而是在 .del 文件中被标记为删除。而旧数据只能等到段更新时才能被移除，这样会造成大量的空间浪费。</li>
+<li>若有一条数据频繁的更新，每次更新都是新增新的，标记旧的，则会有大量的空间浪费。</li>
+<li>每次新增数据时都需要新增一个段来存储数据。当段的数量太多时，对服务器的资源例如文件句柄的消耗会非常大。</li>
+<li>在查询的结果中包含所有的结果集，需要排除被标记删除的旧数据，这增加了查询的负担。</li>
+</ul>
+<h3 id="段合并">
+  段合并
+  <a class="anchor" href="#%e6%ae%b5%e5%90%88%e5%b9%b6">#</a>
+</h3>
+<p>由于每当刷新一次就会新建一个segment（段），这样会导致短时间内的段数量暴增，而segment数目太多会带来较大的麻烦。大量的segment会影响数据的读性能。每一个segment都会消耗文件句柄、内存和CPU 运行周期。</p>
+<p>更重要的是，每个搜索请求都必须轮流检查每个segment然后合并查询结果，所以segment越多，搜索也就越慢。</p>
+<p>因此Lucene会按照一定的策略将segment合并，合并的时候会将那些旧的已删除文档从文件系统中清除。被删除的文档不会被拷贝到新的大segment中。</p>
+<p>合并的过程中不会中断索引和搜索，倒排索引的数据结构使得文件的合并是比较容易的。</p>
+<p>段合并在进行索引和搜索时会自动进行，合并进程选择一小部分大小相似的段，并且在后台将它们合并到更大的段中，这些段既可以是未提交的也可以是已提交的。</p>
+<p>合并结束后老的段会被删除，新的段被刷新到磁盘，同时写入一个包含新段且排除旧的和较小的段的新提交点，新的段被打开，可以用来搜索。段合并的计算量庞大，而且还要吃掉大量磁盘 I/O，并且段合并会拖累写入速率，如果任其发展会影响搜索性能。</p>
+<p>ES在默认情况下会对合并流程进行资源限制，所以搜索性能可以得到保证。</p>
+<p><img src="../../.././imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083439.png" alt="" />
+<img src="../../../../imgs/elasticsearch/image/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230806083439.png" alt="" /></p>
+<p><a href="https://zhuanlan.zhihu.com/p/635445173">参考1</a>
+<a href="https://blog.csdn.net/sinat_16658263/article/details/90444038">参考2</a></p>
+</article>
+ 
+      
+
+
+<p id="inspirational_statement_content" style="color: red"></p>
+<script>
+
+    
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    var inspirational_statement_array = [] ;
+
+    inspirational_statement_array.push('不奋斗，你的才华如何配得上你的任性。不奋斗，你的脚步如何赶得上父母老去的速度。不奋斗，世界这么大你靠什么去看看') ;
+    inspirational_statement_array.push('开挂的人生，不是天生就有持续不断的鸡血，而是后天获得了从痛苦中给自己充电的能力。') ;
+    inspirational_statement_array.push('如果你连工作挣钱都要别人开导你，都要人盯着，看着，哄着，鼓励着，劝你还是别干了，那你就应该穷！这是不是鸡汤，这是现实。') ;
+    inspirational_statement_array.push('趁着梦想还有温度，人生还有转机，抓紧时间去奋斗，不要等到中年时，只能叹息自己的碌碌无为') ;
+    inspirational_statement_array.push('世上所有的牛逼背后，都是一帮玩命的人') ;
+    inspirational_statement_array.push('你可以一辈子不登山，但你心中一定要有座山。它使你总往高处爬，它使你总有个奋斗的方向，它使你任何一刻抬起头，都能看到自己的希望') ;
+    inspirational_statement_array.push('我喜欢这个功利的世界，因为它承认每个人的努力，好看的姑娘能轻松几年，但会赚钱的姑娘才能过好一生') ;
+    inspirational_statement_array.push('影响我们人生的绝不仅仅是环境，其实是心态在控制个人的行动和思想。同时，心态也决定了一个人的视野、事业和成就，甚至一生') ;
+    inspirational_statement_array.push('第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的。这就是努力的理由') ;
+    inspirational_statement_array.push('愿你能把梦想放在心底，化为最坚定的力量。不管一路上多么坎坷和不安，那份坚持一直在；不管一路上多么坦途或荆棘，那份努力一直在') ;
+    inspirational_statement_array.push('你所做的事情，也许暂时看不到成果，但不要灰心或焦虑，你不是没有成长，而是在扎根。') ;
+    inspirational_statement_array.push('生活教会我们的第一件事就是——没有人可以宠你一辈子，要想走得精彩又坦荡，唯有独立坚强。新的一天开始了，替未来的你抱抱现在努力奋斗的自己') ;
+    inspirational_statement_array.push('我终于相信，每一条走上来的路，都有它不得不那样跋涉的理由。每一条要走下去的路，都有它不得不那样选择的方向') ;
+    inspirational_statement_array.push('人生，就要活得漂亮，走得铿锵。无论你是谁，宁可做拼搏的失败者，也不要做安于现状的平凡人') ;
+    inspirational_statement_array.push('有梦想的人不做选择题，只做证明题，所以，年轻的你，可以犯错，可以跌倒，但千万不要怀疑自己，也不要放弃梦想。去想去的地方，做该做的事情，不迟疑，不徘徊') ;
+    inspirational_statement_array.push('能力不在脸上，本事不在嘴上。要踏踏实实做实事，生活不会因为某个节点而变得与众不同，未来的幸运都是过往努力的积攒') ;
+    inspirational_statement_array.push('当所有人都拿你当回事的时候，你不能太拿自己当回事；当所有人都不拿你当回事的时，你一定得瞧得上自己。这就是淡定，这就是从容') ;
+    inspirational_statement_array.push('生活给你的很多难堪，不是在跟你过不去，而是要你不断提高生存的技能。你看别人干什么好像都是轻而易举，很容易成功，那是因为别人背后可能比你多付出了百倍的努力!') ;
+    inspirational_statement_array.push('当一个人的心中有着更高的山峰想去攀登时，他就不会在意脚下的泥沼，他才可能用最平静的方式去面对一般人难以承受的痛苦。') ;
+    inspirational_statement_array.push('这世间从来没有所谓的逆袭。如果有的话，也不过是日复一日自律和努力的结果。') ;
+    inspirational_statement_array.push('人生就是一个磨练的过程，如果没有这些酸甜苦辣，你永远都不会成熟！所以，我们应该在阳光下灿烂，风雨中奔跑，泪水中成长，拼搏中展望，对自己说一声：昨天挺好，今天很好，明天会更好！') ;
+
+    inspirational_statement_array.push('人生要用简单的心境，对待复杂的人生，最无情的不是人，是时间；最珍贵的不是金钱，是情感；最可怕的不是失恋，是心身不全；最舒适的不是酒店，是家里；最难听的不是脏话，是无言；最美好的不是未来，是今天。') ;
+
+    inspirational_statement_array.push('在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来。有时候，选择快乐，更需要勇气。') ;
+    inspirational_statement_array.push('如果你的生活已处于低谷，那就，大胆走，因为你怎样走都是在向上。') ;
+    inspirational_statement_array.push('你可以哭但不能输，你可以难过但不可以落魄，你不努力怎么会知道自己可以赢得多少掌声?如果你能每天呐喊遍“我用不着为这一点小事而烦恼”，你会发现，你心里有一种不可思议的力量，试试看，很管用的。') ;
+    inspirational_statement_array.push('生活不是用来妥协的，你退缩得越多，能让你喘息的空间就越有限。日子不是用来将就的，你表现得越卑微，一些幸福的东西就会离你越远。') ;
+    inspirational_statement_array.push('过去的事，就让它过去吧，我们错过了昨日的日落，再也不能错过今日的日出，保持平衡的心态，以最美好的心情来对待每一天，每一天都会充满阳光，洋溢着希望。') ;
+    inspirational_statement_array.push('人生快不快乐看心情，幸不幸福看心态。漫长人生中，什么都不是一眼看到头的，一时的春风得意算不了什么，一时的失败也不能算数。') ;
+    inspirational_statement_array.push('成功没有快车道，幸福没有高速路。所有的成功，都来自不倦的努力和奔跑；所有幸福，都来自平凡的奋斗和坚持。') ;
+    inspirational_statement_array.push('每天都是一个起点，每天都有一点进步，每天都有一点收获!') ;
+    inspirational_statement_array.push('眼泪不是我们的答案，拼搏才是我们的选择。') ;
+    inspirational_statement_array.push('静下来，铸我实力；拼上去，亮我风采。') ;
+    inspirational_statement_array.push('霸气盈胸，高山有顶我为峰；豪情壮志，乾坤朗朗我称雄。') ;
+    inspirational_statement_array.push(' 宁可战死，不可吓死。今朝不搏，更待何时?') ;
+    inspirational_statement_array.push('不论在何时开始，重要的是开始之后就不要停止；不论在何时，重要的是之后就不要悔恨。') ;
+    inspirational_statement_array.push('明天是世上增值最快的一块土地，因它充满了希望。') ;
+    inspirational_statement_array.push('越接近考试，往往越要在坚实上下功夫。') ;
+    inspirational_statement_array.push('最弱的人，集中精力于单一目标，也能有所成就，最强的人，分心太多事务，可能一事无成。') ;
+    inspirational_statement_array.push('你想活得更有质量更有层次更有品位吗?那就努力改变你的现状!') ;
+    inspirational_statement_array.push('时间不等待，珍惜今天，把握现在!') ;
+    inspirational_statement_array.push('以阳光和微笑示人，在逆境中燃起斗志!') ;
+    inspirational_statement_array.push('苦想没盼头，苦干有奔头。') ;
+    inspirational_statement_array.push('人的才华就如海绵的水，没有外力的挤压，它是绝对流不出来的。流出来后，海绵才能吸收新的源泉。') ;
+    inspirational_statement_array.push('忍别人所不能忍的痛，吃别人所不能吃的苦，是为了收获得不到的收获。') ;
+    inspirational_statement_array.push('人生如梦，一切皆有可能，只要你能想。') ;
+    inspirational_statement_array.push('别想一下造出大海，必须先由小河川开始。') ;
+    inspirational_statement_array.push('悲观些看成功，乐观些看失败。轻松些看自己，宽容些看别人。理智些看问题，纯真些看人生。') ;
+    inspirational_statement_array.push('无须自卑，不要自负，坚持自信。') ;
+    inspirational_statement_array.push('身体常动，内心常静。') ;
+    inspirational_statement_array.push('学习与坐禅相似，须有一颗恒心。') ;
+
+    window.onload = function () {
+        var index = randomNum(0,inspirational_statement_array.length-1) ;
+        var oldText = "" ;
+        console.log(index);
+        document.getElementById('inspirational_statement_content').innerText = oldText+""+inspirational_statement_array[index] ;
+    } ;
+</script>
+<script>
+    function hous(x,y,r,h,context){
+
+        var gen3=Math.sqrt(3);
+        var rs=0.5*r;
+        switch(h)
+        {
+            case 1:
+                context.fillText("1",x+rs,y-rs*gen3);
+                break;
+            case 2:
+                context.fillText("2",x+gen3*rs,y-rs);
+                break;
+            case 3:
+                context.fillText("3",x+2*rs,y);
+                break;
+            case 4:
+                context.fillText("4",x+gen3*rs,y+rs);
+                break;
+            case 5:
+                context.fillText("5",x+rs,y+gen3*rs);
+                break;
+            case 6:
+                context.fillText("6",x,y+2*rs);
+                break;
+            case 7:
+                context.fillText("7",x-rs,y+gen3*rs);
+                break;
+            case 8:
+                context.fillText("8",x-gen3*rs,y+rs);
+                break;
+            case 9:
+                context.fillText("9",x-2*rs,y);
+                break;
+            case 10:
+                context.fillText("10",x-gen3*rs,y-rs);
+                break;
+            case 11:
+                context.fillText("11",x-rs,y-gen3*rs);
+                break;
+            case 12:
+                context.fillText("12",x,y-2*rs);
+                break;
+            default:
+                alert("请输入正确的时间刻度！");
+        }
+    }
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</script>
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#elasticsearch-原理">elasticsearch 原理</a>
+      <ul>
+        <li><a href="#集群">集群</a></li>
+        <li><a href="#倒排索引">倒排索引</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#分段">分段</a></li>
+        <li><a href="#节点">节点</a></li>
+        <li><a href="#分片和副本">分片和副本</a>
+          <ul>
+            <li><a href="#分片">分片</a></li>
+            <li><a href="#副本">副本</a></li>
+            <li><a href="#elasticsearch-的写索引流程">Elasticsearch 的写索引流程</a></li>
+            <li><a href="#存储原理">存储原理</a></li>
+            <li><a href="#索引文件分段存储并且不可修改那么新增更新和删除如何处理呢">索引文件分段存储并且不可修改，那么新增、更新和删除如何处理呢？</a></li>
+            <li><a href="#段合并">段合并</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

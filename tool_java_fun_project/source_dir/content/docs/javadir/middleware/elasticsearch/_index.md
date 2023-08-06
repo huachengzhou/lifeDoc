@@ -7,11 +7,18 @@
 
 
 [官方地址](https://www.elastic.co/cn/)
+
 [kibana地址(其它版本选择View past releases)](https://www.elastic.co/cn/downloads/kibana)
+
 [官方推荐教程](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_how_to_read_this_book.html)
+
 [其它教程](https://www.cainiaojc.com/elasticsearch/)
+
 [elasticsearch和kibana版本对应关系](https://www.elastic.co/cn/support/matrix#matrix_compatibility)
 
+[中文社区](https://elasticsearch.cn/)
+
+[中文文档5.4](https://elasticsearch.apachecn.org/)
 
 # elasticsearch与数据库的类比
 

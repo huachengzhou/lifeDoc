@@ -8,6 +8,43 @@
 <meta name="description" content="elasticsearch-cluster
 #
 
+Cluster集群
+#
+
+ 一个ElasticSearch集群由一个或多个节点(Node)组成，每个集群都有一个共同的集群名称作为标识。
+ Node节点
+#
+
+一个ElasticSearch实例即一个Node，一台机器可以有多个实例，正常使用下每个实例应该会部署在不同机器上。ElasticSearch的配置文件中可以通过node.master、node.data来设置节点类型。
+　node.master：表示节点是否具有称为主节点的资格
+　true代表的是有资格竞选主节点
+　false代表的是没有资格竞选主节点
+　node.data：表示节点是否存储数据
+Node节点组合
+#
+
+主节点&#43;数据节点(master&#43;data)
+#
+
+ 节点即有称为主节点的资格，又存储数据
+ node.master: true
+node.data: true
+数据节点(data)
+#
+
+ 节点没有成为主节点的资格，不参与选举，只会存储数据
+ node.master: false
+node.data: true
+客户端节点(client)
+#
+
+ 不会成为主节点，也不会存储数据，主要是针对海量请求的时候，可以进行负载均衡
+ node.master: false
+node.data: false
+分片
+#
+
+每个索引有一个或多个分片，每个分片存储不同的数据。分片可分为主分片(primary shard)和复制分片(replica shard)，复制分片是主分片的拷贝。默认每个主分片有一个复制分片，一个索引的复制分片的数量可以动态地调整，复制分片匆匆不与它的主分片在同一个节点上。
 配置
 #
 
@@ -17,16 +54,48 @@
 
 # ======================== Elasticsearch Configuration =========================
 #
-# NOTE: Elasticsearch comes with reasonable defaults for most settings.
-# Before you set out to tweak and tune the configuration, make sure you
-# understand what are you trying to accomplish and the consequences.
-#
-# The primary way of configuring a node is via this file. This template lists
-# the most important settings you may want to configure for a production cluster.">
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="(集群)" />
 <meta property="og:description" content="elasticsearch-cluster
 #
 
+Cluster集群
+#
+
+ 一个ElasticSearch集群由一个或多个节点(Node)组成，每个集群都有一个共同的集群名称作为标识。
+ Node节点
+#
+
+一个ElasticSearch实例即一个Node，一台机器可以有多个实例，正常使用下每个实例应该会部署在不同机器上。ElasticSearch的配置文件中可以通过node.master、node.data来设置节点类型。
+　node.master：表示节点是否具有称为主节点的资格
+　true代表的是有资格竞选主节点
+　false代表的是没有资格竞选主节点
+　node.data：表示节点是否存储数据
+Node节点组合
+#
+
+主节点&#43;数据节点(master&#43;data)
+#
+
+ 节点即有称为主节点的资格，又存储数据
+ node.master: true
+node.data: true
+数据节点(data)
+#
+
+ 节点没有成为主节点的资格，不参与选举，只会存储数据
+ node.master: false
+node.data: true
+客户端节点(client)
+#
+
+ 不会成为主节点，也不会存储数据，主要是针对海量请求的时候，可以进行负载均衡
+ node.master: false
+node.data: false
+分片
+#
+
+每个索引有一个或多个分片，每个分片存储不同的数据。分片可分为主分片(primary shard)和复制分片(replica shard)，复制分片是主分片的拷贝。默认每个主分片有一个复制分片，一个索引的复制分片的数量可以动态地调整，复制分片匆匆不与它的主分片在同一个节点上。
 配置
 #
 
@@ -36,12 +105,7 @@
 
 # ======================== Elasticsearch Configuration =========================
 #
-# NOTE: Elasticsearch comes with reasonable defaults for most settings.
-# Before you set out to tweak and tune the configuration, make sure you
-# understand what are you trying to accomplish and the consequences.
-#
-# The primary way of configuring a node is via this file. This template lists
-# the most important settings you may want to configure for a production cluster." />
+# NOTE: Elasticsearch comes with reasonable defaults for most settings." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
@@ -51,7 +115,7 @@
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../../en.search.min.ad50b8cd85f2629fd9ffdec58bc9ce7476cc9168f38990cada37b6d01f5cc5ba.js"  ></script>
+<script defer src="./../../../../../en.search.min.ef622e322d3b4435850927edbf46127230748ed98c73010a6c9608ed413e638d.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -810,6 +874,19 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+  
 
         </li>
       
@@ -2330,6 +2407,45 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch-cluster/" class=" active">(集群)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch_principle/" class="">elasticsearch 原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/lucene-data/" class="">lucene数据存储</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/elasticsearch/elasticsearch_architecture/" class="">ElasticSearch进阶篇集群&#43;原理</a>
   
 
         </li>
@@ -5112,6 +5228,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#elasticsearch-cluster">elasticsearch-cluster</a>
       <ul>
+        <li><a href="#cluster集群">Cluster集群</a></li>
+        <li><a href="#node节点">Node节点</a></li>
+        <li><a href="#node节点组合">Node节点组合</a>
+          <ul>
+            <li><a href="#主节点数据节点masterdata">主节点+数据节点(master+data)</a></li>
+            <li><a href="#数据节点data">数据节点(data)</a></li>
+            <li><a href="#客户端节点client">客户端节点(client)</a></li>
+            <li><a href="#分片">分片</a></li>
+          </ul>
+        </li>
         <li><a href="#配置">配置</a>
           <ul>
             <li><a href="#第一个节点">第一个节点</a></li>
@@ -5149,6 +5275,58 @@ https://github.com/alex-shpak/hugo-book
   elasticsearch-cluster
   <a class="anchor" href="#elasticsearch-cluster">#</a>
 </h1>
+<h2 id="cluster集群">
+  Cluster集群
+  <a class="anchor" href="#cluster%e9%9b%86%e7%be%a4">#</a>
+</h2>
+<blockquote>
+<p>一个ElasticSearch集群由一个或多个节点(Node)组成，每个集群都有一个共同的集群名称作为标识。</p>
+</blockquote>
+<h2 id="node节点">
+  Node节点
+  <a class="anchor" href="#node%e8%8a%82%e7%82%b9">#</a>
+</h2>
+<p>一个ElasticSearch实例即一个Node，一台机器可以有多个实例，正常使用下每个实例应该会部署在不同机器上。ElasticSearch的配置文件中可以通过node.master、node.data来设置节点类型。</p>
+<p>　　node.master：表示节点是否具有称为主节点的资格</p>
+<p>　　　　true代表的是有资格竞选主节点</p>
+<p>　　　　false代表的是没有资格竞选主节点</p>
+<p>　　node.data：表示节点是否存储数据</p>
+<h2 id="node节点组合">
+  Node节点组合
+  <a class="anchor" href="#node%e8%8a%82%e7%82%b9%e7%bb%84%e5%90%88">#</a>
+</h2>
+<h3 id="主节点数据节点masterdata">
+  主节点+数据节点(master+data)
+  <a class="anchor" href="#%e4%b8%bb%e8%8a%82%e7%82%b9%e6%95%b0%e6%8d%ae%e8%8a%82%e7%82%b9masterdata">#</a>
+</h3>
+<blockquote>
+<p>节点即有称为主节点的资格，又存储数据</p>
+</blockquote>
+<pre><code class="language-dos" data-lang="dos">node.master: true
+node.data: true
+</code></pre><h3 id="数据节点data">
+  数据节点(data)
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e8%8a%82%e7%82%b9data">#</a>
+</h3>
+<blockquote>
+<p>节点没有成为主节点的资格，不参与选举，只会存储数据</p>
+</blockquote>
+<pre><code class="language-dos" data-lang="dos">node.master: false
+node.data: true
+</code></pre><h3 id="客户端节点client">
+  客户端节点(client)
+  <a class="anchor" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e8%8a%82%e7%82%b9client">#</a>
+</h3>
+<blockquote>
+<p>不会成为主节点，也不会存储数据，主要是针对海量请求的时候，可以进行负载均衡</p>
+</blockquote>
+<pre><code class="language-dos" data-lang="dos">node.master: false
+node.data: false
+</code></pre><h3 id="分片">
+  分片
+  <a class="anchor" href="#%e5%88%86%e7%89%87">#</a>
+</h3>
+<p>每个索引有一个或多个分片，每个分片存储不同的数据。分片可分为主分片(primary shard)和复制分片(replica shard)，复制分片是主分片的拷贝。默认每个主分片有一个复制分片，一个索引的复制分片的数量可以动态地调整，复制分片匆匆不与它的主分片在同一个节点上。</p>
 <h2 id="配置">
   配置
   <a class="anchor" href="#%e9%85%8d%e7%bd%ae">#</a>
@@ -6016,6 +6194,16 @@ i18n.locale: &quot;zh-CN&quot;
   <ul>
     <li><a href="#elasticsearch-cluster">elasticsearch-cluster</a>
       <ul>
+        <li><a href="#cluster集群">Cluster集群</a></li>
+        <li><a href="#node节点">Node节点</a></li>
+        <li><a href="#node节点组合">Node节点组合</a>
+          <ul>
+            <li><a href="#主节点数据节点masterdata">主节点+数据节点(master+data)</a></li>
+            <li><a href="#数据节点data">数据节点(data)</a></li>
+            <li><a href="#客户端节点client">客户端节点(client)</a></li>
+            <li><a href="#分片">分片</a></li>
+          </ul>
+        </li>
         <li><a href="#配置">配置</a>
           <ul>
             <li><a href="#第一个节点">第一个节点</a></li>

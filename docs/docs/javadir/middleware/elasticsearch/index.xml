@@ -25,8 +25,82 @@ ES 分词器#默认分词器 (Stamdard Analyzer)#var myHeaders = new Heade
       <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch-cluster/</guid>
-      <description>elasticsearch-cluster#配置# 约定 配三台服务器
- 第一个节点## ======================== Elasticsearch Configuration =========================## NOTE: Elasticsearch comes with reasonable defaults for most settings.# Before you set out to tweak and tune the configuration, make sure you# understand what are you trying to accomplish and the consequences.## The primary way of configuring a node is via this file. This template lists# the most important settings you may want to configure for a production cluster.</description>
+      <description>elasticsearch-cluster#Cluster集群# 一个ElasticSearch集群由一个或多个节点(Node)组成，每个集群都有一个共同的集群名称作为标识。
+ Node节点#一个ElasticSearch实例即一个Node，一台机器可以有多个实例，正常使用下每个实例应该会部署在不同机器上。ElasticSearch的配置文件中可以通过node.master、node.data来设置节点类型。
+　node.master：表示节点是否具有称为主节点的资格
+　true代表的是有资格竞选主节点
+　false代表的是没有资格竞选主节点
+　node.data：表示节点是否存储数据
+Node节点组合#主节点+数据节点(master+data)# 节点即有称为主节点的资格，又存储数据
+ node.master: truenode.data: true数据节点(data)# 节点没有成为主节点的资格，不参与选举，只会存储数据
+ node.master: falsenode.data: true客户端节点(client)# 不会成为主节点，也不会存储数据，主要是针对海量请求的时候，可以进行负载均衡
+ node.master: falsenode.data: false分片#每个索引有一个或多个分片，每个分片存储不同的数据。分片可分为主分片(primary shard)和复制分片(replica shard)，复制分片是主分片的拷贝。默认每个主分片有一个复制分片，一个索引的复制分片的数量可以动态地调整，复制分片匆匆不与它的主分片在同一个节点上。
+配置# 约定 配三台服务器
+ 第一个节点## ======================== Elasticsearch Configuration =========================## NOTE: Elasticsearch comes with reasonable defaults for most settings.</description>
+    </item>
+    
+    <item>
+      <title>elasticsearch 原理</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch_principle/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch_principle/</guid>
+      <description>elasticsearch 原理#集群# 一个ES集群可以有多个节点构成，一个节点就是一个ES服务实例，通过配置集群名称cluster.name加入集群。
+ ES中节点有角色的区分的，通过配置文件conf/elasticsearch.yml中配置以下配置进行角色的设定。
+node.master: true/false node.data: true/false 集群中单个节点既可以是候选主节点也可以是数据节点，通过上面的配置可以进行两两组合形成四大分类：
+ （1）仅为候选主节点 （2）既是候选主节点也是数据节点 （3）仅为数据节点 （4）既不是候选主节点也不是数据节点    集群 有多个node节点(master node,data node,replica node) 主节点和副节点 每个节点可能存储数据也可能只是作为我单独的Lucene 索引实例
+  主节点
+  主节点只有一个(es集群中只使用一个masterNode) 主节点可以提前确定某一个节点为主节点,后面版本是配置候选主节点 然后用一套算法推举出主节点 一个节点宕机以后 后面的候选节点从算法中重新产生一个
+ 当一个节点被选举成为 主 节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点
+  协调节点  用户的请求可以随机发往任何一个节点，并由该节点负责分发请求、收集结果等操作，而不需要主节点转发。这种节点可称之为协调节点，集群中的任何节点都可以充当协调节点的角色。每个节点之间都会保持联系
+ 例子1  #集群名称，三台集群，要配置相同的集群名称！！！ #cluster.name: my-application cluster.name: my-bootstrap # ------------------------------------ Node ------------------------------------ #node.name: node-1 #节点名称 node.name: node-3 #是不是有资格主节点 node.</description>
+    </item>
+    
+    <item>
+      <title>lucene数据存储</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/lucene-data/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/lucene-data/</guid>
+      <description>lucene数据存储#shard是Elasticsearch数据存储的最小单位，index的存储容量为所有shard的存储容量之和。Elasticsearch集群的存储容量则为所有index存储容量之和。
+一个shard就对应了一个lucene的library。对于一个shard，Elasticsearch增加了translog的功能，类似于HBase WAL，是数据写入过程中的中间数据，其余的数据都在lucene库中管理的。
+所以Elasticsearch索引使用的存储内容主要取决于lucene中的数据存储。
+lucene基本概念#  segment : lucene内部的数据是由一个个segment组成的，写入lucene的数据并不直接落盘，而是先写在内存中，经过了refresh间隔，lucene才将该时间段写入的全部数据refresh成一个segment，segment多了之后会进行merge成更大的segment。lucene查询时会遍历每个segment完成。由于lucene* 写入的数据是在内存中完成，所以写入效率非常高。但是也存在丢失数据的风险，所以Elasticsearch基于此现象实现了translog，只有在segment数据落盘后，Elasticsearch才会删除对应的translog。
+  doc : doc表示lucene中的一条记录
+  field ：field表示记录中的字段概念，一个doc由若干个field组成。
+  term ：term是lucene中索引的最小单位，某个field对应的内容如果是全文检索类型，会将内容进行分词，分词的结果就是由term组成的。如果是不分词的字段，那么该字段的内容就是一个term。
+  倒排索引（inverted index）: lucene索引的通用叫法，即实现了term到doc list的映射。
+  正排数据：搜索引擎的通用叫法，即原始数据，可以理解为一个doc list。
+  docvalues :Elasticsearch中的列式存储的名称，Elasticsearch除了存储原始存储、倒排索引，还存储了一份docvalues，用作分析和排序。
+  lucene文件内容# lucene包的文件是由很多segment文件组成的，segments_xxx文件记录了lucene包下面的segment文件数量。每个segment会包含如下的文件。
+    Name Extension Brief Description     Segment Info .si segment的元数据文件   Compound File .</description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch进阶篇集群&#43;原理</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch_architecture/</link>
+      <pubDate>Fri, 17 Jan 2020 15:26:15 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/elasticsearch/elasticsearch_architecture/</guid>
+      <description>1.相关概念解释#（1）Near Realtime（NRT）：近实时，两个意思，从写入数据到数据可以被搜索到有一个小延迟（大概1秒）；基于es执行搜索和分析可以达到秒级
+（2）Cluster：集群，包含多个节点，每个节点属于哪个集群是通过一个配置（集群名称，默认是elasticsearch）来决定的，对于中小型应用来说，刚开始一个集群就一个节点很正常
+（3）Node：节点(简单理解为集群中的一个服务器)，集群中的一个节点，节点也有一个名称（默认是随机分配的），节点名称很重要（在执行运维管理操作的时候），默认节点会去加入一个名称为“elasticsearch”的集群，如果直接启动一堆节点，那么它们会自动组成一个elasticsearch集群，当然一个节点也可以组成一个elasticsearch集群
+（4）Index：索引(简单理解就是一个数据库)，包含一堆有相似结构的文档数据，比如可以有一个客户索引，商品分类索引，订单索引，索引有一个名称。一个index包含很多document，一个index就代表了一类类似的或者相同的document。比如说建立一个product index，商品索引，里面可能就存放了所有的商品数据，所有的商品document。
+（5）Type：类型(简单理解就是一张表)，每个索引里都可以有一个或多个type，type是index中的一个逻辑数据分类，一个type下的document，都有相同的field，比如博客系统，有一个索引，可以定义用户数据type，博客数据type，评论数据type。
+（6）Document&amp;amp;field：文档(就是一行数据)，es中的最小数据单元，一个document可以是一条客户数据，一条商品分类数据，一条订单数据，通常用JSON数据结构表示，每个index下的type中，都可以去存储多个document。一个document里面有多个field，每个field就是一个数据字段。
+（7）shard：单台机器无法存储大量数据，es可以将一个索引中的数据切分为多个shard，分布在多台服务器上存储。有了shard就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个shard都是一个lucene index。
+（8）replica：任何一个服务器随时可能故障或宕机，此时shard可能就会丢失，因此可以为每个shard创建多个replica副本。replica可以在shard故障时提供备用服务，保证数据不丢失，多个replica还可以提升搜索操作的吞吐量和性能。primary shard（建立索引时一次设置，不能修改，默认5个），replica shard（随时修改数量，默认1个），默认每个索引10个shard，5个primary shard，5个replica shard，最小的高可用配置，是2台服务器。
+2.ElasticSearch分布式架构原理#2.1shad与replica机制#（1）一个index包含多个shard,也就是一个index存在多个服务器上
+（2）每个shard都是一个最小工作单元，承载部分数据，比如有三台服务器,现在有三条数据,这三条数据在三台服务器上各方一条.
+（3）增减节点时，shard会自动在nodes中负载均衡
+（4）primary shard和replica shard，每个document肯定只存在于某一个primary shard以及其对应的replica shard中，不可能存在于多个primary shard
+（5）replica shard是primary shard的副本，负责容错，以及承担读请求负载
+（6）primary shard的数量在创建索引的时候就固定了，replica shard的数量可以随时修改
+（7）primary shard的默认数量是5，replica默认是1，默认有10个shard，5个primary shard，5个replica shard
+（8）primary shard不能和自己的replica shard放在同一个节点上（否则节点宕机，primary shard和副本都丢失，起不到容错的作用），但是可以和其他primary shard的replica shard放在同一个节点上
+2.2分布式架构图#2.3容错机制#在集群中会有一个master负责当leader进行协调,比如上图的Node2为master, 那么当它挂了的时候会重现选举一个新的master,比如新选举的是Node3,这个时候replica 2这时候会变成primary.
+当Node2恢复了的时候,这个时候node2的prinary会变成replica
+2.4ES写入数据的过程#2.4.1简单流程:# 1:客户端选择一个node发送请求过去，这个node就是coordinating node (协调节点) 2:coordinating node，对document进行路由，将请求转发给对应的node 3: 实际上的node上的primary shard处理请求，然后将数据同步到replica node 4:coordinating node，如果发现primary node和所有的replica node都搞定之后，就会返回请求到客户端 这个路由简单的说就是取模算法,比如说现在有3太服务器,这个时候传过来的id是5,那么5%3=2,就放在第2太服务器  2.</description>
     </item>
     
   </channel>

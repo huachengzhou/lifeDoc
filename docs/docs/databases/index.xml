@@ -6,5 +6,14 @@
     <description>Recent content in  数据库 on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 02 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/databases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://huachengzhou.github.io/life/docs/databases/sqlserver/create_table/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/databases/sqlserver/create_table/</guid>
+      <description>数据库表#</description>
+    </item>
+    
   </channel>
 </rss>
