@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="数据库视图简介
@@ -53,15 +53,14 @@ CREATE [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED}] VIEW view_name [(column_lis
  MERGE   使用MERGE算法，MySQL首先将输入查询与SELECT定义视图的语句组合成单个查询。然后MySQL执行组合查询以返回结果集。 如果SELECT语句包含聚合函数，例如 MIN，MAX，SUM，COUNT，AVG 或DISTINCT，GROUP BY，HAVING，LIMIT，UNION，UNION ALL，子查询，则不允许使用MERGE算法。如果SELECT语句引用无表，则也不允许MERGE算法。如果不允许MERGE算法，MySQL将算法更改为UNDEFINED。请注意，将视图定义中的输入查询和查询组合到一个查询中称为视图分辨率
   TEMPTABLE   使用TEMPTABLE算法，MySQL首先根据定义视图的SELECT语句创建临时表，然后对临时表执行输入查询。因为MySQL必须创建一个临时表来存储结果集并将数据从基表移动到临时表，所以TEMPTABLE 算法的效率低于MERGE算法。此外，使用TEMPTABLE 算法的视图不可更新。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_view/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_view/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql视图 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.55009b1fa38ad74df41e9237ca3f0c6f343b482fc17d10492ce6a78c6efdedb8.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.dcdeb098d63d97da68bc775735068ae9dc9459b4be003292709575b3f2db3a87.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5154,7 +5153,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

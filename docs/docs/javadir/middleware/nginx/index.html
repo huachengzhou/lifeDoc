@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="一、Nginx 简介
@@ -51,15 +51,14 @@ Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器�
 也就是通过部署多台服务器来解决访问人数限制的问题；淘宝网站中大部分功能也是直接使用 nginx 进行反向代理实现的，并且通过封装 nginx 和其他的组件之后起了个高大上的名字： Tengine
 然后我们一起看个图： 上图表示的是全国各地的用户在淘宝客户端发出请求，经过了 Nginx 反向代理服务器，nginx 服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-10T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/" />
+<meta property="article:published_time" content="2022-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-10T00:00:00+00:00" />
 <title>Nginx 学习与使用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.55009b1fa38ad74df41e9237ca3f0c6f343b482fc17d10492ce6a78c6efdedb8.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
+<script defer src="./../../../../en.search.min.dcdeb098d63d97da68bc775735068ae9dc9459b4be003292709575b3f2db3a87.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5152,7 +5151,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
