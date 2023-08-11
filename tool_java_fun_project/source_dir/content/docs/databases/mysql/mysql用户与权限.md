@@ -18,10 +18,32 @@ weight: 29
 GRANT SELECT,INSERT privileges on spring.* to 'alice'@'localhost' identified by '123456'
 > 参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
 
-## 授权test用户拥有testDB数据库的所有权限
+## 授权syncUser用户拥有shard-jdbc-master数据库的所有权限
 ```
 create database testDB;
-grant all privileges on testDB.* to "test"@"localhost" identified by '123456'
+
+# 授予用户在本地服务器对该数据库的全部权限
+# 只能是127.0.0.1才看得到 这里 127.0.0.1 可以换成如localhost
+grant all privileges on `shard-jdbc-master`.* to 'syncUser'@'127.0.0.1' ;   
+
+
+# 授予用户通过外网IP对于该数据库的全部权限
+grant all privileges on `shard-jdbc-master`.* to 'syncUser'@'%' ;
+
+```
+
+
+## 授权syncUser用户拥有shard-jdbc-slave数据库的所有权限
+```sql
+grant select on `shard-jdbc-slave`.* to 'syncUser'@'localhost';  /*给予查询权限*/
+
+grant insert on `shard-jdbc-slave`.* to 'syncUser'@'localhost'; /*添加插入权限*/
+
+grant delete on `shard-jdbc-slave`.* to 'syncUser'@'localhost'; /*添加删除权限*/
+
+grant update on `shard-jdbc-slave`.* to 'syncUser'@'localhost'; /*添加权限*/
+
+flush privileges; /*刷新权限*/
 ```
 
 ## 指定部分权限给用户
