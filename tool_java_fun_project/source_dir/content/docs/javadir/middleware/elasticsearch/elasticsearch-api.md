@@ -225,4 +225,270 @@ for (Goods goods:goodsList){
 ```
 
 
+elasticsearch data
+
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Sample</th>
+<th>Elasticsearch Query String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>And</code></td>
+<td><code>findByNameAndPrice</code></td>
+<td><code>{"bool" : {"must" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}</code></td>
+</tr>
+<tr>
+<td><code>Or</code></td>
+<td><code>findByNameOrPrice</code></td>
+<td><code>{"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}</code></td>
+</tr>
+<tr>
+<td><code>Is</code></td>
+<td><code>findByName</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : "?"}}}}</code></td>
+</tr>
+<tr>
+<td><code>Not</code></td>
+<td><code>findByNameNot</code></td>
+<td><code>{"bool" : {"must_not" : {"field" : {"name" : "?"}}}}</code></td>
+</tr>
+<tr>
+<td><code>Between</code></td>
+<td><code>findByPriceBetween</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>LessThanEqual</code></td>
+<td><code>findByPriceLessThan</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>GreaterThanEqual</code></td>
+<td><code>findByPriceGreaterThan</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Before</code></td>
+<td><code>findByPriceBefore</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>After</code></td>
+<td><code>findByPriceAfter</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Like</code></td>
+<td><code>findByNameLike</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>StartingWith</code></td>
+<td><code>findByNameStartingWith</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>EndingWith</code></td>
+<td><code>findByNameEndingWith</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "*?","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Contains/Containing</code></td>
+<td><code>findByNameContaining</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "**?**","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>In</code></td>
+<td><code>findByNameIn(Collection&lt;String&gt;names)</code></td>
+<td><code>{"bool" : {"must" : {"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"name" : "?"}} ]}}}}</code></td>
+</tr>
+<tr>
+<td><code>NotIn</code></td>
+<td><code>findByNameNotIn(Collection&lt;String&gt;names)</code></td>
+<td><code>{"bool" : {"must_not" : {"bool" : {"should" : {"field" : {"name" : "?"}}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Near</code></td>
+<td><code>findByStoreNear</code></td>
+<td><code>Not Supported Yet !</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td><code>findByAvailableTrue</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"available" : true}}}}</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>findByAvailableFalse</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"available" : false}}}}</code></td>
+</tr>
+<tr>
+<td><code>OrderBy</code></td>
+<td><code>findByAvailableTrueOrderByNameDesc</code></td>
+<td><code>{"sort" : [{ "name" : {"order" : "desc"} }],"bool" : {"must" : {"field" : {"available" : true}}}}</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+# 使用ElasticsearchRestTemplate高级查询操作
+
+
+## 精确查询(term)
+
+
+term查询：不会分析查询条件，只有当词条和查询字符串完全匹配时才匹配，也就是精确查找，比如数字，日期，布尔值或 not_analyzed 的字符串(未经分析的文本数据类型)
+
+terms查询：terms 跟 term 有点类似，但 terms 允许指定多个匹配条件。 如果某个字段指定了多个值，那么文档需要一起去 做匹配：
+
+
+```java
+  /**
+     * 精确查询（termQuery）
+     */
+    @Test
+    public void termQuery() {
+        //查询条件(词条查询：对应ES query里的term)
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("categoryName", "手机");
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(termQueryBuilder).build();
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+    /**
+     * terms:多个查询内容在一个字段中进行查询
+     */
+    @Test
+    public void termsQuery(){
+        //查询条件(词条查询：对应ES query里的term)
+        TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("categoryName", "手机","平板电视");
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(termsQueryBuilder).build();
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+```
+
+
+## 全文查询(match)
+
+全文查询会分析查询条件，先将查询条件进行分词，然后查询，求并集。
+
+
+> term和match的区别是：match是经过analyer的，也就是说，文档首先被分析器给处理了。根据不同的分析器，分析的结果也稍显不同，然后再根据分词结果进行匹配。term则不经过分词，它是直接去倒排索引中查找了精确的值了。
+
+
+match 查询语法汇总：
+
+
+* match_all：查询全部。
+* match：返回所有匹配的分词。
+* match_phrase：短语查询，在match的基础上进一步查询词组，可以指定slop分词间隔。
+* match_phrase_prefix：前缀查询，根据短语中最后一个词组做前缀匹配，可以应用于搜索提示，但注意和max_expanions搭配。其实默认是50.......
+* multi_match：多字段查询，使用相当的灵活，可以完成match_phrase和match_phrase_prefix的工作。
+
+
+```java
+ @Test
+    public void matchQuery() {
+        //查询条件(词条查询：对应ES query里的match)
+        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("title", "Apple IPhone 白色").analyzer("ik_smart").operator(Operator.AND);
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(matchQueryBuilder).build();
+        //查询,获取查询结果
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        //获取总记录数
+        long totalHits = searchHits.getTotalHits();
+        System.out.println("totalHits = " + totalHits);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+    /**
+     * match_all：查询全部。
+     */
+    @Test
+    public void matchAllQuery(){
+        //查询条件(词条查询：对应ES query里的match)
+        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(matchAllQueryBuilder).build();
+        //查询,获取查询结果
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        //获取总记录数
+        long totalHits = searchHits.getTotalHits();
+        System.out.println("totalHits = " + totalHits);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+    /**
+     * match_phrase：短语查询，在match的基础上进一步查询词组，可以指定slop分词间隔。
+     */
+    @Test
+    public void matchPhraseQuery(){
+        //查询条件(词条查询：对应ES query里的match_all)
+        MatchPhraseQueryBuilder matchPhraseQueryBuilder = QueryBuilders.matchPhraseQuery("title","华为") ;
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery  nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(matchPhraseQueryBuilder).build();
+        //查询,获取查询结果
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        //获取总记录数
+        long totalHits = searchHits.getTotalHits();
+        System.out.println("totalHits = " + totalHits);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+    /**
+     * multi_match：多字段查询，使用相当的灵活，可以完成match_phrase和match_phrase_prefix的工作。
+     */
+    @Test
+    public void multiMatchQuery(){
+        //查询条件(词条查询：对应ES query里的multi_match)
+        MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery("华为","title","categoryName").analyzer("ik_smart") ;
+//        MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery("华为和Apple","title","categoryName").analyzer("ik_smart") ;
+        //创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(multiMatchQueryBuilder).build();
+        //查询,获取查询结果
+        org.springframework.data.elasticsearch.core.SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(nativeSearchQuery, Goods.class);
+        //获取总记录数
+        long totalHits = searchHits.getTotalHits();
+        System.out.println("totalHits = " + totalHits);
+        Iterator<org.springframework.data.elasticsearch.core.SearchHit<Goods>> iterator = searchHits.iterator();
+        while (iterator.hasNext()) {
+            org.springframework.data.elasticsearch.core.SearchHit<Goods> searchHit = iterator.next();
+            System.out.println(searchHit.getContent());
+        }
+    }
+
+```
+
+
 [参考](https://blog.csdn.net/W_Meng_H/article/details/123940475)
