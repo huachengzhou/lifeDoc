@@ -78,7 +78,7 @@ import com." />
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../../en.search.min.dcdeb098d63d97da68bc775735068ae9dc9459b4be003292709575b3f2db3a87.js"  ></script>
+<script defer src="./../../../../../en.search.min.51f7f5717fe284400d4e472832905d6c8009fef97f0da66fbaefd35fcccc298f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5204,6 +5204,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#数据准备">数据准备</a></li>
     <li><a href="#简单查询">简单查询</a></li>
+    <li><a href="#使用elasticsearchresttemplate高级查询操作">使用ElasticsearchRestTemplate高级查询操作</a>
+      <ul>
+        <li><a href="#精确查询term">精确查询(term)</a></li>
+        <li><a href="#全文查询match">全文查询(match)</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5416,6 +5422,255 @@ Page<span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;
 <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Goods goods<span style="color:#f92672">:</span>goodsList<span style="color:#f92672">){</span>
     System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>goods<span style="color:#f92672">);</span>
 <span style="color:#f92672">}</span>
+</code></pre></div><p>elasticsearch data</p>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Sample</th>
+<th>Elasticsearch Query String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>And</code></td>
+<td><code>findByNameAndPrice</code></td>
+<td><code>{"bool" : {"must" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}</code></td>
+</tr>
+<tr>
+<td><code>Or</code></td>
+<td><code>findByNameOrPrice</code></td>
+<td><code>{"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}</code></td>
+</tr>
+<tr>
+<td><code>Is</code></td>
+<td><code>findByName</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : "?"}}}}</code></td>
+</tr>
+<tr>
+<td><code>Not</code></td>
+<td><code>findByNameNot</code></td>
+<td><code>{"bool" : {"must_not" : {"field" : {"name" : "?"}}}}</code></td>
+</tr>
+<tr>
+<td><code>Between</code></td>
+<td><code>findByPriceBetween</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>LessThanEqual</code></td>
+<td><code>findByPriceLessThan</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>GreaterThanEqual</code></td>
+<td><code>findByPriceGreaterThan</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Before</code></td>
+<td><code>findByPriceBefore</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>After</code></td>
+<td><code>findByPriceAfter</code></td>
+<td><code>{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Like</code></td>
+<td><code>findByNameLike</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>StartingWith</code></td>
+<td><code>findByNameStartingWith</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>EndingWith</code></td>
+<td><code>findByNameEndingWith</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "*?","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Contains/Containing</code></td>
+<td><code>findByNameContaining</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"name" : {"query" : "**?**","analyze_wildcard" : true}}}}}</code></td>
+</tr>
+<tr>
+<td><code>In</code></td>
+<td><code>findByNameIn(Collection&lt;String&gt;names)</code></td>
+<td><code>{"bool" : {"must" : {"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"name" : "?"}} ]}}}}</code></td>
+</tr>
+<tr>
+<td><code>NotIn</code></td>
+<td><code>findByNameNotIn(Collection&lt;String&gt;names)</code></td>
+<td><code>{"bool" : {"must_not" : {"bool" : {"should" : {"field" : {"name" : "?"}}}}}}</code></td>
+</tr>
+<tr>
+<td><code>Near</code></td>
+<td><code>findByStoreNear</code></td>
+<td><code>Not Supported Yet !</code></td>
+</tr>
+<tr>
+<td><code>True</code></td>
+<td><code>findByAvailableTrue</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"available" : true}}}}</code></td>
+</tr>
+<tr>
+<td><code>False</code></td>
+<td><code>findByAvailableFalse</code></td>
+<td><code>{"bool" : {"must" : {"field" : {"available" : false}}}}</code></td>
+</tr>
+<tr>
+<td><code>OrderBy</code></td>
+<td><code>findByAvailableTrueOrderByNameDesc</code></td>
+<td><code>{"sort" : [{ "name" : {"order" : "desc"} }],"bool" : {"must" : {"field" : {"available" : true}}}}</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="使用elasticsearchresttemplate高级查询操作">
+  使用ElasticsearchRestTemplate高级查询操作
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8elasticsearchresttemplate%e9%ab%98%e7%ba%a7%e6%9f%a5%e8%af%a2%e6%93%8d%e4%bd%9c">#</a>
+</h1>
+<h2 id="精确查询term">
+  精确查询(term)
+  <a class="anchor" href="#%e7%b2%be%e7%a1%ae%e6%9f%a5%e8%af%a2term">#</a>
+</h2>
+<p>term查询：不会分析查询条件，只有当词条和查询字符串完全匹配时才匹配，也就是精确查找，比如数字，日期，布尔值或 not_analyzed 的字符串(未经分析的文本数据类型)</p>
+<p>terms查询：terms 跟 term 有点类似，但 terms 允许指定多个匹配条件。 如果某个字段指定了多个值，那么文档需要一起去 做匹配：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 精确查询（termQuery）
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">termQuery</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的term)
+</span><span style="color:#75715e"></span>        TermQueryBuilder termQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">termQuery</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;categoryName&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;手机&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>termQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * terms:多个查询内容在一个字段中进行查询
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">termsQuery</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的term)
+</span><span style="color:#75715e"></span>        TermsQueryBuilder termsQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">termsQuery</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;categoryName&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;手机&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;平板电视&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>termsQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h2 id="全文查询match">
+  全文查询(match)
+  <a class="anchor" href="#%e5%85%a8%e6%96%87%e6%9f%a5%e8%af%a2match">#</a>
+</h2>
+<p>全文查询会分析查询条件，先将查询条件进行分词，然后查询，求并集。</p>
+<blockquote>
+<p>term和match的区别是：match是经过analyer的，也就是说，文档首先被分析器给处理了。根据不同的分析器，分析的结果也稍显不同，然后再根据分词结果进行匹配。term则不经过分词，它是直接去倒排索引中查找了精确的值了。</p>
+</blockquote>
+<p>match 查询语法汇总：</p>
+<ul>
+<li>match_all：查询全部。</li>
+<li>match：返回所有匹配的分词。</li>
+<li>match_phrase：短语查询，在match的基础上进一步查询词组，可以指定slop分词间隔。</li>
+<li>match_phrase_prefix：前缀查询，根据短语中最后一个词组做前缀匹配，可以应用于搜索提示，但注意和max_expanions搭配。其实默认是50&hellip;&hellip;.</li>
+<li>multi_match：多字段查询，使用相当的灵活，可以完成match_phrase和match_phrase_prefix的工作。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">matchQuery</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的match)
+</span><span style="color:#75715e"></span>        MatchQueryBuilder matchQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">matchQuery</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Apple IPhone 白色&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">analyzer</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ik_smart&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">operator</span><span style="color:#f92672">(</span>Operator<span style="color:#f92672">.</span><span style="color:#a6e22e">AND</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>matchQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//查询,获取查询结果
+</span><span style="color:#75715e"></span>        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取总记录数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">long</span> totalHits <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">getTotalHits</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;totalHits = &#34;</span> <span style="color:#f92672">+</span> totalHits<span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * match_all：查询全部。
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">matchAllQuery</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的match)
+</span><span style="color:#75715e"></span>        MatchAllQueryBuilder matchAllQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">matchAllQuery</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>matchAllQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//查询,获取查询结果
+</span><span style="color:#75715e"></span>        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取总记录数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">long</span> totalHits <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">getTotalHits</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;totalHits = &#34;</span> <span style="color:#f92672">+</span> totalHits<span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * match_phrase：短语查询，在match的基础上进一步查询词组，可以指定slop分词间隔。
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">matchPhraseQuery</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的match_all)
+</span><span style="color:#75715e"></span>        MatchPhraseQueryBuilder matchPhraseQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">matchPhraseQuery</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;华为&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">;</span>
+        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery  nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>matchPhraseQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//查询,获取查询结果
+</span><span style="color:#75715e"></span>        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取总记录数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">long</span> totalHits <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">getTotalHits</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;totalHits = &#34;</span> <span style="color:#f92672">+</span> totalHits<span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * multi_match：多字段查询，使用相当的灵活，可以完成match_phrase和match_phrase_prefix的工作。
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">multiMatchQuery</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">//查询条件(词条查询：对应ES query里的multi_match)
+</span><span style="color:#75715e"></span>        MultiMatchQueryBuilder multiMatchQueryBuilder <span style="color:#f92672">=</span> QueryBuilders<span style="color:#f92672">.</span><span style="color:#a6e22e">multiMatchQuery</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;华为&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;categoryName&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">analyzer</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ik_smart&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">;</span>
+<span style="color:#75715e">//        MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery(&#34;华为和Apple&#34;,&#34;title&#34;,&#34;categoryName&#34;).analyzer(&#34;ik_smart&#34;) ;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//创建查询条件构建器SearchSourceBuilder(对应ES外面的大括号)
+</span><span style="color:#75715e"></span>        NativeSearchQuery nativeSearchQuery <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NativeSearchQueryBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">withQuery</span><span style="color:#f92672">(</span>multiMatchQueryBuilder<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//查询,获取查询结果
+</span><span style="color:#75715e"></span>        org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHits</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHits <span style="color:#f92672">=</span> elasticsearchRestTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">search</span><span style="color:#f92672">(</span>nativeSearchQuery<span style="color:#f92672">,</span> Goods<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取总记录数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">long</span> totalHits <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">getTotalHits</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;totalHits = &#34;</span> <span style="color:#f92672">+</span> totalHits<span style="color:#f92672">);</span>
+        Iterator<span style="color:#f92672">&lt;</span>org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;&gt;</span> iterator <span style="color:#f92672">=</span> searchHits<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            org<span style="color:#f92672">.</span><span style="color:#a6e22e">springframework</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elasticsearch</span><span style="color:#f92672">.</span><span style="color:#a6e22e">core</span><span style="color:#f92672">.</span><span style="color:#a6e22e">SearchHit</span><span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;</span> searchHit <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>searchHit<span style="color:#f92672">.</span><span style="color:#a6e22e">getContent</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
 </code></pre></div><p><a href="https://blog.csdn.net/W_Meng_H/article/details/123940475">参考</a></p>
 </article>
  
@@ -5662,6 +5917,12 @@ Page<span style="color:#f92672">&lt;</span>Goods<span style="color:#f92672">&gt;
   <ul>
     <li><a href="#数据准备">数据准备</a></li>
     <li><a href="#简单查询">简单查询</a></li>
+    <li><a href="#使用elasticsearchresttemplate高级查询操作">使用ElasticsearchRestTemplate高级查询操作</a>
+      <ul>
+        <li><a href="#精确查询term">精确查询(term)</a></li>
+        <li><a href="#全文查询match">全文查询(match)</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

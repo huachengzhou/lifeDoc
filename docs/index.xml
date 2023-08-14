@@ -3193,7 +3193,7 @@ Python 2.7 使用 raw_input() 方法
  创建用户# ( CREATE USER &amp;lsquo;bob&amp;rsquo;@&#39;%&#39; IDENTIFIED BY &amp;lsquo;07fa533360d9&amp;rsquo;; ) 创建bob用户 密码:07fa533360d9 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456 ( CREATE USER &amp;ldquo;test&amp;rdquo;@&amp;ldquo;192.168.87.26&amp;rdquo; IDENTIFIED BY &amp;lsquo;123456&amp;rsquo; )创建test用户　密码123456   参数说明:&#39;%&amp;lsquo;表示所有情况都能访问;&amp;lsquo;localhost&amp;rsquo;表示本机才能访问;&amp;lsquo;192.168.87.26&amp;rsquo; 某个具体 ip 才能访问
  授权命令 (GRANT privileges ON databasename.tablename TO &amp;lsquo;username&amp;rsquo;@&amp;lsquo;host&amp;rsquo; )#GRANT SELECT,INSERT privileges on spring.* to &amp;lsquo;alice&amp;rsquo;@&amp;lsquo;localhost&amp;rsquo; identified by &amp;lsquo;123456&amp;rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限#create database testDB;grant all privileges on testDB.</description>
+ 授权syncUser用户拥有shard-jdbc-master数据库的所有权限#create database testDB;# 授予用户在本地服务器对该数据库的全部权限# 只能是127.</description>
     </item>
     
     <item>

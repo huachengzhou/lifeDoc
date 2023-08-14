@@ -15,11 +15,12 @@
 
 GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限
+ 授权syncUser用户拥有shard-jdbc-master数据库的所有权限
 #
 
 create database testDB;
-grant all privileges on testDB.">
+# 授予用户在本地服务器对该数据库的全部权限
+# 只能是127.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql用户与权限" />
 <meta property="og:description" content="mysql.version=5.7 (必须注意版本)
  创建用户
@@ -31,11 +32,12 @@ grant all privileges on testDB.">
 
 GRANT SELECT,INSERT privileges on spring.* to &lsquo;alice&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;123456&rsquo;
  参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26
- 授权test用户拥有testDB数据库的所有权限
+ 授权syncUser用户拥有shard-jdbc-master数据库的所有权限
 #
 
 create database testDB;
-grant all privileges on testDB." />
+# 授予用户在本地服务器对该数据库的全部权限
+# 只能是127." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90/" />
 <meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
@@ -44,7 +46,7 @@ grant all privileges on testDB." />
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.dcdeb098d63d97da68bc775735068ae9dc9459b4be003292709575b3f2db3a87.js"  ></script>
+<script defer src="./../../../../en.search.min.51f7f5717fe284400d4e472832905d6c8009fef97f0da66fbaefd35fcccc298f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5172,7 +5174,8 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#创建用户">创建用户</a></li>
         <li><a href="#授权命令-grant-privileges-on-databasenametablename-to-usernamehost-">授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; )</a></li>
-        <li><a href="#授权test用户拥有testdb数据库的所有权限">授权test用户拥有testDB数据库的所有权限</a></li>
+        <li><a href="#授权syncuser用户拥有shard-jdbc-master数据库的所有权限">授权syncUser用户拥有shard-jdbc-master数据库的所有权限</a></li>
+        <li><a href="#授权syncuser用户拥有shard-jdbc-slave数据库的所有权限">授权syncUser用户拥有shard-jdbc-slave数据库的所有权限</a></li>
         <li><a href="#指定部分权限给用户">指定部分权限给用户</a></li>
         <li><a href="#撤销权限">撤销权限</a></li>
         <li><a href="#修改用户密码">修改用户密码</a></li>
@@ -5226,13 +5229,34 @@ https://github.com/alex-shpak/hugo-book
 <blockquote>
 <p>参数说明:databasename表示数据库名字;tablename数据库表的名字;username用户名;host表示链接地址如本机localhost,远程任意%,具体ip192.168.87.26</p>
 </blockquote>
-<h2 id="授权test用户拥有testdb数据库的所有权限">
-  授权test用户拥有testDB数据库的所有权限
-  <a class="anchor" href="#%e6%8e%88%e6%9d%83test%e7%94%a8%e6%88%b7%e6%8b%a5%e6%9c%89testdb%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e6%89%80%e6%9c%89%e6%9d%83%e9%99%90">#</a>
+<h2 id="授权syncuser用户拥有shard-jdbc-master数据库的所有权限">
+  授权syncUser用户拥有shard-jdbc-master数据库的所有权限
+  <a class="anchor" href="#%e6%8e%88%e6%9d%83syncuser%e7%94%a8%e6%88%b7%e6%8b%a5%e6%9c%89shard-jdbc-master%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e6%89%80%e6%9c%89%e6%9d%83%e9%99%90">#</a>
 </h2>
 <pre><code>create database testDB;
-grant all privileges on testDB.* to &quot;test&quot;@&quot;localhost&quot; identified by '123456'
-</code></pre><h2 id="指定部分权限给用户">
+
+# 授予用户在本地服务器对该数据库的全部权限
+# 只能是127.0.0.1才看得到 这里 127.0.0.1 可以换成如localhost
+grant all privileges on `shard-jdbc-master`.* to 'syncUser'@'127.0.0.1' ;   
+
+
+# 授予用户通过外网IP对于该数据库的全部权限
+grant all privileges on `shard-jdbc-master`.* to 'syncUser'@'%' ;
+
+</code></pre><h2 id="授权syncuser用户拥有shard-jdbc-slave数据库的所有权限">
+  授权syncUser用户拥有shard-jdbc-slave数据库的所有权限
+  <a class="anchor" href="#%e6%8e%88%e6%9d%83syncuser%e7%94%a8%e6%88%b7%e6%8b%a5%e6%9c%89shard-jdbc-slave%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e6%89%80%e6%9c%89%e6%9d%83%e9%99%90">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">`</span>shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave<span style="color:#f92672">`</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;syncUser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>;  <span style="color:#75715e">/*给予查询权限*/</span>
+
+<span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">`</span>shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave<span style="color:#f92672">`</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;syncUser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>; <span style="color:#75715e">/*添加插入权限*/</span>
+
+<span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">`</span>shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave<span style="color:#f92672">`</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;syncUser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>; <span style="color:#75715e">/*添加删除权限*/</span>
+
+<span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">`</span>shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave<span style="color:#f92672">`</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;syncUser&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span>; <span style="color:#75715e">/*添加权限*/</span>
+
+flush <span style="color:#66d9ef">privileges</span>; <span style="color:#75715e">/*刷新权限*/</span>
+</code></pre></div><h2 id="指定部分权限给用户">
   指定部分权限给用户
   <a class="anchor" href="#%e6%8c%87%e5%ae%9a%e9%83%a8%e5%88%86%e6%9d%83%e9%99%90%e7%bb%99%e7%94%a8%e6%88%b7">#</a>
 </h2>
@@ -5523,7 +5547,8 @@ UPDATE user SET Host='192.168.87.26' WHERE User='alice' AND Host='%' LIMIT 1;
       <ul>
         <li><a href="#创建用户">创建用户</a></li>
         <li><a href="#授权命令-grant-privileges-on-databasenametablename-to-usernamehost-">授权命令 (GRANT privileges ON databasename.tablename TO &lsquo;username&rsquo;@&lsquo;host&rsquo; )</a></li>
-        <li><a href="#授权test用户拥有testdb数据库的所有权限">授权test用户拥有testDB数据库的所有权限</a></li>
+        <li><a href="#授权syncuser用户拥有shard-jdbc-master数据库的所有权限">授权syncUser用户拥有shard-jdbc-master数据库的所有权限</a></li>
+        <li><a href="#授权syncuser用户拥有shard-jdbc-slave数据库的所有权限">授权syncUser用户拥有shard-jdbc-slave数据库的所有权限</a></li>
         <li><a href="#指定部分权限给用户">指定部分权限给用户</a></li>
         <li><a href="#撤销权限">撤销权限</a></li>
         <li><a href="#修改用户密码">修改用户密码</a></li>

@@ -80,7 +80,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.dcdeb098d63d97da68bc775735068ae9dc9459b4be003292709575b3f2db3a87.js"  ></script>
+<script defer src="./../../../../en.search.min.51f7f5717fe284400d4e472832905d6c8009fef97f0da66fbaefd35fcccc298f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5216,6 +5216,12 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
           </ul>
         </li>
+        <li><a href="#7主从复制">7:主从复制</a>
+          <ul>
+            <li><a href="#主mysql">主mysql</a></li>
+            <li><a href="#从mysql">从mysql</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -5344,6 +5350,174 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#75715e">-- 登录数据库
 </span><span style="color:#75715e"></span>mysql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456
 
+</code></pre></div><h2 id="7主从复制">
+  7:主从复制
+  <a class="anchor" href="#7%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6">#</a>
+</h2>
+<h3 id="主mysql">
+  主mysql
+  <a class="anchor" href="#%e4%b8%bbmysql">#</a>
+</h3>
+<ul>
+<li>配置</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[mysqld]</span>
+<span style="color:#75715e"># skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误</span>
+<span style="color:#75715e"># 设置3306端口</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3306</span>
+
+<span style="color:#75715e"># 自定义设置mysql的安装目录，即解压mysql压缩包的目录</span>
+<span style="color:#75715e"># 切记此处一定要用双斜杠\\，单斜杠这里会出错。</span>
+<span style="color:#a6e22e">basedir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql-8.0.27-winx64</span>
+
+<span style="color:#75715e"># 自定义设置mysql数据库的数据存放目录</span>
+<span style="color:#a6e22e">datadir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql-8.0.27-winx64\\data</span>
+
+<span style="color:#75715e"># 允许最大连接数</span>
+<span style="color:#a6e22e">max_connections</span><span style="color:#f92672">=</span><span style="color:#e6db74">200</span>
+
+<span style="color:#75715e"># 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统</span>
+<span style="color:#a6e22e">max_connect_errors</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+
+<span style="color:#75715e"># 服务端使用的字符集默认为UTF8</span>
+<span style="color:#a6e22e">character-set-server</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+
+<span style="color:#75715e"># 创建新表时将使用的默认存储引擎</span>
+<span style="color:#a6e22e">default-storage-engine</span><span style="color:#f92672">=</span><span style="color:#e6db74">INNODB</span>
+
+<span style="color:#75715e"># 默认使用“mysql_native_password”插件认证</span>
+<span style="color:#a6e22e">default_authentication_plugin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql_native_password</span>
+
+
+
+<span style="color:#75715e">#要同步的数据库 binlog-do-db：指定mysql的binlog日志记录哪个db</span>
+<span style="color:#a6e22e">binlog-do-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">shard-jdbc-master</span>
+
+<span style="color:#75715e"># 设置 MySQL 服务器的唯一标识符  mysql同步的数据中是包含server-id的，用于标识该语句最初是从哪个server写入的，因此server-id一定要有的</span>
+<span style="color:#a6e22e">server-id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1</span>
+<span style="color:#75715e"># 开启主库的binlog日志</span>
+<span style="color:#a6e22e">log-bin</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">mysql-bin</span>
+<span style="color:#75715e">#屏蔽系统库同步</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">information_schema</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">performance_schema</span>
+
+<span style="color:#a6e22e">sql_mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span>
+
+<span style="color:#66d9ef">[mysql]</span>
+<span style="color:#75715e"># 设置mysql客户端默认字符集</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+<span style="color:#66d9ef">[client]</span>
+<span style="color:#75715e"># 设置mysql客户端连接服务端时默认使用的端口和默认字符集</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3306</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+</code></pre></div><ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 授权主备复制专用账号
+</span><span style="color:#75715e">-- 创建用户 前面db_sync是用户名后面的db_sync是密码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;db_sync&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#66d9ef">IDENTIFIED</span> <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;db_sync&#39;</span>; 
+
+<span style="color:#75715e">-- 查看用户
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">user</span>,host <span style="color:#66d9ef">from</span> mysql.<span style="color:#66d9ef">user</span>;
+
+<span style="color:#75715e">-- 权限赋予
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> REPLICATION SLAVE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;db_sync&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> ;
+
+<span style="color:#75715e">-- 刷新权限
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">FLUSH</span> <span style="color:#66d9ef">PRIVILEGES</span>;
+
+<span style="color:#75715e">-- 确认位点 记录下文件名以及位点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> master status;
+</code></pre></div><h3 id="从mysql">
+  从mysql
+  <a class="anchor" href="#%e4%bb%8emysql">#</a>
+</h3>
+<ul>
+<li>配置</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[mysqld]</span>
+<span style="color:#75715e"># skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误</span>
+<span style="color:#75715e"># 设置3309端口</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3309</span>
+
+<span style="color:#75715e"># 自定义设置mysql的安装目录，即解压mysql压缩包的目录</span>
+<span style="color:#75715e"># 切记此处一定要用双斜杠\\，单斜杠这里会出错。</span>
+<span style="color:#a6e22e">basedir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql-8.0.27-slave</span>
+
+<span style="color:#75715e"># 自定义设置mysql数据库的数据存放目录</span>
+<span style="color:#a6e22e">datadir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql-8.0.27-slave\\data</span>
+
+<span style="color:#75715e"># 允许最大连接数</span>
+<span style="color:#a6e22e">max_connections</span><span style="color:#f92672">=</span><span style="color:#e6db74">200</span>
+
+<span style="color:#75715e"># 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统</span>
+<span style="color:#a6e22e">max_connect_errors</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+
+<span style="color:#75715e"># 服务端使用的字符集默认为UTF8</span>
+<span style="color:#a6e22e">character-set-server</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+
+<span style="color:#75715e"># 创建新表时将使用的默认存储引擎</span>
+<span style="color:#a6e22e">default-storage-engine</span><span style="color:#f92672">=</span><span style="color:#e6db74">INNODB</span>
+
+<span style="color:#75715e"># 默认使用“mysql_native_password”插件认证</span>
+<span style="color:#a6e22e">default_authentication_plugin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql_native_password</span>
+
+
+
+<span style="color:#75715e">#屏蔽系统库同步</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">information_schema</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">performance_schema</span>
+
+<span style="color:#75715e">#开启日志</span>
+<span style="color:#a6e22e">log-bin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql-bin</span>
+<span style="color:#75715e">#设置服务id，主从不能一致</span>
+<span style="color:#75715e"># 设置 MySQL 服务器的唯一标识符  mysql同步的数据中是包含server-id的，用于标识该语句最初是从哪个server写入的，因此server-id一定要有的</span>
+<span style="color:#a6e22e">server-id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+<span style="color:#75715e">#设置需要同步的数据库</span>
+<span style="color:#a6e22e">replicate_wild_do_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">shard-jdbc-master.%</span>
+<span style="color:#75715e">#屏蔽系统库同步</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql.%</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">information_schema.%</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">performance_schema.%</span>
+
+<span style="color:#a6e22e">sql_mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span>
+
+<span style="color:#66d9ef">[mysql]</span>
+<span style="color:#75715e"># 设置mysql客户端默认字符集</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+<span style="color:#66d9ef">[client]</span>
+<span style="color:#75715e"># 设置mysql客户端连接服务端时默认使用的端口和默认字符集</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3309</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+</code></pre></div><ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">#先停止同步
+</span><span style="color:#75715e"></span>STOP SLAVE;
+
+
+<span style="color:#75715e">#修改从库指向到主库，使用上一步记录的文件名以及位点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CHANGE</span> MASTER <span style="color:#66d9ef">TO</span>
+master_host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;localhost&#39;</span>,
+master_user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;db_sync&#39;</span>,
+master_password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;db_sync&#39;</span>,
+master_log_file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mysql-bin.000001&#39;</span>,
+master_log_pos <span style="color:#f92672">=</span> <span style="color:#ae81ff">654363</span>;
+
+
+<span style="color:#75715e">#启动同步
+</span><span style="color:#75715e"></span>START SLAVE;
+
+
+<span style="color:#75715e">#查看从库状态Slave_IO_Runing和Slave_SQL_Runing都为Yes说明同步成功，如果不为Yes，请检查error_log，然后排查相关异常。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> slave status ;
 </code></pre></div></article>
  
       
@@ -5597,6 +5771,12 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#6常用工具及用法">6:常用工具及用法</a>
           <ul>
             <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
+          </ul>
+        </li>
+        <li><a href="#7主从复制">7:主从复制</a>
+          <ul>
+            <li><a href="#主mysql">主mysql</a></li>
+            <li><a href="#从mysql">从mysql</a></li>
           </ul>
         </li>
       </ul>
