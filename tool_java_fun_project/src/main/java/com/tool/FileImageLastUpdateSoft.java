@@ -14,8 +14,9 @@ public class FileImageLastUpdateSoft {
     public void printImageTime() {
         final String userDir = System.getProperty("user.dir");
         String dir = "C:\\Users\\noatn\\Downloads";
-        String baseName = "imgs/elasticsearch/image/";
-        String dir1 = userDir + "\\source_dir\\content\\docs\\javadir\\middleware\\elasticsearch_principle.md";
+        String baseName = "imgs/java/rabbitmq/";
+        //_index.md 不需要加
+        String dir1 = userDir + "\\source_dir\\content\\docs\\javadir\\middleware\\rabbit-mq";
 
 
         final String imgs = userDir + "\\source_dir\\content\\docs\\imgs";
@@ -31,7 +32,7 @@ public class FileImageLastUpdateSoft {
             }
         }
         String dir1Fix = StringUtils.remove(dir1, string);
-        int length = dir1Fix.split("\\\\").length + 1;
+        int length = dir1Fix.split("\\\\").length ;
         File file = new File(dir);
         if (!file.isDirectory()) {
             System.out.println("不是文件夹");
