@@ -111,6 +111,8 @@ guest   [administrator]
 ```
 
 
+
+
 + 其它命令
 
 启动:service rabbitmq-server start
@@ -136,6 +138,8 @@ guest   [administrator]
 查看状态：rabbitmqctl status
 
 查看集群状态：rabbitmqctl cluster_status
+
+[查看应用](http://127.0.0.1:15672)
 
 
 ![][img1]
