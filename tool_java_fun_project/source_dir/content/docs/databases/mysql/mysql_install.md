@@ -126,6 +126,9 @@ D:\databases\mysql-8.0.13-winx64\bin>mysqld --initialize --console
 ```
 D:\databases\mysql-8.0.13-winx64\bin>mysqld --install
 Service successfully installed.
+
+-- 卸载服务
+mysqld --remove mysql   
 ```
 
 ### 六:启动服务
