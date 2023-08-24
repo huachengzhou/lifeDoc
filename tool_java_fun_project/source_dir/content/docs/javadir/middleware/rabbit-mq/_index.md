@@ -153,6 +153,8 @@ rabbitmqctl clear_permissions -p myvh guest
 在 admin 选项卡中，点击右边的 Virtual Hosts
 
 
+
+
 + 其它命令
 
 启动:service rabbitmq-server start
@@ -178,6 +180,8 @@ rabbitmqctl clear_permissions -p myvh guest
 查看状态：rabbitmqctl status
 
 查看集群状态：rabbitmqctl cluster_status
+
+[查看应用](http://127.0.0.1:15672)
 
 
 ![][img1]
