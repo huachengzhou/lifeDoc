@@ -16,5 +16,46 @@
  生产者#import cn.hutool.core.date.DateUtil; import cn.hutool.core.util.RandomUtil; import com.rabbitmq.client.Channel; import com.rabbitmq.client.Connection; import com.rabbitmq.client.ConnectionFactory; import org.junit.Test; import org.slf4j.Logger; import org.slf4j.LoggerFactory; /** * @author : chengdu * @date : 2023/8/13-08 **/ public class Producer { private final static String QUEUE_NAME = &amp;#34;hello&amp;#34;; private final Logger logger = LoggerFactory.getLogger(getClass()); /** * 简单生产者 * @throws Exception */ @Test public void acceptProducer()throws Exception{ //1:创建连接池  ConnectionFactory connectionFactory = new ConnectionFactory() ; connectionFactory.</description>
     </item>
     
+    <item>
+      <title>work-queues</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/work-queues/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/work-queues/</guid>
+      <description>Work Queues# 一个生产者，一个默认的交换机，一个队列，两个消费
+ 生产者# 需要再idea.ext.options 中加上 -Deditable.java.test.console=true
+ import com.my.common.RabbitMqUtils; import com.rabbitmq.client.Channel; import com.rabbitmq.client.MessageProperties; import org.junit.Test; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import java.util.Scanner; import java.util.concurrent.TimeUnit; public class NewTask { private static final String TASK_QUEUE_NAME = &amp;#34;task_queue&amp;#34;; private final Logger logger = LoggerFactory.getLogger(getClass()); @Test public void acceptProducer()throws Exception{ Channel channel = RabbitMqUtils.getChannel(); channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null); //从控制台当中接受信息  logger.info(&amp;#34;start&amp;#34;); Scanner scanner = new Scanner(System.in); while (scanner.</description>
+    </item>
+    
+    <item>
+      <title>Publish/Subscribe</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/publish-subscribe/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/publish-subscribe/</guid>
+      <description>Publish/Subscribe (发布/订阅)# 一个生产者，一个交换机，两个队列，两个消费者
+  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机#RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列
+有几种可用的交换类型：direct, topic, headers , fanout 本次使用 fanout并且使用它的日志
+channel.exchangeDeclare(&amp;#34;logs&amp;#34;, &amp;#34;fanout&amp;#34;); fanout 交换非常简单。正如您可能从 名称，它只是将收到的所有消息广播到所有队列让它知道
+临时队列#String queueName = channel.queueDeclare().getQueue(); 绑定#我们已经创建了一个扇出交换和一个队列。现在我们需要 告诉交换机将消息发送到我们的队列。这种关系 交换和队列之间称为绑定。
+channel.queueBind(queueName, &amp;#34;logs&amp;#34;, &amp;#34;&amp;#34;); 从现在开始，日志交换会将消息附加到我们的队列中。
+将一切整合在一起#发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：</description>
+    </item>
+    
+    <item>
+      <title>ask</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/ask/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/ask/</guid>
+      <description>应答机制# 消费者完成一个任务可能需要一段时间，如果其中一个消费者处理一个长的任务并仅只完成 了部分突然它挂掉了，会发生什么情况。RabbitMQ 一旦向消费者传递了一条消息，便立即将该消 息标记为删除。在这种情况下，突然有个消费者挂掉了，我们将丢失正在处理的消息。以及后续 发送给该消费这的消息，因为它无法接收到。
+ 为了保证消息在发送过程中不丢失，rabbitmq 引入消息应答机制，消息应答就是:消费者在接 收到消息并且处理该消息之后，告诉 rabbitmq 它已经处理了，rabbitmq 可以把该消息删除了。
+  Channel.basicAck(用于肯定确认)
+  Channel.basicNack(用于否定确认)
+  Channel.basicReject(用于否定确认)
+  与 Channel.basicNack 相比少一个参数 , 不处理该消息了直接拒绝，可以将其丢弃了
+ 一个消息没有确认并且该消费者掉线了  </description>
+    </item>
+    
   </channel>
 </rss>

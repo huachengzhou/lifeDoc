@@ -108,7 +108,49 @@ user    tags
 admin   [administrator]
 guest   [administrator]
 
+-- 删除用户
+
+rabbitmqctl delete_user javaboy
+
+-- 修改用户密码
+
+rabbitmqctl change_password javaboy 123456
+
+
+-- 设置用户角色
+
+rabbitmqctl set_user_tags javaboy administrator
+
+
 ```
+
++ 管理  vhost
+
+```cmd
+# 添加
+rabbitmqctl add_vhost myvh
+
+
+# 查看
+rabbitmqctl list_vhosts
+
+# 删除
+
+rabbitmqctl delete_vhost myvh
+
+# 添加虚拟主机权限
+
+rabbitmqctl set_permissions -p myvh guest ".*" ".*" ".*"
+
+# 禁止某个用户使用某个虚拟主机
+rabbitmqctl clear_permissions -p myvh guest
+
+
+```
+
+管理页面创建 vhost
+
+在 admin 选项卡中，点击右边的 Virtual Hosts
 
 
 + 其它命令
