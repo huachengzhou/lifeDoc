@@ -9,7 +9,7 @@
 #
 
  一个生产者，一个交换机，两个队列，两个消费者
-  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机
+  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机(fanout)
 #
 
 RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列
@@ -26,13 +26,17 @@ channel.queueBind(queueName, &#34;logs&#34;, &#34;&#34;); 从现在开始，日�
 将一切整合在一起
 #
 
-发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：">
+发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：
+生产者
+#
+
+package com.ng.my.publish_subscribe; import com.my.common.RabbitMqUtils; import com.rabbitmq.client.Channel; import com.rabbitmq.client.MessageProperties; import org.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Publish/Subscribe" />
 <meta property="og:description" content="Publish/Subscribe (发布/订阅)
 #
 
  一个生产者，一个交换机，两个队列，两个消费者
-  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机
+  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机(fanout)
 #
 
 RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列
@@ -49,7 +53,11 @@ channel.queueBind(queueName, &#34;logs&#34;, &#34;&#34;); 从现在开始，日�
 将一切整合在一起
 #
 
-发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：" />
+发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：
+生产者
+#
+
+package com.ng.my.publish_subscribe; import com.my.common.RabbitMqUtils; import com.rabbitmq.client.Channel; import com.rabbitmq.client.MessageProperties; import org." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/publish-subscribe/" />
 <meta property="article:published_time" content="2023-08-15T00:00:00+00:00" />
@@ -58,13 +66,46 @@ channel.queueBind(queueName, &#34;logs&#34;, &#34;&#34;); 从现在开始，日�
 <link rel="manifest" href="./../../../../../manifest.json">
 <link rel="icon" href="./../../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../../en.search.min.f53c6ba52f740df5118803b8df8a421a4f803535b7ca4810e75ab51577e0a6c7.js"  ></script>
+<script defer src="./../../../../../en.search.min.22029476995aafe5615ba9cdf78cd63b2698ddce2a7c0c1c03d4df9d95391072.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 -->
 
   
+
+<script defer src="./../../../../../crypto-js/core.js"></script>
+<script defer src="./../../../../../crypto-js/enc-base64.js"></script>
+<script defer src="./../../../../../crypto-js/cipher-core.js"></script>
+<script defer src="./../../../../../crypto-js/aes.js"></script>
+<script defer src="./../../../../../crypto-js/enc-utf16.js"></script>
+<script defer src="./../../../../../crypto-js/evpkdf.js"></script>
+<script defer src="./../../../../../crypto-js/format-hex.js"></script>
+<script defer src="./../../../../../crypto-js/hmac.js"></script>
+<script defer src="./../../../../../crypto-js/lib-typedarrays.js"></script>
+<script defer src="./../../../../../crypto-js/mode-cfb.js"></script>
+<script defer src="./../../../../../crypto-js/pbkdf2.js"></script>
+<script defer src="./../../../../../crypto-js/md5.js"></script>
+<script defer src="./../../../../../crypto-js/mode-ecb.js"></script>
+<script defer src="./../../../../../crypto-js/rabbit.js"></script>
+<script defer src="./../../../../../crypto-js/rabbit-legacy.js"></script>
+<script defer src="./../../../../../crypto-js/sha256.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script defer src="./../../../../../common-js/data.js"></script>
+<script defer src="./../../../../../common-js/aesTool.js"></script>
+<script defer src="./../../../../../common-js/myInfo.js"></script>
+
+
+
 </head>
 
 <body dir="ltr">
@@ -2363,6 +2404,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../../docs/javadir/middleware/rabbit-mq/publish-subscribe/" class=" active">Publish/Subscribe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../../docs/javadir/middleware/rabbit-mq/rounting/" class="">Routing</a>
   
 
         </li>
@@ -5254,10 +5308,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#publishsubscribe-发布订阅">Publish/Subscribe (发布/订阅)</a>
       <ul>
-        <li><a href="#创建-扇形交换机">创建 扇形交换机</a></li>
+        <li><a href="#创建-扇形交换机fanout">创建 扇形交换机(fanout)</a></li>
         <li><a href="#临时队列">临时队列</a></li>
         <li><a href="#绑定">绑定</a></li>
-        <li><a href="#将一切整合在一起">将一切整合在一起</a></li>
+        <li><a href="#将一切整合在一起">将一切整合在一起</a>
+          <ul>
+            <li><a href="#生产者">生产者</a></li>
+            <li><a href="#消费者">消费者</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a></li>
       </ul>
     </li>
   </ul>
@@ -5272,13 +5332,10 @@ https://github.com/alex-shpak/hugo-book
 
       
 <ul class="ul_abc">
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/studyIndex.html" class="active" >自定义工具</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlog/index.html">blog</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/about">关于程序员</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/newIndex.html">book</a></li>
 </ul>
 
       
@@ -5296,9 +5353,9 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <p><img src="../../.././imgs/java/rabbitmq/Publish_Subscribe.png" alt="" />
 <img src="../../../../imgs/java/rabbitmq/Publish_Subscribe.png" alt="" /></p>
-<h2 id="创建-扇形交换机">
-  创建 扇形交换机
-  <a class="anchor" href="#%e5%88%9b%e5%bb%ba-%e6%89%87%e5%bd%a2%e4%ba%a4%e6%8d%a2%e6%9c%ba">#</a>
+<h2 id="创建-扇形交换机fanout">
+  创建 扇形交换机(fanout)
+  <a class="anchor" href="#%e5%88%9b%e5%bb%ba-%e6%89%87%e5%bd%a2%e4%ba%a4%e6%8d%a2%e6%9c%bafanout">#</a>
 </h2>
 <p>RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列</p>
 <p>有几种可用的交换类型：direct, topic, headers , fanout 本次使用 fanout并且使用它的日志</p>
@@ -5323,6 +5380,111 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#%e5%b0%86%e4%b8%80%e5%88%87%e6%95%b4%e5%90%88%e5%9c%a8%e4%b8%80%e8%b5%b7">#</a>
 </h2>
 <p>发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：</p>
+<h3 id="生产者">
+  生产者
+  <a class="anchor" href="#%e7%94%9f%e4%ba%a7%e8%80%85">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.ng.my.publish_subscribe<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.my.common.RabbitMqUtils<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.rabbitmq.client.Channel<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.rabbitmq.client.MessageProperties<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.junit.Test<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.slf4j.LoggerFactory<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.Scanner<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.concurrent.TimeUnit<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @author : chengdu
+</span><span style="color:#75715e"> * @date :  2023/8/20-08
+</span><span style="color:#75715e"> **/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmitLog</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Logger logger <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>getClass<span style="color:#f92672">());</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String EXCHANGE_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logs&#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acceptProducer</span><span style="color:#f92672">()</span><span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">{</span>
+        Channel channel <span style="color:#f92672">=</span> RabbitMqUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">//创建交换机 并指定广播模式
+</span><span style="color:#75715e"></span>        channel<span style="color:#f92672">.</span><span style="color:#a6e22e">exchangeDeclare</span><span style="color:#f92672">(</span>EXCHANGE_NAME<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;fanout&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//从控制台当中接受信息
+</span><span style="color:#75715e"></span>        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;start&#34;</span><span style="color:#f92672">);</span>
+        Scanner scanner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Scanner<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>scanner<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            String message <span style="color:#f92672">=</span> scanner<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; [x] Sent &#39;&#34;</span> <span style="color:#f92672">+</span> message <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#75715e">//将消息推入到广播模式的交换机中
+</span><span style="color:#75715e"></span>            channel<span style="color:#f92672">.</span><span style="color:#a6e22e">basicPublish</span><span style="color:#f92672">(</span>EXCHANGE_NAME<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> message<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">));</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; [x] Sent &#39;&#34;</span> <span style="color:#f92672">+</span> message <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">MINUTES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;end&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h3 id="消费者">
+  消费者
+  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#f92672">package</span> com.ng.my.publish_subscribe<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.my.common.RabbitMqUtils<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.rabbitmq.client.Channel<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.rabbitmq.client.DeliverCallback<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.junit.Test<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.slf4j.LoggerFactory<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.concurrent.TimeUnit<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @author : chengdu
+</span><span style="color:#75715e"> * @date :  2023/8/20-08
+</span><span style="color:#75715e"> **/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReceiveLogs</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Logger logger <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>getClass<span style="color:#f92672">());</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String EXCHANGE_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logs&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">executeWork</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">{</span>
+        Channel channel <span style="color:#f92672">=</span> RabbitMqUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+
+        channel<span style="color:#f92672">.</span><span style="color:#a6e22e">exchangeDeclare</span><span style="color:#f92672">(</span>EXCHANGE_NAME<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;fanout&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//创建一个具有随机名称的队列，或者， 甚至更好 - 让服务器为我们选择一个随机队列名称 (这也是为什么发布的时候压根没有指定  路由key)
+</span><span style="color:#75715e"></span>        String queueName <span style="color:#f92672">=</span> channel<span style="color:#f92672">.</span><span style="color:#a6e22e">queueDeclare</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getQueue</span><span style="color:#f92672">();</span>
+        channel<span style="color:#f92672">.</span><span style="color:#a6e22e">queueBind</span><span style="color:#f92672">(</span>queueName<span style="color:#f92672">,</span> EXCHANGE_NAME<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+
+        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;queueName:&#34;</span><span style="color:#f92672">+</span>queueName<span style="color:#f92672">);</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; [*] Waiting for messages. To exit press CTRL+C&#34;</span><span style="color:#f92672">);</span>
+
+        DeliverCallback deliverCallback <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>consumerTag<span style="color:#f92672">,</span> delivery<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+            String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>delivery<span style="color:#f92672">.</span><span style="color:#a6e22e">getBody</span><span style="color:#f92672">(),</span> <span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">);</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; [x] Received &#39;&#34;</span> <span style="color:#f92672">+</span> message <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">};</span>
+        <span style="color:#75715e">//队列名称,自动应答
+</span><span style="color:#75715e"></span>        channel<span style="color:#f92672">.</span><span style="color:#a6e22e">basicConsume</span><span style="color:#f92672">(</span>queueName<span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> deliverCallback<span style="color:#f92672">,</span> consumerTag <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span> <span style="color:#f92672">});</span>
+
+        TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">MINUTES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>2<span style="color:#f92672">);</span>
+        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;end&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h2 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h2>
+<p>生产者将消息推送到广播模式的交换机中 
+消费者自己创建随机队列  然后将随机队列与广播模式的交换机绑定
+最后就是可以直接处理了</p>
 </article>
  
       
@@ -5568,10 +5730,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#publishsubscribe-发布订阅">Publish/Subscribe (发布/订阅)</a>
       <ul>
-        <li><a href="#创建-扇形交换机">创建 扇形交换机</a></li>
+        <li><a href="#创建-扇形交换机fanout">创建 扇形交换机(fanout)</a></li>
         <li><a href="#临时队列">临时队列</a></li>
         <li><a href="#绑定">绑定</a></li>
-        <li><a href="#将一切整合在一起">将一切整合在一起</a></li>
+        <li><a href="#将一切整合在一起">将一切整合在一起</a>
+          <ul>
+            <li><a href="#生产者">生产者</a></li>
+            <li><a href="#消费者">消费者</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a></li>
       </ul>
     </li>
   </ul>

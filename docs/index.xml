@@ -1023,12 +1023,13 @@ Node节点组合#主节点+数据节点(master+data)# 节点即有称为�
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/publish-subscribe/</guid>
       <description>Publish/Subscribe (发布/订阅)# 一个生产者，一个交换机，两个队列，两个消费者
-  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机#RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列
+  生产者是发送消息的用户应用程序。 队列是存储消息的缓冲区。 消费者是接收消息的用户应用程序。  创建 扇形交换机(fanout)#RabbitMQ 中消息传递模型的核心思想是生产者 从不将任何消息直接发送到队列。实际上，很多时候 生产者甚至不知道消息是否会传递给任何所有队列
 有几种可用的交换类型：direct, topic, headers , fanout 本次使用 fanout并且使用它的日志
 channel.exchangeDeclare(&amp;#34;logs&amp;#34;, &amp;#34;fanout&amp;#34;); fanout 交换非常简单。正如您可能从 名称，它只是将收到的所有消息广播到所有队列让它知道
 临时队列#String queueName = channel.queueDeclare().getQueue(); 绑定#我们已经创建了一个扇出交换和一个队列。现在我们需要 告诉交换机将消息发送到我们的队列。这种关系 交换和队列之间称为绑定。
 channel.queueBind(queueName, &amp;#34;logs&amp;#34;, &amp;#34;&amp;#34;); 从现在开始，日志交换会将消息附加到我们的队列中。
-将一切整合在一起#发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：</description>
+将一切整合在一起#发出日志消息的生产者程序看起来不多 与上一教程不同。最重要的变化是 我们现在希望将消息发布到我们的日志交换，而不是 无名者。我们需要在发送时提供一个路由密钥，但它 对于扇出交换，将忽略值。下面是 EmitLog.java 程序的代码：
+生产者#package com.ng.my.publish_subscribe; import com.my.common.RabbitMqUtils; import com.rabbitmq.client.Channel; import com.rabbitmq.client.MessageProperties; import org.</description>
     </item>
     
     <item>
@@ -1437,6 +1438,21 @@ node.master: true/false node.data: true/false 集群中单个节点既可以是�
   速率即数据率或称数据传输率或比特率 比特 1/0 位 连接在计算机网络上的主机在数字信道上传输数据位数的速率 单位是b/s , kb/s,Gb/s,Gb/s ,Tb/s 发送端 ==&amp;gt; 接收端 速率是10b/s 0101010101  宽带# &amp;ldquo;带宽&amp;quot;原本指某个信号具有的频道宽度，即最高频率与最低频率之差，单位是赫兹(Hz) 计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的&amp;quot;最高数据率&amp;rdquo;。单位是&amp;quot;比特/秒&amp;quot;  吞吐量# 表示在单位时间内通过某个网络(或信道、接口)的数据量。单位b/s,kb/s,Mb/s 吞吐量受网络的带宽或网络的额定速率的限制   时延#  时延 = 发送时延 + 传播时延 + 排队时延 + 处理时延
   发送时延 : 从发送分组的第一个比特算起，到分组的最后一个比特发送完毕所需的时间(分组交换/路由器将数据推到信道上的时间)
   传播时延 : 这里看什么介质来传播数据 计算机网络中是 数字信号 -&amp;gt; 模拟信号 因此假如是光纤那么传播速度非常快2x⑩9 当然也有用无线电波我个人不知道无限电波是怎样模拟的无法知道速度究竟怎样,公示 传播时间 = 数据长度 / 传播速率(发送速率,带宽)</description>
+    </item>
+    
+    <item>
+      <title>Routing</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/rounting/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/rabbit-mq/rounting/</guid>
+      <description>一个生产者，一个交换机，两个队列，两个消费者
+ 绑定#在前面的示例中，我们已经创建了绑定。你可能还记得 代码如下：
+channel.queueBind(queueName, EXCHANGE_NAME, &amp;#34;&amp;#34;); 绑定可以采用额外的路由键参数。为了避免 与basic_publish参数混淆，我们将它称为绑定键。这就是我们如何使用键创建绑定：
+channel.queueBind(queueName, EXCHANGE_NAME, &amp;#34;black&amp;#34;); 直接交换(direct)# 与 扇出不同的是 扇出是广播模式 无脑通知到所有队列 ,队列无需知道路由规则,只需知道广播交换机就行
+  规则算法: 直接交换很简单 - 消息转到 binding key(绑定键) 与消息的 routing key(路由键) 完全匹配的队列。  在上面这张图中，我们可以看到 X 绑定了两个队列，绑定类型是 direct。队列 Q1 绑定键为 orange， 队列 Q2 绑定键有两个:一个绑定键为 black，另一个绑定键为 green.
+在这种绑定情况下，生产者发布消息到 exchange 上，绑定键为 orange 的消息会被发布到队列 Q1。绑定键为 blackgreen 和的消息会被发布到队列 Q2，其他消息类型的消息将被丢弃。
+多重绑定#当然如果 exchange 的绑定类型是 direct，但是它绑定的多个队列的 key 如果都相同，在这种情 况下虽然绑定类型是 direct 但是它表现的就和 fanout 有点类似了，就跟广播差不多，如上图所示。</description>
     </item>
     
     <item>

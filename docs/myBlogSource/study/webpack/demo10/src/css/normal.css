@@ -1,9 +1,0 @@
-
-
-body{
-  /* background-color: red; */
-   background: url("../img/small.jpg");
-  /*background: url("../img/big.jpg");*/
-}
-
-body {background-image:url(../img/big.jpg);}

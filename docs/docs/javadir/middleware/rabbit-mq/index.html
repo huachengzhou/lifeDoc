@@ -52,7 +52,7 @@ RabbitMQ 核心部分
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.f53c6ba52f740df5118803b8df8a421a4f803535b7ca4810e75ab51577e0a6c7.js"  ></script>
+<script defer src="./../../../../en.search.min.22029476995aafe5615ba9cdf78cd63b2698ddce2a7c0c1c03d4df9d95391072.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../../docs/javadir/middleware/rabbit-mq/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -60,6 +60,39 @@ https://github.com/alex-shpak/hugo-book
 -->
 
   
+
+<script defer src="./../../../../crypto-js/core.js"></script>
+<script defer src="./../../../../crypto-js/enc-base64.js"></script>
+<script defer src="./../../../../crypto-js/cipher-core.js"></script>
+<script defer src="./../../../../crypto-js/aes.js"></script>
+<script defer src="./../../../../crypto-js/enc-utf16.js"></script>
+<script defer src="./../../../../crypto-js/evpkdf.js"></script>
+<script defer src="./../../../../crypto-js/format-hex.js"></script>
+<script defer src="./../../../../crypto-js/hmac.js"></script>
+<script defer src="./../../../../crypto-js/lib-typedarrays.js"></script>
+<script defer src="./../../../../crypto-js/mode-cfb.js"></script>
+<script defer src="./../../../../crypto-js/pbkdf2.js"></script>
+<script defer src="./../../../../crypto-js/md5.js"></script>
+<script defer src="./../../../../crypto-js/mode-ecb.js"></script>
+<script defer src="./../../../../crypto-js/rabbit.js"></script>
+<script defer src="./../../../../crypto-js/rabbit-legacy.js"></script>
+<script defer src="./../../../../crypto-js/sha256.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script defer src="./../../../../common-js/data.js"></script>
+<script defer src="./../../../../common-js/aesTool.js"></script>
+<script defer src="./../../../../common-js/myInfo.js"></script>
+
+
+
 </head>
 
 <body dir="ltr">
@@ -2358,6 +2391,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="./../../../../docs/javadir/middleware/rabbit-mq/publish-subscribe/" class="">Publish/Subscribe</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/rabbit-mq/rounting/" class="">Routing</a>
   
 
         </li>
@@ -5275,13 +5321,10 @@ https://github.com/alex-shpak/hugo-book
 
       
 <ul class="ul_abc">
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/studyIndex.html" class="active" >自定义工具</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlog/index.html">blog</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/about">关于程序员</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/myBlogSource/newIndex.html">book</a></li>
 </ul>
 
       
@@ -5456,6 +5499,7 @@ rabbitmqctl clear_permissions -p myvh guest
 <p>查看用户：rabbitmqctl list_users</p>
 <p>查看状态：rabbitmqctl status</p>
 <p>查看集群状态：rabbitmqctl cluster_status</p>
+<p><a href="http://127.0.0.1:15672">查看应用</a></p>
 <p><img src="../.././imgs/java/rabbitmq/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230815160510.png" alt="" />
 <img src="../../../imgs/java/rabbitmq/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230815160510.png" alt="" />
 <img src="../.././imgs/java/rabbitmq/%e5%be%ae%e4%bf%a1%e6%88%aa%e5%9b%be_20230815160535.png" alt="" />
