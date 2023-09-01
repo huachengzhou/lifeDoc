@@ -93,3 +93,4 @@ var allData = sensitive.getData();
 console.log(c1x);
 console.log(c2x);
 console.log(allData);
+console.log(githubList);
