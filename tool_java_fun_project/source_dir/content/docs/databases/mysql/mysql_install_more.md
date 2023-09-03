@@ -101,6 +101,8 @@ mysqld --initialize
 
 ### 六:修改注册表
 
++ cmd中输入 regedit
+
 + 注册表路径：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services 找到MySQL8022
 + MySQL8022 source value: D:\CS\databases\mysql-8.0.22-winx64\bin\mysqld --default-file=D:\CS\databases\mysql-8.0.22-winx64\my.ini MySQL8022
 + 修改为 D:\CS\databases\mysql-8.0.22-winx64\bin\mysqld.exe MySQL8022
@@ -117,6 +119,46 @@ mysqld --initialize
 + 启动 并且修改密码
 ![][img4]
 ![][img4_]
+
++ 参考
+
+```cmd
+C:\WINDOWS\system32>d:
+
+D:\>cd D:\CS\databases\mysql_8.027_3308_slave\bin
+
+D:\CS\databases\mysql_8.027_3308_slave\bin>mysqld install mysql3308 --default-file="D:\CS\databases\mysql_8.027_3308_slave\my.ini"
+Service successfully installed.
+
+D:\CS\databases\mysql_8.027_3308_slave\bin>mysqld -initialize -console
+
+D:\CS\databases\mysql_8.027_3308_slave\bin>mysqld --initialize
+
+D:\CS\databases\mysql_8.027_3308_slave\bin>
+D:\CS\databases\mysql_8.027_3308_slave\bin>net start mysql3308
+mysql3308 服务正在启动 ..
+mysql3308 服务已经启动成功。
+
+
+D:\CS\databases\mysql_8.027_3308_slave\bin>mysql -P3308 -uroot -p
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.27
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> alter user root@localhost identified by '123456';
+Query OK, 0 rows affected (0.20 sec)
+
+mysql>
+```
 
 
 

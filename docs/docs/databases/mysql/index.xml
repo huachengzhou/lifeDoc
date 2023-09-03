@@ -185,7 +185,7 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
   远程备份 (远程连接数据库进行备份)
   4:全量备份与增量备份#  全量备份 (备份完整的数据库)
   增量备份 (只备份上一次备份以来发生修改的数据)
-  5:备份周期# 考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法# mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump# 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A -d &amp;gt; D:\data\mysql_all.</description>
+  5:备份周期# 考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法# mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump# 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A &amp;gt; D:\data\databases\mysql\mysql_all_2023-09-02.</description>
     </item>
     
     <item>

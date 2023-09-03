@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="一: 备份
@@ -37,7 +37,7 @@
  mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump
 #
 
- 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A -d &gt; D:\data\mysql_all.">
+ 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A &gt; D:\data\databases\mysql\mysql_all_2023-09-02.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql运维" />
 <meta property="og:description" content="一: 备份
 #
@@ -71,16 +71,17 @@
  mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump
 #
 
- 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A -d &gt; D:\data\mysql_all." />
+ 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A &gt; D:\data\databases\mysql\mysql_all_2023-09-02." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/" />
-<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_operation_maintenance/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
+
 <title>mysql运维 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.d4b48e8864cb0421c26c7cdde84e8924f7974736edef386c4d3a6c4bb18e88b8.css"  >
-<script defer src="./../../../../en.search.min.22029476995aafe5615ba9cdf78cd63b2698ddce2a7c0c1c03d4df9d95391072.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
+<script defer src="./../../../../en.search.min.808367a0ac2030533fd9b4308db372492611e0039cdec5b1784cc96eb987d771.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5289,7 +5290,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -5334,8 +5335,9 @@ https://github.com/alex-shpak/hugo-book
         </li>
         <li><a href="#7主从复制">7:主从复制</a>
           <ul>
-            <li><a href="#主mysql">主mysql</a></li>
-            <li><a href="#从mysql">从mysql</a></li>
+            <li><a href="#要求">要求</a></li>
+            <li><a href="#第一种">第一种</a></li>
+            <li><a href="#第二种">第二种</a></li>
           </ul>
         </li>
       </ul>
@@ -5356,6 +5358,7 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://github.com/huachengzhou/blog">blog</a></li>
 </ul>
 
       
@@ -5440,10 +5443,12 @@ https://github.com/alex-shpak/hugo-book
 <li>逻辑备份</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">-- 备份全部数据库的数据库结构
-</span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">-</span>A <span style="color:#f92672">-</span>d <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>mysql_all.<span style="color:#66d9ef">sql</span>
+</span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">-</span>A <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">databases</span><span style="color:#960050;background-color:#1e0010">\</span>mysql<span style="color:#960050;background-color:#1e0010">\</span>mysql_all_2023<span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>.<span style="color:#66d9ef">sql</span>
+mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">-</span>A <span style="color:#f92672">-</span>d <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>mysql_all.<span style="color:#66d9ef">sql</span>
 
 <span style="color:#75715e">-- 备份全部数据库的数据和结构
 </span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">-</span>A <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>mysql_all_2.<span style="color:#66d9ef">sql</span>
+mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">-</span>A <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">databases</span><span style="color:#960050;background-color:#1e0010">\</span>mysql<span style="color:#960050;background-color:#1e0010">\</span>mysql_all_data_2023<span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>.<span style="color:#66d9ef">sql</span>
 
 <span style="color:#75715e">-- 备份单个数据库的结构和数据
 </span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">--</span><span style="color:#66d9ef">databases</span> test3  <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>test3_all.<span style="color:#66d9ef">sql</span>
@@ -5453,6 +5458,11 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">-- 备份单个数据库的数据
 </span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">--</span><span style="color:#66d9ef">databases</span> test3 <span style="color:#f92672">-</span>t <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>test3_data_1.<span style="color:#66d9ef">sql</span>
+mysqldump <span style="color:#f92672">-</span>h <span style="color:#ae81ff">127</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">--</span><span style="color:#66d9ef">databases</span> test3  <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">databases</span><span style="color:#960050;background-color:#1e0010">\</span>mysql<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#ae81ff">2023</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>_x_test3.<span style="color:#66d9ef">sql</span>
+
+<span style="color:#75715e">-- 备份多个数据库的数据  (貌似无法备份指定端口和主机的数据)
+</span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p123456 <span style="color:#f92672">--</span><span style="color:#66d9ef">databases</span> mybatis<span style="color:#f92672">-</span>plus shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave <span style="color:#f92672">&gt;</span> D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">databases</span><span style="color:#960050;background-color:#1e0010">\</span>mysql<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#ae81ff">2023</span><span style="color:#f92672">-</span><span style="color:#ae81ff">09</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>_shard<span style="color:#f92672">-</span>jdbc<span style="color:#f92672">-</span>slave_mybatis<span style="color:#f92672">-</span>plus_3306.<span style="color:#66d9ef">sql</span>
+
 
 <span style="color:#75715e">-- 备份单个数据库的结构
 </span><span style="color:#75715e"></span>mysqldump <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>p3307 <span style="color:#f92672">-</span>uroot  <span style="color:#f92672">-</span>p123456  test3 <span style="color:#f92672">-</span>d <span style="color:#f92672">&gt;</span>  D:<span style="color:#960050;background-color:#1e0010">\</span>data<span style="color:#960050;background-color:#1e0010">\</span>test3_jiegou.<span style="color:#66d9ef">sql</span>
@@ -5467,10 +5477,69 @@ https://github.com/alex-shpak/hugo-book
   7:主从复制
   <a class="anchor" href="#7%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6">#</a>
 </h2>
-<h3 id="主mysql">
+<h3 id="要求">
+  要求
+  <a class="anchor" href="#%e8%a6%81%e6%b1%82">#</a>
+</h3>
+<blockquote>
+<p>主从复制必须满足一定的条件的 当你随便按照某种写法设置了很可能压根没达到要求</p>
+</blockquote>
+<ul>
+<li>
+<p>主从配置需要注意的点</p>
+<ul>
+<li>主从服务器操作系统版本和位数一致；</li>
+<li>Master 和 Slave 数据库的版本要一致；</li>
+<li>Master 和 Slave 数据库中的数据要一致；</li>
+<li>Master 开启二进制日志， Master 和 Slave 的 server_id 在局域网内必须唯一；</li>
+</ul>
+</li>
+<li>
+<p>MySQL 主从复制（也称 A/B 复制） 的原理</p>
+<ul>
+<li>Master将数据改变记录到二进制日志(binary log)中，也就是配置文件log-bin指定的文件， 
+这些记录叫做二进制日志事件(binary log events)；</li>
+<li>Slave 通过 I/O 线程读取 Master 中的 binary log events 并写入到它的中继日志(relay log)；</li>
+<li>Slave 重做中继日志中的事件， 把中继日志中的事件信息一条一条的在本地执行一次，完 
+成数据在本地的存储， 从而实现将改变反映到它自己的数据(数据重放)。</li>
+</ul>
+</li>
+</ul>
+<p>主从配置的简要步骤</p>
+<ul>
+<li>
+<p>Master 上的配置</p>
+<ul>
+<li>安装数据库；</li>
+<li>修改数据库配置文件， 指明 server_id， 开启二进制日志(log-bin)；</li>
+<li>启动数据库， 查看当前是哪个日志， position 号是多少；</li>
+<li>登录数据库， 授权数据复制用户（IP 地址为从机 IP 地址， 如果是双向主从， 这里的还需要授权本机的 IP 地址， 此时自己的 IP 地址就是从 IP 地址)；</li>
+<li>备份数据库（记得加锁和解锁）；</li>
+<li>传送备份数据到 Slave 上；</li>
+<li>启动数据库；</li>
+</ul>
+</li>
+<li>
+<p>Slave 上的配置</p>
+<ul>
+<li>安装数据库；</li>
+<li>修改数据库配置文件， 指明 server_id（如果是搭建双向主从的话， 也要开启二进制 
+日志 log-bin）；</li>
+<li>启动数据库， 还原备份；</li>
+<li>查看当前是哪个日志， position 号是多少（单向主从此步不需要， 双向主从需要）；</li>
+<li>指定 Master 的地址、 用户、 密码等信息；</li>
+<li>开启同步， 查看状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第一种">
+  第一种
+  <a class="anchor" href="#%e7%ac%ac%e4%b8%80%e7%a7%8d">#</a>
+</h3>
+<h4 id="主mysql">
   主mysql
   <a class="anchor" href="#%e4%b8%bbmysql">#</a>
-</h3>
+</h4>
 <ul>
 <li>配置</li>
 </ul>
@@ -5545,10 +5614,10 @@ https://github.com/alex-shpak/hugo-book
 
 <span style="color:#75715e">-- 确认位点 记录下文件名以及位点
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> master status;
-</code></pre></div><h3 id="从mysql">
+</code></pre></div><h4 id="从mysql">
   从mysql
   <a class="anchor" href="#%e4%bb%8emysql">#</a>
-</h3>
+</h4>
 <ul>
 <li>配置</li>
 </ul>
@@ -5628,6 +5697,238 @@ master_log_pos <span style="color:#f92672">=</span> <span style="color:#ae81ff">
 <span style="color:#75715e">#启动同步
 </span><span style="color:#75715e"></span>START SLAVE;
 
+
+<span style="color:#75715e">#查看从库状态Slave_IO_Runing和Slave_SQL_Runing都为Yes说明同步成功，如果不为Yes，请检查error_log，然后排查相关异常。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> slave status ;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">stop slave
+
+<span style="color:#75715e">#master服务器的ip地址
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CHANGE</span> MASTER <span style="color:#66d9ef">TO</span> master_host <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;localhost&#39;</span>,
+<span style="color:#75715e">#第5步中创建的账号
+</span><span style="color:#75715e"></span>master_user <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;db_sync&#39;</span>,
+<span style="color:#75715e">#第5步中创建的密码
+</span><span style="color:#75715e"></span>master_password <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;db_sync&#39;</span>,
+<span style="color:#75715e">#上一步中的File
+</span><span style="color:#75715e"></span>master_log_file <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mysql-bin.000004&#39;</span>,
+<span style="color:#75715e">#上一步中的Position
+</span><span style="color:#75715e"></span>master_log_pos <span style="color:#f92672">=</span> <span style="color:#ae81ff">525</span>,
+get_master_public_key<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+
+start slave ;
+
+<span style="color:#75715e">#查看从库状态Slave_IO_Runing和Slave_SQL_Runing都为Yes说明同步成功，如果不为Yes，请检查error_log，然后排查相关异常。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> slave status ;
+</code></pre></div><h3 id="第二种">
+  第二种
+  <a class="anchor" href="#%e7%ac%ac%e4%ba%8c%e7%a7%8d">#</a>
+</h3>
+<h4 id="主mysql-1">
+  主mysql
+  <a class="anchor" href="#%e4%b8%bbmysql-1">#</a>
+</h4>
+<ul>
+<li>配置</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[mysqld]</span>
+<span style="color:#75715e"># skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误</span>
+<span style="color:#75715e"># 设置3307端口</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3307</span>
+
+<span style="color:#75715e"># 自定义设置mysql的安装目录，即解压mysql压缩包的目录</span>
+<span style="color:#75715e"># 切记此处一定要用双斜杠\\，单斜杠这里会出错。</span>
+<span style="color:#a6e22e">basedir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027</span>
+
+<span style="color:#75715e"># 自定义设置mysql数据库的数据存放目录</span>
+<span style="color:#a6e22e">datadir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027\\data</span>
+
+<span style="color:#75715e"># 允许最大连接数</span>
+<span style="color:#a6e22e">max_connections</span><span style="color:#f92672">=</span><span style="color:#e6db74">200</span>
+
+<span style="color:#75715e"># 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统</span>
+<span style="color:#a6e22e">max_connect_errors</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+
+<span style="color:#75715e"># 服务端使用的字符集默认为UTF8</span>
+<span style="color:#a6e22e">character-set-server</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+
+<span style="color:#75715e"># 创建新表时将使用的默认存储引擎</span>
+<span style="color:#a6e22e">default-storage-engine</span><span style="color:#f92672">=</span><span style="color:#e6db74">INNODB</span>
+
+<span style="color:#75715e"># 默认使用“mysql_native_password”插件认证</span>
+<span style="color:#a6e22e">default_authentication_plugin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql_native_password</span>
+
+<span style="color:#a6e22e">sql_mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span>
+
+
+<span style="color:#75715e"># 开启慢sql</span>
+
+<span style="color:#a6e22e">slow_query_log</span><span style="color:#f92672">=</span><span style="color:#e6db74">ON</span>
+
+<span style="color:#75715e"># 慢sql存的地址</span>
+
+<span style="color:#a6e22e">slow_query_log_file</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027\log\slow.log</span>
+
+<span style="color:#75715e"># 会记录没有使用索引的查询sql,但前提是必须开启 slow_query_log=&#39;ON&#39;</span>
+
+<span style="color:#a6e22e">log-queries-not-using-indexes</span> <span style="color:#f92672">=</span><span style="color:#e6db74">on</span>
+
+<span style="color:#75715e"># 超过10秒则属于慢SQL,慢查询时间,这里为10秒,超过10秒会被记录</span>
+
+<span style="color:#a6e22e">long_query_time</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+<span style="color:#75715e"># 查询日志,开启对所有执行语句进行记录</span>
+
+<span style="color:#a6e22e">general_log</span><span style="color:#f92672">=</span><span style="color:#e6db74">on</span>
+
+<span style="color:#75715e"># 查询日志,存放位置</span>
+
+<span style="color:#a6e22e">general_log_file</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027\log\query.log</span>
+
+<span style="color:#75715e"># 查询日志，文件中的时间显示已系统时间为准</span>
+
+<span style="color:#a6e22e">log_timestamps</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">SYSTEM</span>
+
+<span style="color:#a6e22e">server-id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+<span style="color:#75715e"># 开启主库的binlog日志</span>
+<span style="color:#a6e22e">log-bin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql-bin</span>
+<span style="color:#75715e">#屏蔽系统库同步</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">sys</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">information_schema</span>
+<span style="color:#a6e22e">binlog-ignore-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">performance_schema</span>
+
+<span style="color:#75715e">#要同步的数据库 binlog-do-db：指定mysql的binlog日志记录哪个db</span>
+<span style="color:#a6e22e">binlog-do-db</span><span style="color:#f92672">=</span><span style="color:#e6db74">chinese</span>
+
+
+<span style="color:#66d9ef">[mysql]</span>
+<span style="color:#75715e"># 设置mysql客户端默认字符集</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+<span style="color:#66d9ef">[client]</span>
+<span style="color:#75715e"># 设置mysql客户端连接服务端时默认使用的端口和默认字符集</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3307</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+</code></pre></div><ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">
+<span style="color:#75715e">-- 授权主备复制专用账号
+</span><span style="color:#75715e">-- 创建用户 前面repl_xx_gongsi是用户名后面的xx_gongsi_master_123456是密码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;repl_xx_gongsi&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span> <span style="color:#66d9ef">IDENTIFIED</span> <span style="color:#66d9ef">WITH</span> mysql_native_password <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;xx_gongsi_master_123456&#39;</span>;
+
+
+<span style="color:#75715e">-- 查看用户
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">user</span>,host <span style="color:#66d9ef">from</span> mysql.<span style="color:#66d9ef">user</span>;
+
+
+<span style="color:#75715e">-- 权限赋予
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> REPLICATION SLAVE <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;repl_xx_gongsi&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span>;
+
+
+<span style="color:#75715e">-- 刷新权限
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">FLUSH</span> <span style="color:#66d9ef">PRIVILEGES</span>;
+
+<span style="color:#75715e">-- 确认位点 记录下文件名以及位点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> master status;
+</code></pre></div><h4 id="从mysql-1">
+  从mysql
+  <a class="anchor" href="#%e4%bb%8emysql-1">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[mysqld]</span>
+<span style="color:#75715e"># skip-grant-tables 暂时注释了 容易引起 mysql服务启动后立马关闭 这个错误</span>
+<span style="color:#75715e"># 设置3308端口</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3308</span>
+
+<span style="color:#75715e"># 自定义设置mysql的安装目录，即解压mysql压缩包的目录</span>
+<span style="color:#75715e"># 切记此处一定要用双斜杠\\，单斜杠这里会出错。</span>
+<span style="color:#a6e22e">basedir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027_3308_slave</span>
+
+<span style="color:#75715e"># 自定义设置mysql数据库的数据存放目录</span>
+<span style="color:#a6e22e">datadir</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027_3308_slave\\data</span>
+
+<span style="color:#75715e"># 允许最大连接数</span>
+<span style="color:#a6e22e">max_connections</span><span style="color:#f92672">=</span><span style="color:#e6db74">200</span>
+
+<span style="color:#75715e"># 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统</span>
+<span style="color:#a6e22e">max_connect_errors</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+
+<span style="color:#75715e"># 服务端使用的字符集默认为UTF8</span>
+<span style="color:#a6e22e">character-set-server</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+
+<span style="color:#75715e"># 创建新表时将使用的默认存储引擎</span>
+<span style="color:#a6e22e">default-storage-engine</span><span style="color:#f92672">=</span><span style="color:#e6db74">INNODB</span>
+
+<span style="color:#75715e"># 默认使用“mysql_native_password”插件认证</span>
+<span style="color:#a6e22e">default_authentication_plugin</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql_native_password</span>
+
+<span style="color:#a6e22e">sql_mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span>
+
+
+<span style="color:#75715e"># 开启慢sql</span>
+
+<span style="color:#a6e22e">slow_query_log</span><span style="color:#f92672">=</span><span style="color:#e6db74">ON</span>
+
+<span style="color:#75715e"># 慢sql存的地址</span>
+
+<span style="color:#a6e22e">slow_query_log_file</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027_3308_slave\log\slow.log</span>
+
+<span style="color:#75715e"># 会记录没有使用索引的查询sql,但前提是必须开启 slow_query_log=&#39;ON&#39;</span>
+
+<span style="color:#a6e22e">log-queries-not-using-indexes</span> <span style="color:#f92672">=</span><span style="color:#e6db74">on</span>
+
+<span style="color:#75715e"># 超过10秒则属于慢SQL,慢查询时间,这里为10秒,超过10秒会被记录</span>
+
+<span style="color:#a6e22e">long_query_time</span><span style="color:#f92672">=</span><span style="color:#e6db74">10</span>
+<span style="color:#75715e"># 查询日志,开启对所有执行语句进行记录</span>
+
+<span style="color:#a6e22e">general_log</span><span style="color:#f92672">=</span><span style="color:#e6db74">on</span>
+
+<span style="color:#75715e"># 查询日志,存放位置</span>
+
+<span style="color:#a6e22e">general_log_file</span><span style="color:#f92672">=</span><span style="color:#e6db74">D:\CS\databases\mysql_8.027_3308_slave\log\query.log</span>
+
+<span style="color:#75715e"># 查询日志，文件中的时间显示已系统时间为准</span>
+
+<span style="color:#a6e22e">log_timestamps</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">SYSTEM</span>
+
+<span style="color:#a6e22e">server-id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">4</span>
+<span style="color:#75715e">#屏蔽系统库同步</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">mysql.%</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">information_schema.%</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">performance_schema.%</span>
+<span style="color:#a6e22e">replicate_wild_ignore_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">sys.%</span>
+<span style="color:#75715e">#设置需要同步的数据库</span>
+<span style="color:#a6e22e">replicate_wild_do_table</span><span style="color:#f92672">=</span><span style="color:#e6db74">chinese.%</span>
+
+
+<span style="color:#66d9ef">[mysql]</span>
+<span style="color:#75715e"># 设置mysql客户端默认字符集</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+
+<span style="color:#66d9ef">[client]</span>
+<span style="color:#75715e"># 设置mysql客户端连接服务端时默认使用的端口和默认字符集</span>
+<span style="color:#a6e22e">port</span><span style="color:#f92672">=</span><span style="color:#e6db74">3308</span>
+<span style="color:#a6e22e">default-character-set</span><span style="color:#f92672">=</span><span style="color:#e6db74">utf8mb4</span>
+</code></pre></div><ul>
+<li>命令</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#75715e">#先停止同步
+</span><span style="color:#75715e"></span>STOP SLAVE;
+
+<span style="color:#75715e">#修改从库指向到主库，使用上一步记录的文件名以及位点
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">CHANGE</span> MASTER <span style="color:#66d9ef">TO</span>
+MASTER_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,
+MASTER_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;repl_xx_gongsi&#39;</span>,
+master_port <span style="color:#f92672">=</span> <span style="color:#ae81ff">3307</span>,
+MASTER_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;xx_gongsi_master_123456&#39;</span>,
+MASTER_LOG_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mysql-bin.000003&#39;</span>,
+MASTER_LOG_POS<span style="color:#f92672">=</span><span style="color:#ae81ff">1099</span>;
+
+<span style="color:#75715e">#启动同步
+</span><span style="color:#75715e"></span>START SLAVE;
 
 <span style="color:#75715e">#查看从库状态Slave_IO_Runing和Slave_SQL_Runing都为Yes说明同步成功，如果不为Yes，请检查error_log，然后排查相关异常。
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">show</span> slave status ;
@@ -5888,8 +6189,9 @@ master_log_pos <span style="color:#f92672">=</span> <span style="color:#ae81ff">
         </li>
         <li><a href="#7主从复制">7:主从复制</a>
           <ul>
-            <li><a href="#主mysql">主mysql</a></li>
-            <li><a href="#从mysql">从mysql</a></li>
+            <li><a href="#要求">要求</a></li>
+            <li><a href="#第一种">第一种</a></li>
+            <li><a href="#第二种">第二种</a></li>
           </ul>
         </li>
       </ul>
