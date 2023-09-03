@@ -184,24 +184,7 @@ rabbitmqctl clear_permissions -p myvh guest
 [查看应用](http://127.0.0.1:15672)
 
 
-![][img1]
-![][img1_]
-![][img2]
-![][img2_]
-![][img3]
-![][img3_]
-![][img4]
-![][img4_]
-![][img5]
-![][img5_]
-![][img6]
-![][img6_]
-![][img7]
-![][img7_]
-![][img8]
-![][img8_]
-![][img9]
-![][img9_]
+
 
 
 [下载地址](https://www.rabbitmq.com/download.html)
@@ -225,26 +208,4 @@ rabbitmqctl clear_permissions -p myvh guest
 [参考3](https://blog.csdn.net/qq_45472675/article/details/110951399)
 
 
-
-[img1]:../.././imgs/java/rabbitmq/微信截图_20230815160510.png
-[img1_]:../../../imgs/java/rabbitmq/微信截图_20230815160510.png
-[img2]:../.././imgs/java/rabbitmq/微信截图_20230815160535.png
-[img2_]:../../../imgs/java/rabbitmq/微信截图_20230815160535.png
-[img3]:../.././imgs/java/rabbitmq/微信截图_20230815160705.png
-[img3_]:../../../imgs/java/rabbitmq/微信截图_20230815160705.png
-
-[img4]:../.././imgs/java/rabbitmq/hello_world.png
-[img4_]:../../../imgs/java/rabbitmq/hello_world.png
-
-[img5]:../.././imgs/java/rabbitmq/Work_Queues.png
-[img5_]:../../../imgs/java/rabbitmq/Work_Queues.png
-[img6]:../.././imgs/java/rabbitmq/Publish_Subscribe.png
-[img6_]:../../../imgs/java/rabbitmq/Publish_Subscribe.png
-[img7]:../.././imgs/java/rabbitmq/Routing.png
-[img7_]:../../../imgs/java/rabbitmq/Routing.png
-[img8]:../.././imgs/java/rabbitmq/Topics.png
-[img8_]:../../../imgs/java/rabbitmq/Topics.png
-
-[img9]:../.././imgs/java/rabbitmq/RPC.png
-[img9_]:../../../imgs/java/rabbitmq/RPC.png
 
