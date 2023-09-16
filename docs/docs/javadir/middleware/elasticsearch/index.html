@@ -37,8 +37,8 @@ elasticsearch与数据库的类比
 <title>Elasticsearch | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.808367a0ac2030533fd9b4308db372492611e0039cdec5b1784cc96eb987d771.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
+<script defer src="./../../../../en.search.min.f3cb49e7a70d604b78cc9560b0b39d73d484134fb19c174d69ab9b54f0d87d61.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../../docs/javadir/middleware/elasticsearch/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -1507,6 +1507,41 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-c62fda4779509a2bf52b7c12feccca28" class="toggle"  />
+    <label for="section-c62fda4779509a2bf52b7c12feccca28" class="flex justify-between">
+      <a href="./../../../../docs/javadir/basedir/io/" class="">Java IO</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/io/java-basic-io-nio/" class="">nio</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-ba9f37c30cbddfdede23d767e7034c30" class="toggle"  />
     <label for="section-ba9f37c30cbddfdede23d767e7034c30" class="flex justify-between">
       <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
@@ -2326,6 +2361,63 @@ https://github.com/alex-shpak/hugo-book
   
     <a href="./../../../../docs/javadir/middleware/uml/" class="">uml 学习与使用</a>
   
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/" class="">solr</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/adminui/" class="">AdminUI 简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/config/" class="">基本配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/javaapi/" class="">Java API SolrJ 的使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
 
         </li>
       
@@ -4418,6 +4510,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/dmmsjbabmp/" class="">你到底想表达什么</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awb8ggwzn2/" class="">生活中常用的客套话</a>
   
 
@@ -4905,6 +5010,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/dmmsjbabmp/" class="">你到底想表达什么</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -5279,53 +5397,40 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#elasticsearch">elasticsearch</a></li>
-    <li><a href="#elasticsearch与数据库的类比">elasticsearch与数据库的类比</a></li>
-    <li><a href="#http-api">HTTP API</a>
-      <ul>
-        <li><a href="#创建索引库index">创建索引库index</a>
-          <ul>
-            <li><a href="#1创建index">1:创建index</a></li>
-            <li><a href="#2然后-put-index-不能重复去发送">2:然后 PUT INDEX 不能重复去发送</a></li>
-            <li><a href="#3post也不能--只能-delete-get-head-put">3:POST也不能  只能 DELETE, GET, HEAD, PUT</a></li>
-            <li><a href="#4查询索引库">4:查询索引库</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-增删查改">文档 增删查改</a>
-          <ul>
-            <li><a href="#添加默认文档">添加默认文档</a></li>
-            <li><a href="#添加自定义id的默认文档">添加自定义id的默认文档</a></li>
-            <li><a href="#文档修改">文档修改</a></li>
-            <li><a href="#文档修改局部修改">文档修改(局部修改)</a></li>
-            <li><a href="#文档删除根据id">文档删除（根据id）</a></li>
-            <li><a href="#文档全查询url-get">文档全查询(url get)</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-查询">文档 查询</a>
-          <ul>
-            <li><a href="#简单条件查询">简单条件查询</a></li>
-            <li><a href="#简单条件查询json方式">简单条件查询json方式</a></li>
-            <li><a href="#文档全查询json">文档全查询(json)</a></li>
-            <li><a href="#文档全查询json分页">文档全查询(json+分页)</a></li>
-            <li><a href="#文档全查询json分页返回指定对象字段">文档全查询(json+分页+返回指定对象字段)</a></li>
-            <li><a href="#文档全查询json分页指定排序">文档全查询(json+分页+指定排序)</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-高级查询">文档 高级查询</a>
-          <ul>
-            <li><a href="#批量插入">批量插入</a></li>
-            <li><a href="#文档-多条件查询-must-相当于数据库and">文档 多条件查询 must (相当于数据库and)</a></li>
-            <li><a href="#文档-多条件查询-should-相当于数据库or">文档 多条件查询 should (相当于数据库or)</a></li>
-            <li><a href="#文档-多条件查询-range-范围">文档 多条件查询 range 范围</a></li>
-            <li><a href="#文档-全文检索">文档 全文检索</a></li>
-            <li><a href="#文档-全文检索完全匹配">文档 全文检索(完全匹配)</a></li>
-            <li><a href="#文档-统计分组">文档 统计分组</a></li>
-            <li><a href="#文档-计算平均值">文档 计算平均值</a></li>
-            <li><a href="#文档映射关系">文档映射关系</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#1创建index">1:创建index</a></li>
+    <li><a href="#2然后-put-index-不能重复去发送">2:然后 PUT INDEX 不能重复去发送</a></li>
+    <li><a href="#3post也不能--只能-delete-get-head-put">3:POST也不能  只能 DELETE, GET, HEAD, PUT</a></li>
+    <li><a href="#4查询索引库">4:查询索引库</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#添加默认文档">添加默认文档</a></li>
+    <li><a href="#添加自定义id的默认文档">添加自定义id的默认文档</a></li>
+    <li><a href="#文档修改">文档修改</a></li>
+    <li><a href="#文档修改局部修改">文档修改(局部修改)</a></li>
+    <li><a href="#文档删除根据id">文档删除（根据id）</a></li>
+    <li><a href="#文档全查询url-get">文档全查询(url get)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#简单条件查询">简单条件查询</a></li>
+    <li><a href="#简单条件查询json方式">简单条件查询json方式</a></li>
+    <li><a href="#文档全查询json">文档全查询(json)</a></li>
+    <li><a href="#文档全查询json分页">文档全查询(json+分页)</a></li>
+    <li><a href="#文档全查询json分页返回指定对象字段">文档全查询(json+分页+返回指定对象字段)</a></li>
+    <li><a href="#文档全查询json分页指定排序">文档全查询(json+分页+指定排序)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#批量插入">批量插入</a></li>
+    <li><a href="#文档-多条件查询-must-相当于数据库and">文档 多条件查询 must (相当于数据库and)</a></li>
+    <li><a href="#文档-多条件查询-should-相当于数据库or">文档 多条件查询 should (相当于数据库or)</a></li>
+    <li><a href="#文档-多条件查询-range-范围">文档 多条件查询 range 范围</a></li>
+    <li><a href="#文档-全文检索">文档 全文检索</a></li>
+    <li><a href="#文档-全文检索完全匹配">文档 全文检索(完全匹配)</a></li>
+    <li><a href="#文档-统计分组">文档 统计分组</a></li>
+    <li><a href="#文档-计算平均值">文档 计算平均值</a></li>
+    <li><a href="#文档映射关系">文档映射关系</a></li>
   </ul>
 </nav>
 
@@ -5342,7 +5447,7 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://github.com/huachengzhou/blog">blog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/blog/">blog</a></li>
 </ul>
 
       
@@ -8001,53 +8106,40 @@ gt 大于</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#elasticsearch">elasticsearch</a></li>
-    <li><a href="#elasticsearch与数据库的类比">elasticsearch与数据库的类比</a></li>
-    <li><a href="#http-api">HTTP API</a>
-      <ul>
-        <li><a href="#创建索引库index">创建索引库index</a>
-          <ul>
-            <li><a href="#1创建index">1:创建index</a></li>
-            <li><a href="#2然后-put-index-不能重复去发送">2:然后 PUT INDEX 不能重复去发送</a></li>
-            <li><a href="#3post也不能--只能-delete-get-head-put">3:POST也不能  只能 DELETE, GET, HEAD, PUT</a></li>
-            <li><a href="#4查询索引库">4:查询索引库</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-增删查改">文档 增删查改</a>
-          <ul>
-            <li><a href="#添加默认文档">添加默认文档</a></li>
-            <li><a href="#添加自定义id的默认文档">添加自定义id的默认文档</a></li>
-            <li><a href="#文档修改">文档修改</a></li>
-            <li><a href="#文档修改局部修改">文档修改(局部修改)</a></li>
-            <li><a href="#文档删除根据id">文档删除（根据id）</a></li>
-            <li><a href="#文档全查询url-get">文档全查询(url get)</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-查询">文档 查询</a>
-          <ul>
-            <li><a href="#简单条件查询">简单条件查询</a></li>
-            <li><a href="#简单条件查询json方式">简单条件查询json方式</a></li>
-            <li><a href="#文档全查询json">文档全查询(json)</a></li>
-            <li><a href="#文档全查询json分页">文档全查询(json+分页)</a></li>
-            <li><a href="#文档全查询json分页返回指定对象字段">文档全查询(json+分页+返回指定对象字段)</a></li>
-            <li><a href="#文档全查询json分页指定排序">文档全查询(json+分页+指定排序)</a></li>
-          </ul>
-        </li>
-        <li><a href="#文档-高级查询">文档 高级查询</a>
-          <ul>
-            <li><a href="#批量插入">批量插入</a></li>
-            <li><a href="#文档-多条件查询-must-相当于数据库and">文档 多条件查询 must (相当于数据库and)</a></li>
-            <li><a href="#文档-多条件查询-should-相当于数据库or">文档 多条件查询 should (相当于数据库or)</a></li>
-            <li><a href="#文档-多条件查询-range-范围">文档 多条件查询 range 范围</a></li>
-            <li><a href="#文档-全文检索">文档 全文检索</a></li>
-            <li><a href="#文档-全文检索完全匹配">文档 全文检索(完全匹配)</a></li>
-            <li><a href="#文档-统计分组">文档 统计分组</a></li>
-            <li><a href="#文档-计算平均值">文档 计算平均值</a></li>
-            <li><a href="#文档映射关系">文档映射关系</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#1创建index">1:创建index</a></li>
+    <li><a href="#2然后-put-index-不能重复去发送">2:然后 PUT INDEX 不能重复去发送</a></li>
+    <li><a href="#3post也不能--只能-delete-get-head-put">3:POST也不能  只能 DELETE, GET, HEAD, PUT</a></li>
+    <li><a href="#4查询索引库">4:查询索引库</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#添加默认文档">添加默认文档</a></li>
+    <li><a href="#添加自定义id的默认文档">添加自定义id的默认文档</a></li>
+    <li><a href="#文档修改">文档修改</a></li>
+    <li><a href="#文档修改局部修改">文档修改(局部修改)</a></li>
+    <li><a href="#文档删除根据id">文档删除（根据id）</a></li>
+    <li><a href="#文档全查询url-get">文档全查询(url get)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#简单条件查询">简单条件查询</a></li>
+    <li><a href="#简单条件查询json方式">简单条件查询json方式</a></li>
+    <li><a href="#文档全查询json">文档全查询(json)</a></li>
+    <li><a href="#文档全查询json分页">文档全查询(json+分页)</a></li>
+    <li><a href="#文档全查询json分页返回指定对象字段">文档全查询(json+分页+返回指定对象字段)</a></li>
+    <li><a href="#文档全查询json分页指定排序">文档全查询(json+分页+指定排序)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#批量插入">批量插入</a></li>
+    <li><a href="#文档-多条件查询-must-相当于数据库and">文档 多条件查询 must (相当于数据库and)</a></li>
+    <li><a href="#文档-多条件查询-should-相当于数据库or">文档 多条件查询 should (相当于数据库or)</a></li>
+    <li><a href="#文档-多条件查询-range-范围">文档 多条件查询 range 范围</a></li>
+    <li><a href="#文档-全文检索">文档 全文检索</a></li>
+    <li><a href="#文档-全文检索完全匹配">文档 全文检索(完全匹配)</a></li>
+    <li><a href="#文档-统计分组">文档 统计分组</a></li>
+    <li><a href="#文档-计算平均值">文档 计算平均值</a></li>
+    <li><a href="#文档映射关系">文档映射关系</a></li>
   </ul>
 </nav>
 

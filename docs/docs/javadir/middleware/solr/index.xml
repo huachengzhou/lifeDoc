@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>solr on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/</link>
+    <description>Recent content in solr on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/middleware/solr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AdminUI 简单使用</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/adminui/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/adminui/</guid>
+      <description>访问方式 http://ip:端口号/solr
+ 1、基本查询#   参数 意义     q 查询的关键字，此参数最为重要，例如，q=id:1，默认为q=:，   fl 指定返回哪些字段，用逗号或空格分隔，注意：字段区分大小写，例如，fl= id,title,sort   start 返回结果的第几条记录开始，一般分页用，默认0开始   rows 指定返回结果最多有多少条记录，默认值为 10，配合start实现分页   sort 排序方式，例如id desc 表示按照 “id” 降序   wt (writer type)指定输出格式，有 xml, json, php等   fq （filter query）过虑查询，提供一个可选的筛选器查询。返回在q查询符合结果中同时符合的fq条件的查询结果，例如：q=id:1&amp;amp;fq=sort:[1 TO 5]，找关键字id为1 的，并且sort是1到5之间的。   df 默认的查询字段，一般默认指定。   qt （query type）指定那个类型来处理查询请求，一般不用指定，默认是standard。   indent 返回的结果是否缩进，默认关闭，用 indent=true   version 查询语法的版本，建议不使用它，由服务器指定默认值。    2、Solr 的检索运算符#   符号 意义     “:” 指定字段查指定值，如返回所有值_:_   “?</description>
+    </item>
+    
+    <item>
+      <title>基本配置</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/config/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/config/</guid>
+      <description>Solr 基本配置# 在 Solr 中有几个配置文件，您将在执行过程中与之交互。这些文件中的很多都是 XML 格式的，尽管与配置设置交互的 API 在需要时往往接受 JSON 以进行编程访问。
+   solr.xml 指定 Solr 服务器实例的配置选项。有关 solr.xml 请参阅Solr 核心和 solr.xml 的更多信息。
+  每个 Solr 核心：
+  core.properties 定义每个核心的特定属性，例如其名称、核心所属的集合、模式的位置和其他参数。有关更多详细信息 core.properties，请参阅定义 core.properties部分。
+  solrconfig.xml 控制高层行为。例如，您可以为数据目录指定一个备用位置。有关更多信息 solrconfig.xml，请参阅配置 solrconfig.xml。
+  managed-schema（或 schema.xml 改为）描述您将要求 Solr 索引的文档。Schema 将文档定义为字段的集合。您可以定义字段类型和字段本身。字段类型定义功能强大，包括有关 Solr 如何处理传入字段值和查询值的信息。有关 Solr 架构的更多信息，请参阅文档、字段和架构设计以及架构 API。
+  data/ 包含低级索引文件的目录。
+    一、 域中常用标签介绍#域（managed-schema）相当于数据库的表字段，用户存放数据，因此用户根据业务需要去定义相关的Field（域），一般来说，每一种对应着一种数据，用户对同一种数据进行相同的操作。 域的常用属性:</description>
+    </item>
+    
+    <item>
+      <title>Java API SolrJ 的使用</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/javaapi/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/javaapi/</guid>
+      <description>Java API SolrJ 的使用#一、SolrJ 简介#SolrJ 是操作 Solr 的 Java 客户端，它提供了增加、修改、删除、查询 Solr 索引的 Java 接口。通过 SolrJ 提供的 API 接口来操作 Solr 服务，SolrJ 底层是通过使用 httpClient 中的方法来完成 Solr的操作。
+二、SolrJ 核心类 SolrClient#  SolrClient 有一些具体的实现，每个实现都针对不同的使用模式或弹性模型：
+  HttpSolrClient- 面向以查询为中心的工作负载，但也是一个很好的通用客户端。直接与单个 Solr 节点通信。
+  Http2SolrClient- 利用 HTTP/2 的异步、非阻塞和通用客户端。这个类是实验性的，因此它的 API 可能会在 SolrJ 的次要版本中更改或删除。
+  LBHttpSolrClient- 在 Solr 节点列表之间平衡请求负载。根据节点健康状况调整“服务中”节点列表。
+  LBHttp2SolrClient- 就像 LBHttpSolrClient 而是使用 Http2SolrClient。这个类是实验性的，因此它的 API 可能会在 SolrJ 的次要版本中更改或删除。</description>
+    </item>
+    
+  </channel>
+</rss>

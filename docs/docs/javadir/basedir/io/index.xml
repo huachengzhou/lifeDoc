@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java IO on 所悟所想</title>
+    <link>https://huachengzhou.github.io/life/docs/javadir/basedir/io/</link>
+    <description>Recent content in Java IO on 所悟所想</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 10 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/docs/javadir/basedir/io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nio</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/io/java-basic-io-nio/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/io/java-basic-io-nio/</guid>
+      <description>Java NIO 简介#1、简介# Java NIO（New IO）是从 Java 1.4 版本开始引入的一个新的 IO API，可以替代标准的 Java IO API。 NIO 与原来的 IO 有同样的作用和目的，但是使用方式完全不同，NIO 支持面向缓冲区的、基于通道的 IO 操作。 NIO 将以更加高效的方式进行文件的读写操作。
+ 2、NIO 与 IO 的区别#   IO NIO     面向流 面向缓冲   阻塞IO 非阻塞IO   无 选择器    二、NIO 重要知识点详细介绍#1、通道和缓冲区#Java NIO 系统的核心在于：通道（Channel）和缓冲区（Buffer）。通道表示打开到 IO 设备（例如：文件、套接字）的连接。 若需要使用 NIO 系统，需要获取用于连接 IO 设备的通道以及用于容纳数据的缓冲区。然后操作缓冲区，对数据进行处理。简而言之，Channel 负责传输，Buffer 负责存储</description>
+    </item>
+    
+  </channel>
+</rss>

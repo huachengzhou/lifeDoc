@@ -112,8 +112,8 @@
 <title>MySQL事务与存储引擎 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.2b1e5da1cb74cdf16dd2d51ae020b21cacbc1a4e302ddfb56bb58a17ac5ef20e.css"  >
-<script defer src="./../../../../en.search.min.808367a0ac2030533fd9b4308db372492611e0039cdec5b1784cc96eb987d771.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
+<script defer src="./../../../../en.search.min.f3cb49e7a70d604b78cc9560b0b39d73d484134fb19c174d69ab9b54f0d87d61.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1581,6 +1581,41 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-c62fda4779509a2bf52b7c12feccca28" class="toggle"  />
+    <label for="section-c62fda4779509a2bf52b7c12feccca28" class="flex justify-between">
+      <a href="./../../../../docs/javadir/basedir/io/" class="">Java IO</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/basedir/io/java-basic-io-nio/" class="">nio</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-ba9f37c30cbddfdede23d767e7034c30" class="toggle"  />
     <label for="section-ba9f37c30cbddfdede23d767e7034c30" class="flex justify-between">
       <a href="./../../../../docs/javadir/basedir/jsp_dir/" class="">jsp 基础知识 </a>
@@ -2400,6 +2435,63 @@ https://github.com/alex-shpak/hugo-book
   
     <a href="./../../../../docs/javadir/middleware/uml/" class="">uml 学习与使用</a>
   
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/" class="">solr</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/adminui/" class="">AdminUI 简单使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/config/" class="">基本配置</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/javadir/middleware/solr/javaapi/" class="">Java API SolrJ 的使用</a>
+  
+
+        </li>
+      
+    
+  </ul>
 
         </li>
       
@@ -4492,6 +4584,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/dmmsjbabmp/" class="">你到底想表达什么</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/awb8ggwzn2/" class="">生活中常用的客套话</a>
   
 
@@ -4979,6 +5084,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/dmmsjbabmp/" class="">你到底想表达什么</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -5353,72 +5471,61 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#mysql事务与存储引擎">MySQL事务与存储引擎</a>
-      <ul>
-        <li><a href="#31-数据库事务">3.1-数据库事务</a>
-          <ul>
-            <li><a href="#什么是事务">什么是事务</a></li>
-            <li><a href="#自动提交">自动提交</a></li>
-            <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
-            <li><a href="#事务的原子性">事务的原子性</a></li>
-            <li><a href="#事务的一致性">事务的一致性</a></li>
-            <li><a href="#事物的持久性">事物的持久性</a></li>
-            <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
-            <li><a href="#事务的隔离性">事务的隔离性</a></li>
-            <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
-            <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
-            <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
-            <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
-            <li><a href="#事务与并发写">事务与并发写</a></li>
-            <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
-          </ul>
-        </li>
-        <li><a href="#32-存储引擎概述">3.2-存储引擎概述</a>
-          <ul>
-            <li><a href="#mysql程序层次架构">MySQL程序层次架构</a></li>
-            <li><a href="#mysql存储引擎">MySQL存储引擎</a></li>
-            <li><a href="#主要存储引擎">主要存储引擎</a></li>
-            <li><a href="#innodb存储引擎">InnoDB存储引擎</a></li>
-            <li><a href="#myisam存储引擎">MyISAM存储引擎</a></li>
-            <li><a href="#mwmory存储引擎">MWMORY存储引擎</a></li>
-            <li><a href="#blackhole存储引擎">BLACKHOLE存储引擎</a></li>
-            <li><a href="#tokudb">TokuDB</a></li>
-            <li><a href="#mysql-cluster">MySQL Cluster</a></li>
-            <li><a href="#改变表的存储引擎">改变表的存储引擎</a></li>
-          </ul>
-        </li>
-        <li><a href="#33-innodb存储引擎">3.3-InnoDB存储引擎</a>
-          <ul>
-            <li><a href="#innodb存储引擎体系架构">InnoDB存储引擎体系架构</a></li>
-            <li><a href="#innodb相关的磁盘文件">InnoDB相关的磁盘文件</a></li>
-            <li><a href="#innodb系统表空间文件">InnoDB系统表空间文件</a></li>
-            <li><a href="#innodb与磁盘文件有关的参数">InnoDB与磁盘文件有关的参数</a></li>
-            <li><a href="#innodb数据文件存储结构">InnoDB数据文件存储结构</a></li>
-            <li><a href="#innodb数据块缓存池">InnoDB数据块缓存池</a></li>
-            <li><a href="#innodb-buffer-pool相关参数">InnoDB Buffer Pool相关参数</a></li>
-            <li><a href="#innodb数据持久化与事务日志">InnoDB数据持久化与事务日志</a></li>
-            <li><a href="#innodb日志持久化相关参数">InnoDB日志持久化相关参数</a></li>
-            <li><a href="#innodb行级锁">InnoDB行级锁</a></li>
-            <li><a href="#innodb与事务acid">InnoDB与事务ACID</a></li>
-          </ul>
-        </li>
-        <li><a href="#34-innodb事务锁">3.4-InnoDB事务锁</a>
-          <ul>
-            <li><a href="#什么是计算机程序锁">什么是计算机程序锁</a></li>
-            <li><a href="#数据库中的锁">数据库中的锁</a></li>
-            <li><a href="#数据库事务并发">数据库事务并发</a></li>
-            <li><a href="#事务锁粒度">事务锁粒度</a></li>
-            <li><a href="#innodb存储引擎中的锁模式与粒度">InnoDB存储引擎中的锁模式与粒度</a></li>
-            <li><a href="#innodb锁模式互斥">InnoDB锁模式互斥</a></li>
-            <li><a href="#数据库加锁操作">数据库加锁操作</a></li>
-            <li><a href="#innodb行锁的实现">InnoDB行锁的实现</a></li>
-            <li><a href="#innodb的gap-lock">InnoDB的gap lock</a></li>
-            <li><a href="#死锁">死锁</a></li>
-            <li><a href="#业务逻辑加锁">业务逻辑加锁</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#什么是事务">什么是事务</a></li>
+    <li><a href="#自动提交">自动提交</a></li>
+    <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
+    <li><a href="#事务的原子性">事务的原子性</a></li>
+    <li><a href="#事务的一致性">事务的一致性</a></li>
+    <li><a href="#事物的持久性">事物的持久性</a></li>
+    <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
+    <li><a href="#事务的隔离性">事务的隔离性</a></li>
+    <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
+    <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
+    <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
+    <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
+    <li><a href="#事务与并发写">事务与并发写</a></li>
+    <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mysql程序层次架构">MySQL程序层次架构</a></li>
+    <li><a href="#mysql存储引擎">MySQL存储引擎</a></li>
+    <li><a href="#主要存储引擎">主要存储引擎</a></li>
+    <li><a href="#innodb存储引擎">InnoDB存储引擎</a></li>
+    <li><a href="#myisam存储引擎">MyISAM存储引擎</a></li>
+    <li><a href="#mwmory存储引擎">MWMORY存储引擎</a></li>
+    <li><a href="#blackhole存储引擎">BLACKHOLE存储引擎</a></li>
+    <li><a href="#tokudb">TokuDB</a></li>
+    <li><a href="#mysql-cluster">MySQL Cluster</a></li>
+    <li><a href="#改变表的存储引擎">改变表的存储引擎</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#innodb存储引擎体系架构">InnoDB存储引擎体系架构</a></li>
+    <li><a href="#innodb相关的磁盘文件">InnoDB相关的磁盘文件</a></li>
+    <li><a href="#innodb系统表空间文件">InnoDB系统表空间文件</a></li>
+    <li><a href="#innodb与磁盘文件有关的参数">InnoDB与磁盘文件有关的参数</a></li>
+    <li><a href="#innodb数据文件存储结构">InnoDB数据文件存储结构</a></li>
+    <li><a href="#innodb数据块缓存池">InnoDB数据块缓存池</a></li>
+    <li><a href="#innodb-buffer-pool相关参数">InnoDB Buffer Pool相关参数</a></li>
+    <li><a href="#innodb数据持久化与事务日志">InnoDB数据持久化与事务日志</a></li>
+    <li><a href="#innodb日志持久化相关参数">InnoDB日志持久化相关参数</a></li>
+    <li><a href="#innodb行级锁">InnoDB行级锁</a></li>
+    <li><a href="#innodb与事务acid">InnoDB与事务ACID</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#什么是计算机程序锁">什么是计算机程序锁</a></li>
+    <li><a href="#数据库中的锁">数据库中的锁</a></li>
+    <li><a href="#数据库事务并发">数据库事务并发</a></li>
+    <li><a href="#事务锁粒度">事务锁粒度</a></li>
+    <li><a href="#innodb存储引擎中的锁模式与粒度">InnoDB存储引擎中的锁模式与粒度</a></li>
+    <li><a href="#innodb锁模式互斥">InnoDB锁模式互斥</a></li>
+    <li><a href="#数据库加锁操作">数据库加锁操作</a></li>
+    <li><a href="#innodb行锁的实现">InnoDB行锁的实现</a></li>
+    <li><a href="#innodb的gap-lock">InnoDB的gap lock</a></li>
+    <li><a href="#死锁">死锁</a></li>
+    <li><a href="#业务逻辑加锁">业务逻辑加锁</a></li>
   </ul>
 </nav>
 
@@ -5435,7 +5542,7 @@ https://github.com/alex-shpak/hugo-book
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/compilation_principle">编译原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/lifeDoc/docs/computer_composition_principle">计算机组成原理</a></li>
     <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/my-blog/">myBlog</a></li>
-    <li class="li_abc"><a target="_blank"  href="https://github.com/huachengzhou/blog">blog</a></li>
+    <li class="li_abc"><a target="_blank"  href="https://huachengzhou.github.io/blog/">blog</a></li>
 </ul>
 
       
@@ -6473,72 +6580,61 @@ savepoint a1;
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#mysql事务与存储引擎">MySQL事务与存储引擎</a>
-      <ul>
-        <li><a href="#31-数据库事务">3.1-数据库事务</a>
-          <ul>
-            <li><a href="#什么是事务">什么是事务</a></li>
-            <li><a href="#自动提交">自动提交</a></li>
-            <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
-            <li><a href="#事务的原子性">事务的原子性</a></li>
-            <li><a href="#事务的一致性">事务的一致性</a></li>
-            <li><a href="#事物的持久性">事物的持久性</a></li>
-            <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
-            <li><a href="#事务的隔离性">事务的隔离性</a></li>
-            <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
-            <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
-            <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
-            <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
-            <li><a href="#事务与并发写">事务与并发写</a></li>
-            <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
-          </ul>
-        </li>
-        <li><a href="#32-存储引擎概述">3.2-存储引擎概述</a>
-          <ul>
-            <li><a href="#mysql程序层次架构">MySQL程序层次架构</a></li>
-            <li><a href="#mysql存储引擎">MySQL存储引擎</a></li>
-            <li><a href="#主要存储引擎">主要存储引擎</a></li>
-            <li><a href="#innodb存储引擎">InnoDB存储引擎</a></li>
-            <li><a href="#myisam存储引擎">MyISAM存储引擎</a></li>
-            <li><a href="#mwmory存储引擎">MWMORY存储引擎</a></li>
-            <li><a href="#blackhole存储引擎">BLACKHOLE存储引擎</a></li>
-            <li><a href="#tokudb">TokuDB</a></li>
-            <li><a href="#mysql-cluster">MySQL Cluster</a></li>
-            <li><a href="#改变表的存储引擎">改变表的存储引擎</a></li>
-          </ul>
-        </li>
-        <li><a href="#33-innodb存储引擎">3.3-InnoDB存储引擎</a>
-          <ul>
-            <li><a href="#innodb存储引擎体系架构">InnoDB存储引擎体系架构</a></li>
-            <li><a href="#innodb相关的磁盘文件">InnoDB相关的磁盘文件</a></li>
-            <li><a href="#innodb系统表空间文件">InnoDB系统表空间文件</a></li>
-            <li><a href="#innodb与磁盘文件有关的参数">InnoDB与磁盘文件有关的参数</a></li>
-            <li><a href="#innodb数据文件存储结构">InnoDB数据文件存储结构</a></li>
-            <li><a href="#innodb数据块缓存池">InnoDB数据块缓存池</a></li>
-            <li><a href="#innodb-buffer-pool相关参数">InnoDB Buffer Pool相关参数</a></li>
-            <li><a href="#innodb数据持久化与事务日志">InnoDB数据持久化与事务日志</a></li>
-            <li><a href="#innodb日志持久化相关参数">InnoDB日志持久化相关参数</a></li>
-            <li><a href="#innodb行级锁">InnoDB行级锁</a></li>
-            <li><a href="#innodb与事务acid">InnoDB与事务ACID</a></li>
-          </ul>
-        </li>
-        <li><a href="#34-innodb事务锁">3.4-InnoDB事务锁</a>
-          <ul>
-            <li><a href="#什么是计算机程序锁">什么是计算机程序锁</a></li>
-            <li><a href="#数据库中的锁">数据库中的锁</a></li>
-            <li><a href="#数据库事务并发">数据库事务并发</a></li>
-            <li><a href="#事务锁粒度">事务锁粒度</a></li>
-            <li><a href="#innodb存储引擎中的锁模式与粒度">InnoDB存储引擎中的锁模式与粒度</a></li>
-            <li><a href="#innodb锁模式互斥">InnoDB锁模式互斥</a></li>
-            <li><a href="#数据库加锁操作">数据库加锁操作</a></li>
-            <li><a href="#innodb行锁的实现">InnoDB行锁的实现</a></li>
-            <li><a href="#innodb的gap-lock">InnoDB的gap lock</a></li>
-            <li><a href="#死锁">死锁</a></li>
-            <li><a href="#业务逻辑加锁">业务逻辑加锁</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+    <li><a href="#什么是事务">什么是事务</a></li>
+    <li><a href="#自动提交">自动提交</a></li>
+    <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
+    <li><a href="#事务的原子性">事务的原子性</a></li>
+    <li><a href="#事务的一致性">事务的一致性</a></li>
+    <li><a href="#事物的持久性">事物的持久性</a></li>
+    <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
+    <li><a href="#事务的隔离性">事务的隔离性</a></li>
+    <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
+    <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
+    <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
+    <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
+    <li><a href="#事务与并发写">事务与并发写</a></li>
+    <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mysql程序层次架构">MySQL程序层次架构</a></li>
+    <li><a href="#mysql存储引擎">MySQL存储引擎</a></li>
+    <li><a href="#主要存储引擎">主要存储引擎</a></li>
+    <li><a href="#innodb存储引擎">InnoDB存储引擎</a></li>
+    <li><a href="#myisam存储引擎">MyISAM存储引擎</a></li>
+    <li><a href="#mwmory存储引擎">MWMORY存储引擎</a></li>
+    <li><a href="#blackhole存储引擎">BLACKHOLE存储引擎</a></li>
+    <li><a href="#tokudb">TokuDB</a></li>
+    <li><a href="#mysql-cluster">MySQL Cluster</a></li>
+    <li><a href="#改变表的存储引擎">改变表的存储引擎</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#innodb存储引擎体系架构">InnoDB存储引擎体系架构</a></li>
+    <li><a href="#innodb相关的磁盘文件">InnoDB相关的磁盘文件</a></li>
+    <li><a href="#innodb系统表空间文件">InnoDB系统表空间文件</a></li>
+    <li><a href="#innodb与磁盘文件有关的参数">InnoDB与磁盘文件有关的参数</a></li>
+    <li><a href="#innodb数据文件存储结构">InnoDB数据文件存储结构</a></li>
+    <li><a href="#innodb数据块缓存池">InnoDB数据块缓存池</a></li>
+    <li><a href="#innodb-buffer-pool相关参数">InnoDB Buffer Pool相关参数</a></li>
+    <li><a href="#innodb数据持久化与事务日志">InnoDB数据持久化与事务日志</a></li>
+    <li><a href="#innodb日志持久化相关参数">InnoDB日志持久化相关参数</a></li>
+    <li><a href="#innodb行级锁">InnoDB行级锁</a></li>
+    <li><a href="#innodb与事务acid">InnoDB与事务ACID</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#什么是计算机程序锁">什么是计算机程序锁</a></li>
+    <li><a href="#数据库中的锁">数据库中的锁</a></li>
+    <li><a href="#数据库事务并发">数据库事务并发</a></li>
+    <li><a href="#事务锁粒度">事务锁粒度</a></li>
+    <li><a href="#innodb存储引擎中的锁模式与粒度">InnoDB存储引擎中的锁模式与粒度</a></li>
+    <li><a href="#innodb锁模式互斥">InnoDB锁模式互斥</a></li>
+    <li><a href="#数据库加锁操作">数据库加锁操作</a></li>
+    <li><a href="#innodb行锁的实现">InnoDB行锁的实现</a></li>
+    <li><a href="#innodb的gap-lock">InnoDB的gap lock</a></li>
+    <li><a href="#死锁">死锁</a></li>
+    <li><a href="#业务逻辑加锁">业务逻辑加锁</a></li>
   </ul>
 </nav>
 
