@@ -91,6 +91,19 @@ Started Solr server on port 8983. Happy searching!
 
 [http://127.0.0.1:8983/solr/](http://127.0.0.1:8983/solr/#/)
 
++ windows 关闭
+
+```cmd
+D:\CS\solr\solr-8.11.0\bin>solr stop -all
+"java version info is 1.8.0_321"
+"Extracted major version is 1"
+Stopping Solr process 18900 running on port 8983
+
+等待 4 秒，按一个键继续 ...
+
+D:\CS\solr\solr-8.11.0\bin>
+```
+
 + linux
 
 ```shell

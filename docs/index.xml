@@ -1506,6 +1506,18 @@ channel.queueBind(queueName, EXCHANGE_NAME, &amp;#34;black&amp;#34;); 直接交�
     </item>
     
     <item>
+      <title>创建索引和字段</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/core/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/core/</guid>
+      <description>创建索引和字段#一:创建索引# 命令 创建一个叫zch的索引  D:\CS\solr\solr-8.11.0\bin&amp;gt;solr create -c zch &amp;#34;java version info is 1.8.0_321&amp;#34; &amp;#34;Extracted major version is 1&amp;#34; WARNING: Using _default configset with data driven schema functionality. NOT RECOMMENDED for production use. To turn off: bin\solr config -c zch -p 8983 -action set-user-property -property update.autoCreateFields -value false Created new core &amp;#39;zch&amp;#39; D:\CS\solr\solr-8.11.0\bin&amp;gt;  手动创建索引  首先创建一个文件夹
+接着 将下面的文件夹所有复制到core_01中
+最后去管理界面创建就行啦
+二:创建分词器# 使用说明   jar包下载地址： 历史版本：  &amp;lt;!</description>
+    </item>
+    
+    <item>
       <title>python 环境变量</title>
       <link>https://huachengzhou.github.io/life/docs/python/base/venv/</link>
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
