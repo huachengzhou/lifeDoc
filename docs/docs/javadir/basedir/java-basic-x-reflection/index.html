@@ -5,15 +5,39 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="demo
+<meta name="description" content="反射机制详解
 #
 
-">
+ JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制
+ 反射基础
+#
+
+ RTTI（Run-Time Type Identification）运行时类型识别。在《Thinking in Java》一书第十四章中有提到，其作用是在运行时识别一个对象的类型和类的信息。主要有两种方式：一种是“传统的”RTTI，它假定我们在编译时已经知道了所有的类型；另一种是“反射”机制，它允许我们在运行时发现和使用类的信息。
+ 反射就是把java类中的各种成分映射成一个个的Java对象
+例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象。
+ 这里我们首先需要理解 Class类，以及类的加载机制； 然后基于此我们如何通过反射获取Class类以及类中的成员变量、方法、构造方法等。
+ Class类
+#
+
+Class类，Class类也是一个实实在在的类，存在于JDK的java.lang包中。 Class类的实例表示java应用运行时的类(class ans enum)或接口(interface and annotation)（每个java类运行时都在JVM里表现为一个class对象， 可通过类名.class、类型.getClass()、Class.forName(&ldquo;类名&rdquo;)等方法获取class对象）。数组同样也被映射为class 对象的一个类， 所有具有相同元素类型和维数的数组都共享该 Class 对象。基本类型boolean，byte，char，short，int，long，float，double和关键字void同样表现为 class 对象。
+public final class Class&lt;T&gt; implements java.io.Serializable, GenericDeclaration, Type, AnnotatedElement { private static final int ANNOTATION= 0x00002000; private static final int ENUM = 0x00004000; private static final int SYNTHETIC = 0x00001000; private static native void registerNatives(); static { registerNatives(); } /* * Private constructor.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="反射机制详解" />
-<meta property="og:description" content="demo
+<meta property="og:description" content="反射机制详解
 #
 
-" />
+ JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制
+ 反射基础
+#
+
+ RTTI（Run-Time Type Identification）运行时类型识别。在《Thinking in Java》一书第十四章中有提到，其作用是在运行时识别一个对象的类型和类的信息。主要有两种方式：一种是“传统的”RTTI，它假定我们在编译时已经知道了所有的类型；另一种是“反射”机制，它允许我们在运行时发现和使用类的信息。
+ 反射就是把java类中的各种成分映射成一个个的Java对象
+例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象。
+ 这里我们首先需要理解 Class类，以及类的加载机制； 然后基于此我们如何通过反射获取Class类以及类中的成员变量、方法、构造方法等。
+ Class类
+#
+
+Class类，Class类也是一个实实在在的类，存在于JDK的java.lang包中。 Class类的实例表示java应用运行时的类(class ans enum)或接口(interface and annotation)（每个java类运行时都在JVM里表现为一个class对象， 可通过类名.class、类型.getClass()、Class.forName(&ldquo;类名&rdquo;)等方法获取class对象）。数组同样也被映射为class 对象的一个类， 所有具有相同元素类型和维数的数组都共享该 Class 对象。基本类型boolean，byte，char，short，int，long，float，double和关键字void同样表现为 class 对象。
+public final class Class&lt;T&gt; implements java.io.Serializable, GenericDeclaration, Type, AnnotatedElement { private static final int ANNOTATION= 0x00002000; private static final int ENUM = 0x00004000; private static final int SYNTHETIC = 0x00001000; private static native void registerNatives(); static { registerNatives(); } /* * Private constructor." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
@@ -23,7 +47,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.02341fc3957e9e4ef35cae9681b6d3075366501bc1406ddb791983391d502a7d.js"  ></script>
+<script defer src="./../../../../en.search.min.a4cda37260d06f50cab0267fd7731cc85b0115f8c85500e9a6faf2ca1af12b2f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5392,7 +5416,19 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#class类">Class类</a></li>
+    <li><a href="#类加载">类加载</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#class类对象的获取">Class类对象的获取</a></li>
+    <li><a href="#constructor类及其用法">Constructor类及其用法</a></li>
+    <li><a href="#field类及其用法">Field类及其用法</a></li>
+    <li><a href="#method类及其用法">Method类及其用法</a></li>
+  </ul>
+</nav>
 
 
 
@@ -5411,10 +5447,802 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h1 id="demo">
-  demo
-  <a class="anchor" href="#demo">#</a>
+  <article class="markdown"><h1 id="反射机制详解">
+  反射机制详解
+  <a class="anchor" href="#%e5%8f%8d%e5%b0%84%e6%9c%ba%e5%88%b6%e8%af%a6%e8%a7%a3">#</a>
 </h1>
+<blockquote>
+<p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制</p>
+</blockquote>
+<h2 id="反射基础">
+  反射基础
+  <a class="anchor" href="#%e5%8f%8d%e5%b0%84%e5%9f%ba%e7%a1%80">#</a>
+</h2>
+<blockquote>
+<p>RTTI（Run-Time Type Identification）运行时类型识别。在《Thinking in Java》一书第十四章中有提到，其作用是在运行时识别一个对象的类型和类的信息。主要有两种方式：一种是“传统的”RTTI，它假定我们在编译时已经知道了所有的类型；另一种是“反射”机制，它允许我们在运行时发现和使用类的信息。</p>
+</blockquote>
+<p>反射就是把java类中的各种成分映射成一个个的Java对象</p>
+<p>例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象。</p>
+<blockquote>
+<p>这里我们首先需要理解 Class类，以及类的加载机制； 然后基于此我们如何通过反射获取Class类以及类中的成员变量、方法、构造方法等。</p>
+</blockquote>
+<h3 id="class类">
+  Class类
+  <a class="anchor" href="#class%e7%b1%bb">#</a>
+</h3>
+<p>Class类，Class类也是一个实实在在的类，存在于JDK的java.lang包中。
+Class类的实例表示java应用运行时的类(class ans enum)或接口(interface and annotation)（每个java类运行时都在JVM里表现为一个class对象，
+可通过类名.class、类型.getClass()、Class.forName(&ldquo;类名&rdquo;)等方法获取class对象）。数组同样也被映射为class 对象的一个类，
+所有具有相同元素类型和维数的数组都共享该 Class 对象。基本类型boolean，byte，char，short，int，long，float，double和关键字void同样表现为 class 对象。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Class</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">implements</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Serializable</span><span style="color:#f92672">,</span>
+                              GenericDeclaration<span style="color:#f92672">,</span>
+                              Type<span style="color:#f92672">,</span>
+                              AnnotatedElement <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> ANNOTATION<span style="color:#f92672">=</span> 0x00002000<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> ENUM      <span style="color:#f92672">=</span> 0x00004000<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> SYNTHETIC <span style="color:#f92672">=</span> 0x00001000<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">native</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">registerNatives</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        registerNatives<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">     * Private constructor. Only the Java Virtual Machine creates Class objects.   //私有构造器，只有JVM才能调用创建Class对象
+</span><span style="color:#75715e">     * This constructor is not used and prevents the default constructor being
+</span><span style="color:#75715e">     * generated.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Class</span><span style="color:#f92672">(</span>ClassLoader loader<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// Initialize final field for classLoader.  The initialization value of non-null
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// prevents future JIT optimizations from assuming this final field is null.
+</span><span style="color:#75715e"></span>        classLoader <span style="color:#f92672">=</span> loader<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>到这我们也就可以得出以下几点信息：</p>
+<ul>
+<li>
+<p>Class类也是类的一种，与class关键字是不一样的。</p>
+</li>
+<li>
+<p>手动编写的类被编译后会产生一个Class对象，其表示的是创建的类的类型信息，而且这个Class对象保存在同名.class的文件中(字节码文件)</p>
+</li>
+<li>
+<p>每个通过关键字class标识的类，在内存中有且只有一个与之对应的Class对象来描述其类型信息，无论创建多少个实例对象，其依据的都是用一个Class对象。</p>
+</li>
+<li>
+<p>Class类只存私有构造函数，因此对应Class对象只能有JVM创建和加载Class类的对象作用是运行时提供或获得某个对象的类型信息，这点对于反射技术很重要(关于反射稍后分析)。</p>
+</li>
+</ul>
+<h3 id="类加载">
+  类加载
+  <a class="anchor" href="#%e7%b1%bb%e5%8a%a0%e8%bd%bd">#</a>
+</h3>
+<p>类加载机制和类字节码技术可以参考如下两篇文章：</p>
+<ul>
+<li><a href="https://www.pdai.tech/md/java/jvm/java-jvm-class.html">JVM基础 - 类字节码详解</a>
+<ul>
+<li>源代码通过编译器编译为字节码，再通过类加载子系统进行加载到JVM中运行</li>
+</ul>
+</li>
+<li><a href="https://www.pdai.tech/md/java/jvm/java-jvm-classload.html">JVM基础 - Java 类加载机制</a>
+<ul>
+<li>这篇文章将带你深入理解Java 类加载机制</li>
+</ul>
+</li>
+</ul>
+<p>其中，这里我们需要回顾的是：</p>
+<p><img src="../.././imgs/java/other/java_jvm_classload_2.png" alt="" />
+<img src="../../../imgs/java/other/java_jvm_classload_2.png" alt="" /></p>
+<p><img src="../.././imgs/java/other/java-basic-reflection-3.png" alt="" />
+<img src="../../../imgs/java/other/java-basic-reflection-3.png" alt="" /></p>
+<h2 id="反射的使用">
+  反射的使用
+  <a class="anchor" href="#%e5%8f%8d%e5%b0%84%e7%9a%84%e4%bd%bf%e7%94%a8">#</a>
+</h2>
+<blockquote>
+<p>基于此我们如何通过反射获取Class类对象以及类中的成员变量、方法、构造方法等</p>
+</blockquote>
+<p>在Java中，Class类与java.lang.reflect类库一起对反射技术进行了全力的支持。
+在反射包中，我们常用的类主要有Constructor类表示的是Class 对象所表示的类的构造方法，利用它可以在运行时动态创建对象、Field表示Class对象所表示的类的成员变量，
+通过它可以在运行时动态修改成员变量的属性值(包含private)、Method表示Class对象所表示的类的成员方法，通过它可以动态调用对象的方法(包含private)，
+下面将对这几个重要类进行分别说明。</p>
+<h3 id="class类对象的获取">
+  Class类对象的获取
+  <a class="anchor" href="#class%e7%b1%bb%e5%af%b9%e8%b1%a1%e7%9a%84%e8%8e%b7%e5%8f%96">#</a>
+</h3>
+<p>在类加载的时候，jvm会创建一个class对象</p>
+<p>class对象是可以说是反射中最常用的，获取class对象的方式的主要有三种</p>
+<ul>
+<li>根据类名：类名.class</li>
+<li>根据对象：对象.getClass()</li>
+<li>根据全限定类名：Class.forName(全限定类名)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReflectionDemo1</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        Class<span style="color:#f92672">&lt;</span>UserReflection<span style="color:#f92672">&gt;</span> reflectionClass <span style="color:#f92672">=</span> UserReflection<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">// 获取Class对象的三种方式
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;根据类名:  \t&#34;</span> <span style="color:#f92672">+</span> UserReflection<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;根据对象:  \t&#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> UserReflection<span style="color:#f92672">().</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">());</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;根据全限定类名:\t&#34;</span> <span style="color:#f92672">+</span> Class<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.my_reflection.basic_usage.UserReflection&#34;</span><span style="color:#f92672">));</span>
+        <span style="color:#75715e">// 常用的方法
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;获取全限定类名:\t&#34;</span> <span style="color:#f92672">+</span> reflectionClass<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;获取类名:\t&#34;</span> <span style="color:#f92672">+</span> reflectionClass<span style="color:#f92672">.</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">());</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;实例化:\t&#34;</span> <span style="color:#f92672">+</span> reflectionClass<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+ <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserReflection</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;init&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserReflection</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserReflection</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出结果：</p>
+<pre><code class="language-console" data-lang="console">根据类名:  	class com.my_reflection.basic_usage.UserReflection
+根据对象:  	class com.my_reflection.basic_usage.UserReflection
+根据全限定类名:	class com.my_reflection.basic_usage.UserReflection
+获取全限定类名:	com.my_reflection.basic_usage.UserReflection
+获取类名:	UserReflection
+实例化:	com.my_reflection.basic_usage.UserReflection@31befd9f
+</code></pre><ul>
+<li>再来看看 Class类的方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forName()</td>
+<td>(1)获取Class对象的一个引用，但引用的类还没有加载(该类的第一个对象没有生成)就加载了这个类。</td>
+</tr>
+<tr>
+<td>(2)为了产生Class引用，forName()立即就进行了初始化。</td>
+<td></td>
+</tr>
+<tr>
+<td>Object-getClass()</td>
+<td>获取Class对象的一个引用，返回表示该对象的实际类型的Class引用。</td>
+</tr>
+<tr>
+<td>getName()</td>
+<td>取全限定的类名(包括包名)，即类的完整名字。</td>
+</tr>
+<tr>
+<td>getSimpleName()</td>
+<td>获取类名(不包括包名)</td>
+</tr>
+<tr>
+<td>getCanonicalName()</td>
+<td>获取全限定的类名(包括包名)</td>
+</tr>
+<tr>
+<td>isInterface()</td>
+<td>判断Class对象是否是表示一个接口</td>
+</tr>
+<tr>
+<td>getInterfaces()</td>
+<td>返回Class对象数组，表示Class对象所引用的类所实现的所有接口。</td>
+</tr>
+<tr>
+<td>getSupercalss()</td>
+<td>返回Class对象，表示Class对象所引用的类所继承的直接基类。应用该方法可在运行时发现一个对象完整的继承结构。</td>
+</tr>
+<tr>
+<td>newInstance()</td>
+<td>返回一个Oject对象，是实现“虚拟构造器”的一种途径。使用该方法创建的类，必须带有无参的构造器。</td>
+</tr>
+<tr>
+<td>getFields()</td>
+<td>获得某个类的所有的公共（public）的字段，包括继承自父类的所有公共字段。 类似的还有getMethods和getConstructors。</td>
+</tr>
+<tr>
+<td>getDeclaredFields</td>
+<td>获得某个类的自己声明的字段，即包括public、private和proteced，默认但是不包括父类声明的任何字段。类似的还有getDeclaredMethods和getDeclaredConstructors。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.lang.reflect.Field<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @author : chengdu
+</span><span style="color:#75715e"> * @date :  2023/9/24-09
+</span><span style="color:#75715e"> **/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReflectionDemo2</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">I1</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">I2</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cell</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> mCellPublic<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> <span style="color:#66d9ef">extends</span> Cell <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> mAnimalPrivate<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> mAnimalProtected<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> mAnimalDefault<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> mAnimalPublic<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sAnimalPrivate<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sAnimalProtected<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sAnimalDefault<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sAnimalPublic<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">extends</span> Animal <span style="color:#66d9ef">implements</span> I1<span style="color:#f92672">,</span> I2 <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> mDogPrivate<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> mDogPublic<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> mDogProtected<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> mDogDefault<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sDogPrivate<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sDogProtected<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sDogDefault<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> sDogPublic<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        Class<span style="color:#f92672">&lt;</span>Dog<span style="color:#f92672">&gt;</span> dog <span style="color:#f92672">=</span> Dog<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//类名打印
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span> <span style="color:#75715e">//com.my_reflection.basic_usage.ReflectionDemo2$Dog
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">());</span> <span style="color:#75715e">//Dog
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getCanonicalName</span><span style="color:#f92672">());</span><span style="color:#75715e">//com.my_reflection.basic_usage.ReflectionDemo2.Dog
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//接口
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dog<span style="color:#f92672">.</span><span style="color:#a6e22e">isInterface</span><span style="color:#f92672">());</span> <span style="color:#75715e">//false
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Class iI <span style="color:#f92672">:</span> dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getInterfaces</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>iI<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+         <span style="color:#75715e">/*
+</span><span style="color:#75715e">          interface com.cry.I1
+</span><span style="color:#75715e">          interface com.cry.I2
+</span><span style="color:#75715e">         */</span>
+
+        <span style="color:#75715e">//父类
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getSuperclass</span><span style="color:#f92672">());</span><span style="color:#75715e">//class com.my_reflection.basic_usage.ReflectionDemo2$Animal
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//创建对象
+</span><span style="color:#75715e"></span>        Dog d <span style="color:#f92672">=</span> dog<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//字段
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getFields</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>f<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">            mDogPublic
+</span><span style="color:#75715e">            sDogPublic
+</span><span style="color:#75715e">            mAnimalPublic
+</span><span style="color:#75715e">            sAnimalPublic
+</span><span style="color:#75715e">            mCellPublic  //父类的父类的公共字段也打印出来了
+</span><span style="color:#75715e">         */</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;---------&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> dog<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>f<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">/** 只有自己类声明的字段
+</span><span style="color:#75715e">         mDogPrivate
+</span><span style="color:#75715e">         mDogPublic
+</span><span style="color:#75715e">         mDogProtected
+</span><span style="color:#75715e">         mDogDefault
+</span><span style="color:#75715e">         sDogPrivate
+</span><span style="color:#75715e">         sDogProtected
+</span><span style="color:#75715e">         sDogDefault
+</span><span style="color:#75715e">         sDogPublic
+</span><span style="color:#75715e">         */</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>getName、getCanonicalName与getSimpleName的区别：</p>
+<ul>
+<li>
+<p>getSimpleName：只获取类名</p>
+</li>
+<li>
+<p>getName：类的全限定名，jvm中Class的表示，可以用于动态加载Class对象，例如Class.forName。</p>
+</li>
+<li>
+<p>getCanonicalName：返回更容易理解的表示，主要用于输出（toString）或log打印，大多数情况下和getName一样，但是在内部类、数组等类型的表示形式就不同了。</p>
+</li>
+</ul>
+<h3 id="constructor类及其用法">
+  Constructor类及其用法
+  <a class="anchor" href="#constructor%e7%b1%bb%e5%8f%8a%e5%85%b6%e7%94%a8%e6%b3%95">#</a>
+</h3>
+<blockquote>
+<p>Constructor类存在于反射包(java.lang.reflect)中，反映的是Class 对象所表示的类的构造方法。</p>
+</blockquote>
+<p>获取Constructor对象是通过Class类中的方法获取的，Class类与Constructor相关的主要方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法返回值</th>
+<th>方法名称</th>
+<th>方法说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static Class&lt;?&gt;</td>
+<td>forName(String className)</td>
+<td>返回与带有给定字符串名的类或接口相关联的 Class 对象。</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>getConstructor(Class&lt;?&gt;&hellip; parameterTypes)</td>
+<td>返回指定参数类型、具有public访问权限的构造函数对象</td>
+</tr>
+<tr>
+<td>Constructor&lt;?&gt;[]</td>
+<td>getConstructors()</td>
+<td>返回所有具有public访问权限的构造函数的Constructor对象数组</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>getDeclaredConstructor(Class&lt;?&gt;&hellip; parameterTypes)</td>
+<td>返回指定参数类型、所有声明的（包括private）构造函数对象</td>
+</tr>
+<tr>
+<td>Constructor&lt;?&gt;[]</td>
+<td>getDeclaredConstructors()</td>
+<td>返回所有声明的（包括private）构造函数对象</td>
+</tr>
+<tr>
+<td>T</td>
+<td>newInstance()</td>
+<td>调用无参构造器创建此 Class 对象所表示的类的一个新实例。</td>
+</tr>
+</tbody>
+</table>
+<p>关于Constructor类本身一些常用方法如下(仅部分，其他可查API)</p>
+<table>
+<thead>
+<tr>
+<th>方法返回值</th>
+<th>方法名称</th>
+<th>方法说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class</td>
+<td>getDeclaringClass()</td>
+<td>返回 Class 对象，该对象表示声明由此 Constructor 对象表示的构造方法的类,其实就是返回真实类型（不包含参数）</td>
+</tr>
+<tr>
+<td>Type[]</td>
+<td>getGenericParameterTypes()</td>
+<td>按照声明顺序返回一组 Type 对象，返回的就是 Constructor对象构造函数的形参类型。</td>
+</tr>
+<tr>
+<td>String</td>
+<td>getName()</td>
+<td>以字符串形式返回此构造方法的名称。</td>
+</tr>
+<tr>
+<td>Class&lt;?&gt;[]</td>
+<td>getParameterTypes()</td>
+<td>按照声明顺序返回一组 Class 对象，即返回Constructor 对象所表示构造方法的形参类型</td>
+</tr>
+<tr>
+<td>T</td>
+<td>newInstance(Object&hellip; initargs)</td>
+<td>使用此 Constructor对象表示的构造函数来创建新实例</td>
+</tr>
+<tr>
+<td>String</td>
+<td>toGenericString()</td>
+<td>返回描述此 Constructor 的字符串，其中包括类型参数。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field类及其用法">
+  Field类及其用法
+  <a class="anchor" href="#field%e7%b1%bb%e5%8f%8a%e5%85%b6%e7%94%a8%e6%b3%95">#</a>
+</h3>
+<blockquote>
+<p>Field 提供有关类或接口的单个字段的信息，以及对它的动态访问权限。反射的字段可能是一个类（静态）字段或实例字段。</p>
+</blockquote>
+<p>同样的道理，我们可以通过Class类的提供的方法来获取代表字段信息的Field对象，Class类与Field对象相关方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法返回值</th>
+<th>方法名称</th>
+<th>方法说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field</td>
+<td>getDeclaredField(String name)</td>
+<td>获取指定name名称的(包含private修饰的)字段，不包括继承的字段</td>
+</tr>
+<tr>
+<td>Field[]</td>
+<td>getDeclaredFields()</td>
+<td>获取Class对象所表示的类或接口的所有(包含private修饰的)字段,不包括继承的字段</td>
+</tr>
+<tr>
+<td>Field</td>
+<td>getField(String name)</td>
+<td>获取指定name名称、具有public修饰的字段，包含继承字段</td>
+</tr>
+<tr>
+<td>Field[]</td>
+<td>getFields()</td>
+<td>获取修饰符为public的字段，包含继承字段</td>
+</tr>
+</tbody>
+</table>
+<p>下面的代码演示了上述方法的使用过程</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReflectionDemo3</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ClassNotFoundException<span style="color:#f92672">,</span> NoSuchFieldException <span style="color:#f92672">{</span>
+        Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> Student<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//获取指定字段名称的Field类,注意字段修饰符必须为public而且存在该字段,
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 否则抛NoSuchFieldException
+</span><span style="color:#75715e"></span>        Field field <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;field:&#34;</span> <span style="color:#f92672">+</span> field<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//获取所有修饰符为public的字段,包含父类字段,注意修饰符为public才会获取
+</span><span style="color:#75715e"></span>        Field fields<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getFields</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> fields<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f:&#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaringClass</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;================getDeclaredFields====================&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取当前类所字段(包含private字段),注意不包含父类的字段
+</span><span style="color:#75715e"></span>        Field fields2<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> fields2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f2:&#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaringClass</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//获取指定字段名称的Field类,可以是任意修饰符的自动,注意不包含父类的字段
+</span><span style="color:#75715e"></span>        Field field2 <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;desc&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;field2:&#34;</span> <span style="color:#f92672">+</span> field2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 输出结果:
+</span><span style="color:#75715e">     * field:public int reflect.Person.age
+</span><span style="color:#75715e">     * f:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     * f:public int reflect.Person.age
+</span><span style="color:#75715e">     * f:public java.lang.String reflect.Person.name
+</span><span style="color:#75715e">     * &lt;p&gt;
+</span><span style="color:#75715e">     * ================getDeclaredFields====================
+</span><span style="color:#75715e">     * f2:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     * f2:private int reflect.Student.score
+</span><span style="color:#75715e">     * field2:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     */</span>
+
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> String name<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> age<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span> <span style="color:#66d9ef">extends</span> Person <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> String desc<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> score<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getDesc</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> desc<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDesc</span><span style="color:#f92672">(</span>String desc<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">desc</span> <span style="color:#f92672">=</span> desc<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getScore</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> score<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setScore</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> score<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> score<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>上述方法需要注意的是，如果我们不期望获取其父类的字段，则需使用Class类的getDeclaredField/getDeclaredFields方法来获取字段即可，倘若需要连带获取到父类的字段，那么请使用Class类的getField/getFields，但是也只能获取到public修饰的的字段，无法获取父类的私有字段。下面将通过Field类本身的方法对指定类属性赋值，代码演示如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReflectionDemo3</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ClassNotFoundException<span style="color:#f92672">,</span> NoSuchFieldException<span style="color:#f92672">,</span> Exception <span style="color:#f92672">{</span>
+<span style="color:#75715e">//        run1();
+</span><span style="color:#75715e"></span>        run2<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run2</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//获取Class对象引用
+</span><span style="color:#75715e"></span>        Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> Student<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+
+        Student st <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Student<span style="color:#f92672">)</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//获取父类public字段并赋值
+</span><span style="color:#75715e"></span>        Field ageField <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">);</span>
+        ageField<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>st<span style="color:#f92672">,</span> 18<span style="color:#f92672">);</span>
+        Field nameField <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">);</span>
+        nameField<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>st<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Lily&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//只获取当前类的字段,不获取父类的字段
+</span><span style="color:#75715e"></span>        Field descField <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;desc&#34;</span><span style="color:#f92672">);</span>
+        descField<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>st<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;I am student&#34;</span><span style="color:#f92672">);</span>
+        Field scoreField <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;score&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//设置可访问，score是private的
+</span><span style="color:#75715e"></span>        scoreField<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+        scoreField<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>st<span style="color:#f92672">,</span> 88<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>st<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+
+        <span style="color:#75715e">//输出结果：Student{age=18, name=&#39;Lily ,desc=&#39;I am student&#39;, score=88}
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//获取字段值
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>scoreField<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>st<span style="color:#f92672">));</span>
+        <span style="color:#75715e">// 88
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run1</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> NoSuchFieldException <span style="color:#f92672">{</span>
+        Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> Student<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//获取指定字段名称的Field类,注意字段修饰符必须为public而且存在该字段,
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 否则抛NoSuchFieldException
+</span><span style="color:#75715e"></span>        Field field <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;field:&#34;</span> <span style="color:#f92672">+</span> field<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//获取所有修饰符为public的字段,包含父类字段,注意修饰符为public才会获取
+</span><span style="color:#75715e"></span>        Field fields<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getFields</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> fields<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f:&#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaringClass</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;================getDeclaredFields====================&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取当前类所字段(包含private字段),注意不包含父类的字段
+</span><span style="color:#75715e"></span>        Field fields2<span style="color:#f92672">[]</span> <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Field f <span style="color:#f92672">:</span> fields2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;f2:&#34;</span> <span style="color:#f92672">+</span> f<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaringClass</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//获取指定字段名称的Field类,可以是任意修饰符的自动,注意不包含父类的字段
+</span><span style="color:#75715e"></span>        Field field2 <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredField</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;desc&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;field2:&#34;</span> <span style="color:#f92672">+</span> field2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 输出结果:
+</span><span style="color:#75715e">     * field:public int reflect.Person.age
+</span><span style="color:#75715e">     * f:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     * f:public int reflect.Person.age
+</span><span style="color:#75715e">     * f:public java.lang.String reflect.Person.name
+</span><span style="color:#75715e">     * &lt;p&gt;
+</span><span style="color:#75715e">     * ================getDeclaredFields====================
+</span><span style="color:#75715e">     * f2:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     * f2:private int reflect.Student.score
+</span><span style="color:#75715e">     * field2:public java.lang.String reflect.Student.desc
+</span><span style="color:#75715e">     */</span>
+
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">public</span> String name<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> age<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span> <span style="color:#66d9ef">extends</span> Person <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> String desc<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> score<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getDesc</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> desc<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDesc</span><span style="color:#f92672">(</span>String desc<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">desc</span> <span style="color:#f92672">=</span> desc<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getScore</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> score<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setScore</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> score<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> score<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="method类及其用法">
+  Method类及其用法
+  <a class="anchor" href="#method%e7%b1%bb%e5%8f%8a%e5%85%b6%e7%94%a8%e6%b3%95">#</a>
+</h3>
+<blockquote>
+<p>Method 提供关于类或接口上单独某个方法（以及如何访问该方法）的信息，所反映的方法可能是类方法或实例方法（包括抽象方法）。</p>
+</blockquote>
+<p>下面是Class类获取Method对象相关的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法返回值</th>
+<th>方法名称</th>
+<th>方法说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Method</td>
+<td>getDeclaredMethod(String name, Class&lt;?&gt;&hellip; parameterTypes)</td>
+<td>返回一个指定参数的Method对象，该对象反映此 Class 对象所表示的类或接口的指定已声明方法。</td>
+</tr>
+<tr>
+<td>Method[]</td>
+<td>getDeclaredMethods()</td>
+<td>返回 Method 对象的一个数组，这些对象反映此 Class 对象表示的类或接口声明的所有方法，包括公共、保护、默认（包）访问和私有方法，但不包括继承的方法。</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>getMethod(String name, Class&lt;?&gt;&hellip; parameterTypes)</td>
+<td>返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法。</td>
+</tr>
+<tr>
+<td>Method[]</td>
+<td>getMethods()</td>
+<td>返回一个包含某些 Method 对象的数组，这些对象反映此 Class 对象所表示的类或接口（包括那些由该类或接口声明的以及从超类和超接口继承的那些的类或接口）的公共 member 方法。</td>
+</tr>
+</tbody>
+</table>
+<p>同样通过案例演示上述方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReflectionDemo4</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ClassNotFoundException<span style="color:#f92672">,</span> NoSuchMethodException <span style="color:#f92672">{</span>
+
+        Class clazz <span style="color:#f92672">=</span> Circle<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">//根据参数获取public的Method,包含继承自父类的方法
+</span><span style="color:#75715e"></span>        Method method <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;draw&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;method:&#34;</span> <span style="color:#f92672">+</span> method<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//获取所有public的方法:
+</span><span style="color:#75715e"></span>        Method<span style="color:#f92672">[]</span> methods <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethods</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Method m <span style="color:#f92672">:</span> methods<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;m::&#34;</span> <span style="color:#f92672">+</span> m<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;=========================================&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//获取当前类的方法包含private,该方法无法获取继承自父类的method
+</span><span style="color:#75715e"></span>        Method method1 <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredMethod</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;drawCircle&#34;</span><span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;method1::&#34;</span> <span style="color:#f92672">+</span> method1<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//获取当前类的所有方法包含private,该方法无法获取继承自父类的method
+</span><span style="color:#75715e"></span>        Method<span style="color:#f92672">[]</span> methods1 <span style="color:#f92672">=</span> clazz<span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredMethods</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Method m <span style="color:#f92672">:</span> methods1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;m1::&#34;</span> <span style="color:#f92672">+</span> m<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Shape</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;draw&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">draw</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> count<span style="color:#f92672">,</span> String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;draw &#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,count=&#34;</span> <span style="color:#f92672">+</span> count<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> <span style="color:#66d9ef">extends</span> Shape <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawCircle</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;drawCircle&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAllCount</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> 100<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>输出结果:</p>
+<pre><code class="language-console" data-lang="console">method:public void com.my_reflection.basic_usage.Shape.draw(int,java.lang.String)
+m::public int com.my_reflection.basic_usage.Circle.getAllCount()
+m::public void com.my_reflection.basic_usage.Shape.draw()
+m::public void com.my_reflection.basic_usage.Shape.draw(int,java.lang.String)
+m::public final void java.lang.Object.wait() throws java.lang.InterruptedException
+m::public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException
+m::public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException
+m::public boolean java.lang.Object.equals(java.lang.Object)
+m::public java.lang.String java.lang.Object.toString()
+m::public native int java.lang.Object.hashCode()
+m::public final native java.lang.Class java.lang.Object.getClass()
+m::public final native void java.lang.Object.notify()
+m::public final native void java.lang.Object.notifyAll()
+=========================================
+method1::private void com.my_reflection.basic_usage.Circle.drawCircle()
+m1::public int com.my_reflection.basic_usage.Circle.getAllCount()
+m1::private void com.my_reflection.basic_usage.Circle.drawCircle()
+</code></pre><p>方法api</p>
+<table>
+<thead>
+<tr>
+<th>方法返回值</th>
+<th>方法名称</th>
+<th>方法说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td>invoke(Object obj, Object&hellip; args)</td>
+<td>对带有指定参数的指定对象调用由此 Method 对象表示的底层方法。</td>
+</tr>
+<tr>
+<td>Class&lt;?&gt;</td>
+<td>getReturnType()</td>
+<td>返回一个 Class 对象，该对象描述了此 Method 对象所表示的方法的正式返回类型,即方法的返回类型</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>getGenericReturnType()</td>
+<td>返回表示由此 Method 对象所表示方法的正式返回类型的 Type 对象，也是方法的返回类型。</td>
+</tr>
+<tr>
+<td>Class&lt;?&gt;[]</td>
+<td>getParameterTypes()</td>
+<td>按照声明顺序返回 Class 对象的数组，这些对象描述了此 Method 对象所表示的方法的形参类型。即返回方法的参数类型组成的数组</td>
+</tr>
+<tr>
+<td>Type[]</td>
+<td>getGenericParameterTypes()</td>
+<td>按照声明顺序返回 Type 对象的数组，这些对象描述了此 Method 对象所表示的方法的形参类型的，也是返回方法的参数类型</td>
+</tr>
+<tr>
+<td>String</td>
+<td>getName()</td>
+<td>以 String 形式返回此 Method 对象表示的方法名称，即返回方法的名称</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>isVarArgs()</td>
+<td>判断方法是否带可变参数，如果将此方法声明为带有可变数量的参数，则返回 true；否则，返回 false。</td>
+</tr>
+<tr>
+<td>String</td>
+<td>toGenericString()</td>
+<td>返回描述此 Method 的字符串，包括类型参数。</td>
+</tr>
+</tbody>
+</table>
+<p>getReturnType方法/getGenericReturnType方法都是获取Method对象表示的方法的返回类型，只不过前者返回的Class类型后者返回的Type(前面已分析过)，Type就是一个接口而已，在Java8中新增一个默认的方法实现，返回的就参数类型信息</p>
+<p>而getParameterTypes/getGenericParameterTypes也是同样的道理，都是获取Method对象所表示的方法的参数类型，其他方法与前面的Field和Constructor是类似的。</p>
 </article>
  
       
@@ -5656,7 +6484,19 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#class类">Class类</a></li>
+    <li><a href="#类加载">类加载</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#class类对象的获取">Class类对象的获取</a></li>
+    <li><a href="#constructor类及其用法">Constructor类及其用法</a></li>
+    <li><a href="#field类及其用法">Field类及其用法</a></li>
+    <li><a href="#method类及其用法">Method类及其用法</a></li>
+  </ul>
+</nav>
 
 
  

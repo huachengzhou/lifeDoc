@@ -33,7 +33,13 @@ Error 类及其子类：程序中无法处理的错误，表示运行应用程�
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/</guid>
-      <description>demo#</description>
+      <description>反射机制详解# JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制
+ 反射基础# RTTI（Run-Time Type Identification）运行时类型识别。在《Thinking in Java》一书第十四章中有提到，其作用是在运行时识别一个对象的类型和类的信息。主要有两种方式：一种是“传统的”RTTI，它假定我们在编译时已经知道了所有的类型；另一种是“反射”机制，它允许我们在运行时发现和使用类的信息。
+ 反射就是把java类中的各种成分映射成一个个的Java对象
+例如：一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把个个组成部分映射成一个个对象。
+ 这里我们首先需要理解 Class类，以及类的加载机制； 然后基于此我们如何通过反射获取Class类以及类中的成员变量、方法、构造方法等。
+ Class类#Class类，Class类也是一个实实在在的类，存在于JDK的java.lang包中。 Class类的实例表示java应用运行时的类(class ans enum)或接口(interface and annotation)（每个java类运行时都在JVM里表现为一个class对象， 可通过类名.class、类型.getClass()、Class.forName(&amp;ldquo;类名&amp;rdquo;)等方法获取class对象）。数组同样也被映射为class 对象的一个类， 所有具有相同元素类型和维数的数组都共享该 Class 对象。基本类型boolean，byte，char，short，int，long，float，double和关键字void同样表现为 class 对象。
+public final class Class&amp;lt;T&amp;gt; implements java.io.Serializable, GenericDeclaration, Type, AnnotatedElement { private static final int ANNOTATION= 0x00002000; private static final int ENUM = 0x00004000; private static final int SYNTHETIC = 0x00001000; private static native void registerNatives(); static { registerNatives(); } /* * Private constructor.</description>
     </item>
     
     <item>
@@ -58,7 +64,9 @@ class A{ public void test() { } } class B extends A{ /** * 重载父类的test�
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/</guid>
-      <description>demo#</description>
+      <description>泛型机制详解#概述# 泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。 泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。
+ 泛型得小心的地方# 例子1  List arrayList = new ArrayList(); arrayList.add(&amp;#34;aaaa&amp;#34;); arrayList.add(100); for(int i = 0; i&amp;lt; arrayList.size();i++){ String item = (String)arrayList.get(i); Log.d(&amp;#34;泛型测试&amp;#34;,&amp;#34;item = &amp;#34; + item); }  例子2   第二个例子实际是第一个例子的升级版本质是例子1
+ public class DemoGeneric2 { @Test public void test1(){ Map map = new HashMap(); map.put(UUID.randomUUID().toString(),UUID.randomUUID().toString()) ; printMap(map) ; } public void printMap(Map&amp;lt;String,Number&amp;gt; numberMap){ numberMap.entrySet().forEach(stringNumberEntry -&amp;gt; { System.</description>
     </item>
     
     <item>

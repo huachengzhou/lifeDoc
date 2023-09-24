@@ -5,15 +5,31 @@
   <meta name="generator" content="Hugo 0.83.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="demo
+<meta name="description" content="泛型机制详解
 #
 
-">
+概述
+#
+
+ 泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。 泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。
+ 泛型得小心的地方
+#
+
+ 例子1  List arrayList = new ArrayList(); arrayList.add(&#34;aaaa&#34;); arrayList.add(100); for(int i = 0; i&lt; arrayList.size();i&#43;&#43;){ String item = (String)arrayList.get(i); Log.d(&#34;泛型测试&#34;,&#34;item = &#34; &#43; item); }  例子2   第二个例子实际是第一个例子的升级版本质是例子1
+ public class DemoGeneric2 { @Test public void test1(){ Map map = new HashMap(); map.put(UUID.randomUUID().toString(),UUID.randomUUID().toString()) ; printMap(map) ; } public void printMap(Map&lt;String,Number&gt; numberMap){ numberMap.entrySet().forEach(stringNumberEntry -&gt; { System.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="泛型机制详解" />
-<meta property="og:description" content="demo
+<meta property="og:description" content="泛型机制详解
 #
 
-" />
+概述
+#
+
+ 泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。 泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。
+ 泛型得小心的地方
+#
+
+ 例子1  List arrayList = new ArrayList(); arrayList.add(&#34;aaaa&#34;); arrayList.add(100); for(int i = 0; i&lt; arrayList.size();i&#43;&#43;){ String item = (String)arrayList.get(i); Log.d(&#34;泛型测试&#34;,&#34;item = &#34; &#43; item); }  例子2   第二个例子实际是第一个例子的升级版本质是例子1
+ public class DemoGeneric2 { @Test public void test1(){ Map map = new HashMap(); map.put(UUID.randomUUID().toString(),UUID.randomUUID().toString()) ; printMap(map) ; } public void printMap(Map&lt;String,Number&gt; numberMap){ numberMap.entrySet().forEach(stringNumberEntry -&gt; { System." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-generic/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
@@ -23,7 +39,7 @@
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.02341fc3957e9e4ef35cae9681b6d3075366501bc1406ddb791983391d502a7d.js"  ></script>
+<script defer src="./../../../../en.search.min.a4cda37260d06f50cab0267fd7731cc85b0115f8c85500e9a6faf2ca1af12b2f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5392,7 +5408,18 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#泛型类">泛型类</a></li>
+    <li><a href="#泛型接口">泛型接口</a></li>
+    <li><a href="#泛型方法">泛型方法</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#上限">上限</a></li>
+    <li><a href="#下限">下限</a></li>
+  </ul>
+</nav>
 
 
 
@@ -5411,10 +5438,432 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h1 id="demo">
-  demo
-  <a class="anchor" href="#demo">#</a>
+  <article class="markdown"><h1 id="泛型机制详解">
+  泛型机制详解
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e6%9c%ba%e5%88%b6%e8%af%a6%e8%a7%a3">#</a>
 </h1>
+<h2 id="概述">
+  概述
+  <a class="anchor" href="#%e6%a6%82%e8%bf%b0">#</a>
+</h2>
+<blockquote>
+<p>泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）。
+泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。</p>
+</blockquote>
+<h2 id="泛型得小心的地方">
+  泛型得小心的地方
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e5%be%97%e5%b0%8f%e5%bf%83%e7%9a%84%e5%9c%b0%e6%96%b9">#</a>
+</h2>
+<ul>
+<li>例子1</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List arrayList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">();</span>
+arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;aaaa&#34;</span><span style="color:#f92672">);</span>
+arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
+
+<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span> arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>i<span style="color:#f92672">++){</span>
+    String item <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span>arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+    Log<span style="color:#f92672">.</span><span style="color:#a6e22e">d</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;泛型测试&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;item = &#34;</span> <span style="color:#f92672">+</span> item<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>例子2</li>
+</ul>
+<blockquote>
+<p>第二个例子实际是第一个例子的升级版本质是例子1</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoGeneric2</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Test</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test1</span><span style="color:#f92672">(){</span>
+        Map map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">();</span>
+        map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">(),</span>UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">())</span> <span style="color:#f92672">;</span>
+        printMap<span style="color:#f92672">(</span>map<span style="color:#f92672">)</span> <span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printMap</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span>Number<span style="color:#f92672">&gt;</span> numberMap<span style="color:#f92672">){</span>
+        numberMap<span style="color:#f92672">.</span><span style="color:#a6e22e">entrySet</span><span style="color:#f92672">().</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>stringNumberEntry <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>stringNumberEntry<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">().</span><span style="color:#a6e22e">doubleValue</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">});</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ClassCastException</span><span style="color:#f92672">:</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">String</span> cannot be cast to java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Number</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">my_genericity</span><span style="color:#f92672">.</span><span style="color:#a6e22e">basic_usage</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DemoGeneric2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">lambda$printMap$0</span><span style="color:#f92672">(</span>DemoGeneric2<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>24<span style="color:#f92672">)</span>
+        at java<span style="color:#f92672">.</span><span style="color:#a6e22e">util</span><span style="color:#f92672">.</span><span style="color:#a6e22e">HashMap$EntrySet</span><span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>HashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>1046<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">my_genericity</span><span style="color:#f92672">.</span><span style="color:#a6e22e">basic_usage</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DemoGeneric2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printMap</span><span style="color:#f92672">(</span>DemoGeneric2<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>23<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">my_genericity</span><span style="color:#f92672">.</span><span style="color:#a6e22e">basic_usage</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DemoGeneric2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">test1</span><span style="color:#f92672">(</span>DemoGeneric2<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>19<span style="color:#f92672">)</span>
+        at sun<span style="color:#f92672">.</span><span style="color:#a6e22e">reflect</span><span style="color:#f92672">.</span><span style="color:#a6e22e">NativeMethodAccessorImpl</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invoke0</span><span style="color:#f92672">(</span>Native Method<span style="color:#f92672">)</span>
+        at sun<span style="color:#f92672">.</span><span style="color:#a6e22e">reflect</span><span style="color:#f92672">.</span><span style="color:#a6e22e">NativeMethodAccessorImpl</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>NativeMethodAccessorImpl<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>62<span style="color:#f92672">)</span>
+        at sun<span style="color:#f92672">.</span><span style="color:#a6e22e">reflect</span><span style="color:#f92672">.</span><span style="color:#a6e22e">DelegatingMethodAccessorImpl</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>DelegatingMethodAccessorImpl<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>43<span style="color:#f92672">)</span>
+        at java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">reflect</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Method</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invoke</span><span style="color:#f92672">(</span>Method<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>498<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">model</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FrameworkMethod$1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runReflectiveCall</span><span style="color:#f92672">(</span>FrameworkMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>50<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">internal</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">model</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ReflectiveCallable</span><span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>ReflectiveCallable<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>12<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">model</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FrameworkMethod</span><span style="color:#f92672">.</span><span style="color:#a6e22e">invokeExplosively</span><span style="color:#f92672">(</span>FrameworkMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>47<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">internal</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">statements</span><span style="color:#f92672">.</span><span style="color:#a6e22e">InvokeMethod</span><span style="color:#f92672">.</span><span style="color:#a6e22e">evaluate</span><span style="color:#f92672">(</span>InvokeMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>17<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runLeaf</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>325<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">BlockJUnit4ClassRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runChild</span><span style="color:#f92672">(</span>BlockJUnit4ClassRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>78<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">BlockJUnit4ClassRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runChild</span><span style="color:#f92672">(</span>BlockJUnit4ClassRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>57<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner$3</span><span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>290<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner$1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">schedule</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>71<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runChildren</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>288<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">access$000</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>58<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner$2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">evaluate</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>268<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runners</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ParentRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>ParentRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>363<span style="color:#f92672">)</span>
+        at org<span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">runner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JUnitCore</span><span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>JUnitCore<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>137<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">intellij</span><span style="color:#f92672">.</span><span style="color:#a6e22e">junit4</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JUnit4IdeaTestRunner</span><span style="color:#f92672">.</span><span style="color:#a6e22e">startRunnerWithArgs</span><span style="color:#f92672">(</span>JUnit4IdeaTestRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>68<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">intellij</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rt</span><span style="color:#f92672">.</span><span style="color:#a6e22e">execution</span><span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">IdeaTestRunner$Repeater</span><span style="color:#f92672">.</span><span style="color:#a6e22e">startRunnerWithArgs</span><span style="color:#f92672">(</span>IdeaTestRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>47<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">intellij</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rt</span><span style="color:#f92672">.</span><span style="color:#a6e22e">execution</span><span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JUnitStarter</span><span style="color:#f92672">.</span><span style="color:#a6e22e">prepareStreamsAndStart</span><span style="color:#f92672">(</span>JUnitStarter<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>242<span style="color:#f92672">)</span>
+        at com<span style="color:#f92672">.</span><span style="color:#a6e22e">intellij</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rt</span><span style="color:#f92672">.</span><span style="color:#a6e22e">execution</span><span style="color:#f92672">.</span><span style="color:#a6e22e">junit</span><span style="color:#f92672">.</span><span style="color:#a6e22e">JUnitStarter</span><span style="color:#f92672">.</span><span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>JUnitStarter<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span><span style="color:#f92672">:</span>70<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="泛型的基本使用">
+  泛型的基本使用
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">#</a>
+</h2>
+<h3 id="泛型类">
+  泛型类
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e7%b1%bb">#</a>
+</h3>
+<ul>
+<li>简单泛型</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 此处可以随便写标识符号，T是type的简称
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> T var<span style="color:#f92672">;</span><span style="color:#75715e">// var的类型由T指定，即：由外部指定
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">getVar</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 返回值的类型由外部决定
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> var<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setVar</span><span style="color:#f92672">(</span>T var<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 设置的类型也由外部决定
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">var</span> <span style="color:#f92672">=</span> var<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericsDemo03</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Point<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Point<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">;</span>     <span style="color:#75715e">// 里面的var类型为String类型
+</span><span style="color:#75715e"></span>        p<span style="color:#f92672">.</span><span style="color:#a6e22e">setVar</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;it&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">;</span>                            <span style="color:#75715e">// 设置字符串
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>p<span style="color:#f92672">.</span><span style="color:#a6e22e">getVar</span><span style="color:#f92672">().</span><span style="color:#a6e22e">length</span><span style="color:#f92672">())</span> <span style="color:#f92672">;</span>   <span style="color:#75715e">// 取得字符串的长度
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ul>
+<li>多元泛型</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Notepad</span><span style="color:#f92672">&lt;</span>K<span style="color:#f92672">,</span>V<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 此处指定了两个泛型类型
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> K key<span style="color:#f92672">;</span><span style="color:#75715e">// 此变量的类型由外部决定
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> V value<span style="color:#f92672">;</span><span style="color:#75715e">// 此变量的类型由外部决定
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">public</span> K <span style="color:#a6e22e">getKey</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> key<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setKey</span><span style="color:#f92672">(</span>K key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> V <span style="color:#a6e22e">getValue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> value<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setValue</span><span style="color:#f92672">(</span>V value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericsDemo04</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Notepad<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span> notepad <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>        <span style="color:#75715e">// 定义两个泛型类型的对象
+</span><span style="color:#75715e"></span>        notepad <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Notepad<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;();</span>       <span style="color:#75715e">// 里面的key为String，value为Integer
+</span><span style="color:#75715e"></span>        notepad<span style="color:#f92672">.</span><span style="color:#a6e22e">setKey</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;汤姆&#34;</span><span style="color:#f92672">);</span>        <span style="color:#75715e">// 设置第一个内容
+</span><span style="color:#75715e"></span>        notepad<span style="color:#f92672">.</span><span style="color:#a6e22e">setValue</span><span style="color:#f92672">(</span>20<span style="color:#f92672">);</span>            <span style="color:#75715e">// 设置第二个内容
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;姓名；&#34;</span> <span style="color:#f92672">+</span> notepad<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">());</span>      <span style="color:#75715e">// 取得信息
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;，年龄；&#34;</span> <span style="color:#f92672">+</span> notepad<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">());</span>       <span style="color:#75715e">// 取得信息
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="泛型接口">
+  泛型接口
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e6%8e%a5%e5%8f%a3">#</a>
+</h3>
+<ul>
+<li>简单的泛型接口</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericsDemo05</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Info</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 在接口上定义泛型
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">         * 定义抽象方法，抽象方法的返回值就是泛型类型
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * @return
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">getVar</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InfoImpl</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">implements</span> Info<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 定义泛型接口的子类
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> T var<span style="color:#f92672">;</span> <span style="color:#75715e">// 定义属性
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">         * 定义抽象方法，抽象方法的返回值就是泛型类型
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * @return
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">getVar</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> var<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">InfoImpl</span><span style="color:#f92672">(</span>T var<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 通过构造方法设置属性内容
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">var</span> <span style="color:#f92672">=</span> var<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Info<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> info <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>        <span style="color:#75715e">// 声明接口对象
+</span><span style="color:#75715e"></span>        info <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InfoImpl<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;(</span><span style="color:#e6db74">&#34;汤姆&#34;</span><span style="color:#f92672">);</span>  <span style="color:#75715e">// 通过子类实例化对象
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;内容：&#34;</span> <span style="color:#f92672">+</span> info<span style="color:#f92672">.</span><span style="color:#a6e22e">getVar</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="泛型方法">
+  泛型方法
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e6%96%b9%e6%b3%95">#</a>
+</h3>
+<p>在java中,泛型类的定义非常简单，但是泛型方法就比较复杂了。</p>
+<p>泛型类，是在实例化类的时候指明泛型的具体类型；泛型方法，是在调用方法的时候指明泛型的具体类型 。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 泛型方法的基本介绍
+</span><span style="color:#75715e"> * @param tClass 传入的泛型实参
+</span><span style="color:#75715e"> * @return T 返回值为T类型
+</span><span style="color:#75715e"> * 说明：
+</span><span style="color:#75715e"> *     1）public 与 返回值中间&lt;T&gt;非常重要，可以理解为声明此方法为泛型方法。
+</span><span style="color:#75715e"> *     2）只有声明了&lt;T&gt;的方法才是泛型方法，泛型类中的使用了泛型的成员方法并不是泛型方法。
+</span><span style="color:#75715e"> *     3）&lt;T&gt;表明该方法将使用泛型类型T，此时才可以在方法中使用泛型类型T。
+</span><span style="color:#75715e"> *     4）与泛型类的定义一样，此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型。
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> T <span style="color:#a6e22e">genericMethod</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> tClass<span style="color:#f92672">)</span><span style="color:#66d9ef">throws</span> InstantiationException <span style="color:#f92672">,</span>
+  IllegalAccessException<span style="color:#f92672">{</span>
+        T instance <span style="color:#f92672">=</span> tClass<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">return</span> instance<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><img src="../.././imgs/java/generic/java-basic-generic-4.png" alt="" />
+<img src="../../../imgs/java/generic/java-basic-generic-4.png" alt="" /></p>
+<p><img src="../.././imgs/java/generic/java-basic-generic-5.png" alt="" />
+<img src="../../../imgs/java/generic/java-basic-generic-5.png" alt="" /></p>
+<p>说明一下，定义泛型方法时，必须在返回值前边加一个<T>，来声明这是一个泛型方法，持有一个泛型T，然后才可以用泛型T作为方法的返回值。</p>
+<p>Class<T>的作用就是指明泛型的具体类型，而Class<T>类型的变量c，可以用来创建泛型类的对象。</p>
+<p>为什么要用变量c来创建对象呢？既然是泛型方法，就代表着我们不知道具体的类型是什么，也不知道构造方法如何，因此没有办法去new一个对象，
+但可以利用变量c的newInstance方法去创建对象，也就是利用反射创建对象。</p>
+<p>泛型方法要求的参数是Class<T>类型，而Class.forName()方法的返回值也是Class<T>，
+因此可以用Class.forName()作为参数。其中，forName()方法中的参数是何种类型，返回的Class<T>就是何种类型。</p>
+<p>在本例中，forName()方法中传入的是User类的完整路径，因此返回的是Class<User>类型的对象，因此调用泛型方法时，变量c的类型就是Class<User>，
+因此泛型方法中的泛型T就被指明为User，因此变量obj的类型为User。</p>
+<p>当然，泛型方法不是仅仅可以有一个参数Class<T>，可以根据需要添加其他参数。</p>
+<p>为什么要使用泛型方法呢？因为泛型类要在实例化的时候就指明类型，如果想换一种类型，不得不重新new一次，可能不够灵活；而泛型方法可以在调用的时候指明类型，更加灵活。</p>
+<h2 id="泛型的上下限">
+  泛型的上下限
+  <a class="anchor" href="#%e6%b3%9b%e5%9e%8b%e7%9a%84%e4%b8%8a%e4%b8%8b%e9%99%90">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#960050;background-color:#1e0010">&lt;</span>?&gt; 无限制通配符
+<span style="color:#960050;background-color:#1e0010">&lt;</span>? extends E&gt; extends 关键字声明了类型的上界，表示参数化的类型可能是所指定的类型，或者是此类型的子类
+<span style="color:#960050;background-color:#1e0010">&lt;</span>? super E&gt; super 关键字声明了类型的下界，表示参数化的类型可能是指定的类型，或者是此类型的父类
+
+// 使用原则《Effictive Java》
+// 为了获得最大限度的灵活性，要在表示 生产者或者消费者 的输入参数上使用通配符，使用的规则就是：生产者有上限、消费者有下限
+1. 如果参数化类型表示一个 T 的生产者，使用 <span style="color:#960050;background-color:#1e0010">&lt;</span> ? extends T&gt;;
+2. 如果它表示一个 T 的消费者，就使用 <span style="color:#960050;background-color:#1e0010">&lt;</span> ? super T&gt;；
+3. 如果既是生产又是消费，那使用通配符就没什么意义了，因为你需要的是精确的参数类型。
+</code></pre></div><h3 id="上限">
+  上限
+  <a class="anchor" href="#%e4%b8%8a%e9%99%90">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoGeneric1</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> b<span style="color:#f92672">));</span>
+        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">float</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> b<span style="color:#f92672">));</span>
+        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">double</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> b<span style="color:#f92672">));</span>
+        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> Number<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">addTwo</span><span style="color:#f92672">(</span>T a<span style="color:#f92672">,</span> T b<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>a<span style="color:#f92672">.</span><span style="color:#a6e22e">doubleValue</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">doubleValue</span><span style="color:#f92672">()));</span>
+        <span style="color:#66d9ef">return</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">doubleValue</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> b<span style="color:#f92672">.</span><span style="color:#a6e22e">doubleValue</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">double</span> v <span style="color:#f92672">=</span> DemoGeneric1<span style="color:#f92672">.</span><span style="color:#a6e22e">addTwo</span><span style="color:#f92672">(</span>2L<span style="color:#f92672">,</span> 5L<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>v<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="下限">
+  下限
+  <a class="anchor" href="#%e4%b8%8b%e9%99%90">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericsDemo06</span> <span style="color:#f92672">{</span>
+
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DateValue</span><span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> Object<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+        T t<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DateValue</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">getT</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> t<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setT</span><span style="color:#f92672">(</span>T t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> t<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        GenericsDemo06<span style="color:#f92672">.</span><span style="color:#a6e22e">fun</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DateValue<span style="color:#f92672">(</span>6<span style="color:#f92672">));</span>
+        GenericsDemo06<span style="color:#f92672">.</span><span style="color:#a6e22e">fun</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DateValue<span style="color:#f92672">(</span>5L<span style="color:#f92672">));</span>
+        GenericsDemo06<span style="color:#f92672">.</span><span style="color:#a6e22e">fun</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DateValue<span style="color:#f92672">(</span>3d<span style="color:#f92672">));</span>
+        GenericsDemo06<span style="color:#f92672">.</span><span style="color:#a6e22e">fun</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DateValue<span style="color:#f92672">(</span>5<span style="color:#f92672">.</span><span style="color:#a6e22e">66f</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fun</span><span style="color:#f92672">(</span>DateValue<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> Number<span style="color:#f92672">&gt;</span> value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;value:&#34;</span> <span style="color:#f92672">+</span> value<span style="color:#f92672">.</span><span style="color:#a6e22e">getT</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GenericsDemo07</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AClass</span> <span style="color:#66d9ef">implements</span> Comparable <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> Integer <span style="color:#a6e22e">getId</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> id<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setId</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getTitle</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> title<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTitle</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> title<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">private</span> Integer id<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> String title<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">AClass</span><span style="color:#f92672">(</span>Integer id<span style="color:#f92672">,</span> String title<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> title<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;AClass{&#34;</span> <span style="color:#f92672">+</span>
+                    <span style="color:#e6db74">&#34;id=&#34;</span> <span style="color:#f92672">+</span> id <span style="color:#f92672">+</span>
+                    <span style="color:#e6db74">&#34;, title=&#39;&#34;</span> <span style="color:#f92672">+</span> title <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\&#39;&#39;</span> <span style="color:#f92672">+</span>
+                    <span style="color:#e6db74">&#39;}&#39;</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">         * Compares this object with the specified object for order.  Returns a
+</span><span style="color:#75715e">         * negative integer, zero, or a positive integer as this object is less
+</span><span style="color:#75715e">         * than, equal to, or greater than the specified object.
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * &lt;p&gt;The implementor must ensure &lt;tt&gt;sgn(x.compareTo(y)) ==
+</span><span style="color:#75715e">         * -sgn(y.compareTo(x))&lt;/tt&gt; for all &lt;tt&gt;x&lt;/tt&gt; and &lt;tt&gt;y&lt;/tt&gt;.  (This
+</span><span style="color:#75715e">         * implies that &lt;tt&gt;x.compareTo(y)&lt;/tt&gt; must throw an exception iff
+</span><span style="color:#75715e">         * &lt;tt&gt;y.compareTo(x)&lt;/tt&gt; throws an exception.)
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * &lt;p&gt;The implementor must also ensure that the relation is transitive:
+</span><span style="color:#75715e">         * &lt;tt&gt;(x.compareTo(y)&amp;gt;0 &amp;amp;&amp;amp; y.compareTo(z)&amp;gt;0)&lt;/tt&gt; implies
+</span><span style="color:#75715e">         * &lt;tt&gt;x.compareTo(z)&amp;gt;0&lt;/tt&gt;.
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * &lt;p&gt;Finally, the implementor must ensure that &lt;tt&gt;x.compareTo(y)==0&lt;/tt&gt;
+</span><span style="color:#75715e">         * implies that &lt;tt&gt;sgn(x.compareTo(z)) == sgn(y.compareTo(z))&lt;/tt&gt;, for
+</span><span style="color:#75715e">         * all &lt;tt&gt;z&lt;/tt&gt;.
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * &lt;p&gt;It is strongly recommended, but &lt;i&gt;not&lt;/i&gt; strictly required that
+</span><span style="color:#75715e">         * &lt;tt&gt;(x.compareTo(y)==0) == (x.equals(y))&lt;/tt&gt;.  Generally speaking, any
+</span><span style="color:#75715e">         * class that implements the &lt;tt&gt;Comparable&lt;/tt&gt; interface and violates
+</span><span style="color:#75715e">         * this condition should clearly indicate this fact.  The recommended
+</span><span style="color:#75715e">         * language is &#34;Note: this class has a natural ordering that is
+</span><span style="color:#75715e">         * inconsistent with equals.&#34;
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * &lt;p&gt;In the foregoing description, the notation
+</span><span style="color:#75715e">         * &lt;tt&gt;sgn(&lt;/tt&gt;&lt;i&gt;expression&lt;/i&gt;&lt;tt&gt;)&lt;/tt&gt; designates the mathematical
+</span><span style="color:#75715e">         * &lt;i&gt;signum&lt;/i&gt; function, which is defined to return one of &lt;tt&gt;-1&lt;/tt&gt;,
+</span><span style="color:#75715e">         * &lt;tt&gt;0&lt;/tt&gt;, or &lt;tt&gt;1&lt;/tt&gt; according to whether the value of
+</span><span style="color:#75715e">         * &lt;i&gt;expression&lt;/i&gt; is negative, zero or positive.
+</span><span style="color:#75715e">         *
+</span><span style="color:#75715e">         * @param o the object to be compared.
+</span><span style="color:#75715e">         * @return a negative integer, zero, or a positive integer as this object
+</span><span style="color:#75715e">         * is less than, equal to, or greater than the specified object.
+</span><span style="color:#75715e">         * @throws NullPointerException if the specified object is null
+</span><span style="color:#75715e">         * @throws ClassCastException   if the specified object&#39;s type prevents it
+</span><span style="color:#75715e">         *                              from being compared to this object.
+</span><span style="color:#75715e">         */</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            AClass aClass <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>AClass<span style="color:#f92672">)</span> o<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>aClass<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataValue</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>E <span style="color:#66d9ef">extends</span> Comparable<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> E<span style="color:#f92672">&gt;&gt;</span> E <span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> E<span style="color:#f92672">&gt;</span> e1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>e1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//迭代器返回的元素属于 E 的某个子类型
+</span><span style="color:#75715e"></span>            Iterator<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> E<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> e1<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+            E result <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+                E next <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>next<span style="color:#f92672">.</span><span style="color:#a6e22e">compareTo</span><span style="color:#f92672">(</span>result<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    result <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        List<span style="color:#f92672">&lt;</span>AClass<span style="color:#f92672">&gt;</span> aClassList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;(</span>8<span style="color:#f92672">)</span> <span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 8<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            AClass aClass <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AClass<span style="color:#f92672">(</span>i<span style="color:#f92672">,</span> UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+            aClassList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>aClass<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        AClass max <span style="color:#f92672">=</span> DataValue<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>aClassList<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>max<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>述代码中的类型参数 E 的范围是&lt;E extends Comparable&lt;? super E&raquo;，我们可以分步查看：</p>
+<ul>
+<li>
+<p>要进行比较，所以 E 需要是可比较的类，因此需要 extends Comparable&lt;…&gt;（注意这里不要和继承的 extends 搞混了，不一样）</p>
+</li>
+<li>
+<p>Comparable&lt; ? super E&gt; 要对 E 进行比较，即 E 的消费者，所以需要用 super</p>
+</li>
+<li>
+<p>而参数 List&lt; ? extends E&gt; 表示要操作的数据是 E 的子类的列表，指定上限，这样容器才够大</p>
+</li>
+</ul>
 </article>
  
       
@@ -5656,7 +6105,18 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#泛型类">泛型类</a></li>
+    <li><a href="#泛型接口">泛型接口</a></li>
+    <li><a href="#泛型方法">泛型方法</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#上限">上限</a></li>
+    <li><a href="#下限">下限</a></li>
+  </ul>
+</nav>
 
 
  
