@@ -6,8 +6,18 @@ weight: 101
 bookCollapseSection: true
 ---
 
+## GitHub
 
-收集一些英语学习技巧
+[人人都能用英语](https://github.com/xiaolai/everyone-can-use-english)
+
+[离谱的英语学习指南](https://github.com/byoungd/English-level-up-tips)
+
+[中国程序员容易发音错误的单词](https://github.com/shimohq/chinese-programmer-wrong-pronunciation)
+
+[专为程序员编写的英语学习指南](https://github.com/yujiangshui/A-Programmers-Guide-to-English)
+
+
+## 收集一些英语学习技巧
 
 
 
