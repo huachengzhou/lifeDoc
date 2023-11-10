@@ -16,8 +16,18 @@ bookCollapseSection: true
 \w+.deleteProjectFormDataChangeLogByBusinessUuid\(\w+\);
 ```
 
++ 去除数字
+
+\[\w+.
+
+\d+./
+
+-\d+.
+
+\d+./
+
 # chrome
 
 + debug 调试
 
-+ postmain 调试
++ postman 调试
