@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL运维实践
@@ -39,15 +39,14 @@
 
  记录实例启动运行过程中重要消息 配置参数  log_error = /data/mysql_data/node-1/mysql." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter5/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>MySQL运维实践 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -853,7 +852,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3690,7 +3707,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3703,7 +3720,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3726,6 +3756,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5460,7 +5503,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5491,120 +5534,130 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是日志">什么是日志</a></li>
-    <li><a href="#mysql日志的分类">MySQL日志的分类</a></li>
-    <li><a href="#服务错误日志">服务错误日志</a></li>
-    <li><a href="#慢查询日志">慢查询日志</a></li>
-    <li><a href="#综合查询日志">综合查询日志</a></li>
-    <li><a href="#查询日志的输出与文件切换">查询日志的输出与文件切换</a></li>
-    <li><a href="#存储引擎事务日志">存储引擎事务日志</a></li>
-    <li><a href="#innodb事务日志重用机制">InnoDB事务日志重用机制</a></li>
-    <li><a href="#二进制日志binlog">二进制日志binlog</a></li>
-    <li><a href="#开启binlog">开启binlog</a></li>
-    <li><a href="#binlog管理">binlog管理</a></li>
-    <li><a href="#查看binlog内容">查看binlog内容</a></li>
-    <li><a href="#binlog格式">binlog格式</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#基本指数---备份用途">基本指数 - 备份用途</a></li>
-    <li><a href="#基本知识---备份内容">基本知识 - 备份内容</a></li>
-    <li><a href="#基本知识---冷备份与热备份">基本知识 - 冷备份与热备份</a></li>
-    <li><a href="#基本知识---物理备份与逻辑备份">基本知识 - 物理备份与逻辑备份</a></li>
-    <li><a href="#基本知识---本地备份与远程备份">基本知识 - 本地备份与远程备份</a></li>
-    <li><a href="#基本知识---全量备份与增量备份">基本知识 - 全量备份与增量备份</a></li>
-    <li><a href="#基本知识---备份周期">基本知识 - 备份周期</a></li>
-    <li><a href="#常用工具及用法">常用工具及用法</a></li>
-    <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
-    <li><a href="#常用工具及用法---xtrabackup">常用工具及用法 - xtrabackup</a></li>
-    <li><a href="#xtrabackup备份原理">xtrabackup备份原理</a></li>
-    <li><a href="#实用脚本innobackupex">实用脚本innobackupex</a></li>
-    <li><a href="#innobackupex备份基本流程">innobackupex备份基本流程</a></li>
-    <li><a href="#innobackupex使用">innobackupex使用</a></li>
-    <li><a href="#如何制定备份策略">如何制定备份策略</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么时候需要恢复数据">什么时候需要恢复数据</a></li>
-    <li><a href="#数据恢复的必要条件">数据恢复的必要条件</a></li>
-    <li><a href="#数据恢复思路">数据恢复思路</a></li>
-    <li><a href="#反转sql语句">反转SQL语句</a></li>
-    <li><a href="#数据库恢复工具与命令">数据库恢复工具与命令</a></li>
-    <li><a href="#详细示例讲解">详细示例讲解</a></li>
-    <li><a href="#恢复误删除数据">恢复误删除数据</a></li>
-    <li><a href="#恢复误删表库">恢复误删表、库</a></li>
-    <li><a href="#课程小结">课程小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql线上部署">MySQL线上部署</a></li>
-    <li><a href="#二进制安装mysql">二进制安装MySQL</a></li>
-    <li><a href="#编译安装mysql">编译安装MySQL</a></li>
-    <li><a href="#mysql升级">MySQL升级</a></li>
-    <li><a href="#mysql多实例安装">MySQL多实例安装</a></li>
-    <li><a href="#mysql多实例部署">MySQL多实例部署</a></li>
-    <li><a href="#mysql线上安装小结">MySQL线上安装小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql主从复制">MySQL主从复制</a></li>
-    <li><a href="#mysql主从复制用途">MySQL主从复制用途</a></li>
-    <li><a href="#mysql主从复制部署">MySQL主从复制部署</a></li>
-    <li><a href="#mysql复制存在的问题">MySQL复制存在的问题</a></li>
-    <li><a href="#mysql-semi-sync半同步复制">MySQL semi-sync(半同步复制)</a></li>
-    <li><a href="#mysql异步复制">MySQL异步复制</a></li>
-    <li><a href="#mysql-semi-sync半同步复制-1">MySQL semi-sync(半同步复制)</a></li>
-    <li><a href="#配置mysql半同步复制">配置MySQL半同步复制</a></li>
-    <li><a href="#配置mysql并行复制">配置MySQL并行复制</a></li>
-    <li><a href="#联级复制">联级复制</a></li>
-    <li><a href="#复制监控">复制监控</a></li>
-    <li><a href="#复制出错处理">复制出错处理</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#dba运维工作">DBA运维工作</a></li>
-    <li><a href="#导数据及注意事项">导数据及注意事项</a></li>
-    <li><a href="#数据修改及注意事项">数据修改及注意事项</a></li>
-    <li><a href="#表结构变更注意事项">表结构变更注意事项</a></li>
-    <li><a href="#加权限及注意事项">加权限及注意事项</a></li>
-    <li><a href="#问题处理数据库慢">问题处理(数据库慢？)</a></li>
-    <li><a href="#小结">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#为什么要调整参数">为什么要调整参数</a></li>
-    <li><a href="#优化之前我们需要知道什么">优化之前我们需要知道什么</a></li>
-    <li><a href="#服务器上需要关注哪些">服务器上需要关注哪些</a></li>
-    <li><a href="#磁盘调度策略-write-back">磁盘调度策略-write back</a></li>
-    <li><a href="#磁盘调度策略-write-through">磁盘调度策略-write through</a></li>
-    <li><a href="#write-back-vs-write-through">Write Back VS Write Through</a></li>
-    <li><a href="#raid">RAID</a></li>
-    <li><a href="#raid0-vs-raid1">RAID0 VS RAID1</a></li>
-    <li><a href="#raid5-vs-raid10">RAID5 VS RAID10</a></li>
-    <li><a href="#raid如何保证数据安全">RAID如何保证数据安全</a></li>
-    <li><a href="#mysql有哪些注意事项">MySQL有哪些注意事项</a></li>
-    <li><a href="#部署mysql的要求">部署MySQL的要求</a></li>
-    <li><a href="#系统调优的依据监控">系统调优的依据：监控</a></li>
-    <li><a href="#通常关注哪些mysql-status">通常关注哪些MySQL Status</a></li>
-    <li><a href="#mysql参数调优">MySQL参数调优</a></li>
-    <li><a href="#读优化">读优化</a></li>
-    <li><a href="#innodb_buffer_pool_size">innodb_buffer_pool_size</a></li>
-    <li><a href="#innodb_thread_concurrency">innodb_thread_concurrency</a></li>
-    <li><a href="#写优化">写优化</a></li>
-    <li><a href="#哪些参数有助于提高写入性能">哪些参数有助于提高写入性能</a></li>
-    <li><a href="#主要影响mysql写性能的两个参数">主要影响MySQL写性能的两个参数</a></li>
-    <li><a href="#innodb_flush_log_at_trx_commit">innoDB_flush_log_at_trx_commit</a></li>
-    <li><a href="#sync_binlog">sync_binlog</a></li>
-    <li><a href="#如何保证事务的安全">如何保证事务的安全</a></li>
-    <li><a href="#串行有哪些问题">串行有哪些问题</a></li>
-    <li><a href="#社区和官方的改进">社区和官方的改进</a></li>
-    <li><a href="#innodb-redo-log">InnoDB Redo log</a></li>
-    <li><a href="#redo-log的作用">Redo log的作用</a></li>
-    <li><a href="#redo-log有哪些问题">Redo log有哪些问题</a></li>
-    <li><a href="#innodb_io_capacity">innodb_io_capacity</a></li>
-    <li><a href="#insert-buffer">Insert Buffer</a></li>
-    <li><a href="#总结-1">总结</a></li>
+    <li><a href="#51-mysql日志系统">5.1-MySQL日志系统</a>
+      <ul>
+        <li><a href="#什么是日志">什么是日志</a></li>
+        <li><a href="#mysql日志的分类">MySQL日志的分类</a></li>
+        <li><a href="#服务错误日志">服务错误日志</a></li>
+        <li><a href="#慢查询日志">慢查询日志</a></li>
+        <li><a href="#综合查询日志">综合查询日志</a></li>
+        <li><a href="#查询日志的输出与文件切换">查询日志的输出与文件切换</a></li>
+        <li><a href="#存储引擎事务日志">存储引擎事务日志</a></li>
+        <li><a href="#innodb事务日志重用机制">InnoDB事务日志重用机制</a></li>
+        <li><a href="#二进制日志binlog">二进制日志binlog</a></li>
+        <li><a href="#开启binlog">开启binlog</a></li>
+        <li><a href="#binlog管理">binlog管理</a></li>
+        <li><a href="#查看binlog内容">查看binlog内容</a></li>
+        <li><a href="#binlog格式">binlog格式</a></li>
+      </ul>
+    </li>
+    <li><a href="#52-mysql数据备份">5.2-MySQL数据备份</a>
+      <ul>
+        <li><a href="#基本指数---备份用途">基本指数 - 备份用途</a></li>
+        <li><a href="#基本知识---备份内容">基本知识 - 备份内容</a></li>
+        <li><a href="#基本知识---冷备份与热备份">基本知识 - 冷备份与热备份</a></li>
+        <li><a href="#基本知识---物理备份与逻辑备份">基本知识 - 物理备份与逻辑备份</a></li>
+        <li><a href="#基本知识---本地备份与远程备份">基本知识 - 本地备份与远程备份</a></li>
+        <li><a href="#基本知识---全量备份与增量备份">基本知识 - 全量备份与增量备份</a></li>
+        <li><a href="#基本知识---备份周期">基本知识 - 备份周期</a></li>
+        <li><a href="#常用工具及用法">常用工具及用法</a></li>
+        <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
+        <li><a href="#常用工具及用法---xtrabackup">常用工具及用法 - xtrabackup</a></li>
+        <li><a href="#xtrabackup备份原理">xtrabackup备份原理</a></li>
+        <li><a href="#实用脚本innobackupex">实用脚本innobackupex</a></li>
+        <li><a href="#innobackupex备份基本流程">innobackupex备份基本流程</a></li>
+        <li><a href="#innobackupex使用">innobackupex使用</a></li>
+        <li><a href="#如何制定备份策略">如何制定备份策略</a></li>
+      </ul>
+    </li>
+    <li><a href="#53-mysql数据恢复">5.3-MySQL数据恢复</a>
+      <ul>
+        <li><a href="#什么时候需要恢复数据">什么时候需要恢复数据</a></li>
+        <li><a href="#数据恢复的必要条件">数据恢复的必要条件</a></li>
+        <li><a href="#数据恢复思路">数据恢复思路</a></li>
+        <li><a href="#反转sql语句">反转SQL语句</a></li>
+        <li><a href="#数据库恢复工具与命令">数据库恢复工具与命令</a></li>
+        <li><a href="#详细示例讲解">详细示例讲解</a></li>
+        <li><a href="#恢复误删除数据">恢复误删除数据</a></li>
+        <li><a href="#恢复误删表库">恢复误删表、库</a></li>
+        <li><a href="#课程小结">课程小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#54-mysql线上部署">5.4-MySQL线上部署</a>
+      <ul>
+        <li><a href="#mysql线上部署">MySQL线上部署</a></li>
+        <li><a href="#二进制安装mysql">二进制安装MySQL</a></li>
+        <li><a href="#编译安装mysql">编译安装MySQL</a></li>
+        <li><a href="#mysql升级">MySQL升级</a></li>
+        <li><a href="#mysql多实例安装">MySQL多实例安装</a></li>
+        <li><a href="#mysql多实例部署">MySQL多实例部署</a></li>
+        <li><a href="#mysql线上安装小结">MySQL线上安装小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#55-mysql主从复制">5.5-MySQL主从复制</a>
+      <ul>
+        <li><a href="#mysql主从复制">MySQL主从复制</a></li>
+        <li><a href="#mysql主从复制用途">MySQL主从复制用途</a></li>
+        <li><a href="#mysql主从复制部署">MySQL主从复制部署</a></li>
+        <li><a href="#mysql复制存在的问题">MySQL复制存在的问题</a></li>
+        <li><a href="#mysql-semi-sync半同步复制">MySQL semi-sync(半同步复制)</a></li>
+        <li><a href="#mysql异步复制">MySQL异步复制</a></li>
+        <li><a href="#mysql-semi-sync半同步复制-1">MySQL semi-sync(半同步复制)</a></li>
+        <li><a href="#配置mysql半同步复制">配置MySQL半同步复制</a></li>
+        <li><a href="#配置mysql并行复制">配置MySQL并行复制</a></li>
+        <li><a href="#联级复制">联级复制</a></li>
+        <li><a href="#复制监控">复制监控</a></li>
+        <li><a href="#复制出错处理">复制出错处理</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#56-mysql日常运维">5.6-MySQL日常运维</a>
+      <ul>
+        <li><a href="#dba运维工作">DBA运维工作</a></li>
+        <li><a href="#导数据及注意事项">导数据及注意事项</a></li>
+        <li><a href="#数据修改及注意事项">数据修改及注意事项</a></li>
+        <li><a href="#表结构变更注意事项">表结构变更注意事项</a></li>
+        <li><a href="#加权限及注意事项">加权限及注意事项</a></li>
+        <li><a href="#问题处理数据库慢">问题处理(数据库慢？)</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#57-mysql参数调优">5.7-MySQL参数调优</a>
+      <ul>
+        <li><a href="#为什么要调整参数">为什么要调整参数</a></li>
+        <li><a href="#优化之前我们需要知道什么">优化之前我们需要知道什么</a></li>
+        <li><a href="#服务器上需要关注哪些">服务器上需要关注哪些</a></li>
+        <li><a href="#磁盘调度策略-write-back">磁盘调度策略-write back</a></li>
+        <li><a href="#磁盘调度策略-write-through">磁盘调度策略-write through</a></li>
+        <li><a href="#write-back-vs-write-through">Write Back VS Write Through</a></li>
+        <li><a href="#raid">RAID</a></li>
+        <li><a href="#raid0-vs-raid1">RAID0 VS RAID1</a></li>
+        <li><a href="#raid5-vs-raid10">RAID5 VS RAID10</a></li>
+        <li><a href="#raid如何保证数据安全">RAID如何保证数据安全</a></li>
+        <li><a href="#mysql有哪些注意事项">MySQL有哪些注意事项</a></li>
+        <li><a href="#部署mysql的要求">部署MySQL的要求</a></li>
+        <li><a href="#系统调优的依据监控">系统调优的依据：监控</a></li>
+        <li><a href="#通常关注哪些mysql-status">通常关注哪些MySQL Status</a></li>
+        <li><a href="#mysql参数调优">MySQL参数调优</a></li>
+        <li><a href="#读优化">读优化</a></li>
+        <li><a href="#innodb_buffer_pool_size">innodb_buffer_pool_size</a></li>
+        <li><a href="#innodb_thread_concurrency">innodb_thread_concurrency</a></li>
+        <li><a href="#写优化">写优化</a></li>
+        <li><a href="#哪些参数有助于提高写入性能">哪些参数有助于提高写入性能</a></li>
+        <li><a href="#主要影响mysql写性能的两个参数">主要影响MySQL写性能的两个参数</a></li>
+        <li><a href="#innodb_flush_log_at_trx_commit">innoDB_flush_log_at_trx_commit</a></li>
+        <li><a href="#sync_binlog">sync_binlog</a></li>
+        <li><a href="#如何保证事务的安全">如何保证事务的安全</a></li>
+        <li><a href="#串行有哪些问题">串行有哪些问题</a></li>
+        <li><a href="#社区和官方的改进">社区和官方的改进</a></li>
+        <li><a href="#innodb-redo-log">InnoDB Redo log</a></li>
+        <li><a href="#redo-log的作用">Redo log的作用</a></li>
+        <li><a href="#redo-log有哪些问题">Redo log有哪些问题</a></li>
+        <li><a href="#innodb_io_capacity">innodb_io_capacity</a></li>
+        <li><a href="#insert-buffer">Insert Buffer</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -7014,120 +7067,130 @@ B将把A的binlog记录到自己的binlog日志中</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是日志">什么是日志</a></li>
-    <li><a href="#mysql日志的分类">MySQL日志的分类</a></li>
-    <li><a href="#服务错误日志">服务错误日志</a></li>
-    <li><a href="#慢查询日志">慢查询日志</a></li>
-    <li><a href="#综合查询日志">综合查询日志</a></li>
-    <li><a href="#查询日志的输出与文件切换">查询日志的输出与文件切换</a></li>
-    <li><a href="#存储引擎事务日志">存储引擎事务日志</a></li>
-    <li><a href="#innodb事务日志重用机制">InnoDB事务日志重用机制</a></li>
-    <li><a href="#二进制日志binlog">二进制日志binlog</a></li>
-    <li><a href="#开启binlog">开启binlog</a></li>
-    <li><a href="#binlog管理">binlog管理</a></li>
-    <li><a href="#查看binlog内容">查看binlog内容</a></li>
-    <li><a href="#binlog格式">binlog格式</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#基本指数---备份用途">基本指数 - 备份用途</a></li>
-    <li><a href="#基本知识---备份内容">基本知识 - 备份内容</a></li>
-    <li><a href="#基本知识---冷备份与热备份">基本知识 - 冷备份与热备份</a></li>
-    <li><a href="#基本知识---物理备份与逻辑备份">基本知识 - 物理备份与逻辑备份</a></li>
-    <li><a href="#基本知识---本地备份与远程备份">基本知识 - 本地备份与远程备份</a></li>
-    <li><a href="#基本知识---全量备份与增量备份">基本知识 - 全量备份与增量备份</a></li>
-    <li><a href="#基本知识---备份周期">基本知识 - 备份周期</a></li>
-    <li><a href="#常用工具及用法">常用工具及用法</a></li>
-    <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
-    <li><a href="#常用工具及用法---xtrabackup">常用工具及用法 - xtrabackup</a></li>
-    <li><a href="#xtrabackup备份原理">xtrabackup备份原理</a></li>
-    <li><a href="#实用脚本innobackupex">实用脚本innobackupex</a></li>
-    <li><a href="#innobackupex备份基本流程">innobackupex备份基本流程</a></li>
-    <li><a href="#innobackupex使用">innobackupex使用</a></li>
-    <li><a href="#如何制定备份策略">如何制定备份策略</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么时候需要恢复数据">什么时候需要恢复数据</a></li>
-    <li><a href="#数据恢复的必要条件">数据恢复的必要条件</a></li>
-    <li><a href="#数据恢复思路">数据恢复思路</a></li>
-    <li><a href="#反转sql语句">反转SQL语句</a></li>
-    <li><a href="#数据库恢复工具与命令">数据库恢复工具与命令</a></li>
-    <li><a href="#详细示例讲解">详细示例讲解</a></li>
-    <li><a href="#恢复误删除数据">恢复误删除数据</a></li>
-    <li><a href="#恢复误删表库">恢复误删表、库</a></li>
-    <li><a href="#课程小结">课程小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql线上部署">MySQL线上部署</a></li>
-    <li><a href="#二进制安装mysql">二进制安装MySQL</a></li>
-    <li><a href="#编译安装mysql">编译安装MySQL</a></li>
-    <li><a href="#mysql升级">MySQL升级</a></li>
-    <li><a href="#mysql多实例安装">MySQL多实例安装</a></li>
-    <li><a href="#mysql多实例部署">MySQL多实例部署</a></li>
-    <li><a href="#mysql线上安装小结">MySQL线上安装小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql主从复制">MySQL主从复制</a></li>
-    <li><a href="#mysql主从复制用途">MySQL主从复制用途</a></li>
-    <li><a href="#mysql主从复制部署">MySQL主从复制部署</a></li>
-    <li><a href="#mysql复制存在的问题">MySQL复制存在的问题</a></li>
-    <li><a href="#mysql-semi-sync半同步复制">MySQL semi-sync(半同步复制)</a></li>
-    <li><a href="#mysql异步复制">MySQL异步复制</a></li>
-    <li><a href="#mysql-semi-sync半同步复制-1">MySQL semi-sync(半同步复制)</a></li>
-    <li><a href="#配置mysql半同步复制">配置MySQL半同步复制</a></li>
-    <li><a href="#配置mysql并行复制">配置MySQL并行复制</a></li>
-    <li><a href="#联级复制">联级复制</a></li>
-    <li><a href="#复制监控">复制监控</a></li>
-    <li><a href="#复制出错处理">复制出错处理</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#dba运维工作">DBA运维工作</a></li>
-    <li><a href="#导数据及注意事项">导数据及注意事项</a></li>
-    <li><a href="#数据修改及注意事项">数据修改及注意事项</a></li>
-    <li><a href="#表结构变更注意事项">表结构变更注意事项</a></li>
-    <li><a href="#加权限及注意事项">加权限及注意事项</a></li>
-    <li><a href="#问题处理数据库慢">问题处理(数据库慢？)</a></li>
-    <li><a href="#小结">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#为什么要调整参数">为什么要调整参数</a></li>
-    <li><a href="#优化之前我们需要知道什么">优化之前我们需要知道什么</a></li>
-    <li><a href="#服务器上需要关注哪些">服务器上需要关注哪些</a></li>
-    <li><a href="#磁盘调度策略-write-back">磁盘调度策略-write back</a></li>
-    <li><a href="#磁盘调度策略-write-through">磁盘调度策略-write through</a></li>
-    <li><a href="#write-back-vs-write-through">Write Back VS Write Through</a></li>
-    <li><a href="#raid">RAID</a></li>
-    <li><a href="#raid0-vs-raid1">RAID0 VS RAID1</a></li>
-    <li><a href="#raid5-vs-raid10">RAID5 VS RAID10</a></li>
-    <li><a href="#raid如何保证数据安全">RAID如何保证数据安全</a></li>
-    <li><a href="#mysql有哪些注意事项">MySQL有哪些注意事项</a></li>
-    <li><a href="#部署mysql的要求">部署MySQL的要求</a></li>
-    <li><a href="#系统调优的依据监控">系统调优的依据：监控</a></li>
-    <li><a href="#通常关注哪些mysql-status">通常关注哪些MySQL Status</a></li>
-    <li><a href="#mysql参数调优">MySQL参数调优</a></li>
-    <li><a href="#读优化">读优化</a></li>
-    <li><a href="#innodb_buffer_pool_size">innodb_buffer_pool_size</a></li>
-    <li><a href="#innodb_thread_concurrency">innodb_thread_concurrency</a></li>
-    <li><a href="#写优化">写优化</a></li>
-    <li><a href="#哪些参数有助于提高写入性能">哪些参数有助于提高写入性能</a></li>
-    <li><a href="#主要影响mysql写性能的两个参数">主要影响MySQL写性能的两个参数</a></li>
-    <li><a href="#innodb_flush_log_at_trx_commit">innoDB_flush_log_at_trx_commit</a></li>
-    <li><a href="#sync_binlog">sync_binlog</a></li>
-    <li><a href="#如何保证事务的安全">如何保证事务的安全</a></li>
-    <li><a href="#串行有哪些问题">串行有哪些问题</a></li>
-    <li><a href="#社区和官方的改进">社区和官方的改进</a></li>
-    <li><a href="#innodb-redo-log">InnoDB Redo log</a></li>
-    <li><a href="#redo-log的作用">Redo log的作用</a></li>
-    <li><a href="#redo-log有哪些问题">Redo log有哪些问题</a></li>
-    <li><a href="#innodb_io_capacity">innodb_io_capacity</a></li>
-    <li><a href="#insert-buffer">Insert Buffer</a></li>
-    <li><a href="#总结-1">总结</a></li>
+    <li><a href="#51-mysql日志系统">5.1-MySQL日志系统</a>
+      <ul>
+        <li><a href="#什么是日志">什么是日志</a></li>
+        <li><a href="#mysql日志的分类">MySQL日志的分类</a></li>
+        <li><a href="#服务错误日志">服务错误日志</a></li>
+        <li><a href="#慢查询日志">慢查询日志</a></li>
+        <li><a href="#综合查询日志">综合查询日志</a></li>
+        <li><a href="#查询日志的输出与文件切换">查询日志的输出与文件切换</a></li>
+        <li><a href="#存储引擎事务日志">存储引擎事务日志</a></li>
+        <li><a href="#innodb事务日志重用机制">InnoDB事务日志重用机制</a></li>
+        <li><a href="#二进制日志binlog">二进制日志binlog</a></li>
+        <li><a href="#开启binlog">开启binlog</a></li>
+        <li><a href="#binlog管理">binlog管理</a></li>
+        <li><a href="#查看binlog内容">查看binlog内容</a></li>
+        <li><a href="#binlog格式">binlog格式</a></li>
+      </ul>
+    </li>
+    <li><a href="#52-mysql数据备份">5.2-MySQL数据备份</a>
+      <ul>
+        <li><a href="#基本指数---备份用途">基本指数 - 备份用途</a></li>
+        <li><a href="#基本知识---备份内容">基本知识 - 备份内容</a></li>
+        <li><a href="#基本知识---冷备份与热备份">基本知识 - 冷备份与热备份</a></li>
+        <li><a href="#基本知识---物理备份与逻辑备份">基本知识 - 物理备份与逻辑备份</a></li>
+        <li><a href="#基本知识---本地备份与远程备份">基本知识 - 本地备份与远程备份</a></li>
+        <li><a href="#基本知识---全量备份与增量备份">基本知识 - 全量备份与增量备份</a></li>
+        <li><a href="#基本知识---备份周期">基本知识 - 备份周期</a></li>
+        <li><a href="#常用工具及用法">常用工具及用法</a></li>
+        <li><a href="#常用工具及用法---mysqldump">常用工具及用法 - mysqldump</a></li>
+        <li><a href="#常用工具及用法---xtrabackup">常用工具及用法 - xtrabackup</a></li>
+        <li><a href="#xtrabackup备份原理">xtrabackup备份原理</a></li>
+        <li><a href="#实用脚本innobackupex">实用脚本innobackupex</a></li>
+        <li><a href="#innobackupex备份基本流程">innobackupex备份基本流程</a></li>
+        <li><a href="#innobackupex使用">innobackupex使用</a></li>
+        <li><a href="#如何制定备份策略">如何制定备份策略</a></li>
+      </ul>
+    </li>
+    <li><a href="#53-mysql数据恢复">5.3-MySQL数据恢复</a>
+      <ul>
+        <li><a href="#什么时候需要恢复数据">什么时候需要恢复数据</a></li>
+        <li><a href="#数据恢复的必要条件">数据恢复的必要条件</a></li>
+        <li><a href="#数据恢复思路">数据恢复思路</a></li>
+        <li><a href="#反转sql语句">反转SQL语句</a></li>
+        <li><a href="#数据库恢复工具与命令">数据库恢复工具与命令</a></li>
+        <li><a href="#详细示例讲解">详细示例讲解</a></li>
+        <li><a href="#恢复误删除数据">恢复误删除数据</a></li>
+        <li><a href="#恢复误删表库">恢复误删表、库</a></li>
+        <li><a href="#课程小结">课程小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#54-mysql线上部署">5.4-MySQL线上部署</a>
+      <ul>
+        <li><a href="#mysql线上部署">MySQL线上部署</a></li>
+        <li><a href="#二进制安装mysql">二进制安装MySQL</a></li>
+        <li><a href="#编译安装mysql">编译安装MySQL</a></li>
+        <li><a href="#mysql升级">MySQL升级</a></li>
+        <li><a href="#mysql多实例安装">MySQL多实例安装</a></li>
+        <li><a href="#mysql多实例部署">MySQL多实例部署</a></li>
+        <li><a href="#mysql线上安装小结">MySQL线上安装小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#55-mysql主从复制">5.5-MySQL主从复制</a>
+      <ul>
+        <li><a href="#mysql主从复制">MySQL主从复制</a></li>
+        <li><a href="#mysql主从复制用途">MySQL主从复制用途</a></li>
+        <li><a href="#mysql主从复制部署">MySQL主从复制部署</a></li>
+        <li><a href="#mysql复制存在的问题">MySQL复制存在的问题</a></li>
+        <li><a href="#mysql-semi-sync半同步复制">MySQL semi-sync(半同步复制)</a></li>
+        <li><a href="#mysql异步复制">MySQL异步复制</a></li>
+        <li><a href="#mysql-semi-sync半同步复制-1">MySQL semi-sync(半同步复制)</a></li>
+        <li><a href="#配置mysql半同步复制">配置MySQL半同步复制</a></li>
+        <li><a href="#配置mysql并行复制">配置MySQL并行复制</a></li>
+        <li><a href="#联级复制">联级复制</a></li>
+        <li><a href="#复制监控">复制监控</a></li>
+        <li><a href="#复制出错处理">复制出错处理</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#56-mysql日常运维">5.6-MySQL日常运维</a>
+      <ul>
+        <li><a href="#dba运维工作">DBA运维工作</a></li>
+        <li><a href="#导数据及注意事项">导数据及注意事项</a></li>
+        <li><a href="#数据修改及注意事项">数据修改及注意事项</a></li>
+        <li><a href="#表结构变更注意事项">表结构变更注意事项</a></li>
+        <li><a href="#加权限及注意事项">加权限及注意事项</a></li>
+        <li><a href="#问题处理数据库慢">问题处理(数据库慢？)</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#57-mysql参数调优">5.7-MySQL参数调优</a>
+      <ul>
+        <li><a href="#为什么要调整参数">为什么要调整参数</a></li>
+        <li><a href="#优化之前我们需要知道什么">优化之前我们需要知道什么</a></li>
+        <li><a href="#服务器上需要关注哪些">服务器上需要关注哪些</a></li>
+        <li><a href="#磁盘调度策略-write-back">磁盘调度策略-write back</a></li>
+        <li><a href="#磁盘调度策略-write-through">磁盘调度策略-write through</a></li>
+        <li><a href="#write-back-vs-write-through">Write Back VS Write Through</a></li>
+        <li><a href="#raid">RAID</a></li>
+        <li><a href="#raid0-vs-raid1">RAID0 VS RAID1</a></li>
+        <li><a href="#raid5-vs-raid10">RAID5 VS RAID10</a></li>
+        <li><a href="#raid如何保证数据安全">RAID如何保证数据安全</a></li>
+        <li><a href="#mysql有哪些注意事项">MySQL有哪些注意事项</a></li>
+        <li><a href="#部署mysql的要求">部署MySQL的要求</a></li>
+        <li><a href="#系统调优的依据监控">系统调优的依据：监控</a></li>
+        <li><a href="#通常关注哪些mysql-status">通常关注哪些MySQL Status</a></li>
+        <li><a href="#mysql参数调优">MySQL参数调优</a></li>
+        <li><a href="#读优化">读优化</a></li>
+        <li><a href="#innodb_buffer_pool_size">innodb_buffer_pool_size</a></li>
+        <li><a href="#innodb_thread_concurrency">innodb_thread_concurrency</a></li>
+        <li><a href="#写优化">写优化</a></li>
+        <li><a href="#哪些参数有助于提高写入性能">哪些参数有助于提高写入性能</a></li>
+        <li><a href="#主要影响mysql写性能的两个参数">主要影响MySQL写性能的两个参数</a></li>
+        <li><a href="#innodb_flush_log_at_trx_commit">innoDB_flush_log_at_trx_commit</a></li>
+        <li><a href="#sync_binlog">sync_binlog</a></li>
+        <li><a href="#如何保证事务的安全">如何保证事务的安全</a></li>
+        <li><a href="#串行有哪些问题">串行有哪些问题</a></li>
+        <li><a href="#社区和官方的改进">社区和官方的改进</a></li>
+        <li><a href="#innodb-redo-log">InnoDB Redo log</a></li>
+        <li><a href="#redo-log的作用">Redo log的作用</a></li>
+        <li><a href="#redo-log有哪些问题">Redo log有哪些问题</a></li>
+        <li><a href="#innodb_io_capacity">innodb_io_capacity</a></li>
+        <li><a href="#insert-buffer">Insert Buffer</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

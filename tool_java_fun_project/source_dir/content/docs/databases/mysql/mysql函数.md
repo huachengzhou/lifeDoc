@@ -6,8 +6,9 @@ draft: false
 weight: 11
 ---
 
+## mysql函数
 
-# 日期函数
+### 日期函数
 
 + 返回当前日期，只包含年月日 select curdate()
 
@@ -15,7 +16,7 @@ weight: 11
 
 + 返回当前的日期和时间，年月日时分秒全都包含 select now()
 
-## 提取具体日期类型
+### 提取具体日期类型
 
 + year() yearweek() ,hour(),month()等等
 * select year(now()) as '年',yearweek(now()) as '年,周',hour(now()) as '周',minute(now()) as '小时',month(now()) '月',monthname(now()) '月名字',dayofmonth(now()) as '当月多少日'
@@ -24,11 +25,11 @@ weight: 11
 
 * (select extract(year from now()),extract(month from now()),extract(day from now()),extract(hour from now()),extract(minute from now()))
 
-## 日期格式
+### 日期格式
 
 + DATE_FORMAT(date,fmt)函数：按字符串 fmt 格式化日期 date 值 (select date_format(now(),'%Y-%m-%d'))
 
-## 日期运算
+### 日期运算
 
 + date_add(date,interval number dateType) example (select date_add(now(),interval 2 year) as 'add 2 year date')
   (select date_add(now(),interval -2 hour) as 'add 2')也可以传入负数即回到过去某个时间
@@ -37,7 +38,7 @@ weight: 11
 
 + datediff(date,date) 计算两个日期之间相差的天数 (select datediff(now(),date_add(now(),interval 2 month)) as '计算两个日期之间相差天数')
 
-# 流程函数
+### 流程函数
 
 + if 函数
 ```
@@ -50,7 +51,7 @@ insert into salary values(1,1000),(2,2000), (3,3000),(4,4000),(5,5000), (1,null)
 * (select ifnull(s.salary,0),s.salary from salary s)当检测到值的时候用0代替
 
 
-# 数值函数
+### 数值函数
 + ABS(x)函数：返回 x 的绝对值
 * select abs(-56),abs(round(rand()*10))
 + cell(x)函数 返回大于 x 的最大整数值 相当于向上取
@@ -65,7 +66,7 @@ insert into salary values(1,1000),(2,2000), (3,3000),(4,4000),(5,5000), (1,null)
 + sum()函数
 * select sum(f.f_price) as '总价格' from fruits f
 
-# 字符串函数
+### 字符串函数
 + CANCAT(S1,S2,…Sn) 连接 S1,S2,…Sn 为一个字符串
 * SELECT concat('hello','wrold'),concat(curdate(),' ',curtime())
 + INSERT(str,x,y,instr) 将字符串 str 从第 x 位置开始，y 个字符长的子串替换为字符串 instr(可以用作修改和删除以及增加)

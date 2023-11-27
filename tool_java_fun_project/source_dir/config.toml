@@ -17,7 +17,7 @@ enableGitInfo = false
   unsafe = true
 
 [markup.tableOfContents]
-  startLevel = 3
+  startLevel = 2
 
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
@@ -53,4 +53,4 @@ enableGitInfo = false
 
     # /!\ This is an experimental feature, might be removed or changed at any time
     # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
-    BookTranslatedOnly = false
+    BookTranslatedOnly = true

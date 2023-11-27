@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL应用优化
@@ -65,15 +65,14 @@
 
  依据WHERE查询条件建立索引  select a, b from tab_a where c=?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter4/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>MySQL应用优化 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -879,7 +878,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3716,7 +3733,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3729,7 +3746,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3752,6 +3782,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5486,7 +5529,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5517,87 +5560,94 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是索引">什么是索引</a></li>
-    <li><a href="#数据库索引查找">数据库索引查找</a></li>
-    <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
-    <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
-    <li><a href="#创建索引">创建索引</a></li>
-    <li><a href="#索引维护">索引维护</a></li>
-    <li><a href="#如何使用索引">如何使用索引</a></li>
-    <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
-    <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
-    <li><a href="#长字段上的索引">长字段上的索引</a></li>
-    <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
-    <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
-    <li><a href="#利用索引排序">利用索引排序</a></li>
-    <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么是schema设计">什么是Schema设计</a></li>
-    <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
-    <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
-    <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
-    <li><a href="#索引">索引</a></li>
-    <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
-    <li><a href="#拆分大字段">拆分大字段</a></li>
-    <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
-    <li><a href="#分页查询">分页查询</a></li>
-    <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
-    <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
-    <li><a href="#准实时统计">准实时统计</a></li>
-    <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
-    <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
-    <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
-    <li><a href="#课拓展性设计">课拓展性设计</a></li>
-    <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
-    <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
-    <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
-    <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
-    <li><a href="#满足周边需求">满足周边需求</a></li>
-    <li><a href="#统计和后台需求">统计和后台需求</a></li>
-    <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
-    <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#性能容量评估">性能容量评估</a></li>
-    <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
-    <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
-    <li><a href="#oltpolap">OLTP/OLAP</a></li>
-    <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
-    <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
-    <li><a href="#数据量---总量">数据量 - 总量</a></li>
-    <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
-    <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
-    <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
-    <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
-    <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
-    <li><a href="#性能测试的分类">性能测试的分类</a></li>
-    <li><a href="#设备层的测试">设备层的测试</a></li>
-    <li><a href="#业务层测试">业务层测试</a></li>
-    <li><a href="#数据库层测试">数据库层测试</a></li>
-    <li><a href="#mysql测试分类">MySQL测试分类</a></li>
-    <li><a href="#常用的测试工具">常用的测试工具</a></li>
-    <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
-    <li><a href="#sysbench">Sysbench</a></li>
-    <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
-    <li><a href="#sysbench流程">Sysbench流程</a></li>
-    <li><a href="#prepare语法">Prepare语法</a></li>
-    <li><a href="#sysbench表结构">Sysbench表结构</a></li>
-    <li><a href="#run语法">Run语法</a></li>
-    <li><a href="#特殊情况">特殊情况</a></li>
-    <li><a href="#cleanup">cleanup</a></li>
-    <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
-    <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
-    <li><a href="#创建表结构">创建表结构</a></li>
-    <li><a href="#tpcc-load">Tpcc-load</a></li>
-    <li><a href="#tpcc-start">Tpcc-start</a></li>
-    <li><a href="#总结">总结</a></li>
+    <li><a href="#41-mysql索引优化与设计">4.1-MySQL索引优化与设计</a>
+      <ul>
+        <li><a href="#什么是索引">什么是索引</a></li>
+        <li><a href="#数据库索引查找">数据库索引查找</a></li>
+        <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
+        <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
+        <li><a href="#创建索引">创建索引</a></li>
+        <li><a href="#索引维护">索引维护</a></li>
+        <li><a href="#如何使用索引">如何使用索引</a></li>
+        <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
+        <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
+        <li><a href="#长字段上的索引">长字段上的索引</a></li>
+        <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
+        <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
+        <li><a href="#利用索引排序">利用索引排序</a></li>
+        <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#42-mysql数据库设计">4.2-MySQL数据库设计</a>
+      <ul>
+        <li><a href="#什么是schema设计">什么是Schema设计</a></li>
+        <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
+        <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
+        <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
+        <li><a href="#拆分大字段">拆分大字段</a></li>
+        <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
+        <li><a href="#分页查询">分页查询</a></li>
+        <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
+        <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
+        <li><a href="#准实时统计">准实时统计</a></li>
+        <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
+        <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
+        <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
+        <li><a href="#课拓展性设计">课拓展性设计</a></li>
+        <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
+        <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
+        <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
+        <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
+        <li><a href="#满足周边需求">满足周边需求</a></li>
+        <li><a href="#统计和后台需求">统计和后台需求</a></li>
+        <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
+        <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
+      </ul>
+    </li>
+    <li><a href="#43-mysql容量评估">4.3-MySQL容量评估</a>
+      <ul>
+        <li><a href="#性能容量评估">性能容量评估</a></li>
+        <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
+        <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
+        <li><a href="#oltpolap">OLTP/OLAP</a></li>
+        <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
+        <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
+        <li><a href="#数据量---总量">数据量 - 总量</a></li>
+        <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
+        <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
+        <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
+        <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
+        <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-mysql性能测试">4.4-MySQL性能测试</a>
+      <ul>
+        <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
+        <li><a href="#性能测试的分类">性能测试的分类</a></li>
+        <li><a href="#设备层的测试">设备层的测试</a></li>
+        <li><a href="#业务层测试">业务层测试</a></li>
+        <li><a href="#数据库层测试">数据库层测试</a></li>
+        <li><a href="#mysql测试分类">MySQL测试分类</a></li>
+        <li><a href="#常用的测试工具">常用的测试工具</a></li>
+        <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
+        <li><a href="#sysbench">Sysbench</a></li>
+        <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
+        <li><a href="#sysbench流程">Sysbench流程</a></li>
+        <li><a href="#prepare语法">Prepare语法</a></li>
+        <li><a href="#sysbench表结构">Sysbench表结构</a></li>
+        <li><a href="#run语法">Run语法</a></li>
+        <li><a href="#特殊情况">特殊情况</a></li>
+        <li><a href="#cleanup">cleanup</a></li>
+        <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
+        <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
+        <li><a href="#创建表结构">创建表结构</a></li>
+        <li><a href="#tpcc-load">Tpcc-load</a></li>
+        <li><a href="#tpcc-start">Tpcc-start</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -7081,87 +7131,94 @@ a <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span>, <
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是索引">什么是索引</a></li>
-    <li><a href="#数据库索引查找">数据库索引查找</a></li>
-    <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
-    <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
-    <li><a href="#创建索引">创建索引</a></li>
-    <li><a href="#索引维护">索引维护</a></li>
-    <li><a href="#如何使用索引">如何使用索引</a></li>
-    <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
-    <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
-    <li><a href="#长字段上的索引">长字段上的索引</a></li>
-    <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
-    <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
-    <li><a href="#利用索引排序">利用索引排序</a></li>
-    <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么是schema设计">什么是Schema设计</a></li>
-    <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
-    <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
-    <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
-    <li><a href="#索引">索引</a></li>
-    <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
-    <li><a href="#拆分大字段">拆分大字段</a></li>
-    <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
-    <li><a href="#分页查询">分页查询</a></li>
-    <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
-    <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
-    <li><a href="#准实时统计">准实时统计</a></li>
-    <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
-    <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
-    <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
-    <li><a href="#课拓展性设计">课拓展性设计</a></li>
-    <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
-    <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
-    <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
-    <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
-    <li><a href="#满足周边需求">满足周边需求</a></li>
-    <li><a href="#统计和后台需求">统计和后台需求</a></li>
-    <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
-    <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#性能容量评估">性能容量评估</a></li>
-    <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
-    <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
-    <li><a href="#oltpolap">OLTP/OLAP</a></li>
-    <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
-    <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
-    <li><a href="#数据量---总量">数据量 - 总量</a></li>
-    <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
-    <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
-    <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
-    <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
-    <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
-    <li><a href="#性能测试的分类">性能测试的分类</a></li>
-    <li><a href="#设备层的测试">设备层的测试</a></li>
-    <li><a href="#业务层测试">业务层测试</a></li>
-    <li><a href="#数据库层测试">数据库层测试</a></li>
-    <li><a href="#mysql测试分类">MySQL测试分类</a></li>
-    <li><a href="#常用的测试工具">常用的测试工具</a></li>
-    <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
-    <li><a href="#sysbench">Sysbench</a></li>
-    <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
-    <li><a href="#sysbench流程">Sysbench流程</a></li>
-    <li><a href="#prepare语法">Prepare语法</a></li>
-    <li><a href="#sysbench表结构">Sysbench表结构</a></li>
-    <li><a href="#run语法">Run语法</a></li>
-    <li><a href="#特殊情况">特殊情况</a></li>
-    <li><a href="#cleanup">cleanup</a></li>
-    <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
-    <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
-    <li><a href="#创建表结构">创建表结构</a></li>
-    <li><a href="#tpcc-load">Tpcc-load</a></li>
-    <li><a href="#tpcc-start">Tpcc-start</a></li>
-    <li><a href="#总结">总结</a></li>
+    <li><a href="#41-mysql索引优化与设计">4.1-MySQL索引优化与设计</a>
+      <ul>
+        <li><a href="#什么是索引">什么是索引</a></li>
+        <li><a href="#数据库索引查找">数据库索引查找</a></li>
+        <li><a href="#如何根据首字母找到所在行">如何根据首字母找到所在行</a></li>
+        <li><a href="#innodb表聚簇索引">InnoDB表聚簇索引</a></li>
+        <li><a href="#创建索引">创建索引</a></li>
+        <li><a href="#索引维护">索引维护</a></li>
+        <li><a href="#如何使用索引">如何使用索引</a></li>
+        <li><a href="#索引与字段选择性">索引与字段选择性</a></li>
+        <li><a href="#联合索引与前缀查询">联合索引与前缀查询</a></li>
+        <li><a href="#长字段上的索引">长字段上的索引</a></li>
+        <li><a href="#索引覆盖扫">索引覆盖扫</a></li>
+        <li><a href="#无法使用索引的情况">无法使用索引的情况</a></li>
+        <li><a href="#利用索引排序">利用索引排序</a></li>
+        <li><a href="#如何确定一个查询走没走索引走了哪个索引">如何确定一个查询走没走索引，走了哪个索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#42-mysql数据库设计">4.2-MySQL数据库设计</a>
+      <ul>
+        <li><a href="#什么是schema设计">什么是Schema设计</a></li>
+        <li><a href="#为什么schema需要设计">为什么Schema需要设计</a></li>
+        <li><a href="#完全由开发者主导的schema设计">完全由开发者主导的Schema设计</a></li>
+        <li><a href="#基于性能的表设计">基于性能的表设计</a></li>
+        <li><a href="#索引">索引</a></li>
+        <li><a href="#反范式冗余必要字段">反范式，冗余必要字段</a></li>
+        <li><a href="#拆分大字段">拆分大字段</a></li>
+        <li><a href="#避免过多字段或过长行">避免过多字段或过长行</a></li>
+        <li><a href="#分页查询">分页查询</a></li>
+        <li><a href="#热点读数据特殊处理">热点读数据特殊处理</a></li>
+        <li><a href="#热点写数据特殊处理">热点写数据特殊处理</a></li>
+        <li><a href="#准实时统计">准实时统计</a></li>
+        <li><a href="#实时统计改进1---触发器实时统计">实时统计改进1 - 触发器实时统计</a></li>
+        <li><a href="#实时统计改进2---缓存实时统计">实时统计改进2 - 缓存实时统计</a></li>
+        <li><a href="#实时统计改进2---最大自增id获取总数">实时统计改进2 - 最大自增ID获取总数</a></li>
+        <li><a href="#课拓展性设计">课拓展性设计</a></li>
+        <li><a href="#分区表与数据淘汰">分区表与数据淘汰</a></li>
+        <li><a href="#分区表与垂直分区">分区表与垂直分区</a></li>
+        <li><a href="#分区表与水平分区">分区表与水平分区</a></li>
+        <li><a href="#mysql分区表的局限">MySQL分区表的局限</a></li>
+        <li><a href="#满足周边需求">满足周边需求</a></li>
+        <li><a href="#统计和后台需求">统计和后台需求</a></li>
+        <li><a href="#自动更新时间戳">自动更新时间戳</a></li>
+        <li><a href="#schema设计与前瞻性">Schema设计与前瞻性</a></li>
+      </ul>
+    </li>
+    <li><a href="#43-mysql容量评估">4.3-MySQL容量评估</a>
+      <ul>
+        <li><a href="#性能容量评估">性能容量评估</a></li>
+        <li><a href="#数据库服务器硬件性能指标">数据库服务器硬件性能指标</a></li>
+        <li><a href="#数据库业务特点关键词">数据库业务特点关键词</a></li>
+        <li><a href="#oltpolap">OLTP/OLAP</a></li>
+        <li><a href="#并发请求---衡量线上业务繁忙程度">并发请求 - 衡量线上业务繁忙程度</a></li>
+        <li><a href="#读写比例---描述应用程序如何使用数据库">读写比例 - 描述应用程序如何使用数据库</a></li>
+        <li><a href="#数据量---总量">数据量 - 总量</a></li>
+        <li><a href="#冷数据与热数据---有用数据的实时集合">冷数据与热数据 - 有用数据的实时集合</a></li>
+        <li><a href="#线上数据分层存储---缓解线上磁盘空间压力">线上数据分层存储 - 缓解线上磁盘空间压力</a></li>
+        <li><a href="#服务器资源选型---将可选方案列出来">服务器资源选型 - 将可选方案列出来</a></li>
+        <li><a href="#案例一网易云音乐曲库数据库服务器评估">案例一，网易云音乐曲库数据库服务器评估</a></li>
+        <li><a href="#案例二网易理财销售数据库服务器评估">案例二，网易理财销售数据库服务器评估</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-mysql性能测试">4.4-MySQL性能测试</a>
+      <ul>
+        <li><a href="#为什么需要性能测试">为什么需要性能测试</a></li>
+        <li><a href="#性能测试的分类">性能测试的分类</a></li>
+        <li><a href="#设备层的测试">设备层的测试</a></li>
+        <li><a href="#业务层测试">业务层测试</a></li>
+        <li><a href="#数据库层测试">数据库层测试</a></li>
+        <li><a href="#mysql测试分类">MySQL测试分类</a></li>
+        <li><a href="#常用的测试工具">常用的测试工具</a></li>
+        <li><a href="#性能测试衡量指标">性能测试衡量指标</a></li>
+        <li><a href="#sysbench">Sysbench</a></li>
+        <li><a href="#编译安装sysbench">编译安装Sysbench</a></li>
+        <li><a href="#sysbench流程">Sysbench流程</a></li>
+        <li><a href="#prepare语法">Prepare语法</a></li>
+        <li><a href="#sysbench表结构">Sysbench表结构</a></li>
+        <li><a href="#run语法">Run语法</a></li>
+        <li><a href="#特殊情况">特殊情况</a></li>
+        <li><a href="#cleanup">cleanup</a></li>
+        <li><a href="#tpcc-mysql">Tpcc-mysql</a></li>
+        <li><a href="#使用tpcc-mysql的步骤">使用Tpcc-mysql的步骤</a></li>
+        <li><a href="#创建表结构">创建表结构</a></li>
+        <li><a href="#tpcc-load">Tpcc-load</a></li>
+        <li><a href="#tpcc-start">Tpcc-start</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

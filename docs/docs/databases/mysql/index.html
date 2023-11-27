@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="mysql学习笔记
@@ -82,12 +82,12 @@ mysql优化
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/" />
-
+<meta property="og:updated_time" content="2021-01-17T15:26:15+00:00" />
 <title>mysql学习笔记 | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <link rel="alternate" type="application/rss+xml" href="./../../../docs/databases/mysql/index.xml" title="所悟所想" />
 <!--
 Made with Book Theme
@@ -894,7 +894,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3731,7 +3749,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3744,7 +3762,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3767,6 +3798,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5501,7 +5545,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5532,29 +5576,33 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#windows下-mysql安装mysql_install"><a href="mysql_install">windows下 Mysql安装</a></a></li>
-    <li><a href="#win10一台电脑安装多个版本的mysqlmysql_install_more"><a href="mysql_install_more">Win10一台电脑安装多个版本的Mysql</a></a></li>
-    <li><a href="#windows下-mysql安装的一些问题解决方法mysql_install_problem"><a href="mysql_install_problem">windows下 Mysql安装的一些问题解决方法</a></a></li>
-    <li><a href="#centos7安装多个mysqlmysql_install_centos"><a href="mysql_install_centos">centos7安装多个mysql</a></a></li>
-    <li><a href="#mysql查询数据准备mysql_data"><a href="mysql_data">mysql查询数据准备</a></a></li>
-    <li><a href="#mysql查询mysql查询"><a href="mysql%E6%9F%A5%E8%AF%A2">mysql查询</a></a></li>
-    <li><a href="#mysql新查询mysql_select"><a href="mysql_select">mysql新查询</a></a></li>
-    <li><a href="#mysql视图mysql_view"><a href="mysql_view">mysql视图</a></a></li>
-    <li><a href="#mysql触发器triggers"><a href="triggers">mysql触发器</a></a></li>
-    <li><a href="#mysql正则表达式mysql_regexp"><a href="mysql_regexp">mysql正则表达式</a></a></li>
-    <li><a href="#mysql事务mysql事务"><a href="mysql%E4%BA%8B%E5%8A%A1">mysql事务</a></a></li>
-    <li><a href="#mysql函数mysql函数"><a href="mysql%E5%87%BD%E6%95%B0">mysql函数</a></a></li>
-    <li><a href="#mysql存储过程mysql_procedure"><a href="mysql_procedure">mysql存储过程</a></a></li>
-    <li><a href="#mysql存储函数mysql_procedure_function"><a href="mysql_procedure_function">mysql存储函数</a></a></li>
-    <li><a href="#mysql用户与权限mysql用户与权限"><a href="mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90">mysql用户与权限</a></a></li>
-    <li><a href="#mysql整理mysql整理"><a href="mysql%E6%95%B4%E7%90%86">mysql整理</a></a></li>
-    <li><a href="#mysql存储引擎mysql存储引擎"><a href="mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E">mysql存储引擎</a></a></li>
-    <li><a href="#mysql运维mysql_operation_maintenance"><a href="mysql_operation_maintenance">mysql运维</a></a></li>
-    <li><a href="#开发规范mysql_开发规范"><a href="mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></a></li>
-    <li><a href="#数据库设计三范式mysql_数据库设计三范式"><a href="mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F">数据库设计三范式</a></a></li>
-    <li><a href="#mysql索引mysql索引"><a href="mysql%E7%B4%A2%E5%BC%95">mysql索引</a></a></li>
-    <li><a href="#mysql分库分表原理mysql_distinguish"><a href="mysql_distinguish">MySQL分库分表原理</a></a></li>
-    <li><a href="#mysql优化mysq_advanced_optimization"><a href="mysq_advanced_optimization">mysql优化</a></a></li>
+    <li><a href="#mysql学习笔记">mysql学习笔记</a>
+      <ul>
+        <li><a href="#windows下-mysql安装mysql_install"><a href="mysql_install">windows下 Mysql安装</a></a></li>
+        <li><a href="#win10一台电脑安装多个版本的mysqlmysql_install_more"><a href="mysql_install_more">Win10一台电脑安装多个版本的Mysql</a></a></li>
+        <li><a href="#windows下-mysql安装的一些问题解决方法mysql_install_problem"><a href="mysql_install_problem">windows下 Mysql安装的一些问题解决方法</a></a></li>
+        <li><a href="#centos7安装多个mysqlmysql_install_centos"><a href="mysql_install_centos">centos7安装多个mysql</a></a></li>
+        <li><a href="#mysql查询数据准备mysql_data"><a href="mysql_data">mysql查询数据准备</a></a></li>
+        <li><a href="#mysql查询mysql查询"><a href="mysql%E6%9F%A5%E8%AF%A2">mysql查询</a></a></li>
+        <li><a href="#mysql新查询mysql_select"><a href="mysql_select">mysql新查询</a></a></li>
+        <li><a href="#mysql视图mysql_view"><a href="mysql_view">mysql视图</a></a></li>
+        <li><a href="#mysql触发器triggers"><a href="triggers">mysql触发器</a></a></li>
+        <li><a href="#mysql正则表达式mysql_regexp"><a href="mysql_regexp">mysql正则表达式</a></a></li>
+        <li><a href="#mysql事务mysql事务"><a href="mysql%E4%BA%8B%E5%8A%A1">mysql事务</a></a></li>
+        <li><a href="#mysql函数mysql函数"><a href="mysql%E5%87%BD%E6%95%B0">mysql函数</a></a></li>
+        <li><a href="#mysql存储过程mysql_procedure"><a href="mysql_procedure">mysql存储过程</a></a></li>
+        <li><a href="#mysql存储函数mysql_procedure_function"><a href="mysql_procedure_function">mysql存储函数</a></a></li>
+        <li><a href="#mysql用户与权限mysql用户与权限"><a href="mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90">mysql用户与权限</a></a></li>
+        <li><a href="#mysql整理mysql整理"><a href="mysql%E6%95%B4%E7%90%86">mysql整理</a></a></li>
+        <li><a href="#mysql存储引擎mysql存储引擎"><a href="mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E">mysql存储引擎</a></a></li>
+        <li><a href="#mysql运维mysql_operation_maintenance"><a href="mysql_operation_maintenance">mysql运维</a></a></li>
+        <li><a href="#开发规范mysql_开发规范"><a href="mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></a></li>
+        <li><a href="#数据库设计三范式mysql_数据库设计三范式"><a href="mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F">数据库设计三范式</a></a></li>
+        <li><a href="#mysql索引mysql索引"><a href="mysql%E7%B4%A2%E5%BC%95">mysql索引</a></a></li>
+        <li><a href="#mysql分库分表原理mysql_distinguish"><a href="mysql_distinguish">MySQL分库分表原理</a></a></li>
+        <li><a href="#mysql优化mysq_advanced_optimization"><a href="mysq_advanced_optimization">mysql优化</a></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5579,10 +5627,10 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h1 id="mysql学习笔记">
+  <article class="markdown"><h2 id="mysql学习笔记">
   mysql学习笔记
   <a class="anchor" href="#mysql%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0">#</a>
-</h1>
+</h2>
 <h3 id="windows下-mysql安装mysql_install">
   <a href="mysql_install">windows下 Mysql安装</a>
   <a class="anchor" href="#windows%e4%b8%8b-mysql%e5%ae%89%e8%a3%85mysql_install">#</a>
@@ -5918,29 +5966,33 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#windows下-mysql安装mysql_install"><a href="mysql_install">windows下 Mysql安装</a></a></li>
-    <li><a href="#win10一台电脑安装多个版本的mysqlmysql_install_more"><a href="mysql_install_more">Win10一台电脑安装多个版本的Mysql</a></a></li>
-    <li><a href="#windows下-mysql安装的一些问题解决方法mysql_install_problem"><a href="mysql_install_problem">windows下 Mysql安装的一些问题解决方法</a></a></li>
-    <li><a href="#centos7安装多个mysqlmysql_install_centos"><a href="mysql_install_centos">centos7安装多个mysql</a></a></li>
-    <li><a href="#mysql查询数据准备mysql_data"><a href="mysql_data">mysql查询数据准备</a></a></li>
-    <li><a href="#mysql查询mysql查询"><a href="mysql%E6%9F%A5%E8%AF%A2">mysql查询</a></a></li>
-    <li><a href="#mysql新查询mysql_select"><a href="mysql_select">mysql新查询</a></a></li>
-    <li><a href="#mysql视图mysql_view"><a href="mysql_view">mysql视图</a></a></li>
-    <li><a href="#mysql触发器triggers"><a href="triggers">mysql触发器</a></a></li>
-    <li><a href="#mysql正则表达式mysql_regexp"><a href="mysql_regexp">mysql正则表达式</a></a></li>
-    <li><a href="#mysql事务mysql事务"><a href="mysql%E4%BA%8B%E5%8A%A1">mysql事务</a></a></li>
-    <li><a href="#mysql函数mysql函数"><a href="mysql%E5%87%BD%E6%95%B0">mysql函数</a></a></li>
-    <li><a href="#mysql存储过程mysql_procedure"><a href="mysql_procedure">mysql存储过程</a></a></li>
-    <li><a href="#mysql存储函数mysql_procedure_function"><a href="mysql_procedure_function">mysql存储函数</a></a></li>
-    <li><a href="#mysql用户与权限mysql用户与权限"><a href="mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90">mysql用户与权限</a></a></li>
-    <li><a href="#mysql整理mysql整理"><a href="mysql%E6%95%B4%E7%90%86">mysql整理</a></a></li>
-    <li><a href="#mysql存储引擎mysql存储引擎"><a href="mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E">mysql存储引擎</a></a></li>
-    <li><a href="#mysql运维mysql_operation_maintenance"><a href="mysql_operation_maintenance">mysql运维</a></a></li>
-    <li><a href="#开发规范mysql_开发规范"><a href="mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></a></li>
-    <li><a href="#数据库设计三范式mysql_数据库设计三范式"><a href="mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F">数据库设计三范式</a></a></li>
-    <li><a href="#mysql索引mysql索引"><a href="mysql%E7%B4%A2%E5%BC%95">mysql索引</a></a></li>
-    <li><a href="#mysql分库分表原理mysql_distinguish"><a href="mysql_distinguish">MySQL分库分表原理</a></a></li>
-    <li><a href="#mysql优化mysq_advanced_optimization"><a href="mysq_advanced_optimization">mysql优化</a></a></li>
+    <li><a href="#mysql学习笔记">mysql学习笔记</a>
+      <ul>
+        <li><a href="#windows下-mysql安装mysql_install"><a href="mysql_install">windows下 Mysql安装</a></a></li>
+        <li><a href="#win10一台电脑安装多个版本的mysqlmysql_install_more"><a href="mysql_install_more">Win10一台电脑安装多个版本的Mysql</a></a></li>
+        <li><a href="#windows下-mysql安装的一些问题解决方法mysql_install_problem"><a href="mysql_install_problem">windows下 Mysql安装的一些问题解决方法</a></a></li>
+        <li><a href="#centos7安装多个mysqlmysql_install_centos"><a href="mysql_install_centos">centos7安装多个mysql</a></a></li>
+        <li><a href="#mysql查询数据准备mysql_data"><a href="mysql_data">mysql查询数据准备</a></a></li>
+        <li><a href="#mysql查询mysql查询"><a href="mysql%E6%9F%A5%E8%AF%A2">mysql查询</a></a></li>
+        <li><a href="#mysql新查询mysql_select"><a href="mysql_select">mysql新查询</a></a></li>
+        <li><a href="#mysql视图mysql_view"><a href="mysql_view">mysql视图</a></a></li>
+        <li><a href="#mysql触发器triggers"><a href="triggers">mysql触发器</a></a></li>
+        <li><a href="#mysql正则表达式mysql_regexp"><a href="mysql_regexp">mysql正则表达式</a></a></li>
+        <li><a href="#mysql事务mysql事务"><a href="mysql%E4%BA%8B%E5%8A%A1">mysql事务</a></a></li>
+        <li><a href="#mysql函数mysql函数"><a href="mysql%E5%87%BD%E6%95%B0">mysql函数</a></a></li>
+        <li><a href="#mysql存储过程mysql_procedure"><a href="mysql_procedure">mysql存储过程</a></a></li>
+        <li><a href="#mysql存储函数mysql_procedure_function"><a href="mysql_procedure_function">mysql存储函数</a></a></li>
+        <li><a href="#mysql用户与权限mysql用户与权限"><a href="mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90">mysql用户与权限</a></a></li>
+        <li><a href="#mysql整理mysql整理"><a href="mysql%E6%95%B4%E7%90%86">mysql整理</a></a></li>
+        <li><a href="#mysql存储引擎mysql存储引擎"><a href="mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E">mysql存储引擎</a></a></li>
+        <li><a href="#mysql运维mysql_operation_maintenance"><a href="mysql_operation_maintenance">mysql运维</a></a></li>
+        <li><a href="#开发规范mysql_开发规范"><a href="mysql_%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></a></li>
+        <li><a href="#数据库设计三范式mysql_数据库设计三范式"><a href="mysql_%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F">数据库设计三范式</a></a></li>
+        <li><a href="#mysql索引mysql索引"><a href="mysql%E7%B4%A2%E5%BC%95">mysql索引</a></a></li>
+        <li><a href="#mysql分库分表原理mysql_distinguish"><a href="mysql_distinguish">MySQL分库分表原理</a></a></li>
+        <li><a href="#mysql优化mysq_advanced_optimization"><a href="mysq_advanced_optimization">mysql优化</a></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

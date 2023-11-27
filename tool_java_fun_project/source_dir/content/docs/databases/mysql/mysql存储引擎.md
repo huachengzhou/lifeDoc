@@ -7,13 +7,16 @@ weight: 12
 ---
 
 
-# MySQL 存储引擎概述
+## mysql存储引擎
+
+### MySQL 存储引擎概述
 > MySQL 5.0 支持的存储引擎包括 MyISAM、 InnoDB、 BDB、 MEMORY、 MERGE、 EXAMPLE、
   NDB Cluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED 等，其中 InnoDB 和 BDB 提供事务安
   全表，其他存储引擎都是非事务安全表。
 + 查看当前引擎 show ENGINES
 
-## MyISAM存储引擎
+### MyISAM存储引擎
+
 > 不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有 要求或者以select，insert为主的应用基本上可以用这个引擎来创建表
 
 * 支持3种不同的存储格式，分别是：静态表；动态表；压缩表
@@ -26,7 +29,8 @@ weight: 12
   
 > 压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支
 
-## InnoDB存储引擎
+### InnoDB存储引擎
+
 > nnoDB 存储表和索引有两种方式
 * 使用共享表空间存储，这种方式创建的表的表结构保存在.frm 文件中，数据和索引
   保存在 innodb_data_home_dir 和 innodb_data_file_path 定义的表空间中，可以是
@@ -44,7 +48,7 @@ weight: 12
 ALTER TABLE tbl_name DISCARD TABLESPACE;
 ALTER TABLE tbl_name IMPORT TABLESPACE;
 ```
-## MEMORY存储引擎
+### MEMORY存储引擎
 > Memory存储引擎使用存在于内存中的内容来创建表。每个memory表只实际对应一个磁盘文件，格式是.frm。
 > memory类型的表访问非常的快，因为它的数据是放在内存中的，并且默认使用HASH索引，但是一旦服务关闭，表中的数据就会丢失掉。 
   MEMORY存储引擎的表可以选择使用BTREE索引或者HASH索引，两种不同类型的索引有其不同的使用范围
@@ -55,7 +59,7 @@ ALTER TABLE tbl_name IMPORT TABLESPACE;
   
 > Memory类型的存储引擎主要用于哪些内容变化不频繁的代码表，或者作为统计操作的中间结果表，便于高效地对中间结果进行分析并得到最终的统计结果，。
   对存储引擎为memory的表进行更新操作要谨慎，因为数据并没有实际写入到磁盘中，所以一定要对下次重新启动服务后如何获得这些修改后的数据有所考虑。
-  
-## MERGE存储引擎
+
+### MERGE存储引擎
 > Merge存储引擎是一组MyISAM表的组合，这些MyISAM表必须结构完全相同，merge表本身并没有数据，对merge类型的表可以进行查询，更新，删除操作，这些操作实际上是对内部的MyISAM表进行的。
 

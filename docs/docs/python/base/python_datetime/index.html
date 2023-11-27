@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="datetime
@@ -27,15 +27,14 @@
 
  格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 &#43;0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/python_datetime/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-04-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-15T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/python/base/python_datetime/" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-15T00:00:00+00:00" />
 <title>python datetime | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -841,7 +840,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3678,7 +3695,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3691,7 +3708,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3714,6 +3744,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5448,7 +5491,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5479,9 +5522,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#构造函数">构造函数</a></li>
-    <li><a href="#日期对象格式化为可读字符串">日期对象格式化为可读字符串</a></li>
-    <li><a href="#日期加减比较">日期加减比较</a></li>
+    <li><a href="#datetime">datetime</a>
+      <ul>
+        <li><a href="#构造函数">构造函数</a></li>
+        <li><a href="#日期对象格式化为可读字符串">日期对象格式化为可读字符串</a></li>
+        <li><a href="#日期加减比较">日期加减比较</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -6104,9 +6151,13 @@ second_date <span style="color:#f92672">=</span> datetime<span style="color:#f92
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#构造函数">构造函数</a></li>
-    <li><a href="#日期对象格式化为可读字符串">日期对象格式化为可读字符串</a></li>
-    <li><a href="#日期加减比较">日期加减比较</a></li>
+    <li><a href="#datetime">datetime</a>
+      <ul>
+        <li><a href="#构造函数">构造函数</a></li>
+        <li><a href="#日期对象格式化为可读字符串">日期对象格式化为可读字符串</a></li>
+        <li><a href="#日期加减比较">日期加减比较</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

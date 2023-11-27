@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="锁分类
@@ -51,15 +51,14 @@
 当只有一个线程或者多个线程中最先执行到同步块的时候 这个时候测试完没有偏向锁立即设置完对应的标识记录和锁记录就开始执行同步代码了, 假如下次再进入并且锁没有升级那么仅仅简单测试通过又继续执行了 在这最开始到结束全程没有各种加锁操作甚至连CAS都很有可能没有(是有可能有CASC操作的这涉及到偏向锁的撤销机制) 相比同步操作消耗很少 因此很划算的 当有多个线程竞争锁的时候 这个时候系统检测到了并且达到了锁升级的约束条件那么就会立即执行升级操作即便获得执行条件正在的线程 (当然必须等执行线程中的某个原子操作或者若干原子操作组成的原语)也要对锁记录进行升级然后才开始升级 优点: 把整个同步都消除掉，连CAS操作都不去做了，优于轻量级锁 缺点: 如果程序中大多数的锁都总是被多个不同的线程访问，那偏向锁就是多余的   偏向锁是JDK6时加入的一种锁优化机制
   锁的撤销" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/essential_glossary/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/thread/essential_glossary/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>关键名词解释 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -865,7 +864,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3702,7 +3719,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3715,7 +3732,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3738,6 +3768,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5472,7 +5515,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5503,44 +5546,76 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#白话">白话</a></li>
-    <li><a href="#锁的撤销">锁的撤销</a></li>
+    <li><a href="#轻量级锁">轻量级锁</a>
+      <ul>
+        <li><a href="#白话">白话</a></li>
+        <li><a href="#锁的撤销">锁的撤销</a></li>
+      </ul>
+    </li>
+    <li><a href="#偏向锁">偏向锁</a>
+      <ul>
+        <li><a href="#白话-1">白话</a></li>
+      </ul>
+    </li>
+    <li><a href="#重量级锁">重量级锁</a></li>
+    <li><a href="#自旋锁--适应性自旋锁">自旋锁 || 适应性自旋锁</a></li>
+    <li><a href="#悲观锁">悲观锁</a>
+      <ul>
+        <li><a href="#白话-2">白话</a></li>
+        <li><a href="#实现例子">实现例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#乐观锁">乐观锁</a>
+      <ul>
+        <li><a href="#白话-3">白话</a></li>
+        <li><a href="#实现例子-1">实现例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#互斥锁">互斥锁</a></li>
+    <li><a href="#公平锁">公平锁</a></li>
+    <li><a href="#非公平锁">非公平锁</a></li>
+    <li><a href="#分段锁">分段锁</a></li>
+    <li><a href="#读写锁">读写锁</a>
+      <ul>
+        <li><a href="#读锁">读锁</a></li>
+        <li><a href="#写锁">写锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#共享锁">共享锁</a></li>
+    <li><a href="#独占锁">独占锁</a></li>
+    <li><a href="#同步锁">同步锁</a></li>
+    <li><a href="#死锁">死锁</a></li>
+    <li><a href="#锁粗化">锁粗化</a></li>
+    <li><a href="#锁消除">锁消除</a></li>
   </ul>
 
   <ul>
-    <li><a href="#白话-1">白话</a></li>
+    <li><a href="#cas">CAS</a></li>
+    <li><a href="#aqs">AQS</a>
+      <ul>
+        <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
+        <li><a href="#优势">优势</a></li>
+        <li><a href="#aqs核心知识">AQS核心知识</a></li>
+        <li><a href="#aqs实现细节">AQS实现细节</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
-    <li><a href="#白话-2">白话</a></li>
-    <li><a href="#实现例子">实现例子</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#白话-3">白话</a></li>
-    <li><a href="#实现例子-1">实现例子</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#读锁">读锁</a></li>
-    <li><a href="#写锁">写锁</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
-    <li><a href="#优势">优势</a></li>
-    <li><a href="#aqs核心知识">AQS核心知识</a></li>
-    <li><a href="#aqs实现细节">AQS实现细节</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
-    <li><a href="#synchronized的优势">synchronized的优势：</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#相同点">相同点</a></li>
-    <li><a href="#不同点">不同点</a></li>
+    <li><a href="#同步术语">同步术语</a></li>
+    <li><a href="#synchronized">synchronized</a></li>
+    <li><a href="#lock和synchronized的区别">Lock和synchronized的区别</a>
+      <ul>
+        <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
+        <li><a href="#synchronized的优势">synchronized的优势：</a></li>
+      </ul>
+    </li>
+    <li><a href="#reentrantlock-和synchronized的区别">ReentrantLock 和synchronized的区别</a>
+      <ul>
+        <li><a href="#相同点">相同点</a></li>
+        <li><a href="#不同点">不同点</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -6884,44 +6959,76 @@ ReentrantLock 来进行加锁，所以每次需要加锁的操作锁住的是一
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#白话">白话</a></li>
-    <li><a href="#锁的撤销">锁的撤销</a></li>
+    <li><a href="#轻量级锁">轻量级锁</a>
+      <ul>
+        <li><a href="#白话">白话</a></li>
+        <li><a href="#锁的撤销">锁的撤销</a></li>
+      </ul>
+    </li>
+    <li><a href="#偏向锁">偏向锁</a>
+      <ul>
+        <li><a href="#白话-1">白话</a></li>
+      </ul>
+    </li>
+    <li><a href="#重量级锁">重量级锁</a></li>
+    <li><a href="#自旋锁--适应性自旋锁">自旋锁 || 适应性自旋锁</a></li>
+    <li><a href="#悲观锁">悲观锁</a>
+      <ul>
+        <li><a href="#白话-2">白话</a></li>
+        <li><a href="#实现例子">实现例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#乐观锁">乐观锁</a>
+      <ul>
+        <li><a href="#白话-3">白话</a></li>
+        <li><a href="#实现例子-1">实现例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#互斥锁">互斥锁</a></li>
+    <li><a href="#公平锁">公平锁</a></li>
+    <li><a href="#非公平锁">非公平锁</a></li>
+    <li><a href="#分段锁">分段锁</a></li>
+    <li><a href="#读写锁">读写锁</a>
+      <ul>
+        <li><a href="#读锁">读锁</a></li>
+        <li><a href="#写锁">写锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#共享锁">共享锁</a></li>
+    <li><a href="#独占锁">独占锁</a></li>
+    <li><a href="#同步锁">同步锁</a></li>
+    <li><a href="#死锁">死锁</a></li>
+    <li><a href="#锁粗化">锁粗化</a></li>
+    <li><a href="#锁消除">锁消除</a></li>
   </ul>
 
   <ul>
-    <li><a href="#白话-1">白话</a></li>
+    <li><a href="#cas">CAS</a></li>
+    <li><a href="#aqs">AQS</a>
+      <ul>
+        <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
+        <li><a href="#优势">优势</a></li>
+        <li><a href="#aqs核心知识">AQS核心知识</a></li>
+        <li><a href="#aqs实现细节">AQS实现细节</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
-    <li><a href="#白话-2">白话</a></li>
-    <li><a href="#实现例子">实现例子</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#白话-3">白话</a></li>
-    <li><a href="#实现例子-1">实现例子</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#读锁">读锁</a></li>
-    <li><a href="#写锁">写锁</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#基于aqs构建同步器">基于AQS构建同步器</a></li>
-    <li><a href="#优势">优势</a></li>
-    <li><a href="#aqs核心知识">AQS核心知识</a></li>
-    <li><a href="#aqs实现细节">AQS实现细节</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
-    <li><a href="#synchronized的优势">synchronized的优势：</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#相同点">相同点</a></li>
-    <li><a href="#不同点">不同点</a></li>
+    <li><a href="#同步术语">同步术语</a></li>
+    <li><a href="#synchronized">synchronized</a></li>
+    <li><a href="#lock和synchronized的区别">Lock和synchronized的区别</a>
+      <ul>
+        <li><a href="#lock-是java中的接口可重入锁悲观锁独占锁互斥锁同步锁">Lock： 是Java中的接口，可重入锁、悲观锁、独占锁、互斥锁、同步锁。</a></li>
+        <li><a href="#synchronized的优势">synchronized的优势：</a></li>
+      </ul>
+    </li>
+    <li><a href="#reentrantlock-和synchronized的区别">ReentrantLock 和synchronized的区别</a>
+      <ul>
+        <li><a href="#相同点">相同点</a></li>
+        <li><a href="#不同点">不同点</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

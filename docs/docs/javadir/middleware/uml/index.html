@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="最重要的放最前面
@@ -119,15 +119,14 @@ startUML
 
  UML是Unified Model Language的缩写，中文是统一建模语言，是由一整套图表组成的标准化建模语言" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/uml/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/uml/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>uml 学习与使用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -933,7 +932,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3770,7 +3787,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3783,7 +3800,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3806,6 +3836,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5540,7 +5583,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5571,25 +5614,35 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1泛化generalization">1.泛化(Generalization)</a></li>
-    <li><a href="#2实现realization">2.实现（Realization)</a></li>
-    <li><a href="#3关联association">3.关联（Association）</a></li>
-    <li><a href="#4聚合aggregation">4.聚合（Aggregation）</a></li>
-    <li><a href="#5组合composition">5.组合(Composition)</a></li>
-    <li><a href="#6依赖dependency">6.依赖(Dependency)</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#类图">类图</a></li>
-    <li><a href="#对象图">对象图</a></li>
-    <li><a href="#组件图">组件图</a></li>
-    <li><a href="#部署图">部署图</a></li>
-    <li><a href="#用例图">用例图</a></li>
-    <li><a href="#序列图">序列图</a></li>
-    <li><a href="#协作图">协作图</a></li>
-    <li><a href="#状态图">状态图</a></li>
-    <li><a href="#活动图">活动图</a></li>
+    <li><a href="#最重要的放最前面">最重要的放最前面</a></li>
+    <li><a href="#uml类图几种关系的总结">UML类图几种关系的总结</a>
+      <ul>
+        <li><a href="#1泛化generalization">1.泛化(Generalization)</a></li>
+        <li><a href="#2实现realization">2.实现（Realization)</a></li>
+        <li><a href="#3关联association">3.关联（Association）</a></li>
+        <li><a href="#4聚合aggregation">4.聚合（Aggregation）</a></li>
+        <li><a href="#5组合composition">5.组合(Composition)</a></li>
+        <li><a href="#6依赖dependency">6.依赖(Dependency)</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#startuml">startUML</a></li>
+    <li><a href="#一什么是uml">一:什么是UML</a></li>
+    <li><a href="#二为什么要用uml">二:为什么要用UML</a></li>
+    <li><a href="#三uml图有哪些">三:UML图有哪些？</a></li>
+    <li><a href="#四uml九种图汇总">四:UML九种图汇总</a>
+      <ul>
+        <li><a href="#类图">类图</a></li>
+        <li><a href="#对象图">对象图</a></li>
+        <li><a href="#组件图">组件图</a></li>
+        <li><a href="#部署图">部署图</a></li>
+        <li><a href="#用例图">用例图</a></li>
+        <li><a href="#序列图">序列图</a></li>
+        <li><a href="#协作图">协作图</a></li>
+        <li><a href="#状态图">状态图</a></li>
+        <li><a href="#活动图">活动图</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -6281,25 +6334,35 @@ UML活动图基本上是代表流程形成一个活动到另一个活动的流�
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1泛化generalization">1.泛化(Generalization)</a></li>
-    <li><a href="#2实现realization">2.实现（Realization)</a></li>
-    <li><a href="#3关联association">3.关联（Association）</a></li>
-    <li><a href="#4聚合aggregation">4.聚合（Aggregation）</a></li>
-    <li><a href="#5组合composition">5.组合(Composition)</a></li>
-    <li><a href="#6依赖dependency">6.依赖(Dependency)</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#类图">类图</a></li>
-    <li><a href="#对象图">对象图</a></li>
-    <li><a href="#组件图">组件图</a></li>
-    <li><a href="#部署图">部署图</a></li>
-    <li><a href="#用例图">用例图</a></li>
-    <li><a href="#序列图">序列图</a></li>
-    <li><a href="#协作图">协作图</a></li>
-    <li><a href="#状态图">状态图</a></li>
-    <li><a href="#活动图">活动图</a></li>
+    <li><a href="#最重要的放最前面">最重要的放最前面</a></li>
+    <li><a href="#uml类图几种关系的总结">UML类图几种关系的总结</a>
+      <ul>
+        <li><a href="#1泛化generalization">1.泛化(Generalization)</a></li>
+        <li><a href="#2实现realization">2.实现（Realization)</a></li>
+        <li><a href="#3关联association">3.关联（Association）</a></li>
+        <li><a href="#4聚合aggregation">4.聚合（Aggregation）</a></li>
+        <li><a href="#5组合composition">5.组合(Composition)</a></li>
+        <li><a href="#6依赖dependency">6.依赖(Dependency)</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#startuml">startUML</a></li>
+    <li><a href="#一什么是uml">一:什么是UML</a></li>
+    <li><a href="#二为什么要用uml">二:为什么要用UML</a></li>
+    <li><a href="#三uml图有哪些">三:UML图有哪些？</a></li>
+    <li><a href="#四uml九种图汇总">四:UML九种图汇总</a>
+      <ul>
+        <li><a href="#类图">类图</a></li>
+        <li><a href="#对象图">对象图</a></li>
+        <li><a href="#组件图">组件图</a></li>
+        <li><a href="#部署图">部署图</a></li>
+        <li><a href="#用例图">用例图</a></li>
+        <li><a href="#序列图">序列图</a></li>
+        <li><a href="#协作图">协作图</a></li>
+        <li><a href="#状态图">状态图</a></li>
+        <li><a href="#活动图">活动图</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

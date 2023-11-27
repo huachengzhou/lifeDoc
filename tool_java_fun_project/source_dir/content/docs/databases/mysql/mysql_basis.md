@@ -6,7 +6,7 @@ draft: false
 weight: 3
 ---
 
-
+## 基础介绍
 
 
 + 停止命令：net stop mysql
@@ -35,7 +35,7 @@ weight: 3
 
 
 
-#### SQL的语言分类
+### SQL的语言分类
 
 ```
 DQL（Data Query Language）：数据查询语言
@@ -51,7 +51,7 @@ TCL（Transaction Control Language）：事务控制语言
 set autocommit=0、start transaction、savepoint、commit、rollback
 ```
 
-#### mysql语法规范
+### mysql语法规范
 
 ```
 不区分大小写，但建议关键字大写，表名、列名小写

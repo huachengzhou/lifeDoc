@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="典型的数据通信模型
@@ -63,15 +63,13 @@
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="docs" />
-
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/computer_network/physical_layer/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
 
 <title>数据通信基础知识  | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -877,7 +875,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3714,7 +3730,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3727,7 +3743,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3750,6 +3779,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5484,7 +5526,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5515,9 +5557,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#采用单工通信只有一个方向半双工通信回合制全双工通信可以同时如擂台上拳击手打击-">采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) *</a></li>
-    <li><a href="#采用串行通信并行通信">采用串行通信/并行通信</a></li>
-    <li><a href="#采用同步通信异步通信">采用同步通信/异步通信</a></li>
+    <li><a href="#典型的数据通信模型">典型的数据通信模型</a></li>
+    <li><a href="#数据通信相关术语">数据通信相关术语</a></li>
+    <li><a href="#设计数据通信系统要考虑的三个问题">设计数据通信系统要考虑的三个问题</a>
+      <ul>
+        <li><a href="#采用单工通信只有一个方向半双工通信回合制全双工通信可以同时如擂台上拳击手打击-">采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) *</a></li>
+        <li><a href="#采用串行通信并行通信">采用串行通信/并行通信</a></li>
+        <li><a href="#采用同步通信异步通信">采用同步通信/异步通信</a></li>
+      </ul>
+    </li>
+    <li><a href="#串行传输并行传输">串行传输&amp;并行传输</a></li>
+    <li><a href="#同步传输异步传输">同步传输&amp;异步传输</a></li>
   </ul>
 </nav>
 
@@ -5851,9 +5901,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#采用单工通信只有一个方向半双工通信回合制全双工通信可以同时如擂台上拳击手打击-">采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) *</a></li>
-    <li><a href="#采用串行通信并行通信">采用串行通信/并行通信</a></li>
-    <li><a href="#采用同步通信异步通信">采用同步通信/异步通信</a></li>
+    <li><a href="#典型的数据通信模型">典型的数据通信模型</a></li>
+    <li><a href="#数据通信相关术语">数据通信相关术语</a></li>
+    <li><a href="#设计数据通信系统要考虑的三个问题">设计数据通信系统要考虑的三个问题</a>
+      <ul>
+        <li><a href="#采用单工通信只有一个方向半双工通信回合制全双工通信可以同时如擂台上拳击手打击-">采用单工通信(只有一个方向)/半双工通信(回合制)/全双工通信(可以同时如擂台上拳击手打击) *</a></li>
+        <li><a href="#采用串行通信并行通信">采用串行通信/并行通信</a></li>
+        <li><a href="#采用同步通信异步通信">采用同步通信/异步通信</a></li>
+      </ul>
+    </li>
+    <li><a href="#串行传输并行传输">串行传输&amp;并行传输</a></li>
+    <li><a href="#同步传输异步传输">同步传输&amp;异步传输</a></li>
   </ul>
 </nav>
 

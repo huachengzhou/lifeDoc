@@ -1,12 +1,13 @@
+
 ---
 title: "墨墨背单词"
 date: 2021-01-17T15:26:15Z
 draft: false
-bookToc: false
+bookToc: true
 bookFlatSection: false
 ---
 
-+ 使用技巧
+## 使用技巧
 
 ###  第一步：选择一本单词书，如下图，它有很多分类，我就拿考研的来举例了。
 

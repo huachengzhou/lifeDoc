@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="基本类型
@@ -15,15 +15,14 @@
 
  八个基本类型:     基本类型 位数 字节 默认值 取值范围     byte 8 1 0 -128 ~ 127   short 16 2 0 -32768 ~ 32767   int 32 4 0 -2147483648 ~ 2147483647   long 64 8 0l -9223372036854775808 ~ 9223372036854775807   char 16 2 &lsquo;u0000&rsquo; 0 ~ 65535   float 32 4 0f 1.4E-45 ~ 3.4028235E38   double 64 8 0d 4." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-05T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/dw7668daxw/" />
+<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
 <title>java类型转换,构造,重要语法 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -829,7 +828,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3666,7 +3683,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3679,7 +3696,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3702,6 +3732,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5436,7 +5479,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5467,12 +5510,18 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#final">final</a></li>
-    <li><a href="#static">static</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#重要接口的妙处">重要接口的妙处</a></li>
+    <li><a href="#基本类型">基本类型</a></li>
+    <li><a href="#修饰符">修饰符</a>
+      <ul>
+        <li><a href="#final">final</a></li>
+        <li><a href="#static">static</a></li>
+      </ul>
+    </li>
+    <li><a href="#接口">接口</a>
+      <ul>
+        <li><a href="#重要接口的妙处">重要接口的妙处</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5966,12 +6015,18 @@ private 方法隐式地被指定为 final，如果在子类中定义的方法和
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#final">final</a></li>
-    <li><a href="#static">static</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#重要接口的妙处">重要接口的妙处</a></li>
+    <li><a href="#基本类型">基本类型</a></li>
+    <li><a href="#修饰符">修饰符</a>
+      <ul>
+        <li><a href="#final">final</a></li>
+        <li><a href="#static">static</a></li>
+      </ul>
+    </li>
+    <li><a href="#接口">接口</a>
+      <ul>
+        <li><a href="#重要接口的妙处">重要接口的妙处</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

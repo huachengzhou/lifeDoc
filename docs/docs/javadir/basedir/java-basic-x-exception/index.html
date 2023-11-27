@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="异常介绍
@@ -65,15 +65,14 @@ Exception（异常）
 
  程序本身可以捕获并且可以处理的异常。Exception 这种异常又分为两类：运行时异常和编译时异常" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-05T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/" />
+<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
 <title>异常机制详解 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -879,7 +878,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3716,7 +3733,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3729,7 +3746,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3752,6 +3782,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5486,7 +5529,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5517,10 +5560,26 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#try-catch">try-catch</a></li>
-    <li><a href="#try-catch-finally">try-catch-finally</a></li>
-    <li><a href="#try-finally">try-finally</a></li>
-    <li><a href="#try-with-resource">try-with-resource</a></li>
+    <li><a href="#exception异常">Exception（异常）</a></li>
+    <li><a href="#可查的异常checked-exceptions和不可查的异常unchecked-exceptions">可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#异常关键字">异常关键字</a></li>
+    <li><a href="#异常的申明throws">异常的申明(throws)</a></li>
+    <li><a href="#异常的抛出throw">异常的抛出(throw)</a></li>
+    <li><a href="#异常的自定义">异常的自定义</a></li>
+    <li><a href="#异常的捕获">异常的捕获</a>
+      <ul>
+        <li><a href="#try-catch">try-catch</a></li>
+        <li><a href="#try-catch-finally">try-catch-finally</a></li>
+        <li><a href="#try-finally">try-finally</a></li>
+        <li><a href="#try-with-resource">try-with-resource</a></li>
+      </ul>
+    </li>
+    <li><a href="#异常基础总结">异常基础总结</a></li>
+    <li><a href="#常用的异常">常用的异常</a></li>
+    <li><a href="#异常实践">异常实践</a></li>
   </ul>
 </nav>
 
@@ -6211,10 +6270,26 @@ JAVA 7 提供了更优雅的方式来实现资源的自动释放，自动释放�
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#try-catch">try-catch</a></li>
-    <li><a href="#try-catch-finally">try-catch-finally</a></li>
-    <li><a href="#try-finally">try-finally</a></li>
-    <li><a href="#try-with-resource">try-with-resource</a></li>
+    <li><a href="#exception异常">Exception（异常）</a></li>
+    <li><a href="#可查的异常checked-exceptions和不可查的异常unchecked-exceptions">可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#异常关键字">异常关键字</a></li>
+    <li><a href="#异常的申明throws">异常的申明(throws)</a></li>
+    <li><a href="#异常的抛出throw">异常的抛出(throw)</a></li>
+    <li><a href="#异常的自定义">异常的自定义</a></li>
+    <li><a href="#异常的捕获">异常的捕获</a>
+      <ul>
+        <li><a href="#try-catch">try-catch</a></li>
+        <li><a href="#try-catch-finally">try-catch-finally</a></li>
+        <li><a href="#try-finally">try-finally</a></li>
+        <li><a href="#try-with-resource">try-with-resource</a></li>
+      </ul>
+    </li>
+    <li><a href="#异常基础总结">异常基础总结</a></li>
+    <li><a href="#常用的异常">常用的异常</a></li>
+    <li><a href="#异常实践">异常实践</a></li>
   </ul>
 </nav>
 

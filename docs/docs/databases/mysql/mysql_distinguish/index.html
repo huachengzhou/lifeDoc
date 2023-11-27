@@ -2,10 +2,13 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="前言
+<meta name="description" content="介绍
+#
+
+前言
 #
 
 在互联网还未崛起的时代,我们的传统应用都有这样一个特点：访问量、数据量都比较小，单库单表都完全可以支撑整个业务。
@@ -43,7 +46,10 @@ MySQL单表的数据量是500w-1000w之间性能比较好,超过1000w性能也�
  分布式事务问题  如果我们做了垂直分库或者水平分库以后,就必然会涉及到跨库执行SQL的问题,这样就引发了互联网界的老大难问题-&quot;分布式事务&quot;。那要如何解决这个问题呢？
 1.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MySQL分库分表原理" />
-<meta property="og:description" content="前言
+<meta property="og:description" content="介绍
+#
+
+前言
 #
 
 在互联网还未崛起的时代,我们的传统应用都有这样一个特点：访问量、数据量都比较小，单库单表都完全可以支撑整个业务。
@@ -81,15 +87,14 @@ MySQL单表的数据量是500w-1000w之间性能比较好,超过1000w性能也�
  分布式事务问题  如果我们做了垂直分库或者水平分库以后,就必然会涉及到跨库执行SQL的问题,这样就引发了互联网界的老大难问题-&quot;分布式事务&quot;。那要如何解决这个问题呢？
 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_distinguish/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_distinguish/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>MySQL分库分表原理 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -895,7 +900,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3732,7 +3755,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3745,7 +3768,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3768,6 +3804,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5502,7 +5551,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5533,13 +5582,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#前言">前言</a></li>
-    <li><a href="#垂直拆分-or-水平拆分">垂直拆分 or 水平拆分？</a></li>
-    <li><a href="#垂直拆分">垂直拆分</a></li>
-    <li><a href="#水平拆分">水平拆分</a></li>
-    <li><a href="#几种常用的分库分表的策略">几种常用的分库分表的策略</a></li>
-    <li><a href="#分库分表后引入的问题">分库分表后引入的问题</a></li>
-    <li><a href="#使用分库分表中间件">使用分库分表中间件</a></li>
+    <li><a href="#介绍">介绍</a>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#垂直拆分-or-水平拆分">垂直拆分 or 水平拆分？</a></li>
+        <li><a href="#垂直拆分">垂直拆分</a></li>
+        <li><a href="#水平拆分">水平拆分</a></li>
+        <li><a href="#几种常用的分库分表的策略">几种常用的分库分表的策略</a></li>
+        <li><a href="#分库分表后引入的问题">分库分表后引入的问题</a></li>
+        <li><a href="#使用分库分表中间件">使用分库分表中间件</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5564,7 +5617,11 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h3 id="前言">
+  <article class="markdown"><h2 id="介绍">
+  介绍
+  <a class="anchor" href="#%e4%bb%8b%e7%bb%8d">#</a>
+</h2>
+<h3 id="前言">
   前言
   <a class="anchor" href="#%e5%89%8d%e8%a8%80">#</a>
 </h3>
@@ -5923,13 +5980,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#前言">前言</a></li>
-    <li><a href="#垂直拆分-or-水平拆分">垂直拆分 or 水平拆分？</a></li>
-    <li><a href="#垂直拆分">垂直拆分</a></li>
-    <li><a href="#水平拆分">水平拆分</a></li>
-    <li><a href="#几种常用的分库分表的策略">几种常用的分库分表的策略</a></li>
-    <li><a href="#分库分表后引入的问题">分库分表后引入的问题</a></li>
-    <li><a href="#使用分库分表中间件">使用分库分表中间件</a></li>
+    <li><a href="#介绍">介绍</a>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#垂直拆分-or-水平拆分">垂直拆分 or 水平拆分？</a></li>
+        <li><a href="#垂直拆分">垂直拆分</a></li>
+        <li><a href="#水平拆分">水平拆分</a></li>
+        <li><a href="#几种常用的分库分表的策略">几种常用的分库分表的策略</a></li>
+        <li><a href="#分库分表后引入的问题">分库分表后引入的问题</a></li>
+        <li><a href="#使用分库分表中间件">使用分库分表中间件</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

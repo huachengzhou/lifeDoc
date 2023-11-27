@@ -1,10 +1,13 @@
+
 ---
 title: "mysql学习笔记"
 date: 2021-01-17T15:26:15Z
 draft: false
 weight: 2
 ---
-# mysql学习笔记
+
+
+## mysql学习笔记
 
 
 ### [windows下 Mysql安装](mysql_install)

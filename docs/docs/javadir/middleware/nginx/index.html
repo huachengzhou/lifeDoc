@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="一、Nginx 简介
@@ -51,15 +51,14 @@ Nginx (engine x) 是一款轻量级的 Web 服务器 、反向代理服务器�
 也就是通过部署多台服务器来解决访问人数限制的问题；淘宝网站中大部分功能也是直接使用 nginx 进行反向代理实现的，并且通过封装 nginx 和其他的组件之后起了个高大上的名字： Tengine
 然后我们一起看个图： 上图表示的是全国各地的用户在淘宝客户端发出请求，经过了 Nginx 反向代理服务器，nginx 服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-10T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/middleware/nginx/" />
+<meta property="article:published_time" content="2022-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-10T00:00:00+00:00" />
 <title>Nginx 学习与使用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -865,7 +864,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3702,7 +3719,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3715,7 +3732,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3738,6 +3768,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5472,7 +5515,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5503,26 +5546,36 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#前辈总结">前辈总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#nginx-支持的负载均衡调度算法方式如下">nginx 支持的负载均衡调度算法方式如下：</a></li>
-    <li><a href="#nginx-另外一种实现负载均衡的方式">Nginx 另外一种实现负载均衡的方式</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#http-反向代理">Http 反向代理</a></li>
-    <li><a href="#https-反向代理">Https 反向代理</a></li>
-    <li><a href="#负载均衡">负载均衡</a></li>
-    <li><a href="#网站有多个-webapp-的配置">网站有多个 webapp 的配置</a></li>
-    <li><a href="#静态站点">静态站点</a></li>
-    <li><a href="#搭建文件服务器">搭建文件服务器</a></li>
-    <li><a href="#解决跨域">解决跨域</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#反向代理">反向代理</a></li>
+    <li><a href="#一nginx-简介">一、Nginx 简介</a>
+      <ul>
+        <li><a href="#前辈总结">前辈总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#二反向代理">二、反向代理</a></li>
+    <li><a href="#三正向代理">三、正向代理</a></li>
+    <li><a href="#四nginx-负载均衡">四、Nginx 负载均衡</a>
+      <ul>
+        <li><a href="#nginx-支持的负载均衡调度算法方式如下">nginx 支持的负载均衡调度算法方式如下：</a></li>
+        <li><a href="#nginx-另外一种实现负载均衡的方式">Nginx 另外一种实现负载均衡的方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#五nginx命令">五、Nginx命令</a></li>
+    <li><a href="#六nginx-实战">六、Nginx 实战</a>
+      <ul>
+        <li><a href="#http-反向代理">Http 反向代理</a></li>
+        <li><a href="#https-反向代理">Https 反向代理</a></li>
+        <li><a href="#负载均衡">负载均衡</a></li>
+        <li><a href="#网站有多个-webapp-的配置">网站有多个 webapp 的配置</a></li>
+        <li><a href="#静态站点">静态站点</a></li>
+        <li><a href="#搭建文件服务器">搭建文件服务器</a></li>
+        <li><a href="#解决跨域">解决跨域</a></li>
+      </ul>
+    </li>
+    <li><a href="#七其他">七:其他</a>
+      <ul>
+        <li><a href="#反向代理">反向代理</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -6456,26 +6509,36 @@ if ($request_method = 'POST') {
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#前辈总结">前辈总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#nginx-支持的负载均衡调度算法方式如下">nginx 支持的负载均衡调度算法方式如下：</a></li>
-    <li><a href="#nginx-另外一种实现负载均衡的方式">Nginx 另外一种实现负载均衡的方式</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#http-反向代理">Http 反向代理</a></li>
-    <li><a href="#https-反向代理">Https 反向代理</a></li>
-    <li><a href="#负载均衡">负载均衡</a></li>
-    <li><a href="#网站有多个-webapp-的配置">网站有多个 webapp 的配置</a></li>
-    <li><a href="#静态站点">静态站点</a></li>
-    <li><a href="#搭建文件服务器">搭建文件服务器</a></li>
-    <li><a href="#解决跨域">解决跨域</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#反向代理">反向代理</a></li>
+    <li><a href="#一nginx-简介">一、Nginx 简介</a>
+      <ul>
+        <li><a href="#前辈总结">前辈总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#二反向代理">二、反向代理</a></li>
+    <li><a href="#三正向代理">三、正向代理</a></li>
+    <li><a href="#四nginx-负载均衡">四、Nginx 负载均衡</a>
+      <ul>
+        <li><a href="#nginx-支持的负载均衡调度算法方式如下">nginx 支持的负载均衡调度算法方式如下：</a></li>
+        <li><a href="#nginx-另外一种实现负载均衡的方式">Nginx 另外一种实现负载均衡的方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#五nginx命令">五、Nginx命令</a></li>
+    <li><a href="#六nginx-实战">六、Nginx 实战</a>
+      <ul>
+        <li><a href="#http-反向代理">Http 反向代理</a></li>
+        <li><a href="#https-反向代理">Https 反向代理</a></li>
+        <li><a href="#负载均衡">负载均衡</a></li>
+        <li><a href="#网站有多个-webapp-的配置">网站有多个 webapp 的配置</a></li>
+        <li><a href="#静态站点">静态站点</a></li>
+        <li><a href="#搭建文件服务器">搭建文件服务器</a></li>
+        <li><a href="#解决跨域">解决跨域</a></li>
+      </ul>
+    </li>
+    <li><a href="#七其他">七:其他</a>
+      <ul>
+        <li><a href="#反向代理">反向代理</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

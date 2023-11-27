@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="（十五）webpack
@@ -69,15 +69,14 @@ presets:[&#39;es2015&#39;]
 
  webpack依赖node环境。 node环境依赖众多包，所以需要npm，npm（node packages manager）node包管理工具 nvm是node管理工具可以自由切换node环境版本  全局安装webpack" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-06-17T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-06-17T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/webpack/" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00+00:00" />
 <title>webpack  | 所悟所想</title>
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -883,7 +882,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3720,7 +3737,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3733,7 +3750,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3756,6 +3786,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5490,7 +5533,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5521,33 +5564,43 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1511什么是webpack">15.1.1	什么是webpack</a></li>
-    <li><a href="#1512webpack的安装">15.1.2	webpack的安装</a></li>
-    <li><a href="#1513----起步">15.1.3    起步</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1521基本配置">15.2.1	基本配置</a></li>
-    <li><a href="#1522全局安装和局部安装">15.2.2	全局安装和局部安装</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1531什么是loader">15.3.1	什么是loader</a></li>
-    <li><a href="#1532css文件处理">15.3.2	CSS文件处理</a></li>
-    <li><a href="#1533less文件处理">15.3.3	less文件处理</a></li>
-    <li><a href="#1534图片文件的处理">15.3.4	图片文件的处理</a></li>
-    <li><a href="#1535es6语法处理">15.3.5	ES6语法处理</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1541简单安装使用vue">15.4.1	简单安装使用vue</a></li>
-    <li><a href="#1542如何分步抽取实现vue模块">15.4.2	如何分步抽取实现vue模块</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1551添加版权的plugin">15.5.1	添加版权的Plugin</a></li>
-    <li><a href="#1552打包html的plugin">15.5.2	打包html的plugin</a></li>
-    <li><a href="#1553压缩打包代码插件">15.5.3	压缩打包代码插件</a></li>
+    <li><a href="#151webpack起步">15.1	webpack起步</a>
+      <ul>
+        <li><a href="#1511什么是webpack">15.1.1	什么是webpack</a></li>
+        <li><a href="#1512webpack的安装">15.1.2	webpack的安装</a></li>
+        <li><a href="#1513----起步">15.1.3    起步</a></li>
+      </ul>
+    </li>
+    <li><a href="#152webpack的配置">15.2	webpack的配置</a>
+      <ul>
+        <li><a href="#1521基本配置">15.2.1	基本配置</a></li>
+        <li><a href="#1522全局安装和局部安装">15.2.2	全局安装和局部安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#153webpack的loader">15.3	webpack的loader</a>
+      <ul>
+        <li><a href="#1531什么是loader">15.3.1	什么是loader</a></li>
+        <li><a href="#1532css文件处理">15.3.2	CSS文件处理</a></li>
+        <li><a href="#1533less文件处理">15.3.3	less文件处理</a></li>
+        <li><a href="#1534图片文件的处理">15.3.4	图片文件的处理</a></li>
+        <li><a href="#1535es6语法处理">15.3.5	ES6语法处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#154webpack的vue">15.4	webpack的vue</a>
+      <ul>
+        <li><a href="#1541简单安装使用vue">15.4.1	简单安装使用vue</a></li>
+        <li><a href="#1542如何分步抽取实现vue模块">15.4.2	如何分步抽取实现vue模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#155webpack的plugin">15.5	webpack的plugin</a>
+      <ul>
+        <li><a href="#1551添加版权的plugin">15.5.1	添加版权的Plugin</a></li>
+        <li><a href="#1552打包html的plugin">15.5.2	打包html的plugin</a></li>
+        <li><a href="#1553压缩打包代码插件">15.5.3	压缩打包代码插件</a></li>
+      </ul>
+    </li>
+    <li><a href="#156webpack搭建本地服务器">15.6	webpack搭建本地服务器</a></li>
+    <li><a href="#157webpack的配置文件分离">15.7	webpack的配置文件分离</a></li>
   </ul>
 </nav>
 
@@ -5706,7 +5759,7 @@ npm install webpack@3.6.0 -g
 <p>bundle.js</p>
 </blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//2.新建入口js文件main.js 导入mathUtil.js文件，并调用
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">add</span>,<span style="color:#a6e22e">mul</span>} <span style="color:#f92672">=</span> <span style="color:#ae81ff">__</span><span style="color:#a6e22e">webpack_require__</span>(<span style="color:#ae81ff">1</span>)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">add</span>,<span style="color:#a6e22e">mul</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">__webpack_require__</span>(<span style="color:#ae81ff">1</span>)
 
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">20</span>))
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mul</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">10</span>))
@@ -5793,7 +5846,7 @@ npm install webpack@3.6.0 -g
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./src/main.js&#39;</span>,<span style="color:#75715e">//入口文件
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span>{
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span><span style="color:#75715e">//打包后的文件名
 </span><span style="color:#75715e"></span>  }
 }
@@ -6007,7 +6060,7 @@ body{
 <p><strong>5.如何使用file-loader，指定路径</strong></p>
 <p>修改output属性</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span>{
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span>,<span style="color:#75715e">//打包后的文件名
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;dist/&#39;</span>
   },
@@ -6445,7 +6498,7 @@ body{
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./src/main.js&#39;</span>,<span style="color:#75715e">//入口文件
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span>{
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span>,<span style="color:#75715e">//打包后的文件名
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// publicPath: &#39;dist/&#39;
 </span><span style="color:#75715e"></span>  },
@@ -6590,7 +6643,7 @@ body{
 <p><img src="./images/15-32.png" alt="" /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./src/main.js&#39;</span>,<span style="color:#75715e">//入口文件
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span>{
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span>,<span style="color:#75715e">//打包后的文件名
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// publicPath: &#39;dist/&#39;
 </span><span style="color:#75715e"></span>  }
@@ -6599,7 +6652,7 @@ body{
 </blockquote>
 <p>此时修改output属性：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">output</span><span style="color:#f92672">:</span>{
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">&#39;../dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;../dist&#39;</span>),<span style="color:#75715e">//动态获取打包后的文件路径,path.resolve拼接路径
 </span><span style="color:#75715e"></span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bundle.js&#39;</span>,<span style="color:#75715e">//打包后的文件名
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// publicPath: &#39;dist/&#39;
 </span><span style="color:#75715e"></span>  }
@@ -6849,33 +6902,43 @@ body{
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1511什么是webpack">15.1.1	什么是webpack</a></li>
-    <li><a href="#1512webpack的安装">15.1.2	webpack的安装</a></li>
-    <li><a href="#1513----起步">15.1.3    起步</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1521基本配置">15.2.1	基本配置</a></li>
-    <li><a href="#1522全局安装和局部安装">15.2.2	全局安装和局部安装</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1531什么是loader">15.3.1	什么是loader</a></li>
-    <li><a href="#1532css文件处理">15.3.2	CSS文件处理</a></li>
-    <li><a href="#1533less文件处理">15.3.3	less文件处理</a></li>
-    <li><a href="#1534图片文件的处理">15.3.4	图片文件的处理</a></li>
-    <li><a href="#1535es6语法处理">15.3.5	ES6语法处理</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1541简单安装使用vue">15.4.1	简单安装使用vue</a></li>
-    <li><a href="#1542如何分步抽取实现vue模块">15.4.2	如何分步抽取实现vue模块</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1551添加版权的plugin">15.5.1	添加版权的Plugin</a></li>
-    <li><a href="#1552打包html的plugin">15.5.2	打包html的plugin</a></li>
-    <li><a href="#1553压缩打包代码插件">15.5.3	压缩打包代码插件</a></li>
+    <li><a href="#151webpack起步">15.1	webpack起步</a>
+      <ul>
+        <li><a href="#1511什么是webpack">15.1.1	什么是webpack</a></li>
+        <li><a href="#1512webpack的安装">15.1.2	webpack的安装</a></li>
+        <li><a href="#1513----起步">15.1.3    起步</a></li>
+      </ul>
+    </li>
+    <li><a href="#152webpack的配置">15.2	webpack的配置</a>
+      <ul>
+        <li><a href="#1521基本配置">15.2.1	基本配置</a></li>
+        <li><a href="#1522全局安装和局部安装">15.2.2	全局安装和局部安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#153webpack的loader">15.3	webpack的loader</a>
+      <ul>
+        <li><a href="#1531什么是loader">15.3.1	什么是loader</a></li>
+        <li><a href="#1532css文件处理">15.3.2	CSS文件处理</a></li>
+        <li><a href="#1533less文件处理">15.3.3	less文件处理</a></li>
+        <li><a href="#1534图片文件的处理">15.3.4	图片文件的处理</a></li>
+        <li><a href="#1535es6语法处理">15.3.5	ES6语法处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#154webpack的vue">15.4	webpack的vue</a>
+      <ul>
+        <li><a href="#1541简单安装使用vue">15.4.1	简单安装使用vue</a></li>
+        <li><a href="#1542如何分步抽取实现vue模块">15.4.2	如何分步抽取实现vue模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#155webpack的plugin">15.5	webpack的plugin</a>
+      <ul>
+        <li><a href="#1551添加版权的plugin">15.5.1	添加版权的Plugin</a></li>
+        <li><a href="#1552打包html的plugin">15.5.2	打包html的plugin</a></li>
+        <li><a href="#1553压缩打包代码插件">15.5.3	压缩打包代码插件</a></li>
+      </ul>
+    </li>
+    <li><a href="#156webpack搭建本地服务器">15.6	webpack搭建本地服务器</a></li>
+    <li><a href="#157webpack的配置文件分离">15.7	webpack的配置文件分离</a></li>
   </ul>
 </nav>
 

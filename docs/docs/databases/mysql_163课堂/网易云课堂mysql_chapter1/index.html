@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL数据库基础
@@ -53,15 +53,14 @@ MySQL：The world&rsquo;s most popular open source database">
 
 MySQL：The world&rsquo;s most popular open source database" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter1/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>MySQL数据库基础 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -867,7 +866,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3704,7 +3721,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3717,7 +3734,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3740,6 +3770,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5474,7 +5517,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5505,50 +5548,58 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是数据库">什么是数据库</a></li>
-    <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
-    <li><a href="#数据库分类">数据库分类</a></li>
-    <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
-    <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
-    <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
-    <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
-    <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
-    <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
-    <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
-    <li><a href="#使用socket连接">使用Socket连接</a></li>
-    <li><a href="#远程连接">远程连接</a></li>
-    <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
-    <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
-    <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
-    <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
-    <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
-    <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
-    <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#关系型数据库">关系型数据库</a></li>
-    <li><a href="#sql是什么">SQL是什么</a></li>
-    <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
-    <li><a href="#sql语句的分类">SQL语句的分类</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么是dba">什么是DBA</a></li>
-    <li><a href="#为什么需要dba">为什么需要DBA</a></li>
-    <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
-    <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
-    <li><a href="#dba如何发展">DBA如何发展</a></li>
-    <li><a href="#小结">小结</a></li>
+    <li><a href="#11-认识mysql">1.1-认识MySQL</a>
+      <ul>
+        <li><a href="#什么是数据库">什么是数据库</a></li>
+        <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
+        <li><a href="#数据库分类">数据库分类</a></li>
+        <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
+        <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
+        <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
+        <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-轻松安装mysql">1.2-轻松安装MySQL</a>
+      <ul>
+        <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-mysql数据库连接">1.3-MySQL数据库连接</a>
+      <ul>
+        <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
+        <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
+        <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
+        <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
+        <li><a href="#使用socket连接">使用Socket连接</a></li>
+        <li><a href="#远程连接">远程连接</a></li>
+        <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
+        <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
+        <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
+        <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
+        <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
+        <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
+        <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-sql语言入门">1.4-SQL语言入门</a>
+      <ul>
+        <li><a href="#关系型数据库">关系型数据库</a></li>
+        <li><a href="#sql是什么">SQL是什么</a></li>
+        <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
+        <li><a href="#sql语句的分类">SQL语句的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-认识dba">1.5-认识DBA</a>
+      <ul>
+        <li><a href="#什么是dba">什么是DBA</a></li>
+        <li><a href="#为什么需要dba">为什么需要DBA</a></li>
+        <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
+        <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
+        <li><a href="#dba如何发展">DBA如何发展</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -6380,50 +6431,58 @@ use test;
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是数据库">什么是数据库</a></li>
-    <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
-    <li><a href="#数据库分类">数据库分类</a></li>
-    <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
-    <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
-    <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
-    <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
-    <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
-    <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
-    <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
-    <li><a href="#使用socket连接">使用Socket连接</a></li>
-    <li><a href="#远程连接">远程连接</a></li>
-    <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
-    <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
-    <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
-    <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
-    <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
-    <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
-    <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#关系型数据库">关系型数据库</a></li>
-    <li><a href="#sql是什么">SQL是什么</a></li>
-    <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
-    <li><a href="#sql语句的分类">SQL语句的分类</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#什么是dba">什么是DBA</a></li>
-    <li><a href="#为什么需要dba">为什么需要DBA</a></li>
-    <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
-    <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
-    <li><a href="#dba如何发展">DBA如何发展</a></li>
-    <li><a href="#小结">小结</a></li>
+    <li><a href="#11-认识mysql">1.1-认识MySQL</a>
+      <ul>
+        <li><a href="#什么是数据库">什么是数据库</a></li>
+        <li><a href="#为什么要使用数据库">为什么要使用数据库</a></li>
+        <li><a href="#数据库分类">数据库分类</a></li>
+        <li><a href="#为什么学习mysql">为什么学习MySQL</a></li>
+        <li><a href="#谁需要学习mysql">谁需要学习MySQL</a></li>
+        <li><a href="#学习目标---应用开发者">学习目标 - 应用开发者</a></li>
+        <li><a href="#学习目标---dba">学习目标 - DBA</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-轻松安装mysql">1.2-轻松安装MySQL</a>
+      <ul>
+        <li><a href="#轻松部署mysql">轻松部署MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-mysql数据库连接">1.3-MySQL数据库连接</a>
+      <ul>
+        <li><a href="#工作中常用到的三种连接方式">工作中常用到的三种连接方式</a></li>
+        <li><a href="#使用应用程序连接mysql">使用应用程序连接MySQL</a></li>
+        <li><a href="#使用命令行连接mysql">使用命令行连接MySQL</a></li>
+        <li><a href="#命令行连接mysql的两种方式">命令行连接MySQL的两种方式</a></li>
+        <li><a href="#使用socket连接">使用Socket连接</a></li>
+        <li><a href="#远程连接">远程连接</a></li>
+        <li><a href="#本地连接vs远程连接">本地连接VS远程连接</a></li>
+        <li><a href="#在windows下用命令行连接mysql">在Windows下用命令行连接MySQL</a></li>
+        <li><a href="#连接进入之后可以做什么">连接进入之后可以做什么</a></li>
+        <li><a href="#使用命令行连接mysql的注意事项">使用命令行连接MySQL的注意事项</a></li>
+        <li><a href="#命令行连接mysql的特点">命令行连接MySQL的特点</a></li>
+        <li><a href="#使用图形客户端连接mysql">使用图形客户端连接MySQL</a></li>
+        <li><a href="#图形gui工具的优势">图形GUI工具的优势</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#14-sql语言入门">1.4-SQL语言入门</a>
+      <ul>
+        <li><a href="#关系型数据库">关系型数据库</a></li>
+        <li><a href="#sql是什么">SQL是什么</a></li>
+        <li><a href="#sql语言与数据库">SQL语言与数据库</a></li>
+        <li><a href="#sql语句的分类">SQL语句的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#15-认识dba">1.5-认识DBA</a>
+      <ul>
+        <li><a href="#什么是dba">什么是DBA</a></li>
+        <li><a href="#为什么需要dba">为什么需要DBA</a></li>
+        <li><a href="#dba要做哪些工作">DBA要做哪些工作</a></li>
+        <li><a href="#dba需要哪些技能">DBA需要哪些技能</a></li>
+        <li><a href="#dba如何发展">DBA如何发展</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

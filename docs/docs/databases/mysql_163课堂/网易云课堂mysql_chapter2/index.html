@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL数据库对象与应用
@@ -39,15 +39,14 @@ Number不止一种
 
 int(11) VS int(21) 存储空间，还是存储范围有区别？" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql_163%E8%AF%BE%E5%A0%82/%E7%BD%91%E6%98%93%E4%BA%91%E8%AF%BE%E5%A0%82mysql_chapter2/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>MySQL数据库对象与应用 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -853,7 +852,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3690,7 +3707,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3703,7 +3720,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3726,6 +3756,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5460,7 +5503,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5491,157 +5534,172 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#number不止一种">Number不止一种</a></li>
-    <li><a href="#整形">整形</a></li>
-    <li><a href="#老生常谈的问题">老生常谈的问题</a></li>
-    <li><a href="#浮点型">浮点型</a></li>
-    <li><a href="#精度丢失问题">精度丢失问题</a></li>
-    <li><a href="#定点数-更精确的数字类型">定点数-更精确的数字类型</a></li>
-    <li><a href="#性别省份信息">性别、省份信息</a></li>
-    <li><a href="#经验之谈">经验之谈</a></li>
-    <li><a href="#存储用户名的属性">存储用户名的属性</a></li>
-    <li><a href="#cahr与varchar">CAHR与VARCHAR</a></li>
-    <li><a href="#字符与字节的区别">字符与字节的区别</a></li>
-    <li><a href="#emoji表情">emoji表情</a></li>
-    <li><a href="#text与char和varchar的区别">TEXT与CHAR和VARCHAR的区别</a></li>
-    <li><a href="#存储头像">存储头像</a></li>
-    <li><a href="#经验之谈-1">经验之谈</a></li>
-    <li><a href="#存储生日信息">存储生日信息</a></li>
-    <li><a href="#时间类型的区别在哪里">时间类型的区别在哪里</a></li>
-    <li><a href="#timestamp-vs-datetime">TIMESTAMP VS DATETIME</a></li>
-    <li><a href="#字段类型和时区的关系">字段类型和时区的关系</a></li>
-    <li><a href="#bigint如何存储时间类型">BIGINT如何存储时间类型</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql常见的数据对象有哪些">MySQL常见的数据对象有哪些</a></li>
-    <li><a href="#库表行层级关系">库、表、行层级关系</a></li>
-    <li><a href="#多database用途">多DataBase用途</a></li>
-    <li><a href="#表上有哪些常用的数据对象">表上有哪些常用的数据对象</a></li>
-    <li><a href="#什么是数据库索引">什么是数据库索引</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#约束">约束</a></li>
-    <li><a href="#创建唯一约束">创建唯一约束</a></li>
-    <li><a href="#唯一约束">唯一约束</a></li>
-    <li><a href="#添加唯一约束">添加唯一约束</a></li>
-    <li><a href="#外键约束">外键约束</a></li>
-    <li><a href="#创建外键约束">创建外键约束</a></li>
-    <li><a href="#view">View</a></li>
-    <li><a href="#view的作用">View的作用</a></li>
-    <li><a href="#创建view">创建View</a></li>
-    <li><a href="#trigger">Trigger</a></li>
-    <li><a href="#除此之外还有哪些">除此之外还有哪些</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#连接mysql的必要条件">连接MySQL的必要条件</a></li>
-    <li><a href="#数据有哪些权限">数据有哪些权限</a></li>
-    <li><a href="#权限粒度">权限粒度</a></li>
-    <li><a href="#mysql赋权操作">MySQL赋权操作</a></li>
-    <li><a href="#如何新建一个用户并赋权">如何新建一个用户并赋权</a></li>
-    <li><a href="#其他方法">其他方法</a></li>
-    <li><a href="#更简单的办法">更简单的办法</a></li>
-    <li><a href="#查看用户的权限信息">查看用户的权限信息</a></li>
-    <li><a href="#如何更改用户的权限">如何更改用户的权限</a></li>
-    <li><a href="#如何更改用户密码">如何更改用户密码</a></li>
-    <li><a href="#删除用户">删除用户</a></li>
-    <li><a href="#with-grant-option">With Grant Option</a></li>
-    <li><a href="#mysql权限信息存储结构">MySQL权限信息存储结构</a></li>
-    <li><a href="#有哪些权限相关的表">有哪些权限相关的表</a></li>
-    <li><a href="#权限验证流程">权限验证流程</a></li>
-    <li><a href="#小结">小结</a></li>
-    <li><a href="#mysql权限上有哪些问题">MySQL权限上有哪些问题</a></li>
-    <li><a href="#mysql_secure_installation">mysql_secure_installation</a></li>
-    <li><a href="#小结-1">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#何为表结构设计">何为表结构设计</a></li>
-    <li><a href="#设计表的时候需要注意哪些">设计表的时候需要注意哪些</a></li>
-    <li><a href="#收集表属性">收集表属性</a></li>
-    <li><a href="#理解表的功能特点数据用途">理解表的功能特点——数据用途</a></li>
-    <li><a href="#数据类型命名规范">数据类型——命名规范</a></li>
-    <li><a href="#字段设计规范">字段设计规范</a></li>
-    <li><a href="#用户赋权">用户赋权</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#说明">说明</a></li>
-    <li><a href="#sql进阶语法order-by">SQL进阶语法——order by</a></li>
-    <li><a href="#sql进阶语法distinct">SQL进阶语法——distinct</a></li>
-    <li><a href="#sql进阶语法group-by">SQL进阶语法——group by</a></li>
-    <li><a href="#sql进阶语法group-by-having">SQL进阶语法——group by having</a></li>
-    <li><a href="#sql进阶语法-limit-offset">SQL进阶语法-limit, offset</a></li>
-    <li><a href="#case-when">case when</a></li>
-    <li><a href="#select相关进阶语法">select相关进阶语法</a></li>
-    <li><a href="#连接-join">连接-Join</a></li>
-    <li><a href="#子查询">子查询</a></li>
-    <li><a href="#连接--left-join">连接- left Join</a></li>
-    <li><a href="#sql进阶语法-union">SQL进阶语法-union</a></li>
-    <li><a href="#dml进阶语法">DML进阶语法</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#聚合函数">聚合函数</a></li>
-    <li><a href="#使用聚合函数做数据库行列转换">使用聚合函数做数据库行列转换</a></li>
-    <li><a href="#预定义函数">预定义函数</a></li>
-    <li><a href="#预定义函数-字符串函数">预定义函数-字符串函数</a></li>
-    <li><a href="#预定义函数-时间处理函数">预定义函数-时间处理函数</a></li>
-    <li><a href="#预定义函数-数字处理函数">预定义函数-数字处理函数</a></li>
-    <li><a href="#算数逻辑运算">算数、逻辑运算</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#触发器">触发器</a></li>
-    <li><a href="#触发器-基本语法">触发器-基本语法</a></li>
-    <li><a href="#触发器-实例">触发器-实例</a></li>
-    <li><a href="#注意事项">注意事项</a></li>
-    <li><a href="#存储过程">存储过程</a></li>
-    <li><a href="#存储过程-基本语法">存储过程-基本语法</a></li>
-    <li><a href="#存储过程-实例">存储过程-实例</a></li>
-    <li><a href="#存储过程-流控制语句">存储过程-流控制语句</a></li>
-    <li><a href="#存储过程-调用">存储过程-调用</a></li>
-    <li><a href="#自定义函数">自定义函数</a></li>
-    <li><a href="#自定义函数-基本语法">自定义函数-基本语法</a></li>
-    <li><a href="#自定义函数-实例">自定义函数-实例</a></li>
-    <li><a href="#自定义函数-调用">自定义函数-调用</a></li>
-    <li><a href="#小结-2">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#字符集基础">字符集基础</a></li>
-    <li><a href="#字符集-分类">字符集-分类</a></li>
-    <li><a href="#mysql字符集">MySQL字符集</a></li>
-    <li><a href="#字符集与字符序">字符集与字符序</a></li>
-    <li><a href="#字符集设置级别">字符集设置级别</a></li>
-    <li><a href="#字符集设置级别-1">字符集设置级别</a></li>
-    <li><a href="#字符集设置级别-2">字符集设置级别</a></li>
-    <li><a href="#客户端连接与字符集">客户端连接与字符集</a></li>
-    <li><a href="#小结-3">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#程序连接mysql基本原理">程序连接MySQL基本原理</a></li>
-    <li><a href="#java代码示例">Java代码示例</a></li>
-    <li><a href="#jdbc使用技巧">JDBC使用技巧</a></li>
-    <li><a href="#statement与preparedstatement的区别">Statement与PreparedStatement的区别</a></li>
-    <li><a href="#preparedstatement背后的故事">PreparedStatement背后的故事</a></li>
-    <li><a href="#connection-statement与resultset关闭的意义">connection, Statement与ResultSet关闭的意义</a></li>
-    <li><a href="#jdbc连接参数的使用">jdbc连接参数的使用</a></li>
-    <li><a href="#resultset游标的使用">ResultSet游标的使用</a></li>
-    <li><a href="#python连接mysql">Python连接MySQL</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#dao框架">DAO框架</a></li>
-    <li><a href="#dao框架的特点">DAO框架的特点</a></li>
-    <li><a href="#mybatis简介">MyBatis简介</a></li>
-    <li><a href="#mybatis代码示例">MyBatis代码示例</a></li>
-    <li><a href="#mybatis工作流程">MyBatis工作流程</a></li>
-    <li><a href="#mybatis使用技巧">MyBatis使用技巧</a></li>
+    <li><a href="#21-mysql数据类型">2.1-MySQL数据类型</a>
+      <ul>
+        <li><a href="#number不止一种">Number不止一种</a></li>
+        <li><a href="#整形">整形</a></li>
+        <li><a href="#老生常谈的问题">老生常谈的问题</a></li>
+        <li><a href="#浮点型">浮点型</a></li>
+        <li><a href="#精度丢失问题">精度丢失问题</a></li>
+        <li><a href="#定点数-更精确的数字类型">定点数-更精确的数字类型</a></li>
+        <li><a href="#性别省份信息">性别、省份信息</a></li>
+        <li><a href="#经验之谈">经验之谈</a></li>
+        <li><a href="#存储用户名的属性">存储用户名的属性</a></li>
+        <li><a href="#cahr与varchar">CAHR与VARCHAR</a></li>
+        <li><a href="#字符与字节的区别">字符与字节的区别</a></li>
+        <li><a href="#emoji表情">emoji表情</a></li>
+        <li><a href="#text与char和varchar的区别">TEXT与CHAR和VARCHAR的区别</a></li>
+        <li><a href="#存储头像">存储头像</a></li>
+        <li><a href="#经验之谈-1">经验之谈</a></li>
+        <li><a href="#存储生日信息">存储生日信息</a></li>
+        <li><a href="#时间类型的区别在哪里">时间类型的区别在哪里</a></li>
+        <li><a href="#timestamp-vs-datetime">TIMESTAMP VS DATETIME</a></li>
+        <li><a href="#字段类型和时区的关系">字段类型和时区的关系</a></li>
+        <li><a href="#bigint如何存储时间类型">BIGINT如何存储时间类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-mysql数据对象">2.2-MySQL数据对象</a>
+      <ul>
+        <li><a href="#mysql常见的数据对象有哪些">MySQL常见的数据对象有哪些</a></li>
+        <li><a href="#库表行层级关系">库、表、行层级关系</a></li>
+        <li><a href="#多database用途">多DataBase用途</a></li>
+        <li><a href="#表上有哪些常用的数据对象">表上有哪些常用的数据对象</a></li>
+        <li><a href="#什么是数据库索引">什么是数据库索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何创建索引一">如何创建索引（一）</a></li>
+    <li><a href="#如何创建索引二">如何创建索引（二）</a>
+      <ul>
+        <li><a href="#约束">约束</a></li>
+        <li><a href="#创建唯一约束">创建唯一约束</a></li>
+        <li><a href="#唯一约束">唯一约束</a></li>
+        <li><a href="#添加唯一约束">添加唯一约束</a></li>
+        <li><a href="#外键约束">外键约束</a></li>
+        <li><a href="#创建外键约束">创建外键约束</a></li>
+        <li><a href="#view">View</a></li>
+        <li><a href="#view的作用">View的作用</a></li>
+        <li><a href="#创建view">创建View</a></li>
+        <li><a href="#trigger">Trigger</a></li>
+        <li><a href="#除此之外还有哪些">除此之外还有哪些</a></li>
+      </ul>
+    </li>
+    <li><a href="#23-mysql权限管理">2.3-MySQL权限管理</a>
+      <ul>
+        <li><a href="#连接mysql的必要条件">连接MySQL的必要条件</a></li>
+        <li><a href="#数据有哪些权限">数据有哪些权限</a></li>
+        <li><a href="#权限粒度">权限粒度</a></li>
+        <li><a href="#mysql赋权操作">MySQL赋权操作</a></li>
+        <li><a href="#如何新建一个用户并赋权">如何新建一个用户并赋权</a></li>
+        <li><a href="#其他方法">其他方法</a></li>
+        <li><a href="#更简单的办法">更简单的办法</a></li>
+        <li><a href="#查看用户的权限信息">查看用户的权限信息</a></li>
+        <li><a href="#如何更改用户的权限">如何更改用户的权限</a></li>
+        <li><a href="#如何更改用户密码">如何更改用户密码</a></li>
+        <li><a href="#删除用户">删除用户</a></li>
+        <li><a href="#with-grant-option">With Grant Option</a></li>
+        <li><a href="#mysql权限信息存储结构">MySQL权限信息存储结构</a></li>
+        <li><a href="#有哪些权限相关的表">有哪些权限相关的表</a></li>
+        <li><a href="#权限验证流程">权限验证流程</a></li>
+        <li><a href="#小结">小结</a></li>
+        <li><a href="#mysql权限上有哪些问题">MySQL权限上有哪些问题</a></li>
+        <li><a href="#mysql_secure_installation">mysql_secure_installation</a></li>
+        <li><a href="#小结-1">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#实践课数据库对象">实践课：数据库对象</a>
+      <ul>
+        <li><a href="#何为表结构设计">何为表结构设计</a></li>
+        <li><a href="#设计表的时候需要注意哪些">设计表的时候需要注意哪些</a></li>
+        <li><a href="#收集表属性">收集表属性</a></li>
+        <li><a href="#理解表的功能特点数据用途">理解表的功能特点——数据用途</a></li>
+        <li><a href="#数据类型命名规范">数据类型——命名规范</a></li>
+        <li><a href="#字段设计规范">字段设计规范</a></li>
+        <li><a href="#用户赋权">用户赋权</a></li>
+      </ul>
+    </li>
+    <li><a href="#24-sql语言进阶">2.4-SQL语言进阶</a>
+      <ul>
+        <li><a href="#说明">说明</a></li>
+        <li><a href="#sql进阶语法order-by">SQL进阶语法——order by</a></li>
+        <li><a href="#sql进阶语法distinct">SQL进阶语法——distinct</a></li>
+        <li><a href="#sql进阶语法group-by">SQL进阶语法——group by</a></li>
+        <li><a href="#sql进阶语法group-by-having">SQL进阶语法——group by having</a></li>
+        <li><a href="#sql进阶语法-limit-offset">SQL进阶语法-limit, offset</a></li>
+        <li><a href="#case-when">case when</a></li>
+        <li><a href="#select相关进阶语法">select相关进阶语法</a></li>
+        <li><a href="#连接-join">连接-Join</a></li>
+        <li><a href="#子查询">子查询</a></li>
+        <li><a href="#连接--left-join">连接- left Join</a></li>
+        <li><a href="#sql进阶语法-union">SQL进阶语法-union</a></li>
+        <li><a href="#dml进阶语法">DML进阶语法</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#25-内置函数">2.5-内置函数</a>
+      <ul>
+        <li><a href="#聚合函数">聚合函数</a></li>
+        <li><a href="#使用聚合函数做数据库行列转换">使用聚合函数做数据库行列转换</a></li>
+        <li><a href="#预定义函数">预定义函数</a></li>
+        <li><a href="#预定义函数-字符串函数">预定义函数-字符串函数</a></li>
+        <li><a href="#预定义函数-时间处理函数">预定义函数-时间处理函数</a></li>
+        <li><a href="#预定义函数-数字处理函数">预定义函数-数字处理函数</a></li>
+        <li><a href="#算数逻辑运算">算数、逻辑运算</a></li>
+      </ul>
+    </li>
+    <li><a href="#26-触发器与存储过程">2.6-触发器与存储过程</a>
+      <ul>
+        <li><a href="#触发器">触发器</a></li>
+        <li><a href="#触发器-基本语法">触发器-基本语法</a></li>
+        <li><a href="#触发器-实例">触发器-实例</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#存储过程">存储过程</a></li>
+        <li><a href="#存储过程-基本语法">存储过程-基本语法</a></li>
+        <li><a href="#存储过程-实例">存储过程-实例</a></li>
+        <li><a href="#存储过程-流控制语句">存储过程-流控制语句</a></li>
+        <li><a href="#存储过程-调用">存储过程-调用</a></li>
+        <li><a href="#自定义函数">自定义函数</a></li>
+        <li><a href="#自定义函数-基本语法">自定义函数-基本语法</a></li>
+        <li><a href="#自定义函数-实例">自定义函数-实例</a></li>
+        <li><a href="#自定义函数-调用">自定义函数-调用</a></li>
+        <li><a href="#小结-2">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#27-mysql字符集">2.7-MySQL字符集</a>
+      <ul>
+        <li><a href="#字符集基础">字符集基础</a></li>
+        <li><a href="#字符集-分类">字符集-分类</a></li>
+        <li><a href="#mysql字符集">MySQL字符集</a></li>
+        <li><a href="#字符集与字符序">字符集与字符序</a></li>
+        <li><a href="#字符集设置级别">字符集设置级别</a></li>
+        <li><a href="#字符集设置级别-1">字符集设置级别</a></li>
+        <li><a href="#字符集设置级别-2">字符集设置级别</a></li>
+        <li><a href="#客户端连接与字符集">客户端连接与字符集</a></li>
+        <li><a href="#小结-3">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#28程序连接mysql">2.8程序连接MySQL</a>
+      <ul>
+        <li><a href="#程序连接mysql基本原理">程序连接MySQL基本原理</a></li>
+        <li><a href="#java代码示例">Java代码示例</a></li>
+        <li><a href="#jdbc使用技巧">JDBC使用技巧</a></li>
+        <li><a href="#statement与preparedstatement的区别">Statement与PreparedStatement的区别</a></li>
+        <li><a href="#preparedstatement背后的故事">PreparedStatement背后的故事</a></li>
+        <li><a href="#connection-statement与resultset关闭的意义">connection, Statement与ResultSet关闭的意义</a></li>
+        <li><a href="#jdbc连接参数的使用">jdbc连接参数的使用</a></li>
+        <li><a href="#resultset游标的使用">ResultSet游标的使用</a></li>
+        <li><a href="#python连接mysql">Python连接MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#29-dao框架的使用">2.9-DAO框架的使用</a>
+      <ul>
+        <li><a href="#dao框架">DAO框架</a></li>
+        <li><a href="#dao框架的特点">DAO框架的特点</a></li>
+        <li><a href="#mybatis简介">MyBatis简介</a></li>
+        <li><a href="#mybatis代码示例">MyBatis代码示例</a></li>
+        <li><a href="#mybatis工作流程">MyBatis工作流程</a></li>
+        <li><a href="#mybatis使用技巧">MyBatis使用技巧</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -8307,157 +8365,172 @@ conn<span style="color:#f92672">.</span>close()
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#number不止一种">Number不止一种</a></li>
-    <li><a href="#整形">整形</a></li>
-    <li><a href="#老生常谈的问题">老生常谈的问题</a></li>
-    <li><a href="#浮点型">浮点型</a></li>
-    <li><a href="#精度丢失问题">精度丢失问题</a></li>
-    <li><a href="#定点数-更精确的数字类型">定点数-更精确的数字类型</a></li>
-    <li><a href="#性别省份信息">性别、省份信息</a></li>
-    <li><a href="#经验之谈">经验之谈</a></li>
-    <li><a href="#存储用户名的属性">存储用户名的属性</a></li>
-    <li><a href="#cahr与varchar">CAHR与VARCHAR</a></li>
-    <li><a href="#字符与字节的区别">字符与字节的区别</a></li>
-    <li><a href="#emoji表情">emoji表情</a></li>
-    <li><a href="#text与char和varchar的区别">TEXT与CHAR和VARCHAR的区别</a></li>
-    <li><a href="#存储头像">存储头像</a></li>
-    <li><a href="#经验之谈-1">经验之谈</a></li>
-    <li><a href="#存储生日信息">存储生日信息</a></li>
-    <li><a href="#时间类型的区别在哪里">时间类型的区别在哪里</a></li>
-    <li><a href="#timestamp-vs-datetime">TIMESTAMP VS DATETIME</a></li>
-    <li><a href="#字段类型和时区的关系">字段类型和时区的关系</a></li>
-    <li><a href="#bigint如何存储时间类型">BIGINT如何存储时间类型</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#mysql常见的数据对象有哪些">MySQL常见的数据对象有哪些</a></li>
-    <li><a href="#库表行层级关系">库、表、行层级关系</a></li>
-    <li><a href="#多database用途">多DataBase用途</a></li>
-    <li><a href="#表上有哪些常用的数据对象">表上有哪些常用的数据对象</a></li>
-    <li><a href="#什么是数据库索引">什么是数据库索引</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#约束">约束</a></li>
-    <li><a href="#创建唯一约束">创建唯一约束</a></li>
-    <li><a href="#唯一约束">唯一约束</a></li>
-    <li><a href="#添加唯一约束">添加唯一约束</a></li>
-    <li><a href="#外键约束">外键约束</a></li>
-    <li><a href="#创建外键约束">创建外键约束</a></li>
-    <li><a href="#view">View</a></li>
-    <li><a href="#view的作用">View的作用</a></li>
-    <li><a href="#创建view">创建View</a></li>
-    <li><a href="#trigger">Trigger</a></li>
-    <li><a href="#除此之外还有哪些">除此之外还有哪些</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#连接mysql的必要条件">连接MySQL的必要条件</a></li>
-    <li><a href="#数据有哪些权限">数据有哪些权限</a></li>
-    <li><a href="#权限粒度">权限粒度</a></li>
-    <li><a href="#mysql赋权操作">MySQL赋权操作</a></li>
-    <li><a href="#如何新建一个用户并赋权">如何新建一个用户并赋权</a></li>
-    <li><a href="#其他方法">其他方法</a></li>
-    <li><a href="#更简单的办法">更简单的办法</a></li>
-    <li><a href="#查看用户的权限信息">查看用户的权限信息</a></li>
-    <li><a href="#如何更改用户的权限">如何更改用户的权限</a></li>
-    <li><a href="#如何更改用户密码">如何更改用户密码</a></li>
-    <li><a href="#删除用户">删除用户</a></li>
-    <li><a href="#with-grant-option">With Grant Option</a></li>
-    <li><a href="#mysql权限信息存储结构">MySQL权限信息存储结构</a></li>
-    <li><a href="#有哪些权限相关的表">有哪些权限相关的表</a></li>
-    <li><a href="#权限验证流程">权限验证流程</a></li>
-    <li><a href="#小结">小结</a></li>
-    <li><a href="#mysql权限上有哪些问题">MySQL权限上有哪些问题</a></li>
-    <li><a href="#mysql_secure_installation">mysql_secure_installation</a></li>
-    <li><a href="#小结-1">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#何为表结构设计">何为表结构设计</a></li>
-    <li><a href="#设计表的时候需要注意哪些">设计表的时候需要注意哪些</a></li>
-    <li><a href="#收集表属性">收集表属性</a></li>
-    <li><a href="#理解表的功能特点数据用途">理解表的功能特点——数据用途</a></li>
-    <li><a href="#数据类型命名规范">数据类型——命名规范</a></li>
-    <li><a href="#字段设计规范">字段设计规范</a></li>
-    <li><a href="#用户赋权">用户赋权</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#说明">说明</a></li>
-    <li><a href="#sql进阶语法order-by">SQL进阶语法——order by</a></li>
-    <li><a href="#sql进阶语法distinct">SQL进阶语法——distinct</a></li>
-    <li><a href="#sql进阶语法group-by">SQL进阶语法——group by</a></li>
-    <li><a href="#sql进阶语法group-by-having">SQL进阶语法——group by having</a></li>
-    <li><a href="#sql进阶语法-limit-offset">SQL进阶语法-limit, offset</a></li>
-    <li><a href="#case-when">case when</a></li>
-    <li><a href="#select相关进阶语法">select相关进阶语法</a></li>
-    <li><a href="#连接-join">连接-Join</a></li>
-    <li><a href="#子查询">子查询</a></li>
-    <li><a href="#连接--left-join">连接- left Join</a></li>
-    <li><a href="#sql进阶语法-union">SQL进阶语法-union</a></li>
-    <li><a href="#dml进阶语法">DML进阶语法</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#聚合函数">聚合函数</a></li>
-    <li><a href="#使用聚合函数做数据库行列转换">使用聚合函数做数据库行列转换</a></li>
-    <li><a href="#预定义函数">预定义函数</a></li>
-    <li><a href="#预定义函数-字符串函数">预定义函数-字符串函数</a></li>
-    <li><a href="#预定义函数-时间处理函数">预定义函数-时间处理函数</a></li>
-    <li><a href="#预定义函数-数字处理函数">预定义函数-数字处理函数</a></li>
-    <li><a href="#算数逻辑运算">算数、逻辑运算</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#触发器">触发器</a></li>
-    <li><a href="#触发器-基本语法">触发器-基本语法</a></li>
-    <li><a href="#触发器-实例">触发器-实例</a></li>
-    <li><a href="#注意事项">注意事项</a></li>
-    <li><a href="#存储过程">存储过程</a></li>
-    <li><a href="#存储过程-基本语法">存储过程-基本语法</a></li>
-    <li><a href="#存储过程-实例">存储过程-实例</a></li>
-    <li><a href="#存储过程-流控制语句">存储过程-流控制语句</a></li>
-    <li><a href="#存储过程-调用">存储过程-调用</a></li>
-    <li><a href="#自定义函数">自定义函数</a></li>
-    <li><a href="#自定义函数-基本语法">自定义函数-基本语法</a></li>
-    <li><a href="#自定义函数-实例">自定义函数-实例</a></li>
-    <li><a href="#自定义函数-调用">自定义函数-调用</a></li>
-    <li><a href="#小结-2">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#字符集基础">字符集基础</a></li>
-    <li><a href="#字符集-分类">字符集-分类</a></li>
-    <li><a href="#mysql字符集">MySQL字符集</a></li>
-    <li><a href="#字符集与字符序">字符集与字符序</a></li>
-    <li><a href="#字符集设置级别">字符集设置级别</a></li>
-    <li><a href="#字符集设置级别-1">字符集设置级别</a></li>
-    <li><a href="#字符集设置级别-2">字符集设置级别</a></li>
-    <li><a href="#客户端连接与字符集">客户端连接与字符集</a></li>
-    <li><a href="#小结-3">小结</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#程序连接mysql基本原理">程序连接MySQL基本原理</a></li>
-    <li><a href="#java代码示例">Java代码示例</a></li>
-    <li><a href="#jdbc使用技巧">JDBC使用技巧</a></li>
-    <li><a href="#statement与preparedstatement的区别">Statement与PreparedStatement的区别</a></li>
-    <li><a href="#preparedstatement背后的故事">PreparedStatement背后的故事</a></li>
-    <li><a href="#connection-statement与resultset关闭的意义">connection, Statement与ResultSet关闭的意义</a></li>
-    <li><a href="#jdbc连接参数的使用">jdbc连接参数的使用</a></li>
-    <li><a href="#resultset游标的使用">ResultSet游标的使用</a></li>
-    <li><a href="#python连接mysql">Python连接MySQL</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#dao框架">DAO框架</a></li>
-    <li><a href="#dao框架的特点">DAO框架的特点</a></li>
-    <li><a href="#mybatis简介">MyBatis简介</a></li>
-    <li><a href="#mybatis代码示例">MyBatis代码示例</a></li>
-    <li><a href="#mybatis工作流程">MyBatis工作流程</a></li>
-    <li><a href="#mybatis使用技巧">MyBatis使用技巧</a></li>
+    <li><a href="#21-mysql数据类型">2.1-MySQL数据类型</a>
+      <ul>
+        <li><a href="#number不止一种">Number不止一种</a></li>
+        <li><a href="#整形">整形</a></li>
+        <li><a href="#老生常谈的问题">老生常谈的问题</a></li>
+        <li><a href="#浮点型">浮点型</a></li>
+        <li><a href="#精度丢失问题">精度丢失问题</a></li>
+        <li><a href="#定点数-更精确的数字类型">定点数-更精确的数字类型</a></li>
+        <li><a href="#性别省份信息">性别、省份信息</a></li>
+        <li><a href="#经验之谈">经验之谈</a></li>
+        <li><a href="#存储用户名的属性">存储用户名的属性</a></li>
+        <li><a href="#cahr与varchar">CAHR与VARCHAR</a></li>
+        <li><a href="#字符与字节的区别">字符与字节的区别</a></li>
+        <li><a href="#emoji表情">emoji表情</a></li>
+        <li><a href="#text与char和varchar的区别">TEXT与CHAR和VARCHAR的区别</a></li>
+        <li><a href="#存储头像">存储头像</a></li>
+        <li><a href="#经验之谈-1">经验之谈</a></li>
+        <li><a href="#存储生日信息">存储生日信息</a></li>
+        <li><a href="#时间类型的区别在哪里">时间类型的区别在哪里</a></li>
+        <li><a href="#timestamp-vs-datetime">TIMESTAMP VS DATETIME</a></li>
+        <li><a href="#字段类型和时区的关系">字段类型和时区的关系</a></li>
+        <li><a href="#bigint如何存储时间类型">BIGINT如何存储时间类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-mysql数据对象">2.2-MySQL数据对象</a>
+      <ul>
+        <li><a href="#mysql常见的数据对象有哪些">MySQL常见的数据对象有哪些</a></li>
+        <li><a href="#库表行层级关系">库、表、行层级关系</a></li>
+        <li><a href="#多database用途">多DataBase用途</a></li>
+        <li><a href="#表上有哪些常用的数据对象">表上有哪些常用的数据对象</a></li>
+        <li><a href="#什么是数据库索引">什么是数据库索引</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何创建索引一">如何创建索引（一）</a></li>
+    <li><a href="#如何创建索引二">如何创建索引（二）</a>
+      <ul>
+        <li><a href="#约束">约束</a></li>
+        <li><a href="#创建唯一约束">创建唯一约束</a></li>
+        <li><a href="#唯一约束">唯一约束</a></li>
+        <li><a href="#添加唯一约束">添加唯一约束</a></li>
+        <li><a href="#外键约束">外键约束</a></li>
+        <li><a href="#创建外键约束">创建外键约束</a></li>
+        <li><a href="#view">View</a></li>
+        <li><a href="#view的作用">View的作用</a></li>
+        <li><a href="#创建view">创建View</a></li>
+        <li><a href="#trigger">Trigger</a></li>
+        <li><a href="#除此之外还有哪些">除此之外还有哪些</a></li>
+      </ul>
+    </li>
+    <li><a href="#23-mysql权限管理">2.3-MySQL权限管理</a>
+      <ul>
+        <li><a href="#连接mysql的必要条件">连接MySQL的必要条件</a></li>
+        <li><a href="#数据有哪些权限">数据有哪些权限</a></li>
+        <li><a href="#权限粒度">权限粒度</a></li>
+        <li><a href="#mysql赋权操作">MySQL赋权操作</a></li>
+        <li><a href="#如何新建一个用户并赋权">如何新建一个用户并赋权</a></li>
+        <li><a href="#其他方法">其他方法</a></li>
+        <li><a href="#更简单的办法">更简单的办法</a></li>
+        <li><a href="#查看用户的权限信息">查看用户的权限信息</a></li>
+        <li><a href="#如何更改用户的权限">如何更改用户的权限</a></li>
+        <li><a href="#如何更改用户密码">如何更改用户密码</a></li>
+        <li><a href="#删除用户">删除用户</a></li>
+        <li><a href="#with-grant-option">With Grant Option</a></li>
+        <li><a href="#mysql权限信息存储结构">MySQL权限信息存储结构</a></li>
+        <li><a href="#有哪些权限相关的表">有哪些权限相关的表</a></li>
+        <li><a href="#权限验证流程">权限验证流程</a></li>
+        <li><a href="#小结">小结</a></li>
+        <li><a href="#mysql权限上有哪些问题">MySQL权限上有哪些问题</a></li>
+        <li><a href="#mysql_secure_installation">mysql_secure_installation</a></li>
+        <li><a href="#小结-1">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#实践课数据库对象">实践课：数据库对象</a>
+      <ul>
+        <li><a href="#何为表结构设计">何为表结构设计</a></li>
+        <li><a href="#设计表的时候需要注意哪些">设计表的时候需要注意哪些</a></li>
+        <li><a href="#收集表属性">收集表属性</a></li>
+        <li><a href="#理解表的功能特点数据用途">理解表的功能特点——数据用途</a></li>
+        <li><a href="#数据类型命名规范">数据类型——命名规范</a></li>
+        <li><a href="#字段设计规范">字段设计规范</a></li>
+        <li><a href="#用户赋权">用户赋权</a></li>
+      </ul>
+    </li>
+    <li><a href="#24-sql语言进阶">2.4-SQL语言进阶</a>
+      <ul>
+        <li><a href="#说明">说明</a></li>
+        <li><a href="#sql进阶语法order-by">SQL进阶语法——order by</a></li>
+        <li><a href="#sql进阶语法distinct">SQL进阶语法——distinct</a></li>
+        <li><a href="#sql进阶语法group-by">SQL进阶语法——group by</a></li>
+        <li><a href="#sql进阶语法group-by-having">SQL进阶语法——group by having</a></li>
+        <li><a href="#sql进阶语法-limit-offset">SQL进阶语法-limit, offset</a></li>
+        <li><a href="#case-when">case when</a></li>
+        <li><a href="#select相关进阶语法">select相关进阶语法</a></li>
+        <li><a href="#连接-join">连接-Join</a></li>
+        <li><a href="#子查询">子查询</a></li>
+        <li><a href="#连接--left-join">连接- left Join</a></li>
+        <li><a href="#sql进阶语法-union">SQL进阶语法-union</a></li>
+        <li><a href="#dml进阶语法">DML进阶语法</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#25-内置函数">2.5-内置函数</a>
+      <ul>
+        <li><a href="#聚合函数">聚合函数</a></li>
+        <li><a href="#使用聚合函数做数据库行列转换">使用聚合函数做数据库行列转换</a></li>
+        <li><a href="#预定义函数">预定义函数</a></li>
+        <li><a href="#预定义函数-字符串函数">预定义函数-字符串函数</a></li>
+        <li><a href="#预定义函数-时间处理函数">预定义函数-时间处理函数</a></li>
+        <li><a href="#预定义函数-数字处理函数">预定义函数-数字处理函数</a></li>
+        <li><a href="#算数逻辑运算">算数、逻辑运算</a></li>
+      </ul>
+    </li>
+    <li><a href="#26-触发器与存储过程">2.6-触发器与存储过程</a>
+      <ul>
+        <li><a href="#触发器">触发器</a></li>
+        <li><a href="#触发器-基本语法">触发器-基本语法</a></li>
+        <li><a href="#触发器-实例">触发器-实例</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#存储过程">存储过程</a></li>
+        <li><a href="#存储过程-基本语法">存储过程-基本语法</a></li>
+        <li><a href="#存储过程-实例">存储过程-实例</a></li>
+        <li><a href="#存储过程-流控制语句">存储过程-流控制语句</a></li>
+        <li><a href="#存储过程-调用">存储过程-调用</a></li>
+        <li><a href="#自定义函数">自定义函数</a></li>
+        <li><a href="#自定义函数-基本语法">自定义函数-基本语法</a></li>
+        <li><a href="#自定义函数-实例">自定义函数-实例</a></li>
+        <li><a href="#自定义函数-调用">自定义函数-调用</a></li>
+        <li><a href="#小结-2">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#27-mysql字符集">2.7-MySQL字符集</a>
+      <ul>
+        <li><a href="#字符集基础">字符集基础</a></li>
+        <li><a href="#字符集-分类">字符集-分类</a></li>
+        <li><a href="#mysql字符集">MySQL字符集</a></li>
+        <li><a href="#字符集与字符序">字符集与字符序</a></li>
+        <li><a href="#字符集设置级别">字符集设置级别</a></li>
+        <li><a href="#字符集设置级别-1">字符集设置级别</a></li>
+        <li><a href="#字符集设置级别-2">字符集设置级别</a></li>
+        <li><a href="#客户端连接与字符集">客户端连接与字符集</a></li>
+        <li><a href="#小结-3">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#28程序连接mysql">2.8程序连接MySQL</a>
+      <ul>
+        <li><a href="#程序连接mysql基本原理">程序连接MySQL基本原理</a></li>
+        <li><a href="#java代码示例">Java代码示例</a></li>
+        <li><a href="#jdbc使用技巧">JDBC使用技巧</a></li>
+        <li><a href="#statement与preparedstatement的区别">Statement与PreparedStatement的区别</a></li>
+        <li><a href="#preparedstatement背后的故事">PreparedStatement背后的故事</a></li>
+        <li><a href="#connection-statement与resultset关闭的意义">connection, Statement与ResultSet关闭的意义</a></li>
+        <li><a href="#jdbc连接参数的使用">jdbc连接参数的使用</a></li>
+        <li><a href="#resultset游标的使用">ResultSet游标的使用</a></li>
+        <li><a href="#python连接mysql">Python连接MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#29-dao框架的使用">2.9-DAO框架的使用</a>
+      <ul>
+        <li><a href="#dao框架">DAO框架</a></li>
+        <li><a href="#dao框架的特点">DAO框架的特点</a></li>
+        <li><a href="#mybatis简介">MyBatis简介</a></li>
+        <li><a href="#mybatis代码示例">MyBatis代码示例</a></li>
+        <li><a href="#mybatis工作流程">MyBatis工作流程</a></li>
+        <li><a href="#mybatis使用技巧">MyBatis使用技巧</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

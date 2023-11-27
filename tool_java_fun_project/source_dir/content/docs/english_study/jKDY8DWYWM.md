@@ -5,10 +5,10 @@ draft: false
 weight: 2
 ---
 
-> 只要你坚持学 哪怕不能一次性通过考试 但是你的成绩一定会进步的
+##  只要你坚持学 哪怕不能一次性通过考试 但是你的成绩一定会进步的
 
 
-+ [观点1](https://www.bilibili.com/video/BV1mf4y1R7oJ/?spm_id_from=333.788.recommend_more_video.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+###  [观点1](https://www.bilibili.com/video/BV1mf4y1R7oJ/?spm_id_from=333.788.recommend_more_video.0&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 
 心态要做好准备，单词是学英语的基础，学一门语言是循序渐进的过程），见效慢，不要总想着一夜之间就能背下所有单词、一个月就能把英语说成母语。保持平常心。我说汉语这么多年，有时候还是会写错别字呀~
@@ -34,11 +34,11 @@ weight: 2
 方法没有好坏，每个人的认知风格都不同，没有优劣之分，适合自己的才是最好的。但学习有一个原则：任何方法，必须执行、坚持执行才可以见效。
 
 
-+ [观点3](https://www.bilibili.com/video/BV1NX4y1G74H/?spm_id_from=333.337.search-card.all.click&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+### [观点3](https://www.bilibili.com/video/BV1NX4y1G74H/?spm_id_from=333.337.search-card.all.click&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 + 新概念英语1 和新概念2 也是重复学习反复复习
 
-+ [观点2](https://www.bilibili.com/video/BV1fU4y1H7mB/?spm_id_from=333.788.recommend_more_video.-1&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
+### [观点2](https://www.bilibili.com/video/BV1fU4y1H7mB/?spm_id_from=333.788.recommend_more_video.-1&vd_source=4489d9754daa59bfcdbc67a5df40fe09)
 
 - 着重点：从音标&单词开始；
 		- 每天学习1~2小时；

@@ -2,10 +2,13 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="停止命令：net stop mysql
+<meta name="description" content="基础介绍
+#
+
+  停止命令：net stop mysql
   启动命令：net start mysql
   登陆 mysql -u 用户名 -p
   查看数据库版本: mysql &ndash;version：用于在未登录情况下，查看本机mysql版本,select version();：登录情况下，查看链接的库版本
@@ -41,7 +44,10 @@ MySQL删除数据库中的所有表
 
 SELECT CONCAT(&#39;drop table &#39;,table_name,&#39;;&#39;) FROM information_schema.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="基本命令" />
-<meta property="og:description" content="停止命令：net stop mysql
+<meta property="og:description" content="基础介绍
+#
+
+  停止命令：net stop mysql
   启动命令：net start mysql
   登陆 mysql -u 用户名 -p
   查看数据库版本: mysql &ndash;version：用于在未登录情况下，查看本机mysql版本,select version();：登录情况下，查看链接的库版本
@@ -77,15 +83,14 @@ MySQL删除数据库中的所有表
 
 SELECT CONCAT(&#39;drop table &#39;,table_name,&#39;;&#39;) FROM information_schema." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_basis/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_basis/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>基本命令 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -891,7 +896,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3728,7 +3751,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3741,7 +3764,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3764,6 +3800,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5498,7 +5547,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5529,8 +5578,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li></li>
-    <li><a href="#mysql删除数据库中的所有表">MySQL删除数据库中的所有表</a></li>
+    <li><a href="#基础介绍">基础介绍</a>
+      <ul>
+        <li><a href="#sql的语言分类">SQL的语言分类</a></li>
+        <li><a href="#mysql语法规范">mysql语法规范</a></li>
+        <li><a href="#mysql删除数据库中的所有表">MySQL删除数据库中的所有表</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5555,7 +5609,11 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><ul>
+  <article class="markdown"><h2 id="基础介绍">
+  基础介绍
+  <a class="anchor" href="#%e5%9f%ba%e7%a1%80%e4%bb%8b%e7%bb%8d">#</a>
+</h2>
+<ul>
 <li>
 <p>停止命令：net stop mysql</p>
 </li>
@@ -5587,10 +5645,10 @@ https://github.com/alex-shpak/hugo-book
 <p>查看表结构：desc 表名;</p>
 </li>
 </ul>
-<h4 id="sql的语言分类">
+<h3 id="sql的语言分类">
   SQL的语言分类
   <a class="anchor" href="#sql%e7%9a%84%e8%af%ad%e8%a8%80%e5%88%86%e7%b1%bb">#</a>
-</h4>
+</h3>
 <pre><code>DQL（Data Query Language）：数据查询语言
 select 相关语句
 
@@ -5602,10 +5660,10 @@ create、drop、alter 语句
 
 TCL（Transaction Control Language）：事务控制语言
 set autocommit=0、start transaction、savepoint、commit、rollback
-</code></pre><h4 id="mysql语法规范">
+</code></pre><h3 id="mysql语法规范">
   mysql语法规范
   <a class="anchor" href="#mysql%e8%af%ad%e6%b3%95%e8%a7%84%e8%8c%83">#</a>
-</h4>
+</h3>
 <pre><code>不区分大小写，但建议关键字大写，表名、列名小写
 
 每条命令最好用英文分号结尾
@@ -5868,8 +5926,13 @@ set autocommit=0、start transaction、savepoint、commit、rollback
   
 <nav id="TableOfContents">
   <ul>
-    <li></li>
-    <li><a href="#mysql删除数据库中的所有表">MySQL删除数据库中的所有表</a></li>
+    <li><a href="#基础介绍">基础介绍</a>
+      <ul>
+        <li><a href="#sql的语言分类">SQL的语言分类</a></li>
+        <li><a href="#mysql语法规范">mysql语法规范</a></li>
+        <li><a href="#mysql删除数据库中的所有表">MySQL删除数据库中的所有表</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

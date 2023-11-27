@@ -1,5 +1,5 @@
 ---
-title: "何为习得? "
+title: "习得 "
 date: 2022-10-05
 draft: false
 weight: 3

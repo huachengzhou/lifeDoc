@@ -2,10 +2,13 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="什么是事务
+<meta name="description" content="mysql事务
+#
+
+什么是事务
 #
 
  一系列有序的数据库操作：  要么全部成功 要么全部回退到操作前的状态 中间状态对其他连接不可见   事务的基本操作：    基本操作 说明     start transaction 开始事务   commit 提交(全部完成)   rollback 回滚(回到初始状态)       创建一个临时表  CREATE TABLE `t_transaction` ( `id` int NOT NULL AUTO_INCREMENT, `name` varchar(255) DEFAULT NULL, `num` bigint DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;  例子事务使用  -- 开启一个事务 start TRANSACTION ; -- 或者使用(非标准sql) begin ; insert into t_transaction( `name` ,`num`) values(&#39;abc&#39;,ROUND(RAND()*100)); -- 事务结束，插入成功 COMMIT ;  例子 事务 回滚  START TRANSACTION ; BEGIN ; insert into t_transaction( `name` ,`num`) values(&#39;kk&#39;,ROUND(RAND()*100)); ROLLBACK ; -- 不会插入一条数据   事务回滚点  START TRANSACTION ; BEGIN ; insert into t_transaction( `name` ,`num`) values(&#39;s1x&#39;,ROUND(RAND()*100)); -- 设置回滚点1 savepoint a_point_1; insert into t_transaction( `name` ,`num`) values(&#39;s1&#39;,ROUND(RAND()*100)); -- 回滚到指定点 ROLLBACK to a_point_1; commit ; 自动提交
@@ -49,7 +52,10 @@
 
  回滚段(rollback segment)与数据前像  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="mysql事务" />
-<meta property="og:description" content="什么是事务
+<meta property="og:description" content="mysql事务
+#
+
+什么是事务
 #
 
  一系列有序的数据库操作：  要么全部成功 要么全部回退到操作前的状态 中间状态对其他连接不可见   事务的基本操作：    基本操作 说明     start transaction 开始事务   commit 提交(全部完成)   rollback 回滚(回到初始状态)       创建一个临时表  CREATE TABLE `t_transaction` ( `id` int NOT NULL AUTO_INCREMENT, `name` varchar(255) DEFAULT NULL, `num` bigint DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;  例子事务使用  -- 开启一个事务 start TRANSACTION ; -- 或者使用(非标准sql) begin ; insert into t_transaction( `name` ,`num`) values(&#39;abc&#39;,ROUND(RAND()*100)); -- 事务结束，插入成功 COMMIT ;  例子 事务 回滚  START TRANSACTION ; BEGIN ; insert into t_transaction( `name` ,`num`) values(&#39;kk&#39;,ROUND(RAND()*100)); ROLLBACK ; -- 不会插入一条数据   事务回滚点  START TRANSACTION ; BEGIN ; insert into t_transaction( `name` ,`num`) values(&#39;s1x&#39;,ROUND(RAND()*100)); -- 设置回滚点1 savepoint a_point_1; insert into t_transaction( `name` ,`num`) values(&#39;s1&#39;,ROUND(RAND()*100)); -- 回滚到指定点 ROLLBACK to a_point_1; commit ; 自动提交
@@ -93,15 +99,14 @@
 
  回滚段(rollback segment)与数据前像  " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql%E4%BA%8B%E5%8A%A1/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql事务 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.4096b4752739b70f21e438af626dbb73c861f95ffe9750907b8eae55b2147223.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.f074f26c77a6be313424f1088e53249d250195858f9ba13d450a634447cc416f.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -907,7 +912,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">Create Table</a>
+    <a href="./../../../../docs/databases/oracle/" class="">oracle</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/databases/sqlserver/create_table/" class="">sqlserver</a>
   
 
         </li>
@@ -3744,7 +3767,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">何为习得? </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/use/" class="">习得 </a>
   
 
         </li>
@@ -3757,7 +3780,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得 </a>
+    <a href="./../../../../docs/english_study/second_language_acquisition/%E6%95%B4%E7%90%86/" class="">习得  整理 </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/second_language_acquisition/input/" class="">可理解的输入 </a>
   
 
         </li>
@@ -3780,6 +3816,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="./../../../../docs/english_study/word/number/" class="">英语数字规则 </a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -5514,7 +5563,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5545,20 +5594,24 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是事务">什么是事务</a></li>
-    <li><a href="#自动提交">自动提交</a></li>
-    <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
-    <li><a href="#事务的原子性">事务的原子性</a></li>
-    <li><a href="#事务的一致性">事务的一致性</a></li>
-    <li><a href="#事物的持久性">事物的持久性</a></li>
-    <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
-    <li><a href="#事务的隔离性">事务的隔离性</a></li>
-    <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
-    <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
-    <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
-    <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
-    <li><a href="#事务与并发写">事务与并发写</a></li>
-    <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+    <li><a href="#mysql事务">mysql事务</a>
+      <ul>
+        <li><a href="#什么是事务">什么是事务</a></li>
+        <li><a href="#自动提交">自动提交</a></li>
+        <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
+        <li><a href="#事务的原子性">事务的原子性</a></li>
+        <li><a href="#事务的一致性">事务的一致性</a></li>
+        <li><a href="#事物的持久性">事物的持久性</a></li>
+        <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
+        <li><a href="#事务的隔离性">事务的隔离性</a></li>
+        <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
+        <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
+        <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
+        <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
+        <li><a href="#事务与并发写">事务与并发写</a></li>
+        <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -5583,7 +5636,11 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 
       
-  <article class="markdown"><h3 id="什么是事务">
+  <article class="markdown"><h2 id="mysql事务">
+  mysql事务
+  <a class="anchor" href="#mysql%e4%ba%8b%e5%8a%a1">#</a>
+</h2>
+<h3 id="什么是事务">
   什么是事务
   <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e4%ba%8b%e5%8a%a1">#</a>
 </h3>
@@ -6090,20 +6147,24 @@ commit ;
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是事务">什么是事务</a></li>
-    <li><a href="#自动提交">自动提交</a></li>
-    <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
-    <li><a href="#事务的原子性">事务的原子性</a></li>
-    <li><a href="#事务的一致性">事务的一致性</a></li>
-    <li><a href="#事物的持久性">事物的持久性</a></li>
-    <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
-    <li><a href="#事务的隔离性">事务的隔离性</a></li>
-    <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
-    <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
-    <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
-    <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
-    <li><a href="#事务与并发写">事务与并发写</a></li>
-    <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+    <li><a href="#mysql事务">mysql事务</a>
+      <ul>
+        <li><a href="#什么是事务">什么是事务</a></li>
+        <li><a href="#自动提交">自动提交</a></li>
+        <li><a href="#事务的四个基本属性acid">事务的四个基本属性(ACID)</a></li>
+        <li><a href="#事务的原子性">事务的原子性</a></li>
+        <li><a href="#事务的一致性">事务的一致性</a></li>
+        <li><a href="#事物的持久性">事物的持久性</a></li>
+        <li><a href="#事务的持久化的实现">事务的持久化的实现</a></li>
+        <li><a href="#事务的隔离性">事务的隔离性</a></li>
+        <li><a href="#数据库隔离现象">数据库隔离现象</a></li>
+        <li><a href="#数据库隔离等级">数据库隔离等级</a></li>
+        <li><a href="#mysql的事务隔离级别">MySQL的事务隔离级别</a></li>
+        <li><a href="#mysql事务隔离级别设置">MySQL事务隔离级别设置</a></li>
+        <li><a href="#事务与并发写">事务与并发写</a></li>
+        <li><a href="#事务回滚的实现">事务回滚的实现</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
