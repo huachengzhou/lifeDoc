@@ -603,6 +603,40 @@ sudo apt-get install synaptic</description>
     </item>
     
     <item>
+      <title>下班后学习</title>
+      <link>https://huachengzhou.github.io/life/docs/life_and_life/ga2s3gmf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/life_and_life/ga2s3gmf/</guid>
+      <description>下班后学习#建议1#  第一，每天工作休息的时间不要玩手机，抽出5分钟的时间腹式呼吸或者喝水简单运动一下，恢复一下精力。
+  第二，回家之后第一件事情去泡个澡，一般来说泡完澡之后人的精神会好一点。
+  第三，早睡早起规律饮食。
+  建议2# 每天规划出学习多长时间 (做出表格每天是否按时完成 没有是因为什么原因)  建议3#1手机关掉 或者静音放到眼镜看不到的地方
+2.准备好学习用的工具 创造出好的学习环境 保持安静的环境
+3.列出学习时间段该干的事情，严格执行下去
+4.最重要的就是坚持下去 不管什么情况 都要做到坚持 每天坚持下去
+建议4#可以出去做下运动，散下步，打下球之类的，千万不要坐下来，会更累，更不想动
+建议5#冥想</description>
+    </item>
+    
+    <item>
+      <title>下班后学习</title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ga2s3gmf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/ga2s3gmf/</guid>
+      <description>下班后学习#建议1#  第一，每天工作休息的时间不要玩手机，抽出5分钟的时间腹式呼吸或者喝水简单运动一下，恢复一下精力。
+  第二，回家之后第一件事情去泡个澡，一般来说泡完澡之后人的精神会好一点。
+  第三，早睡早起规律饮食。
+  建议2# 每天规划出学习多长时间 (做出表格每天是否按时完成 没有是因为什么原因)  建议3#1手机关掉 或者静音放到眼镜看不到的地方
+2.准备好学习用的工具 创造出好的学习环境 保持安静的环境
+3.列出学习时间段该干的事情，严格执行下去
+4.最重要的就是坚持下去 不管什么情况 都要做到坚持 每天坚持下去
+建议4#可以出去做下运动，散下步，打下球之类的，千万不要坐下来，会更累，更不想动
+建议5#冥想</description>
+    </item>
+    
+    <item>
       <title>操作系统的概念、功能</title>
       <link>https://huachengzhou.github.io/life/docs/operating_system/one_chapter/1_1_/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1881,6 +1915,15 @@ drop datbase ch10; create database ch10; use ch10; drop table if EXISTS fruits ;
       
       <guid>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_1_4/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>内嵌文档</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/include_document/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/include_document/</guid>
+      <description>内嵌文档#</description>
     </item>
     
     <item>

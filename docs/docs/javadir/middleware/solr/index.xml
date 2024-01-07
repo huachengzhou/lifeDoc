@@ -58,5 +58,14 @@
 二:创建分词器# 使用说明   jar包下载地址： 历史版本：  &amp;lt;!</description>
     </item>
     
+    <item>
+      <title>内嵌文档</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/include_document/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/middleware/solr/include_document/</guid>
+      <description>内嵌文档#</description>
+    </item>
+    
   </channel>
 </rss>
