@@ -81,6 +81,11 @@ mysqldump -h localhost -p3307 -uroot  -p123456 --databases test3 > D:\data\test3
 -- 登录数据库
 mysql -h localhost -p3307 -uroot  -p123456
 
+-- 备份单个数据库数据 生成环境
+
+mysqldump --column-statistics=0 -h 192.168.2.206 -p3306 -uroot  -p123456 --databases pmcc_acc  >  E:\data\sql\pmcc_acc_all.sql
+
+
 ```
 
 
