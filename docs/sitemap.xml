@@ -292,7 +292,10 @@
     <loc>https://huachengzhou.github.io/life/docs/algorithm/alg-sort/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/array/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/</loc>
+    <lastmod>2023-01-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/array/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/gsmgajphs7/</loc>
@@ -397,7 +400,10 @@
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/case4/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/linklist/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2023-01-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/linklist/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/x5ws5dsp8a/</loc>
@@ -604,7 +610,7 @@
     <loc>https://huachengzhou.github.io/life/docs/python/base/tuple/</loc>
     <lastmod>2023-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/tree/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/tree/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream/</loc>
@@ -639,7 +645,7 @@
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/operating_system/two_chapter/2_2_2/</loc>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/stack/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/stack/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-jdk8-stream_base/</loc>
@@ -671,7 +677,7 @@
     <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/queue/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/queue/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-spi/</loc>
@@ -704,7 +710,7 @@
     <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt5_note/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/heap/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/heap/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/b3akcg3n8k/</loc>
@@ -743,7 +749,7 @@
     <loc>https://huachengzhou.github.io/life/docs/python/install/pyqt_resources/</loc>
     <lastmod>2023-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/hashtable/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/hashtable/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/my_self/swtj6fgd6s/</loc>
@@ -776,7 +782,7 @@
     <loc>https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/</loc>
     <lastmod>2020-01-17T15:26:15+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/graph/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/graph/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</loc>
@@ -785,7 +791,7 @@
     <loc>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huachengzhou.github.io/life/docs/algorithm/adt/</loc>
+    <loc>https://huachengzhou.github.io/life/docs/algorithm/data-structure/adt/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huachengzhou.github.io/life/docs/python/base/python_try_except/</loc>

@@ -14,9 +14,9 @@ public class FileImageLastUpdateSoft {
     public void printImageTime() {
         final String userDir = System.getProperty("user.dir");
         String dir = "C:\\Users\\noatn\\Downloads";
-        String baseName = "imgs/java/rabbitmq/";
+        String baseName = "algorithm/images/structure/";
         //_index.md 不需要加
-        String dir1 = userDir + "\\source_dir\\content\\docs\\javadir\\middleware\\rabbit-mq";
+        String dir1 = userDir + "\\source_dir\\content\\docs\\algorithm\\images\\structure";
 
 
         final String imgs = userDir + "\\source_dir\\content\\docs\\imgs";

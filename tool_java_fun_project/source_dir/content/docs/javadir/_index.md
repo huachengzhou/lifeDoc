@@ -31,3 +31,8 @@ bookCollapseSection = true
 
 
 [javaguide](https://javaguide.cn/)
+[javabetter](https://javabetter.cn/)
+[interview](https://hadyang.github.io/interview/)
+[Java-Interview-Advanced](https://github.com/shishan100/Java-Interview-Advanced)
+[fucking-algorithm](https://github.com/labuladong/fucking-algorithm)
+[huihut-interview](https://github.com/huihut/interview)
