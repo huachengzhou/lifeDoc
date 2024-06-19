@@ -2,16 +2,15 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="数据结构
 #
 
-第一章：数据结构的
+第一章：数据结构的基本概念
 #
 
-基本概念
 定义
 #
 
@@ -44,10 +43,9 @@
 <meta property="og:description" content="数据结构
 #
 
-第一章：数据结构的
+第一章：数据结构的基本概念
 #
 
-基本概念
 定义
 #
 
@@ -77,15 +75,14 @@
 
  线性表的顺序存储又称为顺序表。 它是用一组地址连续的存储单元（比如C语言里面的数组），依次存储线性表中的数据元素，从而使得逻 辑上相邻的两个元素在物理位置上也相邻。 建立顺序表的三个属性: 1." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/algorithm/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-01-17T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2023-01-17T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/algorithm/data-structure/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" />
+<meta property="article:published_time" content="2023-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-17T00:00:00+00:00" />
 <title>数据结构(简单文字描述) | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.54ff6394a47d34baf0f5d38253af756e4291ff1547f8443df218926ca999b819.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.90dc2b70670c014578813f5f65199d0f0ef8b95fbc79b3a9f5f84e9055976db9.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5796,7 +5793,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
@@ -5827,7 +5824,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#第一章数据结构的">第一章：数据结构的</a>
+    <li><a href="#第一章数据结构的基本概念">第一章：数据结构的基本概念</a>
       <ul>
         <li><a href="#定义">定义</a></li>
         <li><a href="#逻辑结构">逻辑结构</a></li>
@@ -5931,11 +5928,10 @@ https://github.com/alex-shpak/hugo-book
   数据结构
   <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">#</a>
 </h1>
-<h2 id="第一章数据结构的">
-  第一章：数据结构的
-  <a class="anchor" href="#%e7%ac%ac%e4%b8%80%e7%ab%a0%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e7%9a%84">#</a>
+<h2 id="第一章数据结构的基本概念">
+  第一章：数据结构的基本概念
+  <a class="anchor" href="#%e7%ac%ac%e4%b8%80%e7%ab%a0%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5">#</a>
 </h2>
-<p>基本概念</p>
 <h3 id="定义">
   定义
   <a class="anchor" href="#%e5%ae%9a%e4%b9%89">#</a>
@@ -6045,7 +6041,7 @@ https://github.com/alex-shpak/hugo-book
 <li>线性表的顺序存储又称为顺序表。
 它是用一组地址连续的存储单元（比如C语言里面的数组），依次存储线性表中的数据元素，从而使得逻
 辑上相邻的两个元素在物理位置上也相邻。</li>
-<li>建立顺序表的三个属性:
+<li>建立顺序表的三个属性: 
 1.存储空间的起始位置（数组名data）
 2.顺序表最大存储容量（MaxSize）
 3.顺序表当前的长度（length）</li>
@@ -6792,9 +6788,9 @@ i-1层
 <li>克鲁斯卡尔（Kruskal）
 <ul>
 <li>将图中边按照权值从小到大排列，然后从最小的边开始扫描，设置一个边的集合来记录，如果该边并入不构成回路的话，则将该边并入当前生成树。直到所有的边都检测完为止。</li>
-<li>概要:<br>
-*
+<li>概要:
 <ul>
+<li></li>
 <li></li>
 <li>概要: 克鲁斯卡尔算法操作分为对边的权值排序部分和一个单重for循环，它们是并列关系，由于排序耗费时间大于单重循环，所以克鲁斯卡尔算法的主要时间耗费在排序上。排序和图中边的数量有关系，所以适合稀疏图</li>
 </ul>
@@ -7477,7 +7473,8 @@ Eg:如果Key比第一个关键字K1还小，则去P0指针所指向的子树中�
 <li>树的先序遍历等于它对应二叉树的先序遍历，后序遍历等于它对应的二叉树的中序遍历</li>
 <li>概要: 例子</li>
 </ul>
-<p><img src="https://github.com/SSHeRun/CS-Xmind-Note/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="picture" /></p>
+<p><img src="../.././algorithm/images/structure/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84.png" alt="" />
+<img src="../../../algorithm/images/structure/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84.png" alt="" /></p>
 </article>
  
       
@@ -7721,7 +7718,7 @@ Eg:如果Key比第一个关键字K1还小，则去P0指针所指向的子树中�
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#第一章数据结构的">第一章：数据结构的</a>
+    <li><a href="#第一章数据结构的基本概念">第一章：数据结构的基本概念</a>
       <ul>
         <li><a href="#定义">定义</a></li>
         <li><a href="#逻辑结构">逻辑结构</a></li>

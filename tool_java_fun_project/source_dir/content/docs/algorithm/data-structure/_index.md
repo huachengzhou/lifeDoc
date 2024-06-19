@@ -421,6 +421,14 @@ B 树、B+ 树图片
 * 三维计算机图形
 * 最邻近搜索
 
+## 其它参考
+
+[javaguide](https://javaguide.cn/)
+
+[javabetter](https://javabetter.cn/)
+
+[interview](https://hadyang.github.io/interview/)
+
 [img1]:../.././algorithm/images/structure/400px-Octree2.png
 [img1_]:../../../algorithm/images/structure/400px-Octree2.png
 [img2]:../.././algorithm/images/structure/SqStack.png

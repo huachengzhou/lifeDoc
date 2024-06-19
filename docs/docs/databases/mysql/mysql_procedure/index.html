@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MySQL mysql存储过程概述
@@ -73,15 +73,14 @@ delimiter ; --将结束符修改为默认的分号 例子
 
 -- 创建一个表 CREATE TABLE `t_user` ( `USER_ID` int NOT NULL AUTO_INCREMENT, `USER_NAME` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_PASSWORD` char(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, `USER_EMAIL` char(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, PRIMARY KEY (`USER_ID`), KEY `IDX_NAME` (`USER_NAME`) ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; -- 插入2000条数据  DROP PROCEDURE IF EXISTS proc_initData;--如果存在此存储过程则删掉 DELIMITER $ CREATE PROCEDURE proc_initData() BEGIN DECLARE i INT DEFAULT 1; WHILE i&lt;=2000 DO INSERT INTO t_user(USER_NAME,USER_PASSWORD,USER_EMAIL) VALUES(MD5(UUID()),MD5(UUID()), CONCAT(substring(UUID(),1,7) , &#39;@&#39;, substring(UUID(),4,8) ,&#39;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2020-01-17T15:26:15&#43;00:00" />
-<meta property="article:modified_time" content="2020-01-17T15:26:15&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/databases/mysql/mysql_procedure/" />
+<meta property="article:published_time" content="2020-01-17T15:26:15+00:00" />
+<meta property="article:modified_time" content="2020-01-17T15:26:15+00:00" />
 <title>mysql存储过程 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.54ff6394a47d34baf0f5d38253af756e4291ff1547f8443df218926ca999b819.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.90dc2b70670c014578813f5f65199d0f0ef8b95fbc79b3a9f5f84e9055976db9.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5792,7 +5791,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  

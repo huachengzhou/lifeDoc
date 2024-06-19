@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.80.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="反射机制详解
@@ -39,15 +39,14 @@ public final class Class&lt;T&gt; implements java.io.Serializable, GenericDeclar
 Class类，Class类也是一个实实在在的类，存在于JDK的java.lang包中。 Class类的实例表示java应用运行时的类(class ans enum)或接口(interface and annotation)（每个java类运行时都在JVM里表现为一个class对象， 可通过类名.class、类型.getClass()、Class.forName(&ldquo;类名&rdquo;)等方法获取class对象）。数组同样也被映射为class 对象的一个类， 所有具有相同元素类型和维数的数组都共享该 Class 对象。基本类型boolean，byte，char，short，int，long，float，double和关键字void同样表现为 class 对象。
 public final class Class&lt;T&gt; implements java.io.Serializable, GenericDeclaration, Type, AnnotatedElement { private static final int ANNOTATION= 0x00002000; private static final int ENUM = 0x00004000; private static final int SYNTHETIC = 0x00001000; private static native void registerNatives(); static { registerNatives(); } /* * Private constructor." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-10-05T00:00:00&#43;00:00" />
-
+<meta property="og:url" content="https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-reflection/" />
+<meta property="article:published_time" content="2022-10-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-05T00:00:00+00:00" />
 <title>反射机制详解 | 所悟所想</title>
 <link rel="manifest" href="./../../../../manifest.json">
 <link rel="icon" href="./../../../../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="./../../../../book.min.6313a6c21788de40fd0d6cec690a674c44d4da3a32c524660fe854b487e63a06.css"  >
-<script defer src="./../../../../en.search.min.54ff6394a47d34baf0f5d38253af756e4291ff1547f8443df218926ca999b819.js"  ></script>
+<link rel="stylesheet" href="./../../../../book.min.ee686eaf514f9466b1c04f3707c07b409ab9db658a39cfffd336990de6e9270b.css"  >
+<script defer src="./../../../../en.search.min.90dc2b70670c014578813f5f65199d0f0ef8b95fbc79b3a9f5f84e9055976db9.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -5758,7 +5757,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
 
 
  
