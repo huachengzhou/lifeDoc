@@ -3,7 +3,17 @@
 // @import "plugins/numbered";
 // @import "plugins/scrollbars";
 
-
+body{
+  //font-family: '宋体', Arial, sans-serif;
+  //font-family: '仿宋', Arial, sans-serif;
+  //font-family: '微软雅黑', Arial, sans-serif;
+  //font-family: '楷体', Arial, sans-serif;
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-size:15px;         /*字体大小:15px */
+  font-style:normal;   /*字体风格：默认 */
+  font-stretch:normal;  /* 字体拉伸：默认 */
+  font-weight:normal;     /*字体加粗:默认*/
+}
 
 .ul_abc {
   list-style-type: none;

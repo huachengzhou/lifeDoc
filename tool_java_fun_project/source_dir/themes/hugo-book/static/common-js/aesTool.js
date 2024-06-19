@@ -79,8 +79,6 @@ function getDAes(data) {//解密
 window.aesTool = new aesTool();
 
 
-
-
 var iv_value = "0000";
 var key_value = "abc";
 
@@ -94,3 +92,18 @@ console.log(c1x);
 console.log(c2x);
 console.log(allData);
 console.log(githubList);
+
+function randomString(length, addSymbol) {
+    str = '1234567890ABCDEFGHIGKLMNOPQRSTUVWSYZabcdefghijklmnopqrstuvwsyz';
+    symbol = '-/:;()$&@.,?!_\|~<>€£¥•[]{}#%^*+=';
+    txt = '';
+    if (addSymbol) str = str + symbol;
+    if (isNaN(length)) return false;
+    for (i = 0; i < length; i++) {
+        random = parseInt(Math.random() * (str.length + 1), 10);
+        txt += str.split("")[random];
+    }
+    return txt;
+}
+
+console.log(randomString(10, false));
