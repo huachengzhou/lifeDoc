@@ -3704,6 +3704,57 @@ Python 2.7 使用 raw_input() 方法
     </item>
     
     <item>
+      <title>初识算法</title>
+      <link>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/</link>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/</guid>
+      <description>一. 初识算法#1.1 什么是算法？#定义
+在数学和计算机科学领域，算法是一系列有限的严谨指令，通常用于解决一类特定问题或执行计算
+ In mathematics and computer science, an algorithm (/ˈælɡərɪðəm/) is a finite sequence of rigorous instructions, typically used to solve a class of specific problems or to perform a computation.1
+ Introduction to Algorithm2
+不正式的说，算法就是任何定义优良的计算过程：接收一些值作为输入，在有限的时间内，产生一些值作为输出。
+ Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output in a finite amount of time.</description>
+    </item>
+    
+    <item>
+      <title>基础算法</title>
+      <link>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%952/</link>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%952/</guid>
+      <description>一. 基础算法#1. 常见查找算法#查找算法是一种在数据集中寻找特定数据项的方法。通常，数据集是在计算机程序中存储的，例如数组、链表或散列表。在编写程序时，查找算法是非常重要的，它有助于快速找到所需的数据。在本文中，我们将介绍一些基本的查找算法及其特点。
+线性查找#线性查找也称为顺序查找，是一种最简单的查找算法。在这种算法中，我们从数据集的开头开始，逐个比较每个数据项，以寻找要查找的数据。如果我们找到了目标数据，查找过程就结束了。如果我们到达数据集的末尾，仍然找不到目标数据，则可以认为它不存在于数据集中。
+线性查找的时间复杂度是O(n)，其中n是数据集的大小。因此，它在大型数据集中可能会很慢。然而，在小型数据集中，它仍然是一种非常有用的算法。
+二分查找#二分查找也称为折半查找，是一种更快速的查找算法。但前提是，数据集必须已经排序。在二分查找中，我们取数据集的中间值，然后将目标与中间值进行比较。如果目标小于中间值，则在左侧子集中继续查找；如果目标大于中间值，则在右侧子集中继续查找。每次比较都会缩小要搜索的数据集的大小。
+二分查找的时间复杂度是O(log n)，其中n是数据集的大小。这种算法在大型数据集中非常有效，但在小型数据集中可能并不是最快的选择。
+哈希表查找#哈希表查找也称为散列表查找，是另一种常见的查找算法。它利用哈希函数将数据项映射到散列表中的位置。在查找过程中，我们只需通过哈希函数计算目标数据的位置，然后检查该位置是否包含目标数据。
+哈希表查找的时间复杂度是O(1)。这使得它成为大型数据集中最快的查找算法之一。但是，哈希表查找的效率取决于哈希函数的质量。如果两个数据项映射到相同的位置，就会发生哈希冲突，这可能会导致性能下降。
+小结#在编写程序时，我们需要选择适合数据集大小和其他要求的最佳查找算法。例如，如果数据集很小，则线性查找可能是最快的选择；如果数据集已经排序，则二分查找是非常有用的。然而，在大型数据集中，哈希表查找通常是最好的选择。了解不同类型的查找算法及其特点可以帮助我们在编写程序时做出明智的选择。
+2. 高效查找相关数据结构#不管是之前学过的数组、链表、队列、还是栈，这些线性结构中，如果想在其中查找一个元素，效率是比较慢的，只有$O(N)$，因此如果你的需求是实现数据的快速查找，那么就需要新的数据结构支持。
+还记得最先介绍的那个二分查找算法吗？它的查找效率能够达到 $O(\log{N})$，是不是还不错？不过呢，它需要对数组事先排好序，而排序的成本是比较高的。那么有没有一个折中的办法呢？有，那就是接下来要给大家介绍的二叉搜索树，它插入元素后，自然就是排好序的，接下来的查询也自然而然可以应用二分查找算法进行高效搜索。
+1) 二叉搜索树#历史# 二叉搜索树最早是由Bernoulli兄弟在18世纪中提出的，但是真正推广和应用该数据结构的是1960年代的D.L. Gries。他的著作《The Science of Programming》中详细介绍了二叉搜索树的实现和应用。
+在计算机科学的发展中，二叉搜索树成为了一种非常基础的数据结构，被广泛应用在各种领域，包括搜索、排序、数据库索引等。随着计算机算力的提升和对数据结构的深入研究，二叉搜索树也不断被优化和扩展，例如AVL树、红黑树等。
+ 特性#二叉搜索树（也称二叉排序树）是符合下面特征的二叉树：
+ 树节点增加 key 属性，用来比较谁大谁小，key 不可以重复 对于任意一个树节点，它的 key 比左子树的 key 都大，同时也比右子树的 key 都小，例如下图所示  轻易看出要查找 7 （从根开始）自然就可应用二分查找算法，只需三次比较</description>
+    </item>
+    
+    <item>
+      <title>进阶 - 算法设计</title>
+      <link>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%953/</link>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/algorithm/data-structure/black_horse/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%953/</guid>
+      <description>一. 进阶 - 算法设计#1. 图#1) 概念#图是由顶点（vertex）和边（edge）组成的数据结构，例如
+graph LRA---&amp;gt;BA---&amp;gt;CB---&amp;gt;DC---&amp;gt;D该图有四个顶点：A、B、C、D 以及四条有向边，有向图中，边是单向的
+有向 vs 无向#如果是无向图，那么边是双向的，下面是一个无向图的例子
+graph LRA---BA---CB---DC---D度#度是指与该顶点相邻的边的数量
+graph LRA((A))---B((B))A---C((C))B---D((D))C---DD---E((E))D---F((F))E---FA &amp;amp; B &amp;amp; C &amp;amp; D &amp;amp; E &amp;amp; F例如上图中
+ A、B、C、E、F 这几个顶点度数为 2 D 顶点度数为 4  有向图中，细分为入度和出度，参见下图
+graph LRA((A))--&amp;gt;B((B))A--&amp;gt;C((C))B--&amp;gt;D((D))C--&amp;gt;DD--&amp;gt;E((E))D--&amp;gt;F((F))E--&amp;gt;FA &amp;amp; B &amp;amp; C &amp;amp; D &amp;amp; E &amp;amp; F A (2 out / 0 in) B、C、E (1 out / 1 in) D (2 out / 2 in) F (0 out / 2 in)  权#边可以有权重，代表从源顶点到目标顶点的距离、费用、时间或其他度量。</description>
+    </item>
+    
+    <item>
       <title>国内咨询平台</title>
       <link>https://huachengzhou.github.io/life/docs/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/r2xcf5nxjq/</link>
       <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
