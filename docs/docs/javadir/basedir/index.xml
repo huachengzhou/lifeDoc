@@ -16,6 +16,16 @@
     </item>
     
     <item>
+      <title>Java中对象内存地址</title>
+      <link>https://huachengzhou.github.io/life/docs/javadir/basedir/identityhashcode/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/javadir/basedir/identityhashcode/</guid>
+      <description>内存地址#identityHashCode与真正的内存地址# 严格来说，identityHashCode()并不指向真实的地址，关于对象的真正地址，可以参见 Java 正确获取对象内存地址的方式
+ String s1 = new String(&amp;#34;s1&amp;#34;) ; String s2 = new String(&amp;#34;s1&amp;#34;) ; System.out.println(System.identityHashCode(s1)); System.out.println(System.identityHashCode(s2)); // 1688376486 // 2114664380 Java 对象布局 ( JOL ) 工具# 首先，添加 jol-core依赖：  &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.openjdk.jol&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jol-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.10&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  要在 JVM 中查找特定对象的内存地址，我们可以使用 addressOf() 方法：  String answer = &amp;#34;s1&amp;#34;; System.out.println(&amp;#34;The memory address is &amp;#34; + VM.current().addressOf(answer)); // The memory address is 31875131456 </description>
+    </item>
+    
+    <item>
       <title>异常机制详解</title>
       <link>https://huachengzhou.github.io/life/docs/javadir/basedir/java-basic-x-exception/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
