@@ -150,13 +150,19 @@ HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
     </item>
     
     <item>
-      <title>小程序技术总结参考 </title>
-      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
-      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      <title>多版本Node.js的版本共存和无缝切换 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/nvm/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
-      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
-  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/nvm/</guid>
+      <description>nvm# 主要原理就是nodeJs多版本切换
+ nvm-windows#  下载
+  ps 我选择的是2024-07-09看到的最高版本1.1.12
+  安装
+  安装exe
+  如果使用压缩包 就自己配置好环境变量即可 参考
+  使用# 以后安装nodeJs版本就直接用 num安装即可
+  查看有哪些可使用版本  C:\Users\noatn&amp;gt;nvm list available | CURRENT | LTS | OLD STABLE | OLD UNSTABLE | |--------------|--------------|--------------|--------------| | 22.4.1 | 20.15.1 | 0.12.18 | 0.11.16 | | 22.4.0 | 20.15.0 | 0.12.17 | 0.</description>
     </item>
     
     <item>
@@ -166,6 +172,16 @@ HBuilderX是通用的前端开发工具，但为uni-app做了特别强化。
       
       <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/</guid>
       <description>第一种方式#   npm i -g @vue/cli-init or npm install @vue/cli-init@5.0.8 -g    D:\IdeaProjects\cycle\study\vuecli\demoB&amp;gt;vue init webpack learnrouter ? Project name learnrouter ? Project description &amp;#39;这是一个vue路由器&amp;#39; ? Author zch ? Vue build runtime ? Install vue-router? Yes ? Use ESLint to lint your code? No ? Set up unit tests Yes ? Pick a test runner noTest ? Setup e2e tests with Nightwatch? Yes ? Should we run `npm install` for you after the project has been created?</description>
+    </item>
+    
+    <item>
+      <title>小程序技术总结参考 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
+      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
+  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
     </item>
     
     <item>

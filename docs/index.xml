@@ -3214,22 +3214,28 @@ file = open(file_name [, mode=&#39;r&#39; [ , buffering=-1 [ , encoding = None ]
     </item>
     
     <item>
-      <title>小程序技术总结参考 </title>
-      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
-      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
-      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
-  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
-    </item>
-    
-    <item>
       <title>python datetime</title>
       <link>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://huachengzhou.github.io/life/docs/python/base/python_datetime/</guid>
       <description>datetime#构造函数# 创建日期对象  import datetime import time time1 = datetime.datetime(year=2008,month=4,day=12) time2 = datetime.datetime(2027,6,23) print(time1) print(time2) 日期对象格式化为可读字符串# 格式化参考     指令 描述 实例 TIY     %a Weekday，短版本 Wed 试一试   %A Weekday，完整版本 Wednesday 试一试   %w Weekday，数字 0-6，0 为周日 3 试一试   %d 日，数字 01-31 31 试一试   %b 月名称，短版本 Dec 试一试   %B 月名称，完整版本 December 试一试   %m 月，数字01-12 12 试一试   %y 年，短版本，无世纪 18 试一试   %Y 年，完整版本 2018 试一试   %H 小时，00-23 17 试一试   %I 小时，00-12 05 试一试   %p AM/PM PM 试一试   %M 分，00-59 41 试一试   %S 秒，00-59 08 试一试   %f 微妙，000000-999999 548513 试一试   %z UTC 偏移 +0100 试一试   %Z 时区 CST 试一试   %j 天数，001-366 365 试一试   %U 周数，每周的第一天是周日，00-53 52 试一试   %W 周数，每周的第一天是周一，00-53 52 试一试   %c 日期和时间的本地版本 Mon Dec 31 17:41:00 2018 试一试   %x 日期的本地版本 12/31/18 试一试   %X 时间的本地版本 17:41:00 试一试   %% A % character % 试一试     例子  import datetime x = datetime.</description>
+    </item>
+    
+    <item>
+      <title>多版本Node.js的版本共存和无缝切换 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/nvm/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/nvm/</guid>
+      <description>nvm# 主要原理就是nodeJs多版本切换
+ nvm-windows#  下载
+  ps 我选择的是2024-07-09看到的最高版本1.1.12
+  安装
+  安装exe
+  如果使用压缩包 就自己配置好环境变量即可 参考
+  使用# 以后安装nodeJs版本就直接用 num安装即可
+  查看有哪些可使用版本  C:\Users\noatn&amp;gt;nvm list available | CURRENT | LTS | OLD STABLE | OLD UNSTABLE | |--------------|--------------|--------------|--------------| | 22.4.1 | 20.15.1 | 0.12.18 | 0.11.16 | | 22.4.0 | 20.15.0 | 0.12.17 | 0.</description>
     </item>
     
     <item>
@@ -3725,6 +3731,16 @@ Python 2.7 使用 raw_input() 方法
  Introduction to Algorithm2
 不正式的说，算法就是任何定义优良的计算过程：接收一些值作为输入，在有限的时间内，产生一些值作为输出。
  Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output in a finite amount of time.</description>
+    </item>
+    
+    <item>
+      <title>小程序技术总结参考 </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E5%8F%82%E8%80%83/</guid>
+      <description>多端比较#   框架名称 h5 小程序 weex Native 可否使用其它ui     taro Y Y N Y ui根据修改就可以适配taro如 vant,light-ui,WeUI,Antd Design Mobile,自带的,京东ui等   uniapp Y Y Y N 只能用它自己的   Chameleon Y Y Y N ui根据修改就可以适配Chameleon light-ui,自带的,滴滴ui   mpvue Y Y N N 只能使用自己的 例如美团外卖     weex和Native 可以以一定的方式转为app 比如android ios  Chameleon# CML (Chameleon) 是一个跨多端开发的统一解决方案，它可以像变色龙一样适应不同的环境。一次开发，多端运行，一端所见即多端所见。
+  点评  滴滴的开源小程序框架 使用的是类vue语法 安装它自己的规范开发 比如 c-model 和v-model功能差不多但是不能直接使用v-model,一定要使用得这样 //注意这个 lang=&amp;#39;vue&amp;#39; &amp;lt;template lang=&amp;#39;vue&amp;#39;&amp;gt; &amp;lt;page title=&amp;#34;chameleon&amp;#34;&amp;gt; &amp;lt;view&amp;gt;&amp;lt;text&amp;gt;message:{{message}}&amp;lt;/text&amp;gt;&amp;lt;/view&amp;gt; &amp;lt;input v-model=&amp;#34;message&amp;#34;&amp;gt;&amp;lt;/input&amp;gt; &amp;lt;/page&amp;gt; &amp;lt;/template&amp;gt; 实际上uniapp照样也是使用的类vue 只不过uniapp模拟了几乎绝大多数的vue api 其实这种类vue挺恐怖的 框架自己把vue拿来魔改或者自己研发了一种数据驱动的响应式js框架 uniapp# uni-app 是一个使用 Vue.</description>
     </item>
     
     <item>
