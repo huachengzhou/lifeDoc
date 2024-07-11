@@ -42,3 +42,39 @@ weight: 9
 + npm uninstall webpack webpack-cli -d  局部
 
 + npm uninstall less-loader 不区分局部和全局 卸载
+
+
+### npm源
+
++  查看初始npm源
+
+```cmd
+npm config get registry
+```
+
++ 更换镜像为淘宝镜
+
+```cmd
+npm config set registry https://registry.npm.taobao.org/
+```
+
++ 连起来
+
+```cmd
+C:\Users\noatn>npm config get registry
+https://registry.npmjs.org/
+
+C:\Users\noatn>npm config set registry https://registry.npm.taobao.org/
+
+C:\Users\noatn>npm config get registry
+https://registry.npm.taobao.org/
+```
+
+
+### npm命令设置全局下载安装工具包和缓存的目录
+
+```cmd
+C:\Users\noatn>npm config set prefix "D:\lib\jsLib\node_global"
+
+C:\Users\noatn>npm config set cache "D:\lib\jsLib\node_cache"
+```
