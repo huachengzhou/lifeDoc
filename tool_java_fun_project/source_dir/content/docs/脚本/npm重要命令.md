@@ -78,3 +78,6 @@ C:\Users\noatn>npm config set prefix "D:\lib\jsLib\node_global"
 
 C:\Users\noatn>npm config set cache "D:\lib\jsLib\node_cache"
 ```
+
+### npx的重要性
++  npx pnpm install
