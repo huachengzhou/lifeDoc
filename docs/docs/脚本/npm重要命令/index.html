@@ -63,7 +63,7 @@
 <link rel="manifest" href="./../../../manifest.json">
 <link rel="icon" href="./../../../favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="./../../../book.min.2287b6f2871d6b78ee0a49069a42487d840f883445869f9883981ad861ebdaaa.css"  >
-<script defer src="./../../../en.search.min.74318666a82269fa152ea4a08ebbd3e333b3a123e15c978a99fee04b4e5f6df7.js"  ></script>
+<script defer src="./../../../en.search.min.676b2b531ac0fb0325b10166143a775b81ff6c2fedc6c3c3cf6766759c8dde1c.js"  ></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -3788,6 +3788,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="./../../../docs/%E8%84%9A%E6%9C%AC/typescript/" class="">typescript </a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="./../../../docs/%E8%84%9A%E6%9C%AC/vue%E8%84%9A%E6%89%8B%E6%9E%B6%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F/" class="">vue脚手架创建方式 </a>
   
 
@@ -5873,6 +5886,9 @@ https://github.com/alex-shpak/hugo-book
     <li>
       <ul>
         <li><a href="#npm-包管理器查询网址">npm 包管理器查询网址</a></li>
+        <li><a href="#npm源">npm源</a></li>
+        <li><a href="#npx包执行器">npx包执行器</a></li>
+        <li><a href="#npm命令设置全局下载安装工具包和缓存的目录">npm命令设置全局下载安装工具包和缓存的目录</a></li>
       </ul>
     </li>
   </ul>
@@ -5963,7 +5979,76 @@ https://github.com/alex-shpak/hugo-book
 <p>npm uninstall less-loader 不区分局部和全局 卸载</p>
 </li>
 </ul>
-</article>
+<h3 id="npm源">
+  npm源
+  <a class="anchor" href="#npm%e6%ba%90">#</a>
+</h3>
+<ul>
+<li>查看初始npm源</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">npm config get registry
+</code></pre></div><ul>
+<li>更换下载地址</li>
+</ul>
+<p>npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org/</a>
+npm config set prefix &ldquo;D:\lib\jsLib\node_global&rdquo;</p>
+<ul>
+<li>更换镜像为淘宝镜</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">
+npm config set cache <span style="color:#e6db74">&#34;D:\lib\jsLib\node_cache&#34;</span>
+</code></pre></div><ul>
+<li>连起来</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C:\Users\noatn<span style="color:#75715e">&gt;npm config get registry</span>
+https://registry.npmjs.org/
+
+C:\Users\noatn<span style="color:#75715e">&gt;npm config set registry https://registry.npm.taobao.org/</span>
+
+C:\Users\noatn<span style="color:#75715e">&gt;npm config get registry</span>
+https://registry.npm.taobao.org/
+</code></pre></div><h3 id="npx包执行器">
+  npx包执行器
+  <a class="anchor" href="#npx%e5%8c%85%e6%89%a7%e8%a1%8c%e5%99%a8">#</a>
+</h3>
+<blockquote>
+<p>NPX 是一个 Node 包执行器，该 Node 包可以是本地也可以是远程的。允许开发者在无需安装的情况下执行任意 Node 包</p>
+</blockquote>
+<ul>
+<li>例如 npx ts-node .\o1.ts</li>
+</ul>
+<h4 id="pnpm-npx安装方式">
+  pnpm npx安装方式
+  <a class="anchor" href="#pnpm-npx%e5%ae%89%e8%a3%85%e6%96%b9%e5%bc%8f">#</a>
+</h4>
+<ul>
+<li>npx pnpm install</li>
+</ul>
+<h4 id="pnpm-设置源">
+  pnpm 设置源
+  <a class="anchor" href="#pnpm-%e8%ae%be%e7%bd%ae%e6%ba%90">#</a>
+</h4>
+<p>npx pnpm config set registry <a href="https://registry.npmmirror.com">https://registry.npmmirror.com</a></p>
+<h4 id="pnpm-设置地址">
+  pnpm 设置地址
+  <a class="anchor" href="#pnpm-%e8%ae%be%e7%bd%ae%e5%9c%b0%e5%9d%80">#</a>
+</h4>
+<ul>
+<li>npx pnpm config set store-dir   &ldquo;D:\lib\jsLib\pnpm_lib&rdquo;</li>
+</ul>
+<h4 id="yarn-设置地址">
+  yarn 设置地址
+  <a class="anchor" href="#yarn-%e8%ae%be%e7%bd%ae%e5%9c%b0%e5%9d%80">#</a>
+</h4>
+<p>npx yarn config set cache-folder &ldquo;D:\lib\jsLib\yarn_lib&rdquo;</p>
+<h3 id="npm命令设置全局下载安装工具包和缓存的目录">
+  npm命令设置全局下载安装工具包和缓存的目录
+  <a class="anchor" href="#npm%e5%91%bd%e4%bb%a4%e8%ae%be%e7%bd%ae%e5%85%a8%e5%b1%80%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85%e5%b7%a5%e5%85%b7%e5%8c%85%e5%92%8c%e7%bc%93%e5%ad%98%e7%9a%84%e7%9b%ae%e5%bd%95">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C:\Users\noatn<span style="color:#75715e">&gt;npm config set prefix &#34;D:\lib\jsLib\node_global&#34;</span>
+
+C:\Users\noatn<span style="color:#75715e">&gt;npm config set cache &#34;D:\lib\jsLib\node_cache&#34;</span>
+</code></pre></div></article>
  
       
 
@@ -6209,6 +6294,9 @@ https://github.com/alex-shpak/hugo-book
     <li>
       <ul>
         <li><a href="#npm-包管理器查询网址">npm 包管理器查询网址</a></li>
+        <li><a href="#npm源">npm源</a></li>
+        <li><a href="#npx包执行器">npx包执行器</a></li>
+        <li><a href="#npm命令设置全局下载安装工具包和缓存的目录">npm命令设置全局下载安装工具包和缓存的目录</a></li>
       </ul>
     </li>
   </ul>

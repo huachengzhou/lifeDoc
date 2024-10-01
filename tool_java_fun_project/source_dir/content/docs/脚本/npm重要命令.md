@@ -52,10 +52,17 @@ weight: 9
 npm config get registry
 ```
 
++ 更换下载地址
+
+npm config set registry https://registry.npm.taobao.org/
+npm config set prefix "D:\lib\jsLib\node_global"
+
 + 更换镜像为淘宝镜
 
+
 ```cmd
-npm config set registry https://registry.npm.taobao.org/
+
+npm config set cache "D:\lib\jsLib\node_cache"
 ```
 
 + 连起来
@@ -71,6 +78,30 @@ https://registry.npm.taobao.org/
 ```
 
 
+
+### npx包执行器
+
+> NPX 是一个 Node 包执行器，该 Node 包可以是本地也可以是远程的。允许开发者在无需安装的情况下执行任意 Node 包
+
+
++ 例如 npx ts-node .\o1.ts
+
+#### pnpm npx安装方式
+
++ npx pnpm install
+
+#### pnpm 设置源
+
+npx pnpm config set registry https://registry.npmmirror.com
+
+#### pnpm 设置地址
+
++ npx pnpm config set store-dir   "D:\lib\jsLib\pnpm_lib"
+
+#### yarn 设置地址
+
+npx yarn config set cache-folder "D:\lib\jsLib\yarn_lib"
+
 ### npm命令设置全局下载安装工具包和缓存的目录
 
 ```cmd
@@ -79,5 +110,3 @@ C:\Users\noatn>npm config set prefix "D:\lib\jsLib\node_global"
 C:\Users\noatn>npm config set cache "D:\lib\jsLib\node_cache"
 ```
 
-### npx的重要性
-+  npx pnpm install

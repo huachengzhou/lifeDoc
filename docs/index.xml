@@ -5,7 +5,7 @@
     <link>https://huachengzhou.github.io/life/</link>
     <description>Recent content in Introduction on 所悟所想</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 27 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://huachengzhou.github.io/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>英语数字规则 </title>
       <link>https://huachengzhou.github.io/life/docs/english_study/word/number/</link>
@@ -3279,6 +3279,15 @@ try: x1 = 2 / 0 except: print(&amp;#34;异常 除数为0&amp;#34;) finally: prin
   4:全量备份与增量备份#  全量备份 (备份完整的数据库)
   增量备份 (只备份上一次备份以来发生修改的数据)
   5:备份周期# 考虑因素： 数据库大小(决定备份时间) 恢复速度要求(快速or慢速) 备份方式(全量or增量)  6:常用工具及用法# mysqldump - 逻辑备份，热备 xtrabackup - 物理备份， 热备 Lvm/zfs snapshot - 物理备份 mydumper - 逻辑备份，热备 cp - 物理备份，冷备  常用工具及用法 - mysqldump# 逻辑备份  -- 备份全部数据库的数据库结构 mysqldump -h localhost -p3307 -uroot -p123456 -A &amp;gt; D:\data\databases\mysql\mysql_all_2023-09-02.</description>
+    </item>
+    
+    <item>
+      <title>typescript </title>
+      <link>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/typescript/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://huachengzhou.github.io/life/docs/%E8%84%9A%E6%9C%AC/typescript/</guid>
+      <description> typescript学习  </description>
     </item>
     
     <item>
